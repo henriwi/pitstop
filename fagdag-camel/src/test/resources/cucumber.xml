@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.0.0.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config/>
+    <import resource="context/applicationContext-jpa.xml"/>
+    <context:component-scan base-package="no.bekk.camel"/>
+    <context:component-scan base-package="no.bekk.normalizer"/>
+    <context:component-scan base-package="no.bekk.repo"/>
+    <context:component-scan base-package="no.bekk.cucumber.support"/>
+    <context:component-scan base-package="no.bekk.cucumber.steps">
+        <context:include-filter type="annotation" expression="cuke4duke.spring.StepDefinitions"/>
+    </context:component-scan>
+
+    <bean id="firstSource" class="java.lang.String">
+        <constructor-arg value="direct:firstEndpoint"/>
+    </bean>
+    <bean id="secondSource" class="java.lang.String">
+        <constructor-arg value="direct:secondEndpoint"/>
+    </bean>
+    <bean id="notifier" class="java.lang.String">
+        <constructor-arg value="mock:notifier"/>
+    </bean>
+    <camel:camelContext>
+        <camel:routeBuilder ref="routeBuilder"/>
+    </camel:camelContext>
+
+</beans>
