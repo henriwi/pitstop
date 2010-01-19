@@ -40,7 +40,7 @@ public class FagdagRouteBuilderTest {
     private String aLine = "A;1312;Apache Camel Rocks";
     private String bLine = "D;1312;";
 
-    //Leif was here!
+    //Leif wasn't here!
     //Mocked in xml
     @Resource(name = "repository")
     private FagdagRepo fagdagRepo;
