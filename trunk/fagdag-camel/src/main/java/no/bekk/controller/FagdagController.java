@@ -1,5 +1,5 @@
 package no.bekk.controller;
-
+//Her er en commit test!!
 import no.bekk.domain.FagdagLog;
 import no.bekk.repo.FagdagRepo;
 
