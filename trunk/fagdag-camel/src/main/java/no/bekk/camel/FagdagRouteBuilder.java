@@ -25,6 +25,7 @@ public class FagdagRouteBuilder extends RouteBuilder {
     @Resource(name="firstSource")
     private String ircSource;
 
+    // Litt usikker på denne, men tror den fungerer
     @Resource(name="secondSource")
     private String fileSource;
 
