@@ -1,3 +1,4 @@
+package no.example.controller.test;
 
 import static org.junit.Assert.*;
 import no.example.controller.HelloController;
