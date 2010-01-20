@@ -10,7 +10,7 @@
 
 	<!-- Activates @Autowired and scan for @controller-->
 	<context:annotation-config />
-	<context:component-scan base-package="org.example" />
+	<context:component-scan base-package="org.example.controller" />
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
