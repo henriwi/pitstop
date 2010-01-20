@@ -10,6 +10,6 @@ public class HelloControllerTest {
 	public void doPageTest()
 	{
 		HelloController hc = new HelloController();
-		assertEquals("Hello", hc.doPage());
+		assertEquals("hello", hc.doPage());
 	}
 }
