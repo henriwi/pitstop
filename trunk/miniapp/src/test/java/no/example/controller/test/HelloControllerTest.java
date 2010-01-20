@@ -1,15 +1,41 @@
 package no.example.controller.test;
 
 import static org.junit.Assert.*;
-import no.example.controller.HelloController;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import no.example.controller.HelloController;
+import no.example.domain.Tire;
+
+import org.junit.Before;
 import org.junit.Test;
 
 public class HelloControllerTest {
+	
+	private HelloController helloController;
+
+	@Before
+	public void setup()
+	{
+		helloController = new HelloController();
+	}
 	@Test
 	public void doPageTest()
 	{
-		HelloController hc = new HelloController();
-		assertEquals("hello", hc.doPage());
+		assertEquals("hello", helloController.doPage());
+	}
+	
+	@Test
+	public void getTiersTest()
+	{
+		List<Tire> list = new LinkedList<Tire>();
+		Tire t = new Tire();
+		t.setId(1);
+		t.setName("pirelli");
+		list.add(t);
+		
+		assertEquals(list.get(0).getId(), helloController.getTiers().get(0).getId());
+		assertEquals(list.get(0).getName(), helloController.getTiers().get(0).getName());
 	}
 }
