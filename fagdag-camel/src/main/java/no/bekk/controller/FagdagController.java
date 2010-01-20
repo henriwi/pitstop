@@ -1,6 +1,6 @@
 package no.bekk.controller;
 //Her er en commit test!!
-//Her er også en test fra henrik
+//Her er en ny commit med shortcuts
 //commit 2
 import no.bekk.domain.FagdagLog;
 import no.bekk.repo.FagdagRepo;
