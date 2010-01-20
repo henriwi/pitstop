@@ -18,8 +18,8 @@ public class HelloController {
 		return "hello";
 	}
 	
-	@ModelAttribute("tiers")
-	public List<Tire> getTiers()
+	@ModelAttribute("tires")
+	public List<Tire> getTires()
 	{
 		List<Tire> list = new LinkedList<Tire>();
 		Tire t = new Tire();
