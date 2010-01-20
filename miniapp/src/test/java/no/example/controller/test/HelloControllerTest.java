@@ -27,7 +27,7 @@ public class HelloControllerTest {
 	}
 	
 	@Test
-	public void getTiersTest()
+	public void getTiresTest()
 	{
 		List<Tire> list = new LinkedList<Tire>();
 		Tire t = new Tire();
@@ -35,7 +35,7 @@ public class HelloControllerTest {
 		t.setName("pirelli");
 		list.add(t);
 		
-		assertEquals(list.get(0).getId(), helloController.getTiers().get(0).getId());
-		assertEquals(list.get(0).getName(), helloController.getTiers().get(0).getName());
+		assertEquals(list.get(0).getId(), helloController.getTires().get(0).getId());
+		assertEquals(list.get(0).getName(), helloController.getTires().get(0).getName());
 	}
 }

@@ -1,12 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Test!</title>
-</head>
+<head><title>Simple jsp page</title></head>
 <body>
-Dette får vi håpe går fint!
+<h1>Tires in the system</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Navn</th>
+    </tr>
+    <c:forEach items="${tires}" var="tire">
+        <tr>
+        	<td><c:out value="${tire.id}"></c:out></td>
+            <td><c:out value="${tire.name}"></c:out></td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>
