@@ -25,7 +25,13 @@ public class HelloController {
 		Tire t = new Tire();
 		t.setId(1);
 		t.setName("pirelli");
+		
+		Tire t2 = new Tire();
+		t2.setId(2);
+		t2.setName("michelin");
+		
 		list.add(t);
+		list.add(t2);
 		return list;
 	}
 }
