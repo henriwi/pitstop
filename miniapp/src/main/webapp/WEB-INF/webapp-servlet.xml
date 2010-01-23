@@ -24,8 +24,8 @@
 	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/miniapp" />
-		<property name="username" value="root" />
-		<property name="password" value="liva8icon" />
+		<property name="username" value="miniapp" />
+		<property name="password" value="fono9oily" />
 	</bean>
 
 	<!-- Hibernate session factory -->
