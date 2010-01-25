@@ -10,18 +10,18 @@ import org.springframework.stereotype.Repository;
 import no.example.domain.Tire;
 
 @Repository("tireRepo")
-public class TireRepoImpl implements TireRepo{
-	
+public class TireRepoImpl implements TireRepo {
+
 	private SessionFactory sessionFactory;
-	
+
 	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory){
+	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Tire> getTires(){
+	public List<Tire> getTires() {
 		Session session = sessionFactory.openSession();
 		return session.createQuery("from Tire").list();
 	}

@@ -13,31 +13,30 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class HelloControllerTest {
-	
+
 	private HelloController helloController;
 
 	@Before
-	public void setup()
-	{
+	public void setup() {
 		helloController = new HelloController();
 	}
+
 	@Test
-	public void doPageTest()
-	{
+	public void doPageTest() {
 		assertEquals("hello", helloController.doPage());
 	}
-	
+
 	@Test
-	public void getTiresTest()
-	{
-		/*List<Tire> list = new LinkedList<Tire>();
-		
-		Tire t = new Tire();
-		t.setId(1);
-		t.setName("pirelli");
-		list.add(t);
-		
-		assertEquals(list.get(0).getId(), helloController.getTires().get(0).getId());
-		assertEquals(list.get(0).getName(), helloController.getTires().get(0).getName());*/
+	public void getTiresTest() {
+		/*
+		 * List<Tire> list = new LinkedList<Tire>();
+		 * 
+		 * Tire t = new Tire(); t.setId(1); t.setName("pirelli"); list.add(t);
+		 * 
+		 * assertEquals(list.get(0).getId(),
+		 * helloController.getTires().get(0).getId());
+		 * assertEquals(list.get(0).getName(),
+		 * helloController.getTires().get(0).getName());
+		 */
 	}
 }

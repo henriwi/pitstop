@@ -10,22 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HelloController {
-	
+
 	private TireRepo tireRepo;
-	
+
 	@Autowired
-	public void setTierRepo(TireRepo tireRepo){
+	public void setTierRepo(TireRepo tireRepo) {
 		this.tireRepo = tireRepo;
 	}
+
 	@RequestMapping("/hello")
-	public String doPage()
-	{
+	public String doPage() {
 		return "hello";
 	}
-	
+
 	@ModelAttribute("tires")
-	public List<Tire> getTires()
-	{
+	public List<Tire> getTires() {
 		return tireRepo.getTires();
 	}
 }
