@@ -11,7 +11,7 @@ class Tire {
 	String speedIndex
 	String pattern
 	String tireType
-
+	
     static constraints = {
     }
 }
