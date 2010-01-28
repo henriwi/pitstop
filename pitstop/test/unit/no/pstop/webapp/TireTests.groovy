@@ -14,6 +14,7 @@ class TireTests extends GrailsUnitTestCase {
 	void testGenerateTire() {
 		Tire t = new Tire(width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"sommer")
+		
 		assertEquals 192, t.width
 		assertEquals 60, t.profile
 		assertEquals "R", t.construction
