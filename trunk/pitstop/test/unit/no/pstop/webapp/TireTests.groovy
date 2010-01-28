@@ -11,7 +11,7 @@ class TireTests extends GrailsUnitTestCase {
 		super.tearDown()
 	}
 	
-	void generateTire() {
+	void testGenerateTire() {
 		Tire t = new Tire(width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"sommer")
 		assertEquals 192, t.width
@@ -23,7 +23,5 @@ class TireTests extends GrailsUnitTestCase {
 		assertEquals "H", t.speedIndex
 		assertEquals "m12", t.pattern
 		assertEquals "sommer", t.tireType
-		
-		
 	}
 }
