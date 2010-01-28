@@ -1,0 +1,13 @@
+Testsuite: no.pstop.webapp.TireTests
+Tests run: 2, Failures: 0, Errors: 0, Time elapsed: 1,172 sec
+------------- Standard Output ---------------
+--Output from testGenerateTire--
+--Output from testGenerateTireWithEmtyFields--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testGenerateTire--
+--Output from testGenerateTireWithEmtyFields--
+------------- ---------------- ---------------
+
+Testcase: testGenerateTire took 1,065 sec
+Testcase: testGenerateTireWithEmtyFields took 0,106 sec
