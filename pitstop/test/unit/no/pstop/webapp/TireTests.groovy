@@ -5,14 +5,13 @@ import junit.framework.Assert;
 import grails.test.*
 
 class TireTests extends GrailsUnitTestCase {
-	def tire
 	
 	protected void setUp() {
 		super.setUp()
-		tire = new Tire(width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
+		//tire = new Tire(width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
+			//	loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
 		
-		mockForConstraintsTests Tire
+		//mockForConstraintsTests Tire
 	}
 	
 	protected void tearDown() {
