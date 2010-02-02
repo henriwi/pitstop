@@ -34,7 +34,7 @@ class TireTests extends GrailsUnitTestCase {
 		assertEquals "sommer", tire.tireType
 	}
 	
-	void testGenerateTireWithUnvalideWidth(){
+	void testGenerateTireWithInvalideWidth(){
 		Tire t = new Tire(width:0,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"sommer")
 		
@@ -42,7 +42,7 @@ class TireTests extends GrailsUnitTestCase {
 		assertFalse "There should be errors", t.validate()
 	}
 	
-	void testGenerateTireWithUnvalidProfile(){
+	void testGenerateTireWithInvalidProfile(){
 		Tire t = new Tire(width:165,profile:2,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"sommer")
 		
@@ -50,7 +50,7 @@ class TireTests extends GrailsUnitTestCase {
 		assertFalse "Ingen validering, ugyldig profil", t.validate()
 	}
 	
-	void testGenerateTireWithUnvalidConstruction(){
+	void testGenerateTireWithInvalidConstruction(){
 		Tire t = new Tire(width:165,profile:70,construction:"K",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"sommer")
 		
@@ -58,11 +58,19 @@ class TireTests extends GrailsUnitTestCase {
 		assertFalse "Ingen validering, ugyldig konstruksjon", t.validate()
 	}
 	
-	void testGenerateTireWithUnvalidDiameter(){
-		Tire t = new Tire(width:165,profile:70,construction:"R",diameter:40,partNr:"123AB",
+	void testGenerateTireWithInvalidDiameter(){
+		Tire t = new Tire(width:165,profile:70,construction:"R",diameter:5,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"sommer")
 		
 		mockForConstraintsTests (Tire)
 		assertFalse "Ingen validering, ugyldig diameter", t.validate()
+	}
+	
+	void testGenerateTireWithInvalidLoadIndex(){
+		Tire t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
+				loadIndex:20,speedIndex:"H",pattern:"m12",tireType:"sommer")
+		
+		mockForConstraintsTests (Tire)
+		assertFalse "Ingen validering, ugyldig belastningsindeks", t.validate()
 	}
 }

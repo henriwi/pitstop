@@ -16,9 +16,7 @@ class Tire {
 		width(min:100, max:350)
 		profile(min:20, max:85)
 		construction(matches:"R")
-		
-		
-		
-		
+		diameter(min:10, max:50)
+		loadIndex(min:40, max:240)
 	}
 }
