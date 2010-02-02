@@ -59,7 +59,7 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithUnvalidDiameter(){
-		Tire t = new Tire(width:165,profile:70,construction:"R",diameter:100,partNr:"123AB",
+		Tire t = new Tire(width:165,profile:70,construction:"R",diameter:40,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"sommer")
 		
 		mockForConstraintsTests (Tire)
