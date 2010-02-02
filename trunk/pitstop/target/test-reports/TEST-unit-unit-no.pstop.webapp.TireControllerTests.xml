@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="jtd71" name="no.pstop.webapp.TireControllerTests" tests="1" time="1.785" timestamp="2010-02-02T09:12:55">
+<testsuite errors="0" failures="0" hostname="jtd71" name="no.pstop.webapp.TireControllerTests" tests="1" time="1.346" timestamp="2010-02-02T09:36:23">
   <properties />
-  <testcase classname="no.pstop.webapp.TireControllerTests" name="testSomething" time="1.784" />
+  <testcase classname="no.pstop.webapp.TireControllerTests" name="testSomething" time="1.343" />
   <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
   <system-err><![CDATA[--Output from testSomething--

@@ -14,6 +14,6 @@ class Tire {
 	
 	static constraints = {
 		width(min:100, max:350)
-		profile(min:20, max:85)
+		//profile(min:20, max:85)
 	}
 }
