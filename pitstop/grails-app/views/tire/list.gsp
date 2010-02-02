@@ -22,17 +22,25 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'tire.id.label', default: 'Id')}" />
+                            
                         
-                            <g:sortableColumn property="partNr" title="${message(code: 'tire.partNr.label', default: 'Part Nr')}" />
+                            <g:sortableColumn property="partNr" title="${message(code: 'tire.partNr.label', default: 'Varenummer')}" />
                         
-                            <g:sortableColumn property="width" title="${message(code: 'tire.width.label', default: 'Width')}" />
+                            <g:sortableColumn property="width" title="${message(code: 'tire.width.label', default: 'Bredde')}" />
                         
-                            <g:sortableColumn property="profile" title="${message(code: 'tire.profile.label', default: 'Profile')}" />
+                            <g:sortableColumn property="profile" title="${message(code: 'tire.profile.label', default: 'Profil')}" />
                         
-                            <g:sortableColumn property="construction" title="${message(code: 'tire.construction.label', default: 'Construction')}" />
+                            <g:sortableColumn property="construction" title="${message(code: 'tire.construction.label', default: 'Konstruksjon')}" />
                         
-                            <g:sortableColumn property="diameter" title="${message(code: 'tire.diameter.label', default: 'Diameter')}" />
+                            <g:sortableColumn property="diameter" title="${message(code: 'tire.diameter.label', default: 'Felgdiameter')}" />
+                            
+                            <g:sortableColumn property="loadIndex" title="${message(code: 'tire.loadIndex.label', default: 'Belastningsindeks')}" />
+                            
+                            <g:sortableColumn property="speedIndex" title="${message(code: 'tire.speedIndex.label', default: 'Hastighetsindeks')}" />
+                            
+                            <g:sortableColumn property="pattern" title="${message(code: 'tire.loadIndex.label', default: 'M&oslash;nster')}" />
+                            
+                            <g:sortableColumn property="tireType" title="${message(code: 'tire.speedIndex.label', default: 'Dekktype')}" />
                         
                         </tr>
                     </thead>
@@ -40,9 +48,9 @@
                     <g:each in="${tireInstanceList}" status="i" var="tireInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "partNr")}</g:link></td>
                         
-                            <td>${fieldValue(bean: tireInstance, field: "partNr")}</td>
+                            
                         
                             <td>${fieldValue(bean: tireInstance, field: "width")}</td>
                         
@@ -51,6 +59,14 @@
                             <td>${fieldValue(bean: tireInstance, field: "construction")}</td>
                         
                             <td>${fieldValue(bean: tireInstance, field: "diameter")}</td>
+                            
+                            <td>${fieldValue(bean: tireInstance, field: "loadIndex")}</td>
+                        
+                            <td>${fieldValue(bean: tireInstance, field: "speedIndex")}</td>
+                            
+                            <td>${fieldValue(bean: tireInstance, field: "pattern")}</td>
+                        
+                            <td>${fieldValue(bean: tireInstance, field: "tireType")}</td>
                         
                         </tr>
                     </g:each>
