@@ -11,7 +11,12 @@ class TireControllerTests extends ControllerUnitTestCase {
 		super.tearDown()
 	}
 	
-	void testSomething() {
+	void testIndexRedirect() {
+		controller.index()
+		assertEquals "list", controller.redirectArgs.action
+	}
+	
+	void testCreate(){
 		
 	}
 }
