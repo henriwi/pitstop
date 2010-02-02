@@ -21,7 +21,7 @@ class Tire {
 		loadIndex(min:40, max:240)
 		speedIndex(inList:["L","M","N","P","Q","R","S","T","U","H","V","W","Y","Z","ZR"], blank:false)
 		//TODO
-		pattern(matches:"[a-zA-Z0-9]+", blank:false)
+		pattern(matches:"[a-zA-Z0-9\\s]+", blank:false)
 		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)"], blank:false)
 	}
 }
