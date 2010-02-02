@@ -87,6 +87,14 @@ class TireTests extends GrailsUnitTestCase {
 				loadIndex:165,speedIndex:"T",pattern:"?",tireType:"sommer")
 		
 		mockForConstraintsTests (Tire)
-		assertFalse "Ingen validering, ugyldig hastighetsindeks", t.validate()
+		assertFalse "Ingen validering, ugyldig mønster", t.validate()
+	}
+	
+	void testGenerateTireWithInvalidTireType(){
+		Tire t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
+				loadIndex:165,speedIndex:"T",pattern:"H",tireType:"spring")
+		
+		mockForConstraintsTests (Tire)
+		assertFalse "Ingen validering, ugyldig dekktype", t.validate()
 	}
 }
