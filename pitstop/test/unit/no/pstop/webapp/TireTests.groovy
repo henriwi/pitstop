@@ -5,7 +5,7 @@ import junit.framework.Assert;
 import grails.test.*
 
 class TireTests extends GrailsUnitTestCase {
-	Tire tire
+	def tire
 	
 	protected void setUp() {
 		super.setUp()
@@ -20,7 +20,7 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTire() {
-		Tire tire = new Tire(width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
+		def tire = new Tire(width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
 		
 		assertEquals 192, tire.width
@@ -35,7 +35,7 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithInvalidePartNr(){
-		Tire t = new Tire(width:165,profile:60,construction:"R",diameter:17,partNr:"?",
+		def t = new Tire(width:165,profile:60,construction:"R",diameter:17,partNr:"?",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
 		
 		mockForConstraintsTests(Tire)
@@ -43,18 +43,18 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithNonUniquePartNr(){
-		Tire t1 = new Tire(width:165,profile:60,construction:"R",diameter:17,partNr:"DE3",
+		def t1 = new Tire(width:165,profile:60,construction:"R",diameter:17,partNr:"DE3",
 				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
-		Tire t2 = new Tire(width:165,profile:50,construction:"R",diameter:16,partNr:"DE3",
-				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Vinter")
+		def t2 = new Tire(width:165,profile:50,construction:"R",diameter:16,partNr:"DE3",
+				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
 		
-		mockDomain Tire;
+		mockForConstraintsTests(Tire, [ t1 ])
 		assertTrue "Validering ok", t1.validate()
 		assertFalse "Ingen validering, ikke unikt partNr", t2.validate()
 	}
 	
 	void testGenerateTireWithInvalideWidth(){
-		Tire t = new Tire(width:0,profile:60,construction:"R",diameter:17,partNr:"123AB",
+		def t = new Tire(width:0,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
 		
 		mockForConstraintsTests(Tire)
@@ -62,7 +62,7 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithInvalidProfile(){
-		Tire t = new Tire(width:165,profile:2,construction:"R",diameter:17,partNr:"123AB",
+		def t = new Tire(width:165,profile:2,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
 		
 		mockForConstraintsTests(Tire)
@@ -70,7 +70,7 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithInvalidConstruction(){
-		Tire t = new Tire(width:165,profile:70,construction:"K",diameter:17,partNr:"123AB",
+		def t = new Tire(width:165,profile:70,construction:"K",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
 		
 		mockForConstraintsTests (Tire)
@@ -78,7 +78,7 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithInvalidDiameter(){
-		Tire t = new Tire(width:165,profile:70,construction:"R",diameter:5,partNr:"123AB",
+		def t = new Tire(width:165,profile:70,construction:"R",diameter:5,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
 		
 		mockForConstraintsTests (Tire)
@@ -86,7 +86,7 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithInvalidLoadIndex(){
-		Tire t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
+		def t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
 				loadIndex:20,speedIndex:"H",pattern:"m12",tireType:"Sommer")
 		
 		mockForConstraintsTests (Tire)
@@ -94,7 +94,7 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithInvalidSpeedIndex(){
-		Tire t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
+		def t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
 				loadIndex:165,speedIndex:"A",pattern:"m12",tireType:"Sommer")
 		
 		mockForConstraintsTests (Tire)
@@ -102,7 +102,7 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithInvalidPattern(){
-		Tire t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
+		def t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
 				loadIndex:165,speedIndex:"T",pattern:"?",tireType:"Sommer")
 		
 		mockForConstraintsTests (Tire)
@@ -110,7 +110,7 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithInvalidTireType(){
-		Tire t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
+		def t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
 				loadIndex:165,speedIndex:"T",pattern:"H",tireType:"spring")
 		
 		mockForConstraintsTests (Tire)
