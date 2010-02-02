@@ -60,4 +60,5 @@ class TireTests extends GrailsUnitTestCase {
 		assertFalse "Ingen validering, ugyldig profil", t.validate()
 	}
 	
+	
 }

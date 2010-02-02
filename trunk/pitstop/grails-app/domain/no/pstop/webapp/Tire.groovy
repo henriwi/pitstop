@@ -13,7 +13,7 @@ class Tire {
 	String tireType
 	
 	static constraints = {
-		width(range:100..350)
-		profile(range:10..70)
+		width(min:100, max:350)
+		profile(min:20, max:85)
 	}
 }
