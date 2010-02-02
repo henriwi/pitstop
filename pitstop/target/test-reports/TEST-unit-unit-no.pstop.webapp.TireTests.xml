@@ -1,36 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="1" hostname="jtd71" name="no.pstop.webapp.TireTests" tests="3" time="0.64" timestamp="2010-02-02T09:12:57">
+<testsuite errors="0" failures="0" hostname="jtd71" name="no.pstop.webapp.TireTests" tests="4" time="0.753" timestamp="2010-02-02T09:36:24">
   <properties />
-  <testcase classname="no.pstop.webapp.TireTests" name="testGenerateTire" time="0.515" />
-  <testcase classname="no.pstop.webapp.TireTests" name="testGenerateTireWithUnvalideWidth" time="0.075" />
-  <testcase classname="no.pstop.webapp.TireTests" name="testGenerateTireWithUnvalidProfile" time="0.048">
-    <failure message="Ingen validering, ugyldig profil" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Ingen validering, ugyldig profil
-	at no.pstop.webapp.TireTests.testGenerateTireWithUnvalidProfile(TireTests.groovy:60)
-	at _GrailsTest_groovy$_run_closure4.doCall(_GrailsTest_groovy:262)
-	at _GrailsTest_groovy$_run_closure4.call(_GrailsTest_groovy)
-	at _GrailsTest_groovy$_run_closure2.doCall(_GrailsTest_groovy:221)
-	at _GrailsTest_groovy$_run_closure1_closure21.doCall(_GrailsTest_groovy:181)
-	at _GrailsTest_groovy$_run_closure1.doCall(_GrailsTest_groovy:168)
-	at TestApp$_run_closure1.doCall(TestApp:102)
-	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
-	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
-	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
-	at gant.Gant.withBuildListeners(Gant.groovy:344)
-	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
-	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
-	at gant.Gant.dispatch(Gant.groovy:334)
-	at gant.Gant.this$2$dispatch(Gant.groovy)
-	at gant.Gant.invokeMethod(Gant.groovy)
-	at gant.Gant.processTargets(Gant.groovy:495)
-	at gant.Gant.processTargets(Gant.groovy:480)
-</failure>
-  </testcase>
+  <testcase classname="no.pstop.webapp.TireTests" name="testGenerateTire" time="0.582" />
+  <testcase classname="no.pstop.webapp.TireTests" name="testGenerateTireWithUnvalideWidth" time="0.115" />
+  <testcase classname="no.pstop.webapp.TireTests" name="testGenerateTireWithUnvalidProfile" time="0.035" />
+  <testcase classname="no.pstop.webapp.TireTests" name="testGenerateTireWithUnvalidConstruction" time="0.019" />
   <system-out><![CDATA[--Output from testGenerateTire--
 --Output from testGenerateTireWithUnvalideWidth--
 --Output from testGenerateTireWithUnvalidProfile--
+--Output from testGenerateTireWithUnvalidConstruction--
 ]]></system-out>
   <system-err><![CDATA[--Output from testGenerateTire--
 --Output from testGenerateTireWithUnvalideWidth--
 --Output from testGenerateTireWithUnvalidProfile--
+--Output from testGenerateTireWithUnvalidConstruction--
 ]]></system-err>
 </testsuite>
