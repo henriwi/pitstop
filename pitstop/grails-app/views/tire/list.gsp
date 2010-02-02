@@ -24,6 +24,8 @@
                         
                             <g:sortableColumn property="id" title="${message(code: 'tire.id.label', default: 'Id')}" />
                         
+                            <g:sortableColumn property="partNr" title="${message(code: 'tire.partNr.label', default: 'Part Nr')}" />
+                        
                             <g:sortableColumn property="width" title="${message(code: 'tire.width.label', default: 'Width')}" />
                         
                             <g:sortableColumn property="profile" title="${message(code: 'tire.profile.label', default: 'Profile')}" />
@@ -31,8 +33,6 @@
                             <g:sortableColumn property="construction" title="${message(code: 'tire.construction.label', default: 'Construction')}" />
                         
                             <g:sortableColumn property="diameter" title="${message(code: 'tire.diameter.label', default: 'Diameter')}" />
-                        
-                            <g:sortableColumn property="partNr" title="${message(code: 'tire.partNr.label', default: 'Part Nr')}" />
                         
                         </tr>
                     </thead>
@@ -42,6 +42,8 @@
                         
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "id")}</g:link></td>
                         
+                            <td>${fieldValue(bean: tireInstance, field: "partNr")}</td>
+                        
                             <td>${fieldValue(bean: tireInstance, field: "width")}</td>
                         
                             <td>${fieldValue(bean: tireInstance, field: "profile")}</td>
@@ -49,8 +51,6 @@
                             <td>${fieldValue(bean: tireInstance, field: "construction")}</td>
                         
                             <td>${fieldValue(bean: tireInstance, field: "diameter")}</td>
-                        
-                            <td>${fieldValue(bean: tireInstance, field: "partNr")}</td>
                         
                         </tr>
                     </g:each>
