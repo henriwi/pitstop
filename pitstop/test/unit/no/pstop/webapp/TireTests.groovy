@@ -42,6 +42,17 @@ class TireTests extends GrailsUnitTestCase {
 		assertFalse "Ingen validering, ugyldig varenr", t.validate()
 	}
 	
+	void testGenerateTireWithNonUniquePartNr(){
+		Tire t1 = new Tire(width:165,profile:60,construction:"R",diameter:17,partNr:"DE3",
+				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
+		Tire t2 = new Tire(width:165,profile:50,construction:"R",diameter:16,partNr:"DE3",
+				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Vinter")
+		
+		mockDomain Tire;
+		assertTrue "Validering ok", t1.validate()
+		assertFalse "Ingen validering, ikke unikt partNr", t2.validate()
+	}
+	
 	void testGenerateTireWithInvalideWidth(){
 		Tire t = new Tire(width:0,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
