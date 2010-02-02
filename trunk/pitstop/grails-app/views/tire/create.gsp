@@ -6,11 +6,6 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'tire.label', default: 'Tire')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
-        <style type="text/css">
-        	#txtConstruction{
-        		color: #000;
-        	}
-        </style>
     </head>
     <body>
         <div class="nav">
