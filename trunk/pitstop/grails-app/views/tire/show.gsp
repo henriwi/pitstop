@@ -30,6 +30,13 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name"><g:message code="tire.partNr.label" default="Part Nr" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "partNr")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="tire.width.label" default="Width" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "width")}</td>
@@ -58,13 +65,6 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tire.partNr.label" default="Part Nr" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "partNr")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="tire.loadIndex.label" default="Load Index" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "loadIndex")}</td>
@@ -72,16 +72,16 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tire.pattern.label" default="Pattern" /></td>
+                            <td valign="top" class="name"><g:message code="tire.speedIndex.label" default="Speed Index" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "pattern")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "speedIndex")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tire.speedIndex.label" default="Speed Index" /></td>
+                            <td valign="top" class="name"><g:message code="tire.pattern.label" default="Pattern" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "speedIndex")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "pattern")}</td>
                             
                         </tr>
                     
