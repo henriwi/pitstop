@@ -13,14 +13,15 @@ class Tire {
 	String tireType
 	
 	static constraints = {
+		partNr(matches:"[a-zA-Z0-9]+", blank:false)
 		width(min:100, max:350)
 		profile(min:20, max:85)
-		construction(matches:"R")
+		construction(matches:"R", blank:false)
 		diameter(min:10, max:50)
 		loadIndex(min:40, max:240)
-		speedIndex(inList:["L","M","N","P","Q","R","S","T","U","H","V","W","Y","Z","ZR"])
+		speedIndex(inList:["L","M","N","P","Q","R","S","T","U","H","V","W","Y","Z","ZR"], blank:false)
 		//TODO
-		pattern(matches:"[a-zA-Z0-9]+")
-		tireType(inList:["Sommer","Vinterpigg","Vinterpiggfri"])
+		pattern(matches:"[a-zA-Z0-9]+", blank:false)
+		tireType(inList:["sommer","vinterpigg","vinterpiggfri"], blank:false)
 	}
 }

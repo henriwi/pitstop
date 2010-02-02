@@ -34,12 +34,20 @@ class TireTests extends GrailsUnitTestCase {
 		assertEquals "sommer", tire.tireType
 	}
 	
+	void testGenerateTireWithInvalidePartNr(){
+		Tire t = new Tire(width:165,profile:60,construction:"R",diameter:17,partNr:"?",
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"sommer")
+		
+		mockForConstraintsTests(Tire)
+		assertFalse "Ingen validering, ugyldig varenr", t.validate()
+	}
+	
 	void testGenerateTireWithInvalideWidth(){
 		Tire t = new Tire(width:0,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"sommer")
 		
 		mockForConstraintsTests(Tire)
-		assertFalse "There should be errors", t.validate()
+		assertFalse "Ingen validering, ugyldig dekkbredde", t.validate()
 	}
 	
 	void testGenerateTireWithInvalidProfile(){
