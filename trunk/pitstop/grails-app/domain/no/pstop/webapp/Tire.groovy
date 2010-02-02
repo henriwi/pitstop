@@ -5,7 +5,7 @@ class Tire {
 	String partNr
 	Integer width
 	Integer profile
-	Character construction
+	String construction
 	Integer diameter
 	Integer loadIndex
 	String speedIndex
@@ -15,6 +15,10 @@ class Tire {
 	static constraints = {
 		width(min:100, max:350)
 		profile(min:20, max:85)
-		construction(inList:['R'])
+		construction(matches:"R")
+		
+		
+		
+		
 	}
 }
