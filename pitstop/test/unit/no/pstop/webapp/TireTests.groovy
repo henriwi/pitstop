@@ -51,4 +51,13 @@ class TireTests extends GrailsUnitTestCase {
 		//assertFalse t.validate()
 		//assertTrue t.validate()
 	}
+	
+	void testGenerateTireWithUnvalidProfile(){
+		Tire t = new Tire(width:165,profile:2,construction:"R",diameter:17,partNr:"123AB",
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"sommer")
+		
+		mockForConstraintsTests(Tire)
+		assertFalse "Ingen validering, ugyldig profil", t.validate()
+	}
+	
 }
