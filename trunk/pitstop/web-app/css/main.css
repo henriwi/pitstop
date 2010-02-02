@@ -123,12 +123,10 @@ div.errors li {
     padding-left: 30px;
 }
 
-td.errors select {
+td.errors select,td.errors input, span.errors input{
     border: 1px solid red;
 }
-td.errors input {
-    border: 1px solid red;
-}
+
 
 /* TABLES */
 
@@ -267,4 +265,11 @@ th.desc a {
 .buttons input.save {
     background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
     padding-left: 28px;
+}
+
+/******* USER GENERATED *******/
+
+/* create.gsp */
+#txtConstruction {
+	color: #000;
 }
