@@ -15,7 +15,7 @@
         <div class="body">
             <h1>Dekkliste</h1>
             <g:if test="${flash.message}">
-            	<div class="message">Dekk slettet</div>
+            <div class="message">${flash.message}</div>
             </g:if>
             <div class="list">
                 <table>
