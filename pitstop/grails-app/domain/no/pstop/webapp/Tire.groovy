@@ -18,5 +18,6 @@ class Tire {
 		construction(matches:"R")
 		diameter(min:10, max:50)
 		loadIndex(min:40, max:240)
+		speedIndex(inList:["L","M","N","P","Q","R","S","T","U","H","V","W","Y","Z","ZR"])
 	}
 }
