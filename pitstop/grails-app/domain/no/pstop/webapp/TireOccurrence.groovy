@@ -8,7 +8,7 @@ class TireOccurrence {
 	Integer numberOfReserved
 	Integer numberOfOrdered
 	//Date fungerer ikke
-	//Date dato
+	Date date
 	//Ikke sikkert vi trenger numberOfAvailable
 	Integer numberOfAvailable
 	
