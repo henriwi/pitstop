@@ -3,13 +3,14 @@ package no.pstop.webapp
 class TireOccurrence {
 	//long id
 	Tire tire
-	int numberInStock
-	int price
-	int numberOfReserved
-	int numberOfOrdered
+	Integer numberInStock
+	Integer price
+	Integer numberOfReserved
+	Integer numberOfOrdered
 	//TODO
 	//DateTime dato
-	int numberOfAvailable = numberInStock - numberOfReserved
+	//Ikke sikkert vi trenger numberOfAvailable
+	Integer numberOfAvailable
 	
     static constraints = {
     }
