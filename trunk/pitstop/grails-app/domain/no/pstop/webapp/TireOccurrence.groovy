@@ -7,8 +7,8 @@ class TireOccurrence {
 	Integer price
 	Integer numberOfReserved
 	Integer numberOfOrdered
-	//Legge til en SimpleDateFormat
-	Date dato
+	//Date fungerer ikke
+	//Date dato
 	//Ikke sikkert vi trenger numberOfAvailable
 	Integer numberOfAvailable
 	
