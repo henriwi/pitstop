@@ -13,7 +13,7 @@ class Tire {
 	String tireType
 	
 	static constraints = {
-		partNr(matches:"[a-zA-Z0-9]+", blank:false, unique:true)
+		partNr(matches:"[a-zA-Z0-9]{0,20}", blank:false, unique:true)
 		width(min:100, max:350)
 		profile(min:20, max:85)
 		construction(matches:"R", blank:false)
