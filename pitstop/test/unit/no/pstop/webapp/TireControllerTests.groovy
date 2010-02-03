@@ -5,6 +5,7 @@ import grails.test.*
 class TireControllerTests extends ControllerUnitTestCase {
 	protected void setUp() {
 		super.setUp()
+		controller
 	}
 	
 	protected void tearDown() {
