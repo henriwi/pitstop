@@ -59,8 +59,7 @@
                                     <label for="construction"><g:message code="tire.construction.label" default="Konstruksjon" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'construction', 'errors')}">
-                                    <g:textField maxlength="1" max id="txtConstruction" name="construction" value="R"/>
-                                    <g:select name="tireType" from="${tireInstance.constraints.construction.inList}" value="${tireInstance?.construction}" valueMessagePrefix="tire.construction"  />
+                                    <g:select name="construction" from="${tireInstance.constraints.construction.inList}" value="${tireInstance?.construction}" valueMessagePrefix="tire.construction"  />
                                 </td>
                             </tr>
                         

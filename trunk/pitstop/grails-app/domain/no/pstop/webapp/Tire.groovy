@@ -16,7 +16,7 @@ class Tire {
 		partNr(matches:"[a-zA-Z0-9]{0,20}", blank:false, unique:true)
 		width(min:100, max:350)
 		profile(min:20, max:85)
-		construction(matches:"R", blank:false)
+		construction(inList:["R"], blank:false)
 		diameter(min:10, max:50)
 		loadIndex(min:40, max:240)
 		speedIndex(inList:["L","M","N","P","Q","R","S","T","U","H","V","W","Y","Z","ZR"], blank:false)
