@@ -10,5 +10,6 @@ class TireOccurrence {
 	Integer numberOfAvailable
 	
     static constraints = {
+		
     }
 }
