@@ -33,7 +33,7 @@ class TireTests extends GrailsUnitTestCase {
 		assertEquals "Sommer", tire.tireType
 	}
 	
-	void testGenerateTireWithInvalidePartNr(){
+	void testGenerateTireWithInvalidPartNr(){
 		def t = new Tire(width:165,profile:60,construction:"R",diameter:17,partNr:"?",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
 		
@@ -52,7 +52,7 @@ class TireTests extends GrailsUnitTestCase {
 		assertFalse "Ingen validering, ikke unikt partNr", t2.validate()
 	}
 	
-	void testGenerateTireWithInvalideWidth(){
+	void testGenerateTireWithInvalidWidth(){
 		def t = new Tire(width:0,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
 		
