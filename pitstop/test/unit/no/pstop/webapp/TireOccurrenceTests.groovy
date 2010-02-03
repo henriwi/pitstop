@@ -11,10 +11,6 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
         super.tearDown()
     }
 	
-	void testSomething() {
-		
-	}
-	
 	void testGenerateTireOccurrence() {
 		/*def tire = new Tire(width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		 loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")*/
