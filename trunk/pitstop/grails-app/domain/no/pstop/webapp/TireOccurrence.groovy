@@ -2,8 +2,8 @@ package no.pstop.webapp
 
 class TireOccurrence {
 	Tire tire
+	Double price
 	Integer numberInStock
-	Integer price
 	Integer numberOfReserved
 	Integer numberOfOrdered
 	Date date
