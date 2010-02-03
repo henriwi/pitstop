@@ -60,6 +60,7 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'construction', 'errors')}">
                                     <g:textField maxlength="1" max id="txtConstruction" name="construction" value="R"/>
+                                    <g:select name="tireType" from="${tireInstance.constraints.construction.inList}" value="${tireInstance?.construction}" valueMessagePrefix="tire.construction"  />
                                 </td>
                             </tr>
                         
