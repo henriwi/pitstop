@@ -272,4 +272,5 @@ th.desc a {
 /* create.gsp */
 #txtConstruction {
 	color: #000;
+	visibility: hidden;
 }
