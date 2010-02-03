@@ -17,12 +17,11 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:89.89,numberInStock:4,numberOfReserved:3,
 		numberOfOrdered:8,date:new Date(), numberOfAvailable:1 )
 		
-		
 		assertEquals 89.89, tireOccurrence.price
 		assertEquals 4, tireOccurrence.numberInStock
 		assertEquals 3, tireOccurrence.numberOfReserved
 		assertEquals 8, tireOccurrence.numberOfOrdered
-		assertEquals new Date(), tireOccurrence.date
+		//assertEquals new Date(), tireOccurrence.date
 		assertEquals 1, tireOccurrence.numberOfAvailable
 	}
 }
