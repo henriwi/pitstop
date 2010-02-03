@@ -59,7 +59,7 @@
                                     <label for="construction"><g:message code="tire.construction.label" default="Konstruksjon" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'construction', 'errors')}">
-                                    R<g:textField id="txtConstruction" name="construction" value="R"/>
+                                    R<g:textField  id="txtConstruction" name="construction" value="R"/>
                                 </td>
                             </tr>
                         
