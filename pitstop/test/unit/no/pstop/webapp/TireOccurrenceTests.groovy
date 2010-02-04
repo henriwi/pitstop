@@ -32,6 +32,5 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 				numberOfOrdered:8,date:new Date(), numberOfAvailable:1 )
 		
 		assertFalse "Ingen validering, feil pris input", tireOccurrence.validate()
-		//
 	}
 }
