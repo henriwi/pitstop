@@ -19,6 +19,5 @@ class TireControllerTests extends ControllerUnitTestCase {
 	
 	void testCreate(){
 		//mockController TireController
-		//controller.
 	}
 }
