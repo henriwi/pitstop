@@ -1,6 +1,8 @@
 package no.pstop.webapp
 
 class Tire {
+	static searchable = true
+	
 	long id
 	String partNr
 	Integer width
