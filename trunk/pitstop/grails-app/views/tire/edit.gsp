@@ -6,6 +6,21 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'tire.label', default: 'dekk')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
+        
+        <script type="text/javascript">
+        	/* Tillater at kun tall skrives inn */
+			function onlyNumbers(evt) {
+			    evt = (evt) ? evt : window.event
+			    var charCode = (evt.which) ? evt.which : evt.keyCode
+			    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+			        status = "Du kan kun skrive inn tall."
+			        return false
+			    }
+			    status = ""
+			    return true
+			}
+		</script>
+        
     </head>
     <body>
         <div class="nav">
@@ -44,7 +59,8 @@
                                   <label for="width"><g:message code="tire.width.label" default="Bredde" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'width', 'errors')}">
-                                    <g:textField name="width" value="${fieldValue(bean: tireInstance, field: 'width')}" />
+                                    <g:textField name="width" value="${fieldValue(bean: tireInstance, field: 'width')}" 
+                                    	onKeyPress="return onlyNumbers(event)" />
                                 </td>
                             </tr>
                         
@@ -53,7 +69,8 @@
                                   <label for="profile"><g:message code="tire.profile.label" default="Profil" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'profile', 'errors')}">
-                                    <g:textField name="profile" value="${fieldValue(bean: tireInstance, field: 'profile')}" />
+                                    <g:textField name="profile" value="${fieldValue(bean: tireInstance, field: 'profile')}"
+                                    	onKeyPress="return onlyNumbers(event)" />
                                 </td>
                             </tr>
                         
@@ -62,7 +79,7 @@
                                   <label for="construction"><g:message code="tire.construction.label" default="Konstruksjon" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'construction', 'errors')}">
-                                    <g:textField name="construction" value="${tireInstance?.construction}" />
+                                    <g:select name="construction" from="${tireInstance.constraints.construction.inList}" value="${tireInstance?.construction}" valueMessagePrefix="tire.construction"  />
                                 </td>
                             </tr>
                         
@@ -71,7 +88,8 @@
                                   <label for="diameter"><g:message code="tire.diameter.label" default="Dekkdiameter" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'diameter', 'errors')}">
-                                    <g:textField name="diameter" value="${fieldValue(bean: tireInstance, field: 'diameter')}" />
+                                    <g:textField name="diameter" value="${fieldValue(bean: tireInstance, field: 'diameter')}"
+                                    	onKeyPress="return onlyNumbers(event)" />
                                 </td>
                             </tr>
                         
@@ -81,7 +99,8 @@
                                 </td>
                                 <td>
 	                                <span valign="top" class="value ${hasErrors(bean: tireInstance, field: 'loadIndex', 'errors')}">
-	                                    <g:textField name="loadIndex" value="${fieldValue(bean: tireInstance, field: 'loadIndex')}" />
+	                                    <g:textField name="loadIndex" value="${fieldValue(bean: tireInstance, field: 'loadIndex')}"
+                                    		onKeyPress="return onlyNumbers(event)" />
 	                                </span>
 	                            	<span valign="top" class="value ${hasErrors(bean: tireInstance, field: 'speedIndex', 'errors')}">
 	                                    <g:select name="speedIndex" from="${tireInstance.constraints.speedIndex.inList}" value="${tireInstance?.speedIndex}" valueMessagePrefix="tire.speedIndex"  />
