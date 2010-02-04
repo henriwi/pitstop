@@ -6,6 +6,8 @@ import grails.test.*
 class TireOccurrenceTests extends GrailsUnitTestCase {
     protected void setUp() {
         super.setUp()
+			
+		mockForConstraintsTests TireOccurrence
     }
 
     protected void tearDown() {
@@ -23,5 +25,12 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 		assertEquals 8, tireOccurrence.numberOfOrdered
 		assertEquals "10/01/2008", tireOccurrence.date.format("MM/dd/yyyy")
 		assertEquals 1, tireOccurrence.numberOfAvailable
+	}
+	
+	void testGenerateTireOccuranceWithInvalidPrice(){
+		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:-3,numberInStock:4,numberOfReserved:3,
+				numberOfOrdered:8,date:new Date(), numberOfAvailable:1 )
+		
+		assertFalse "Ingen validering, feil pris input", tireOccurrence.validate()
 	}
 }
