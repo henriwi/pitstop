@@ -9,8 +9,18 @@ class TireController {
     }
 
     def list = {
+		def tireList
+		def tireCount
+		if(params.q) {
+			tireList = Tire.search("*" + params.q + "*").results
+			tireCount = tireList.count()
+		} 
+		else {
+			tireList = Tire.list(params)
+			tireCount = Tire.count()
+		}
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [tireInstanceList: Tire.list(params), tireInstanceTotal: Tire.count()]
+        [tireInstanceList: tireList, tireInstanceTotal: tireCount]
     }
 
     def create = {
