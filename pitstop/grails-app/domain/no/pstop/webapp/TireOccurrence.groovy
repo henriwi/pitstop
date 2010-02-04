@@ -1,6 +1,7 @@
 package no.pstop.webapp
 
 class TireOccurrence {
+	long id
 	Tire tire
 	Double price
 	Integer numberInStock
