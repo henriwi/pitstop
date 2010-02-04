@@ -11,6 +11,7 @@ class TireOccurrence {
 	Integer numberOfAvailable
 	
     static constraints = {
-		
+		price(min:0)
+		numberInStck(min:1)
     }
 }
