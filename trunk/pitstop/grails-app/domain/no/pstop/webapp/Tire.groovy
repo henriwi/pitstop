@@ -2,6 +2,7 @@ package no.pstop.webapp
 
 class Tire {
 	static searchable = true
+	 static hasMany = [ tireOccurrences : TireOccurrence ]
 	
 	long id
 	String partNr
