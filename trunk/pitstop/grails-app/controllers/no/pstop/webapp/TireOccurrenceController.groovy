@@ -7,7 +7,7 @@ class TireOccurrenceController {
     def index = {
         redirect(action: "list", params: params)
     }
-// komentar
+
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [tireOccurrenceInstanceList: TireOccurrence.list(params), tireOccurrenceInstanceTotal: TireOccurrence.count()]
