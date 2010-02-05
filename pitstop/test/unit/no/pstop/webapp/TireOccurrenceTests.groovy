@@ -35,9 +35,30 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireOccurranceWithInvalidNumberInStock(){
-		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:1,numberInStock:-5,numberOfReserved:3,
+		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:1.0,numberInStock:-5,numberOfReserved:3,
 				numberOfOrdered:8,date:new Date(), numberOfAvailable:1 )
 		
 		assertFalse "ingen validering, feil input" , tireOccurrence.validate()
+	}
+	
+	void testGenerateTireOccurranceWithInvalidNumberOfReserved(){
+		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:1.0,numberInStock:4,numberOfReserved:-3,
+				numberOfOrdered:8,date:new Date(), numberOfAvailable:1 )
+		
+		assertFalse "Ingen validering, feil numberOfReserved input", tireOccurrence.validate()
+	}
+	
+	void testGenerateTireOccuranceWithInvalidNumberOfOrdered(){
+		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:1.0,numberInStock:4,numberOfReserved:4,
+				numberOfOrdered:-6,date:new Date(), numberOfAvailable:1 )
+		
+		assertFalse "Ingen validering, feil input numberOfOrdered", tireOccurrence.validate()
+	}
+	
+	void testGenenerateTireOccuranceWithInvalidNumberOfAvailable(){
+		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:1.0,numberInStock:4,numberOfReserved:4,
+				numberOfOrdered:10,date:new Date(), numberOfAvailable:-3 )
+		
+		assertFalse "Ingen validering, feil input numberOfAvaiable", tireOccurrence.validate()
 	}
 }
