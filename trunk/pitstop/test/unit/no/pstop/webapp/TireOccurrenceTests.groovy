@@ -15,15 +15,15 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
     }
 	
 	void testGenerateTireOccurrence() {
-		def df = new SimpleDateFormat("MM/dd/yyyy")
+		def df = new SimpleDateFormat("dd.MM.yyyy")
 		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:89.89,numberInStock:4,numberOfReserved:3,
-				numberOfOrdered:8,date: df.parse("10/01/2008"), numberOfAvailable:1 )
+				numberOfOrdered:8,date: df.parse("10.01.2008"), numberOfAvailable:1 )
 		
 		assertEquals 89.89, tireOccurrence.price
 		assertEquals 4, tireOccurrence.numberInStock
 		assertEquals 3, tireOccurrence.numberOfReserved
 		assertEquals 8, tireOccurrence.numberOfOrdered
-		assertEquals "10/01/2008", tireOccurrence.date.format("MM/dd/yyyy")
+		assertEquals "10.01.2008", tireOccurrence.date.format("dd.MM.yyyy")
 		assertEquals 1, tireOccurrence.numberOfAvailable
 	}
 	
@@ -61,5 +61,4 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 		
 		assertFalse "Ingen validering, feil input numberOfAvaiable", tireOccurrence.validate()
 	}
-	//Test
 }
