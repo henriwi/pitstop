@@ -18,6 +18,6 @@ class TireOccurrence {
 		numberOfReserved(min:0)
 		numberOfOrdered(min:0)
 		numberOfAvailable(min:0)
-		date(min:new Date())
-    }
+		date(min:new Date()-1)
+	}
 }
