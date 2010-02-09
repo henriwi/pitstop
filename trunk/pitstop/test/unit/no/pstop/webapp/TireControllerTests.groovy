@@ -16,16 +16,17 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertEquals "list", controller.redirectArgs.action
 	}
 	
-	void testListWithSearchQuery() {
-		/*mockDomain(Tire)
+	/*void testListWithSearchQuery() {
+		def tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
+		mockDomain(Tire, [tire])
 		List tireInstanceList = []
 		20.times {i -> tireInstanceList << new Tire() }
 		
 		controller.params.q = "123"
 		
 		// setup a mock control to check the params passed to the list method
-		def tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
+
 		
 		def mockControl = mockFor(Tire)
 		mockControl.demand.static.list {params ->
@@ -38,14 +39,28 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertEquals('list size should match default', 10, model.tireInstanceList.size())
 		
 		// verify the mocked method was called
-		mockControl.verify()*/
-	}
+		mockControl.verify()
+	}*/
 
 	void testCreate() {
 		mockDomain Tire
 		def model = controller.create()
 		assertNotNull model.tireInstance
 	}
+	
+	/*void testSaveWithValidId() {
+		mockDomain(Tire)
+		//tire*.save(flush:true)
+		// mock out save method for happy path
+		Tire.metaClass.save = {boolean flush -> return true }
+		controller.params.id = 1
+		controller.metaClass.message = {args -> println "message: ${args}"} 
+		controller.save()
+		
+		assertEquals('redirect action', "show", redirectArgs.action)
+		assertEquals('redirect id', 1, controller.redirectArgs.id)
+		//assertEquals('flash message', "Tire ${controller.params.id} created", mockFlash.message)
+	}*/
 	
 	void testShowWithValidId() {
 		def tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
@@ -56,21 +71,6 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertEquals tire, model.tireInstance
 	}
 	
-	/*void testSaveWithValidId() {
-		def tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
-		mockDomain(Tire, [tire])
-		tire*.save(flush:true)
-		// mock out save method for happy path
-		Tire.metaClass.save = {-> return true }
-		controller.metaClass.message = {args -> println "message: ${args}"} 
-		controller.save()
-		
-		assertEquals('redirect action', "show", controller.redirectArgs.action)
-		assertEquals('redirect id', 1, controller.redirectArgs.id)
-		//assertEquals('flash message', "Tire ${controller.params.id} created", mockFlash.message)
-	}
-	
 	void testShowWithInvalidId() {
 		def tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
@@ -79,7 +79,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.show()
 		assertEquals "list", controller.redirectArgs.action
-	}*/
+	}
 	
 	void testEditWithValidId() {
 		Tire expectedTire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
@@ -97,6 +97,53 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.edit()
 		assertEquals('redirect action', "list", redirectArgs.action)
 		//assertEquals('flash message', "Tire not found with id ${controller.params.id}", mockFlash.message)
+	}
+	
+	void testUpdateWithValidId() {
+		Tire expectedTire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
+		mockDomain(Tire, [expectedTire])
+		
+		// mock out save and hasErrors behavior for happy path
+		expectedTire.metaClass.save = {-> return true }
+		expectedTire.metaClass.hasErrors = {-> return false }
+		
+		controller.params.id = 1
+		controller.metaClass.message = {args -> println "message: ${args}"} 
+		controller.update()
+		
+		assertEquals('redirect action', "show", redirectArgs.action)
+		assertEquals('redirect id', 1, redirectArgs.id)
+		//assertEquals('flash message', "Tire ${controller.params.id} updated", mockFlash.message)
+	}
+	
+	void testUpdateWithValidIdButErrors() {
+		Tire expectedTire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
+		mockDomain(Tire, [expectedTire])
+		
+		// mock out save and hasErrors behavior for happy path
+		expectedTire.metaClass.save = {-> return false }
+		expectedTire.metaClass.hasErrors = {-> return true }
+		
+		controller.params.id = 1
+		controller.metaClass.message = {args -> println "message: ${args}"} 
+		controller.update()
+		
+		assertEquals('redirect action', "edit", controller.modelAndView.view)
+		assertNotNull('Tire should not be null', controller.modelAndView.model.tireInstance)
+		//assertEquals('flash message', "Tire ${controller.params.id} updated", mockFlash.message)
+	}
+	
+	void testUpdateWithInvalidId() {
+		mockDomain(Tire)
+		
+		controller.params.id = 999
+		controller.metaClass.message = {args -> println "message: ${args}"} 
+		controller.update()
+		
+		assertEquals('redirect action', "list", redirectArgs.action)
+		//assertEquals('flash message', "Tire ${controller.params.id} updated", mockFlash.message)
 	}
 	
 	void testDeleteWithValidId() {
