@@ -3,7 +3,7 @@ package no.pstop.webapp
 class TireOccurrence {
 	static belongsTo = [tire:Tire]
 	
-	long id
+	//long id
 	Tire tire
 	Double price
 	Integer numberInStock
@@ -17,6 +17,6 @@ class TireOccurrence {
 		numberInStock(min:0)
 		numberOfReserved(min:0)
 		numberOfOrdered(min:0)
-		registrationDate(min:new Date()-1)
+		registrationDate(blank:false, nullable:false, min:new Date()-1)
 	}
 }
