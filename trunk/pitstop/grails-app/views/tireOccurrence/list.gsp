@@ -24,16 +24,23 @@
                         
                             <g:sortableColumn property="id" title="${message(code: 'tireOccurrence.id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.price.label', default: 'Price')}" />
+                            <g:sortableColumn property="tire" title="${message(code: 'tireOccurrence.tire.label', default: 'Dekktype')}" />
+                                              	    
+                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.price.label', default: 'Pris')}" />
                         
-                            <g:sortableColumn property="numberInStock" title="${message(code: 'tireOccurrence.numberInStock.label', default: 'Number In Stock')}" />
+                            <g:sortableColumn property="numberInStock" title="${message(code: 'tireOccurrence.numberInStock.label', default: 'Antall')}" />
                         
-                            <g:sortableColumn property="numberOfReserved" title="${message(code: 'tireOccurrence.numberOfReserved.label', default: 'Number Of Reserved')}" />
+                            <g:sortableColumn property="numberOfReserved" title="${message(code: 'tireOccurrence.numberOfReserved.label', default: 'Reservert')}" />
                         
-                            <g:sortableColumn property="numberOfOrdered" title="${message(code: 'tireOccurrence.numberOfOrdered.label', default: 'Number Of Ordered')}" />
+                            <g:sortableColumn property="numberOfOrdered" title="${message(code: 'tireOccurrence.numberOfOrdered.label', default: 'Bestilt')}" />
                         
-                            <g:sortableColumn property="numberOfAvailable" title="${message(code: 'tireOccurrence.numberOfAvailable.label', default: 'Number Of Available')}" />
+                            <g:sortableColumn property="numberOfAvailable" title="${message(code: 'tireOccurrence.numberOfAvailable.label', default: 'Tiljengelighet')}" />
                         
+                        	<g:sortableColumn property="registrationDate" title="${message(code: 'tireOccurrence.registrationDate.label', default: 'Registreringsdato')}" />
+                        
+ 
+                        
+                        	
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +49,8 @@
                         
                             <td><g:link action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "id")}</g:link></td>
                         
+                        	<td>${fieldValue(bean: tireOccurrenceInstance, field: "tire")}</td>
+                        	
                             <td>${fieldValue(bean: tireOccurrenceInstance, field: "price")}</td>
                         
                             <td>${fieldValue(bean: tireOccurrenceInstance, field: "numberInStock")}</td>
@@ -51,6 +60,10 @@
                             <td>${fieldValue(bean: tireOccurrenceInstance, field: "numberOfOrdered")}</td>
                         
                             <td>${fieldValue(bean: tireOccurrenceInstance, field: "numberOfAvailable")}</td>
+                        
+                        	<td>${fieldValue(bean: tireOccurrenceInstance, field: "registrationDate")}</td>
+                        
+                        	
                         
                         </tr>
                     </g:each>
