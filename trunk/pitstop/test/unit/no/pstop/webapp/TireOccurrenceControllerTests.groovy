@@ -11,5 +11,17 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 	protected void tearDown() {
 		super.tearDown();
 	}
+	
+	void testIndex() {
+		controller.index()
+		assertEquals "list", controller.redirectArgs.action
+	}
+	
+	void testCreate() {
+		mockDomain TireOccurrence
+		def model = controller.create()
+		assertNotNull model.tireOccurrenceInstance
+	}
+	
 
 }
