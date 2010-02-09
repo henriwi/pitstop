@@ -28,7 +28,8 @@ class Tire {
 		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)"], blank:false)
 	}
 
+
 	String toString(){
-		"${partNr} (${id})"
+		"${partNr}"
 	}
 }
