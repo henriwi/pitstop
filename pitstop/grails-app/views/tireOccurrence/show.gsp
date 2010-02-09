@@ -22,57 +22,51 @@
                 <table>
                     <tbody>
                     
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireOccurrence.id.label" default="Id" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: tireOccurrenceInstance, field: "id")}</td>
-                            
-                        </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireOccurrence.price.label" default="Price" /></td>
+                            <td valign="top" class="name"><g:message code="tireOccurrence.price.label" default="Pris" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: tireOccurrenceInstance, field: "price")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireOccurrence.numberInStock.label" default="Number In Stock" /></td>
+                            <td valign="top" class="name"><g:message code="tireOccurrence.numberInStock.label" default="Antall" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: tireOccurrenceInstance, field: "numberInStock")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireOccurrence.numberOfReserved.label" default="Number Of Reserved" /></td>
+                            <td valign="top" class="name"><g:message code="tireOccurrence.numberOfReserved.label" default="Reservert" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfReserved")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireOccurrence.numberOfOrdered.label" default="Number Of Ordered" /></td>
+                            <td valign="top" class="name"><g:message code="tireOccurrence.numberOfOrdered.label" default="Bestilt" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfOrdered")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireOccurrence.numberOfAvailable.label" default="Number Of Available" /></td>
+                            <td valign="top" class="name"><g:message code="tireOccurrence.numberOfAvailable.label" default="Tiljengelig" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfAvailable")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireOccurrence.registrationDate.label" default="Dato" /></td>
+                            <td valign="top" class="name"><g:message code="tireOccurrence.registrationDate.label" default="Registreringsdato" /></td>
                             
                             <td valign="top" class="value"><g:formatDate date="${tireOccurrenceInstance?.registrationDate}" /></td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireOccurrence.tire.label" default="Tire" /></td>
+                            <td valign="top" class="name"><g:message code="tireOccurrence.tire.label" default="Dekktype" /></td>
                             
                             <td valign="top" class="value"><g:link controller="tire" action="show" id="${tireOccurrenceInstance?.tire?.id}">${tireOccurrenceInstance?.tire?.encodeAsHTML()}</g:link></td>
                             
