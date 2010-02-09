@@ -22,8 +22,6 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'tireOccurrence.id.label', default: 'Id')}" />
-                        
                             <g:sortableColumn property="tire" title="${message(code: 'tireOccurrence.tire.label', default: 'Dekktype')}" />
                                               	    
                             <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.price.label', default: 'Pris')}" />
@@ -47,9 +45,7 @@
                     <g:each in="${tireOccurrenceInstanceList}" status="i" var="tireOccurrenceInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "id")}</g:link></td>
-                        
-                        	<td>${fieldValue(bean: tireOccurrenceInstance, field: "tire")}</td>
+                        	<td><g:link action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "tire")}</g:link></td>
                         	
                             <td>${fieldValue(bean: tireOccurrenceInstance, field: "price")}</td>
                         
