@@ -22,7 +22,7 @@ class TireOccurrenceController {
     def save = {
         def tireOccurrenceInstance = new TireOccurrence(params)
         if (tireOccurrenceInstance.save(flush: true)) {
-            flash.message = "${message(code: 'tireOccurrence.created.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), tireOccurrenceInstance.partNr])}"
+            flash.message = "${message(code: 'tireOccurrence.created.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), tireOccurrenceInstance.tire])}"
             redirect(action: "show", id: tireOccurrenceInstance.id)
         }
         else {
@@ -66,7 +66,7 @@ class TireOccurrenceController {
             }
             tireOccurrenceInstance.properties = params
             if (!tireOccurrenceInstance.hasErrors() && tireOccurrenceInstance.save(flush: true)) {
-                flash.message = "${message(code: 'tireOccurrence.updated.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), tireOccurrenceInstance.partNr])}"
+                flash.message = "${message(code: 'tireOccurrence.updated.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), tireOccurrenceInstance.tire])}"
                 redirect(action: "show", id: tireOccurrenceInstance.id)
             }
             else {
