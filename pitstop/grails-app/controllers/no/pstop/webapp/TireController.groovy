@@ -32,7 +32,7 @@ class TireController {
     def save = {
         def tireInstance = new Tire(params)
         if (tireInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'tire.label', default: 'Dekk'), tireInstance.partNr])}"
+            flash.message = "${message(code: 'tire.created.message', args: [message(code: 'tire.label', default: 'Dekk'), tireInstance.partNr])}"
             redirect(action: "show", id: tireInstance.id)
         }
         else {
@@ -43,7 +43,7 @@ class TireController {
     def show = {
         def tireInstance = Tire.get(params.id)
         if (!tireInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tire.label', default: 'Dekk'), params.partNr])}"
+            flash.message = "${message(code: 'tire.not.found.message', args: [message(code: 'tire.label', default: 'Dekk'), params.id])}"
             redirect(action: "list")
         }
         else {
@@ -54,7 +54,7 @@ class TireController {
     def edit = {
         def tireInstance = Tire.get(params.id)
         if (!tireInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tire.label', default: 'Dekk'), params.partNr])}"
+            flash.message = "${message(code: 'tire.not.found.message', args: [message(code: 'tire.label', default: 'Dekk'), params.partNr])}"
             redirect(action: "list")
         }
         else {
@@ -69,14 +69,14 @@ class TireController {
                 def version = params.version.toLong()
                 if (tireInstance.version > version) {
                     
-                    tireInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'tire.label', default: 'Dekk')] as Object[], "Another user has updated this Tire while you were editing")
+                    tireInstance.errors.rejectValue("version", "tire.optimistic.locking.failure", [message(code: 'tire.label', default: 'Dekk')] as Object[], "Another user has updated this Tire while you were editing")
                     render(view: "edit", model: [tireInstance: tireInstance])
                     return
                 }
             }
             tireInstance.properties = params
             if (!tireInstance.hasErrors() && tireInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'tire.label', default: 'Dekk'), tireInstance.partNr])}"
+                flash.message = "${message(code: 'tire.updated.message', args: [message(code: 'tire.label', default: 'Dekk'), tireInstance.partNr])}"
                 redirect(action: "show", id: tireInstance.id)
             }
             else {
@@ -84,7 +84,7 @@ class TireController {
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tire.label', default: 'Dekk'), params.partNr])}"
+            flash.message = "${message(code: 'tire.not.found.message', args: [message(code: 'tire.label', default: 'Dekk'), params.id])}"
             redirect(action: "list")
         }
     }
@@ -94,16 +94,16 @@ class TireController {
         if (tireInstance) {
             try {
                 tireInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'tire.label', default: 'Dekk'), params.id])}"
+                flash.message = "${message(code: 'tire.deleted.message', args: [message(code: 'tire.label', default: 'Dekk'), params.id])}"
                 redirect(action: "list")
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'tire.label', default: 'Dekk'), params.id])}"
+                flash.message = "${message(code: 'tire.not.deleted.message', args: [message(code: 'tire.label', default: 'Dekk'), params.id])}"
                 redirect(action: "show", id: params.id)
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tire.label', default: 'Dekk'), params.id])}"
+            flash.message = "${message(code: 'tire.not.found.message', args: [message(code: 'tire.label', default: 'Dekk'), params.id])}"
             redirect(action: "list")
         }
     }

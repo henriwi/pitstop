@@ -17,6 +17,7 @@ class TireOccurrence {
 		numberInStock(min:0)
 		numberOfReserved(min:0)
 		numberOfOrdered(min:0)
+//TODO Fjerne constraint av numberOfAvailable og etterpå endre i testene
 		numberOfAvailable(min:0)
 		date(min:new Date()-1)
 	}
