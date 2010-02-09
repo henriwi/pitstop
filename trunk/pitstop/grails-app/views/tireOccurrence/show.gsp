@@ -65,9 +65,9 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireOccurrence.date.label" default="Date" /></td>
+                            <td valign="top" class="name"><g:message code="tireOccurrence.registrationDate.label" default="Dato" /></td>
                             
-                            <td valign="top" class="value"><g:formatDate date="${tireOccurrenceInstance?.date}" /></td>
+                            <td valign="top" class="value"><g:formatDate date="${tireOccurrenceInstance?.registrationDate}" /></td>
                             
                         </tr>
                     

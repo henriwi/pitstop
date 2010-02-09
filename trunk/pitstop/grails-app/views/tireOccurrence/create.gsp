@@ -53,10 +53,10 @@
                             </tr>                                            
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="date"><g:message code="tireOccurrence.date.label" default="Ankomstdato" /></label>
+                                    <label for="registrationDate"><g:message code="tireOccurrence.registrationDate.label" default="Ankomstdato" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'date', 'errors')}">
-                                    <g:datePicker name="date" precision="day" value="${tireOccurrenceInstance?.date}"  />
+                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'registrationDate', 'errors')}">
+                                    <g:datePicker name="registrationDate" precision="day" value="${tireOccurrenceInstance?.registrationDate}"  />
                                 </td>
                             </tr>
                         </tbody>
