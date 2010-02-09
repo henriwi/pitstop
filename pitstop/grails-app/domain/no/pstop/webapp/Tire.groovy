@@ -27,4 +27,8 @@ class Tire {
 		pattern(matches:"[a-zA-Z0-9\\s]{0,30}", blank:false)
 		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)"], blank:false)
 	}
+
+	String toString(){
+		"${partNr} (${id})"
+	}
 }

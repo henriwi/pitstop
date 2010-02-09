@@ -13,7 +13,7 @@ class TireController {
 		def tireCount
 		if(params.q) {
 			tireList = Tire.search("*" + params.q + "*").results
-			tireCount = tireList.count()
+			tireCount = Tire.count()
 		} 
 		else {
 			tireList = Tire.list(params)
