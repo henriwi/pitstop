@@ -27,15 +27,14 @@
                     <table>
                         <tbody>
                         
-                            <tr class="prop">
+                           <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="price"><g:message code="tireOccurrence.price.label" default="Innkj&oslash;pspris" /></label>
+                                    <label for="tire"><g:message code="tireOccurrence.tire.label" default="Dekktype" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'price', 'errors')}">
-                                    <g:textField name="price" value="${fieldValue(bean: tireOccurrenceInstance, field: 'price')}" />
+                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'tire', 'errors')}">
+                                    <g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${tireOccurrenceInstance?.tire?.id}"  />
                                 </td>
                             </tr>
-                        
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="numberInStock"><g:message code="tireOccurrence.numberInStock.label" default="Antall" /></label>
@@ -44,34 +43,14 @@
                                     <g:textField name="numberInStock" value="${fieldValue(bean: tireOccurrenceInstance, field: 'numberInStock')}" />
                                 </td>
                             </tr>
-                        
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="numberOfReserved"><g:message code="tireOccurrence.numberOfReserved.label" default="Number Of Reserved" /></label>
+                                    <label for="price"><g:message code="tireOccurrence.price.label" default="Innkj&oslash;pspris" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'numberOfReserved', 'errors')}">
-                                    <g:textField name="numberOfReserved" value="${fieldValue(bean: tireOccurrenceInstance, field: 'numberOfReserved')}" />
+                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'price', 'errors')}">
+                                    <g:textField name="price" value="${fieldValue(bean: tireOccurrenceInstance, field: 'price')}" />
                                 </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="numberOfOrdered"><g:message code="tireOccurrence.numberOfOrdered.label" default="Number Of Ordered" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'numberOfOrdered', 'errors')}">
-                                    <g:textField name="numberOfOrdered" value="${fieldValue(bean: tireOccurrenceInstance, field: 'numberOfOrdered')}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="numberOfAvailable"><g:message code="tireOccurrence.numberOfAvailable.label" default="Number Of Available" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'numberOfAvailable', 'errors')}">
-                                    <g:textField name="numberOfAvailable" value="${fieldValue(bean: tireOccurrenceInstance, field: 'numberOfAvailable')}" />
-                                </td>
-                            </tr>
-                        
+                            </tr>                                            
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="date"><g:message code="tireOccurrence.date.label" default="Ankomstdato" /></label>
@@ -80,16 +59,6 @@
                                     <g:datePicker name="date" precision="day" value="${tireOccurrenceInstance?.date}"  />
                                 </td>
                             </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="tire"><g:message code="tireOccurrence.tire.label" default="Dekktype" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'tire', 'errors')}">
-                                    <g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${tireOccurrenceInstance?.tire?.id}"  />
-                                </td>
-                            </tr>
-                        
                         </tbody>
                     </table>
                 </div>

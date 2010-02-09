@@ -7,10 +7,10 @@ class TireOccurrence {
 	Tire tire
 	Double price
 	Integer numberInStock
-	Integer numberOfReserved
-	Integer numberOfOrdered
+	Integer numberOfReserved = 0
+	Integer numberOfOrdered = 0
 	Date date
-	Integer numberOfAvailable
+	Integer numberOfAvailable = 0
 	
     static constraints = {
 		price(min:new Double(0.00))
