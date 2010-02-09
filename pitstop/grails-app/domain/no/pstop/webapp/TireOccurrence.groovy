@@ -9,7 +9,7 @@ class TireOccurrence {
 	Integer numberInStock
 	Integer numberOfReserved = 0
 	Integer numberOfOrdered = 0
-	Date date
+	Date registrationDate
 	Integer numberOfAvailable = 0
 	
     static constraints = {
@@ -19,6 +19,6 @@ class TireOccurrence {
 		numberOfOrdered(min:0)
 //TODO Fjerne constraint av numberOfAvailable og etterpå endre i testene
 		numberOfAvailable(min:0)
-		date(min:new Date()-1)
+		registrationDate(min:new Date()-1)
 	}
 }
