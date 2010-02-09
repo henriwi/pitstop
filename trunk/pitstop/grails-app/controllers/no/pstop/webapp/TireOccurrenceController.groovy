@@ -22,7 +22,7 @@ class TireOccurrenceController {
     def save = {
         def tireOccurrenceInstance = new TireOccurrence(params)
         if (tireOccurrenceInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'tireOccurrence.label', default: 'TireOccurrence'), tireOccurrenceInstance.id])}"
+            flash.message = "${message(code: 'tireOccurrence.created.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), tireOccurrenceInstance.partNr])}"
             redirect(action: "show", id: tireOccurrenceInstance.id)
         }
         else {
@@ -33,7 +33,7 @@ class TireOccurrenceController {
     def show = {
         def tireOccurrenceInstance = TireOccurrence.get(params.id)
         if (!tireOccurrenceInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'TireOccurrence'), params.id])}"
+            flash.message = "${message(code: 'tireOccurrence.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), params.id])}"
             redirect(action: "list")
         }
         else {
@@ -44,7 +44,7 @@ class TireOccurrenceController {
     def edit = {
         def tireOccurrenceInstance = TireOccurrence.get(params.id)
         if (!tireOccurrenceInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'TireOccurrence'), params.id])}"
+            flash.message = "${message(code: 'tireOccurrence.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), params.id])}"
             redirect(action: "list")
         }
         else {
@@ -59,14 +59,14 @@ class TireOccurrenceController {
                 def version = params.version.toLong()
                 if (tireOccurrenceInstance.version > version) {
                     
-                    tireOccurrenceInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'tireOccurrence.label', default: 'TireOccurrence')] as Object[], "Another user has updated this TireOccurrence while you were editing")
+                    tireOccurrenceInstance.errors.rejectValue("version", "tireOccurrence.optimistic.locking.failure", [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten')] as Object[], "Another user has updated this TireOccurrence while you were editing")
                     render(view: "edit", model: [tireOccurrenceInstance: tireOccurrenceInstance])
                     return
                 }
             }
             tireOccurrenceInstance.properties = params
             if (!tireOccurrenceInstance.hasErrors() && tireOccurrenceInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'tireOccurrence.label', default: 'TireOccurrence'), tireOccurrenceInstance.id])}"
+                flash.message = "${message(code: 'tireOccurrence.updated.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), tireOccurrenceInstance.partNr])}"
                 redirect(action: "show", id: tireOccurrenceInstance.id)
             }
             else {
@@ -74,7 +74,7 @@ class TireOccurrenceController {
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'TireOccurrence'), params.id])}"
+            flash.message = "${message(code: 'tireOccurrence.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), params.id])}"
             redirect(action: "list")
         }
     }
@@ -84,16 +84,16 @@ class TireOccurrenceController {
         if (tireOccurrenceInstance) {
             try {
                 tireOccurrenceInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'tireOccurrence.label', default: 'TireOccurrence'), params.id])}"
+                flash.message = "${message(code: 'tireOccurrence.deleted.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), params.id])}"
                 redirect(action: "list")
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'tireOccurrence.label', default: 'TireOccurrence'), params.id])}"
+                flash.message = "${message(code: 'tireOccurrence.not.deleted.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), params.id])}"
                 redirect(action: "show", id: params.id)
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'TireOccurrence'), params.id])}"
+            flash.message = "${message(code: 'tireOccurrence.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), params.id])}"
             redirect(action: "list")
         }
     }
