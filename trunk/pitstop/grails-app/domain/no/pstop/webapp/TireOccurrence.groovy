@@ -4,7 +4,7 @@ class TireOccurrence {
 	static belongsTo = [tire:Tire]
 	
 	//long id
-	Tire tire
+	Tire tire = new Tire()
 	Double price
 	Integer numberInStock
 	Integer numberOfReserved = 0
@@ -13,6 +13,7 @@ class TireOccurrence {
 	Integer numberOfAvailable = 0
 	
     static constraints = {
+		//tire(blank:false, nullable:false)
 		price(min:new Double(0.00))
 		numberInStock(min:0)
 		numberOfReserved(min:0)
