@@ -54,4 +54,11 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 		
 		assertFalse "Ingen validering, feil input numberOfOrdered", tireOccurrence.validate()
 	}
+	
+	void testGenerateTireOccurrenceWithInvalidTire(){
+		def tireOccurrence = new TireOccurrence(tire:null,price:1.0,numberInStock:4,numberOfReserved:4,
+				numberOfOrdered:5,registrationDate:new Date(), numberOfAvailable:1 )
+		assertFalse "Ingen validering, feil input tire", tireOccurrence.validate()
+	}
+	
 }
