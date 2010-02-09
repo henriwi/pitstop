@@ -61,7 +61,7 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="tireOccurrence.registrationDate.label" default="Registreringsdato" /></td>
                             
-                            <td valign="top" class="value"><g:formatDate date="${tireOccurrenceInstance?.registrationDate}" /></td>
+                            <td valign="top" class="value"><g:formatDate format="dd.MM.yyyy" date="${tireOccurrenceInstance?.registrationDate}" /></td>
                             
                         </tr>
                     
