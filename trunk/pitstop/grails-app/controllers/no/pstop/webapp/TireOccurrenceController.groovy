@@ -55,15 +55,6 @@ class TireOccurrenceController {
     def update = {
         def tireOccurrenceInstance = TireOccurrence.get(params.id)
         if (tireOccurrenceInstance) {
-            if (params.version) {
-                def version = params.version.toLong()
-                if (tireOccurrenceInstance.version > version) {
-                    
-                    tireOccurrenceInstance.errors.rejectValue("version", "tireOccurrence.optimistic.locking.failure", [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten')] as Object[], "Another user has updated this TireOccurrence while you were editing")
-                    render(view: "edit", model: [tireOccurrenceInstance: tireOccurrenceInstance])
-                    return
-                }
-            }
             tireOccurrenceInstance.properties = params
             if (!tireOccurrenceInstance.hasErrors() && tireOccurrenceInstance.save(flush: true)) {
                 flash.message = "${message(code: 'tireOccurrence.updated.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), tireOccurrenceInstance.tire])}"
