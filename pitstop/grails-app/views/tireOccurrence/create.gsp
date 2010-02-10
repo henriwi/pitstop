@@ -56,7 +56,8 @@
                                     <label for="registrationDate"><g:message code="tireOccurrence.registrationDate.label" default="Ankomstdato" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'registrationDate', 'errors')}">
-                                    <g:datePicker name="registrationDate" precision="day" value="${tireOccurrenceInstance?.registrationDate}"  />
+<!-- TODO finne årstall automatisk eller å finne en ny datechooser -->
+                                    <g:datePicker name="registrationDate" precision="day" years="${2010..2030}" value="${tireOccurrenceInstance?.registrationDate}" />
                                 </td>
                             </tr>
                         </tbody>
