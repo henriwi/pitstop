@@ -14,6 +14,7 @@ class Tire {
 	String speedIndex
 	String pattern
 	String tireType
+	//String brand
 	
 	static constraints = {
 		partNr(matches:"[a-zA-Z0-9]{0,20}", blank:false, unique:true)
@@ -26,6 +27,7 @@ class Tire {
 		//TODO
 		pattern(matches:"[a-zA-Z0-9\\s]{0,30}", blank:false)
 		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)"], blank:false)
+		//brand(matches:"[a-zA-Z0-9]", blank:false)
 	}
 
 
