@@ -17,28 +17,36 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	/*void testListWithSearchQuery() {
-		def tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
+		def t1 = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
-		mockDomain(Tire, [tire])
-		List tireInstanceList = []
-		20.times {i -> tireInstanceList << new Tire() }
+		def t2 = new Tire(id:2,width:192,profile:60,construction:"R",diameter:17,partNr:"123AC",
+				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
+		def t3 = new Tire(id:2,width:192,profile:60,construction:"R",diameter:17,partNr:"123AD",
+				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
 		
-		controller.params.q = "123"
-		
-		// setup a mock control to check the params passed to the list method
-		def mockControl = mockFor(Tire)
-		mockControl.demand.static.list {params ->
-			assertEquals params.max, 10
-			return tireInstanceList[0..9]
-		}
+		mockDomain(Tire, [t1,t2,t3])
+		def mockTire = mockFor(Tire) 
+		controller.params.q = ""
 		
 		Map model = controller.list()
 		assertNotNull('list should be present in model', model.tireInstanceList)
-		assertEquals('list size should match default', 10, model.tireInstanceList.size())
-		
-		// verify the mocked method was called
-		mockControl.verify()
+		assertEquals('list size should match the number of mocked tires', 3, model.tireInstanceList.size())
 	}*/
+	
+	void testListWithNoSearchQuery() {
+		def t1 = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
+		def t2 = new Tire(id:2,width:192,profile:60,construction:"R",diameter:17,partNr:"123AC",
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
+		def t3 = new Tire(id:2,width:192,profile:60,construction:"R",diameter:17,partNr:"123AD",
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
+		
+		mockDomain(Tire, [t1,t2,t3])
+		
+		Map model = controller.list()
+		assertNotNull('list should be present in model', model.tireInstanceList)
+		assertEquals('list size should match the number of mocked tires', 3, model.tireInstanceList.size())
+	}
 
 	void testCreate() {
 		mockDomain Tire
@@ -67,7 +75,6 @@ class TireControllerTests extends ControllerUnitTestCase {
 	
 	void testSaveWithInvalidWidth() {
 		mockDomain Tire
-		// Unvalid width
 		controller.params.width = -100
 		controller.params.profile = 60
 		controller.params.construction = "R"
