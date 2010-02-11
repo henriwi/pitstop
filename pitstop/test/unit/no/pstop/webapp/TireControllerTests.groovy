@@ -16,7 +16,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertEquals "list", controller.redirectArgs.action
 	}
 	
-	void testListWithSearchQuery() {
+	/*void testListWithSearchQuery() {
 		def tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
 		mockDomain(Tire, [tire])
@@ -28,7 +28,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		// setup a mock control to check the params passed to the list method
 		def mockControl = mockFor(Tire)
 		mockControl.demand.static.list {params ->
-			//assert params.max == 10
+			assertEquals params.max, 10
 			return tireInstanceList[0..9]
 		}
 		
@@ -38,7 +38,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		
 		// verify the mocked method was called
 		mockControl.verify()
-	}
+	}*/
 
 	void testCreate() {
 		mockDomain Tire
