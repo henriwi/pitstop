@@ -96,7 +96,7 @@ input:focus, select:focus, textarea:focus {
     padding-left: 25px;
 }
 .menuButton a.search {
-    background: url(../images/skin/database_add.png) center left no-repeat;
+    background: url(../images/skin/search.png) center left no-repeat;
     color: #333;
     padding-left: 25px;
 }
