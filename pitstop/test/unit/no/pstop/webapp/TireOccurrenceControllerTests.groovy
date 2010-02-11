@@ -53,8 +53,8 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.save()
 		
-		assertEquals('redirect action', "create", controller.modelAndView.view)
-		assertNotNull('TireOccurrence should not be null', controller.modelAndView.model.tireOccurrenceInstance)
+		assertEquals('redirect action', "create", controller.modelAndView.viewName)
+		assertNotNull('TireOccurrence should not be null', controller.modelAndView.model.linkedHashMap.tireOccurrenceInstance)
 	}
 	
 	void testShowWithValidId() {
@@ -123,8 +123,8 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.update()
 		
-		assertEquals('redirect action', "edit", controller.modelAndView.view)
-		assertNotNull('TireOccurence should not be null', controller.modelAndView.model.tireOccurrenceInstance)
+		assertEquals('redirect action', "edit", controller.modelAndView.viewName)
+		assertNotNull('TireOccurence should not be null', controller.modelAndView.model.linkedHashMap.tireOccurrenceInstance)
 	}
 	
 	void testUpdateWithInvalidId() {
