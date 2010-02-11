@@ -26,6 +26,8 @@
                         
                             <g:sortableColumn property="brand" title="${message(code: 'tire.brand.label', default: 'Merke')}" />
 
+                            <g:sortableColumn property="tireName" title="${message(code: 'tire.tireName.label', default: 'Dekknavn')}" />
+
                             <g:sortableColumn property="width" title="${message(code: 'tire.width.label', default: 'Bredde')}" />
                         
                             <g:sortableColumn property="profile" title="${message(code: 'tire.profile.label', default: 'Profil')}" />
@@ -51,6 +53,8 @@
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "partNr")}</g:link></td>
                         
                             <td>${fieldValue(bean: tireInstance, field: "brand")}</td>
+                            
+                            <td>${fieldValue(bean: tireInstance, field: "tireName")}</td>
                         
                             <td>${fieldValue(bean: tireInstance, field: "width")}</td>
                         
