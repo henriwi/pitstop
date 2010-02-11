@@ -61,6 +61,9 @@ input:focus, select:focus, textarea:focus {
     float: left;
     margin: 0 15px 10px 15px;
 }
+.tireOccurrenceList {
+	
+}
 
 /* NAVIGATION MENU */
 
@@ -218,7 +221,11 @@ th.desc a {
 }
 
 /* DIALOG */
-
+#tireDialog {
+	/*background-color: #000;*/
+	margin-right: 15px;
+	float: left;	
+}
 .dialog table {
     padding: 5px 0;
 }
@@ -272,6 +279,9 @@ th.desc a {
     padding-left: 28px;
 }
 
+#tireEditButtons {
+	float: left;	
+}
 /******* USER GENERATED *******/
 
 /* create.gsp */

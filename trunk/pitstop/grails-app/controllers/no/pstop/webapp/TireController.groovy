@@ -47,7 +47,14 @@ class TireController {
             redirect(action: "list")
         }
         else {
-            [tireInstance: tireInstance]
+//			//params.max = Math.min(params.max ? params.int('max') : 10, 100)
+//			def tireOccurrenceInstanceList = TireOccurrence.list(fetch:[(Tire.id): params.id])
+//			[tireOccurrenceInstanceList: tireOccurrenceInstanceList]
+//			//return [tireOccurrenceInstanceList: TireOccurrence.list(params.id)] //, tireOccurrenceInstanceTotal: TireOccurrence.count()]
+			//
+					
+			def tireOccurrenceInstanceList = TireOccurrence.findAllByTire(Tire.get(params.id))
+			[tireOccurrenceInstanceList: tireOccurrenceInstanceList,tireInstance: tireInstance]
         }
     }
 
@@ -58,7 +65,7 @@ class TireController {
             redirect(action: "list")
         }
         else {
-            return [tireInstance: tireInstance]
+			return [tireInstance: tireInstance]
         }
     }
 

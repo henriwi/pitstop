@@ -53,25 +53,25 @@
                         
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "partNr")}</g:link></td>
                         
-                            <td>${fieldValue(bean: tireInstance, field: "brand")}</td>
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "brand")}</g:link></td>
                             
-                            <td>${fieldValue(bean: tireInstance, field: "tireName")}</td>
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireName")}</g:link></td>
                         
-                            <td>${fieldValue(bean: tireInstance, field: "width")}</td>
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "width")}</g:link></td>
                         
-                            <td>${fieldValue(bean: tireInstance, field: "profile")}</td>
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "profile")}</g:link></td>
                         
-                            <td>${fieldValue(bean: tireInstance, field: "construction")}</td>
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "construction")}</g:link></td>
                         
-                            <td>${fieldValue(bean: tireInstance, field: "diameter")}</td>
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "diameter")}</g:link></td>
                             
-                            <td>${fieldValue(bean: tireInstance, field: "loadIndex")}</td>
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "loadIndex")}</g:link></td>
                         
-                            <td>${fieldValue(bean: tireInstance, field: "speedIndex")}</td>
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "speedIndex")}</g:link></td>
                             
-                            <td>${fieldValue(bean: tireInstance, field: "pattern")}</td>
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "pattern")}</g:link></td>
                         
-                            <td>${fieldValue(bean: tireInstance, field: "tireType")}</td>
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireType")}</g:link></td>
                         
                         </tr>
                     </g:each>

@@ -18,7 +18,7 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <div class="dialog">
+            <div class="dialog" id="tireDialog">
                 <table>
                     <tbody>
                                         
@@ -84,13 +84,58 @@
                     
                     </tbody>
                 </table>
+	            <div class="buttons" id="tireEditButtons">
+	                <g:form>
+	                    <g:hiddenField name="id" value="${tireInstance?.id}" />
+	                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Endre')}" /></span>
+	                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Slett')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Er du sikker?')}');" /></span>
+	                </g:form>
+	            </div>
             </div>
-            <div class="buttons">
-                <g:form>
-                    <g:hiddenField name="id" value="${tireInstance?.id}" />
-                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Endre')}" /></span>
-                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Slett')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Er du sikker?')}');" /></span>
-                </g:form>
+            <div class="tireOccurrenceList">
+                <table>
+                    <thead>
+                        <tr>
+                        
+                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.price.label', default: 'Pris')}" />
+                        
+                            <g:sortableColumn property="numberInStock" title="${message(code: 'tireOccurrence.numberInStock.label', default: 'Antall')}" />
+                        
+                            <g:sortableColumn property="numberOfReserved" title="${message(code: 'tireOccurrence.numberOfReserved.label', default: 'Reservert')}" />
+                        
+                            <g:sortableColumn property="numberOfOrdered" title="${message(code: 'tireOccurrence.numberOfOrdered.label', default: 'Bestilt')}" />
+                        
+                            <g:sortableColumn property="numberOfAvailable" title="${message(code: 'tireOccurrence.numberOfAvailable.label', default: 'Tiljengelighet')}" />
+                        
+                        	<g:sortableColumn property="registrationDate" title="${message(code: 'tireOccurrence.registrationDate.label', default: 'Registreringsdato')}" />
+                        
+ 
+                        
+                        	
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <g:each in="${tireOccurrenceInstanceList}" status="i" var="tireOccurrenceInstance">
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                        
+                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "price")}</g:link></td>
+                        
+                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberInStock")}</g:link></td>
+                        
+                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfReserved")}</g:link></td>
+                        
+                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfOrdered")}</g:link></td>
+                        
+                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfAvailable")}</g:link></td>
+                            
+                        	<td><g:formatDate format="dd.MM.yyyy" date="${fieldValue(bean: tireOccurrenceInstance, field: "registrationDate" )}"></g:formatDate></td>
+                        
+                        	
+                        
+                        </tr>
+                    </g:each>
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>
