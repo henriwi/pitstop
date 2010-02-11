@@ -107,10 +107,11 @@ class TireTests extends GrailsUnitTestCase {
 		
 		assertFalse "Ingen validering, ugyldig dekktype", t.validate()
 	}
+	
 	void testGenerateTireWithInvalidTireBrand(){
 		def t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"T",pattern:"H",tireType:"sommer",brand:"++")
+				loadIndex:165,speedIndex:"T",pattern:"H",tireType:"Sommer", brand:"")
 		
-		assertFalse "Ingen validering, dekknavn", t.validate()
+		assertFalse "Ingen validering, ugyldig dekkmerke", t.validate()
 	}
 }
