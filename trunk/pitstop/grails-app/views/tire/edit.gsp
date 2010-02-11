@@ -65,6 +65,15 @@
                             
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                  <label for="brand"><g:message code="tire.tireName.label" default="Dekknavn" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'tireName', 'errors')}">
+                                    <g:textField name="tireName" value="${tireInstance?.tireName}" />
+                                </td>
+                            </tr>
+                            
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                   <label for="width"><g:message code="tire.width.label" default="Bredde" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'width', 'errors')}">
