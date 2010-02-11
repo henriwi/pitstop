@@ -16,9 +16,9 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertEquals "list", controller.redirectArgs.action
 	}
 	
-	/*void testListWithSearchQuery() {
+	void testListWithSearchQuery() {
 		def tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
 		mockDomain(Tire, [tire])
 		List tireInstanceList = []
 		20.times {i -> tireInstanceList << new Tire() }
@@ -26,8 +26,6 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.params.q = "123"
 		
 		// setup a mock control to check the params passed to the list method
-
-		
 		def mockControl = mockFor(Tire)
 		mockControl.demand.static.list {params ->
 			//assert params.max == 10
@@ -40,7 +38,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		
 		// verify the mocked method was called
 		mockControl.verify()
-	}*/
+	}
 
 	void testCreate() {
 		mockDomain Tire
@@ -59,6 +57,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.params.speedIndex = "H"
 		controller.params.pattern = "m12"
 		controller.params.tireType = "Sommer"
+		controller.params.brand = "Pirelli"
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.save()
 		
@@ -66,7 +65,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertEquals('redirect id', 1, controller.redirectArgs.id)
 	}
 	
-	void testSaveWithInvalidTire() {
+	void testSaveWithInvalidWidth() {
 		mockDomain Tire
 		// Unvalid width
 		controller.params.width = -100
@@ -87,7 +86,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	
 	void testShowWithValidId() {
 		def tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
 		mockDomain Tire, [tire]
 		controller.params.id = 1
 		def model = controller.show()
@@ -96,7 +95,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	
 	void testShowWithInvalidId() {
 		def tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
 		mockDomain Tire, [tire]
 		controller.params.id = 2
 		controller.metaClass.message = {args -> println "message: ${args}"} 
@@ -106,7 +105,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	
 	void testEditWithValidId() {
 		Tire expectedTire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
 		mockDomain(Tire, [expectedTire])
 		controller.params.id = 1
 		Map model = controller.edit()
@@ -124,7 +123,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	
 	void testUpdateWithValidId() {
 		Tire expectedTire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
 		mockDomain(Tire, [expectedTire])
 		
 		// mock out save and hasErrors behavior for happy path
@@ -142,7 +141,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	
 	void testUpdateWithValidIdButErrors() {
 		Tire expectedTire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
 		mockDomain(Tire, [expectedTire])
 		
 		// mock out save and hasErrors behavior for happy path
@@ -171,7 +170,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	
 	void testDeleteWithValidId() {
 		mockDomain(Tire, [new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")])
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")])
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.delete()
