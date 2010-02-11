@@ -22,7 +22,7 @@ class TireOccurrenceController {
     def save = {
         def tireOccurrenceInstance = new TireOccurrence(params)
         if (tireOccurrenceInstance.save(flush: true)) {
-            flash.message = "${message(code: 'tireOccurrence.created.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), tireOccurrenceInstance.tire])}"
+            flash.message = "${message(code: 'tireOccurrence.created.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomst'), tireOccurrenceInstance.tire])}"
             redirect(action: "show", id: tireOccurrenceInstance.id)
         }
         else {
@@ -33,7 +33,7 @@ class TireOccurrenceController {
     def show = {
         def tireOccurrenceInstance = TireOccurrence.get(params.id)
         if (!tireOccurrenceInstance) {
-            flash.message = "${message(code: 'tireOccurrence.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), params.id])}"
+            flash.message = "${message(code: 'tireOccurrence.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomst'), params.id])}"
             redirect(action: "list")
         }
         else {
@@ -44,7 +44,7 @@ class TireOccurrenceController {
     def edit = {
         def tireOccurrenceInstance = TireOccurrence.get(params.id)
         if (!tireOccurrenceInstance) {
-            flash.message = "${message(code: 'tireOccurrence.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), params.id])}"
+            flash.message = "${message(code: 'tireOccurrence.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomst'), params.id])}"
             redirect(action: "list")
         }
         else {
@@ -57,7 +57,7 @@ class TireOccurrenceController {
         if (tireOccurrenceInstance) {
             tireOccurrenceInstance.properties = params
             if (!tireOccurrenceInstance.hasErrors() && tireOccurrenceInstance.save(flush: true)) {
-                flash.message = "${message(code: 'tireOccurrence.updated.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), tireOccurrenceInstance.tire])}"
+                flash.message = "${message(code: 'tireOccurrence.updated.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomst'), tireOccurrenceInstance.tire])}"
                 redirect(action: "show", id: tireOccurrenceInstance.id)
             }
             else {
@@ -65,7 +65,7 @@ class TireOccurrenceController {
             }
         }
         else {
-            flash.message = "${message(code: 'tireOccurrence.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), params.id])}"
+            flash.message = "${message(code: 'tireOccurrence.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomst'), params.id])}"
             redirect(action: "list")
         }
     }
@@ -75,16 +75,16 @@ class TireOccurrenceController {
         if (tireOccurrenceInstance) {
             try {
                 tireOccurrenceInstance.delete(flush: true)
-                flash.message = "${message(code: 'tireOccurrence.deleted.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), params.id])}"
+                flash.message = "${message(code: 'tireOccurrence.deleted.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomst'), params.id])}"
                 redirect(action: "list")
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'tireOccurrence.not.deleted.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), params.id])}"
+                flash.message = "${message(code: 'tireOccurrence.not.deleted.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomst'), params.id])}"
                 redirect(action: "show", id: params.id)
             }
         }
         else {
-            flash.message = "${message(code: 'tireOccurrence.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomsten'), params.id])}"
+            flash.message = "${message(code: 'tireOccurrence.not.found.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomst'), params.id])}"
             redirect(action: "list")
         }
     }
