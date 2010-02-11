@@ -20,16 +20,16 @@ class TireControllerTests extends ControllerUnitTestCase {
 		def t1 = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
 		def t2 = new Tire(id:2,width:192,profile:60,construction:"R",diameter:17,partNr:"123AC",
-				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
-		def t3 = new Tire(id:2,width:192,profile:60,construction:"R",diameter:17,partNr:"123AD",
-				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
+		def t3 = new Tire(id:3,width:192,profile:60,construction:"R",diameter:17,partNr:"123AD",
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
 		
 		mockDomain(Tire, [t1,t2,t3])
-		Tire.metaClass.static.search = {args -> return "123" }
-		Tire.metaClass.static.search = {args -> return "123" }
+		Tire.metaClass.static.search = {args -> return "Sommer" }
+		Tire.metaClass.static.search.results = {args -> return t1 }
 		//def mockTire = mockFor(Tire)
 		//mockTire.demand.search = {-> return t1}
-		controller.params.q = "123"
+		controller.params.q = "Sommer"
 		
 		Map model = controller.list()
 		assertNotNull('list should be present in model', model.tireInstanceList)
@@ -41,7 +41,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli",tireName:"T-Zero")
 		def t2 = new Tire(id:2,width:192,profile:60,construction:"R",diameter:17,partNr:"123AC",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli",tireName:"T-Zero")
-		def t3 = new Tire(id:2,width:192,profile:60,construction:"R",diameter:17,partNr:"123AD",
+		def t3 = new Tire(id:3,width:192,profile:60,construction:"R",diameter:17,partNr:"123AD",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli",tireName:"T-Zero")
 		
 		mockDomain(Tire, [t1,t2,t3])
@@ -73,7 +73,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.save()
 		
-		assertEquals('redirect action', "show", redirectArgs.action)
+		assertEquals('redirect action', "show", controller.redirectArgs.action)
 		assertEquals('redirect id', 1, controller.redirectArgs.id)
 	}
 	
@@ -93,8 +93,8 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.save()
 		
-		assertEquals('redirect action', "create", controller.modelAndView.view)
-		assertNotNull('Tire should not be null', controller.modelAndView.model.tireInstance)
+		assertEquals('redirect action', "create", controller.modelAndView.viewName)
+		assertNotNull('Tire should not be null', controller.modelAndView.model.linkedHashMap.tireInstance)
 	}
 	
 	void testShowWithValidId() {
@@ -145,8 +145,8 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.update()
 		
-		assertEquals('redirect action', "show", redirectArgs.action)
-		assertEquals('redirect id', 1, redirectArgs.id)
+		assertEquals('redirect action', "show", controller.redirectArgs.action)
+		assertEquals('redirect id', 1, controller.redirectArgs.id)
 	}
 	
 	void testUpdateWithValidIdButErrors() {
@@ -161,8 +161,8 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.update()
 		
-		assertEquals('redirect action', "edit", controller.modelAndView.view)
-		assertNotNull('Tire should not be null', controller.modelAndView.model.tireInstance)
+		assertEquals('redirect action', "edit", controller.modelAndView.viewName)
+		assertNotNull('Tire should not be null', controller.modelAndView.model.linkedHashMap.tireInstance)
 	}
 	
 	void testUpdateWithInvalidId() {
@@ -172,7 +172,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.update()
 		
-		assertEquals('redirect action', "list", redirectArgs.action)
+		assertEquals('redirect action', "list", controller.redirectArgs.action)
 	}
 	
 	void testDeleteWithValidId() {
@@ -181,7 +181,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.delete()
-		assertEquals('redirect action', "list", redirectArgs.action)
+		assertEquals('redirect action', "list", controller.redirectArgs.action)
 	}
 	
 	void testDeleteWithInvalidId() {
@@ -189,6 +189,6 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.params.id = 999
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.delete()
-		assertEquals('redirect action', "list", redirectArgs.action)
+		assertEquals('redirect action', "list", controller.redirectArgs.action)
 	}
 }
