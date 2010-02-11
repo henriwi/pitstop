@@ -53,7 +53,16 @@
                                     <g:textField name="partNr" value="${tireInstance?.partNr}" />
                                 </td>
                             </tr>
-                        
+                        	
+                        	<tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="brand"><g:message code="tire.brand.label" default="Merke" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'brand', 'errors')}">
+                                    <g:textField name="brand" value="${tireInstance?.brand}" />
+                                </td>
+                            </tr>
+                            
                             <tr class="prop">
                                 <td valign="top" class="name">
                                   <label for="width"><g:message code="tire.width.label" default="Bredde" /></label>

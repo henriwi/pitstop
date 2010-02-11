@@ -27,6 +27,12 @@
                             
                             <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "partNr")}</td>
                         </tr>
+                        
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="tire.brand.label" default="Merke" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "brand")}</td>
+                        </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="tire.width.label" default="Bredde" /></td>
