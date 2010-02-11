@@ -4,16 +4,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'tire.label', default: 'Dekk')}" />
-        <title>Dekkliste</title>
+        <g:set var="entityName" value="${message(code: 'tire.label', default: 'dekktype')}" />
+        <title>Dekktyper</title>
     </head>
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}">Hjem</a></span>
-            <span class="menuButton"><g:link class="create" action="create">Nytt dekk</g:link></span>
+            <span class="menuButton"><g:link class="create" action="create">Ny dekktype</g:link></span>
         </div>
         <div class="body">
-            <h1>Dekkliste</h1>
+            <h1>Dekktyper</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
