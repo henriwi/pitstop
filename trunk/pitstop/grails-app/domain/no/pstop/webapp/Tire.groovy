@@ -33,6 +33,7 @@ class Tire {
 
 
 	String toString(){
-		"${partNr} "
+		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (${partNr})" 
+		
 	}
 }
