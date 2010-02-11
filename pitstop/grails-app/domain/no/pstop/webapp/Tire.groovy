@@ -17,7 +17,7 @@ class Tire {
 	String brand
 	
 	static constraints = {
-		partNr(matches:"[a-zA-Z0-9]{0,20}", blank:false, unique:true)
+		partNr(matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å]{0,20}", blank:false, unique:true)
 		width(min:100, max:350)
 		profile(min:20, max:85)
 		construction(inList:["R"], blank:false)
@@ -27,7 +27,7 @@ class Tire {
 		//TODO
 		pattern(matches:"[a-zA-Z0-9\\s]{0,30}", blank:false)
 		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)"], blank:false)
-		brand(blank:false, matches:"[a-zA-Z0-9]{0,30}")
+		brand(blank:false, matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å]{0,30}")
 	}
 
 
