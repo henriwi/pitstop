@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'tireOccurrence.label', default: 'Dekkforekomst')}" />
-        <title><g:message code="default.show.label" args="[entityName]" /></title>
+        <title><g:message code="tireoccurrence.show.label" args="[entityName]" /> - ${tireOccurrenceInstance?.tire?.encodeAsHTML()}</title>
     </head>
     <body>
         <div class="nav">

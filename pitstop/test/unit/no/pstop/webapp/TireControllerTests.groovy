@@ -100,10 +100,19 @@ class TireControllerTests extends ControllerUnitTestCase {
 	void testShowWithValidId() {
 		def tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli",tireName:"T-Zero")
+		def tireOccurrence1 = new TireOccurrence(tire: tire, price: 1500, numberInStock: 4,
+		registrationDate: new Date())
+		def tireOccurrence2 = new TireOccurrence(tire: tire, price: 1300, numberInStock: 4,
+		registrationDate: new Date())
+		def tireOccurrenceList = [tireOccurrence1, tireOccurrence2]
+		
 		mockDomain Tire, [tire]
+		mockDomain TireOccurrence, [tireOccurrence1, tireOccurrence2]
+		
 		controller.params.id = 1
 		def model = controller.show()
 		assertEquals tire, model.tireInstance
+		assertEquals tireOccurrenceList, model.tireOccurrenceInstanceList
 	}
 	
 	void testShowWithInvalidId() {
