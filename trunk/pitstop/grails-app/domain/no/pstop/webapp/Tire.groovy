@@ -18,7 +18,7 @@ class Tire {
 	String tireType
 	
 	static constraints = {
-		partNr(matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,20}", blank:false, unique:true)
+		partNr(matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,40}", blank:false, unique:true)
 		brand(blank:false, matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,30}")
 		tireName(matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,30}")
 		width(min:100, max:350)
