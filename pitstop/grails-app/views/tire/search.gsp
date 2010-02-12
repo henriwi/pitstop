@@ -14,7 +14,31 @@
        	</div>
      		<div class="body">
             <h1>Dekks&oslash;k</h1>
+                   <div class="dialog">
+                    <table>
+                        <tbody>
+                              <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="fastSearch">Hurtigs&oslash;k</label>
+                                </td>
+                                <td valign="top">
+                                    <g:textField tabindex='1' name="fastSearch"/>
+                                </td>
+                                <td valign="top">
+                                		<label>eks: 195656v</label>
+                                </td>
+                            	</tr>
+                            	<tr class="prop">
+                            	<td valign="top" class="name">
+                            		<g:submitButton tabindex='11' name="S&oslash;k" />
+                            	</td>
+                            	</tr>
+                    		</tbody>
+                   	</table>  
+                   </div>	
+
 	     	</div>
+	     	
 					
     </body>
 </html>
