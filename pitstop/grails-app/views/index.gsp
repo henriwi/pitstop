@@ -50,36 +50,25 @@
 			}
 		</style>
     </head>
-    <body>
+<body>
 		<div id="nav">
-			<div class="homePagePanel">
-				<div class="panelTop">
-
-				</div>
-				<div class="panelBody">
-					
-				</div>
-				<div class="panelBtm">
-				</div>
-			</div>
-
-
-		</div>
-		<div id="pageBody">
-	        <h1>Welcome to Grails</h1>
-	        <p>Congratulations, you have successfully started your first Grails application! At the moment
-	        this is the default page, feel free to modify it to either redirect to a controller or display whatever
-	        content you may choose. Below is a list of controllers that are currently deployed in this application,
-	        click on each to execute its default action:</p>
-
-	        <div id="controllerList" class="dialog">
-				<h2>Available Controllers:</h2>
+			 <div id="controllerList" class="dialog">
+				<h2>Tiljengelige kontroller:</h2>
 	            <ul>
 	              <g:each var="c" in="${grailsApplication.controllerClasses}">
 	                    <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
 	              </g:each>
 	            </ul>
 	        </div>
+		</div>
+		
+		<div id="pageBody">
+	        <h1>Velkommen til pitstop</h1>
+	        <br/>
+	        <p>PIT-STOP kan tilby en rekke dekkmerker til alle typer biler, og til usl&aring;elige priser. 
+	        Vi kan ogs&aring; gi sv&aelig;rt gode tilbud p&aring; felger.
+	        Velkommen til en hyggelig dekkprat i gode faglige omgivelser.</p>     
+	          
 		</div>
     </body>
 </html>
