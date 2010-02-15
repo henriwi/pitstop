@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'tire.label', default: 'dekk')}" />
+        <g:set var="entityName" value="${message(code: 'tire.label', default: 'dekktype')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
         
         <script type="text/javascript">
@@ -44,7 +44,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="partNr"><g:message code="tire.partNr.label" default="Varenummer" /></label>
+                                    <label for="partNr"><g:message code="tire.partNr.label" default="Varenummer:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'partNr', 'errors')}">
                                     <g:textField tabindex='1' name="partNr" value="${tireInstance?.partNr}" />
@@ -53,7 +53,7 @@
                             
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="brand"><g:message code="tire.brand.label" default="Merke" /></label>
+                                    <label for="brand"><g:message code="tire.brand.label" default="Merke:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'brand', 'errors')}">
                                     <g:textField tabindex='2' name="brand" value="${tireInstance?.brand}" />
@@ -62,7 +62,7 @@
                         	
                         	<tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="tireName"><g:message code="tire.tireName.label" default="Dekknavn" /></label>
+                                    <label for="tireName"><g:message code="tire.tireName.label" default="Dekknavn:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'tireName', 'errors')}">
                                     <g:textField tabindex='3' name="tireName" value="${tireInstance?.tireName}" />
@@ -71,7 +71,7 @@
                             
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="width"><g:message code="tire.width.label" default="Bredde" /></label>
+                                    <label for="width"><g:message code="tire.width.label:" default="Bredde:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'width', 'errors')}">
                                     <g:textField tabindex='4' name="width" value="${fieldValue(bean: tireInstance, field: 'width')}"
@@ -81,7 +81,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="profile"><g:message code="tire.profile.label" default="Profil" /></label>
+                                    <label for="profile"><g:message code="tire.profile.label" default="Profil:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'profile', 'errors')}">
                                     <g:textField tabindex='5' name="profile" value="${fieldValue(bean: tireInstance, field: 'profile')}"
@@ -91,7 +91,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="construction"><g:message code="tire.construction.label" default="Konstruksjon" /></label>
+                                    <label for="construction"><g:message code="tire.construction.label" default="Konstruksjon:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'construction', 'errors')}">
                                     <g:select name="construction" from="${tireInstance.constraints.construction.inList}" value="${tireInstance?.construction}" valueMessagePrefix="tire.construction"  />
@@ -100,7 +100,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="diameter"><g:message code="tire.diameter.label" default="Felgdiameter" /></label>
+                                    <label for="diameter"><g:message code="tire.diameter.label" default="Felgdiameter:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'diameter', 'errors')}">
                                     <g:textField tabindex='6' name="diameter" value="${fieldValue(bean: tireInstance, field: 'diameter')}" 
@@ -110,7 +110,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="loadIndex"><g:message code="tire.loadIndex.label" default="Index" /></label>
+                                    <label for="loadIndex"><g:message code="tire.loadIndex.label" default="Indeks:" /></label>
                                 </td>
                                 <td>
 	                                <span valign="top" class="value ${hasErrors(bean: tireInstance, field: 'loadIndex', 'errors')}">
@@ -125,7 +125,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="pattern"><g:message code="tire.pattern.label" default="M&oslash;nster" /></label>
+                                    <label for="pattern"><g:message code="tire.pattern.label" default="M&oslash;nster:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'pattern', 'errors')}">
                                     <g:textField tabindex='9' name="pattern" value="${tireInstance?.pattern}" />
@@ -134,7 +134,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="tireType"><g:message code="tire.tireType.label" default="Dekktype" /></label>
+                                    <label for="tireType"><g:message code="tire.tireType.label" default="Dekktype:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'tireType', 'errors')}">
                                     <g:select tabindex='10' name="tireType" from="${tireInstance.constraints.tireType.inList}" value="${tireInstance?.tireType}" valueMessagePrefix="tire.tireType"  />
