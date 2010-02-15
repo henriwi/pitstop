@@ -20,19 +20,19 @@
 	                       <tbody>
 	                             <tr class="prop">
 	                               <td valign="top" class="name">
-	                                   <label for="txtFastSearch">Hurtigs&oslash;k</label>
+	                                   <label for="txtFastSearch">Hurtigs&oslash;k:</label>
 	                               </td>
 	                               <td valign="top">
 	                                   <g:textField tabindex='1' name="txtFastSearch"/>
 	                               </td>
 	                               <td valign="top">
-	                               	<label>eks: 195656v</label>
+	                               	<label>Eks: 195656v, Pirelli osv.</label>
 	                               </td>
 	                           	</tr>
 	                           	<tr class="prop">
-	                           	<td valign="top" class="name">
-	                           		<g:submitButton tabindex='11' name="btnFastSearch" value="S&oslash;k" />
-	                           	</td>
+		                           	<td valign="top" class="name">
+		                           		<g:submitButton tabindex='2' class="searchButtons" name="btnFastSearch" value="${message(code: 'default.button.search.label', default: 'Search')}" />
+		                           	</td>
 	                           	</tr>
 	                   		</tbody>
 	                  	</table>  
@@ -56,13 +56,13 @@
 	                              </tr>
 	                              <tr class="prop">
 	                              	   <td valign="top" class="name">
-		                                   <g:textField tabindex='1' name="txtWidth"/>
+		                                   <g:textField tabindex='3' name="txtWidth"/>
 		                               </td>
 		                               <td valign="top">
-		                                   <g:textField tabindex='2' name="txtProfile"/>
+		                                   <g:textField tabindex='4' name="txtProfile"/>
 		                               </td>
 		                               <td valign="top">
-		                                   <g:textField tabindex='3' name="txtDiameter"/>
+		                                   <g:textField tabindex='5' name="txtDiameter"/>
 		                               </td>
 	                              </tr>
 	        					  <tr class="prop">
@@ -78,20 +78,20 @@
 	                              </tr>
 	                              <tr class="prop">
 	                              	   <td valign="top" class="name">
-		                                   <g:select tabindex='4' name="ddlSpeedIndex"/>
+		                                   <g:select tabindex='6' name="ddlSpeedIndex"/>
 		                               </td>
 		                               <td valign="top">
-		                                   <g:select tabindex='5' name="ddlTireType"/>
+		                                   <g:select tabindex='7' name="ddlTireType"/>
 		                               </td>
 		                               <td valign="top">
-		                                   <g:select tabindex='6' name="ddlBrand"/>
+		                                   <g:select tabindex='8' name="ddlBrand"/>
 		                               </td>
 	                              </tr>
 	                           	
 	                           	<tr class="prop">
-	                           	<td valign="top" class="name">
-	                           		<g:submitButton tabindex='11' name="btnFastSearch" value="S&oslash;k" />
-	                           	</td>
+		                           	<td valign="top" class="name">
+		                           		<g:submitButton tabindex='9' class="searchButtons" name="btnNormalSearch" value="${message(code: 'default.button.search.label', default: 'Search')}" />
+		                           	</td>
 	                           	</tr>
 	                   		</tbody>
 	                  	</table>  
