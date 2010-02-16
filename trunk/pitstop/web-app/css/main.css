@@ -300,3 +300,8 @@ th.desc a {
 #txtConstruction {
 	color: #000;
 }
+
+#expandablePanel{
+	margin-left: 255px;
+	width: 550px;
+}
