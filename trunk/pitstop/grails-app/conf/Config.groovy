@@ -46,6 +46,7 @@ grails.spring.bean.packages = []
 environments {
     production {
         grails.serverURL = "http://www.changeme.com"
+		log4j.appender.'errors.File'="/var/log/pitstop/stacktrace.log"
     }
     development {
         grails.serverURL = "http://localhost:8080/${appName}"
@@ -61,9 +62,9 @@ log4j = {
     // Example of changing the log pattern for the default console
     // appender:
     //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+	appenders {
+		rollingFile name:"pitstop", maxFileSize:1024, fileName:"/tmp/logs/pitstop.log"
+	}
 
 
     error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
