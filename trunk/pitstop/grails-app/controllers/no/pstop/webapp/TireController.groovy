@@ -12,8 +12,25 @@ class TireController {
 		def tireList
 		def tireCount
 		if(params.q) {
-			tireList = Tire.search("*" + params.q + "*").results
-			tireCount = Tire.count()
+			//tireList = Tire.search("*" + params.q + "*").results
+			if(params.q ==~ /\d{6}[s|v|S|V]/){
+				def query = params.q =~ /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
+				
+				tireList = Tire.search()
+				{
+					must(term('width', query[0][1]))
+					must(term('profile', query[0][2]))
+					term('diameter', query[0][3])
+					term('tireType', query[0][4])
+				}.results
+			
+				tireCount = Tire.count()
+			}
+			else
+			{
+				tireList = Tire.search("*" + params.q + "*").results
+				tireCount = Tire.count()
+			}
 		} 
 		else {
 			tireList = Tire.list(params)
@@ -108,6 +125,5 @@ class TireController {
 	
 	def fastSearch = {
 		redirect(action: "list", params:[q: params.txtFastSearch])
-		
 	}
 }
