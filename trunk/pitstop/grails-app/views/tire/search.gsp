@@ -98,7 +98,5 @@
 	                 </div>
                  </g:form>
      	</div>
-	     	
-					
     </body>
 </html>
