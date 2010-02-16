@@ -106,7 +106,7 @@ class TireController {
 		return [tireInstance: tireInstance]
 	}
 	
-	def quickSearch = {
+	def fastSearch = {
 		redirect(action: "list", params:[q: params.txtFastSearch])
 		
 	}
