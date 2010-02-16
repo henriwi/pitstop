@@ -20,8 +20,8 @@ class TireController {
 				{
 					must(term('width', query[0][1]))
 					must(term('profile', query[0][2]))
-					term('diameter', query[0][3])
-					term('tireType', query[0][4])
+					must(wildcard('diameter', "*" + query[0][3]))
+					must(prefix('tireType', query[0][4].toString().toLowerCase()))
 				}.results
 			
 				tireCount = Tire.count()
