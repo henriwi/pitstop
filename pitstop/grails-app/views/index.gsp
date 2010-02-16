@@ -1,5 +1,6 @@
 <html>
     <head>
+    	<gui:resources components="tabView"/>
         <title>Welcome to Grails</title>
 		<meta name="layout" content="main" />
 		<style type="text/css" media="screen">
@@ -51,8 +52,26 @@
 		</style>
     </head>
 <body>
-		<div id="nav">
-			 <div id="controllerList" class="dialog">
+<div class="body yui-skin-sam">
+	<gui:tabView >
+	    <gui:tab label="Hjem" active="true">
+	         <gui:tabView>
+	    <gui:tab label="Test 1" active="true">
+	        <h1>Inne i test 1</h1>     
+	    </gui:tab>
+	    <gui:tab label="Test 2">
+	        <h1>Inne i test 2</h2>	        
+	    </gui:tab>
+	</gui:tabView> 
+	                
+         <h1>Velkommen til pitstop</h1>
+	        <br/>
+	        <p>PIT-STOP kan tilby en rekke dekkmerker til alle typer biler, og til usl&aring;elige priser. 
+	        Vi kan ogs&aring; gi sv&aelig;rt gode tilbud p&aring; felger.
+	        Velkommen til en hyggelig dekkprat i gode faglige omgivelser.</p>     
+    </gui:tab>
+    <gui:tab label="Dekk">
+        <div id="controllerList" class="dialog">
 				<h2>Tiljengelige kontroller:</h2>
 	            <ul>
 	              <g:each var="c" in="${grailsApplication.controllerClasses}">
@@ -60,14 +79,15 @@
 	              </g:each>
 	            </ul>
 	        </div>
+    </gui:tab>
+</gui:tabView>
+</div>
+		<div id="nav">
+			
 		</div>
 		
 		<div id="pageBody">
-	        <h1>Velkommen til pitstop</h1>
-	        <br/>
-	        <p>PIT-STOP kan tilby en rekke dekkmerker til alle typer biler, og til usl&aring;elige priser. 
-	        Vi kan ogs&aring; gi sv&aelig;rt gode tilbud p&aring; felger.
-	        Velkommen til en hyggelig dekkprat i gode faglige omgivelser.</p>     
+	       
 	          
 		</div>
     </body>
