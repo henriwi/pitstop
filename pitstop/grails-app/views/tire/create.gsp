@@ -118,7 +118,7 @@
                                     		onKeyPress="return onlyNumbers(event)" />
 	                                </span>
 	                                <span valign="top" class="value ${hasErrors(bean: tireInstance, field: 'speedIndex', 'errors')}">
-	                                    <g:select tabindex='8' name="speedIndex" from="${tireInstance.constraints.speedIndex.inList}" value="${tireInstance?.speedIndex}" valueMessagePrefix="tire.speedIndex"  />
+	                                    <g:select tabindex='8' name="speedIndex" from="${tireInstance.constraints.speedIndex.inList}" value="${tireInstance?.speedIndex}" valueMessagePrefix="tire.speedIndex" />
 	                                </span>
 	                            </td>
                             </tr>
@@ -137,7 +137,7 @@
                                     <label for="tireType"><g:message code="tire.tireType.label" default="Dekktype:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'tireType', 'errors')}">
-                                    <g:select tabindex='10' name="tireType" from="${tireInstance.constraints.tireType.inList}" value="${tireInstance?.tireType}" valueMessagePrefix="tire.tireType"  />
+                                    <g:select tabindex='10' name="tireType" from="${tireInstance.constraints.tireType.inList}" value="${tireInstance?.tireType}" valueMessagePrefix="tire.tireType" />
                                 </td>
                             </tr>
                         

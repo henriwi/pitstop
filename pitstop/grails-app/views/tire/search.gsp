@@ -14,7 +14,7 @@
        	</div>
     	<div class="body">
            <h1>Hurtigs&oslash;k for dekk</h1>
-           		<g:form action="fastSearch" method="post">
+           		<g:form action="fastSearch" method="get">
 	           		<div class="dialog">
 	                   <table>
 	                       <tbody>
@@ -39,7 +39,7 @@
 	                 </div>
                  </g:form>
                  <h1>Normals&oslash;k for dekk</h1>
-                 <g:form action="normalSearch" method="post">
+                 <g:form action="normalSearch" method="get">
 	           		<div class="dialog">
 	                   <table>
 	                       <tbody>
@@ -78,13 +78,14 @@
 	                              </tr>
 	                              <tr class="prop">
 	                              	   <td valign="top" class="name">
-		                                   <g:select tabindex='6' name="ddlSpeedIndex"/>
+		                                   <g:select tabindex='6' name="speedIndex" from="${tireInstance.constraints.speedIndex.inList}" value="${tireInstance?.speedIndex}" valueMessagePrefix="tire.speedIndex" />
 		                               </td>
 		                               <td valign="top">
-		                                   <g:select tabindex='7' name="ddlTireType"/>
+		                                   <g:select tabindex='7' name="tireType" from="${tireInstance.constraints.tireType.inList}" value="${tireInstance?.tireType}" valueMessagePrefix="tire.tireType" />
 		                               </td>
 		                               <td valign="top">
-		                                   <g:select tabindex='8' name="ddlBrand"/>
+		                               		<g:textField tabindex='8' name="txtBrand"/>
+		                                   <!--<g:select tabindex='8' name="ddlBrand"/>-->
 		                               </td>
 	                              </tr>
 	                           	
