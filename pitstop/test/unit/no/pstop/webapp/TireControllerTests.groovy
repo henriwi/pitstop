@@ -200,4 +200,10 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.delete()
 		assertEquals('redirect action', "list", controller.redirectArgs.action)
 	}
+	
+	void testSearch() {
+		mockDomain Tire
+		def model = controller.search()
+		assertNotNull model.tireInstance
+	}
 }

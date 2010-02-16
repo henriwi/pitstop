@@ -99,4 +99,10 @@ class TireController {
             redirect(action: "list")
         }
     }
+	
+	def search = {
+		def tireInstance = new Tire()
+		tireInstance.properties = params
+		return [tireInstance: tireInstance]
+	}
 }
