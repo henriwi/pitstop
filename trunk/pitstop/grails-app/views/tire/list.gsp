@@ -37,9 +37,7 @@
                         
                             <g:sortableColumn property="diameter" title="${message(code: 'tire.diameter.label', default: 'Felgdiameter')}" />
                             
-                            <g:sortableColumn property="loadIndex" title="${message(code: 'tire.loadIndex.label', default: 'Belastningsindeks')}" />
-                            
-                            <g:sortableColumn property="speedIndex" title="${message(code: 'tire.speedIndex.label', default: 'Hastighetsindeks')}" />
+                            <g:sortableColumn property="index" title="${message(code: 'tire.index.label', default: 'Indeks')}" />
                             
                             <g:sortableColumn property="pattern" title="${message(code: 'tire.loadIndex.label', default: 'M&oslash;nster')}" />
                             
@@ -65,10 +63,8 @@
                         
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "diameter")}</g:link></td>
                             
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "loadIndex")}</g:link></td>
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "loadIndex")}${fieldValue(bean: tireInstance, field: "speedIndex")}</g:link></td>
                         
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "speedIndex")}</g:link></td>
-                            
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "pattern")}</g:link></td>
                         
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireType")}</g:link></td>
