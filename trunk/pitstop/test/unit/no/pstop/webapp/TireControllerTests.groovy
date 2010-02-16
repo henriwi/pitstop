@@ -211,6 +211,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.params.txtFastSearch = "Pirelli"
 		controller.fastSearch()
 		assertEquals('redirect action', "list", controller.redirectArgs.action)
-		assertEquals('Test of params', controller.params.txtFastSearch, controller.redirectArgs.params.q)
+		assertEquals('Query params should be equal', controller.params.txtFastSearch, controller.redirectArgs.params.q)
+		assertEquals('Type param should be fast', "fast", controller.redirectArgs.params.type)
 	}
 }

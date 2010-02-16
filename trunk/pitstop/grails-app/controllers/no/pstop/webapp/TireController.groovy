@@ -11,8 +11,7 @@ class TireController {
     def list = {
 		def tireList
 		def tireCount
-		if(params.q) {
-			//tireList = Tire.search("*" + params.q + "*").results
+		if(params.q && params.type == 'fast') {
 			if(params.q ==~ /\d{6}[s|v|S|V]/){
 				def query = params.q =~ /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
 				
@@ -124,6 +123,6 @@ class TireController {
 	}
 	
 	def fastSearch = {
-		redirect(action: "list", params:[q: params.txtFastSearch])
+		redirect(action: "list", params:[q: params.txtFastSearch, type: 'fast'])
 	}
 }
