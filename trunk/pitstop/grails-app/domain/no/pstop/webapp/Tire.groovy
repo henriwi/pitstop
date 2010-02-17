@@ -1,8 +1,14 @@
 package no.pstop.webapp
+import java.util.regex.Matcher;
 
 class Tire {
 	static searchable = true
 	static hasMany = [ tireOccurrences : TireOccurrence ]
+    static final tireIndex = 0
+    static final widthIndex = 1
+    static final profileIndex = 2
+    static final diameterIndex = 3
+    static final tireTypeIndex = 4
 
 	long id
 	String partNr
@@ -31,9 +37,17 @@ class Tire {
 		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)"], blank:false)
 	}
 
+	static fastSearch(Matcher query){
+		Tire.search()
+		{
+			must(term('width', query[tireIndex][widthIndex]))
+			must(term('profile', query[tireIndex][profileIndex]))
+			must(wildcard('diameter', "*" + query[tireIndex][diameterIndex]))
+			must(prefix('tireType', query[tireIndex][tireTypeIndex].toString().toLowerCase()))
+		}.results
+	}
 
 	String toString(){
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (${partNr})" 
-		
 	}
 }
