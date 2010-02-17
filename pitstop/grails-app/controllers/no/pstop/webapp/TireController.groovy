@@ -1,7 +1,7 @@
 package no.pstop.webapp
 
 class TireController {
-
+	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
@@ -11,19 +11,11 @@ class TireController {
     def list = {
 		def tireList
 		def tireCount
-		if(params.q && params.type == 'fast') {
-			if(params.q ==~ /\d{6}[s|v|S|V]/){
-				def query = params.q =~ /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
-				
-				tireList = Tire.search()
-				{
-					must(term('width', query[0][1]))
-					must(term('profile', query[0][2]))
-					must(wildcard('diameter', "*" + query[0][3]))
-					must(prefix('tireType', query[0][4].toString().toLowerCase()))
-				}.results
-			
-				tireCount = Tire.count()
+		if(isFastSearchQuery(params.q)) {
+			if(isSpecialFastSearchQuery(params.q)){
+				def query = params.q =~ regexFastSearch
+				tireList = 	Tire.fastSearch(query)
+				tireCount =  tireList.count()
 			}
 			else
 			{
@@ -38,6 +30,14 @@ class TireController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [tireInstanceList: tireList, tireInstanceTotal: tireCount]
     }
+
+	private isFastSearchQuery(String query){
+		query && params.type == 'fast'
+	}
+
+	private isSpecialFastSearchQuery(String query){
+		query ==~ regexFastSearch
+	}
 
     def create = {
         def tireInstance = new Tire()
