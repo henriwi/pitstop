@@ -2,6 +2,7 @@
 <%@ page import="no.pstop.webapp.Tire" %>
 <html>
     <head>
+    		<gui:resources components="expandablePanel"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'tire.label', default: 'dekk')}" />
@@ -13,7 +14,7 @@
             <span class="menuButton"><g:link class="list" action="list">Dekkliste</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">Nytt dekk</g:link></span>
         </div>
-        <div class="body">
+        <div class="body yui-skin-sam">
             <h1><g:message code="default.show.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -92,51 +93,73 @@
 	                </g:form>
 	            </div>
             </div>
-            <div class="tireOccurrenceList">
-                <table>
-                    <thead>
-                        <tr>
-                        
-                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.price.label', default: 'Pris')}" />
-                        
-                            <g:sortableColumn property="numberInStock" title="${message(code: 'tireOccurrence.numberInStock.label', default: 'Antall')}" />
-                        
-                            <g:sortableColumn property="numberOfReserved" title="${message(code: 'tireOccurrence.numberOfReserved.label', default: 'Reservert')}" />
-                        
-                            <g:sortableColumn property="numberOfOrdered" title="${message(code: 'tireOccurrence.numberOfOrdered.label', default: 'Bestilt')}" />
-                        
-                            <g:sortableColumn property="numberOfAvailable" title="${message(code: 'tireOccurrence.numberOfAvailable.label', default: 'Tiljengelighet')}" />
-                        
-                        	<g:sortableColumn property="registrationDate" title="${message(code: 'tireOccurrence.registrationDate.label', default: 'Registreringsdato')}" />
-                        
- 
-                        
-                        	
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <g:each in="${tireOccurrenceInstanceList}" status="i" var="tireOccurrenceInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "price")}</g:link></td>
-                        
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberInStock")}</g:link></td>
-                        
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfReserved")}</g:link></td>
-                        
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfOrdered")}</g:link></td>
-                        
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfAvailable")}</g:link></td>
-                            
-                        	<td><g:formatDate format="dd.MM.yyyy" date="${fieldValue(bean: tireOccurrenceInstance, field: "registrationDate" )}"></g:formatDate></td>
-                        
-                        	
-                        
-                        </tr>
-                    </g:each>
-                    </tbody>
-                </table>
-            </div>
+            	
+	            <div class="tireOccurrenceList">
+                <g:set var="antInStock" value="${0}"></g:set>
+               <g:set var="antReserved" value="${0}"></g:set>
+               <g:set var="antOrdered" value="${0}"></g:set>
+               <g:set var="antAvailable" value="${0}"></g:set>
+               <g:each in="${tireOccurrenceInstanceList}" status="i" var="tireOccurrenceInstance">
+           	   <g:set var="antInStock" value="${antInStock + tireOccurrenceInstance.numberInStock}"></g:set>
+               <g:set var="antReserved" value="${antReserved + tireOccurrenceInstance.numberOfReserved}"></g:set>
+               <g:set var="antOrdered" value="${antOrdered + tireOccurrenceInstance.numberOfOrdered}"></g:set>
+               <g:set var="antAvailable" value="${antAvailable + tireOccurrenceInstance.numberOfAvailable}"></g:set>
+               </g:each>
+	            
+	            <gui:expandablePanel id="expandablePanel" title="Antall: ${ antInStock} &nbsp;&nbsp;&nbsp;&nbsp;Reservert: ${antReserved } &nbsp;&nbsp;&nbsp;&nbsp;Bestilt: ${antOrdered } &nbsp;&nbsp;&nbsp;&nbsp;Tilgjengelige: ${antAvailable } ">
+	                <table class="yui-skin-sam">
+	                    <thead>
+	                        <tr>
+	                        
+	                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.price.label', default: 'Pris')}" />
+	                        
+	                            <g:sortableColumn property="numberInStock" title="${message(code: 'tireOccurrence.numberInStock.label', default: 'Antall')}" />
+	                        
+	                            <g:sortableColumn property="numberOfReserved" title="${message(code: 'tireOccurrence.numberOfReserved.label', default: 'Reservert')}" />
+	                        
+	                            <g:sortableColumn property="numberOfOrdered" title="${message(code: 'tireOccurrence.numberOfOrdered.label', default: 'Bestilt')}" />
+	                        
+	                            <g:sortableColumn property="numberOfAvailable" title="${message(code: 'tireOccurrence.numberOfAvailable.label', default: 'Tiljengelighet')}" />
+	                        
+	                        	<g:sortableColumn property="registrationDate" title="${message(code: 'tireOccurrence.registrationDate.label', default: 'Registreringsdato')}" />
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+
+	                   	<tr>
+	                    	<td>Total:</td>
+	                    	<td><%=antInStock %></td>
+	                    	<td><%=antReserved %></td>
+	                    	<td><%=antOrdered %></td>
+	                    	<td><%=antAvailable %></td>
+	                    </tr>
+	                    <g:each in="${tireOccurrenceInstanceList}" status="i" var="tireOccurrenceInstance">
+	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+	                        <g:set var="antInStock" value="${antInStock + tireOccurrenceInstance.numberInStock}"></g:set>
+	                        <g:set var="antReserved" value="${antReserved + tireOccurrenceInstance.numberOfReserved}"></g:set>
+	                        <g:set var="antOrdered" value="${antOrdered + tireOccurrenceInstance.numberOfOrdered}"></g:set>
+	                        <g:set var="antAvailable" value="${antAvailable + tireOccurrenceInstance.numberOfAvailable}"></g:set>
+	                        
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "price")}</g:link></td>
+	                        
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberInStock")}</g:link></td>
+	                        
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfReserved")}</g:link></td>
+	                        
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfOrdered")}</g:link></td>
+	                        
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfAvailable")}</g:link></td>
+	                            
+	                        	<td><g:formatDate format="dd.MM.yyyy" date="${fieldValue(bean: tireOccurrenceInstance, field: "registrationDate" )}"></g:formatDate></td>
+	                        	
+	                        </tr>
+	                    </g:each>
+
+	                    </tbody>
+	                </table>
+	                </gui:expandablePanel>
+	            </div>
+	            
         </div>
     </body>
 </html>
