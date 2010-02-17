@@ -1,5 +1,5 @@
-import no.pstop.webapp.Tire;
-import no.pstop.webapp.TireOccurrence;
+//import no.pstop.webapp.Tire;
+//import no.pstop.webapp.TireOccurrence;
 
 class BootStrap {
 
