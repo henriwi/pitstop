@@ -64,6 +64,7 @@ log4j = {
     //
 	appenders {
 		rollingFile name:"pitstop", maxFileSize:1024, fileName:"/tmp/logs/pitstop.log"
+		console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
 	}
 
 
