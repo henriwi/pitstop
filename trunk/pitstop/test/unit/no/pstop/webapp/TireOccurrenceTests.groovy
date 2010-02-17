@@ -31,34 +31,41 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:-3,numberInStock:4,numberOfReserved:3,
 				numberOfOrdered:8,registrationDate:new Date(), numberOfAvailable:1 )
 		
-		assertFalse "Ingen validering, feil pris input", tireOccurrence.validate()
+		assertFalse "Test feilet, forventet ugyldig price", tireOccurrence.validate()
+		def badField = tireOccurrence.errors.getFieldError('price')
+		assertNotNull "Jeg forventer å finne en feil i feltet price", badField
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidNumberInStock(){
 		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:1.0,numberInStock:-5,numberOfReserved:3,
 				numberOfOrdered:8,registrationDate:new Date(), numberOfAvailable:1 )
 		
-		assertFalse "ingen validering, feil input" , tireOccurrence.validate()
+		assertFalse "Test feilet, forventet ugyldig numberInStock" , tireOccurrence.validate()
+		def badField = tireOccurrence.errors.getFieldError('numberInStock')
+		assertNotNull "Jeg forventer å finne en feil i feltet numberInStock", badField
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidNumberOfReserved(){
 		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:1.0,numberInStock:4,numberOfReserved:-3,
 				numberOfOrdered:8,registrationDate:new Date(), numberOfAvailable:1 )
 		
-		assertFalse "Ingen validering, feil numberOfReserved input", tireOccurrence.validate()
+		assertFalse "Test feilet, forventet ugyldig numberOfReserved", tireOccurrence.validate()
+		def badField = tireOccurrence.errors.getFieldError('numberOfReserved')
+		assertNotNull "Jeg forventer å finne en feil i feltet numberOfReserved", badField
 	}
 	
-	void testGenerateTireOccurenceWithInvalidNumberOfOrdered(){
+	void testGenerateTireOccurrenceWithInvalidNumberOfOrdered(){
 		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:1.0,numberInStock:4,numberOfReserved:4,
 				numberOfOrdered:-6,registrationDate:new Date(), numberOfAvailable:1 )
 		
-		assertFalse "Ingen validering, feil input numberOfOrdered", tireOccurrence.validate()
+		assertFalse "Test feilet, forventet ugyldig numberOfOrdered", tireOccurrence.validate()
+		def badField = tireOccurrence.errors.getFieldError('numberOfOrdered')
+		assertNotNull "Jeg forventer å finne en feil i feltet numberOfOrdered", badField
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidTire(){
 		def tireOccurrence = new TireOccurrence(tire:null,price:1.0,numberInStock:4,numberOfReserved:4,
 				numberOfOrdered:5,registrationDate:new Date(), numberOfAvailable:1 )
-		assertFalse "Ingen validering, feil input tire", tireOccurrence.validate()
+		assertFalse "Test feilet, forventet ugyldig tire", tireOccurrence.validate()
 	}
-	
 }
