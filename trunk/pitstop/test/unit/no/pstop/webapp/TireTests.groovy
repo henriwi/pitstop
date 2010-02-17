@@ -35,7 +35,7 @@ class TireTests extends GrailsUnitTestCase {
 		tire.partNr = "?"
 		
 		assertFalse "Test feilet, forventet ugyldig partNr", tire.validate()
-		def badField = tire.errors.getFieldError('partNr')
+		def badField = tire.errors.getFieldError("partNr")
 		assertNotNull "Jeg forventer å finne en feil i feltet partNr", badField
 	}
 	
@@ -53,7 +53,7 @@ class TireTests extends GrailsUnitTestCase {
 		tire.width = 0
 		
 		assertFalse "Test feilet, forventet ugyldig width", tire.validate()
-		def badField = tire.errors.getFieldError('width')
+		def badField = tire.errors.getFieldError("width")
 		assertNotNull "Jeg forventer å finne en feil i feltet width", badField
 	}
 	
@@ -61,7 +61,7 @@ class TireTests extends GrailsUnitTestCase {
 		tire.profile = 2
 		
 		assertFalse "Test feilet, forventet ugyldig profile", tire.validate()
-		def badField = tire.errors.getFieldError('profile')
+		def badField = tire.errors.getFieldError("profile")
 		assertNotNull "Jeg forventer å finne en feil i feltet profile", badField
 	}
 	
@@ -69,7 +69,7 @@ class TireTests extends GrailsUnitTestCase {
 		tire.construction = "K"
 		
 		assertFalse "Test feilet, forventet ugyldig construction", tire.validate()
-		def badField = tire.errors.getFieldError('construction')
+		def badField = tire.errors.getFieldError("construction")
 		assertNotNull "Jeg forventer å finne en feil i feltet construction", badField
 	}
 	
@@ -77,7 +77,7 @@ class TireTests extends GrailsUnitTestCase {
 		tire.diameter = 5
 		
 		assertFalse "Test feilet, forventet ugyldig diameter", tire.validate()
-		def badField = tire.errors.getFieldError('diameter')
+		def badField = tire.errors.getFieldError("diameter")
 		assertNotNull "Jeg forventer å finne en feil i feltet diameter", badField
 	}
 	
@@ -85,7 +85,7 @@ class TireTests extends GrailsUnitTestCase {
 		tire.loadIndex = 20
 		
 		assertFalse "Test feilet, forventet ugyldig loadIndex", tire.validate()
-		def badField = tire.errors.getFieldError('loadIndex')
+		def badField = tire.errors.getFieldError("loadIndex")
 		assertNotNull "Jeg forventer å finne en feil i feltet loadIndex", badField
 	}
 	
@@ -93,7 +93,7 @@ class TireTests extends GrailsUnitTestCase {
 		tire.speedIndex = "A"
 		
 		assertFalse "Test feilet, forventet ugyldig speedIndex", tire.validate()
-		def badField = tire.errors.getFieldError('speedIndex')
+		def badField = tire.errors.getFieldError("speedIndex")
 		assertNotNull "Jeg forventer å finne feil i feltet speedIndex", badField
 	}
 	
@@ -101,7 +101,7 @@ class TireTests extends GrailsUnitTestCase {
 		tire.pattern = "?"
 		
 		assertFalse "Test feilet, forventet ugyldig pattern", tire.validate()
-		def badField = tire.errors.getFieldError('pattern')
+		def badField = tire.errors.getFieldError("pattern")
 		assertNotNull "Jeg forventer å finne en feil i feltet pattern", badField
 	}
 	
@@ -109,7 +109,7 @@ class TireTests extends GrailsUnitTestCase {
 		tire.tireType = "spring"
 		
 		assertFalse "Test feilet, forventet ugyldig tireType", tire.validate()
-		def badField = tire.errors.getFieldError('tireType')
+		def badField = tire.errors.getFieldError("tireType")
 		assertNotNull "Jeg forventer å finne en feil i feltet tireType", badField
 	}
 	
@@ -117,7 +117,7 @@ class TireTests extends GrailsUnitTestCase {
 		tire.brand = ""
 		
 		assertFalse "Test feilet, forventet ugyldig tireBrand", tire.validate()
-		def badField = tire.errors.getFieldError('brand')
+		def badField = tire.errors.getFieldError("brand")
 		assertNotNull "Jeg forventer å finne en feil i feltet brand", badField
 	}
 	
@@ -125,7 +125,7 @@ class TireTests extends GrailsUnitTestCase {
 		tire.tireName = "<>"
 		
 		assertFalse "Test feilet, forventet ugyldig tireName", tire.validate()
-		def badField = tire.errors.getFieldError('tireName')
+		def badField = tire.errors.getFieldError("tireName")
 		assertNotNull "Jeg forventer å finne en feil i feltet tireName", badField
 	}
 }

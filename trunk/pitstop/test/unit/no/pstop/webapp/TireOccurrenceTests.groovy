@@ -4,10 +4,14 @@ import java.text.SimpleDateFormat
 import grails.test.*
 
 class TireOccurrenceTests extends GrailsUnitTestCase {
+	def tireOccurrence
+	
     protected void setUp() {
         super.setUp()
 			
 		mockForConstraintsTests TireOccurrence
+		tireOccurrence = new TireOccurrence(tire:new Tire(),price:89.89,numberInStock:4,numberOfReserved:3,
+				numberOfOrdered:8,registrationDate: new Date(), numberOfAvailable:1 )
     }
 
     protected void tearDown() {
@@ -16,8 +20,7 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 	
 	void testGenerateTireOccurrence() {
 		def df = new SimpleDateFormat("dd.MM.yyyy")
-		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:89.89,numberInStock:4,numberOfReserved:3,
-				numberOfOrdered:8,registrationDate: df.parse("10.01.2008"), numberOfAvailable:1 )
+		tireOccurrence.registrationDate = df.parse("10.01.2008")
 		
 		assertEquals 89.89, tireOccurrence.price
 		assertEquals 4, tireOccurrence.numberInStock
@@ -28,8 +31,7 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidPrice(){
-		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:-3,numberInStock:4,numberOfReserved:3,
-				numberOfOrdered:8,registrationDate:new Date(), numberOfAvailable:1 )
+		tireOccurrence.price = -3
 		
 		assertFalse "Test feilet, forventet ugyldig price", tireOccurrence.validate()
 		def badField = tireOccurrence.errors.getFieldError('price')
@@ -37,8 +39,7 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidNumberInStock(){
-		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:1.0,numberInStock:-5,numberOfReserved:3,
-				numberOfOrdered:8,registrationDate:new Date(), numberOfAvailable:1 )
+		tireOccurrence.numberInStock = -5
 		
 		assertFalse "Test feilet, forventet ugyldig numberInStock" , tireOccurrence.validate()
 		def badField = tireOccurrence.errors.getFieldError('numberInStock')
@@ -46,26 +47,26 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidNumberOfReserved(){
-		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:1.0,numberInStock:4,numberOfReserved:-3,
-				numberOfOrdered:8,registrationDate:new Date(), numberOfAvailable:1 )
+		tireOccurrence.numberOfReserved = -2
 		
 		assertFalse "Test feilet, forventet ugyldig numberOfReserved", tireOccurrence.validate()
-		def badField = tireOccurrence.errors.getFieldError('numberOfReserved')
+		def badField = tireOccurrence.errors.getFieldError("numberOfReserved")
 		assertNotNull "Jeg forventer å finne en feil i feltet numberOfReserved", badField
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidNumberOfOrdered(){
-		def tireOccurrence = new TireOccurrence(tire:new Tire(),price:1.0,numberInStock:4,numberOfReserved:4,
-				numberOfOrdered:-6,registrationDate:new Date(), numberOfAvailable:1 )
+		tireOccurrence.numberOfOrdered = -6
 		
 		assertFalse "Test feilet, forventet ugyldig numberOfOrdered", tireOccurrence.validate()
-		def badField = tireOccurrence.errors.getFieldError('numberOfOrdered')
+		def badField = tireOccurrence.errors.getFieldError("numberOfOrdered")
 		assertNotNull "Jeg forventer å finne en feil i feltet numberOfOrdered", badField
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidTire(){
-		def tireOccurrence = new TireOccurrence(tire:null,price:1.0,numberInStock:4,numberOfReserved:4,
-				numberOfOrdered:5,registrationDate:new Date(), numberOfAvailable:1 )
+		tireOccurrence.tire = null
+		
 		assertFalse "Test feilet, forventet ugyldig tire", tireOccurrence.validate()
+		//def badField = tireOccurrence.errors.getFieldError("tire")
+		//assertNotNull "Jeg forventer å finne en feil i feltet tire", badField
 	}
 }
