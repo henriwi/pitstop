@@ -1,3 +1,4 @@
+<%@ page import="no.pstop.webapp.Tire" %>
 <html>
     <head>
     	<gui:resources components="tabView"/>
@@ -53,34 +54,34 @@
     </head>
 <body>
 <div class="body yui-skin-sam">
-	<gui:tabView >
+	<gui:tabView id="test">
 	    <gui:tab label="Hjem" active="true">
-	         <gui:tabView>
-	    <gui:tab label="Test 1" active="true">
-	        <h1>Inne i test 1</h1>     
-	    </gui:tab>
-	    <gui:tab label="Test 2">
-	        <h1>Inne i test 2</h2>	        
-	    </gui:tab>
-	</gui:tabView> 
+	        <gui:tabView  id="submenu">
+	    		<gui:tab label="Test 1" active="true">
+	        		<h1>Inne i test 1</h1>     
+	    		</gui:tab>
+	    		<gui:tab label="Controller">
+	        		<h1>Inne i test 2</h2>	        
+	    		</gui:tab>
+			</gui:tabView> 
 	                
-         <h1>Velkommen til pitstop</h1>
+         	<h1>Velkommen til pitstop</h1>
 	        <br/>
 	        <p>PIT-STOP kan tilby en rekke dekkmerker til alle typer biler, og til usl&aring;elige priser. 
 	        Vi kan ogs&aring; gi sv&aelig;rt gode tilbud p&aring; felger.
 	        Velkommen til en hyggelig dekkprat i gode faglige omgivelser.</p>     
-    </gui:tab>
-    <gui:tab label="Dekk">
-        <div id="controllerList" class="dialog">
+    	</gui:tab>
+    	<gui:tab label="Dekk">
+        	<div id="controllerList" class="dialog">
 				<h2>Tiljengelige kontroller:</h2>
 	            <ul>
-	              <g:each var="c" in="${grailsApplication.controllerClasses}">
-	                    <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-	              </g:each>
+	            	<g:each var="c" in="${grailsApplication.controllerClasses}">
+	                	<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
+	              	</g:each>
 	            </ul>
 	        </div>
-    </gui:tab>
-</gui:tabView>
+    	</gui:tab>
+	</gui:tabView>
 </div>
 		<div id="nav">
 			
