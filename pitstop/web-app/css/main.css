@@ -301,6 +301,19 @@ th.desc a {
 	color: #000;
 }
 
+/* Tabs */
+#submenu ul li em {
+	width: 75px; 	
+}
+#submenu ul li {
+	display: block;
+	margin: 10px;
+}
+
+div.yui-content {
+	
+}
+
 #expandablePanel{
 	margin-left: 255px;
 	width: 550px;
