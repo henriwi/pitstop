@@ -5,13 +5,12 @@ import junit.framework.Assert;
 import grails.test.*
 
 class TireTests extends GrailsUnitTestCase {
-	//def trutle //= new Tire()
+	def tire
 	protected void setUp() {
 		super.setUp()
-		//trutle = new Tire(width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-			//	loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer")
-		
 		mockForConstraintsTests Tire
+		tire = new Tire(width:190,profile:60,construction:"R",diameter:17,partNr:"123AB",
+				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "T-Zero")	
 	}
 	
 	protected void tearDown() {
@@ -19,10 +18,7 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTire() {
-		def tire = new Tire(width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "T-Zero")
-		
-		assertEquals 192, tire.width
+		assertEquals 190, tire.width
 		assertEquals 60, tire.profile
 		assertEquals "R", tire.construction
 		assertEquals 17, tire.diameter
@@ -36,118 +32,100 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithInvalidPartNr(){
-		def t = new Tire(width:165,profile:60,construction:"R",diameter:17,partNr:"?",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "Zero")
+		tire.partNr = "?"
 		
-		assertFalse "Test feilet, forventet ugyldig partNr", t.validate()
-		def badField = t.errors.getFieldError('partNr')
+		assertFalse "Test feilet, forventet ugyldig partNr", tire.validate()
+		def badField = tire.errors.getFieldError('partNr')
 		assertNotNull "Jeg forventer å finne en feil i feltet partNr", badField
-		//def code = badField?.codes.find {it == 'tire.partNr.validator.invalid'} 
-		//assertNotNull "the partNr field should be the gjerningsmann", code 
 	}
 	
 	void testGenerateTireWithNonUniquePartNr(){
-		def t1 = new Tire(width:165,profile:60,construction:"R",diameter:17,partNr:"DE3",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "Zero")
-		def t2 = new Tire(width:165,profile:50,construction:"R",diameter:17,partNr:"DE3",
-				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "Zero")
+		def tire2 = new Tire(width:190,profile:60,construction:"R",diameter:17,partNr:"123AB",
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "T-Zero")	
+	
+		mockForConstraintsTests(Tire, [tire])
 		
-		mockForConstraintsTests(Tire, [t1])
-		
-		assertTrue "Test feilet, forventet ok validering", t1.validate()
-		assertFalse "Test feilet, forventet samme partNr som t1", t2.validate()
-		//def badField = t2.errors.getFieldError('partNr')
-		//assertNull "Jeg forventer et unikt nummer i partNr", badField
+		assertTrue "Test feilet, forventet ok validering", tire.validate()
+		assertFalse "Test feilet, forventet samme partNr som tire", tire2.validate()
 	}
 	
 	void testGenerateTireWithInvalidWidth(){
-		//trutle.width = 0
-		def t = new Tire(width:0,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "Zero")
+		tire.width = 0
 		
-		assertFalse "Test feilet, forventet ugyldig width", t.validate()
-		def badField = t.errors.getFieldError('width')
+		assertFalse "Test feilet, forventet ugyldig width", tire.validate()
+		def badField = tire.errors.getFieldError('width')
 		assertNotNull "Jeg forventer å finne en feil i feltet width", badField
 	}
 	
 	void testGenerateTireWithInvalidProfile(){
-		def t = new Tire(width:165,profile:2,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "Zero")
+		tire.profile = 2
 		
-		assertFalse "Test feilet, forventet ugyldig profile", t.validate()
-		def badField = t.errors.getFieldError('profile')
+		assertFalse "Test feilet, forventet ugyldig profile", tire.validate()
+		def badField = tire.errors.getFieldError('profile')
 		assertNotNull "Jeg forventer å finne en feil i feltet profile", badField
 	}
 	
 	void testGenerateTireWithInvalidConstruction(){
-		def t = new Tire(width:165,profile:70,construction:"K",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "Zero")
+		tire.construction = "K"
 		
-		assertFalse "Test feilet, forventet ugyldig construction", t.validate()
-		def badField = t.errors.getFieldError('construction')
+		assertFalse "Test feilet, forventet ugyldig construction", tire.validate()
+		def badField = tire.errors.getFieldError('construction')
 		assertNotNull "Jeg forventer å finne en feil i feltet construction", badField
 	}
 	
 	void testGenerateTireWithInvalidDiameter(){
-		def t = new Tire(width:165,profile:70,construction:"R",diameter:5,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "Zero")
+		tire.diameter = 5
 		
-		assertFalse "Test feilet, forventet ugyldig diameter", t.validate()
-		def badField = t.errors.getFieldError('diameter')
+		assertFalse "Test feilet, forventet ugyldig diameter", tire.validate()
+		def badField = tire.errors.getFieldError('diameter')
 		assertNotNull "Jeg forventer å finne en feil i feltet diameter", badField
 	}
 	
 	void testGenerateTireWithInvalidLoadIndex(){
-		def t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:20,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "Zero")
+		tire.loadIndex = 20
 		
-		assertFalse "Test feilet, forventet ugyldig loadIndex", t.validate()
-		def badField = t.errors.getFieldError('loadIndex')
+		assertFalse "Test feilet, forventet ugyldig loadIndex", tire.validate()
+		def badField = tire.errors.getFieldError('loadIndex')
 		assertNotNull "Jeg forventer å finne en feil i feltet loadIndex", badField
 	}
 	
 	void testGenerateTireWithInvalidSpeedIndex(){
-		def t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"A",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "Zero")
+		tire.speedIndex = "A"
 		
-		assertFalse "Test feilet, forventet ugyldig speedIndex", t.validate()
-		def badField = t.errors.getFieldError('speedIndex')
+		assertFalse "Test feilet, forventet ugyldig speedIndex", tire.validate()
+		def badField = tire.errors.getFieldError('speedIndex')
 		assertNotNull "Jeg forventer å finne feil i feltet speedIndex", badField
 	}
 	
 	void testGenerateTireWithInvalidPattern(){
-		def t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"T",pattern:"?",tireType:"Sommer", brand:"Nokian", tireName: "Zero")
+		tire.pattern = "?"
 		
-		assertFalse "Test feilet, forventet ugyldig pattern", t.validate()
-		def badField = t.errors.getFieldError('pattern')
+		assertFalse "Test feilet, forventet ugyldig pattern", tire.validate()
+		def badField = tire.errors.getFieldError('pattern')
 		assertNotNull "Jeg forventer å finne en feil i feltet pattern", badField
 	}
 	
 	void testGenerateTireWithInvalidTireType(){
-		def t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"T",pattern:"H",tireType:"spring", brand:"Nokian", tireName: "Zero")
+		tire.tireType = "spring"
 		
-		assertFalse "Test feilet, forventet ugyldig tireType", t.validate()
-		def badField = t.errors.getFieldError('tireType')
+		assertFalse "Test feilet, forventet ugyldig tireType", tire.validate()
+		def badField = tire.errors.getFieldError('tireType')
 		assertNotNull "Jeg forventer å finne en feil i feltet tireType", badField
 	}
 	
-	void testGenerateTireWithInvalidTireBrand(){
-		def t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"T",pattern:"H",tireType:"Sommer", brand:"", tireName: "Zero")
+	void testGenerateTireWithInvalidBrand(){
+		tire.brand = ""
 		
-		assertFalse "Test feilet, forventet ugyldig tireBrand", t.validate()
-		def badField = t.errors.getFieldError('brand')
+		assertFalse "Test feilet, forventet ugyldig tireBrand", tire.validate()
+		def badField = tire.errors.getFieldError('brand')
 		assertNotNull "Jeg forventer å finne en feil i feltet brand", badField
 	}
 	
 	void testGenerateTireWithInvalidTireName(){
-		def t = new Tire(width:165,profile:70,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"T",pattern:"H",tireType:"Sommer", brand:"Nokian", tireName: "<>")
+		tire.tireName = "<>"
 		
-		assertFalse "Test feilet, forventet ugyldig tireName", t.validate()
-		def badField = t.errors.getFieldError('tireName')
+		assertFalse "Test feilet, forventet ugyldig tireName", tire.validate()
+		def badField = tire.errors.getFieldError('tireName')
 		assertNotNull "Jeg forventer å finne en feil i feltet tireName", badField
 	}
 }
