@@ -4,7 +4,7 @@ import no.pstop.webapp.TireOccurrence;
 class BootStrap {
 
      def init = { servletContext ->
-			def t1 = new Tire(id: 1, partNr: "1722550NOKHKPLR98R", brand: "Nokian", tireName: "Hakka", width: 100, profile: 20, construction: "R", diameter: 17,
+     /*		def t1 = new Tire(id: 1, partNr: "1722550NOKHKPLR98R", brand: "Nokian", tireName: "Hakka", width: 100, profile: 20, construction: "R", diameter: 17,
 					loadIndex: 40, speedIndex: "L", pattern: "Speed beast", tireType: "Sommer").save()
 			def t2 = new Tire(id: 2, partNr: "1419570RGODGA91H", brand: "Goodyear", tireName: "ga", width: 195, profile: 70, construction: "R", diameter: 14,
 					loadIndex: 50, speedIndex: "T", pattern: "Speed beast", tireType: "Vinter (pigg)").save()
@@ -19,8 +19,7 @@ class BootStrap {
 			new TireOccurrence(tire: t2, price: 2000, numberInStock: 4, registrationDate: new Date()).save()
 			new TireOccurrence(tire: t3, price: 1300, numberInStock: 2, registrationDate: new Date()).save()
 			new TireOccurrence(tire: t3, price: 1200, numberInStock: 3, registrationDate: new Date()).save()
-					
-			
+	 */
      }
      def destroy = {
      }
