@@ -20,13 +20,16 @@ environments {
 	test {
 		dataSource {
 			dbCreate = "update"
+			driverClassName = "org.hsqldb.jdbcDriver"
+			username = "sa"
+			password = ""
 			url = "jdbc:hsqldb:mem:testDb"
 		}
 	}
 	production {
 		dataSource {
 			dbCreate = "update"
-			url = "jdbc:hsqldb:file:prodDb;shutdown=true"
+			url = "jdbc:mysql://localhost/pitstop"
 		}
 	}
 }
