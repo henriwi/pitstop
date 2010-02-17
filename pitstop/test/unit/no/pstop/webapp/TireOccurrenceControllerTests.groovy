@@ -36,7 +36,7 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithValidTireOccurrence() {
-		setParams tire, 60.5, 4, new Date()
+		setParams(tire, 60.5, 4, new Date())
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.save()
 		
@@ -45,7 +45,7 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithInvalidTireOccurrence() {
-		setParams tire, -10, 0, new Date()
+		setParams(tire, -10, 0, new Date())
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.save()
 		
