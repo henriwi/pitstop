@@ -26,7 +26,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertEquals "list", controller.redirectArgs.action
 	}
 	
-	void testListWithSearchQuery() {
+	/*void testListWithSearchQuery() {
 		mockDomain(Tire, [t1,t2,t3])
 		//def mockTire = mockFor(Tire)
 		//mockTire.demand.search = {-> return t1}
@@ -37,7 +37,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertNotNull('list should be present in model', model.tireInstanceList)
 		assertEquals('list size should match the number of mocked tires', 1, model.tireInstanceList.size())
 		assertEquals(model.tireInstanceList[0], t1)
-	}
+	}*/
 	
 	void testListWithNoSearchQuery() {
 		
