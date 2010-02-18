@@ -2,7 +2,6 @@
 <%@ page import="no.pstop.webapp.Tire" %>
 <html>
     <head>
-    		<gui:resources components="expandablePanel"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'tire.label', default: 'dekk')}" />
@@ -15,7 +14,7 @@
             <span class="menuButton"><g:link class="create" action="create">Nytt dekk</g:link></span>
             <span class="menuButton"><g:link class="search" action="search">S&oslash;k</g:link></span>
         </div>
-        <div class="body yui-skin-sam">
+        <div class="body">
             <h1><g:message code="default.show.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -107,8 +106,7 @@
                <g:set var="antAvailable" value="${antAvailable + tireOccurrenceInstance.numberOfAvailable}"></g:set>
                </g:each>
 	            
-	            <gui:expandablePanel id="expandablePanel" title="Antall: ${ antInStock} &nbsp;&nbsp;&nbsp;&nbsp;Reservert: ${antReserved } &nbsp;&nbsp;&nbsp;&nbsp;Bestilt: ${antOrdered } &nbsp;&nbsp;&nbsp;&nbsp;Tilgjengelige: ${antAvailable } ">
-	                <table class="yui-skin-sam">
+	                <table>
 	                    <thead>
 	                        <tr>
 	                        
@@ -152,15 +150,15 @@
 	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfAvailable")}</g:link></td>
 	                            
 	                        	<td><g:formatDate format="dd.MM.yyyy" date="${fieldValue(bean: tireOccurrenceInstance, field: "registrationDate" )}"></g:formatDate></td>
-	                        	
 	                        </tr>
 	                    </g:each>
-
 	                    </tbody>
+	                    
 	                </table>
-	                </gui:expandablePanel>
-	            </div>
-	            
+            </div>
+						<!--  <div class="paginateButtons">
+	          <g:paginate next="Neste" prev="Forrige" maxsteps="5" max="1" controller="tire" action="show" id="${tireInstance.id}" total="20" offset="0"></g:paginate>
+	         	</div> -->
         </div>
     </body>
 </html>

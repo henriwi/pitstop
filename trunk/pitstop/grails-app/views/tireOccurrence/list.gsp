@@ -1,6 +1,7 @@
 
 <%@ page import="no.pstop.webapp.TireOccurrence" %>
-<html>
+
+<%@page import="no.pstop.webapp.TireOccurrence"%><html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
@@ -57,17 +58,15 @@
                         
                             <td>${fieldValue(bean: tireOccurrenceInstance, field: "numberOfAvailable")}</td>
                             
-                        	<td><g:formatDate format="dd.MM.yyyy" date="${fieldValue(bean: tireOccurrenceInstance, field: "registrationDate" )}"></g:formatDate></td>
-                        
-                        	
-                        
+                        		<td><g:formatDate format="dd.MM.yyyy" date="${fieldValue(bean: tireOccurrenceInstance, field: "registrationDate" )}"></g:formatDate></td>
                         </tr>
                     </g:each>
                     </tbody>
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${tireOccurrenceInstanceTotal}" />
+                <g:paginate next="Neste" prev="Forrige" maxsteps="5" max="1" controller="tireOccurrence"
+            action="list" total="${tireOccurrenceInstanceTotal}"></g:paginate>
             </div>
         </div>
     </body>
