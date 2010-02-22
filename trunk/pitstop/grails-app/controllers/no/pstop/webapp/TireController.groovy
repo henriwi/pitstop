@@ -85,8 +85,13 @@ class TireController {
 			redirect(action: "list")
 		}
 		else {
-			def tireOccurrenceInstanceList = TireOccurrence.findAllByTire(Tire.get(params.id))
-			[tireOccurrenceInstanceList: tireOccurrenceInstanceList,tireInstance: tireInstance]
+			if(!params.max)
+				params.max = 7
+			if(!params.offset)
+				params.offset = 0
+			def tireOccurrenceInstanceList = TireOccurrence.findAllByTire(Tire.get(params.id), [max:params.max, offset:params.offset, sort:"registrationDate", order:"desc"])
+			def tireOccurrenceInstanceTotalList = TireOccurrence.findAllByTire(Tire.get(params.id))
+			[tireOccurrenceInstanceList: tireOccurrenceInstanceList,tireInstance: tireInstance, tireOccurrenceInstanceTotalList: tireOccurrenceInstanceTotalList]
 		}
 	}
 	

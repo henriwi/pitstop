@@ -43,16 +43,15 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	/*void testListWithSearchQuery() {
-	 mockDomain(Tire, [t1,t2,t3])
-	 //def mockTire = mockFor(Tire)
-	 //mockTire.demand.search = {-> return t1}
-	 controller.params.q = "192607s"
-	 controller.params.type="fast"
-	 Map model = controller.list()
-	 assertNotNull('list should be present in model', model.tireInstanceList)
-	 assertEquals('list size should match the number of mocked tires', 1, model.tireInstanceList.size())
-	 assertEquals(model.tireInstanceList[0], t1)
-	 }*/
+		mockDomain(Tire, [t1,t2,t3])
+		def mock = mockFor(Tire)
+		controller.params.q = "192607s"
+		controller.params.type="fast"
+		Map model = controller.list()
+		assertNotNull('list should be present in model', model.tireInstanceList)
+		assertEquals('list size should match the number of mocked tires', 1, model.tireInstanceList.size())
+		assertEquals(model.tireInstanceList[0], t1)
+	}*/
 	
 	void testListWithNoSearchQuery() {
 		mockDomain(Tire, [t1,t2,t3])
@@ -100,6 +99,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		def model = controller.show()
 		assertEquals t1, model.tireInstance
 		assertEquals tireOccurrenceList, model.tireOccurrenceInstanceList
+		assertEquals tireOccurrenceList, model.tireOccurrenceInstanceTotalList
 	}
 	
 	void testShowWithInvalidId() {

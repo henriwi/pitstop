@@ -19,7 +19,7 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <div class="dialog" id="tireDialog">
+            <div class="dialog" id="tireShowDialog">
                 <table>
                     <tbody>
                                         
@@ -96,17 +96,33 @@
 	            </div>
             </div>
             	
-	            <div class="tireOccurrenceList">
-                <g:set var="antInStock" value="${0}"></g:set>
-               <g:set var="antReserved" value="${0}"></g:set>
-               <g:set var="antOrdered" value="${0}"></g:set>
-               <g:set var="antAvailable" value="${0}"></g:set>
-               <g:each in="${tireOccurrenceInstanceList}" status="i" var="tireOccurrenceInstance">
-           	   <g:set var="antInStock" value="${antInStock + tireOccurrenceInstance.numberInStock}"></g:set>
-               <g:set var="antReserved" value="${antReserved + tireOccurrenceInstance.numberOfReserved}"></g:set>
-               <g:set var="antOrdered" value="${antOrdered + tireOccurrenceInstance.numberOfOrdered}"></g:set>
-               <g:set var="antAvailable" value="${antAvailable + tireOccurrenceInstance.numberOfAvailable}"></g:set>
-               </g:each>
+	            <div id="tireOccurrenceList">
+	               <g:set var="antInStock" value="${0}"></g:set>
+	               <g:set var="antReserved" value="${0}"></g:set>
+	               <g:set var="antOrdered" value="${0}"></g:set>
+	               <g:set var="antAvailable" value="${0}"></g:set>
+	               <g:each in="${tireOccurrenceInstanceTotalList}" status="i" var="tireOccurrenceInstance">
+		           	   <g:set var="antInStock" value="${antInStock + tireOccurrenceInstance.numberInStock}"></g:set>
+		               <g:set var="antReserved" value="${antReserved + tireOccurrenceInstance.numberOfReserved}"></g:set>
+		               <g:set var="antOrdered" value="${antOrdered + tireOccurrenceInstance.numberOfOrdered}"></g:set>
+		               <g:set var="antAvailable" value="${antAvailable + tireOccurrenceInstance.numberOfAvailable}"></g:set>
+	               </g:each>
+	               <div id="totalTireOccurrence">
+	                    <table>
+	                   		<tr>
+		                    	<th>Antall</th>
+		                    	<th>Reservert</th>
+		                    	<th>Bestilt</th>
+		                    	<th>Tilgjengelighet</th>
+	                    	</tr>
+		                    <tr>
+		                    	<td><%=antInStock %></td>
+		                    	<td><%=antReserved %></td>
+		                    	<td><%=antOrdered %></td>
+		                    	<td><%=antAvailable %></td>
+	                    	</tr>
+	                    </table>
+	               </div>
 	            
 	                <table>
 	                    <thead>
@@ -127,13 +143,6 @@
 	                    </thead>
 	                    <tbody>
 
-	                   	<tr>
-	                    	<td>Total:</td>
-	                    	<td><%=antInStock %></td>
-	                    	<td><%=antReserved %></td>
-	                    	<td><%=antOrdered %></td>
-	                    	<td><%=antAvailable %></td>
-	                    </tr>
 	                    <g:each in="${tireOccurrenceInstanceList}" status="i" var="tireOccurrenceInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 	                        <g:set var="antInStock" value="${antInStock + tireOccurrenceInstance.numberInStock}"></g:set>
@@ -151,16 +160,16 @@
 	                        
 	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfAvailable")}</g:link></td>
 	                            
-	                        	<td><g:formatDate format="dd.MM.yyyy" date="${fieldValue(bean: tireOccurrenceInstance, field: "registrationDate" )}"></g:formatDate></td>
+	                        	<td><g:formatDate format="dd.MM.yyyy" date="${tireOccurrenceInstance?.registrationDate}" /></td>
 	                        </tr>
 	                    </g:each>
 	                    </tbody>
-	                    
 	                </table>
+	             <div class="paginateButtons" id="showTire">
+	          		<g:paginate next="Neste" prev="Forrige" controller="tire" action="show" id="${tireInstance.id}" total="${tireOccurrenceInstanceTotalList.size()}"></g:paginate>
+	        	</div>
             </div>
-						<!--  <div class="paginateButtons">
-	          <g:paginate next="Neste" prev="Forrige" maxsteps="5" max="1" controller="tire" action="show" id="${tireInstance.id}" total="20" offset="0"></g:paginate>
-	         	</div> -->
+			
         </div>
     </body>
 </html>
