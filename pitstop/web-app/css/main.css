@@ -206,7 +206,17 @@ th.desc a {
 	margin-top:20px;
 	margin-left:30px;
 	float:left;
-	background-color: #ccc
+	min-height: 250px;
+	font-size: 20;
+}
+#mainMenu li {
+
+	border-style: solid;
+	margin: 5;
+	padding: 5;
+}
+#mainMenu a:hover {
+ 	background-color: #ccc
 }
 
 /* PAGINATION */

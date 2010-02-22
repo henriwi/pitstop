@@ -27,6 +27,7 @@
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}">Hjem</a></span>
             <span class="menuButton"><g:link class="list" action="list">Dekkliste</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">Nytt dekk</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="tireOccurrence" action="list">Vis dekkforekomster</g:link></span>
             <span class="menuButton"><g:link class="search" action="search">S&oslash;k</g:link></span>
         </div>
         <div class="body">
