@@ -11,6 +11,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}">Hjem</a></span>
+            <span class="menuButton"><g:link class="list" action="list">Vis dekkforekomster</g:link></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
         <div class="body">
@@ -58,7 +59,7 @@
                         
                             <td>${fieldValue(bean: tireOccurrenceInstance, field: "numberOfAvailable")}</td>
                             
-                        		<td><g:formatDate format="dd.MM.yyyy" date="${fieldValue(bean: tireOccurrenceInstance, field: "registrationDate" )}"></g:formatDate></td>
+                            <td><g:formatDate format="dd.MM.yyyy" date="${tireOccurrenceInstance?.registrationDate}" /></td>
                         </tr>
                     </g:each>
                     </tbody>
