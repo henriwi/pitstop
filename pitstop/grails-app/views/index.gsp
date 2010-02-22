@@ -53,6 +53,11 @@
 		</style>
     </head>
 <body>
+<h1>Velkommen til pitstop</h1>
+	        <br/>
+	        <p>PIT-STOP kan tilby en rekke dekkmerker til alle typer biler, og til usl&aring;elige priser. 
+	        Vi kan ogs&aring; gi sv&aelig;rt gode tilbud p&aring; felger.
+	        Velkommen til en hyggelig dekkprat i gode faglige omgivelser.</p>
 <%-- <div class="body yui-skin-sam">
 	<gui:tabView id="test">
 	    <gui:tab label="Hjem" active="true">
@@ -65,11 +70,7 @@
 	    		</gui:tab>
 			</gui:tabView> 
 	                
-         	<h1>Velkommen til pitstop</h1>
-	        <br/>
-	        <p>PIT-STOP kan tilby en rekke dekkmerker til alle typer biler, og til usl&aring;elige priser. 
-	        Vi kan ogs&aring; gi sv&aelig;rt gode tilbud p&aring; felger.
-	        Velkommen til en hyggelig dekkprat i gode faglige omgivelser.</p>     
+         	     
     	</gui:tab>
     	<gui:tab label="Dekk">
         	<div id="controllerList" class="dialog">

@@ -12,7 +12,7 @@
         </div>
         <div id="pstopLogo" class="logo"><a href="http://www.pstop.no"><img src="${resource(dir:'images',file:'pitstopLogo.png')}" alt="pitstopLogo" border="0" /></a></div>
         <div id="mainMenu">
-        <ul id="menuList">
+        <ul class="menuList">
         <li><g:link controller="tire">Dekktyper</g:link></li>
         <li><g:link controller="tireOccurrence">Dekkforekomst</g:link></li>
 			<%-- <g:each var="c" in="${grailsApplication.controllerClasses}">

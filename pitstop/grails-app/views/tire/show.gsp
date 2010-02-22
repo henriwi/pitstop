@@ -88,6 +88,8 @@
 	            <div class="buttons" id="tireEditButtons">
 	                <g:form>
 	                    <g:hiddenField name="id" value="${tireInstance?.id}" />
+	                    <span class="menuButton"><g:link controller="tireOccurrence" class="create" action="create"><g:message code="Ny dekkforekomst" args="[entityName]" /></g:link></span>
+	                    
 	                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Endre')}" /></span>
 	                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Slett')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Er du sikker?')}');" /></span>
 	                </g:form>
