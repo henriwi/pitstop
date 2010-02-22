@@ -2,6 +2,7 @@ package no.pstop.webapp
 
 class TireController {
 	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
+	static final numberOfTireOccurrences = 7
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
 	def index = {
@@ -86,7 +87,7 @@ class TireController {
 		}
 		else {
 			if(!params.max)
-				params.max = 7
+				params.max = numberOfTireOccurrences
 			if(!params.offset)
 				params.offset = 0
 			def tireOccurrenceInstanceList = TireOccurrence.findAllByTire(Tire.get(params.id), [max:params.max, offset:params.offset, sort:"registrationDate", order:"desc"])
