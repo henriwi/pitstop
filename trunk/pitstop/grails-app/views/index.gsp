@@ -2,7 +2,7 @@
 <html>
     <head>
     	<gui:resources components="tabView"/>
-        <title>Welcome to Grails</title>
+        <title>Velkommen til pitstop</title>
 		<meta name="layout" content="main" />
 		<style type="text/css" media="screen">
 
@@ -53,7 +53,7 @@
 		</style>
     </head>
 <body>
-<div class="body yui-skin-sam">
+<%-- <div class="body yui-skin-sam">
 	<gui:tabView id="test">
 	    <gui:tab label="Hjem" active="true">
 	        <gui:tabView  id="submenu">
@@ -82,7 +82,7 @@
 	        </div>
     	</gui:tab>
 	</gui:tabView>
-</div>
+</div>--%>
 		<div id="nav">
 			
 		</div>
