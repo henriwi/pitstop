@@ -67,7 +67,7 @@ class Tire {
 	static findNumberOfAvailable(List<Integer> tireIdList) {
 		if(!tireIdList.isEmpty()) {
 			String condition = createConditionList(tireIdList);
-			TireOccurrence.executeQuery("select sum(numberInStock-numberOfReserved) from TireOccurrence where tire in(" + condition + ") group by tire.id")
+			TireOccurrence.executeQuery("select tire.id, sum(numberInStock-numberOfReserved) from TireOccurrence where tire in(" + condition + ") group by tire.id")
 		}
 		else
 			return 0
