@@ -1,5 +1,6 @@
 package no.pstop.webapp
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher
 
 
@@ -68,10 +69,12 @@ class Tire {
 	
 	private static createConditionList(List<Integer> tireIdList) {
 		String condition = ""
-		for (int i = 0; i < tireIdList.size() - 1; i++) {
-			condition += tireIdList.get(i) + ", "
+		if(!tireIdList.isEmpty()) {
+			for (int i = 0; i < tireIdList.size() - 1; i++) {
+				condition += tireIdList.get(i) + ", "
+			}
+			condition += tireIdList.get(tireIdList.size()-1)
 		}
-		condition += tireIdList.get(tireIdList.size()-1)
 		return condition
 	}
 	
