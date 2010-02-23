@@ -80,7 +80,8 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${tireInstanceTotal}" />
+             	<g:paginate next="Neste" prev="Forrige" controller="tire"
+            	action="list" total="${tireInstanceTotal}"></g:paginate>
             </div>
         </div>
     </body>
