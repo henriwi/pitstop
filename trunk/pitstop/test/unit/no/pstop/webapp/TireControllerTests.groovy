@@ -85,13 +85,13 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertNotNull "Tire should not be null", controller.modelAndView.model.linkedHashMap.tireInstance
 	}
 	
-	/*void testShowWithValidId() {
+	void testShowWithValidId() {
 		def tireOccurrence1 = new TireOccurrence(tire: t1, price: 1500, numberInStock: 4,
-		registrationDate: new Date(110,2,22))
+		registrationDate: new Date())
 		def tireOccurrence2 = new TireOccurrence(tire: t1, price: 1300, numberInStock: 4,
-				registrationDate: new Date(110,2,23))
-		def tireOccurrenceList = [tireOccurrence1, tireOccurrence2]
-		def tireOccurrenceTotalList = [tireOccurrence2, tireOccurrence1]
+				registrationDate: new Date() + 1)
+		def tireOccurrenceList = [tireOccurrence2, tireOccurrence1]
+		def tireOccurrenceTotalList = [tireOccurrence1, tireOccurrence2]
 		
 		mockDomain Tire, [t1]
 		mockDomain TireOccurrence, [tireOccurrence1, tireOccurrence2]
@@ -99,9 +99,9 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.params.id = 1
 		def model = controller.show()
 		assertEquals t1, model.tireInstance
-		assertEquals tireOccurrenceList, model.tireOccurrenceInstanceList
-		assertEquals tireOccurrenceTotalList, model.tireOccurrenceInstanceTotalList
-	}*/
+		assertEquals "tireOccurenceList should be equal", tireOccurrenceList, model.tireOccurrenceInstanceList
+		assertEquals "tireOccurenceTotalList should be equal", tireOccurrenceTotalList, model.tireOccurrenceInstanceTotalList
+	}
 	
 	void testShowWithInvalidId() {
 		mockDomain Tire, [t1]
