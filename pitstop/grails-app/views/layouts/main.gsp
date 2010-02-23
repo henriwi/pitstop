@@ -7,9 +7,11 @@
         <g:javascript library="application" />
     </head>
     <body>
+		<div id="container">
         <div id="spinner" class="spinner" style="display:none;">
             <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner" />
         </div>
+        
         <div id="pstopLogo" class="logo"><a href="http://www.pstop.no"><img src="${resource(dir:'images',file:'pitstopLogo.png')}" alt="pitstopLogo" border="0" /></a></div>
         <div id="mainMenu">
         <ul id="menuList">
@@ -25,7 +27,9 @@
         <div id="content">
         	<g:layoutBody />
         </div>
-        
+         <div style="clear:both"></div>
+        </div>
+       
         
         
     </body>
