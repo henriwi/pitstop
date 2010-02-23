@@ -82,7 +82,7 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithInvalidLoadIndex(){
-		tire.loadIndex = 20
+		tire.loadIndex = -2
 		
 		assertFalse "Test feilet, forventet ugyldig loadIndex", tire.validate()
 		def badField = tire.errors.getFieldError("loadIndex")

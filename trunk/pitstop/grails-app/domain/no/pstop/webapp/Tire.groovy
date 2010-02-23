@@ -29,15 +29,15 @@ class Tire {
 	
 	static constraints = {
 		partNr(matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,40}", blank:false, unique:true)
-		brand(blank:false, matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,30}")
-		tireName(matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,30}")
+		brand(blank:false, matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å||\\-|\\_]{0,30}")
+		tireName(matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å|\\s|\\-|\\_]{0,30}")
 		width(min:100, max:350)
 		profile(min:20, max:85)
 		construction(inList:["R"], blank:false)
 		diameter(min:10, max:50)
-		loadIndex(min:40, max:240)
-		speedIndex(inList:["L","M","N","P","Q","R","S","T","U","H","V","W","Y","Z","ZR"], blank:false)
-		pattern(matches:"[a-zA-Z0-9\\s|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,30}", blank:false)
+		loadIndex(min:1, max:240)
+		speedIndex(inList:["L","M","N","P","PR","Q","R","S","T","U","H","V","W","Y","Z","ZR"], blank:false)
+		pattern(matches:"[a-zA-Z0-9\\s|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,30}")
 		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)"], blank:false)
 	}
 
