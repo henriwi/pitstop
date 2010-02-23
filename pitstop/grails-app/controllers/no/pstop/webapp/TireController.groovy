@@ -12,16 +12,13 @@ class TireController {
 	def list = {
 		def tireList
 		def tireCount
-		def numberOfAvailable
 		if(isFastSearchQuery(params.q)) {
 			if(isSpecialFastSearchQuery(params.q)) {
 				def query = params.q =~ regexFastSearch
 				tireList = 	Tire.fastSearch(query)
-				tireCount =  tireList.count()
 			}
 			else {
 				tireList = Tire.search("*" + params.q + "*").results
-				tireCount =  tireList.count()
 			}
 		} 
 		else if(isNormalSearchQuery(params.type)) {
@@ -31,16 +28,13 @@ class TireController {
 			else{
 				tireList = Tire.normalSearch(params.width, params.profile, params.diameter, params.speedIndex, params.tireType, , params.brand)
 			}
-			tireCount =  tireList.count()
 		}
 		else {
+			params.max = Math.min(params.max ? params.int('max') : 12, 100)
 			tireList = Tire.list(params)
-			tireCount = tireList.count()
-			
 		}
-		numberOfAvailable = Tire.findNumberOfAvailable(tireList.id)
-		params.max = Math.min(params.max ? params.int('max') : 10, 100)
-		[tireInstanceList: tireList, tireInstanceTotal: tireCount, numberOfAvailable: numberOfAvailable]
+		def numberOfAvailable = Tire.findNumberOfAvailable(tireList.id)
+		[tireInstanceList: tireList, tireInstanceTotal: Tire.count(), numberOfAvailable: numberOfAvailable]
 	}
 	
 	private isFastSearchQuery(String query){

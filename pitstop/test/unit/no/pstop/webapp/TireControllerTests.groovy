@@ -54,11 +54,13 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}*/
 	
 	/*void testListWithNoSearchQuery() {
-		mockDomain(Tire, [t1,t2,t3])
-		def tireOccurrence1 = new TireOccurrence(id:1,tire:t1,price:60.5,numberInStock:1,registrationDate:new Date())
-		def tireOccurrence2 = new TireOccurrence(id:2,tire:t2,price:60.5,numberInStock:1,registrationDate:new Date())
-		def tireOccurrence3 = new TireOccurrence(id:3,tire:t3,price:60.5,numberInStock:1,registrationDate:new Date())
-		mockDomain(TireOccurrence, [tireOccurrence1, tireOccurrence2, tireOccurrence3])
+		def tireInstances = []
+		mockDomain(Tire, tireInstances)
+		mockDomain(TireOccurrence, [])
+		def tireOccurrence1 = new TireOccurrence(id:1,tire:t1,price:60.5,numberInStock:1,registrationDate:new Date()).save()
+		def tireOccurrence2 = new TireOccurrence(id:2,tire:t2,price:60.5,numberInStock:1,registrationDate:new Date()).save()
+		def tireOccurrence3 = new TireOccurrence(id:3,tire:t3,price:60.5,numberInStock:1,registrationDate:new Date()).save()
+		//, [tireOccurrence1, tireOccurrence2, tireOccurrence3])
 		
 		Map model = controller.list()
 		assertNotNull "list should be present in model", model.tireInstanceList

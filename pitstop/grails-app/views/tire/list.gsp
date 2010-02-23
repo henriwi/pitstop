@@ -50,6 +50,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <g:set var="numberOfAvailableIndex" value="${0}"></g:set>
                     <g:each in="${tireInstanceList}" status="i" var="tireInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
@@ -72,8 +73,13 @@
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "pattern")}</g:link></td>
                         
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireType")}</g:link></td>
-                            
-                            <td><g:link action="show" id="${tireInstance.id}">${numberOfAvailable[i]}</g:link></td>
+             				<g:if test="${numberOfAvailable[numberOfAvailableIndex][0] == tireInstance.id}">
+                            	<td><g:link action="show" id="${tireInstance.id}">${numberOfAvailable[numberOfAvailableIndex][1]}</g:link></td>
+                            	<g:set var="numberOfAvailableIndex" value="${numberOfAvailableIndex + 1}"></g:set>
+                            </g:if>
+                            <g:else>
+                            	<td><g:link action="show" id="${tireInstance.id}">${0}</g:link></td>
+                            </g:else>
                         </tr>
                     </g:each>
                     </tbody>
