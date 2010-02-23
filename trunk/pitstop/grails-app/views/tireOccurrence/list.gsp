@@ -68,7 +68,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate next="Neste" prev="Forrige" maxsteps="5" max="1" controller="tireOccurrence"
+                <g:paginate next="Neste" prev="Forrige" controller="tireOccurrence"
             action="list" total="${tireOccurrenceInstanceTotal}"></g:paginate>
             </div>
         </div>
