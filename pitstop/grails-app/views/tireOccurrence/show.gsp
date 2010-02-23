@@ -56,7 +56,7 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="tireOccurrence.numberOfAvailable.label" default="Tiljengelig" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfAvailable")}</td>
+                            <td valign="top" class="value">${tireOccurrenceInstance.numberInStock-tireOccurrenceInstance.numberOfReserved}</td>
                             
                         </tr>
                     

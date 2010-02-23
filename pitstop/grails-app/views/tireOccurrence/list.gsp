@@ -59,7 +59,7 @@
                         
                             <td>${fieldValue(bean: tireOccurrenceInstance, field: "numberOfOrdered")}</td>
                         
-                            <td>${fieldValue(bean: tireOccurrenceInstance, field: "numberOfAvailable")}</td>
+                            <td>${tireOccurrenceInstance.numberInStock-tireOccurrenceInstance.numberOfReserved}</td>
                             
                             <td><g:formatDate format="dd.MM.yyyy" date="${tireOccurrenceInstance?.registrationDate}" /></td>
                         </tr>

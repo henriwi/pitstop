@@ -44,6 +44,8 @@
                             <g:sortableColumn property="pattern" title="${message(code: 'tire.loadIndex.label', default: 'M&oslash;nster')}" />
                             
                             <g:sortableColumn property="tireType" title="${message(code: 'tire.speedIndex.label', default: 'Dekktype')}" />
+                            
+                            <g:sortableColumn property="tireType" title="${message(code: 'tireOccurrence.numberOfAvailable.label', default: 'Tilgjengelig')}" />
                         
                         </tr>
                     </thead>
@@ -70,7 +72,8 @@
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "pattern")}</g:link></td>
                         
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireType")}</g:link></td>
-                        
+                            
+                            <td><g:link action="show" id="${tireInstance.id}">${numberOfAvailable[i]}</g:link></td>
                         </tr>
                     </g:each>
                     </tbody>

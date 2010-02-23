@@ -23,7 +23,6 @@
             <div class="dialog" id="tireShowDialog">
                 <table>
                     <tbody>
-                                        
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="tire.partNr.label" default="Varenummer" /></td>
                             
@@ -83,20 +82,17 @@
                             
                             <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "tireType")}</td>
                         </tr>
-                    
                     </tbody>
                 </table>
 	            <div class="buttons" id="tireEditButtons">
 	                <g:form>
 	                    <g:hiddenField name="id" value="${tireInstance?.id}" />
 	                    <span class="menuButton"><g:link controller="tireOccurrence" class="create" action="create"><g:message code="Ny dekkforekomst" args="[entityName]" /></g:link></span>
-	                    
 	                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Endre')}" /></span>
 	                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Slett')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Er du sikker?')}');" /></span>
 	                </g:form>
 	            </div>
             </div>
-            	
 	            <div id="tireOccurrenceList">
 	               <g:set var="antInStock" value="${0}"></g:set>
 	               <g:set var="antReserved" value="${0}"></g:set>
@@ -106,7 +102,7 @@
 		           	   <g:set var="antInStock" value="${antInStock + tireOccurrenceInstance.numberInStock}"></g:set>
 		               <g:set var="antReserved" value="${antReserved + tireOccurrenceInstance.numberOfReserved}"></g:set>
 		               <g:set var="antOrdered" value="${antOrdered + tireOccurrenceInstance.numberOfOrdered}"></g:set>
-		               <g:set var="antAvailable" value="${antAvailable + tireOccurrenceInstance.numberOfAvailable}"></g:set>
+		               <g:set var="antAvailable" value="${antAvailable + (tireOccurrenceInstance.numberInStock-tireOccurrenceInstance.numberOfReserved)}"></g:set>
 	               </g:each>
 	               <div id="totalTireOccurrence">
 	                    <table>
@@ -124,11 +120,9 @@
 	                    	</tr>
 	                    </table>
 	               </div>
-	            
 	                <table>
 	                    <thead>
 	                        <tr>
-	                        
 	                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.price.label', default: 'Pris')}" />
 	                        
 	                            <g:sortableColumn property="numberInStock" title="${message(code: 'tireOccurrence.numberInStock.label', default: 'Antall')}" />
@@ -143,14 +137,8 @@
 	                        </tr>
 	                    </thead>
 	                    <tbody>
-
 	                    <g:each in="${tireOccurrenceInstanceList}" status="i" var="tireOccurrenceInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-	                        <g:set var="antInStock" value="${antInStock + tireOccurrenceInstance.numberInStock}"></g:set>
-	                        <g:set var="antReserved" value="${antReserved + tireOccurrenceInstance.numberOfReserved}"></g:set>
-	                        <g:set var="antOrdered" value="${antOrdered + tireOccurrenceInstance.numberOfOrdered}"></g:set>
-	                        <g:set var="antAvailable" value="${antAvailable + tireOccurrenceInstance.numberOfAvailable}"></g:set>
-	                        
 	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "price")}</g:link></td>
 	                        
 	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberInStock")}</g:link></td>
@@ -159,7 +147,7 @@
 	                        
 	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfOrdered")}</g:link></td>
 	                        
-	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfAvailable")}</g:link></td>
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${tireOccurrenceInstance.numberInStock-tireOccurrenceInstance.numberOfReserved}</g:link></td>
 	                            
 	                        	<td><g:formatDate format="dd.MM.yyyy" date="${tireOccurrenceInstance?.registrationDate}" /></td>
 	                        </tr>
@@ -170,7 +158,6 @@
 	          		<g:paginate next="Neste" prev="Forrige" controller="tire" action="show" id="${tireInstance.id}" total="${tireOccurrenceInstanceTotalList.size()}"></g:paginate>
 	        	</div>
             </div>
-			
         </div>
     </body>
 </html>

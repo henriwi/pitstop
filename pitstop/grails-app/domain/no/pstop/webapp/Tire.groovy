@@ -1,5 +1,8 @@
 package no.pstop.webapp
-import java.util.regex.Matcher;
+import java.util.ArrayList;
+import java.util.regex.Matcher
+
+
 
 class Tire {
 	static searchable = true
@@ -56,6 +59,20 @@ class Tire {
 			tireType != "" && tireType != "Alle" ? must(term('tireType', tireType.toLowerCase())) : ""
 			brand != "" ? must(term('brand', brand.toLowerCase())) : ""
 		}.results
+	}
+	
+	static findNumberOfAvailable(List<Integer> tireIdList) {
+		String condition = createConditionList(tireIdList);
+		TireOccurrence.executeQuery("select sum(numberInStock-numberOfReserved) from TireOccurrence where tire in(" + condition + ") group by tire.id")
+	}
+	
+	private static createConditionList(List<Integer> tireIdList) {
+		String condition = ""
+		for (int i = 0; i < tireIdList.size() - 1; i++) {
+			condition += tireIdList.get(i) + ", "
+		}
+		condition += tireIdList.get(tireIdList.size()-1)
+		return condition
 	}
 	
 	String toString(){
