@@ -194,6 +194,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	void testNormalSearch() {
 		controller.params.width = 195
 		controller.params.profile = 55
+		controller.params.diameter = 15
 		controller.params.speedIndex = "L"
 		controller.params.tireType = "Sommer"
 		controller.params.brand = "Pirelli"
@@ -202,6 +203,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertEquals "Type params should be normal", "normal", controller.redirectArgs.params.type
 		assertEquals "Query params should be equal", controller.params.width, controller.redirectArgs.params.width
 		assertEquals "Query params should be equal", controller.params.profile, controller.redirectArgs.params.profile
+		assertEquals "Query params should be equal", controller.params.diameter, controller.redirectArgs.params.diameter
 		assertEquals "Query params should be equal", controller.params.speedIndex, controller.redirectArgs.params.speedIndex
 		assertEquals "Query params should be equal", controller.params.tireType, controller.redirectArgs.params.tireType
 		assertEquals "Query params should be equal", controller.params.brand, controller.redirectArgs.params.brand

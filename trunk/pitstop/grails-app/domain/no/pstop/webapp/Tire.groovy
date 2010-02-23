@@ -47,14 +47,14 @@ class Tire {
 		}.results
 	}
 
-	static normalSearch(String width, String profile, String speedIndex, String tireType, String brand){
+	static normalSearch(String width, String profile, String diameter, String speedIndex, String tireType, String brand){
 		Tire.search() {
 			width != "" ? must(term('width', width)) : ""
 			profile != "" ? must(term('profile', profile)) : ""
-//TODO Må finne en løsning for dropdownlistene og pirelli: Fungerer ikke når utfylt
-			//speedIndex != "" ? must(term('speedIndex', speedIndex)) : ""
-			//tireType != "" ? must(term('tireType', tireType)) : ""
-			brand != "" ? must(term('brand', brand)) : ""
+			diameter != "" ? must(term('diameter', diameter)) : ""
+			speedIndex != "" && speedIndex != "Alle" ? must(term('speedIndex', speedIndex.toLowerCase())) : ""
+			tireType != "" && tireType != "Alle" ? must(term('tireType', tireType.toLowerCase())) : ""
+			brand != "" ? must(term('brand', brand.toLowerCase())) : ""
 		}.results
 	}
 	
