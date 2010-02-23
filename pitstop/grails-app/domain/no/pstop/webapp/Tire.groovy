@@ -53,11 +53,13 @@ class Tire {
 
 	static normalSearch(String width, String profile, String diameter, String speedIndex, String tireType, String brand){
 		Tire.search() {
+			def typePrefix = tireType == "Sommer" ? "Sommer" : "Vinter"
+			
 			width != "" ? must(term('width', width)) : ""
 			profile != "" ? must(term('profile', profile)) : ""
 			diameter != "" ? must(term('diameter', diameter)) : ""
 			speedIndex != "" && speedIndex != "Alle" ? must(term('speedIndex', speedIndex.toLowerCase())) : ""
-			tireType != "" && tireType != "Alle" ? must(term('tireType', tireType.toLowerCase())) : ""
+			tireType != "" && tireType != "Alle" ? must(prefix('tireType', typePrefix.toLowerCase())) : ""
 			brand != "" ? must(term('brand', brand.toLowerCase())) : ""
 		}.results
 	}
