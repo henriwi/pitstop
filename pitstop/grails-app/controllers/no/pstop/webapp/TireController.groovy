@@ -28,7 +28,7 @@ class TireController {
 				tireList = Tire.search("*").results
 			}
 			else{
-				tireList = Tire.normalSearch(params.width, params.profile, params.speedIndex, params.tireType, params.brand)
+				tireList = Tire.normalSearch(params.width, params.profile, params.diameter, params.speedIndex, params.tireType, params.brand)
 			}
 			tireCount =  tireList.count()
 		}
@@ -54,11 +54,12 @@ class TireController {
 	
 	private isNormalSearchWithoutInput(){
 		if(params.width == "" &&
-		params.profile == "" &&
-		//params.speedIndex != "" &&
-		//params.tireType != "" &&
-		params.brand == "")
-			return true
+		   params.profile == "" &&
+		   params.diameter == "" &&
+		   (params.speedIndex == "" || params.speedIndex == "Alle") &&
+		   (params.tireType == "" || params.tireType == "Alle") &&
+		   params.brand == "")
+			 return true
 		else return false
 	}
 	
@@ -155,6 +156,6 @@ class TireController {
 	}
 	
 	def normalSearch = {
-		redirect(action: "list", params:[width: params.width, profile: params.profile, speedIndex: params.speedIndex, tireType: params.tireType, brand: params.brand, type: 'normal'])
+		redirect(action: "list", params:[width: params.width, profile: params.profile, diameter: params.diameter, speedIndex: params.speedIndex, tireType: params.tireType, brand: params.brand, type: 'normal'])
 	}
 }
