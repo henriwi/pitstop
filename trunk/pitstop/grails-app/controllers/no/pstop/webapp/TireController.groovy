@@ -12,6 +12,7 @@ class TireController {
 	def list = {
 		def tireList
 		def tireCount
+		def numberOfAvailable
 		if(isFastSearchQuery(params.q)) {
 			if(isSpecialFastSearchQuery(params.q)) {
 				def query = params.q =~ regexFastSearch
@@ -34,10 +35,12 @@ class TireController {
 		}
 		else {
 			tireList = Tire.list(params)
-			tireCount =  tireList.count()
+			tireCount = tireList.count()
+			
 		}
+		numberOfAvailable = Tire.findNumberOfAvailable(tireList.id)
 		params.max = Math.min(params.max ? params.int('max') : 10, 100)
-		[tireInstanceList: tireList, tireInstanceTotal: tireCount]
+		[tireInstanceList: tireList, tireInstanceTotal: tireCount, numberOfAvailable: numberOfAvailable]
 	}
 	
 	private isFastSearchQuery(String query){

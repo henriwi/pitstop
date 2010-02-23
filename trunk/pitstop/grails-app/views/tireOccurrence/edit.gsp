@@ -73,7 +73,7 @@
                                   <label for="numberOfAvailable"><g:message code="tireOccurrence.numberOfAvailable.label" default="Tilgjengelig" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'numberOfAvailable', 'errors')}">
-                                    <g:textField name="numberOfAvailable" value="${fieldValue(bean: tireOccurrenceInstance, field: 'numberOfAvailable')}" />
+                                    <g:textField name="numberOfAvailable" value="${tireOccurrenceInstance.numberInStock-tireOccurrenceInstance.numberOfReserved}" />
                                 </td>
                             </tr>
                         

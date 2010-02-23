@@ -10,7 +10,6 @@ class TireOccurrence {
 	Integer numberOfReserved = 0
 	Integer numberOfOrdered = 0
 	Date registrationDate
-	Integer numberOfAvailable = 0
 	
     static constraints = {
 		//tire(blank:false, nullable:false)

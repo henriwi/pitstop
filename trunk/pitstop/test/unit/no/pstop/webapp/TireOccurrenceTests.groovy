@@ -11,7 +11,7 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 			
 		mockForConstraintsTests TireOccurrence
 		tireOccurrence = new TireOccurrence(tire:new Tire(),price:89.89,numberInStock:4,numberOfReserved:3,
-				numberOfOrdered:8,registrationDate: new Date(), numberOfAvailable:1 )
+				numberOfOrdered:8,registrationDate: new Date())
     }
 
     protected void tearDown() {
@@ -27,7 +27,6 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 		assertEquals 3, tireOccurrence.numberOfReserved
 		assertEquals 8, tireOccurrence.numberOfOrdered
 		assertEquals "10.01.2008", tireOccurrence.registrationDate.format("dd.MM.yyyy") 
-		assertEquals 1, tireOccurrence.numberOfAvailable
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidPrice(){
