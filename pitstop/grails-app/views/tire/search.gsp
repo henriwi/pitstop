@@ -62,8 +62,15 @@
 									value="${tireInstance?.speedIndex}" noSelection="['Alle':'Alle']" valueMessagePrefix="tire.speedIndex" />
 							</td>
 							<td valign="top">
-								<g:select tabindex='7' name="tireType" from="${tireInstance.constraints.tireType.inList}"
-									value="${tireInstance?.tireType}" noSelection="['Alle':'Alle']" valueMessagePrefix="tire.tireType" /></td>
+								<g:set var="Sommer" value="${'Sommer'}"></g:set>
+								<g:set var="Vinter" value="${'Vinter'}"></g:set>
+								
+								<select tabindex='7' name="tireType">
+									<option value="Alle">Alle</option>
+									<option value="Sommer">Sommer</option>
+									<option value="Vinter">Vinter</option>
+								</select>
+							</td>
 							<td valign="top"><g:textField tabindex='8' name="brand" /></td>
 						</tr>
 			
