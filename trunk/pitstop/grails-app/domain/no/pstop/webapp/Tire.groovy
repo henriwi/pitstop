@@ -13,7 +13,7 @@ class Tire {
     static final profileIndex = 2
     static final diameterIndex = 3
     static final tireTypeIndex = 4
-
+	
 	long id
 	String partNr
 	String brand
