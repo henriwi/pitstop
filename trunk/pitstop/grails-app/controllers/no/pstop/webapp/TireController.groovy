@@ -29,7 +29,7 @@ class TireController {
 				tireList = Tire.search("*").results
 			}
 			else{
-				tireList = Tire.normalSearch(params.width, params.profile, params.diameter, params.speedIndex, params.tireType, params.brand)
+				tireList = Tire.normalSearch(params.width, params.profile, params.diameter, params.speedIndex, params.tireType, , params.brand)
 			}
 			tireCount =  tireList.count()
 		}
