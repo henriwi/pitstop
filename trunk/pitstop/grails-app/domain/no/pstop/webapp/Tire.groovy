@@ -41,8 +41,8 @@ class Tire {
 		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)"], blank:false)
 	}
 
-	static fastSearchWithPagination(Matcher query, params){
-		Tire.search([max:params.max, offset:params.offset])
+	static fastSearchWithPagination(Matcher query, Integer max, Integer offset){
+		Tire.search([max:max, offset:offset])
 		{
 			must(term('width', query[tireIndex][widthIndex]))
 			must(term('profile', query[tireIndex][profileIndex]))
@@ -61,8 +61,9 @@ class Tire {
 		}.results.size()
 	}
 
-	static normalSearchWithPagination(String width, String profile, String diameter, String speedIndex, String tireType, String brand, params){
-		Tire.search([max:params.max, offset:params.offset]) {
+	static normalSearchWithPagination(String width, String profile, String diameter, String speedIndex, 
+	String tireType, String brand, Integer max, Integer offset){
+		Tire.search([max:max, offset:offset]) {
 			def typePrefix = tireType == "Sommer" ? "Sommer" : "Vinter"
 			
 			width != "" ? must(term('width', width)) : ""
@@ -72,19 +73,6 @@ class Tire {
 			tireType != "" && tireType != "Alle" ? must(prefix('tireType', typePrefix.toLowerCase())) : ""
 			brand != "" ? must(term('brand', brand.toLowerCase())) : ""
 		}.results
-	}
-	
-	static normalSearchCount(String width, String profile, String diameter, String speedIndex, String tireType, String brand){
-		Tire.search() {
-			def typePrefix = tireType == "Sommer" ? "Sommer" : "Vinter"
-			
-			width != "" ? must(term('width', width)) : ""
-			profile != "" ? must(term('profile', profile)) : ""
-			diameter != "" ? must(term('diameter', diameter)) : ""
-			speedIndex != "" && speedIndex != "Alle" ? must(term('speedIndex', speedIndex.toLowerCase())) : ""
-			tireType != "" && tireType != "Alle" ? must(prefix('tireType', typePrefix.toLowerCase())) : ""
-			brand != "" ? must(term('brand', brand.toLowerCase())) : ""
-		}.results.size()
 	}
 	
 	static findNumberOfAvailable(List<Integer> tireIdList) {

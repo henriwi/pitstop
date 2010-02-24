@@ -12,30 +12,33 @@ class TireController {
 	
 	def list = {
 		if(!params.max)
-			params.max = maxNumberOfTires
+		params.max = maxNumberOfTires
 		if(!params.offset)
-			params.offset = 0
+		params.offset = 0
 		def tireList
 		def tireCount
 		if(isFastSearchQuery(params.q)) {
 			if(isSpecialFastSearchQuery(params.q)) {
 				def query = params.q =~ regexFastSearch
-				tireList = 	Tire.fastSearchWithPagination(query, params)
-				tireCount = Tire.fastSearchCount(query)
+				tireList = 	Tire.fastSearchWithPagination(query, params.max, params.offset)
+				tireCount = Tire.fastSearchCount(query, Tire.count(), 0).size()
 			}
 			else {
 				tireList = Tire.search("*" + params.q + "*", [max:params.max, offset:params.offset]).results
-				tireCount = Tire.search("*" + params.q + "*").results.size()
+				tireCount = Tire.search("*" + params.q + "*", [max:Tire.count()]).results.size()
 			}
 		} 
 		else if(isNormalSearchQuery(params.type)) {
 			if(isNormalSearchWithoutInput()) {
 				tireList = Tire.search("*", [max:params.max, offset:params.offset]).results
-				tireCount = Tire.search("*").results.size()
+				tireCount = Tire.search("*", [max:Tire.count()]).results.size()
 			}
 			else{
-				tireList = Tire.normalSearchWithPagination(params.width, params.profile, params.diameter, params.speedIndex, params.tireType, , params.brand, params)
-				tireCount = Tire.normalSearchCount(params.width, params.profile, params.diameter, params.speedIndex, params.tireType, , params.brand)
+				tireList = Tire.normalSearchWithPagination(params.width, params.profile, params.diameter, 
+				params.speedIndex, params.tireType, , params.brand, params.max.toInteger(), params.offset.toInteger())
+				
+				tireCount = Tire.normalSearchWithPagination(params.width, params.profile, params.diameter, 
+				params.speedIndex, params.tireType, , params.brand, Tire.count(), 0).size()
 			}
 		}
 		else {
@@ -61,12 +64,12 @@ class TireController {
 	
 	private isNormalSearchWithoutInput(){
 		if(params.width == "" &&
-		   params.profile == "" &&
-		   params.diameter == "" &&
-		   (params.speedIndex == "" || params.speedIndex == "Alle") &&
-		   (params.tireType == "" || params.tireType == "Alle") &&
-		   params.brand == "")
-			 return true
+		params.profile == "" &&
+		params.diameter == "" &&
+		(params.speedIndex == "" || params.speedIndex == "Alle") &&
+		(params.tireType == "" || params.tireType == "Alle") &&
+		params.brand == "")
+			return true
 		else return false
 	}
 	
@@ -95,9 +98,9 @@ class TireController {
 		}
 		else {
 			if(!params.max)
-				params.max = maxNumberOfTireOccurrences
+			params.max = maxNumberOfTireOccurrences
 			if(!params.offset)
-				params.offset = 0
+			params.offset = 0
 			def tireOccurrenceInstanceList = TireOccurrence.findAllByTire(Tire.get(params.id), [max:params.max, offset:params.offset, sort:"registrationDate", order:"desc"])
 			def tireOccurrenceInstanceTotalList = TireOccurrence.findAllByTire(Tire.get(params.id))
 			[tireOccurrenceInstanceList: tireOccurrenceInstanceList,tireInstance: tireInstance, tireOccurrenceInstanceTotalList: tireOccurrenceInstanceTotalList]
