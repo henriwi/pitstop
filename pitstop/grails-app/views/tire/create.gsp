@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'tire.label', default: 'dekktype')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <title>${message(code: 'create.title.label', default: 'Opprett dekktype')}</title>
         
         <script type="text/javascript">
         	/* Tillater at kun tall skrives inn */
@@ -13,10 +13,8 @@
 			    evt = (evt) ? evt : window.event
 			    var charCode = (evt.which) ? evt.which : evt.keyCode
 			    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-			        status = "Du kan kun skrive inn tall."
 			        return false
 			    }
-			    status = ""
 			    return true
 			}
 		</script>
@@ -24,11 +22,11 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}">Hjem</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Dekkliste</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">Nytt dekk</g:link></span>
-            <span class="menuButton"><g:link class="list" controller="tireOccurrence" action="list">Vis dekkforekomster</g:link></span>
-            <span class="menuButton"><g:link class="search" action="search">S&oslash;k</g:link></span>
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.button.home.label" default="Hjem" /></a></span>
+	        <span class="menuButton"><g:link class="list" action="list"><g:message code="default.button.tireList.label" default="Dekkliste" /></g:link></span>
+	        <span class="menuButton"><g:link class="create" action="create"><g:message code="default.button.newTire.label" default="Nytt dekk" /></g:link></span>
+	        <span class="menuButton"><g:link class="list" controller="tireOccurrence" action="list"><g:message code="default.button.tireOccurrenceList.label" default="Dekkforekomster" /></g:link></span>
+	        <span class="menuButton"><g:link class="search" action="search"><g:message code="default.button.search.label" default="S&oslash;k" /></g:link></span>
         </div>
         <div class="body">
             <h1><g:message code="default.create.label" args="[entityName]" /></h1>
@@ -74,7 +72,7 @@
                             
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="width"><g:message code="tire.width.label:" default="Bredde:" /></label>
+                                    <label for="width"><g:message code="tire.width.label" default="Bredde:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'width', 'errors')}">
                                     <g:textField tabindex='4' name="width" value="${fieldValue(bean: tireInstance, field: 'width')}"
@@ -113,7 +111,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="loadIndex"><g:message code="tire.loadIndex.label" default="Indeks:" /></label>
+                                    <label for="loadIndex"><g:message code="tire.index.label" default="Indeks:" /></label>
                                 </td>
                                 <td>
 	                                <span valign="top" class="value ${hasErrors(bean: tireInstance, field: 'loadIndex', 'errors')}">
@@ -148,8 +146,8 @@
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><g:submitButton tabindex='11' name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
-                    <span class="button"><g:actionSubmit tabindex='12' class="delete" action="list" value="${message(code: 'default.button.cancel.label', default: 'Cancel')}" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message', default: 'Er du sikker?')}');" /></span>
+                    <span class="button"><g:submitButton tabindex='11' name="create" class="save" value="${message(code: 'create.button.create.label', default: 'Opprett')}" /></span>
+                    <span class="button"><g:actionSubmit tabindex='12' class="cancel" action="list" value="${message(code: 'create.button.cancel.label', default: 'Avbryt')}" onclick="return confirm('${message(code: 'create.button.cancel.confirm.message', default: 'Er du sikker?')}');" /></span>
                 </div>
             </g:form>
         </div>
