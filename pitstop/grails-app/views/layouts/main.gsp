@@ -15,6 +15,7 @@
         <div id="pstopLogo" class="logo"><a href="http://www.pstop.no"><img src="${resource(dir:'images',file:'pitstopLogo.png')}" alt="pitstopLogo" border="0" /></a></div>
         <div id="mainMenu">
         <ul id="menuList">
+        <li><a href="${createLink(uri: '/')}">Hjem</a></li>
         <li><g:link controller="tire">Dekkoversikt</g:link></li>
         <%-- <li><g:link controller="tire">Test1</g:link></li>
         <li><g:link controller="tire">Test2</g:link></li>
@@ -27,10 +28,7 @@
         <div id="content">
         	<g:layoutBody />
         </div>
-         <div style="clear:both"></div>
+        	<div style="clear:both"></div>
         </div>
-       
-        
-        
     </body>
 </html>
