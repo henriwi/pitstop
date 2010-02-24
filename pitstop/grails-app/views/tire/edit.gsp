@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'tire.label', default: 'dekk')}" />
-        <title><g:message code="default.edit.label" args="[entityName]" /></title>
+        <title><g:message code="edit.title.label" default="Endre dekk" /></title>
         
         <script type="text/javascript">
         	/* Tillater at kun tall skrives inn */
@@ -13,10 +13,8 @@
 			    evt = (evt) ? evt : window.event
 			    var charCode = (evt.which) ? evt.which : evt.keyCode
 			    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-			        status = "Du kan kun skrive inn tall."
 			        return false
 			    }
-			    status = ""
 			    return true
 			}
 		</script>
