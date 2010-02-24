@@ -21,7 +21,7 @@ class TireController {
 			if(isSpecialFastSearchQuery(params.q)) {
 				def query = params.q =~ regexFastSearch
 				tireList = 	Tire.fastSearchWithPagination(query, params.max, params.offset)
-				tireCount = Tire.fastSearchCount(query, Tire.count(), 0).size()
+				tireCount = Tire.fastSearchWithPagination(query, Tire.count(), 0).size()
 			}
 			else {
 				tireList = Tire.search("*" + params.q + "*", [max:params.max, offset:params.offset]).results
