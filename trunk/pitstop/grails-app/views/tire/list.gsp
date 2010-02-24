@@ -24,29 +24,27 @@
                 <table>
                     <thead>
                         <tr>
-                            
-                            <g:sortableColumn property="partNr" title="${message(code: 'tire.partNr.label', default: 'Varenummer')}" />
+                            <g:sortableColumn property="partNr" title="${message(code: 'tire.partNr.table.label', default: 'Varenummer')}" />
                         
-                            <g:sortableColumn property="brand" title="${message(code: 'tire.brand.label', default: 'Merke')}" />
+                            <g:sortableColumn property="brand" title="${message(code: 'tire.brand.table.label', default: 'Merke')}" />
 
-                            <g:sortableColumn property="tireName" title="${message(code: 'tire.tireName.label', default: 'Dekknavn')}" />
+                            <g:sortableColumn property="tireName" title="${message(code: 'tire.tireName.table.label', default: 'Dekknavn')}" />
 
-                            <g:sortableColumn property="width" title="${message(code: 'tire.width.label', default: 'Bredde')}" />
+                            <g:sortableColumn property="width" title="${message(code: 'tire.width.table.label', default: 'Bredde')}" />
                         
-                            <g:sortableColumn property="profile" title="${message(code: 'tire.profile.label', default: 'Profil')}" />
+                            <g:sortableColumn property="profile" title="${message(code: 'tire.profile.table.label', default: 'Profil')}" />
                         
-                            <g:sortableColumn property="construction" title="${message(code: 'tire.construction.label', default: 'Konstruksjon')}" />
+                            <g:sortableColumn property="construction" title="${message(code: 'tire.construction.table.label', default: 'Konstruksjon')}" />
                         
-                            <g:sortableColumn property="diameter" title="${message(code: 'tire.diameter.label', default: 'Felgdiameter')}" />
+                            <g:sortableColumn property="diameter" title="${message(code: 'tire.diameter.table.label', default: 'Felgdiameter')}" />
                             
-                            <g:sortableColumn property="index" title="${message(code: 'tire.index.label', default: 'Indeks')}" />
+                            <g:sortableColumn property="index" title="${message(code: 'tire.index.table.label', default: 'Indeks')}" />
                             
-                            <g:sortableColumn property="pattern" title="${message(code: 'tire.loadIndex.label', default: 'M&oslash;nster')}" />
+                            <g:sortableColumn property="pattern" title="${message(code: 'tire.pattern.table.label', default: 'Mønster')}" />
                             
-                            <g:sortableColumn property="tireType" title="${message(code: 'tire.speedIndex.label', default: 'Dekktype')}" />
+                            <g:sortableColumn property="tireType" title="${message(code: 'tire.tireType.table.label', default: 'Dekktype')}" />
                             
-                            <g:sortableColumn property="tireType" title="${message(code: 'tireOccurrence.numberOfAvailable.label', default: 'Tilgjengelig')}" />
-                        
+                            <g:sortableColumn property="tireType" title="${message(code: 'tireOccurrence.numberOfAvailable.table.label', default: 'Tilgjengelig')}" />
                         </tr>
                     </thead>
                     <tbody>
