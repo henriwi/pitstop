@@ -80,7 +80,7 @@
 	                    <g:hiddenField name="id" value="${tireInstance?.id}" />
 	                    <span class="menuButton"><g:link controller="tireOccurrence" class="create" action="create"><g:message code="show.button.newTireOccurrence.label" /></g:link></span>
 	                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'show.button.edit.label')}" /></span>
-	                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'show.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" /></span>
+	                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'show.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" /></span>
 	                </g:form>
 	            </div>
             </div>
