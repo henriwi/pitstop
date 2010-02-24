@@ -38,7 +38,7 @@
                         
                             <g:sortableColumn property="diameter" title="${message(code: 'tire.diameter.table.label', default: 'Felgdiameter')}" />
                             
-                            <g:sortableColumn property="index" title="${message(code: 'tire.index.table.label', default: 'Indeks')}" />
+                            <g:sortableColumn property="loadIndex" title="${message(code: 'tire.index.table.label', default: 'Indeks')}" />
                             
                             <g:sortableColumn property="pattern" title="${message(code: 'tire.pattern.table.label', default: 'Mønster')}" />
                             
@@ -48,7 +48,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <g:set var="numberOfAvailableIndex" value="${0}"></g:set>
+                    <g:set var="numberOfAvailableArrayIndex" value="${0}"></g:set>
+                    <g:set var="tireIdIndex" value="${0}"></g:set>
+                    <g:set var="numberOfAvailableIndex" value="${1}"></g:set>
                     <g:each in="${tireInstanceList}" status="i" var="tireInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
@@ -71,13 +73,17 @@
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "pattern")}</g:link></td>
                         
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireType")}</g:link></td>
-             				<g:if test="${numberOfAvailable[numberOfAvailableIndex][0] == tireInstance.id}">
-                            	<td><g:link action="show" id="${tireInstance.id}">${numberOfAvailable[numberOfAvailableIndex][1]}</g:link></td>
-                            	<g:set var="numberOfAvailableIndex" value="${numberOfAvailableIndex + 1}"></g:set>
+                            
+                            <g:if test="${numberOfAvailable[numberOfAvailableArrayIndex][tireIdIndex] == tireInstance.id}">
+                            	<td><g:link action="show" id="${tireInstance.id}">${numberOfAvailable[numberOfAvailableArrayIndex][numberOfAvailableIndex]}</g:link></td>
+                            	<g:if test="${numberOfAvailableArrayIndex < numberOfAvailable.size() - 1}">
+                            		<g:set var="numberOfAvailableArrayIndex" value="${numberOfAvailableArrayIndex + 1}"></g:set>
+                            	</g:if>
                             </g:if>
                             <g:else>
                             	<td><g:link action="show" id="${tireInstance.id}">${0}</g:link></td>
                             </g:else>
+      
                         </tr>
                     </g:each>
                     </tbody>
@@ -85,7 +91,7 @@
             </div>
             <div class="paginateButtons">
              	<g:paginate next="Neste" prev="Forrige" controller="tire"
-            	action="list" total="${tireInstanceTotal}"></g:paginate>
+            	action="list" params="${params}" total="${tireInstanceTotal}"></g:paginate>
             </div>
         </div>
     </body>

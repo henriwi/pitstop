@@ -2,7 +2,8 @@ package no.pstop.webapp
 
 class TireController {
 	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
-	static final numberOfTireOccurrences = 7
+	static final maxNumberOfTireOccurrences = 10
+	static final maxNumberOfTires = 10
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
 	def index = {
@@ -10,31 +11,40 @@ class TireController {
 	}
 	
 	def list = {
+		if(!params.max)
+			params.max = maxNumberOfTires
+		if(!params.offset)
+			params.offset = 0
 		def tireList
 		def tireCount
 		if(isFastSearchQuery(params.q)) {
 			if(isSpecialFastSearchQuery(params.q)) {
 				def query = params.q =~ regexFastSearch
-				tireList = 	Tire.fastSearch(query)
+				tireList = 	Tire.fastSearchWithPagination(query, params)
+				tireCount = Tire.fastSearchCount(query)
 			}
 			else {
-				tireList = Tire.search("*" + params.q + "*").results
+				tireList = Tire.search("*" + params.q + "*", [max:params.max, offset:params.offset]).results
+				tireCount = Tire.search("*" + params.q + "*").results.size()
 			}
 		} 
 		else if(isNormalSearchQuery(params.type)) {
 			if(isNormalSearchWithoutInput()) {
-				tireList = Tire.search("*").results
+				tireList = Tire.search("*", [max:params.max, offset:params.offset]).results
+				tireCount = Tire.search("*").results.size()
 			}
 			else{
-				tireList = Tire.normalSearch(params.width, params.profile, params.diameter, params.speedIndex, params.tireType, , params.brand)
+				tireList = Tire.normalSearchWithPagination(params.width, params.profile, params.diameter, params.speedIndex, params.tireType, , params.brand, params)
+				tireCount = Tire.normalSearchCount(params.width, params.profile, params.diameter, params.speedIndex, params.tireType, , params.brand)
 			}
 		}
 		else {
-			params.max = Math.min(params.max ? params.int('max') : 12, 100)
+			params.max = Math.min(params.max ? params.int('max') : maxNumberOfTires, 100)
 			tireList = Tire.list(params)
+			tireCount = Tire.count()
 		}
 		def numberOfAvailable = Tire.findNumberOfAvailable(tireList.id)
-		[tireInstanceList: tireList, tireInstanceTotal: Tire.count(), numberOfAvailable: numberOfAvailable]
+		[tireInstanceList: tireList, tireInstanceTotal: tireCount, numberOfAvailable: numberOfAvailable]
 	}
 	
 	private isFastSearchQuery(String query){
@@ -85,7 +95,7 @@ class TireController {
 		}
 		else {
 			if(!params.max)
-				params.max = numberOfTireOccurrences
+				params.max = maxNumberOfTireOccurrences
 			if(!params.offset)
 				params.offset = 0
 			def tireOccurrenceInstanceList = TireOccurrence.findAllByTire(Tire.get(params.id), [max:params.max, offset:params.offset, sort:"registrationDate", order:"desc"])
