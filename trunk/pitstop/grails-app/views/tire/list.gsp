@@ -4,8 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'tire.label', default: 'dekktype')}" />
-        <title>Dekktyper</title>
+        <title>${message(code: 'tireList.title.label')}</title>
     </head>
     <body>
         <div class="nav">
@@ -24,36 +23,36 @@
                 <table>
                     <thead>
                         <tr>
-                            <g:sortableColumn property="partNr" title="${message(code: 'tire.partNr.table.label', default: 'Varenummer')}" />
+                            <g:sortableColumn property="partNr" title="${message(code: 'tire.partNr.table.label')}" />
                         
-                            <g:sortableColumn property="brand" title="${message(code: 'tire.brand.table.label', default: 'Merke')}" />
+                            <g:sortableColumn property="brand" title="${message(code: 'tire.brand.table.label')}" />
 
-                            <g:sortableColumn property="tireName" title="${message(code: 'tire.tireName.table.label', default: 'Dekknavn')}" />
+                            <g:sortableColumn property="tireName" title="${message(code: 'tire.tireName.table.label')}" />
 
-                            <g:sortableColumn property="width" title="${message(code: 'tire.width.table.label', default: 'Bredde')}" />
+                            <g:sortableColumn property="width" title="${message(code: 'tire.width.table.label')}" />
                         
-                            <g:sortableColumn property="profile" title="${message(code: 'tire.profile.table.label', default: 'Profil')}" />
+                            <g:sortableColumn property="profile" title="${message(code: 'tire.profile.table.label')}" />
                         
-                            <g:sortableColumn property="construction" title="${message(code: 'tire.construction.table.label', default: 'Konstruksjon')}" />
+                            <g:sortableColumn property="construction" title="${message(code: 'tire.construction.table.label')}" />
                         
-                            <g:sortableColumn property="diameter" title="${message(code: 'tire.diameter.table.label', default: 'Felgdiameter')}" />
+                            <g:sortableColumn property="diameter" title="${message(code: 'tire.diameter.table.label')}" />
                             
-                            <g:sortableColumn property="loadIndex" title="${message(code: 'tire.index.table.label', default: 'Indeks')}" />
+                            <g:sortableColumn property="loadIndex" title="${message(code: 'tire.index.table.label')}" />
                             
-                            <g:sortableColumn property="pattern" title="${message(code: 'tire.pattern.table.label', default: 'Mønster')}" />
+                            <g:sortableColumn property="pattern" title="${message(code: 'tire.pattern.table.label')}" />
                             
-                            <g:sortableColumn property="tireType" title="${message(code: 'tire.tireType.table.label', default: 'Dekktype')}" />
+                            <g:sortableColumn property="tireType" title="${message(code: 'tire.tireType.table.label')}" />
                             
-                            <g:sortableColumn property="tireType" title="${message(code: 'tireOccurrence.numberOfAvailable.table.label', default: 'Tilgjengelig')}" />
+                            <g:sortableColumn property="tireType" title="${message(code: 'tireOccurrence.numberOfAvailable.table.label')}" />
                         </tr>
                     </thead>
                     <tbody>
-                    <g:set var="numberOfAvailableArrayIndex" value="${0}"></g:set>
-                    <g:set var="tireIdIndex" value="${0}"></g:set>
-                    <g:set var="numberOfAvailableIndex" value="${1}"></g:set>
-                    <g:each in="${tireInstanceList}" status="i" var="tireInstance">
+	                    <g:set var="numberOfAvailableArrayIndex" value="${0}"></g:set>
+	                    <g:set var="tireIdIndex" value="${0}"></g:set>
+	                    <g:set var="numberOfAvailableIndex" value="${1}"></g:set>
+	                    <g:each in="${tireInstanceList}" status="i" var="tireInstance">
+                    
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "partNr")}</g:link></td>
                         
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "brand")}</g:link></td>
@@ -90,8 +89,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-             	<g:paginate next="Neste" prev="Forrige" controller="tire"
-            	action="list" params="${params}" total="${tireInstanceTotal}"></g:paginate>
+             	<g:paginate next="Neste" prev="Forrige" controller="tire" action="list" params="${params}" total="${tireInstanceTotal}"></g:paginate>
             </div>
         </div>
     </body>
