@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'tire.label', default: 'dekk')}" />
-        <title><g:message code="edit.title.label" default="Endre dekk" /></title>
+        <title><g:message code="editTire.title.label" default="Endre dekk" /></title>
         
         <script type="text/javascript">
         	/* Tillater at kun tall skrives inn */
@@ -30,7 +30,7 @@
         </div>
         
         <div class="body">
-            <h1><g:message code="edit.title.label" default="Endre dekk" /></h1>
+            <h1><g:message code="editTire.title.label" default="Endre dekk" /></h1>
             
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>

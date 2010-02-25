@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <title><g:message code="show.title.label"/></title>
+        <title><g:message code="showTire.title.label"/></title>
     </head>
     <body>
         <div class="nav">
@@ -15,7 +15,7 @@
 		    <span class="menuButton"><g:link controller = "tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link></span>
         </div>
         <div class="body">
-            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <h1><g:message code="showTire.title.label" /></h1>
             
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
@@ -78,9 +78,9 @@
 	            <div class="buttons" id="tireEditButtons">
 	                <g:form>
 	                    <g:hiddenField name="id" value="${tireInstance?.id}" />
-	                    <span class="menuButton"><g:link controller="tireOccurrence" class="create" action="create"><g:message code="show.button.newTireOccurrence.label" /></g:link></span>
-	                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'show.button.edit.label')}" /></span>
-	                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'show.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" /></span>
+	                    <span class="menuButton"><g:link controller="tireOccurrence" class="create" action="create"><g:message code="tire.button.newTireOccurrence.label" /></g:link></span>
+	                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'tire.button.edit.label')}" /></span>
+	                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'tire.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" /></span>
 	                </g:form>
 	            </div>
             </div>
