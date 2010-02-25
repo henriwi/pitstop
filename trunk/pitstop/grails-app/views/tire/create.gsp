@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <title>${message(code: 'create.title.label')}</title>
+        <title>${message(code: 'createTire.title.label')}</title>
         
         <script type="text/javascript">
         	/* Tillater at kun tall skrives inn */
@@ -28,7 +28,7 @@
 		    <span class="menuButton"><g:link controller = "tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link></span>
         </div>
         <div class="body">
-            <h1><g:message code="create.title.label"/></h1>
+            <h1><g:message code="createTire.title.label"/></h1>
             
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
@@ -105,8 +105,8 @@
                 </div>
                 
                 <div class="buttons">
-                    <span class="button"><g:submitButton tabindex='11' name="create" class="save" value="${message(code: 'create.button.create.label')}" /></span>
-                    <span class="button"><g:actionSubmit tabindex='12' class="cancel" action="list" value="${message(code: 'create.button.cancel.label')}" onclick="return confirm('${message(code: 'create.button.cancel.confirm.message')}');" /></span>
+                    <span class="button"><g:submitButton tabindex='11' name="create" class="save" value="${message(code: 'createTire.button.create.label')}" /></span>
+                    <span class="button"><g:actionSubmit tabindex='12' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
                 </div>
             </g:form>
         </div>
