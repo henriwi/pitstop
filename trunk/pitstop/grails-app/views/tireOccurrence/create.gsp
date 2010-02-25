@@ -4,8 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'tireOccurrence.label', default: 'dekkforekomst')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <title><g:message code="createTireOccurrence.title.label" /></title>
     </head>
     <body>
         <div class="nav">
@@ -16,7 +15,7 @@
 		    <span class="menuButton"><g:link controller = "tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link></span>       
         </div>
         <div class="body">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+            <h1><g:message code="createTireOccurrence.title.label" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -32,7 +31,7 @@
                         
                            <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="tire"><g:message code="tireOccurrence.tire.label" default="Dekktype" /></label>
+                                    <label for="tire"><g:message code="tireOccurrence.tire.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'tire', 'errors')}">
                                     <g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${tireOccurrenceInstance?.tire?.id}"  />
@@ -40,7 +39,7 @@
                             </tr>
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="numberInStock"><g:message code="tireOccurrence.numberInStock.label" default="Antall" /></label>
+                                    <label for="numberInStock"><g:message code="tireOccurrence.numberInStock.label"/></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'numberInStock', 'errors')}">
                                     <g:textField name="numberInStock" value="${fieldValue(bean: tireOccurrenceInstance, field: 'numberInStock')}" />
@@ -48,7 +47,7 @@
                             </tr>
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="price"><g:message code="tireOccurrence.price.label" default="Innkj&oslash;pspris" /></label>
+                                    <label for="price"><g:message code="tireOccurrence.price.label"/></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'price', 'errors')}">
                                     <g:textField name="price" value="${fieldValue(bean: tireOccurrenceInstance, field: 'price')}" />
@@ -56,18 +55,17 @@
                             </tr>                                            
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="registrationDate"><g:message code="tireOccurrence.registrationDate.label" default="Ankomstdato" /></label>
+                                    <label for="registrationDate"><g:message code="tireOccurrence.registrationDate.label"/></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'registrationDate', 'errors')}">
-<!-- TODO finne årstall automatisk eller å finne en ny datechooser -->
-                                    <g:datePicker name="registrationDate" precision="day" years="${2010..2030}" value="${tireOccurrenceInstance?.registrationDate}" />
+									<g:datePicker name="registrationDate" precision="day" years="${2010..2030}" value="${tireOccurrenceInstance?.registrationDate}" />
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
+					<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label')}" /></span>
                 </div>
             </g:form>
         </div>
