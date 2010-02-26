@@ -13,19 +13,22 @@ class TireController {
 	def list = {
 		if(!params.max)
 		params.max = maxNumberOfTires
+		
 		if(!params.offset)
 		params.offset = 0
+		
 		def tireList
 		def tireCount
+		
 		if(isFastSearchQuery(params.q)) {
 			if(isSpecialFastSearchQuery(params.q)) {
 				def query = params.q =~ regexFastSearch
-				tireList = 	Tire.fastSearchWithPagination(query, params.max, params.offset)
-				tireCount = Tire.fastSearchWithPagination(query, Tire.count(), 0).size()
+				tireList = 	Tire.fastSearch(query, params.max, params.offset)
+				tireCount = Tire.fastSearch(query, Tire.count(), 0).size()
 			}
 			else {
 				tireList = Tire.search("*" + params.q + "*", [max:params.max, offset:params.offset]).results
-				tireCount = Tire.search("*" + params.q + "*", [max:Tire.count()]).results.size()
+				tireCount = Tire.search("*" + params.q + "*", [max:Tire.count(), offset:params.offset]).results.size()
 			}
 		} 
 		else if(isNormalSearchQuery(params.type)) {
@@ -34,10 +37,10 @@ class TireController {
 				tireCount = Tire.search("*", [max:Tire.count()]).results.size()
 			}
 			else{
-				tireList = Tire.normalSearchWithPagination(params.width, params.profile, params.diameter, 
+				tireList = Tire.normalSearch(params.width, params.profile, params.diameter, 
 				params.speedIndex, params.tireType, , params.brand, params.max.toInteger(), params.offset.toInteger())
 				
-				tireCount = Tire.normalSearchWithPagination(params.width, params.profile, params.diameter, 
+				tireCount = Tire.normalSearch(params.width, params.profile, params.diameter, 
 				params.speedIndex, params.tireType, , params.brand, Tire.count(), 0).size()
 			}
 		}
@@ -46,8 +49,7 @@ class TireController {
 			tireList = Tire.list(params)
 			tireCount = Tire.count()
 		}
-		def numberOfAvailable = Tire.findNumberOfAvailable(tireList.id)
-		[tireInstanceList: tireList, tireInstanceTotal: tireCount, numberOfAvailable: numberOfAvailable]
+		[tireInstanceList: tireList, tireInstanceTotal: tireCount]
 	}
 	
 	private isFastSearchQuery(String query){
