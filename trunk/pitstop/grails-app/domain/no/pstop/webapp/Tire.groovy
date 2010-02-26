@@ -41,7 +41,7 @@ class Tire {
 		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)"], blank:false)
 	}
 
-	static fastSearchWithPagination(Matcher query, Integer max, Integer offset){
+	static fastSearch(Matcher query, Integer max, Integer offset){
 		Tire.search([max:max, offset:offset])
 		{
 			must(term('width', query[tireIndex][widthIndex]))
@@ -51,17 +51,7 @@ class Tire {
 		}.results
 	}
 
-	static fastSearchCount(Matcher query){
-		Tire.search()
-		{
-			must(term('width', query[tireIndex][widthIndex]))
-			must(term('profile', query[tireIndex][profileIndex]))
-			must(wildcard('diameter', "*" + query[tireIndex][diameterIndex]))
-			must(prefix('tireType', query[tireIndex][tireTypeIndex].toString().toLowerCase()))
-		}.results.size()
-	}
-
-	static normalSearchWithPagination(String width, String profile, String diameter, String speedIndex, 
+	static normalSearch(String width, String profile, String diameter, String speedIndex, 
 	String tireType, String brand, Integer max, Integer offset){
 		Tire.search([max:max, offset:offset]) {
 			def typePrefix = tireType == "Sommer" ? "Sommer" : "Vinter"
@@ -73,24 +63,6 @@ class Tire {
 			tireType != "" && tireType != "Alle" ? must(prefix('tireType', typePrefix.toLowerCase())) : ""
 			brand != "" ? must(term('brand', brand.toLowerCase())) : ""
 		}.results
-	}
-	
-	static findNumberOfAvailable(List<Integer> tireIdList) {
-		if(!tireIdList.isEmpty()) {
-			String condition = createConditionList(tireIdList);
-			TireOccurrence.executeQuery("select tire.id, sum(numberInStock-numberOfReserved) from TireOccurrence where tire in(" + condition + ") group by tire.id")
-		}
-		else
-			return 0
-	}
-	
-	private static createConditionList(List<Integer> tireIdList) {
-		String condition = ""
-		for (int i = 0; i < tireIdList.size() - 1; i++) {
-			condition += tireIdList.get(i) + ", "
-		}
-		condition += tireIdList.get(tireIdList.size()-1)
-		return condition
 	}
 	
 	String toString(){

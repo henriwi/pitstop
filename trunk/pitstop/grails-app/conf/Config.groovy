@@ -45,8 +45,7 @@ grails.spring.bean.packages = []
 // set per-environment serverURL stem for creating absolute links
 environments {
     production {
-        grails.serverURL = "http://www.changeme.com"
-		log4j.appender.'errors.File'="/var/log/pitstop/stacktrace.log"
+        grails.serverURL = "http://pitstop.iu.hio.no/${appName}"
     }
     development {
         grails.serverURL = "http://localhost:8080/${appName}"
@@ -63,8 +62,8 @@ log4j = {
     // appender:
     //
 	appenders {
-		rollingFile name:"pitstop", maxFileSize:1024, fileName:"/tmp/logs/pitstop.log"
 		console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+		rollingFile name:"pitstop", maxFileSize:1024, fileName:"/tmp/logs/pitstop.log"
 	}
 
 
