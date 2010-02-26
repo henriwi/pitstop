@@ -34,7 +34,7 @@
                                     <label for="tire"><g:message code="tireOccurrence.tire.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'tire', 'errors')}">
-                                    <g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${tireOccurrenceInstance?.tire?.id}"  />
+                                    <g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${params.id}"  />
                                 </td>
                             </tr>
                             <tr class="prop">
