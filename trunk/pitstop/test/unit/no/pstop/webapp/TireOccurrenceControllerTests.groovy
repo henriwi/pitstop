@@ -11,18 +11,22 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 		tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
 				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli",tireName:"T-Zero")
 		mockDomain TireOccurrence
-		tireOccurrence = new TireOccurrence(id:1,tire:tire,price:60.5,numberInStock:1,registrationDate:new Date())
+		tireOccurrence = new TireOccurrence(id:1,tire:tire,price:60.5,numberInStock:1,registrationDate:new Date(),
+		discount:20,environmentalFee:10)
 	}
 	
 	protected void tearDown() {
 		super.tearDown();
 	}
 	
-	private setParams(Tire tire, Double price, Integer numberInStock, Date registrationDate) {
+	private setParams(Tire tire, Double price, Integer numberInStock, Date registrationDate, Integer discount, 
+	Integer environmentalFee) {
 		controller.params.tire = tire
 		controller.params.price = price
 		controller.params.numberInStock = numberInStock
 		controller.params.registrationDate = registrationDate
+		controller.params.discount = discount
+		controller.params.environmentalFee = environmentalFee
 	}
 	
 	void testIndex() {
@@ -36,8 +40,10 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithValidTireOccurrence() {
-		setParams(tire, 60.5, 4, new Date())
-		controller.metaClass.message = {args -> println "message: ${args}"} 
+		setParams(tire, 60.5, 1, new Date(), 20, 10)
+		controller.metaClass.message = {args -> println "message: ${args}"}
+		def mock = mockFor(TireOccurrence)
+		mock.demand.merge() {tireOccurrence}
 		controller.save()
 		
 		assertEquals "redirect action", "show", controller.redirectArgs.action
@@ -45,8 +51,11 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithInvalidTireOccurrence() {
-		setParams(tire, -10, 0, new Date())
-		controller.metaClass.message = {args -> println "message: ${args}"} 
+		setParams(tire, -10, 1, new Date(), 20, 10)
+		controller.metaClass.message = {args -> println "message: ${args}"}
+		def mock = mockFor(TireOccurrence)
+		tireOccurrence.price = -10
+		mock.demand.merge() {tireOccurrence}
 		controller.save()
 		
 		assertEquals "redirect action", "create", controller.modelAndView.viewName

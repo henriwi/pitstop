@@ -26,11 +26,12 @@ class Tire {
 	String speedIndex
 	String pattern
 	String tireType
+	String notice
 	
 	static constraints = {
-		partNr(matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,40}", blank:false, unique:true)
-		brand(blank:false, matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å||\\-|\\_]{0,30}")
-		tireName(matches:"[a-zA-Z0-9|æ|ø|å|Æ|Ø|Å|\\s|\\-|\\_]{0,30}")
+		partNr(matches:"[a-zA-Z0-9æøåÆØÅ\\-\\_]{0,40}", blank:false, unique:true)
+		brand(blank:false, matches:"[a-zA-Z0-9æøåÆØÅ\\s\\-\\_]{0,30}")
+		tireName(matches:"[a-zA-Z0-9æøåÆØÅ\\s\\-\\_]{0,30}")
 		width(min:100, max:350)
 		profile(min:20, max:85)
 		construction(inList:["R"], blank:false)
@@ -38,7 +39,7 @@ class Tire {
 		loadIndex(min:1, max:240)
 		speedIndex(inList:["L","M","N","P","PR","Q","R","S","T","U","H","V","W","Y","Z","ZR"], blank:false)
 		pattern(matches:"[a-zA-Z0-9\\s|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,30}")
-		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)"], blank:false)
+		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)", "Vinter(pigg - upigget)", "M+S(helårsdekk)"], blank:false)
 	}
 
 	static fastSearch(Matcher query, Integer max, Integer offset){

@@ -10,6 +10,9 @@ class TireOccurrence {
 	Integer numberOfReserved = 0
 	Integer numberOfOrdered = 0
 	Date registrationDate
+	Integer discount
+	Integer environmentalFee
+	static final tax = 1.25
 	
     static constraints = {
 		//tire(blank:false, nullable:false)
@@ -18,5 +21,15 @@ class TireOccurrence {
 		numberOfReserved(min:0)
 		numberOfOrdered(min:0)
 		registrationDate(blank:false, nullable:false) //, min:new Date()-1)
+		discount(min:0, max:100)
+		environmentalFee(min:0)
+	}
+	
+	Integer numberOfAvailable() {
+		numberInStock - numberOfReserved
+	}
+	
+	Double sum(){
+		(price * ((100 - discount)/100) + environmentalFee) * tax
 	}
 }

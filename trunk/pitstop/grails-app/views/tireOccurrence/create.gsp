@@ -52,7 +52,23 @@
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'price', 'errors')}">
                                     <g:textField name="price" value="${fieldValue(bean: tireOccurrenceInstance, field: 'price')}" />
                                 </td>
-                            </tr>                                            
+                            </tr>       
+                           	<tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="discount"><g:message code="tireOccurrence.discount.label"/></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'discount', 'errors')}">
+                                    <g:textField name="discount" value="${fieldValue(bean: tireOccurrenceInstance, field: 'discount')}" />
+                                </td>
+                            </tr>    
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="environmentalFee"><g:message code="tireOccurrence.environmentalFee.label"/></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'environmentalFee', 'errors')}">
+                                    <g:textField name="environmentalFee" value="${fieldValue(bean: tireOccurrenceInstance, field: 'environmentalFee')}" />
+                                </td>
+                            </tr>                                        
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="registrationDate"><g:message code="tireOccurrence.registrationDate.label"/></label>
