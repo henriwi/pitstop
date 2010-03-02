@@ -1,7 +1,6 @@
 package no.pstop.webapp
 
-import junit.framework.Assert;
-
+import junit.framework.Assert
 import grails.test.*
 
 class TireTests extends GrailsUnitTestCase {
