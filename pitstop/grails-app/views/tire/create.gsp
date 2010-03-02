@@ -100,6 +100,11 @@
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'tireType', 'errors')}">
                                     <g:select tabindex='10' name="tireType" from="${tireInstance.constraints.tireType.inList}" value="${tireInstance?.tireType}" valueMessagePrefix="tire.tireType" /></td>
                             </tr>
+                            <tr class="prop">
+                                <td valign="top" class="name"><label for="notice"><g:message code="tire.notice.label" /></label></td>
+                                <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'notice', 'errors')}">
+                                    <g:textArea name="notice" rows="5" cols="10"/></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -37,7 +37,25 @@
                                   <label for="price"><g:message code="tireOccurrence.price.label" default="Pris:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'price', 'errors')}">
-                                    <g:textField name="price" value="${fieldValue(bean: tireOccurrenceInstance, field: 'price')}" />
+                                    <g:textField name="price" value="${tireOccurrenceInstance.price}" />
+                                </td>
+                            </tr>
+                            
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="discount"><g:message code="tireOccurrence.discount.label" default="Rabatt:" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'rabatt', 'errors')}">
+                                    <g:textField name="discount" value="${tireOccurrenceInstance.discount}" />
+                                </td>
+                            </tr>
+                            
+                           	<tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="environmentalFee"><g:message code="tireOccurrence.environmentalFee.label" default="Milj&oslash;avgift:" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'environmentalFee', 'errors')}">
+                                    <g:textField name="environmentalFee" value="${tireOccurrenceInstance.environmentalFee}" />
                                 </td>
                             </tr>
                         

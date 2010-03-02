@@ -23,7 +23,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	private setParams(Integer width, Integer profile, String construction, Integer diameter, String partNr, Integer loadIndex,
-	String speedIndex, String pattern, String tireType, String brand, String tireName) {
+	String speedIndex, String pattern, String tireType, String brand, String tireName, String notice) {
 		controller.params.width = width
 		controller.params.profile = profile
 		controller.params.construction = construction
@@ -35,6 +35,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.params.tireType = tireType
 		controller.params.brand = brand
 		controller.params.tireName = tireName
+		controller.params.notice = notice
 	}
 	
 	void testIndex() {
@@ -73,17 +74,17 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithValidTire() {
-		setParams(190, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero")
+		setParams(190, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero", "Demodekk")
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.save()
-		
+
 		assertEquals "redirect action", "show", controller.redirectArgs.action
 		assertEquals "redirect id", 1, controller.redirectArgs.id
 	}
 	
 	
 	void testSaveWithInvalidWidth() {
-		setParams(-100, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero")
+		setParams(-100, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero", "Demodekk")
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.save()
 		
@@ -133,7 +134,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	
 	void testUpdateWithValidId() {
 		Tire expectedTire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli",tireName:"T-Zero")
+		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli",tireName:"T-Zero", notice:"Demodekk")
 		mockDomain Tire, [expectedTire]
 		
 		expectedTire.metaClass.save = {-> return true }

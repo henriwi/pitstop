@@ -72,7 +72,7 @@
                             
                             <g:set var="numberOfAvailable" value="${0}"></g:set>
                             <g:each in="${tireInstance.tireOccurrences}" status="j" var="tireOccurrence">
-                             	<g:set var="numberOfAvailable" value="${numberOfAvailable + (tireOccurrence.numberInStock - tireOccurrence.numberOfReserved)}"></g:set>
+                             	<g:set var="numberOfAvailable" value="${numberOfAvailable + (tireOccurrence.numberOfAvailable())}"></g:set>
                             </g:each>
                             
                             <td><g:link action="show" id="${tireInstance.id}">${numberOfAvailable}</g:link></td>
