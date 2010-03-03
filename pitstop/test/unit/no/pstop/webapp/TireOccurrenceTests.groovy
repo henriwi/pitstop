@@ -5,6 +5,7 @@ import grails.test.*
 
 class TireOccurrenceTests extends GrailsUnitTestCase {
 	def tireOccurrence
+	def dateFormat
 	
     protected void setUp() {
         super.setUp()
@@ -12,6 +13,7 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 		mockForConstraintsTests TireOccurrence
 		tireOccurrence = new TireOccurrence(tire:new Tire(),price:89.89,numberInStock:4,numberOfReserved:3,
 				numberOfOrdered:8,discount:20,environmentalFee:10,registrationDate: new Date())
+		dateFormat = new SimpleDateFormat("dd.MM.yyyy")
     }
 
     protected void tearDown() {
@@ -19,8 +21,7 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
     }
 	
 	void testGenerateTireOccurrence() {
-		def df = new SimpleDateFormat("dd.MM.yyyy")
-		tireOccurrence.registrationDate = df.parse("10.01.2008")
+		tireOccurrence.registrationDate = dateFormat.parse("10.01.2008")
 		
 		assertEquals 89.89, tireOccurrence.price
 		assertEquals 4, tireOccurrence.numberInStock
@@ -70,6 +71,14 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 		//def badField = tireOccurrence.errors.getFieldError("tire")
 		//assertNotNull "Jeg forventer å finne en feil i feltet tire", badField
 	}
+	
+//	void testGenerateTireOccurrenceWithEmptyDate(){
+//		tireOccurrence.registrationDate = null
+//		
+//		assertFalse "Test feilet, forventet tom registrationDate", tireOccurrence.validate()
+//		def badField = tireOccurrence.errors.getFieldError("registrationDate")
+//		assertNotNull "Jeg forventer å finne en feil i feltet registrationDate", badField
+//	}
 	
 	void testGenerateTireOccurrenceWithInvalidDiscount(){
 		tireOccurrence.discount = -10
