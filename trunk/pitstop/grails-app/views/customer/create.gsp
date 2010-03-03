@@ -4,8 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'customer.label', default: 'Customer')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <title><g:message code="customer.create.title.label"/></title>
     </head>
     <body>
         <div class="nav">
@@ -13,7 +12,7 @@
             <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
         </div>
         <div class="body">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+            <h1><g:message code="customer.create.header.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -29,7 +28,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="firstName"><g:message code="customer.firstName.label" default="First Name" /></label>
+                                    <label for="firstName"><g:message code="customer.firstName.label"/></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'firstName', 'errors')}">
                                     <g:textField name="firstName" value="${customerInstance?.firstName}" />
@@ -38,7 +37,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="lastName"><g:message code="customer.lastName.label" default="Last Name" /></label>
+                                    <label for="lastName"><g:message code="customer.lastName.label"/></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'lastName', 'errors')}">
                                     <g:textField name="lastName" value="${customerInstance?.lastName}" />
@@ -47,7 +46,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="phoneNumber"><g:message code="customer.phoneNumber.label" default="Phone Number" /></label>
+                                    <label for="phoneNumber"><g:message code="customer.phoneNumber.label"/></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'phoneNumber', 'errors')}">
                                     <g:textField name="phoneNumber" value="${customerInstance?.phoneNumber}" />
@@ -56,7 +55,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="address"><g:message code="customer.address.label" default="Address" /></label>
+                                    <label for="address"><g:message code="customer.address.label"/></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'address', 'errors')}">
                                     <g:textField name="address" value="${customerInstance?.address}" />
@@ -65,7 +64,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="postalCode"><g:message code="customer.postalCode.label" default="Postal Code" /></label>
+                                    <label for="postalCode"><g:message code="customer.postalCode.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'postalCode', 'errors')}">
                                     <g:textField name="postalCode" value="${customerInstance?.postalCode}" />
@@ -74,7 +73,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="city"><g:message code="customer.city.label" default="City" /></label>
+                                    <label for="city"><g:message code="customer.city.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'city', 'errors')}">
                                     <g:textField name="city" value="${customerInstance?.city}" />
@@ -83,7 +82,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="email"><g:message code="customer.email.label" default="Email" /></label>
+                                    <label for="email"><g:message code="customer.email.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'email', 'errors')}">
                                     <g:textField name="email" value="${customerInstance?.email}" />
@@ -92,7 +91,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="company"><g:message code="customer.company.label" default="Company" /></label>
+                                    <label for="company"><g:message code="customer.company.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'company', 'errors')}">
                                     <g:textField name="company" value="${customerInstance?.company}" />
@@ -101,7 +100,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="notice"><g:message code="customer.notice.label" default="Notice" /></label>
+                                    <label for="notice"><g:message code="customer.notice.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'notice', 'errors')}">
                                     <g:textArea name="notice" cols="40" rows="5" value="${customerInstance?.notice}" />
@@ -112,7 +111,7 @@
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
+                    <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label')}" /></span>
                 </div>
             </g:form>
         </div>

@@ -1,10 +1,10 @@
 
-<%@ page import="no.pstop.webapp.TireHotelOccurence" %>
+<%@ page import="no.pstop.webapp.TireHotelOccurrence" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'tireHotelOccurence.label', default: 'TireHotelOccurence')}" />
+        <g:set var="entityName" value="${message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurence')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -23,65 +23,65 @@
                     <tbody>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurence.id.label" default="Id" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.id.label" default="Id" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurenceInstance, field: "id")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurence.tireLocation.label" default="Tire Location" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurenceInstance, field: "tireLocation")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurrenceInstance, field: "id")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurence.registrationNumber.label" default="Registration Number" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.tireLocation.label" default="Tire Location" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurenceInstance, field: "registrationNumber")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurence.carType.label" default="Car Type" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurenceInstance, field: "carType")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurence.tireType.label" default="Tire Type" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.registrationNumber.label" default="Registration Number" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurenceInstance, field: "tireType")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurence.inDate.label" default="In Date" /></td>
-                            
-                            <td valign="top" class="value"><g:formatDate date="${tireHotelOccurenceInstance?.inDate}" /></td>
+                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurence.notice.label" default="Notice" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.carType.label" default="Car Type" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurenceInstance, field: "notice")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurence.outDate.label" default="Out Date" /></td>
-                            
-                            <td valign="top" class="value"><g:formatDate date="${tireHotelOccurenceInstance?.outDate}" /></td>
+                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurrenceInstance, field: "carType")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurence.customer.label" default="Customer" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.tireType.label" default="Tire Type" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="customer" action="show" id="${tireHotelOccurenceInstance?.customer?.id}">${tireHotelOccurenceInstance?.customer?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireType")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.inDate.label" default="In Date" /></td>
+                            
+                            <td valign="top" class="value"><g:formatDate date="${tireHotelOccurrenceInstance?.inDate}" /></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.notice.label" default="Notice" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurrenceInstance, field: "notice")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.outDate.label" default="Out Date" /></td>
+                            
+                            <td valign="top" class="value"><g:formatDate date="${tireHotelOccurrenceInstance?.outDate}" /></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.customer.label" default="Customer" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="customer" action="show" id="${tireHotelOccurrenceInstance?.customer?.id}">${tireHotelOccurrenceInstance?.customer?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
@@ -90,7 +90,7 @@
             </div>
             <div class="buttons">
                 <g:form>
-                    <g:hiddenField name="id" value="${tireHotelOccurenceInstance?.id}" />
+                    <g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>

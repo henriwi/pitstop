@@ -1,0 +1,100 @@
+package no.pstop.webapp
+
+class TireHotelOccurrenceController {
+
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+    def index = {
+        redirect(action: "list", params: params)
+    }
+
+    def list = {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        [tireHotelOccurrenceInstanceList: TireHotelOccurrence.list(params), tireHotelOccurrenceInstanceTotal: TireHotelOccurrence.count()]
+    }
+
+    def create = {
+        def tireHotelOccurrenceInstance = new TireHotelOccurrence()
+        tireHotelOccurrenceInstance.properties = params
+        return [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance]
+    }
+
+    def save = {
+        def tireHotelOccurrenceInstance = new TireHotelOccurrence(params)
+        if (tireHotelOccurrenceInstance.save(flush: true)) {
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), tireHotelOccurrenceInstance.id])}"
+            redirect(action: "show", id: tireHotelOccurrenceInstance.id)
+        }
+        else {
+            render(view: "create", model: [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance])
+        }
+    }
+
+    def show = {
+        def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
+        if (!tireHotelOccurrenceInstance) {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
+            redirect(action: "list")
+        }
+        else {
+            [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance]
+        }
+    }
+
+    def edit = {
+        def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
+        if (!tireHotelOccurrenceInstance) {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
+            redirect(action: "list")
+        }
+        else {
+            return [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance]
+        }
+    }
+
+    def update = {
+        def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
+        if (tireHotelOccurrenceInstance) {
+            if (params.version) {
+                def version = params.version.toLong()
+                if (tireHotelOccurrenceInstance.version > version) {
+                    
+                    tireHotelOccurrenceInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence')] as Object[], "Another user has updated this TireHotelOccurrence while you were editing")
+                    render(view: "edit", model: [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance])
+                    return
+                }
+            }
+            tireHotelOccurrenceInstance.properties = params
+            if (!tireHotelOccurrenceInstance.hasErrors() && tireHotelOccurrenceInstance.save(flush: true)) {
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), tireHotelOccurrenceInstance.id])}"
+                redirect(action: "show", id: tireHotelOccurrenceInstance.id)
+            }
+            else {
+                render(view: "edit", model: [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance])
+            }
+        }
+        else {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
+            redirect(action: "list")
+        }
+    }
+
+    def delete = {
+        def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
+        if (tireHotelOccurrenceInstance) {
+            try {
+                tireHotelOccurrenceInstance.delete(flush: true)
+                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
+                redirect(action: "list")
+            }
+            catch (org.springframework.dao.DataIntegrityViolationException e) {
+                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
+                redirect(action: "show", id: params.id)
+            }
+        }
+        else {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
+            redirect(action: "list")
+        }
+    }
+}

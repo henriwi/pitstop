@@ -1,6 +1,6 @@
 package no.pstop.webapp
 
-class TireHotelOccurence {
+class TireHotelOccurrence {
 	
 	String tireLocation
 	String registrationNumber
