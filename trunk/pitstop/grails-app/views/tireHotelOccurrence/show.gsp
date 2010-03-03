@@ -9,10 +9,8 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
-        </div>
+       		 <span class="menuButton"><g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link></span>
+             <span class="menuButton"><g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link></span>        </div>
         <div class="body">
             <h1><g:message code="default.show.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
@@ -23,63 +21,56 @@
                     <tbody>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.id.label" default="Id" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: tireHotelOccurrenceInstance, field: "id")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.tireLocation.label" default="Tire Location" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.create.tireLocation.label" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.registrationNumber.label" default="Registration Number" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.create.registrationNumber.label" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.carType.label" default="Car Type" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.create.carType.label"  /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: tireHotelOccurrenceInstance, field: "carType")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.tireType.label" default="Tire Type" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.create.tireType.label"  /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireType")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.inDate.label" default="In Date" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.create.inDate.label"  /></td>
                             
                             <td valign="top" class="value"><g:formatDate date="${tireHotelOccurrenceInstance?.inDate}" /></td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.notice.label" default="Notice" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.create.notice.label"  /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: tireHotelOccurrenceInstance, field: "notice")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.outDate.label" default="Out Date" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.create.outDate.label" /></td>
                             
                             <td valign="top" class="value"><g:formatDate date="${tireHotelOccurrenceInstance?.outDate}" /></td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.customer.label" default="Customer" /></td>
+                            <td valign="top" class="name"><g:message code="tireHotelOccurrence.create.customer.label" /></td>
                             
                             <td valign="top" class="value"><g:link controller="customer" action="show" id="${tireHotelOccurrenceInstance?.customer?.id}">${tireHotelOccurrenceInstance?.customer?.encodeAsHTML()}</g:link></td>
                             
