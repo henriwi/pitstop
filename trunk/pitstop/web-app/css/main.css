@@ -194,38 +194,6 @@ th.desc a {
     background: #fff;
 }
 
-/* LIST */
-
-.list table {
-    border-collapse: collapse;
-}
-.list th, .list td {
-    border-left: 1px solid #ddd;
-}
-.list th:hover, .list tr:hover {
-    background: #b2d1ff;
-}
-#menuList {
-	list-style: none;
-}
-#mainMenu {
-	margin-top:20px;
-	float:left;
-	min-height: 250px;
-	min-width: 185px;
-}
-#mainMenu li {
-
-	border-style: solid;
-	margin: 5;
-	padding: 5;
-	font:21px/1.231 arial,helvetica,clean,sans-serif;
-
-}
-#mainMenu  li:hover {
- 	background-color: #ddd
-}
-
 /* PAGINATION */
 
 .paginateButtons {
@@ -270,6 +238,16 @@ th.desc a {
 .prop .value {
     text-align: left;
     width: 85%;
+}
+/* List */ 
+.list table {
+    border-collapse: collapse;
+}
+.list th, .list td {
+    border-left: 1px solid #ddd;
+}
+.list th:hover, .list tr:hover {
+    background: #b2d1ff;
 }
 
 /* ACTION BUTTONS */
@@ -375,3 +353,64 @@ th.desc a {
 #totalTireOccurrence table{
 	border: none;
 }
+
+/* Hovedmeny */
+div#mainMenu {
+	width: auto;
+	float: left;	
+	margin-top: 22px;
+	margin-left: 5px;
+	padding: 0px;
+}
+
+ul#menuList {
+	list-style: none;
+	padding: 0px;
+	margin: 5px;
+}
+
+ul#menuList li {
+	margin: 0px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#menuList a{
+	display: block;
+	border: 1px solid;
+	border-color: #ccc;
+	margin: 0px;
+	padding: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 35px;
+	background-color: #fff;
+	color: #000;
+	font-family: arial,helvetica,clean,sans-serif;
+	font-size: 12px;
+	width: 110px;
+	text-align: left;
+	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+}
+
+/*
+#menuList {
+	list-style: none;
+}
+#mainMenu {
+	margin-top:20px;
+	float:left;
+	min-height: 250px;
+	min-width: 185px;
+}
+#mainMenu li {
+	border-style: solid;
+	margin: 5;
+	padding: 5;
+	font:21px/1.231 arial,helvetica,clean,sans-serif;
+
+}
+#mainMenu  li:hover {
+ 	background-color: #ddd
+}
+*/
