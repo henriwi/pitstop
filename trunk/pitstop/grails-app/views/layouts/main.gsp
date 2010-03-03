@@ -13,10 +13,33 @@
         	</div>
         	<div id="mainMenu">
 		        <ul id="menuList">
-			        <li><a class="mainMenuItem" href="${createLink(uri: '/')}">Hjem</a></li>
-			        <li><g:link class="mainMenuItem" controller="tire">Dekkoversikt</g:link></li>
-			        <li><g:link class="mainMenuItem" controller="customer">Kunder</g:link></li>
-			        <li><g:link class="mainMenuItem" controller="tireHotelOccurrence">Dekkhotell</g:link></li>
+		        	<g:if test="${params.controller == null}">
+		        		<li><a class="active" href="${createLink(uri: '/')}">Hjem</a></li>
+		        	</g:if>
+			        <g:else>
+			        	<li><a href="${createLink(uri: '/')}">Hjem</a></li>
+			        </g:else>
+			        
+			        <g:if test="${params.controller == 'tire' || params.controller == 'tireOccurrence'}">
+		        		<li><g:link class="active" controller="tire">Dekkoversikt</g:link></li>
+		        	</g:if>
+			        <g:else>
+			        	<li><g:link controller="tire">Dekkoversikt</g:link></li>
+			        </g:else>
+			        
+			        <g:if test="${params.controller == 'customer'}">
+			        	<li><g:link class="active" controller="customer">Kunder</g:link></li>
+		        	</g:if>
+			        <g:else>
+			        	<li><g:link controller="customer">Kunder</g:link></li>
+			        </g:else>
+			        
+			        <g:if test="${params.controller == 'tireHotelOccurrence'}">
+			        	<li><g:link class="active" controller="tireHotelOccurrence">Dekkhotell</g:link></li>
+		        	</g:if>
+			        <g:else>
+			        	<li><g:link controller="tireHotelOccurrence">Dekkhotell</g:link></li>
+			        </g:else>
 			        <%--
 					<g:each var="c" in="${grailsApplication.controllerClasses}">
 			        	<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
