@@ -13,8 +13,10 @@
         	</div>
         	<div id="mainMenu">
 		        <ul id="menuList">
-			        <li><a href="${createLink(uri: '/')}">Hjem</a></li>
-			        <li><g:link controller="tire">Dekkoversikt</g:link></li>
+			        <li><a class="mainMenuItem" href="${createLink(uri: '/')}">Hjem</a></li>
+			        <li><g:link class="mainMenuItem" controller="tire">Dekkoversikt</g:link></li>
+			        <li><g:link class="mainMenuItem" controller="customer">Kunder</g:link></li>
+			        <li><g:link class="mainMenuItem" controller="tireHotelOccurrence">Dekkhotell</g:link></li>
 			        <%--
 					<g:each var="c" in="${grailsApplication.controllerClasses}">
 			        	<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
