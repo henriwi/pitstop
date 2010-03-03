@@ -84,7 +84,6 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertEquals "redirect id", 1, controller.redirectArgs.id
 	}
 	
-	
 	void testSaveWithInvalidWidth() {
 		setParams(-100, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero", "Demodekk")
 		controller.metaClass.message = {args -> println "message: ${args}"} 
