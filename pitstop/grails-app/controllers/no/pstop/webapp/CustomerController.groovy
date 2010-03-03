@@ -22,7 +22,7 @@ class CustomerController {
     def save = {
         def customerInstance = new Customer(params)
         if (customerInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'customer.label', default: 'Customer'), customerInstance.id])}"
+            flash.message = "${message(code: 'customer.created.message', args: [message(code: 'customer.label' ), customerInstance.firstName, customerInstance.lastName])}"
             redirect(action: "show", id: customerInstance.id)
         }
         else {
@@ -33,7 +33,7 @@ class CustomerController {
     def show = {
         def customerInstance = Customer.get(params.id)
         if (!customerInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'customer.label', default: 'Customer'), params.id])}"
+            flash.message = "${message(code: 'customer.not.found.message', args: [message(code: 'customer.label', default: 'Customer'), params.id])}"
             redirect(action: "list")
         }
         else {
@@ -44,7 +44,7 @@ class CustomerController {
     def edit = {
         def customerInstance = Customer.get(params.id)
         if (!customerInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'customer.label', default: 'Customer'), params.id])}"
+            flash.message = "${message(code: 'customer.not.found.message', args: [message(code: 'customer.label', default: 'Customer'), params.id])}"
             redirect(action: "list")
         }
         else {
@@ -59,14 +59,14 @@ class CustomerController {
                 def version = params.version.toLong()
                 if (customerInstance.version > version) {
                     
-                    customerInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'customer.label', default: 'Customer')] as Object[], "Another user has updated this Customer while you were editing")
+                    customerInstance.errors.rejectValue("version", "customer.optimistic.locking.failur", [message(code: 'customer.label', default: 'Customer')] as Object[], "Another user has updated this Customer while you were editing")
                     render(view: "edit", model: [customerInstance: customerInstance])
                     return
                 }
             }
             customerInstance.properties = params
             if (!customerInstance.hasErrors() && customerInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'customer.label', default: 'Customer'), customerInstance.id])}"
+                flash.message = "${message(code: 'customer.updated.message', args: [message(code: 'customer.label'), customerInstance.firstName, customerInstance.lastName])}"
                 redirect(action: "show", id: customerInstance.id)
             }
             else {
@@ -74,7 +74,7 @@ class CustomerController {
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'customer.label', default: 'Customer'), params.id])}"
+            flash.message = "${message(code: 'customer.not.found.message', args: [message(code: 'customer.label', default: 'Customer'), params.id])}"
             redirect(action: "list")
         }
     }
@@ -84,16 +84,16 @@ class CustomerController {
         if (customerInstance) {
             try {
                 customerInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'customer.label', default: 'Customer'), params.id])}"
+                flash.message = "${message(code: 'customer.deleted.message', args: [message(code: 'customer.label'), customerInstance.firstName, customerInstance.lastName])}"
                 redirect(action: "list")
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'customer.label', default: 'Customer'), params.id])}"
+                flash.message = "${message(code: 'customer.not.deleted.message', args: [message(code: 'customer.label', default: 'Customer'), params.id])}"
                 redirect(action: "show", id: params.id)
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'customer.label', default: 'Customer'), params.id])}"
+            flash.message = "${message(code: 'customer.not.found.message', args: [message(code: 'customer.label', default: 'Customer'), params.id])}"
             redirect(action: "list")
         }
     }

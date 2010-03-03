@@ -8,8 +8,8 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}">Home</a></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="customer.new.label" /></g:link></span>
+        <span class="menuButton"><g:link class="list" action="list"><g:message code="customer.list.label" /></g:link></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link></span>
         </div>
         <div class="body">
             <h1><g:message code="customer.list.header.label" /></h1>
@@ -21,17 +21,17 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'customer.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'customer.id.table.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="firstName" title="${message(code: 'customer.firstName.label', default: 'First Name')}" />
+                            <g:sortableColumn property="firstName" title="${message(code: 'customer.firstName.table.label')}" />
                         
-                            <g:sortableColumn property="lastName" title="${message(code: 'customer.lastName.label', default: 'Last Name')}" />
+                            <g:sortableColumn property="lastName" title="${message(code: 'customer.lastName.table.label', default: 'Last Name')}" />
                         
-                            <g:sortableColumn property="phoneNumber" title="${message(code: 'customer.phoneNumber.label', default: 'Phone Number')}" />
+                            <g:sortableColumn property="phoneNumber" title="${message(code: 'customer.phoneNumber.table.label', default: 'Phone Number')}" />
                         
-                            <g:sortableColumn property="address" title="${message(code: 'customer.address.label', default: 'Address')}" />
+                            <g:sortableColumn property="address" title="${message(code: 'customer.address.table.label', default: 'Address')}" />
                         
-                            <g:sortableColumn property="postalCode" title="${message(code: 'customer.postalCode.label', default: 'Postal Code')}" />
+                            <g:sortableColumn property="postalCode" title="${message(code: 'customer.postalCode.table.label', default: 'Postal Code')}" />
                         
                         </tr>
                     </thead>
