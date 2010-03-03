@@ -1,5 +1,6 @@
 package no.pstop.webapp
 
+import com.sun.org.apache.xerces.internal.impl.xs.identity.Selector.Matcher;
 import grails.test.*
 
 class TireControllerTests extends ControllerUnitTestCase {
@@ -43,25 +44,26 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertEquals "list", controller.redirectArgs.action
 	}
 	
-	/*void testListWithSearchQuery() {
+	/*void testListWithSpecialFastSearchQuery() {
 		mockDomain(Tire, [t1,t2,t3])
-		def mock = mockFor(Tire)
-		controller.params.q = "192607s"
+		
+		controller.params.q = "sommer"
 		controller.params.type="fast"
+		
+		def mock = mockFor(Tire)
+		mock.demand.static.search() {String query -> return t1}
+		
+		def tireMock = mock.createMock()
+		//results = {-> return t1}
+		//mock.demand.fastSearch(1..2) {Matcher query, Integer max, Integer offset -> t1}
+
 		Map model = controller.list()
 		assertNotNull('list should be present in model', model.tireInstanceList)
-		assertEquals('list size should match the number of mocked tires', 1, model.tireInstanceList.size())
-		assertEquals(model.tireInstanceList[0], t1)
-	}*/
+		//assertEquals('list size should match the number of mocked tires', 1, model.tireInstanceTotal)
+	}
 	
-	/*void testListWithNoSearchQuery() {
-		def tireInstances = []
-		mockDomain(Tire, tireInstances)
-		mockDomain(TireOccurrence, [])
-		def tireOccurrence1 = new TireOccurrence(id:1,tire:t1,price:60.5,numberInStock:1,registrationDate:new Date()).save()
-		def tireOccurrence2 = new TireOccurrence(id:2,tire:t2,price:60.5,numberInStock:1,registrationDate:new Date()).save()
-		def tireOccurrence3 = new TireOccurrence(id:3,tire:t3,price:60.5,numberInStock:1,registrationDate:new Date()).save()
-		//, [tireOccurrence1, tireOccurrence2, tireOccurrence3])
+	void testListWithNoSearchQuery() {
+		mockDomain(Tire, [t1,t2,t3])
 		
 		Map model = controller.list()
 		assertNotNull "list should be present in model", model.tireInstanceList
