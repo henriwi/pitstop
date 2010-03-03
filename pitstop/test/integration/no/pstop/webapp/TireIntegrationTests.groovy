@@ -1,6 +1,6 @@
 package no.pstop.webapp
-import groovy.util.GroovyTestCase;
 
+import groovy.util.GroovyTestCase;
 import grails.test.*
 
 class TireIntegrationTests extends GroovyTestCase {
