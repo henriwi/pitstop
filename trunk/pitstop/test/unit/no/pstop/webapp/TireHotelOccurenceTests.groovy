@@ -97,7 +97,7 @@ class TireHotelOccurenceTests extends GrailsUnitTestCase {
 	}
 	*/
 	
-	void testGenerateCustomerWithInvalidNotice() {
+	void testGenerateTireHotelOccurrenceWithInvalidNotice() {
 		
 		for(int i = 0; i < 2000; i++)
 		{
@@ -105,7 +105,7 @@ class TireHotelOccurenceTests extends GrailsUnitTestCase {
 		}
 		
 		assertFalse "Test failed, expecting invalid notice", tireHotelOccurence.validate()
-		def badField = customer.errors.getFieldError("notice")
+		def badField = tireHotelOccurence.errors.getFieldError("notice")
 		assertNotNull "I'm expecting to find error in notice", badField
 	}
 }
