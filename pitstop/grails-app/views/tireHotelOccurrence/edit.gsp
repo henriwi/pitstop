@@ -9,8 +9,8 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
+			<span class="menuButton"><g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link></span>
         </div>
         <div class="body">
             <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
@@ -31,7 +31,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="tireLocation"><g:message code="tireHotelOccurrence.tireLocation.label" default="Tire Location" /></label>
+                                  <label for="tireLocation"><g:message code="tireHotelOccurrence.tireLocation.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'tireLocation', 'errors')}">
                                     <g:textField name="tireLocation" value="${tireHotelOccurrenceInstance?.tireLocation}" />
@@ -40,7 +40,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="registrationNumber"><g:message code="tireHotelOccurrence.registrationNumber.label" default="Registration Number" /></label>
+                                  <label for="registrationNumber"><g:message code="tireHotelOccurrence.registrationNumber.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'registrationNumber', 'errors')}">
                                     <g:textField name="registrationNumber" value="${tireHotelOccurrenceInstance?.registrationNumber}" />
@@ -49,7 +49,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="carType"><g:message code="tireHotelOccurrence.carType.label" default="Car Type" /></label>
+                                  <label for="carType"><g:message code="tireHotelOccurrence.carType.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'carType', 'errors')}">
                                     <g:textField name="carType" value="${tireHotelOccurrenceInstance?.carType}" />
@@ -58,7 +58,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="tireType"><g:message code="tireHotelOccurrence.tireType.label" default="Tire Type" /></label>
+                                  <label for="tireType"><g:message code="tireHotelOccurrence.tireType.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'tireType', 'errors')}">
                                     <g:textField name="tireType" value="${tireHotelOccurrenceInstance?.tireType}" />
@@ -67,7 +67,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="inDate"><g:message code="tireHotelOccurrence.inDate.label" default="In Date" /></label>
+                                  <label for="inDate"><g:message code="tireHotelOccurrence.inDate.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'inDate', 'errors')}">
                                     <g:datePicker name="inDate" precision="day" value="${tireHotelOccurrenceInstance?.inDate}"  />
@@ -76,7 +76,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="notice"><g:message code="tireHotelOccurrence.notice.label" default="Notice" /></label>
+                                  <label for="notice"><g:message code="tireHotelOccurrence.notice.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'notice', 'errors')}">
                                     <g:textArea name="notice" cols="40" rows="5" value="${tireHotelOccurrenceInstance?.notice}" />
@@ -85,7 +85,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="outDate"><g:message code="tireHotelOccurrence.outDate.label" default="Out Date" /></label>
+                                  <label for="outDate"><g:message code="tireHotelOccurrence.outDate.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'outDate', 'errors')}">
                                     <g:datePicker name="outDate" precision="day" value="${tireHotelOccurrenceInstance?.outDate}"  />
@@ -94,7 +94,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="customer"><g:message code="tireHotelOccurrence.customer.label" default="Customer" /></label>
+                                  <label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'customer', 'errors')}">
                                     <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${tireHotelOccurrenceInstance?.customer?.id}"  />
@@ -105,8 +105,8 @@
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" /></span>
-                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
+                    <span class="button"><g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label')}" /></span>
+                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" /></span>
                 </div>
             </g:form>
         </div>

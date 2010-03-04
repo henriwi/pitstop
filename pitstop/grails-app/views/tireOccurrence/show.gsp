@@ -4,8 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'tireOccurrence.label', default: 'Dekkforekomst')}" />
-        <title><g:message code="tireoccurrence.show.label" args="[entityName]" /> - ${tireOccurrenceInstance?.tire?.encodeAsHTML()}</title>
+        <title><g:message code="tireOccurence.show.title.label"/> - ${tireOccurrenceInstance?.tire?.encodeAsHTML()}</title>
     </head>
     <body>
         <div class="nav">
@@ -16,7 +15,7 @@
 		    <span class="menuButton"><g:link controller = "tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link></span>
         </div>
         <div class="body">
-            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <h1><g:message code="tireOccurence.show.title.label" /></h1>
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
