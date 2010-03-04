@@ -16,6 +16,11 @@
 	</div>
 	<div class="body">
 		<h1>${message(code: 'search.header.fastSearch.label')}</h1>
+		
+		<g:if test="${flash.message}">
+            	<div class="message">${flash.message}</div>
+        </g:if>
+            
 		<g:form action="fastSearch" method="get">
 			<div class="dialog">
 				<table>
