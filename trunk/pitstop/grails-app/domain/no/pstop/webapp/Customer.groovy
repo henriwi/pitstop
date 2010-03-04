@@ -2,6 +2,7 @@ package no.pstop.webapp
 
 class Customer {
 	
+	static hasMany = [tireHotelOccurrences : TireHotelOccurrence]
 	String firstName
 	String lastName
 	String phoneNumber
