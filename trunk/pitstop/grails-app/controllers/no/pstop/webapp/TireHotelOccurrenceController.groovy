@@ -55,15 +55,6 @@ class TireHotelOccurrenceController {
     def update = {
         def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
         if (tireHotelOccurrenceInstance) {
-            if (params.version) {
-                def version = params.version.toLong()
-                if (tireHotelOccurrenceInstance.version > version) {
-                    
-                    tireHotelOccurrenceInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence')] as Object[], "Another user has updated this TireHotelOccurrence while you were editing")
-                    render(view: "edit", model: [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance])
-                    return
-                }
-            }
             tireHotelOccurrenceInstance.properties = params
             if (!tireHotelOccurrenceInstance.hasErrors() && tireHotelOccurrenceInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), tireHotelOccurrenceInstance.id])}"
