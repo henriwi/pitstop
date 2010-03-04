@@ -158,7 +158,13 @@ class TireController {
 	}
 	
 	def fastSearch = {
-		redirect(action: "list", params:[q: params.txtFastSearch, type: 'fast'])
+		if(params.txtFastSearch.trim() != ""){
+			redirect(action: "list", params:[q: params.txtFastSearch, type: 'fast'])
+		}
+		else{
+			flash.message = "Vennligst fyll ut en søkestreng."
+			redirect(action: "search")
+		}
 	}
 	
 	def normalSearch = {

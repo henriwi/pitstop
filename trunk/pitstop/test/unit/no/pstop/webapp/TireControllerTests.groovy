@@ -164,12 +164,20 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertNotNull model.tireInstance
 	}
 	
-	void testFastSearch() {
+	void testFastSearchWithQuery() {
 		controller.params.txtFastSearch = "Pirelli"
 		controller.fastSearch()
 		assertEquals "redirect action", "list", controller.redirectArgs.action
 		assertEquals "Query params should be equal", controller.params.txtFastSearch, controller.redirectArgs.params.q
 		assertEquals "Type param should be fast", "fast", controller.redirectArgs.params.type
+	}
+	
+	void testFastSearchWithoutQuery() {
+		controller.params.txtFastSearch = ""
+		controller.metaClass.message = {args -> println "message: ${args}"}
+		controller.fastSearch()
+		
+		assertEquals "redirect action", "search", controller.redirectArgs.action
 	}
 	
 	void testNormalSearch() {
