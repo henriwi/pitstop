@@ -3,8 +3,7 @@ package no.pstop.webapp
 class TireOccurrence {
 	static belongsTo = [tire:Tire]
 	static searchable = true
-	//long id
-	Tire tire = new Tire()
+	Tire tire // = new Tire()
 	Double price
 	Integer numberInStock
 	Integer numberOfReserved = 0
