@@ -55,15 +55,6 @@ class CustomerController {
     def update = {
         def customerInstance = Customer.get(params.id)
         if (customerInstance) {
-            if (params.version) {
-                def version = params.version.toLong()
-                if (customerInstance.version > version) {
-                    
-                    customerInstance.errors.rejectValue("version", "customer.optimistic.locking.failur", [message(code: 'customer.label', default: 'Customer')] as Object[], "Another user has updated this Customer while you were editing")
-                    render(view: "edit", model: [customerInstance: customerInstance])
-                    return
-                }
-            }
             customerInstance.properties = params
             if (!customerInstance.hasErrors() && customerInstance.save(flush: true)) {
                 flash.message = "${message(code: 'customer.updated.message', args: [message(code: 'customer.label'), customerInstance.firstName, customerInstance.lastName])}"
