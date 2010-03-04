@@ -29,11 +29,23 @@ class TireControllerIntegrationTests extends GroovyTestCase {
 		t4.delete(flush:true)
 	}
 	
+	private setParams(String type, String width, String profile, String diameter, String speedIndex, String tireType,
+	String brand){
+		controller.params.type = type
+		controller.params.width = width
+		controller.params.profile = profile
+		controller.params.diameter = diameter
+		controller.params.speedIndex = speedIndex
+		controller.params.tireType = tireType
+		controller.params.brand = brand
+	}
+	
 	void testListWithSpecialFastSearchQuery(){
 		controller.params.q = "100207s"
 		controller.params.type = "fast"
 		def expectedTireList = [t1]
 		def model = controller.list()
+		
 		assertEquals "Expected list should be the same as the returned list", expectedTireList.toString(), model.tireInstanceList.toString()
 		assertEquals "Both lists should have the same number of tires", expectedTireList.size(), model.tireInstanceTotal
 	}
@@ -43,38 +55,25 @@ class TireControllerIntegrationTests extends GroovyTestCase {
 		controller.params.type = "fast"
 		def expectedTireList = [t1, t3]
 		def model = controller.list()
+		
 		assertEquals "Expected list should be the same as the returned list", expectedTireList.toString(), model.tireInstanceList.toString()
 		assertEquals "Both lists should have the same number of tires", expectedTireList.size(), model.tireInstanceTotal
 	}
 	
 	void testNormalSearchQueryWithoutInput(){
-		controller.params.type = "normal"
-		controller.params.width = ""
-		controller.params.profile = ""
-		controller.params.diameter = ""
-		controller.params.speedIndex = ""
-		controller.params.tireType = ""
-		controller.params.brand = ""
-		
-		println("Tirelist:" +  Tire.list())
-												
+		setParams("normal", "", "", "", "", "", "")
 		def expectedTireList = [t1, t2, t3, t4]
 		def model = controller.list()
+		
 		assertEquals "Expected list should be the same as the returned list", expectedTireList.toString(), model.tireInstanceList.toString()
 		assertEquals "Both lists should have the same number of tires", expectedTireList.size(), model.tireInstanceTotal
 	}
 	
 	void testNormalSearchQuery(){
-		controller.params.type = "normal"
-		controller.params.width = "205"
-		controller.params.profile = "75"
-		controller.params.diameter = ""
-		controller.params.speedIndex = ""
-		controller.params.tireType = ""
-		controller.params.brand = ""
-		def expectedTireList = [t3]
+		setParams("normal", "", "", "", "", "Vinter (pigg)", "")
+		def expectedTireList = [t2, t4]
 		def model = controller.list()
-		
+
 		assertEquals "Expected list should be the same as the returned list", expectedTireList.toString(), model.tireInstanceList.toString()
 		assertEquals "Both lists should have the same number of tires", expectedTireList.size(), model.tireInstanceTotal
 	}
@@ -82,6 +81,7 @@ class TireControllerIntegrationTests extends GroovyTestCase {
 	void testListWithNoQuery(){
 		def expectedTireList = [t1, t2, t3, t4]
 		def model = controller.list()
+		
 		assertEquals "Expected list should be the same as the returned list", expectedTireList.toString(), model.tireInstanceList.toString()
 		assertEquals "Both lists should have the same number of tires", expectedTireList.size(), model.tireInstanceTotal
 	}
