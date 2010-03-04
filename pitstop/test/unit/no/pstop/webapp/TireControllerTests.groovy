@@ -16,7 +16,6 @@ class TireControllerTests extends ControllerUnitTestCase {
 				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
 		t3 = new Tire(id:3,width:192,profile:60,construction:"R",diameter:19,partNr:"123AD",
 				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
-		
 	}
 	
 	protected void tearDown() {
@@ -43,32 +42,6 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.index()
 		assertEquals "list", controller.redirectArgs.action
 	}
-	
-	/*void testListWithSpecialFastSearchQuery() {
-		mockDomain(Tire, [t1,t2,t3])
-		
-		controller.params.q = "sommer"
-		controller.params.type="fast"
-		
-		def mock = mockFor(Tire)
-		mock.demand.static.search() {String query -> return t1}
-		
-		def tireMock = mock.createMock()
-		//results = {-> return t1}
-		//mock.demand.fastSearch(1..2) {Matcher query, Integer max, Integer offset -> t1}
-
-		Map model = controller.list()
-		assertNotNull('list should be present in model', model.tireInstanceList)
-		//assertEquals('list size should match the number of mocked tires', 1, model.tireInstanceTotal)
-	}
-	
-	void testListWithNoSearchQuery() {
-		mockDomain(Tire, [t1,t2,t3])
-		
-		Map model = controller.list()
-		assertNotNull "list should be present in model", model.tireInstanceList
-		assertEquals "list size should match the number of mocked tires", 3, model.tireInstanceList.size()
-	}*/
 	
 	void testCreate() {
 		def model = controller.create()

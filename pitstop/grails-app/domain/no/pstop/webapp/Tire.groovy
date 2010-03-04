@@ -3,8 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher
 
-
-
 class Tire {
 	static searchable = true
 	static hasMany = [ tireOccurrences : TireOccurrence ]
@@ -39,7 +37,7 @@ class Tire {
 		loadIndex(min:1, max:240)
 		speedIndex(inList:["L","M","N","P","PR","Q","R","S","T","U","H","V","W","Y","Z","ZR"], blank:false)
 		pattern(matches:"[a-zA-Z0-9\\s|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,30}")
-		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)", "Vinter(pigg - upigget)", "M+S(helårsdekk)"], blank:false)
+		tireType(inList:["Sommer","Vinter (pigg)","Vinter (piggfri)", "Vinter (pigg - upigget)", "M+S (helårsdekk)"], blank:false)
 	}
 
 	static fastSearch(Matcher query, Integer max, Integer offset){
@@ -55,13 +53,11 @@ class Tire {
 	static normalSearch(String width, String profile, String diameter, String speedIndex, 
 	String tireType, String brand, Integer max, Integer offset){
 		Tire.search([max:max, offset:offset]) {
-			def typePrefix = tireType == "Sommer" ? "Sommer" : "Vinter"
-			
 			width != "" ? must(term('width', width)) : ""
 			profile != "" ? must(term('profile', profile)) : ""
 			diameter != "" ? must(term('diameter', diameter)) : ""
 			speedIndex != "" && speedIndex != "Alle" ? must(term('speedIndex', speedIndex.toLowerCase())) : ""
-			tireType != "" && tireType != "Alle" ? must(prefix('tireType', typePrefix.toLowerCase())) : ""
+			tireType != "" && tireType != "Alle" ? must(queryString(tireType)) : ""
 			brand != "" ? must(term('brand', brand.toLowerCase())) : ""
 		}.results
 	}
