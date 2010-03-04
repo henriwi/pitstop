@@ -31,18 +31,12 @@ class TireController {
 				tireCount = Tire.search("*" + params.q + "*", [max:Tire.count(), offset:params.offset]).results.size()
 			}
 		} 
-		else if(isNormalSearchQuery(params.type)) {
-			if(isNormalSearchWithoutInput()) {
-				tireList = Tire.search("*", [max:params.max, offset:params.offset]).results
-				tireCount = Tire.search("*", [max:Tire.count()]).results.size()
-			}
-			else{
-				tireList = Tire.normalSearch(params.width, params.profile, params.diameter, 
-				params.speedIndex, params.tireType, , params.brand, params.max.toInteger(), params.offset.toInteger())
-				
-				tireCount = Tire.normalSearch(params.width, params.profile, params.diameter, 
-				params.speedIndex, params.tireType, , params.brand, Tire.count(), 0).size()
-			}
+		else if(isNormalSearchQuery(params.type) && !isNormalSearchWithoutInput()) {
+			tireList = Tire.normalSearch(params.width, params.profile, params.diameter, 
+			params.speedIndex, params.tireType, , params.brand, params.max.toInteger(), params.offset.toInteger())
+			
+			tireCount = Tire.normalSearch(params.width, params.profile, params.diameter, 
+			params.speedIndex, params.tireType, , params.brand, Tire.count(), 0).size()
 		}
 		else {
 			params.max = Math.min(params.max ? params.int('max') : maxNumberOfTires, 100)
