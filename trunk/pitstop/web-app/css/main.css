@@ -83,7 +83,6 @@ input:focus, select:focus, textarea:focus {
     margin-top: 5px;
     padding: 7px 12px;
 }
-
 .menuButton {
     font-size: 10px;
     padding: 0 5px;
@@ -111,6 +110,12 @@ input:focus, select:focus, textarea:focus {
     background: url(../images/skin/search.png) center left no-repeat;
     color: #333;
     padding-left: 25px;
+}
+
+span.menuButton#createTireOccurrenceButton{
+    color: #333;
+    padding-left: 7px;
+    display:block;
 }
 
 /* MESSAGES AND ERRORS */
@@ -259,7 +264,11 @@ th.desc a {
     font-size: 10px;
     margin-top: 5px;
     overflow: hidden;
-    padding: 0;
+    padding: 7px;
+}
+#tireEditButton{
+	padding-top: 5px;
+	display: block;	
 }
 
 .buttons input {
