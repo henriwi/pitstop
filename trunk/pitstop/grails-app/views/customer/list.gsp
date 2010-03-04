@@ -20,37 +20,39 @@
                 <table>
                     <thead>
                         <tr>
-                        
-                            <g:sortableColumn property="id" title="${message(code: 'customer.id.table.label', default: 'Id')}" />
-                        
                             <g:sortableColumn property="firstName" title="${message(code: 'customer.firstName.table.label')}" />
                         
-                            <g:sortableColumn property="lastName" title="${message(code: 'customer.lastName.table.label', default: 'Last Name')}" />
+                            <g:sortableColumn property="lastName" title="${message(code: 'customer.lastName.table.label')}" />
                         
-                            <g:sortableColumn property="phoneNumber" title="${message(code: 'customer.phoneNumber.table.label', default: 'Phone Number')}" />
+                            <g:sortableColumn property="phoneNumber" title="${message(code: 'customer.phoneNumber.table.label')}" />
                         
-                            <g:sortableColumn property="address" title="${message(code: 'customer.address.table.label', default: 'Address')}" />
+                            <g:sortableColumn property="address" title="${message(code: 'customer.address.table.label')}" />
                         
-                            <g:sortableColumn property="postalCode" title="${message(code: 'customer.postalCode.table.label', default: 'Postal Code')}" />
+                            <g:sortableColumn property="postalCode" title="${message(code: 'customer.postalCode.table.label')}" />
                         
+                        	<g:sortableColumn property="email" title="${message(code: 'customer.email.table.label')}" />
+                        	
+                        	<g:sortableColumn property="company" title="${message(code: 'customer.company.table.label')}" />
                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${customerInstanceList}" status="i" var="customerInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "firstName")}</g:link></td>
                         
-                            <td>${fieldValue(bean: customerInstance, field: "firstName")}</td>
+                            <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "lastName")}</g:link></td>
                         
-                            <td>${fieldValue(bean: customerInstance, field: "lastName")}</td>
+                            <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "phoneNumber")}</g:link></td>
                         
-                            <td>${fieldValue(bean: customerInstance, field: "phoneNumber")}</td>
+                            <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "address")}</g:link></td>
                         
-                            <td>${fieldValue(bean: customerInstance, field: "address")}</td>
-                        
-                            <td>${fieldValue(bean: customerInstance, field: "postalCode")}</td>
-                        
+                            <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "postalCode")}</g:link></td>
+                            
+                            <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "email")}</g:link></td>
+                            
+                            <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "company")}</g:link></td>
+                            
                         </tr>
                     </g:each>
                     </tbody>

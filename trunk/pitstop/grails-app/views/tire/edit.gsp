@@ -61,9 +61,9 @@
                             </tr>
                             
                             <tr class="prop">
-                                <td valign="top" class="name"><label for="brand"><g:message code="tire.tireName.label" /></label></td>
+                                <td valign="top" class="name"><label for="tireName"><g:message code="tire.tireName.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'tireName', 'errors')}">
-                                    <g:select name="tireType" from="${tireHotelOccurrenceInstance.constraints.tireType.inList}" value="${tireHotelOccurrenceInstance?.tireType}" valueMessagePrefix="tireHotelOccurrenceInstance.tireType" />
+                                    <g:textField name="tireName" value="${tireInstance?.tireName}" /></td>
                             </tr>
                             
                             <tr class="prop">
