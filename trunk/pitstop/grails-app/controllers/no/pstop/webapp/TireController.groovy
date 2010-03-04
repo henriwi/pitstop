@@ -43,6 +43,9 @@ class TireController {
 			tireList = Tire.list(params)
 			tireCount = Tire.count()
 		}
+		if(tireCount == 0){
+			flash.message = "Fant ingen dekktyper."
+		}
 		[tireInstanceList: tireList, tireInstanceTotal: tireCount]
 	}
 	
