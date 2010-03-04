@@ -16,9 +16,11 @@
         </div>
         <div class="body">
             <h1>Dekktyper</h1>
+            
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
+            
             <div class="list">
                 <table>
                     <thead>
