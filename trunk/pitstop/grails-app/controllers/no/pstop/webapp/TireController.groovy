@@ -20,7 +20,7 @@ class TireController {
 		def tireList
 		def tireCount
 		
-		if(isFastSearchQuery(params.q)) {
+		if(isFastSearchQuery(params.q, params.type)) {
 			if(isSpecialFastSearchQuery(params.q)) {
 				def query = params.q =~ regexFastSearch
 				tireList = 	Tire.fastSearch(query, params.max, params.offset)
@@ -49,8 +49,8 @@ class TireController {
 		[tireInstanceList: tireList, tireInstanceTotal: tireCount]
 	}
 	
-	private isFastSearchQuery(String query){
-		query && params.type == 'fast'
+	private isFastSearchQuery(String query, String type){
+		query && type.equals("fast")
 	}
 	
 	private isSpecialFastSearchQuery(String query){
