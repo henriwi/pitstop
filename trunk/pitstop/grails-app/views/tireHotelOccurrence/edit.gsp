@@ -28,7 +28,16 @@
                 <div class="dialog">
                     <table>
                         <tbody>
-                        
+                        	
+                        	<tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'customer', 'errors')}">
+                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${tireHotelOccurrenceInstance?.customer?.id}"  />
+                                </td>
+                            </tr>
+                            
                             <tr class="prop">
                                 <td valign="top" class="name">
                                   <label for="tireLocation"><g:message code="tireHotelOccurrence.tireLocation.label" /></label>
@@ -89,15 +98,6 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'outDate', 'errors')}">
                                     <g:datePicker name="outDate" precision="day" value="${tireHotelOccurrenceInstance?.outDate}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'customer', 'errors')}">
-                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${tireHotelOccurrenceInstance?.customer?.id}"  />
                                 </td>
                             </tr>
                         

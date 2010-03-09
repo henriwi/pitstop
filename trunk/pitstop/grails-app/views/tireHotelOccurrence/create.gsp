@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title><g:message code="tireHotelOccurrence.create.label"/></title>
+		<!--<gui:resources components="autoComplete" />-->
     </head>
     <body>
         <div class="nav">
@@ -25,6 +26,16 @@
                 <div class="dialog">
                     <table>
                         <tbody>
+                        
+                        	<tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'customer', 'errors')}">
+									<g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${tireHotelOccurrenceInstance?.customer?.id}"  />
+									<!--<gui:autoComplete id="customer" controller="customer" action="autoComplete"	/>-->
+                                </td>
+                            </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
@@ -79,16 +90,7 @@
                                     <g:textArea name="notice" cols="40" rows="5" value="${tireHotelOccurrenceInstance?.notice}" />
                                 </td>
                             </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'customer', 'errors')}">
-                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${tireHotelOccurrenceInstance?.customer?.id}"  />
-                                </td>
-                            </tr>
-                        
+                                             
                         </tbody>
                     </table>
                 </div>
