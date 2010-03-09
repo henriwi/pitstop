@@ -35,6 +35,17 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 		assertEquals "list", controller.redirectArgs.action
 	}
 	
+	void testList() {
+		def c2 = new Customer(firstName: "Dekk Bernt", lastName: "Dekkesen", phoneNumber: "23555095", address: "Dekkveien 2",
+				postalCode: "0194", city: "Radiator By", email: "felger@dekk.com", company: "Dekkilicious", notice: "God kunde")
+		def customerList = [c1, c2];
+		mockDomain Customer, customerList
+		
+		def model = controller.list()
+		assertEquals customerList, model.customerInstanceList
+		assertEquals 2, model.customerInstanceTotal
+	}
+	
 	void testCreate() {
 		def model = controller.create()
 		assertNotNull model.customerInstance

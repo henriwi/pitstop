@@ -34,6 +34,17 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertEquals "list", controller.redirectArgs.action
 	}
 	
+	void testList(){
+		def tireOccurrence2 = new TireOccurrence(id:2,tire:tire,price:65.5,numberInStock:2,registrationDate:new Date(),
+				discount:25,environmentalFee:15)
+		def tireOccurrenceList = [tireOccurrence, tireOccurrence2];
+		mockDomain TireOccurrence, tireOccurrenceList
+		
+		def model = controller.list()
+		assertEquals tireOccurrenceList, model.tireOccurrenceInstanceList
+		assertEquals 2, model.tireOccurrenceInstanceTotal
+	}
+	
 	void testCreate() {
 		def model = controller.create()
 		assertNotNull model.tireOccurrenceInstance
