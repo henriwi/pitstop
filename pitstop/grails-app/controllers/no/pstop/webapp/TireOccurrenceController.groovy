@@ -24,7 +24,7 @@ class TireOccurrenceController {
 
     def save = {
         def tireOccurrenceInstance = new TireOccurrence(params)
-		tireOccurrenceInstance.merge()
+		tireOccurrenceInstance = tireOccurrenceInstance.merge()
         if (tireOccurrenceInstance.save(flush: true)) {
             flash.message = "${message(code: 'tireOccurrence.created.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomst'), tireOccurrenceInstance.tire])}"
             redirect(action: "show", id: tireOccurrenceInstance.id)

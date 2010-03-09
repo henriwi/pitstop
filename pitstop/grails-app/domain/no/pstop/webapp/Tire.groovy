@@ -41,7 +41,7 @@ class Tire {
 	}
 
 	static fastSearch(Matcher query, Integer max, Integer offset){
-		Tire.search([max:max, offset:offset])
+		Tire.search([max:max, offset:offset], escape: true)
 		{
 			must(term('width', query[tireIndex][widthIndex]))
 			must(term('profile', query[tireIndex][profileIndex]))
@@ -52,7 +52,7 @@ class Tire {
 
 	static normalSearch(String width, String profile, String diameter, String speedIndex, 
 	String tireType, String brand, Integer max, Integer offset){
-		Tire.search([max:max, offset:offset]) {
+		Tire.search([max:max, offset:offset, escape: true]) {
 			width != "" ? must(term('width', width)) : ""
 			profile != "" ? must(term('profile', profile)) : ""
 			diameter != "" ? must(term('diameter', diameter)) : ""

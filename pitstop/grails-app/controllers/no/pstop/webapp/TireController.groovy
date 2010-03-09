@@ -27,8 +27,8 @@ class TireController {
 				tireCount = Tire.fastSearch(query, Tire.count(), 0).size()
 			}
 			else {
-				tireList = Tire.search("*" + params.q + "*", [max:params.max, offset:params.offset]).results
-				tireCount = Tire.search("*" + params.q + "*", [max:Tire.count(), offset:params.offset]).results.size()
+				tireList = Tire.search("*" + params.q + "*", [max:params.max, offset:params.offset], escape: true).results
+				tireCount = Tire.search("*" + params.q + "*", [max:Tire.count(), offset:params.offset], escape: true).results.size()
 			}
 		} 
 		else if(isNormalSearchQuery(params.type) && !isNormalSearchWithoutInput()) {
