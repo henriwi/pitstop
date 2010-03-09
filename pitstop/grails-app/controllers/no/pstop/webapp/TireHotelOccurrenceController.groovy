@@ -33,7 +33,7 @@ class TireHotelOccurrenceController {
     def save = {
         def tireHotelOccurrenceInstance = new TireHotelOccurrence(params)
         if (tireHotelOccurrenceInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), tireHotelOccurrenceInstance.id])}"
+            flash.message = "${message(code: 'tireHotelOccurrence.created.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.id])}"
             redirect(action: "show", id: tireHotelOccurrenceInstance.id)
         }
         else {
@@ -71,7 +71,7 @@ class TireHotelOccurrenceController {
 			println("Tirehotel" + tireHotelOccurrenceInstance)
             if (!tireHotelOccurrenceInstance.hasErrors() && tireHotelOccurrenceInstance.save(flush: true)) {
 				println "Andre if"
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), tireHotelOccurrenceInstance.id])}"
+                flash.message = "${message(code: 'tireHotelOccurrence.updated.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), tireHotelOccurrenceInstance.id])}"
                 redirect(action: "show", id: tireHotelOccurrenceInstance.id)
             }
             else {
@@ -91,11 +91,11 @@ class TireHotelOccurrenceController {
         if (tireHotelOccurrenceInstance) {
             try {
                 tireHotelOccurrenceInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
+                flash.message = "${message(code: 'tireHotelOccurrence.deleted.message', args: [message(code: 'tireHotelOccurrence.label'), params.id])}"
                 redirect(action: "list")
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
+                flash.message = "${message(code: 'tireHotelOccurrence.not.deleted.message', args: [message(code: 'tireHotelOccurrence.label'), params.id])}"
                 redirect(action: "show", id: params.id)
             }
         }
