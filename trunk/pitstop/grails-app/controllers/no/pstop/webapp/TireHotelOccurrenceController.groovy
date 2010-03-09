@@ -35,6 +35,7 @@ class TireHotelOccurrenceController {
 
     def save = {
         def tireHotelOccurrenceInstance = new TireHotelOccurrence(params)
+        tireHotelOccurrenceInstance = tireHotelOccurrenceInstance.merge()
         if (tireHotelOccurrenceInstance.save(flush: true)) {
             flash.message = "${message(code: 'tireHotelOccurrence.created.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.id])}"
             redirect(action: "show", id: tireHotelOccurrenceInstance.id)
