@@ -16,6 +16,24 @@
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
+            <g:form action="search" method="get">
+			<div id="tireHotelOccurrenceSearch">
+				<table>
+					<tbody>
+						<tr>
+							<td width="50"><g:textField tabindex='1' name="search" /></td>
+							<td>
+								<g:submitButton tabindex='2' class="searchButtons" name="btnSearch"
+									value="${message(code: 'search.button.fastSearch.label')}" />
+							</td>
+						</tr>
+						<tr height="2">
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			</g:form>
             <div class="list">
                 <table>
                     <thead>
