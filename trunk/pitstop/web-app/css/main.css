@@ -432,24 +432,24 @@ ul#menuList li {
 }
 
 
-/*
-#menuList {
-	list-style: none;
+.editTableItem {
+    background: url(../images/skin/database_edit.png) 5px 50% no-repeat;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 28px;
 }
-#mainMenu {
-	margin-top:20px;
-	float:left;
-	min-height: 250px;
-	min-width: 185px;
+.deleteTableItem {
+    background: url(../images/skin/database_delete.png) 5px 50% no-repeat;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 28px;
 }
-#mainMenu li {
-	border-style: solid;
-	margin: 5;
-	padding: 5;
-	font:21px/1.231 arial,helvetica,clean,sans-serif;
 
+.notSortableColoumn{
+	color:#333333;
+	display:block;
+	font-size:10px;
+	text-decoration:none;
+	width:100%;
+	cursor: default;
 }
-#mainMenu  li:hover {
- 	background-color: #ddd
-}
-*/

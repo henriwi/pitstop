@@ -49,6 +49,12 @@
                             <g:sortableColumn property="inDate" title="${message(code: 'tireHotelOccurrence.list.inDate.label')}" />
                             
                             <g:sortableColumn property="outDate" title="${message(code: 'tireHotelOccurrence.list.outDate.label')}" />
+                            
+                            <g:sortableColumn property="customer" title="${message(code: 'tireHotelOccurrence.list.customer.label')}" />
+                            
+                            <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.edit.label')}</a></th>
+                            
+                            <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delete.label')}</a></th>
                         
                         </tr>
                     </thead>
@@ -67,6 +73,12 @@
                             <td><g:link action="show" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.inDate}" /></g:link></td>
                             
                             <td><g:link action="show" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.outDate}" /></g:link></td>
+                            
+                            <td><g:link controller="customer" action="show" id="${tireHotelOccurrenceInstance.customer.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "customer")}</g:link></td>
+                            
+                            <td><g:link class="editTableItem" action="edit" id="${tireHotelOccurrenceInstance.id}">&nbsp;</g:link></td>
+                            
+                            <td><g:link class="deleteTableItem" action="delete" id="${tireHotelOccurrenceInstance.id}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');">&nbsp;</g:link></td>
                         
                         </tr>
                     </g:each>
