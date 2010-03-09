@@ -45,6 +45,8 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 	void testSaveWithValidTireHotelOccurrence(){
 		setParams("1a", "DE12345", "Audi", customer, "Sommer", new Date(), new Date() + 100, "Notice")
 		controller.metaClass.message = {args -> println "message: ${args}"}
+		def mock = mockFor(TireHotelOccurrence)
+		mock.demand.merge() {tireHotelOccurrence}
 		controller.save()
 		
 		assertEquals "redirect action", "show", controller.redirectArgs.action
@@ -54,6 +56,8 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 	void testSaveWithInvalidTireHotelOccurrence(){
 		setParams("a1", "DE12345", "?", customer, "Sommer", new Date(), new Date() + 100, "Notice")
 		controller.metaClass.message = {args -> println "message: ${args}"}
+		def mock = mockFor(TireHotelOccurrence)
+		mock.demand.merge() {tireHotelOccurrence}
 		controller.save()
 		
 		assertEquals "render action", "create", controller.modelAndView.viewName
