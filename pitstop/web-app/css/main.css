@@ -228,6 +228,21 @@ th.desc a {
 	margin-right: 15px;
 	float: left;	
 }
+
+#tireHotelOccurrenceSearch {
+	
+}
+
+#tireHotelOccurrenceSearch table{
+	border-style: none;
+}
+
+#tireHotelOccurrenceSearch #btnSearch{
+	width: 35px;
+	height: 20px;
+	margin: 2px 0 2px 0;
+}
+
 .dialog table {
     padding: 5px 0;
 }
