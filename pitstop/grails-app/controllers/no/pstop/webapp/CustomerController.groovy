@@ -1,5 +1,7 @@
 package no.pstop.webapp
 
+import grails.converters.JSON
+
 class CustomerController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -88,4 +90,16 @@ class CustomerController {
             redirect(action: "list")
         }
     }
+	
+	def autoComplete = {
+		def customers = Customer.list()
+		
+		customers = customers.collect {
+			[id: it.id, name: it.firstName]
+		}
+		def jsonCustomer = [
+		    result: customers
+		]
+		render jsonCustomer as JSON
+	}
 }

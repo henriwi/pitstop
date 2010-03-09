@@ -24,4 +24,8 @@ class Customer {
 		company(matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\.\\_]{0,50}")
 		notice(size:0..1000)
     }
+	
+	String toString(){
+		"${firstName} ${lastName}" 
+	}
 }
