@@ -37,6 +37,10 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertEquals "list", controller.redirectArgs.action
 	}
 	
+	void testList(){
+		//TODO
+	}
+	
 	void testCreate() {
 		def model = controller.create()
 		assertNotNull model.tireHotelOccurrenceInstance
@@ -90,14 +94,54 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertEquals "list", controller.redirectArgs.action
 	}
 	
-	/*void testUpdateWithValidId(){
+	/*void testUpdateWithValidIdErrors(){
 		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
+		tireOccurrence.metaClass.hasErrors = {-> return true }
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.update()
 		
-		assertEquals "redirect action", "show", controller.redirectArgs.action
-		assertEquals "Redirect id", 1, controller.redirectArgs.id
+		assertEquals "render action", "edit", controller.modelAndView.viewName
+		assertNotNull "TireHotelOccurrence should not be null", controller.modelAndView.model.linkedHashMap.tireHotelOccurrenceInstance
 	}*/
+	
+	/*void testUpdateWithValidId() {
+		tireHotelOccurrenceExpected = new TireHotelOccurrence(tireLocation:"a1", registrationNumber:"DA12345", carType:"Audi Allround 3.0T", 
+				customer:customer, tireType: "Sommer", inDate:new Date(), outDate:new Date()+100, notice:"sam" )
+		mockDomain TireHotelOccurrence, [tireHotelOccurrenceExpected]
+
+		controller.params.id = 1
+		tireHotelOccurrence.metaClass.hasErrors = {-> return false }
+		controller.metaClass.message = {args -> println "message: ${args}"} 
+		controller.update()
+		
+		assertEquals "redirect action", "show", controller.redirectArgs.action
+		assertEquals "redirect id", 1, controller.redirectArgs.id
+	}*/
+	
+	void testUpdateWithInvalidId() {
+		controller.params.id = 999
+		controller.metaClass.message = {args -> println "message: ${args}"} 
+		controller.update()
+		
+		assertEquals "redirect action", "list", controller.redirectArgs.action
+	}
+	
+	void testDeleteWithValidId() {
+		mockDomain(TireHotelOccurrence, [tireHotelOccurrence])
+		controller.params.id = 1
+		controller.metaClass.message = {args -> println "message: ${args}"} 
+		controller.delete()
+		assertEquals "redirect action", "list", controller.redirectArgs.action
+	}
+	
+	void testDeleteWithInvalidId() {
+		controller.params.id = 999
+		controller.metaClass.message = {args -> println "message: ${args}"} 
+		controller.delete()
+		assertEquals "redirect action", "list", controller.redirectArgs.action
+	}
+	
+
 	
 }
