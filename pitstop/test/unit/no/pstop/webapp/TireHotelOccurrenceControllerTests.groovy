@@ -37,8 +37,15 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertEquals "list", controller.redirectArgs.action
 	}
 	
-	void testList(){
-		//TODO
+	void testList() {
+		def tireHotelOccurrence2 = new TireHotelOccurrence(tireLocation:"b1", registrationNumber:"AA12345", carType:"Audi Allround 3.0", 
+				customer:customer, tireType: "Sommer", inDate:new Date(), outDate:new Date()+100, notice:"sam" )
+		def tireHotelOccurrenceList = [tireHotelOccurrence, tireHotelOccurrence2];
+		mockDomain TireHotelOccurrence, tireHotelOccurrenceList
+		
+		def model = controller.list()
+		assertEquals tireHotelOccurrenceList, model.tireHotelOccurrenceInstanceList
+		assertEquals 2, model.tireHotelOccurrenceInstanceTotal
 	}
 	
 	void testCreate() {
