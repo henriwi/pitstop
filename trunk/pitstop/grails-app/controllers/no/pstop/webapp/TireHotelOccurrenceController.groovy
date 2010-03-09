@@ -21,6 +21,9 @@ class TireHotelOccurrenceController {
 			tireHotelOccurrenceList = TireHotelOccurrence.list(params)
 			tireHotelOccurrenceCount = TireHotelOccurrence.count()
 		}
+		if(tireHotelOccurrenceCount == 0){
+			flash.message = "Fant ingen dekktyper."
+		}
         [tireHotelOccurrenceInstanceList: tireHotelOccurrenceList, tireHotelOccurrenceInstanceTotal: tireHotelOccurrenceCount]
     }
 
@@ -104,4 +107,8 @@ class TireHotelOccurrenceController {
             redirect(action: "list")
         }
     }
+	
+	def search = {
+		redirect(action: "list", params:[q: params.search])
+	}
 }
