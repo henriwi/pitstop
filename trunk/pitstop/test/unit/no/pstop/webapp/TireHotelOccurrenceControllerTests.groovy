@@ -10,11 +10,11 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 	
     protected void setUp() {
         super.setUp()
-		customer = new Customer(firstName:"Jan Roar", lastName:"Hansen",phoneNumber:"99887766", address:"Vollensvingen 2", postalCode:"0899",
+		customer = new Customer(firstName:"Jan Roar", lastName:"Hansen", phoneNumber:"99887766", address:"Vollensvingen 2", postalCode:"0899",
 				city:"Vollen", email:"roar@gmail.com", company:"StoreDekk", notice:"En god betaler" )
 		mockDomain TireHotelOccurrence
 		tireHotelOccurrence = new TireHotelOccurrence(tireLocation:"a1", registrationNumber:"DA12345", carType:"Audi Allround 3.0T", 
-				customer:customer, tireType: "Sommer", inDate:new Date(), outDate:new Date()+100, notice:"sam" )
+				customer:customer, tireType: "Sommer", inDate:new Date(), outDate:new Date()+100, notice:"Notice" )
     }
 	
 	private setParams(String tireLocation, String registrationNumber, String carType, Customer customer, String tireType, Date inDate, Date outDate, String notice){
@@ -43,7 +43,7 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithValidTireHotelOccurrence(){
-		setParams("1a", "DE12345", "Audi", customer, "Sommer", new Date(), new Date() + 100, "Notice")
+		setParams("a1", "DE12345", "Audi", customer, "Sommer", new Date(), new Date() + 100, "Notice")
 		controller.metaClass.message = {args -> println "message: ${args}"}
 		def mock = mockFor(TireHotelOccurrence)
 		mock.demand.merge() {tireHotelOccurrence}
@@ -54,7 +54,7 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithInvalidTireHotelOccurrence(){
-		setParams("a1", "DE12345", "?", customer, "Sommer", new Date(), new Date() + 100, "Notice")
+		setParams("a1", "DE12345", "Audi Allround 3.0T", customer, "Sommer", new Date(), new Date() + 100, "Notice")
 		controller.metaClass.message = {args -> println "message: ${args}"}
 		def mock = mockFor(TireHotelOccurrence)
 		mock.demand.merge() {tireHotelOccurrence}
