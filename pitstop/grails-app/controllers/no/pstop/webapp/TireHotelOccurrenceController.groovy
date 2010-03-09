@@ -9,8 +9,19 @@ class TireHotelOccurrenceController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [tireHotelOccurrenceInstanceList: TireHotelOccurrence.list(params), tireHotelOccurrenceInstanceTotal: TireHotelOccurrence.count()]
+		def tireHotelOccurrenceList
+		def tireHotelOccurrenceCount
+		
+		if(params.q){
+			tireHotelOccurrenceList = TireHotelOccurrence.search("*" + params.q + "*").results
+			tireHotelOccurrenceCount = tireHotelOccurrenceList.size()
+		}
+		else {
+			params.max = Math.min(params.max ? params.int('max') : 10, 100)
+			tireHotelOccurrenceList = TireHotelOccurrence.list(params)
+			tireHotelOccurrenceCount = TireHotelOccurrence.count()
+		}
+        [tireHotelOccurrenceInstanceList: tireHotelOccurrenceList, tireHotelOccurrenceInstanceTotal: tireHotelOccurrenceCount]
     }
 
     def create = {
