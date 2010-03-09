@@ -18,17 +18,17 @@
             </g:if>
             <g:form action="search" method="get">
 			<div id="tireHotelOccurrenceSearch">
-				<table>
+				<table border="1">
 					<tbody>
 						<tr>
 							<td width="50"><g:textField tabindex='1' name="search" /></td>
-							<td>
+							<td width="10">
 								<g:submitButton tabindex='2' class="searchButtons" name="btnSearch"
 									value="${message(code: 'search.button.fastSearch.label')}" />
 							</td>
-						</tr>
-						<tr height="2">
-							
+							<td>
+								<g:link class="searchButtons" id="showAllButton"action="list"><g:message code="tireHotelOccurrence.search.showAll.label" /></g:link>
+							</td>
 						</tr>
 					</tbody>
 				</table>
