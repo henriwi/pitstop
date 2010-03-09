@@ -55,16 +55,21 @@ class TireHotelOccurrenceController {
     def update = {
         def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
         if (tireHotelOccurrenceInstance) {
+			println "Første if"
             tireHotelOccurrenceInstance.properties = params
+			println("Tirehotel" + tireHotelOccurrenceInstance)
             if (!tireHotelOccurrenceInstance.hasErrors() && tireHotelOccurrenceInstance.save(flush: true)) {
+				println "Andre if"
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), tireHotelOccurrenceInstance.id])}"
                 redirect(action: "show", id: tireHotelOccurrenceInstance.id)
             }
             else {
+				println "Første else"
                 render(view: "edit", model: [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance])
             }
         }
         else {
+			println "Andre else"
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
             redirect(action: "list")
         }
