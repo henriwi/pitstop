@@ -1,6 +1,7 @@
 package no.pstop.webapp
 
 class TireHotelOccurrence {
+	static searchable = true
 	static belongsTo = [customer : Customer]
 	String tireLocation
 	String registrationNumber
