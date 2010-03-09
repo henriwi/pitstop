@@ -229,10 +229,6 @@ th.desc a {
 	float: left;	
 }
 
-#tireHotelOccurrenceSearch {
-	
-}
-
 #tireHotelOccurrenceSearch table{
 	border-style: none;
 }
@@ -241,6 +237,13 @@ th.desc a {
 	width: 35px;
 	height: 20px;
 	margin: 2px 0 2px 0;
+}
+
+.searchButtons #showAllButton{
+	width: 35px;
+	height: 40px;
+	margin: 2px 0 2px 0;
+	background-color: #333
 }
 
 .dialog table {
