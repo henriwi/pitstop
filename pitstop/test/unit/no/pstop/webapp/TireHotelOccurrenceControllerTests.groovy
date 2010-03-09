@@ -128,6 +128,7 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.delete()
+		
 		assertEquals "redirect action", "list", controller.redirectArgs.action
 	}
 	
@@ -135,9 +136,15 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		controller.params.id = 999
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.delete()
+		
 		assertEquals "redirect action", "list", controller.redirectArgs.action
 	}
 	
-
-	
+	void testSearch() {
+		controller.params.search = "Sommer"
+		controller.search()
+		
+		assertEquals "redirect action", "list", controller.redirectArgs.action
+		assertEquals "query params should be equal", controller.params.search, controller.redirectArgs.params.q
+	}
 }
