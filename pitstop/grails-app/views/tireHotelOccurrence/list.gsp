@@ -1,6 +1,7 @@
 
 <%@ page import="no.pstop.webapp.TireHotelOccurrence" %>
-<html>
+
+<%@page import="no.pstop.webapp.TireHotelOccurrence"%><html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
@@ -74,12 +75,16 @@
                             
                             <td><g:link action="show" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.outDate}" /></g:link></td>
                             
-                            <td><g:link controller="customer" action="show" id="${tireHotelOccurrenceInstance.customer.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "customer")}</g:link></td>
+                            <td><g:link controller="customer" action="show" id="${tireHotelOccurrenceInstance?.customer?.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "customer")}</g:link></td>
                             
                             <td><g:link class="editTableItem" action="edit" id="${tireHotelOccurrenceInstance.id}">&nbsp;</g:link></td>
                             
-                            <td><g:link class="deleteTableItem" action="delete" id="${tireHotelOccurrenceInstance.id}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');">&nbsp;</g:link></td>
-                        
+                            <td>
+                            	<g:form method="post">
+                            		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+                            		<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
+                            	</g:form>
+                            </td>                        
                         </tr>
                     </g:each>
                     </tbody>

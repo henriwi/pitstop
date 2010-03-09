@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <title>${message(code: 'tireList.title.label')}</title>
+        <title>${message(code: 'tire.list.title.label')}</title>
     </head>
     <body>
         <div class="nav">
@@ -45,7 +45,11 @@
                             
                             <g:sortableColumn params="${params}" property="tireType" title="${message(code: 'tire.tireType.table.label')}" />
                             
-                             <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th>
+                            <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th>
+                             
+                            <th><a class="notSortableColoumn">${message(code: 'tire.list.edit.label')}</a></th>
+                            
+                            <th><a class="notSortableColoumn">${message(code: 'tire.list.delete.label')}</a></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,6 +82,15 @@
                             </g:each>
                             
                             <td><g:link action="show" id="${tireInstance.id}">${numberOfAvailable}</g:link></td>
+                            
+                            <td><g:link class="editTableItem" action="edit" id="${tireInstance.id}">&nbsp;</g:link></td>
+                            
+                            <td>
+                            	<g:form method="post">
+                            		<g:hiddenField name="id" value="${tireInstance?.id}" />
+                            		<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
+                            	</g:form>
+                            </td>   
 
                         </tr>
                     </g:each>
