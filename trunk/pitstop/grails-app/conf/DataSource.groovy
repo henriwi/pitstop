@@ -13,13 +13,13 @@ hibernate {
 environments {
 	development {
 		dataSource {
-			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
+			dbCreate = "update" // one of 'create', 'create-drop','update'
 			url = "jdbc:mysql://localhost/pitstop"
 		}
 	}
 	test {
 		dataSource {
-			dbCreate = "create-drop"
+			dbCreate = "update"
 			driverClassName = "org.hsqldb.jdbcDriver"
 			username = "sa"
 			password = ""
@@ -28,7 +28,7 @@ environments {
 	}
 	production {
 		dataSource {
-			dbCreate = "create-drop"
+			dbCreate = "update"
 			url = "jdbc:mysql://localhost/pitstop"
 		}
 	}
