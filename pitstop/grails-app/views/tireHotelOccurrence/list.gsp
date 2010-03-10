@@ -91,7 +91,8 @@
                             <td>
                             	<g:form method="post">
                             		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-									<g:hiddenField name="outDate" value="${null}" />
+									<g:hiddenField name="delivered" value="delivered" />
+									
                             		<g:actionSubmit class="delivered" action="update" value="${message(code: 'tireHotelOccurrence.list.delivered.button')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
                             	</g:form>
                             </td>
