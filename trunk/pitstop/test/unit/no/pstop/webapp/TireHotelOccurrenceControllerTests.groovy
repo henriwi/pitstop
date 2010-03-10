@@ -129,6 +129,18 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertEquals "redirect action", "list", controller.redirectArgs.action
 	}
 	
+	void testUpdateWithDeliveryParam() {
+		def t2 = new TireHotelOccurrence(tireLocation:"1a", registrationNumber:"DE12345", carType:"Audi", 
+				customer:customer, tireType: "Sommer", inDate:new Date(), notice:"Notice" )
+		mockDomain TireHotelOccurrence, [t2]
+		controller.params.id = 1
+		controller.params.delivered = "abc"
+		controller.metaClass.message = {args -> println "message: ${args}"} 
+		controller.update()
+		
+		assertNotNull "Date should not be null", t2.outDate
+	}
+	
 	void testDeleteWithValidId() {
 		mockDomain(TireHotelOccurrence, [tireHotelOccurrence])
 		controller.params.id = 1
