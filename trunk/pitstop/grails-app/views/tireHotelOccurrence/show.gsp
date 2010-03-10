@@ -74,6 +74,7 @@
                 <g:form>
                     <g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label' )}" /></span>
+                    <span class="button"><g:actionSubmit class="save" action="change" value="${message(code: 'default.button.change.label')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label' )}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>
             </div>

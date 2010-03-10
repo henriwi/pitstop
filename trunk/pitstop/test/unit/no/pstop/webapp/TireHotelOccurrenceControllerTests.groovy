@@ -153,4 +153,8 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertEquals "redirect action", "list", controller.redirectArgs.action
 		assertEquals "query params should be equal", controller.params.search, controller.redirectArgs.params.q
 	}
+	
+	void testChange(){
+		
+	}
 }
