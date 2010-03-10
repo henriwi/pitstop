@@ -56,6 +56,8 @@
                             <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.edit.label')}</a></th>
                             
                             <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delete.label')}</a></th>
+                            
+                            <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delivered.label')}</a></th>
                         
                         </tr>
                     </thead>
@@ -84,7 +86,15 @@
                             		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
                             		<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
                             	</g:form>
-                            </td>                        
+                            </td>
+                            
+                            <td>
+                            	<g:form method="post">
+                            		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+									<g:hiddenField name="outDate" value="${null}" />
+                            		<g:actionSubmit class="delivered" action="update" value="${message(code: 'tireHotelOccurrence.list.delivered.button')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
+                            	</g:form>
+                            </td>
                         </tr>
                     </g:each>
                     </tbody>
