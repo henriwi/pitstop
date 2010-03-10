@@ -317,6 +317,25 @@ th.desc a {
     padding-left: 28px;
 }
 
+.buttons input.change {
+    background: transparent url(../images/skin/season_switch.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+input.change {
+    background: transparent url(../images/skin/season_switch.png) 5px 50% no-repeat;
+	margin: 0px;
+    padding-right: 5px;
+    border: 0px;
+    cursor: pointer;
+}
+input.delivered {
+    background: transparent url(../images/skin/delivered.png) 5px 50% no-repeat;
+    margin: 0px;
+    padding-right: 5px;
+    border: 0px;
+    cursor: pointer;
+}
+
 #tireEditButtons {
 	float: left;	
 }
