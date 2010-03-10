@@ -96,30 +96,27 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertEquals "list", controller.redirectArgs.action
 	}
 	
-	/*void testUpdateWithValidIdErrors(){
+	void testUpdateWithValidIdButErrors(){
 		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
-		tireOccurrence.metaClass.hasErrors = {-> return true }
+		tireHotelOccurrence.metaClass.hasErrors = {-> return true }
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.update()
 		
 		assertEquals "render action", "edit", controller.modelAndView.viewName
 		assertNotNull "TireHotelOccurrence should not be null", controller.modelAndView.model.linkedHashMap.tireHotelOccurrenceInstance
-	}*/
+	}
 	
-	/*void testUpdateWithValidId() {
-		tireHotelOccurrenceExpected = new TireHotelOccurrence(tireLocation:"a1", registrationNumber:"DA12345", carType:"Audi Allround 3.0T", 
-				customer:customer, tireType: "Sommer", inDate:new Date(), outDate:new Date()+100, notice:"sam" )
-		mockDomain TireHotelOccurrence, [tireHotelOccurrenceExpected]
+	void testUpdateWithValidId() {
+		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
 
 		controller.params.id = 1
-		tireHotelOccurrence.metaClass.hasErrors = {-> return false }
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.update()
 		
 		assertEquals "redirect action", "show", controller.redirectArgs.action
 		assertEquals "redirect id", 1, controller.redirectArgs.id
-	}*/
+	}
 	
 	void testUpdateWithInvalidId() {
 		controller.params.id = 999
@@ -130,15 +127,14 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testUpdateWithDeliveryParam() {
-		def t2 = new TireHotelOccurrence(tireLocation:"1a", registrationNumber:"DE12345", carType:"Audi", 
-				customer:customer, tireType: "Sommer", inDate:new Date(), notice:"Notice" )
-		mockDomain TireHotelOccurrence, [t2]
+		tireHotelOccurrence.outDate = null
+		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
 		controller.params.id = 1
 		controller.params.delivered = "abc"
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.update()
 		
-		assertNotNull "Date should not be null", t2.outDate
+		assertNotNull "Date should not be null", tireHotelOccurrence.outDate
 	}
 	
 	void testDeleteWithValidId() {
@@ -166,7 +162,88 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertEquals "query params should be equal", controller.params.search, controller.redirectArgs.params.q
 	}
 	
-	void testChange(){
+	void testChangeWithValidId(){
+		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
+		controller.params.id = 1
+		def model = controller.change()
+		assertEquals "returned model should be as expected", tireHotelOccurrence, model.tireHotelOccurrenceInstance
+	}
+	
+	void testChangeWithInvalidId(){
+		controller.params.id = 999
+		controller.metaClass.message = {args -> println "message: ${args}"}
+		controller.change()
+		assertEquals "redirect action", "list", controller.redirectArgs.action 
+	}
+	
+	void testUpdateChangeWithValidParams(){
+		setParams "1a", "DE12345", "Audi", customer, "Vinter (pigg)", null, null, "Notice"
+		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
 		
+		def newTireHotelOccurrence = new TireHotelOccurrence(tireLocation:"1a", registrationNumber:"DE12345", carType:"Audi", 
+				customer:customer, tireType: "Vinter (pigg)", inDate:new Date(), outDate:null, notice:"Notice")
+		
+		def mock = mockFor(TireHotelOccurrence)
+		mock.demand.merge() {newTireHotelOccurrence}
+		controller.params.id = 1
+		controller.metaClass.message = {args -> println "message: ${args}"}
+		
+		controller.updateChange()
+		
+		assertEquals "redirect action", "show", controller.redirectArgs.action
+		assertEquals "Id should be the same", 2, controller.redirectArgs.id
+	}
+	
+	void testUpdateChangeWithValidParamsButErrors(){
+		setParams "1a", "DE12345", "Audi", customer, "Vinter (pigg)", null, null, "Notice"
+		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
+		
+		def newTireHotelOccurrence = new TireHotelOccurrence(tireLocation:"1a", registrationNumber:"DE12345", carType:"Audi", 
+		customer:customer, tireType: "Vinter (pigg)", inDate:new Date(), outDate:null, notice:"Notice")
+		
+		def mock = mockFor(TireHotelOccurrence)
+		mock.demand.merge() {newTireHotelOccurrence}
+		controller.params.id = 1
+		controller.metaClass.message = {args -> println "message: ${args}"}
+		tireHotelOccurrence.metaClass.hasErrors = {-> return true}
+		
+		controller.updateChange()
+		
+		assertEquals "render action", "edit", controller.modelAndView.viewName
+		assertNotNull "TireHotelOccurrence should not be null", controller.modelAndView.model.linkedHashMap.tireHotelOccurrenceInstance
+	}
+	
+	void testUpdateChangeWithInvalidId(){
+		setParams "1a", "DE12345", "Audi", customer, "Vinter (pigg)", null, null, "Notice"
+		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
+		
+		def newTireHotelOccurrence = new TireHotelOccurrence(tireLocation:"1a", registrationNumber:"DE12345", carType:"Audi", 
+		customer:customer, tireType: "Vinter (pigg)", inDate:new Date(), outDate:null, notice:"Notice")
+		
+		def mock = mockFor(TireHotelOccurrence)
+		mock.demand.merge() {newTireHotelOccurrence}
+		controller.params.id = 999
+		controller.metaClass.message = {args -> println "message: ${args}"}
+		
+		controller.updateChange()
+		
+		assertEquals "redirect action", "list", controller.redirectArgs.action
+	}
+	
+	void testUpdateChangeWithValidIdButInvalidParams(){
+		setParams "1a", "DE12345", "?", customer, "?", null, null, "Notice"
+		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
+		
+		def newTireHotelOccurrence = new TireHotelOccurrence(tireLocation:"1a", registrationNumber:"DE12345", carType:"?", 
+		customer:customer, tireType: "Sommer", inDate:new Date(), outDate:null, notice:"Notice")
+		
+		def mock = mockFor(TireHotelOccurrence)
+		mock.demand.merge() {newTireHotelOccurrence}
+		controller.params.id = 1
+		
+		controller.updateChange()
+		
+		assertEquals "render action", "edit", controller.modelAndView.viewName
+		assertNotNull "TireHotelOccurrence should not be null", controller.modelAndView.model.linkedHashMap.tireHotelOccurrenceInstance
 	}
 }

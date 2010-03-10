@@ -123,12 +123,14 @@ class TireHotelOccurrenceController {
 	}
 	
 	def updateChange = {
+		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
 		def newTireHotelOccurrenceInstance = new TireHotelOccurrence(params)
 		newTireHotelOccurrenceInstance.inDate = new Date()
 		newTireHotelOccurrenceInstance = newTireHotelOccurrenceInstance.merge()
+
+		println newTireHotelOccurrenceInstance.validate()
 		
-		if(!newTireHotelOccurrenceInstance.hasErrors() && newTireHotelOccurrenceInstance.save(flush: true)){
-			def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
+		if(newTireHotelOccurrenceInstance.save(flush: true)){
 			if(tireHotelOccurrenceInstance){
 				tireHotelOccurrenceInstance.outDate = new Date()
 				if(!tireHotelOccurrenceInstance.hasErrors() && tireHotelOccurrenceInstance.save(flush: true)){
