@@ -101,7 +101,7 @@
                             <td>
                             	<g:form method="post">
                             		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-                            		<g:actionSubmit class="save" action="change" value="${message(code: 'default.button.change.label')}" />
+                            		<g:actionSubmit class="change" action="change" value="${message(code: 'tireHotelOccurrence.list.change.button')}" />
                             	</g:form>
                             </td>
                         </tr>
