@@ -92,15 +92,6 @@
                                 </td>
                             </tr>
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="outDate"><g:message code="tireHotelOccurrence.outDate.label" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'outDate', 'errors')}">
-                                    <g:datePicker name="outDate" precision="day" value="${tireHotelOccurrenceInstance?.outDate}"  />
-                                </td>
-                            </tr>
-                        
                         </tbody>
                     </table>
                 </div>
