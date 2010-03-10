@@ -35,8 +35,8 @@ class TireHotelOccurrenceController {
 	
 	def save = {
 		def tireHotelOccurrenceInstance = new TireHotelOccurrence(params)
-		tireHotelOccurrenceInstance = tireHotelOccurrenceInstance.merge()
-		if (tireHotelOccurrenceInstance.save(flush: true)) {
+		//tireHotelOccurrenceInstance = tireHotelOccurrenceInstance.merge(validate: false)
+		if (tireHotelOccurrenceInstance.merge(flush: true)) {
 			flash.message = "${message(code: 'tireHotelOccurrence.created.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.id])}"
 			redirect(action: "show", id: tireHotelOccurrenceInstance.id)
 		}
@@ -126,11 +126,9 @@ class TireHotelOccurrenceController {
 		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
 		def newTireHotelOccurrenceInstance = new TireHotelOccurrence(params)
 		newTireHotelOccurrenceInstance.inDate = new Date()
-		newTireHotelOccurrenceInstance = newTireHotelOccurrenceInstance.merge()
+		//newTireHotelOccurrenceInstance = newTireHotelOccurrenceInstance.merge(validate: false)
 
-		println newTireHotelOccurrenceInstance.validate()
-		
-		if(newTireHotelOccurrenceInstance.save(flush: true)){
+		if(newTireHotelOccurrenceInstance.merge(flush: true)){
 			if(tireHotelOccurrenceInstance){
 				tireHotelOccurrenceInstance.outDate = new Date()
 				if(!tireHotelOccurrenceInstance.hasErrors() && tireHotelOccurrenceInstance.save(flush: true)){
