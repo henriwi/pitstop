@@ -69,7 +69,11 @@ class TireHotelOccurrenceController {
 
     def update = {
         def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
-        println (params)
+
+        if (params.delivered) { 
+        	tireHotelOccurrenceInstance.outDate = new Date()
+        }
+        
         if (tireHotelOccurrenceInstance) {
             tireHotelOccurrenceInstance.properties = params
             if (!tireHotelOccurrenceInstance.hasErrors() && tireHotelOccurrenceInstance.save(flush: true)) {
