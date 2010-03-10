@@ -58,6 +58,8 @@
                             <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delete.label')}</a></th>
                             
                             <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delivered.label')}</a></th>
+                            
+                            <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.change.label')}</a></th>
                         
                         </tr>
                     </thead>
@@ -92,8 +94,14 @@
                             	<g:form method="post">
                             		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
 									<g:hiddenField name="delivered" value="delivered" />
-									
                             		<g:actionSubmit class="delivered" action="update" value="${message(code: 'tireHotelOccurrence.list.delivered.button')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
+                            	</g:form>
+                            </td>
+                            
+                            <td>
+                            	<g:form method="post">
+                            		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+                            		<g:actionSubmit class="save" action="change" value="${message(code: 'default.button.change.label')}" />
                             	</g:form>
                             </td>
                         </tr>
