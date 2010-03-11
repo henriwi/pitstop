@@ -229,10 +229,6 @@ th.desc a {
 	float: left;	
 }
 
-#fastSearchInListView table{
-	border-style: none;
-}
-
 #fastSearchInListView #btnSearch{
 	width: 35px;
 	height: 20px;
