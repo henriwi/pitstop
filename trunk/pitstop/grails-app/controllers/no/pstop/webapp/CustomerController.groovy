@@ -118,4 +118,8 @@ class CustomerController {
 		]
 		render jsonCustomer as JSON
 	}
+	
+	def search = {
+		redirect(action: "list", params:[q: params.search])
+	}
 }
