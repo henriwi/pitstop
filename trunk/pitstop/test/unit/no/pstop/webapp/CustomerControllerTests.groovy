@@ -81,7 +81,7 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 		
 		controller.params.id = 1
 		def model = controller.show()
-		assertEquals c1, model.customerInstance
+		assertEquals customer1, model.customerInstance
 		assertEquals "tireHotelOccurrenceList should e equal", tireHotelOccurrenceList, model.tireHotelOccurrenceInstanceList
 		assertEquals "tireHotelOccurrenceTotalList should e equal", tireHotelOccurrenceTotalList, model.tireHotelOccurrenceInstanceTotalList
 	}
