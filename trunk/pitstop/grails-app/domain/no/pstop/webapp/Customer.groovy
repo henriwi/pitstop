@@ -14,11 +14,11 @@ class Customer {
 	String notice
 	
     static constraints = {
-		firstName(blank:false, matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\_]{0,40}")
-		lastName(blank:false, matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\_]{0,40}")
-		phoneNumber(matches: "[\\+]?\\d{0,15}")
+		firstName(blank:false, matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\_\\.]{0,40}")
+		lastName(blank:false, matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\_\\.]{0,40}")
+		phoneNumber(matches: "[\\+]?\\d{0,29}")
 		address(matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\.\\_]{0,50}")
-		postalCode(matches: "\\d{0,10}")
+		postalCode(matches: "[\\d\\-]{0,15}")
 		city(matches:"[a-zA-Z0-9æøåÆØÅ\\s\\-\\_]{0,40}")
 		email(email:true)
 		company(matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\.\\_]{0,50}")

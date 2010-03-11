@@ -33,7 +33,7 @@
                                   <label for="firstName"><g:message code="customer.firstName.label" default="First Name" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'firstName', 'errors')}">
-                                    <g:textField name="firstName" value="${customerInstance?.firstName}" />
+                                    <g:textField maxlength="40"  name="firstName" value="${customerInstance?.firstName}" />
                                 </td>
                             </tr>
                         
@@ -42,7 +42,7 @@
                                   <label for="lastName"><g:message code="customer.lastName.label" default="Last Name" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'lastName', 'errors')}">
-                                    <g:textField name="lastName" value="${customerInstance?.lastName}" />
+                                    <g:textField maxlength="40" name="lastName" value="${customerInstance?.lastName}" />
                                 </td>
                             </tr>
                         
@@ -51,7 +51,7 @@
                                   <label for="phoneNumber"><g:message code="customer.phoneNumber.label" default="Phone Number" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'phoneNumber', 'errors')}">
-                                    <g:textField name="phoneNumber" value="${customerInstance?.phoneNumber}" />
+                                    <g:textField maxlength="30" name="phoneNumber" value="${customerInstance?.phoneNumber}" />
                                 </td>
                             </tr>
                         
@@ -60,7 +60,7 @@
                                   <label for="address"><g:message code="customer.address.label" default="Address" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'address', 'errors')}">
-                                    <g:textField name="address" value="${customerInstance?.address}" />
+                                    <g:textField maxlength="50" name="address" value="${customerInstance?.address}" />
                                 </td>
                             </tr>
                         
@@ -69,7 +69,7 @@
                                   <label for="postalCode"><g:message code="customer.postalCode.label" default="Postal Code" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'postalCode', 'errors')}">
-                                    <g:textField name="postalCode" value="${customerInstance?.postalCode}" />
+                                    <g:textField maxlength="15" name="postalCode" value="${customerInstance?.postalCode}" />
                                 </td>
                             </tr>
                         
@@ -78,7 +78,7 @@
                                   <label for="city"><g:message code="customer.city.label" default="City" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'city', 'errors')}">
-                                    <g:textField name="city" value="${customerInstance?.city}" />
+                                    <g:textField maxlength="40" name="city" value="${customerInstance?.city}" />
                                 </td>
                             </tr>
                         
@@ -96,7 +96,7 @@
                                   <label for="company"><g:message code="customer.company.label" default="Company" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'company', 'errors')}">
-                                    <g:textField name="company" value="${customerInstance?.company}" />
+                                    <g:textField maxlength="50" name="company" value="${customerInstance?.company}" />
                                 </td>
                             </tr>
                         
