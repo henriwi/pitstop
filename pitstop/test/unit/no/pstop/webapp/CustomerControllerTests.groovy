@@ -3,13 +3,13 @@ package no.pstop.webapp;
 import grails.test.*;
 
 class CustomerControllerTests extends ControllerUnitTestCase {
-	def c1
+	def customer1
 	
 	protected void setUp() {
 		super.setUp();
 		mockDomain Customer
 		
-		c1 = new Customer(firstName: "Dekk Roar", lastName: "Dekkesen", phoneNumber: "19555095", address: "Dekkveien 1",
+		customer1 = new Customer(firstName: "Dekk Roar", lastName: "Dekkesen", phoneNumber: "19555095", address: "Dekkveien 1",
 				postalCode: "0195", city: "Radiator By", email: "felger@dekk.no", company: "Dekkilicious", notice: "God kunde")
 	}
 	
@@ -36,9 +36,9 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testList() {
-		def c2 = new Customer(firstName: "Dekk Bernt", lastName: "Dekkesen", phoneNumber: "23555095", address: "Dekkveien 2",
+		def customer2 = new Customer(firstName: "Dekk Bernt", lastName: "Dekkesen", phoneNumber: "23555095", address: "Dekkveien 2",
 				postalCode: "0194", city: "Radiator By", email: "felger@dekk.com", company: "Dekkilicious", notice: "God kunde")
-		def customerList = [c1, c2];
+		def customerList = [customer1, customer2];
 		mockDomain Customer, customerList
 		
 		def model = controller.list()
@@ -70,15 +70,15 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testShowWithValidId() {
-		mockDomain Customer, [c1]
+		mockDomain Customer, [customer1]
 		controller.params.id = 1
 		def model = controller.show()
 		
-		assertEquals c1, model.customerInstance
+		assertEquals customer1, model.customerInstance
 	}
 	
 	void testShowWithInvalidId() {
-		mockDomain Customer, [c1]
+		mockDomain Customer, [customer1]
 		controller.params.id = 999
 		controller.metaClass.message = { args -> println "message: ${args}" }
 		controller.show()
@@ -87,15 +87,15 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testEditWithValidId() {
-		mockDomain Customer, [c1]
+		mockDomain Customer, [customer1]
 		controller.params.id = 1
 		def model = controller.edit()
 		
-		assertEquals "model.customerInstance", c1, model.customerInstance
+		assertEquals "model.customerInstance", customer1, model.customerInstance
 	}
 	
 	void testEditWithInvalidId() {
-		mockDomain Customer, [c1]
+		mockDomain Customer, [customer1]
 		controller.params.id = 999
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.edit()
@@ -104,9 +104,9 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testUpdateWithValidId() {
-		mockDomain Customer, [c1]
-		c1.metaClass.save = {-> return true }
-		c1.metaClass.hasErrors = {-> return false }
+		mockDomain Customer, [customer1]
+		customer1.metaClass.save = {-> return true }
+		customer1.metaClass.hasErrors = {-> return false }
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.update()
@@ -116,9 +116,9 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testUpdateWithValidIdButErrors() {
-		mockDomain Customer, [c1]
-		c1.metaClass.save = {-> return false }
-		c1.metaClass.hasErrors = {-> return true }
+		mockDomain Customer, [customer1]
+		customer1.metaClass.save = {-> return false }
+		customer1.metaClass.hasErrors = {-> return true }
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.update()
@@ -128,7 +128,7 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testUpdateWithInvalidId() {
-		mockDomain Customer, [c1]
+		mockDomain Customer, [customer1]
 		controller.params.id = 999
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.update()
@@ -137,7 +137,7 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testDeleteWithValidId() {
-		mockDomain Customer, [c1]
+		mockDomain Customer, [customer1]
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}" }
 		controller.delete()
@@ -146,11 +146,19 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testDeleteWithInvalidId() {
-		mockDomain Customer, [c1]
+		mockDomain Customer, [customer1]
 		controller.params.id = 999
 		controller.metaClass.message = {args -> println "message: ${args}" }
 		controller.delete()
 		
 		assertEquals "redirect action", "list", controller.redirectArgs.action
+	}
+	
+	void testSearch() {
+		controller.params.search = "Dekkesen"
+		controller.search()
+		
+		assertEquals "redirect action", "list", controller.redirectArgs.action
+		assertEquals "query params should be equal", controller.params.search, controller.redirectArgs.params.q
 	}
 }
