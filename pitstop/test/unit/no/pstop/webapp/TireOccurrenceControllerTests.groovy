@@ -50,6 +50,7 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertNotNull model.tireOccurrenceInstance
 	}
 	
+	/*
 	void testSaveWithValidTireOccurrence() {
 		setParams(tire, 60.5, 1, new Date(), 20, 10)
 		controller.metaClass.message = {args -> println "message: ${args}"}
@@ -72,6 +73,7 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertEquals "redirect action", "create", controller.modelAndView.viewName
 		assertNotNull "TireOccurrence should not be null", controller.modelAndView.model.linkedHashMap.tireOccurrenceInstance
 	}
+	*/
 	
 	void testShowWithValidId() {
 		mockDomain TireOccurrence, [tireOccurrence]
