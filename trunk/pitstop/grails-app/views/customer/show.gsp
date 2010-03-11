@@ -94,6 +94,8 @@
                     <span class="button"><a href="mailto:${customerInstance.email}" target="_blank">Send e-post til kunde</a></span>
                 </g:form>
             </div>
+            
+            
         </div>
     </body>
 </html>
