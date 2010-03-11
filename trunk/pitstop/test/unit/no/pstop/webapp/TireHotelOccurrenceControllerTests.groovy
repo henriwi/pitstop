@@ -13,7 +13,7 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		customer = new Customer(firstName:"Jan Roar", lastName:"Hansen",phoneNumber:"99887766", address:"Vollensvingen 2", postalCode:"0899",
 				city:"Vollen", email:"roar@gmail.com", company:"StoreDekk", notice:"En god betaler" )
 		mockDomain TireHotelOccurrence
-		tireHotelOccurrence = new TireHotelOccurrence(tireLocation:"1a", registrationNumber:"DE12345", carType:"Audi", 
+		tireHotelOccurrence = new TireHotelOccurrence(id:1,tireLocation:"1a", registrationNumber:"DE12345", carType:"Audi", 
 				customer:customer, tireType: "Sommer", inDate:new Date(), outDate:new Date() + 100, notice:"Notice" )
     }
 	
@@ -42,13 +42,11 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertNotNull model.tireHotelOccurrenceInstance
 	}
 	
-	/*
 	void testSaveWithValidTireHotelOccurrence(){
 		setParams("1a", "DE12345", "Audi", customer, "Sommer", new Date(), new Date() + 100, "Notice")
 		controller.metaClass.message = {args -> println "message: ${args}"}
 		def mock = mockFor(TireHotelOccurrence)
 		mock.demand.merge() {tireHotelOccurrence}
-		println tireHotelOccurrence.validate()
 		controller.save()
 		
 		assertEquals "redirect action", "show", controller.redirectArgs.action
@@ -59,14 +57,11 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		setParams("a1", "DE12345", "?", customer, "Sommer", new Date(), new Date() + 100, "Notice")
 		controller.metaClass.message = {args -> println "message: ${args}"}
 		tireHotelOccurrence.carType = "?"
-		def mock = mockFor(TireHotelOccurrence)
-		mock.demand.merge() {tireHotelOccurrence}
 		controller.save()
 		
 		assertEquals "render action", "create", controller.modelAndView.viewName
 		assertNotNull "TireHotelOccurrence should not be null", controller.modelAndView.model.linkedHashMap.tireHotelOccurrenceInstance
 	}
-	*/
 	
 	void testShowWithValidId() {
 		mockDomain TireHotelOccurrence, [tireHotelOccurrence]

@@ -2,6 +2,7 @@ package no.pstop.webapp;
 
 import grails.test.*;
 import java.util.Date;
+import java.util.LinkedHashMap;
 
 class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 	def tire, tireOccurrence
@@ -50,7 +51,6 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertNotNull model.tireOccurrenceInstance
 	}
 	
-	/*
 	void testSaveWithValidTireOccurrence() {
 		setParams(tire, 60.5, 1, new Date(), 20, 10)
 		controller.metaClass.message = {args -> println "message: ${args}"}
@@ -65,15 +65,12 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 	void testSaveWithInvalidTireOccurrence() {
 		setParams(tire, -10, 1, new Date(), 20, 10)
 		controller.metaClass.message = {args -> println "message: ${args}"}
-		def mock = mockFor(TireOccurrence)
 		tireOccurrence.price = -10
-		mock.demand.merge() {tireOccurrence}
 		controller.save()
 		
 		assertEquals "redirect action", "create", controller.modelAndView.viewName
 		assertNotNull "TireOccurrence should not be null", controller.modelAndView.model.linkedHashMap.tireOccurrenceInstance
 	}
-	*/
 	
 	void testShowWithValidId() {
 		mockDomain TireOccurrence, [tireOccurrence]
