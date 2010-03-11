@@ -10,7 +10,6 @@
         <div class="nav">
 	        <span class="menuButton"><g:link controller = "tire" class="list" action="list"><g:message code="default.button.tireList.label"/></g:link></span>
 		    <span class="menuButton"><g:link controller = "tire" class="create" action="create"><g:message code="default.button.newTire.label"/></g:link></span>
-		    <span class="menuButton"><g:link controller="tireOccurrence" class="create" action="create"><g:message code="default.button.newTireOccurrence.label"/></g:link></span>
 		    <span class="menuButton"><g:link controller = "tire" class="list" controller="tireOccurrence" action="list"><g:message code="default.button.tireOccurrenceList.label"/></g:link></span>
 		    <span class="menuButton"><g:link controller = "tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link></span>
         </div>
@@ -88,7 +87,7 @@
                             <td>
                             	<g:form method="post">
                             		<g:hiddenField name="id" value="${tireInstance?.id}" />
-                            		<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
+                            		<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" />
                             	</g:form>
                             </td>   
 
