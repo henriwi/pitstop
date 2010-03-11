@@ -29,6 +29,8 @@
                             <g:sortableColumn property="address" title="${message(code: 'customer.address.table.label')}" />
                         
                             <g:sortableColumn property="postalCode" title="${message(code: 'customer.postalCode.table.label')}" />
+                            
+                            <g:sortableColumn property="city" title="${message(code: 'customer.city.table.label')}" />
                         
                         	<g:sortableColumn property="email" title="${message(code: 'customer.email.table.label')}" />
                         	
@@ -48,6 +50,8 @@
                             <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "address")}</g:link></td>
                         
                             <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "postalCode")}</g:link></td>
+                            
+                            <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "city")}</g:link></td>
                             
                             <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "email")}</g:link></td>
                             
