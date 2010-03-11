@@ -40,7 +40,7 @@ class TireHotelOccurrenceController {
 		}
 		else{
 			tireHotelOccurrenceInstance = tireHotelOccurrenceInstance.merge(flush: true)
-			flash.message = "${message(code: 'tireHotelOccurrence.created.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.id])}"
+			flash.message = "${message(code: 'tireHotelOccurrence.created.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.id])}"
 			redirect(action: "show", id: tireHotelOccurrenceInstance.id)
 		}
 	}
@@ -75,7 +75,7 @@ class TireHotelOccurrenceController {
 		if (tireHotelOccurrenceInstance) {
 			tireHotelOccurrenceInstance.properties = params
 			if (!tireHotelOccurrenceInstance.hasErrors() && tireHotelOccurrenceInstance.save(flush: true)) {
-				flash.message = "${message(code: 'tireHotelOccurrence.updated.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), tireHotelOccurrenceInstance.id])}"
+				flash.message = "${message(code: 'tireHotelOccurrence.updated.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.id])}"
 				redirect(action: "show", id: tireHotelOccurrenceInstance.id)
 			}
 			else {
@@ -93,7 +93,7 @@ class TireHotelOccurrenceController {
 		if (tireHotelOccurrenceInstance) {
 			try {
 				tireHotelOccurrenceInstance.delete(flush: true)
-				flash.message = "${message(code: 'tireHotelOccurrence.deleted.message', args: [message(code: 'tireHotelOccurrence.label'), params.id])}"
+				flash.message = "${message(code: 'tireHotelOccurrence.deleted.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.registrationNumber])}"
 				redirect(action: "list")
 			}
 			catch (org.springframework.dao.DataIntegrityViolationException e) {
