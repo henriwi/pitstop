@@ -229,11 +229,11 @@ th.desc a {
 	float: left;	
 }
 
-#tireHotelOccurrenceSearch table{
+#fastSearchInListView table{
 	border-style: none;
 }
 
-#tireHotelOccurrenceSearch #btnSearch{
+#fastSearchInListView #btnSearch{
 	width: 35px;
 	height: 20px;
 	margin: 2px 0 2px 0;

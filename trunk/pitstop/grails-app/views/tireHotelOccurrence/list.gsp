@@ -18,7 +18,7 @@
             	<div class="message">${flash.message}</div>
             </g:if>
             <g:form action="search" method="get">
-			<div id="tireHotelOccurrenceSearch">
+			<div id="fastSearchInListView">
 				<table 	>
 					<tbody>
 						<tr>
