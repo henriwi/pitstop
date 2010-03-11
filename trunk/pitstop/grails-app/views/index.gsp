@@ -2,7 +2,7 @@
 <html>
     <head>
     	<gui:resources components="tabView"/>
-        <title>Velkommen til pitstop</title>
+        <title>Velkommen til PIT-STOP</title>
 		<meta name="layout" content="main" />
 		<style type="text/css" media="screen">
 
@@ -53,7 +53,7 @@
 		</style>
     </head>
 <body>
-<h1>Velkommen til pitstop</h1>
+<h1>Velkommen til PIT-STOP</h1>
 	        <br/>
 	        <p>PIT-STOP kan tilby en rekke dekkmerker til alle typer biler, og til usl&aring;elige priser. 
 	        Vi kan ogs&aring; gi sv&aelig;rt gode tilbud p&aring; felger.
