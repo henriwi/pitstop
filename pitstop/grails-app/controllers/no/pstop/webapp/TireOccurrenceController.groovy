@@ -23,16 +23,15 @@ class TireOccurrenceController {
     }
 
     def save = {
-        def tireOccurrenceInstance = new TireOccurrence(params)
-		//tireOccurrenceInstance = tireOccurrenceInstance.merge(validate: false)
-		//tireOccurrenceInstance.merge()
-        if (tireOccurrenceInstance.merge(flush: true)) {
-            flash.message = "${message(code: 'tireOccurrence.created.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomst'), tireOccurrenceInstance.tire])}"
-            redirect(action: "show", id: tireOccurrenceInstance.id)
-        }
-        else {
-            render(view: "create", model: [tireOccurrenceInstance: tireOccurrenceInstance])
-        }
+		def tireOccurrenceInstance = new TireOccurrence(params)
+		if(!tireOccurrenceInstance.validate()){
+			render(view: "create", model: [tireOccurrenceInstance: tireOccurrenceInstance])
+		}
+		else{
+			tireOccurrenceInstance = tireOccurrenceInstance.merge(flush: true)
+			flash.message = "${message(code: 'tireOccurrence.created.message', args: [message(code: 'tireOccurrence.label'), tireOccurrenceInstance.id])}"
+			redirect(action: "show", id: tireOccurrenceInstance.id)
+		}
     }
 
     def show = {
