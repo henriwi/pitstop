@@ -89,7 +89,6 @@
 	            </div>
             </div>
 	        <div id="tireOccurrenceList">
-	        
 	        	<g:set var="antInStock" value="${0}"></g:set>
 	            <g:set var="antReserved" value="${0}"></g:set>
 	            <g:set var="antOrdered" value="${0}"></g:set>
