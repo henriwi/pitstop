@@ -42,7 +42,7 @@
                                   <label for="tireLocation"><g:message code="tireHotelOccurrence.tireLocation.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'tireLocation', 'errors')}">
-                                    <g:textField name="tireLocation" value="${tireHotelOccurrenceInstance?.tireLocation}" />
+                                    <g:textField maxlength="21" name="tireLocation" value="${tireHotelOccurrenceInstance?.tireLocation}" />
                                 </td>
                             </tr>
                         
@@ -51,7 +51,7 @@
                                   <label for="registrationNumber"><g:message code="tireHotelOccurrence.registrationNumber.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'registrationNumber', 'errors')}">
-                                    <g:textField name="registrationNumber" value="${tireHotelOccurrenceInstance?.registrationNumber}" />
+                                    <g:textField maxlength="21"  name="registrationNumber" value="${tireHotelOccurrenceInstance?.registrationNumber}" />
                                 </td>
                             </tr>
                         
@@ -60,7 +60,7 @@
                                   <label for="carType"><g:message code="tireHotelOccurrence.carType.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'carType', 'errors')}">
-                                    <g:textField name="carType" value="${tireHotelOccurrenceInstance?.carType}" />
+                                    <g:textField maxlength="30" name="carType" value="${tireHotelOccurrenceInstance?.carType}" />
                                 </td>
                             </tr>
                         

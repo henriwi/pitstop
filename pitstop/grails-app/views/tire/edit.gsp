@@ -50,31 +50,31 @@
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="partNr"><g:message code="tire.partNr.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'partNr', 'errors')}">
-                                    <g:textField name="partNr" value="${tireInstance?.partNr}" /></td>
+                                    <g:textField maxlength="40" name="partNr" value="${tireInstance?.partNr}" /></td>
                             </tr>
                         	
                         	<tr class="prop">
                                 <td valign="top" class="name"><label for="brand"><g:message code="tire.brand.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'brand', 'errors')}">
-                                    <g:textField name="brand" value="${tireInstance?.brand}" /></td>
+                                    <g:textField maxlength="30" name="brand" value="${tireInstance?.brand}" /></td>
                             </tr>
                             
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="tireName"><g:message code="tire.tireName.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'tireName', 'errors')}">
-                                    <g:textField name="tireName" value="${tireInstance?.tireName}" /></td>
+                                    <g:textField maxlength="30" name="tireName" value="${tireInstance?.tireName}" /></td>
                             </tr>
                             
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="width"><g:message code="tire.width.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'width', 'errors')}">
-                                    <g:textField name="width" value="${fieldValue(bean: tireInstance, field: 'width')}" onKeyPress="return onlyNumbers(event)" /></td>
+                                    <g:textField maxlength="20" name="width" value="${fieldValue(bean: tireInstance, field: 'width')}" onKeyPress="return onlyNumbers(event)" /></td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="profile"><g:message code="tire.profile.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'profile', 'errors')}">
-                                    <g:textField name="profile" value="${fieldValue(bean: tireInstance, field: 'profile')}" onKeyPress="return onlyNumbers(event)" /></td>
+                                    <g:textField maxlength="20" name="profile" value="${fieldValue(bean: tireInstance, field: 'profile')}" onKeyPress="return onlyNumbers(event)" /></td>
                             </tr>
                         
                             <tr class="prop">
@@ -86,14 +86,14 @@
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="diameter"><g:message code="tire.diameter.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'diameter', 'errors')}">
-                                    <g:textField name="diameter" value="${fieldValue(bean: tireInstance, field: 'diameter')}" onKeyPress="return onlyNumbers(event)" /></td>
+                                    <g:textField maxlength="20" name="diameter" value="${fieldValue(bean: tireInstance, field: 'diameter')}" onKeyPress="return onlyNumbers(event)" /></td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="loadIndex"><g:message code="tire.index.label" /></label></td>
                                 <td>
 	                                <span valign="top" class="value ${hasErrors(bean: tireInstance, field: 'loadIndex', 'errors')}">
-	                                    <g:textField name="loadIndex" value="${fieldValue(bean: tireInstance, field: 'loadIndex')}" onKeyPress="return onlyNumbers(event)" /></span>
+	                                    <g:textField maxlength="3" name="loadIndex" value="${fieldValue(bean: tireInstance, field: 'loadIndex')}" onKeyPress="return onlyNumbers(event)" /></span>
 	                            	<span valign="top" class="value ${hasErrors(bean: tireInstance, field: 'speedIndex', 'errors')}">
 	                                    <g:select name="speedIndex" from="${tireInstance.constraints.speedIndex.inList}" value="${tireInstance?.speedIndex}" valueMessagePrefix="tire.speedIndex"  /></span>
 	                            </td>
@@ -102,7 +102,7 @@
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="pattern"><g:message code="tire.pattern.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'pattern', 'errors')}">
-                                    <g:textField name="pattern" value="${tireInstance?.pattern}" /></td>
+                                    <g:textField maxlength="30" name="pattern" value="${tireInstance?.pattern}" /></td>
                             </tr>
                         
                             <tr class="prop">

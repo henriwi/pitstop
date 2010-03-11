@@ -36,7 +36,7 @@
                                   <label for="price"><g:message code="tireOccurrence.price.label" default="Pris:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'price', 'errors')}">
-                                    <g:textField name="price" value="${tireOccurrenceInstance.price}" />
+                                    <g:textField maxlength="20" name="price" value="${tireOccurrenceInstance.price}" />
                                 </td>
                             </tr>
                             
@@ -45,7 +45,7 @@
                                   <label for="discount"><g:message code="tireOccurrence.discount.label" default="Rabatt:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'rabatt', 'errors')}">
-                                    <g:textField name="discount" value="${tireOccurrenceInstance.discount}" />
+                                    <g:textField maxlength="20" name="discount" value="${tireOccurrenceInstance.discount}" />
                                 </td>
                             </tr>
                             
@@ -54,7 +54,7 @@
                                   <label for="environmentalFee"><g:message code="tireOccurrence.environmentalFee.label" default="Milj&oslash;avgift:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'environmentalFee', 'errors')}">
-                                    <g:textField name="environmentalFee" value="${tireOccurrenceInstance.environmentalFee}" />
+                                    <g:textField maxlength="20" name="environmentalFee" value="${tireOccurrenceInstance.environmentalFee}" />
                                 </td>
                             </tr>
                         
@@ -63,7 +63,7 @@
                                   <label for="numberInStock"><g:message code="tireOccurrence.numberInStock.label" default="Antall:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'numberInStock', 'errors')}">
-                                    <g:textField name="numberInStock" value="${fieldValue(bean: tireOccurrenceInstance, field: 'numberInStock')}" />
+                                    <g:textField maxlength="20" name="numberInStock" value="${fieldValue(bean: tireOccurrenceInstance, field: 'numberInStock')}" />
                                 </td>
                             </tr>
                         
@@ -72,7 +72,7 @@
                                   <label for="numberOfReserved"><g:message code="tireOccurrence.numberOfReserved.label" default="Reservert:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'numberOfReserved', 'errors')}">
-                                    <g:textField name="numberOfReserved" value="${fieldValue(bean: tireOccurrenceInstance, field: 'numberOfReserved')}" />
+                                    <g:textField maxlength="20" name="numberOfReserved" value="${fieldValue(bean: tireOccurrenceInstance, field: 'numberOfReserved')}" />
                                 </td>
                             </tr>
                         
@@ -81,7 +81,7 @@
                                   <label for="numberOfOrdered"><g:message code="tireOccurrence.numberOfOrdered.label" default="Bestilt:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'numberOfOrdered', 'errors')}">
-                                    <g:textField name="numberOfOrdered" value="${fieldValue(bean: tireOccurrenceInstance, field: 'numberOfOrdered')}" />
+                                    <g:textField maxlength="20" name="numberOfOrdered" value="${fieldValue(bean: tireOccurrenceInstance, field: 'numberOfOrdered')}" />
                                 </td>
                             </tr>
                         
@@ -90,7 +90,7 @@
                                   <label for="numberOfAvailable"><g:message code="tireOccurrence.numberOfAvailable.label:" default="Tilgjengelig:" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'numberOfAvailable', 'errors')}">
-                                    <g:textField name="numberOfAvailable" value="${tireOccurrenceInstance.numberInStock-tireOccurrenceInstance.numberOfReserved}" />
+                                    <g:textField maxlength="20" name="numberOfAvailable" value="${tireOccurrenceInstance.numberInStock-tireOccurrenceInstance.numberOfReserved}" />
                                 </td>
                             </tr>
                         
