@@ -102,15 +102,15 @@
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="notice"><g:message code="tire.notice.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'notice', 'errors')}">
-                                    <g:textArea name="notice" rows="5" cols="10"/></td>
+                                    <g:textArea tabindex='11' name="notice" rows="5" cols="10"/></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 
                 <div class="buttons">
-                    <span class="button"><g:submitButton tabindex='11' name="create" class="save" value="${message(code: 'createTire.button.create.label')}" /></span>
-                    <span class="button"><g:actionSubmit tabindex='12' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
+                    <span class="button"><g:submitButton tabindex='12' name="create" class="save" value="${message(code: 'createTire.button.create.label')}" /></span>
+                    <span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
                 </div>
             </g:form>
         </div>
