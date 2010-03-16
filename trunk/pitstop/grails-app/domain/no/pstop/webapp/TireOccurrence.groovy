@@ -1,6 +1,7 @@
 package no.pstop.webapp
 
 class TireOccurrence {
+	static hasMany = [customerOrderLines:CustomerOrderLine]
 	static belongsTo = [tire:Tire]
 	static searchable = true
 	Tire tire // = new Tire()
