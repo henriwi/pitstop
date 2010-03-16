@@ -40,6 +40,13 @@
 			        <g:else>
 			        	<li><g:link controller="tireHotelOccurrence">Dekkhotell</g:link></li>
 			        </g:else>
+			        
+			        <g:if test="${params.controller == 'customerOrder'}">
+			        	<li><g:link class="active" controller="customerOrder">Kundebestilling</g:link></li>
+		        	</g:if>
+			        <g:else>
+			        	<li><g:link controller="tireHotelOccurrence">Dekkhotell</g:link></li>
+			        </g:else>
 			        <%--
 					<g:each var="c" in="${grailsApplication.controllerClasses}">
 			        	<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
