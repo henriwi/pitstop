@@ -18,7 +18,7 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 
     protected void tearDown() {
         super.tearDown()
-    }
+    }	
 	
 	void testGenerateTireOccurrence() {
 		tireOccurrence.registrationDate = dateFormat.parse("10.01.2008")

@@ -2,7 +2,7 @@ package no.pstop.webapp
 
 class Customer {
 	static searchable = true
-	static hasMany = [tireHotelOccurrences: TireHotelOccurrence]
+	static hasMany = [tireHotelOccurrences: TireHotelOccurrence, customerOrders: CustomerOrder]
 	String firstName
 	String lastName
 	String phoneNumber
