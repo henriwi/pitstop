@@ -1,6 +1,9 @@
 <%@ page import="no.pstop.webapp.Tire" %>
 <html>
     <head>
+    <g:isNotLoggedIn>
+    	${response.sendRedirect("login/auth") }
+    </g:isNotLoggedIn>
     	<gui:resources components="tabView"/>
         <title>Velkommen til PIT-STOP</title>
 		<meta name="layout" content="main" />

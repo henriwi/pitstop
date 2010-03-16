@@ -1,5 +1,8 @@
 package no.pstop.webapp
 
+import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
+
+@Secured(['ROLE_ADMIN','ROLE_USER'])                   
 class TireOccurrenceController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -74,6 +77,7 @@ class TireOccurrenceController {
         }
     }
 
+	@Secured(['ROLE_ADMIN'])
     def delete = {
         def tireOccurrenceInstance = TireOccurrence.get(params.id)
         if (tireOccurrenceInstance) {

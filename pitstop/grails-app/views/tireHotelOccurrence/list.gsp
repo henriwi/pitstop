@@ -44,7 +44,9 @@
                             
                             <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.edit.label')}</a></th>
                             
-                            <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delete.label')}</a></th>
+                            <g:ifAllGranted role="ROLE_ADMIN">
+                            	<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delete.label')}</a></th>
+                            </g:ifAllGranted>
                             
                             <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delivered.label')}</a></th>
                             
@@ -72,12 +74,14 @@
                             
                             <td><g:link class="editTableItem" action="edit" id="${tireHotelOccurrenceInstance.id}">&nbsp;</g:link></td>
                             
-                            <td>
-                            	<g:form method="post">
-                            		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-                            		<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
-                            	</g:form>
-                            </td>
+                            <g:ifAllGranted role="ROLE_ADMIN">
+	                            <td>
+	                            	<g:form method="post">
+	                            		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+	                            		<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
+	                            	</g:form>
+	                            </td>
+	                        </g:ifAllGranted>
                             
                             <td>
                             	<g:form method="post">

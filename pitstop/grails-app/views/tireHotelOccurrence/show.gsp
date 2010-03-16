@@ -75,7 +75,9 @@
                     <g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label' )}" /></span>
                     <span class="button"><g:actionSubmit class="change" action="change" value="${message(code: 'default.button.change.label')}" /></span>
-                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label' )}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
+                    <g:ifAllGranted role="ROLE_ADMIN">
+                    	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label' )}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
+                    </g:ifAllGranted>
                 </g:form>
             </div>
         </div>

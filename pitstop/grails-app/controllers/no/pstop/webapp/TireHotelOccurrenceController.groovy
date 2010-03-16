@@ -1,5 +1,8 @@
 package no.pstop.webapp
 
+import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
+
+@Secured(['ROLE_USER','ROLE_ADMIN'])
 class TireHotelOccurrenceController {
 	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -87,7 +90,8 @@ class TireHotelOccurrenceController {
 			redirect(action: "list")
 		}
 	}
-	
+
+	@Secured(['ROLE_ADMIN'])
 	def delete = {
 		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
 		if (tireHotelOccurrenceInstance) {
