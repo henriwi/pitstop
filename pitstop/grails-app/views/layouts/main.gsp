@@ -45,7 +45,7 @@
 			        	<li><g:link class="active" controller="customerOrder">Kundebestilling</g:link></li>
 		        	</g:if>
 			        <g:else>
-			        	<li><g:link controller="tireHotelOccurrence">Dekkhotell</g:link></li>
+			        	<li><g:link controller="tireHotelOccurrence">Kundebestilling</g:link></li>
 			        </g:else>
 			        <%--
 					<g:each var="c" in="${grailsApplication.controllerClasses}">
