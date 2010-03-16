@@ -2,7 +2,8 @@ package no.pstop.webapp
 
 class CustomerOrderLine {
 	static belongsTo = [tireOccurrence: TireOccurrence, customerOrder: CustomerOrder]
-	                    
+    TireOccurrence tireOccurrence
+	CustomerOrder customerOrder
 	Integer numberOfOrderedTireOccurrences
 	Double price
 	Date deliveryDate
