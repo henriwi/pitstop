@@ -69,7 +69,9 @@
 	                <g:form>
 	                    <g:hiddenField name="id" value="${customerInstance?.id}" />
 	                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
-	                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
+	                    <g:ifAllGranted role="ROLE_ADMIN">
+	                    	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
+	                    </g:ifAllGranted>
 	                    <br /><br />
 	                    <span class="button"><a href="mailto:${customerInstance.email}" target="_blank">Send e-post til kunde</a></span>
 	            	</g:form>

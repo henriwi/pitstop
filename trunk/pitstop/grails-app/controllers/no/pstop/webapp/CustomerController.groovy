@@ -1,7 +1,10 @@
 package no.pstop.webapp
 
+import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
+
 import grails.converters.JSON
 
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class CustomerController {
 	static final maxNumberOfTireHotelOccurrences = 10
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -94,6 +97,7 @@ class CustomerController {
         }
     }
 
+	@Secured(['ROLE_ADMIN'])
     def delete = {
         def customerInstance = Customer.get(params.id)
         if (customerInstance) {

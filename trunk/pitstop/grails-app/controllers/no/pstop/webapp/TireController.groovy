@@ -1,11 +1,14 @@
 package no.pstop.webapp
 
+import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
+
+@Secured(['ROLE_ADMIN','ROLE_USER'])                   
 class TireController {
 	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
 	static final maxNumberOfTireOccurrences = 10
 	static final maxNumberOfTires = 10
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-	
+
 	def index = {
 		redirect(action: "list", params: params)
 	}
@@ -134,7 +137,7 @@ class TireController {
 			redirect(action: "list")
 		}
 	}
-	
+	@Secured(['ROLE_ADMIN'])     
 	def delete = {
 		def tireInstance = Tire.get(params.id)
 		if (tireInstance) {

@@ -497,3 +497,21 @@ a.btnShowAll{
     padding: 3px;
     cursor: pointer;
 }
+
+#login{
+	width:260px;
+	margin:0px auto;
+	text-align: center;
+}
+
+#login .login{
+	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    border: 1px solid #ccc;
+    color: #666;
+    font-size: 11px;
+    margin-top: 5px;
+    overflow: hidden;
+    padding: 3px;
+    cursor: pointer;
+    height: 20px;
+}
