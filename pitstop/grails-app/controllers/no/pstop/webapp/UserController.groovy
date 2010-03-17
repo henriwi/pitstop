@@ -102,7 +102,7 @@ class UserController {
 			redirect(action: "show", id: person.id)
 		}
 		else {
-			render view: 'create', model: [authorityList: Role.list(), person: person]
+			render(view: 'create', model: [authorityList: Role.list(), person: person])
 		}
 	}
 
