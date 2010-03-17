@@ -22,7 +22,7 @@
                 <g:renderErrors bean="${customerOrderInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form action="save" method="post" >
+            <g:form action="next" method="post" >
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -31,7 +31,7 @@
                                     <label for="customer"><g:message code="customerOrder.customer.label" default="Customer" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerOrderInstance, field: 'customer', 'errors')}">
-                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${customerOrderInstance?.customer?.id}"  />
+                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${customerOrderInstance?.customer?.id}" />
                                 </td>
                             </tr>
                         	
@@ -41,41 +41,11 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'tireOccurrence', 'errors')}">
                                     <g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" optionValue="${{it?.orderToString()}}" />
+                                	<span class="button"><g:submitButton name="showTireOccurrences" class="next" value="${message(code: 'default.label', default: 'Vis')}" /></span>
                                 </td>
                             </tr>
-                            
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="numberOfOrderedTireOccurrences"><g:message code="customerOrderLine.numberOfOrderedTireOccurrences.label" default="Antall" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'numberOfOrderedTireOccurrences', 'errors')}">
-                                    <g:textField name="numberOfOrderedTireOccurrences" value="${fieldValue(bean: customerOrderLineInstance, field: 'numberOfOrderedTireOccurrences')}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="price"><g:message code="customerOrderLine.price.label" default="Price" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'price', 'errors')}">
-                                    <g:textField name="price" value="${fieldValue(bean: customerOrderLineInstance, field: 'price')}" />
-                                </td>
-                            </tr>
-                        
-                        	<tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="notice"><g:message code="customerOrder.notice.label" default="Notice" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: customerOrderInstance, field: 'notice', 'errors')}">
-                                    <g:textArea name="notice" cols="40" rows="5" value="${customerOrderInstance?.notice}" />
-                                </td>
-                            </tr>
-                            
                         </tbody>
                     </table>
-                </div>
-                <div class="buttons">
-                    <span class="button"><g:submitButton name="save" class="save" value="${message(code: 'default.button.create.label', default: 'Lagre')}" /></span>
                 </div>
             </g:form>
         </div>

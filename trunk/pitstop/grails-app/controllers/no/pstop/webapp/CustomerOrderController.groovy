@@ -17,10 +17,15 @@ class CustomerOrderController {
         def customerOrderInstance = new CustomerOrder()
         customerOrderInstance.properties = params
         return [customerOrderInstance: customerOrderInstance]
+			
+			
     }
 
     def save = {
-        def customerOrderInstance = new CustomerOrder(params)
+		def customerOrderInstance = new CustomerOrder(params)
+		//println params
+		println customerOrderInstance
+        
         if (customerOrderInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'customerOrder.label', default: 'CustomerOrder'), customerOrderInstance.id])}"
             redirect(action: "show", id: customerOrderInstance.id)
@@ -100,11 +105,12 @@ class CustomerOrderController {
 	
     def next = {
         def customerOrderInstance = new CustomerOrder(params)
-        if (customerOrderInstance.validate()) {
+        
+        if (true) {
+			println params
             //flash.message = "${message(code: 'default.created.message', args: [message(code: 'customerOrder.label', default: 'CustomerOrder'), customerOrderInstance.id])}"
-            redirect(action: "create", controller: "customerOrderLine",  params:[customerId: params.id,
-                                                                                 orderDate: params.orderDate,
-                                                                                 notice: params.notice])
+            redirect(action: "create", controller: "customerOrderLine",  params:[customerId: params.customer.id,
+                                                                                 tireId: params.tire.id])
         }
         else {
             render(view: "create", model: [customerOrderInstance: customerOrderInstance])
