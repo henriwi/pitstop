@@ -22,11 +22,19 @@
                 <g:renderErrors bean="${customerOrderInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form action="save" method="post" >
+            <g:form action="next" method="post" >
                 <div class="dialog">
                     <table>
                         <tbody>
-                        
+                        	<tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="customer"><g:message code="customerOrder.customer.label" default="Customer" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: customerOrderInstance, field: 'customer', 'errors')}">
+                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${customerOrderInstance?.customer?.id}"  />
+                                </td>
+                            </tr>
+                        	
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="orderDate"><g:message code="customerOrder.orderDate.label" default="Order Date" /></label>
@@ -45,20 +53,11 @@
                                 </td>
                             </tr>
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="customer"><g:message code="customerOrder.customer.label" default="Customer" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: customerOrderInstance, field: 'customer', 'errors')}">
-                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${customerOrderInstance?.customer?.id}"  />
-                                </td>
-                            </tr>
-                        
                         </tbody>
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
+                    <span class="button"><g:submitButton name="next" class="save" value="${message(code: 'default.button.create.labels', default: 'Next')}" /></span>
                 </div>
             </g:form>
         </div>
