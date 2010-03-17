@@ -35,65 +35,65 @@ class TireOccurrenceTests extends GrailsUnitTestCase {
 	void testGenerateTireOccurrenceWithInvalidPrice(){
 		tireOccurrence.price = -3
 		
-		assertFalse "Test feilet, forventet ugyldig price", tireOccurrence.validate()
+		assertFalse "Test failed, expected invalid price", tireOccurrence.validate()
 		def badField = tireOccurrence.errors.getFieldError('price')
-		assertNotNull "Jeg forventer å finne en feil i feltet price", badField
+		assertNotNull "Expecting to find error in field price", badField
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidNumberInStock(){
 		tireOccurrence.numberInStock = -5
 		
-		assertFalse "Test feilet, forventet ugyldig numberInStock" , tireOccurrence.validate()
+		assertFalse "Test failed, expected invalid numberInStock" , tireOccurrence.validate()
 		def badField = tireOccurrence.errors.getFieldError('numberInStock')
-		assertNotNull "Jeg forventer å finne en feil i feltet numberInStock", badField
+		assertNotNull "Expecting to find error in field numberInStock", badField
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidNumberOfReserved(){
 		tireOccurrence.numberOfReserved = -2
 		
-		assertFalse "Test feilet, forventet ugyldig numberOfReserved", tireOccurrence.validate()
+		assertFalse "Test failed, expected invalid numberOfReserved", tireOccurrence.validate()
 		def badField = tireOccurrence.errors.getFieldError("numberOfReserved")
-		assertNotNull "Jeg forventer å finne en feil i feltet numberOfReserved", badField
+		assertNotNull "Expecting to find error in field numberOfReserved", badField
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidNumberOfOrdered(){
 		tireOccurrence.numberOfOrdered = -6
 		
-		assertFalse "Test feilet, forventet ugyldig numberOfOrdered", tireOccurrence.validate()
+		assertFalse "Test failed, expected invalid numberOfOrdered", tireOccurrence.validate()
 		def badField = tireOccurrence.errors.getFieldError("numberOfOrdered")
-		assertNotNull "Jeg forventer å finne en feil i feltet numberOfOrdered", badField
+		assertNotNull "Expecting to find error in field numberOfOrdered", badField
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidTire(){
 		tireOccurrence.tire = null
 		
-		assertFalse "Test feilet, forventet ugyldig tire", tireOccurrence.validate()
+		assertFalse "Test failed, expected invalid tire", tireOccurrence.validate()
 		//def badField = tireOccurrence.errors.getFieldError("tire")
-		//assertNotNull "Jeg forventer å finne en feil i feltet tire", badField
+		//assertNotNull "Expecting to find error in field tire", badField
 	}
-	
-//	void testGenerateTireOccurrenceWithEmptyDate(){
-//		tireOccurrence.registrationDate = null
-//		
-//		assertFalse "Test feilet, forventet tom registrationDate", tireOccurrence.validate()
-//		def badField = tireOccurrence.errors.getFieldError("registrationDate")
-//		assertNotNull "Jeg forventer å finne en feil i feltet registrationDate", badField
-//	}
+	/*
+	void testGenerateTireOccurrenceWithEmptyDate(){
+		tireOccurrence.registrationDate = null
+		
+		assertFalse "Test failed, expected invalid registrationDate", tireOccurrence.validate()
+		def badField = tireOccurrence.errors.getFieldError("registrationDate")
+		assertNotNull "Expecting to find error in field registrationDate", badField
+	}*/
 	
 	void testGenerateTireOccurrenceWithInvalidDiscount(){
 		tireOccurrence.discount = -10
 		
-		assertFalse "Test feilet, forventet ugyldig discount", tireOccurrence.validate()
+		assertFalse "Test failed, expected invalid discount", tireOccurrence.validate()
 		def badField = tireOccurrence.errors.getFieldError("discount")
-		assertNotNull "Jeg forventer å finne en feil i feltet discount", badField
+		assertNotNull "Expecting to find error in field discount", badField
 	}
 	
 	void testGenerateTireOccurrenceWithInvalidEnvironmentalFee(){
 		tireOccurrence.environmentalFee = -10
 		
-		assertFalse "Test feilet, forventet ugyldig environmentalFee", tireOccurrence.validate()
+		assertFalse "Test failed, expected invalid environmentalFee", tireOccurrence.validate()
 		def badField = tireOccurrence.errors.getFieldError("environmentalFee")
-		assertNotNull "Jeg forventer å finne en feil i feltet environmentalFee", badField
+		assertNotNull "Expecting to find error in field environmentalFee", badField
 	}
 	
 	void testNumberOfAvailable(){
