@@ -30,105 +30,109 @@ class TireTests extends GrailsUnitTestCase {
 		assertEquals "T-Zero", tire.tireName
 	}
 	
-	void testGenerateTireWithInvalidPartNr(){
+	void testGenerateTireWithInvalidPartNr() {
 		tire.partNr = "?"
 		
-		assertFalse "Test feilet, forventet ugyldig partNr", tire.validate()
+		assertFalse "Test failed, expected invalid partNr", tire.validate()
 		def badField = tire.errors.getFieldError("partNr")
-		assertNotNull "Jeg forventer å finne en feil i feltet partNr", badField
+		assertNotNull "Expecting to find error in field partNr", badField
 	}
 	
-	void testGenerateTireWithNonUniquePartNr(){
+	void testGenerateTireWithNonUniquePartNr() {
 		def tire2 = new Tire(width:190,profile:60,construction:"R",diameter:17,partNr:"123AB",
 		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "T-Zero", notice:"Demodekk")	
 	
 		mockForConstraintsTests(Tire, [tire])
 		
-		assertTrue "Test feilet, forventet ok validering", tire.validate()
-		assertFalse "Test feilet, forventet samme partNr som tire", tire2.validate()
+		assertTrue "Test failed, expected ok validation", tire.validate()
+		assertFalse "Test failed, expected same partNr as tire", tire2.validate()
 	}
 	
-	void testGenerateTireWithInvalidWidth(){
+	void testGenerateTireWithInvalidWidth() {
 		tire.width = 0
 		
-		assertFalse "Test feilet, forventet ugyldig width", tire.validate()
+		assertFalse "Test failed, expected invalid width", tire.validate()
 		def badField = tire.errors.getFieldError("width")
-		assertNotNull "Jeg forventer å finne en feil i feltet width", badField
+		assertNotNull "Expecting to find error in field width", badField
 	}
 	
-	void testGenerateTireWithInvalidProfile(){
+	void testGenerateTireWithInvalidProfile() {
 		tire.profile = 2
 		
-		assertFalse "Test feilet, forventet ugyldig profile", tire.validate()
+		assertFalse "Test failed, expected invalid profile", tire.validate()
 		def badField = tire.errors.getFieldError("profile")
-		assertNotNull "Jeg forventer å finne en feil i feltet profile", badField
+		assertNotNull "Expecting to find error in field profile", badField
 	}
 	
-	void testGenerateTireWithInvalidConstruction(){
+	void testGenerateTireWithInvalidConstruction() {
 		tire.construction = "K"
 		
-		assertFalse "Test feilet, forventet ugyldig construction", tire.validate()
+		assertFalse "Test failed, expected invalid construction", tire.validate()
 		def badField = tire.errors.getFieldError("construction")
-		assertNotNull "Jeg forventer å finne en feil i feltet construction", badField
+		assertNotNull "Expecting to find error in field construction", badField
 	}
 	
-	void testGenerateTireWithInvalidDiameter(){
+	void testGenerateTireWithInvalidDiameter() {
 		tire.diameter = 5
 		
-		assertFalse "Test feilet, forventet ugyldig diameter", tire.validate()
+		assertFalse "Test failed, expected invalid diameter", tire.validate()
 		def badField = tire.errors.getFieldError("diameter")
-		assertNotNull "Jeg forventer å finne en feil i feltet diameter", badField
+		assertNotNull "Expecting to find error in field diameter", badField
 	}
 	
-	void testGenerateTireWithInvalidLoadIndex(){
+	void testGenerateTireWithInvalidLoadIndex() {
 		tire.loadIndex = -2
 		
-		assertFalse "Test feilet, forventet ugyldig loadIndex", tire.validate()
+		assertFalse "Test failed, expected invalid loadIndex", tire.validate()
 		def badField = tire.errors.getFieldError("loadIndex")
-		assertNotNull "Jeg forventer å finne en feil i feltet loadIndex", badField
+		assertNotNull "Expecting to find error in field loadIndex", badField
 	}
 	
-	void testGenerateTireWithInvalidSpeedIndex(){
+	void testGenerateTireWithInvalidSpeedIndex() {
 		tire.speedIndex = "A"
 		
-		assertFalse "Test feilet, forventet ugyldig speedIndex", tire.validate()
+		assertFalse "Test failed, expected invalid speedIndex", tire.validate()
 		def badField = tire.errors.getFieldError("speedIndex")
-		assertNotNull "Jeg forventer å finne feil i feltet speedIndex", badField
+		assertNotNull "Expecting to find error in field speedIndex", badField
 	}
 	
-	void testGenerateTireWithInvalidPattern(){
+	void testGenerateTireWithInvalidPattern() {
 		tire.pattern = "?"
 		
-		assertFalse "Test feilet, forventet ugyldig pattern", tire.validate()
+		assertFalse "Test failed, expected invalid pattern", tire.validate()
 		def badField = tire.errors.getFieldError("pattern")
-		assertNotNull "Jeg forventer å finne en feil i feltet pattern", badField
+		assertNotNull "Expecting to find error in field pattern", badField
 	}
 	
-	void testGenerateTireWithInvalidTireType(){
+	void testGenerateTireWithInvalidTireType() {
 		tire.tireType = "spring"
 		
-		assertFalse "Test feilet, forventet ugyldig tireType", tire.validate()
+		assertFalse "Test failed, expected invalid tireType", tire.validate()
 		def badField = tire.errors.getFieldError("tireType")
-		assertNotNull "Jeg forventer å finne en feil i feltet tireType", badField
+		assertNotNull "Expecting to find error in field tireType", badField
 	}
 	
-	void testGenerateTireWithInvalidBrand(){
+	void testGenerateTireWithInvalidBrand() {
 		tire.brand = ""
 		
-		assertFalse "Test feilet, forventet ugyldig tireBrand", tire.validate()
+		assertFalse "Test failed, expected invalid tireBrand", tire.validate()
 		def badField = tire.errors.getFieldError("brand")
-		assertNotNull "Jeg forventer å finne en feil i feltet brand", badField
+		assertNotNull "Expecting to find error in field brand", badField
 	}
 	
-	void testGenerateTireWithInvalidTireName(){
+	void testGenerateTireWithInvalidTireName() {
 		tire.tireName = "<>"
 		
-		assertFalse "Test feilet, forventet ugyldig tireName", tire.validate()
+		assertFalse "Test failed, expected invalid tireName", tire.validate()
 		def badField = tire.errors.getFieldError("tireName")
-		assertNotNull "Jeg forventer å finne en feil i feltet tireName", badField
+		assertNotNull "Expecting to find error in field tireName", badField
 	}
 	
-	void testToString(){
+	void testToString() {
 		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer (123AB)", tire.toString()
+	}
+	
+	void testOrderToString() {
+		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer (På lager: 0)", tire.orderToString()
 	}
 }
