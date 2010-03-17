@@ -1,5 +1,7 @@
 package no.pstop.webapp
 
+import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
+
 import no.pstop.webapp.User
 import no.pstop.webapp.Role
 
@@ -89,6 +91,7 @@ class UserController {
 		}
 	}
 
+	@Secured(['ROLE_ADMIN'])
 	def create = {
 		[person: new User(params), authorityList: Role.list()]
 	}
