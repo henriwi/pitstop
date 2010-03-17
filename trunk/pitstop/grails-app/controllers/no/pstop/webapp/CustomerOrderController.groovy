@@ -97,4 +97,17 @@ class CustomerOrderController {
             redirect(action: "list")
         }
     }
+	
+    def next = {
+        def customerOrderInstance = new CustomerOrder(params)
+        if (customerOrderInstance.validate()) {
+            //flash.message = "${message(code: 'default.created.message', args: [message(code: 'customerOrder.label', default: 'CustomerOrder'), customerOrderInstance.id])}"
+            redirect(action: "create", controller: "customerOrderLine",  params:[customerId: params.id,
+                                                                                 orderDate: params.orderDate,
+                                                                                 notice: params.notice])
+        }
+        else {
+            render(view: "create", model: [customerOrderInstance: customerOrderInstance])
+        }
+    }
 }
