@@ -16,10 +16,15 @@ class CustomerOrderLineController {
     def create = {
         def customerOrderLineInstance = new CustomerOrderLine()
         customerOrderLineInstance.properties = params
-        return [customerOrderLineInstance: customerOrderLineInstance]
+		println "Create;"
+		println params
+        def tireOccurrenceInstanceList = TireOccurrence.findAllByTire(Tire.get(params.tireId))
+        return [customerOrderLineInstance: customerOrderLineInstance, tireOccurrenceInstanceList:tireOccurrenceInstanceList]
     }
 
     def save = {
+		saveCustomerOrder()
+		
         def customerOrderLineInstance = new CustomerOrderLine(params)
         if (customerOrderLineInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'customerOrderLine.label', default: 'CustomerOrderLine'), customerOrderLineInstance.id])}"
@@ -28,6 +33,10 @@ class CustomerOrderLineController {
         else {
             render(view: "create", model: [customerOrderLineInstance: customerOrderLineInstance])
         }
+    }
+
+    def saveCustomerOrder = {
+    	
     }
 
     def show = {
