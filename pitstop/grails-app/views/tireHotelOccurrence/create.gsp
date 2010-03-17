@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title><g:message code="tireHotelOccurrence.create.label"/></title>
-				<gui:resources components="autoComplete" />
+		<gui:resources components="autoComplete" />
     </head>
     <body>
         <div class="nav">
