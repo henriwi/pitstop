@@ -9,7 +9,7 @@ class UserTests extends GrailsUnitTestCase {
 		mockForConstraintsTests User
 		
 		user = new User(username: "Anders", userRealName: "Anders Evenstuen", passwd: "123", enabled: true, 
-		email: "anders@gmail.com", emailShow: true, description: "ingen", pass: "123")
+		email: "anders@gmail.com", description: "ingen", pass: "123")
     }
 
     protected void tearDown() {
@@ -22,7 +22,6 @@ class UserTests extends GrailsUnitTestCase {
 		assertEquals "123", user.passwd
 		assertEquals true, user.enabled
 		assertEquals "anders@gmail.com", user.email
-		assertEquals true, user.emailShow
 		assertEquals "ingen", user.description
 		assertEquals "123", user.pass
     }
@@ -37,7 +36,7 @@ class UserTests extends GrailsUnitTestCase {
 	
 	void testCreateUserWithNonUniqueUsername() {
 		def user2 = new User(username: "Anders", userRealName: "Anders Olsen", passwd: "123", enabled: true, 
-		email: "anders@gmail.com", emailShow: true, description: "ingen", pass: "123")
+		email: "anders@gmail.com", description: "ingen", pass: "123")
 		
 		mockForConstraintsTests User, [user]
 		

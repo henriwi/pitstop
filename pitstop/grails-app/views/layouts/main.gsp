@@ -13,6 +13,7 @@
         	</div>
         	<div id="mainMenu">
 		        <ul id="menuList">
+
 		        	<g:if test="${params.controller == null}">
 		        		<li><a class="active" href="${createLink(uri: '/')}">Hjem</a></li>
 		        	</g:if>
@@ -47,6 +48,17 @@
 			        <g:else>
 			        	<li><g:link controller="customerOrder">Kundebestilling</g:link></li>
 			        </g:else>
+			        
+			   		<g:if test="${params.controller == 'user'}">
+		        		<li><g:link class="active" controller="user">Admin</g:link></li>
+		        	</g:if>
+			        <g:else>
+			        	<li><g:link controller="user">Admin</g:link></li>
+			        </g:else>
+			        
+			   		<g:isLoggedIn>
+						<g:link controller="logout">Logg ut</g:link>
+					</g:isLoggedIn>
 			        <%--
 					<g:each var="c" in="${grailsApplication.controllerClasses}">
 			        	<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>

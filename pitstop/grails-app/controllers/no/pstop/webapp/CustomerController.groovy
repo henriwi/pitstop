@@ -1,7 +1,6 @@
 package no.pstop.webapp
 
 import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
-
 import grails.converters.JSON
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])

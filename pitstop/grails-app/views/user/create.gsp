@@ -6,12 +6,12 @@
 <body>
 
 	<div class="nav">
-		<span class="menuButton"><a class="home" href="${createLinkTo(dir:'')}">Home</a></span>
-		<span class="menuButton"><g:link class="list" action="list">User List</g:link></span>
+		<span class="menuButton"><g:link controller = "user" class="list" action="list"><g:message code="user.list.label"/></g:link></span>
+		<span class="menuButton"><g:link controller = "user" class="create" action="create"><g:message code="user.create.label"/></g:link></span>
 	</div>
 
 	<div class="body">
-		<h1>Create User</h1>
+		<h1><g:message code="user.create.header.label" args="[entityName]" /></h1>
 		<g:if test="${flash.message}">
 		<div class="message">${flash.message}</div>
 		</g:if>
@@ -26,56 +26,61 @@
 				<tbody>
 
 					<tr class="prop">
-						<td valign="top" class="name"><label for="username">Login Name:</label></td>
+						<td valign="top" class="name">
+							<label for="username"><g:message code="user.username.label"/></label>
+						</td>
 						<td valign="top" class="value ${hasErrors(bean:person,field:'username','errors')}">
 							<input type="text" id="username" name="username" value="${person.username?.encodeAsHTML()}"/>
 						</td>
 					</tr>
 
 					<tr class="prop">
-						<td valign="top" class="name"><label for="userRealName">Full Name:</label></td>
+						<td valign="top" class="name">
+							<label for="userRealName"><g:message code="user.userRealName.label"/></label>
+						</td>
 						<td valign="top" class="value ${hasErrors(bean:person,field:'userRealName','errors')}">
 							<input type="text" id="userRealName" name="userRealName" value="${person.userRealName?.encodeAsHTML()}"/>
 						</td>
 					</tr>
 
 					<tr class="prop">
-						<td valign="top" class="name"><label for="passwd">Password:</label></td>
+						<td valign="top" class="name">
+							<label for="passwd"><g:message code="user.passwd.label"/></label>
+						</td>
 						<td valign="top" class="value ${hasErrors(bean:person,field:'passwd','errors')}">
 							<input type="password" id="passwd" name="passwd" value="${person.passwd?.encodeAsHTML()}"/>
 						</td>
 					</tr>
 
 					<tr class="prop">
-						<td valign="top" class="name"><label for="enabled">Enabled:</label></td>
+						<td valign="top" class="name">
+							<label for="enabled"><g:message code="user.enabled.label"/></label>
+						</td>
 						<td valign="top" class="value ${hasErrors(bean:person,field:'enabled','errors')}">
 							<g:checkBox name="enabled" value="${person.enabled}" ></g:checkBox>
 						</td>
 					</tr>
 
 					<tr class="prop">
-						<td valign="top" class="name"><label for="description">Description:</label></td>
+						<td valign="top" class="name">
+							<label for="description"><g:message code="user.description.label"/></label>
+						</td>
 						<td valign="top" class="value ${hasErrors(bean:person,field:'description','errors')}">
 							<input type="text" id="description" name="description" value="${person.description?.encodeAsHTML()}"/>
 						</td>
 					</tr>
 
 					<tr class="prop">
-						<td valign="top" class="name"><label for="email">Email:</label></td>
+						<td valign="top" class="name">
+							<label for="email"><g:message code="user.email.label"/></label>
+						</td>
 						<td valign="top" class="value ${hasErrors(bean:person,field:'email','errors')}">
 							<input type="text" id="email" name="email" value="${person.email?.encodeAsHTML()}"/>
 						</td>
 					</tr>
 
 					<tr class="prop">
-						<td valign="top" class="name"><label for="emailShow">Show Email:</label></td>
-						<td valign="top" class="value ${hasErrors(bean:person,field:'emailShow','errors')}">
-							<g:checkBox name="emailShow" value="${person.emailShow}"/>
-						</td>
-					</tr>
-
-					<tr class="prop">
-						<td valign="top" class="name" align="left">Assign Roles:</td>
+						<td valign="top" class="name" align="left"><g:message code="user.assignRoles.label"/></td>
 					</tr>
 
 					<g:each in="${authorityList}">
@@ -90,7 +95,8 @@
 			</div>
 
 			<div class="buttons">
-				<span class="button"><input class="save" type="submit" value="Create" /></span>
+				<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label')}" /></span>
+                <span class="button"><g:actionSubmit class="cancel" action="list" value="${message(code: 'default.button.cancel.label')}" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');" /></span>
 			</div>
 
 		</g:form>

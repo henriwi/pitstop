@@ -3,15 +3,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main" />
         <title><g:message code="tireHotelOccurrence.create.label"/></title>
 		<gui:resources components="autoComplete" />
     </head>
     <body>
-        <div class="nav">
+        <!-- <div class="nav">
             <span class="menuButton"><g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link></span>
-        </div>
+        </div>-->
         <div class="body">
             <h1><g:message code="tireHotelOccurrence.create.label" /></h1>
             <g:if test="${flash.message}">
@@ -105,6 +104,8 @@
                     </table>
                 </div>
                 <div class="buttons">
+                	<g:submitToRemote onSuccess="Modalbox.hide()" class="save" action="save" value="Lagre" update="[success:'message',failure:'errors']"/>
+                
                     <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label')}" /></span>
                     <span class="button"><g:actionSubmit class="cancel" action="list" value="${message(code: 'default.button.cancel.label')}" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');" /></span>
                 </div>

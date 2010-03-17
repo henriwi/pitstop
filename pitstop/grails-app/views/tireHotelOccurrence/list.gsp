@@ -3,6 +3,9 @@
 
 <%@page import="no.pstop.webapp.TireHotelOccurrence"%><html>
     <head>
+        <g:javascript library="application" />
+        <g:javascript library="yui" />
+		<modalbox:modalIncludes />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title><g:message code="tireHotelOccurrence.list.title.label" /></title>
@@ -24,6 +27,7 @@
 				<g:link action="list" class="btnShowAll"><g:message code="tireHotelOccurrence.search.showAll.label" /></g:link>							
 			</div>
 			</g:form>
+			<modalbox:createLink controller="tireHotelOccurrence" action="create" title="Show book!" width="500" overlayDuration="0" slideDownDuration="0" resizeDuration="0">Book</modalbox:createLink>
             <div class="list">
                 <table>
                     <thead>
