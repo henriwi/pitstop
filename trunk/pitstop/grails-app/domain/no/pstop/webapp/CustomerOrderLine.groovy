@@ -11,6 +11,6 @@ class CustomerOrderLine {
     static constraints = {
 		numberOfOrderedTireOccurrences(min: 1, max: 1000)
 		price(min: new Double(0.00), max: new Double(100000000.00))
-		deliveryDate(blank: false, nullable: false)
+		deliveryDate(blank: true, nullable: true)
     }
 }
