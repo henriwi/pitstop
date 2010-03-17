@@ -47,8 +47,10 @@
                             <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th>
                              
                             <th><a class="notSortableColoumn">${message(code: 'tire.list.edit.label')}</a></th>
-                            
+
+           	                <g:ifAllGranted role="ROLE_ADMIN"> 
                             <th><a class="notSortableColoumn">${message(code: 'tire.list.delete.label')}</a></th>
+                        	</g:ifAllGranted>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,12 +86,14 @@
                             
                             <td><g:link class="editTableItem" action="edit" id="${tireInstance.id}">&nbsp;</g:link></td>
                             
+           	                <g:ifAllGranted role="ROLE_ADMIN"> 
                             <td>
                             	<g:form method="post">
                             		<g:hiddenField name="id" value="${tireInstance?.id}" />
                             		<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" />
                             	</g:form>
                             </td>   
+                            </g:ifAllGranted>
 
                         </tr>
                     </g:each>
