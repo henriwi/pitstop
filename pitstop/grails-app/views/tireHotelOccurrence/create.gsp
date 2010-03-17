@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title><g:message code="tireHotelOccurrence.create.label"/></title>
-		<!--<gui:resources components="autoComplete" />-->
+				<gui:resources components="autoComplete" />
     </head>
     <body>
         <div class="nav">
@@ -31,10 +31,20 @@
                                 <td valign="top" class="name">
                                     <label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'customer', 'errors')}">
-									<g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${tireHotelOccurrenceInstance?.customer?.id}"  />
-									<!--<gui:autoComplete id="customer" controller="customer" action="autoComplete"	/>-->
-                                </td>
+	                            <!--    <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'customer', 'errors')}">
+																<g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${tireHotelOccurrenceInstance?.customer?.id}"  /> 
+                                </td> --> 
+                              <td class="yui-skin-sam">
+															<gui:autoComplete 
+																		id="addCustomerAutoComplete" 
+																		controller="customer"
+																		action="customerAutoComplete"
+																		resultName="customers"
+																			/> 
+															<!--  attributt til autoComplete options="${['Jon Torstein', 'Trygve Hegnar', 'Jens Stoltenberg']}" -->
+																                              
+                              </td> 
+                                
                             </tr>
                         
                             <tr class="prop">

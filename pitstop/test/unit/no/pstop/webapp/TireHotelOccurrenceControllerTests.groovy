@@ -10,6 +10,7 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 	
     protected void setUp() {
         super.setUp()
+		mockDomain Customer
 		customer = new Customer(firstName:"Jan Roar", lastName:"Hansen",phoneNumber:"99887766", address:"Vollensvingen 2", postalCode:"0899",
 				city:"Vollen", email:"roar@gmail.com", company:"StoreDekk", notice:"En god betaler" )
 		mockDomain TireHotelOccurrence
@@ -43,7 +44,9 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithValidTireHotelOccurrence(){
-		setParams("1a", "DE12345", "Audi", customer, "Sommer", new Date(), new Date() + 100, "Notice")
+		setParams("1a", "DE12345", "Audi", null, "Sommer", new Date(), new Date() + 100, "Notice")
+		mockDomain Customer, [customer]
+		controller.params.addCustomerAutoComplete_id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"}
 		def mock = mockFor(TireHotelOccurrence)
 		mock.demand.merge() {tireHotelOccurrence}
@@ -54,7 +57,8 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithInvalidTireHotelOccurrence(){
-		setParams("a1", "DE12345", "?", customer, "Sommer", new Date(), new Date() + 100, "Notice")
+		setParams("a1", "DE12345", "?", null, "Sommer", new Date(), new Date() + 100, "Notice")
+		controller.params.addCustomerAutoComplete_id = 999
 		controller.metaClass.message = {args -> println "message: ${args}"}
 		tireHotelOccurrence.carType = "?"
 		controller.save()

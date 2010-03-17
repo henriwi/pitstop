@@ -37,7 +37,9 @@ class TireHotelOccurrenceController {
 	}
 	
 	def save = {
-		def tireHotelOccurrenceInstance = new TireHotelOccurrence(params)
+		def customer = Customer.get(params.addCustomerAutoComplete_id)
+		def tireHotelOccurrenceInstance = new TireHotelOccurrence(tireLocation: params.tireLocation, registrationNumber: params.registrationNumber, 
+				carType: params.carType, customer: customer, tireType: params.tireType, inDate: params.inDate, outDate: null, notice: params.notice)
 		if(!tireHotelOccurrenceInstance.validate()){
 			render(view: "create", model: [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance])
 		}
@@ -151,5 +153,9 @@ class TireHotelOccurrenceController {
 		else{
 			render(view: "edit", model: [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance])
 		}
+	}
+	
+	def addCustomer(){
+		println params
 	}
 }
