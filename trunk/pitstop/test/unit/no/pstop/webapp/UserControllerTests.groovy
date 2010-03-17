@@ -1,7 +1,7 @@
 package no.pstop.webapp
 import org.grails.plugins.springsecurity.service.AuthenticateService;
 
-import grails.test.*
+import grails.test.* 
 
 class UserControllerTests extends ControllerUnitTestCase {
 	def user1, user2, user3

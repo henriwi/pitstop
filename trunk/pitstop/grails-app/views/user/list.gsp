@@ -20,11 +20,17 @@
 			<thead>
 				<tr>
 					<g:sortableColumn property="username" title="${message(code: 'user.username.table.label')}" />
+					
 					<g:sortableColumn property="userRealName" title="${message(code: 'user.userRealName.table.label')}"/>
+					
 					<g:sortableColumn property="enabled" title="${message(code: 'user.enabled.table.label')}" />
+					
 					<g:sortableColumn property="description" title="${message(code: 'user.description.table.label')}" />
-                    <th><a class="notSortableColoumn">${message(code: 'tire.list.edit.label')}</a></th>
-	                <th><a class="notSortableColoumn">${message(code: 'tire.list.delete.label')}</a></th>
+                    
+                    <th><a class="notSortableColoumn">${message(code: 'user.list.edit.label')}</a></th>
+	                <g:ifAllGranted role="ROLE_ADMIN"> 
+	                	<th><a class="notSortableColoumn">${message(code: 'user.list.delete.label')}</a></th>
+					</g:ifAllGranted>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,16 +40,22 @@
 			<g:each in="${personList}" status="i" var="person">
 				<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 					<td><g:link action="show" id="${person.id}">${fieldValue(bean: person, field: "username")}</g:link> </td>
+					
 					<td><g:link action="show" id="${person.id}">${fieldValue(bean: person, field: "userRealName")}</g:link> </td>
+					
 					<td><g:link action="show" id="${person.id}">${person?.enabledLabel()}</g:link> </td>
+					
 					<td><g:link action="show" id="${person.id}">${fieldValue(bean: person, field: "description")}</g:link> </td>
+					
 					<td><g:link class="editTableItem" action="edit" id="${person?.id}">&nbsp;</g:link></td>
+                    <g:ifAllGranted role="ROLE_ADMIN"> 
                     <td>
                     	<g:form method="post">
                         	<g:hiddenField name="id" value="${person?.id}" />
                            	<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
                         </g:form>
-                   	</td>   
+                   	</td> 
+                   	</g:ifAllGranted>  
 				</tr>
 			</g:each>
 			</tbody>

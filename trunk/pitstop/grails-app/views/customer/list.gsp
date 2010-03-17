@@ -42,6 +42,13 @@
                         	<g:sortableColumn property="email" title="${message(code: 'customer.email.table.label')}" />
                         	
                         	<g:sortableColumn property="company" title="${message(code: 'customer.company.table.label')}" />
+                     	  
+                     	    <th><a class="notSortableColoumn">${message(code: 'cusomter.list.edit.label')}</a></th>
+	                
+           	                <g:ifAllGranted role="ROLE_ADMIN"> 
+	                		<th><a class="notSortableColoumn">${message(code: 'customer.list.delete.label')}</a></th>
+							</g:ifAllGranted>                       
+                       
                         </tr>
                     </thead>
                     <tbody>
@@ -64,6 +71,16 @@
                             
                             <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "company")}</g:link></td>
                             
+                            <td><g:link class="editTableItem" action="edit" id="${customerInstance?.id}">&nbsp;</g:link></td>
+                  		    
+	    	                <g:ifAllGranted role="ROLE_ADMIN"> 
+                  		    <td>
+                    			<g:form method="post">
+                        		<g:hiddenField name="id" value="${customerInstance?.id}" />
+                           		<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
+                        		</g:form>
+                   			</td>  
+                   			</g:ifAllGranted>
                         </tr>
                     </g:each>
                     </tbody>
