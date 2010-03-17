@@ -65,18 +65,17 @@ class UserControllerTests extends ControllerUnitTestCase {
 		assertEquals "Redirect action", "list", controller.redirectArgs.action
 	}
 	
-	/*void testDelete() {
+	void testDelete() {
 		mockDomain User, [user1]
 		def mock = mockFor(AuthenticateService)
-		controller.authenticateService = new AuthenticateService()
-		//mock.demand.principal() {-> return user1}
-		controller.authenticateService.principal() {-> return user1}
+		mock.demand.principal(1..1) {-> return user1}
+		controller.authenticateService = mock.createMock()
 		controller.metaClass.message = { args -> println "message: ${args}" }
 		controller.params.id = 1
 		controller.delete()
 		
 		assertEquals "Redirect action", "list", controller.redirectArgs.action
-	}*/
+	}
 	
 	void testCreate() {
 		def model = controller.create()
@@ -127,10 +126,36 @@ class UserControllerTests extends ControllerUnitTestCase {
 		
 		controller.update()
 		
-		assertEquals "Redirect action", "edit", controller.modelAndView.viewName
+		assertEquals "Redirect view", "edit", controller.modelAndView.viewName
 		assertNotNull "User should not be null", controller.modelAndView.model.linkedHashMap.person
 	}
 	
-	//TODO - test save-methods
+	void testSaveWithValidUser() {
+		setParams(user1.username, user1.userRealName, user1.passwd, user1.enabled, 
+				user1.email, user1.description, user1.pass)
+		
+		def mock = mockFor(AuthenticateService)
+		mock.demand.encodePassword(1..1) {String passwd -> return user1.passwd}
+		controller.authenticateService = mock.createMock()
+
+		controller.save()
+		
+		assertEquals "Redirect action", "show", controller.redirectArgs.action
+		assertEquals "Redirect id", 1, controller.redirectArgs.id
+	}
 	
+	void testSaveWithInvalidUser() {
+		setParams(user1.username, user1.userRealName, user1.passwd, user1.enabled, 
+		"anders.gmail.com", user1.description, user1.pass)
+		
+		def mock = mockFor(AuthenticateService)
+		mock.demand.encodePassword(1..1) {String passwd -> return user1.passwd}
+		controller.authenticateService = mock.createMock()
+		
+		controller.save()
+		
+		assertEquals "Redirect view", "create", controller.modelAndView.viewName
+		assertNotNull "User should not be null", controller.modelAndView.model.linkedHashMap.person
+		assertNotNull "Authority list should not be null", controller.modelAndView.model.linkedHashMap.authorityList
+	}
 }

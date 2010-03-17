@@ -105,7 +105,7 @@
                     </table>
                 </div>
                 <div class="buttons">
-                	<g:submitToRemote onSuccess="Modalbox.hide()" class="save" action="save" value="Lagre" update="[success:'message',failure:'errors']"/>
+                	<!-- <g:submitToRemote onSuccess="Modalbox.hide()" class="save" action="save" value="Lagre" update="[success:'message',failure:'errors']"/>-->
                 
                     <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label')}" /></span>
                     <span class="button"><g:actionSubmit class="cancel" action="list" value="${message(code: 'default.button.cancel.label')}" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');" /></span>
