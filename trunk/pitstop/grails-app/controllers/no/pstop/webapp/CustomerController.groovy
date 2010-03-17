@@ -116,16 +116,16 @@ class CustomerController {
             redirect(action: "list")
         }
     }
-	
-	def autoComplete = {
-		def customers = Customer.list()
+
+	def customerAutoComplete = {
+		def customers = Customer.findAllByFirstNameLikeOrLastNameLike("%${params.query}%", "%${params.query}%")
 		
 		customers = customers.collect {
-			[id: it.id, name: it.firstName]
+			[id: it.id, name:it.autoCompleteToString()]
 		}
 		def jsonCustomer = [
-		    result: customers
-		]
+				customers: customers
+				]
 		render jsonCustomer as JSON
 	}
 	
