@@ -11,13 +11,13 @@ class UserControllerTests extends ControllerUnitTestCase {
 		mockDomain Role
 		
 		user1 = new User(username: "anders", userRealName: "Anders Evenstuen", passwd: "123", enabled: true, 
-		email: "anders@gmail.com", emailShow: true, description: "ingen", pass: "123")
+		email: "anders@gmail.com", description: "ingen", pass: "123")
 		
 		user2 = new User(username: "henrik", userRealName: "Henrik Hansen", passwd: "123", enabled: true, 
-				email: "henrik@gmail.com", emailShow: true, description: "ingen", pass: "123")
+				email: "henrik@gmail.com", description: "ingen", pass: "123")
 		
 		user3 = new User(username: "ole", userRealName: "Ole Olsen", passwd: "123", enabled: true, 
-				email: "ole@gmail.com", emailShow: true, description: "ingen", pass: "123")
+				email: "ole@gmail.com", description: "ingen", pass: "123")
     }
 
     protected void tearDown() {
@@ -25,13 +25,12 @@ class UserControllerTests extends ControllerUnitTestCase {
     }
 	
 	private setParams(String username, String userRealName, String passwd, boolean enabled,
-	String email, boolean emailShow, String description, String pass) {
+	String email, String description, String pass) {
 		controller.params.username = username
 		controller.params.userRealName = userRealName
 		controller.params.passwd = passwd
 		controller.params.enabled = enabled
 		controller.params.email = email
-		controller.params.emailShow = emailShow
 		controller.params.description = description
 		controller.params.pass = pass
 	}
@@ -113,7 +112,7 @@ class UserControllerTests extends ControllerUnitTestCase {
 		mockDomain User, [user1]
 		controller.params.id = 1
 		setParams(user1.username, "Jan Anders Evenstuen", user1.passwd, user1.enabled, 
-				user1.email, user1.emailShow, user1.description, user1.pass)
+				user1.email, user1.description, user1.pass)
 		
 		controller.update()
 		
@@ -124,7 +123,7 @@ class UserControllerTests extends ControllerUnitTestCase {
 		mockDomain User, [user1]
 		controller.params.id = 1
 		setParams(user1.username, user1.userRealName, user1.passwd, user1.enabled, 
-				"anders.gmail.com", user1.emailShow, user1.description, user1.pass)
+				"anders.gmail.com", user1.description, user1.pass)
 		
 		controller.update()
 		

@@ -48,6 +48,7 @@ class TireController {
 		}
 		if(tireCount == 0){
 			flash.message = "Fant ingen dekktyper."
+			redirect(action: "search")
 		}
 		[tireInstanceList: tireList, tireInstanceTotal: tireCount]
 	}

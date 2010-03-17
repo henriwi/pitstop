@@ -2,30 +2,17 @@ package no.pstop.webapp
 
 import no.pstop.webapp.Role
 
-/**
- * User domain class.
- */
 class User {
 	static transients = ['pass']
 	static hasMany = [authorities: Role]
 	static belongsTo = Role
 
-	/** Username */
 	String username
-	/** User Real Name*/
 	String userRealName
-	/** MD5 Password */
 	String passwd
-	/** enabled */
 	boolean enabled
-
 	String email
-	boolean emailShow
-
-	/** description */
 	String description = ''
-
-	/** plain password to create a MD5 password */
 	String pass = '[secret]'
 
 	static constraints = {
@@ -33,5 +20,9 @@ class User {
 		userRealName(blank: false)
 		passwd(blank: false)
 		email(email: true)
+	}
+	
+	String enabledLabel(){
+		(enabled) ? "Ja" : "Nei"
 	}
 }
