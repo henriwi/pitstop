@@ -25,26 +25,44 @@ class CustomerOrderLineController {
     }
 
     def save = {
-		println "Params"
-		println params
-		saveCustomerOrder()
-		
-        def customerOrderLineInstance = new CustomerOrderLine(params)
-		println "CustomerOrderLineInstance"
-		println customerOrderLineInstance
-        if (customerOrderLineInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'customerOrderLine.label', default: 'CustomerOrderLine'), customerOrderLineInstance.id])}"
-            redirect(action: "show", id: customerOrderLineInstance.id)
-        }
-        else {
-            render(view: "create", model: [customerOrderLineInstance: customerOrderLineInstance])
-        }
+		int numberOfTireOccurrences = params.numberOfTireOccurrences.toInteger()
+		if(checkForValidParameters()){
+			saveCustomerOrder()
+			def customerOrderInstance = CustomerOrder.get(params.customerOrderId)
+			
+			for (int i = 0; i < numberOfTireOccurrences; i++) {
+				def tireOccurrenceInstance = TireOccurrence.get(params.tireOccurrenceId[i])
+				def customerOrderLineInstance = new CustomerOrderLine(tireOccurrence: tireOccurrenceInstance, customerOrder: customerOrderInstance, numberOfOrderedTireOccurrences: params.tireOccurrenceInStock[i], price: params.price[i], deliveryDate: null)
+				
+				if (params.tireOccurrenceInStock[i] > 0 && params.price != "") {
+					customerOrderLineInstance.save(flush: true)
+		        }
+			}
+			flash.message = "${message(code: 'customerOrderLine.created.message', args: [message(code: 'customerOrderInstance.label', default: 'CustomerOrderLine'), customerOrderInstance.id])}"
+			redirect(action: "show", controller: "customerOrder", id: customerOrderInstance.id)
+		}
+		else {
+			flash.message = "${message(code: 'customerOrderLine.error.message', args: [message(code: 'customerOrderInstance.label', default: 'CustomerOrderLine')])}"
+			redirect(action: "create", controller: "customerOrder")
+		}
+    }
+
+    def checkForValidParameters = {
+			int numberOfTireOccurrences = params.numberOfTireOccurrences.toInteger()
+			println params
+			for (int i = 0; i < numberOfTireOccurrences; i++) {
+				if (params.tireOccurrenceInStock[i] > 0 && params.price[i] != "") {
+					return true
+				}
+			}
+			return false
     }
 
     def saveCustomerOrder = {
 			def customer = Customer.get(params.customer.id)
 			def customerOrderInstance = new CustomerOrder(customer: customer, orderDate: new Date(), notice: params.notice)
 			customerOrderInstance.save(flush:true)
+			params.customerOrderId = customerOrderInstance.id
     }
 
     def show = {
