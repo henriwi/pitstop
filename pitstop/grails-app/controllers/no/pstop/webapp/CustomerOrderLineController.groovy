@@ -38,15 +38,7 @@ class CustomerOrderLineController {
 				
 				if (params.tireOccurrenceInStock[i] > 0 && params.price[i] != "") {
 					customerOrderLineInstance.save(flush: true)
-					print "Reserverte fra før: "
-					println tireOccurrenceInstance.numberOfReserved
-					
-					print "Reserverte: "
-					println params.tireOccurrenceInStock[i]
-					tireOccurrenceInstance.numberOfReserved = params.tireOccurrenceInStock[i].toInteger()
-					
-					print "Reserverte etter: "
-					println tireOccurrenceInstance.numberOfReserved
+					tireOccurrenceInstance.numberOfReserved += params.tireOccurrenceInStock[i].toInteger()
 		        }
 			}
 			flash.message = "${message(code: 'customerOrderLine.created.message', args: [message(code: 'customerOrderInstance.label', default: 'CustomerOrderLine'), customerOrderInstance.id])}"

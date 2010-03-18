@@ -13,4 +13,6 @@ class CustomerOrderLine {
 		price(min: new Double(0.00), max: new Double(100000000.00))
 		deliveryDate(blank: true, nullable: true)
     }
+	
+	
 }
