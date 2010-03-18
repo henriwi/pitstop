@@ -44,8 +44,9 @@
                             
                             <g:sortableColumn params="${params}" property="tireType" title="${message(code: 'tire.tireType.table.label')}" />
                             
-                            <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th>
-                             
+                            <g:sortableColumn params="${params}" property="numberOfAvailable" title="${message(code: 'tireOccurrence.numberOfAvailable.table.label')}" />
+                           <%--  <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th> --%>
+                            
                             <th><a class="notSortableColoumn">${message(code: 'tire.list.edit.label')}</a></th>
 
            	                <g:ifAllGranted role="ROLE_ADMIN"> 
