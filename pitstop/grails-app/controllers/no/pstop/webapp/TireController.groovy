@@ -2,7 +2,7 @@ package no.pstop.webapp
 
 import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 
-@Secured(['ROLE_ADMIN','ROLE_USER'])                   
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class TireController {
 	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
 	static final maxNumberOfTireOccurrences = 10
