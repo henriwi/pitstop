@@ -31,7 +31,8 @@
                                     <label for="customer"><g:message code="customerOrder.customer.label" default="Customer" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerOrderInstance, field: 'customer', 'errors')}">
-                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${customerOrderInstance?.customer?.id}" />
+                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${params.customerId}" />
+									<!--<g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${customerOrderInstance?.customer?.id}" />-->
                                 </td>
                             </tr>
                         	
