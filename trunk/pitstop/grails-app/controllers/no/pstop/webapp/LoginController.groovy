@@ -27,7 +27,7 @@ class LoginController {
 		nocache response
 
 		if (isLoggedIn()) {
-			redirect uri: '/'
+			redirect(uri: "/")
 			return
 		}
 
@@ -35,7 +35,7 @@ class LoginController {
 		String postUrl
 		def config = authenticateService.securityConfig.security
 		
-		view = 'auth'
+		view = "auth"
 		postUrl = "${request.contextPath}${config.filterProcessesUrl}"
 
 		render(view: view, model: [postUrl: postUrl])
@@ -43,21 +43,18 @@ class LoginController {
 
 	def denied = {
 		if (isLoggedIn() && authenticationTrustResolver.isRememberMe(SCH.context?.authentication)) {
-			redirect(action: full, params: params)
+			redirect(action: "full", params: params)
 		}
 	}
 
-	/**
-	 * Login page for users with a remember-me cookie but accessing a IS_AUTHENTICATED_FULLY page.
-	 */
 	def full = {
-		render(view: 'auth', params: params,
+		render(view: "auth", params: params,
 			model: [hasCookie: authenticationTrustResolver.isRememberMe(SCH.context?.authentication)])
 	}
 
 	def authfail = {
 		def username = session[AuthenticationProcessingFilter.SPRING_SECURITY_LAST_USERNAME_KEY]
-		def msg = ''
+		def msg = ""
 		def exception = session[AbstractProcessingFilter.SPRING_SECURITY_LAST_EXCEPTION_KEY]
 		if (exception) {
 			if (exception instanceof DisabledException) {
@@ -69,7 +66,7 @@ class LoginController {
 		}
 
 		flash.message = msg
-		redirect(action: auth, params: params)
+		redirect(action: "auth", params: params)
 	}
 
 	private boolean isLoggedIn() {
@@ -77,10 +74,10 @@ class LoginController {
 	}
 
 	private void nocache(response) {
-		response.setHeader('Cache-Control', 'no-cache') // HTTP 1.1
+		response.setHeader('Cache-Control', 'no-cache')
 		response.addDateHeader('Expires', 0)
 		response.setDateHeader('max-age', 0)
-		response.setIntHeader ('Expires', -1) //prevents caching at the proxy server
-		response.addHeader('cache-Control', 'private') //IE5.x only
+		response.setIntHeader ('Expires', -1)
+		response.addHeader('cache-Control', 'private')
 	}
 }
