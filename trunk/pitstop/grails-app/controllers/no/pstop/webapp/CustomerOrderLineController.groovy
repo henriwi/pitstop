@@ -1,7 +1,9 @@
 package no.pstop.webapp
 
 import java.util.Date;
+import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class CustomerOrderLineController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -29,13 +31,22 @@ class CustomerOrderLineController {
 		if(checkForValidParameters()){
 			saveCustomerOrder()
 			def customerOrderInstance = CustomerOrder.get(params.customerOrderId)
-			
+
 			for (int i = 0; i < numberOfTireOccurrences; i++) {
 				def tireOccurrenceInstance = TireOccurrence.get(params.tireOccurrenceId[i])
 				def customerOrderLineInstance = new CustomerOrderLine(tireOccurrence: tireOccurrenceInstance, customerOrder: customerOrderInstance, numberOfOrderedTireOccurrences: params.tireOccurrenceInStock[i], price: params.price[i], deliveryDate: null)
 				
-				if (params.tireOccurrenceInStock[i] > 0 && params.price != "") {
+				if (params.tireOccurrenceInStock[i] > 0 && params.price[i] != "") {
 					customerOrderLineInstance.save(flush: true)
+					print "Reserverte fra før: "
+					println tireOccurrenceInstance.numberOfReserved
+					
+					print "Reserverte: "
+					println params.tireOccurrenceInStock[i]
+					tireOccurrenceInstance.numberOfReserved = params.tireOccurrenceInStock[i].toInteger()
+					
+					print "Reserverte etter: "
+					println tireOccurrenceInstance.numberOfReserved
 		        }
 			}
 			flash.message = "${message(code: 'customerOrderLine.created.message', args: [message(code: 'customerOrderInstance.label', default: 'CustomerOrderLine'), customerOrderInstance.id])}"
@@ -47,6 +58,10 @@ class CustomerOrderLineController {
 		}
     }
 
+    def updateReservedInTireOccurrence = {
+    	
+    }
+    
     def checkForValidParameters = {
 			int numberOfTireOccurrences = params.numberOfTireOccurrences.toInteger()
 			println params
