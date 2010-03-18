@@ -39,8 +39,9 @@
                                 <td valign="top" class="name">
                                     <label for="tire"><g:message code="customerOrderLine.tire.label" default="Dekk" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'tireOccurrence', 'errors')}">
-                                    <g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" optionValue="${{it?.orderToString()}}" />
+                                <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'tire', 'errors')}">
+									<!--<g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" optionValue="${{it?.orderToString()}}" />-->
+									<g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" optionValue="${{it?.orderToString()}}" />
                                 </td>
                             </tr>
 						</tbody>
@@ -51,7 +52,7 @@
 		                	<tr>
 	                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.price.label')}" />
 	                            
-<!--	                            <g:sortableColumn property="discount" title="${message(code: 'tireOccurrence.discount.label')}" />-->
+								<!--<g:sortableColumn property="discount" title="${message(code: 'tireOccurrence.discount.label')}" />-->
 	                            
 	                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.sum.label')}" />
 	                        
@@ -69,7 +70,9 @@
 	                        </tr>
 	                    </thead>
 						<tbody>
+							<g:set var="numberOfTireOccurrences" value="${0}"></g:set>
 							<g:each in="${tireOccurrenceInstanceList}" status="i" var="tireOccurrenceInstance">
+								<g:set var="numberOfTireOccurrences" value="${numberOfTireOccurrences + 1}"></g:set>
 			               		<tr>
 		                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}"><g:formatNumber number="${tireOccurrenceInstance.price}" format="#.00 kr" /></g:link></td>
 		                            
@@ -89,9 +92,12 @@
 		                        	
 		                        	<td><g:select name="tireOccurrenceInStock" from="${0..tireOccurrenceInstance.numberOfAvailable()}"  value="${customerOrderInstance?.customer?.id}" /></td>
 		                        	
-		                        	<td><g:textField maxlength="40" tabindex='1' name="price" value="${customerOrderLine?.price}" /></td></td>
+		                        	<td><g:textField maxlength="40" tabindex='1' name="price" value="${customerOrderLine?.price}" /></td>
+		                        	<g:hiddenField name="tireOccurrenceId" value="${tireOccurrenceInstance.id}" />
+		                        	<g:hiddenField name="tireId" value="${tireOccurrenceInstance.tire.id}" />
 		                        </tr>
 		                    </g:each>
+        					<g:hiddenField name="numberOfTireOccurrences" value="${numberOfTireOccurrences}" />
 						</tbody>
 					</table>
 					
