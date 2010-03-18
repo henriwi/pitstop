@@ -1,5 +1,7 @@
 package no.pstop.webapp
 
+import java.util.Date;
+
 class CustomerOrderLineController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -23,9 +25,13 @@ class CustomerOrderLineController {
     }
 
     def save = {
+		println "Params"
+		println params
 		saveCustomerOrder()
 		
         def customerOrderLineInstance = new CustomerOrderLine(params)
+		println "CustomerOrderLineInstance"
+		println customerOrderLineInstance
         if (customerOrderLineInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'customerOrderLine.label', default: 'CustomerOrderLine'), customerOrderLineInstance.id])}"
             redirect(action: "show", id: customerOrderLineInstance.id)
@@ -36,7 +42,9 @@ class CustomerOrderLineController {
     }
 
     def saveCustomerOrder = {
-    	
+			def customer = Customer.get(params.customer.id)
+			def customerOrderInstance = new CustomerOrder(customer: customer, orderDate: new Date(), notice: params.notice)
+			customerOrderInstance.save(flush:true)
     }
 
     def show = {
