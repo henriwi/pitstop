@@ -30,6 +30,20 @@ class TireTests extends GrailsUnitTestCase {
 		assertEquals "T-Zero", tire.tireName
 	}
 	
+	void testGenerateAnotherTire() {
+		assertEquals 190, tire.width
+		assertEquals 60, tire.profile
+		assertEquals "R", tire.construction
+		assertEquals 17, tire.diameter
+		assertEquals "123AB", tire.partNr
+		assertEquals 165, tire.loadIndex
+		assertEquals "H", tire.speedIndex
+		assertEquals "m12", tire.pattern
+		assertEquals "Sommer", tire.tireType
+		assertEquals "Nokian", tire.brand
+		assertEquals "T-Zero", tire.tireName
+	}
+	
 	void testGenerateTireWithInvalidPartNr() {
 		tire.partNr = "?"
 		
