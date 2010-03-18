@@ -41,6 +41,14 @@ class TireController {
 			tireCount = Tire.normalSearch(params.width, params.profile, params.diameter, 
 			params.speedIndex, params.tireType, , params.brand, Tire.count(), 0).size()
 		}
+		else if(params.sort == "numberOfAvailable"){
+			params.max = Math.min(params.max ? params.int('max') : maxNumberOfTires, 100)
+			
+			tireList = Tire.executeQuery("select  distinct tire, tire.numberOfAvailable = (to.numberInStock - to.numberOfReserved) " +
+					"from Tire tire left outer join tire.tireOccurrences to order by (to.numberInStock - to.numberOfReserved)  " + params.order)
+					
+			tireCount = Tire.count()
+		}
 		else {
 			params.max = Math.min(params.max ? params.int('max') : maxNumberOfTires, 100)
 			tireList = Tire.list(params)
@@ -50,6 +58,8 @@ class TireController {
 			flash.message = "Fant ingen dekktyper."
 			redirect(action: "search")
 		}
+
+		
 		[tireInstanceList: tireList, tireInstanceTotal: tireCount]
 	}
 	
