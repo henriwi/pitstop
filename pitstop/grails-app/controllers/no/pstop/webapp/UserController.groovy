@@ -91,7 +91,7 @@ class UserController {
 		}
 	}
 
-	@Secured(['ROLE_ADMIN'])
+	//@Secured(['ROLE_ADMIN'])
 	def create = {
 		[person: new User(params), authorityList: Role.list()]
 	}
