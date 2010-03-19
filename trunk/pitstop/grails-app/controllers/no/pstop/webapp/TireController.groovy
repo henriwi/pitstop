@@ -55,7 +55,7 @@ class TireController {
 			tireCount = Tire.count()
 		}
 		if(tireCount == 0){
-			flash.message = "Fant ingen dekktyper."
+			flash.message = "${message(code: 'tire.show.foundNoTireType.message')}"
 			redirect(action: "search")
 		}
 
@@ -179,7 +179,7 @@ class TireController {
 			redirect(action: "list", params:[q: params.txtFastSearch, type: 'fast'])
 		}
 		else{
-			flash.message = "Vennligst fyll ut en søkestreng."
+			flash.message = "${message(code: 'search.missingSearchString.message')}"
 			redirect(action: "search")
 		}
 	}
