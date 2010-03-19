@@ -14,5 +14,10 @@ class CustomerOrderLine {
 		deliveryDate(blank: true, nullable: true)
     }
 	
+	String toString(){
+		"${tireOccurrence.customerOrderLineToString()}" +
+		" Salgspris: ${price}kr Bestilt: ${numberOfOrderedTireOccurrences}"
+	}
+	
 	
 }
