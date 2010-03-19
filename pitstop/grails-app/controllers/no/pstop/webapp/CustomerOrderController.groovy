@@ -16,9 +16,7 @@ class CustomerOrderController {
     def create = {
         def customerOrderInstance = new CustomerOrder()
         customerOrderInstance.properties = params
-        return [customerOrderInstance: customerOrderInstance]
-			
-			
+        return [customerOrderInstance: customerOrderInstance]	
     }
 
     def save = {
