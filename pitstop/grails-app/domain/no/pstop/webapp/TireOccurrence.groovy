@@ -32,4 +32,12 @@ class TireOccurrence {
 	Double sum(){
 		(price * ((100 - discount)/100) + environmentalFee) * tax
 	}
+	
+	String customerOrderLineToString(){
+		"${tire.toString()}"
+	}
+	
+	String toString(){
+		"${tire.toString()}"
+	}
 }
