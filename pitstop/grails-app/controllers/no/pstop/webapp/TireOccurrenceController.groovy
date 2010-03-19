@@ -14,7 +14,7 @@ class TireOccurrenceController {
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		if(TireOccurrence.count() == 0){
-				flash.message = "Fant ingen dekk på lager."
+			flash.message = "${message(code: 'tireOccurrence.no.occurrence.found.message')}";
 		}
         [tireOccurrenceInstanceList: TireOccurrence.list(params), tireOccurrenceInstanceTotal: TireOccurrence.count()]
     }

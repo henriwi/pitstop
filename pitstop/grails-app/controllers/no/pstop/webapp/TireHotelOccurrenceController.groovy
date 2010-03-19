@@ -25,7 +25,7 @@ class TireHotelOccurrenceController {
 			tireHotelOccurrenceCount = TireHotelOccurrence.count()
 		}
 		if(tireHotelOccurrenceCount == 0){
-			flash.message = "Fant ingen dekkhotellforekomster."
+			flash.message = "${message(code: 'tireHotelOccurrence.no.occurrences.message')}";
 		}
 		[tireHotelOccurrenceInstanceList: tireHotelOccurrenceList, tireHotelOccurrenceInstanceTotal: tireHotelOccurrenceCount]
 	}
@@ -156,6 +156,8 @@ class TireHotelOccurrenceController {
 	}
 	
 	def addCustomer(){
+		// TODO
+		// Hvorfor er denne her?
 		println params
 	}
 }
