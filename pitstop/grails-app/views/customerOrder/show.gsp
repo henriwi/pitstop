@@ -14,7 +14,9 @@
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
         <div class="body">
-            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <!--  <h1><g:message code="default.show.label" args="[entityName]" /></h1>-->
+            <h1><g:message code="customerOrder.title.label" /></h1>
+            
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -32,15 +34,7 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="customerOrder.orderDate.label" default="Order Date" /></td>
                             
-                            <td valign="top" class="value"><g:formatDate date="${customerOrderInstance?.orderDate}" /></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="customerOrder.notice.label" default="Notice" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: customerOrderInstance, field: "notice")}</td>
-                            
+                            <td valign="top" class="value"><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance?.orderDate}" /></td>
                         </tr>
                     
                         <tr class="prop">
@@ -60,6 +54,13 @@
                                 </g:each>
                                 </ul>
                             </td>
+                            
+                        </tr>
+                        
+                         <tr class="prop">
+                            <td valign="top" class="name"><g:message code="customerOrder.notice.label" default="Notice" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: customerOrderInstance, field: "notice")}</td>
                             
                         </tr>
                     
