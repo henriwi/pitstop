@@ -20,8 +20,6 @@ class CustomerOrderLineController {
     def create = {
         def customerOrderLineInstance = new CustomerOrderLine()
         customerOrderLineInstance.properties = params
-		println "Create;"
-		println params
         def tireOccurrenceInstanceList = TireOccurrence.findAllByTire(Tire.get(params.tireId))
         return [customerOrderLineInstance: customerOrderLineInstance, tireOccurrenceInstanceList:tireOccurrenceInstanceList]
     }
