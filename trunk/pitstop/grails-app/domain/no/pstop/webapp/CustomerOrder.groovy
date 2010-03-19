@@ -11,4 +11,8 @@ class CustomerOrder {
 		orderDate(max: new Date() + 1)
 		notice(size:0..1000)
     }
+	
+	String toString(){
+		"Ordre - ${id}"
+	}
 }
