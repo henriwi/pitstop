@@ -32,7 +32,7 @@ class RoleController {
 	def show = {
 		def authority = Role.get(params.id)
 		if (!authority) {
-			flash.message = "Role not found with id $params.id"
+			flash.message = "${message(code: 'role.not.found.message', args: [message(code: 'role.label'), params.id])}"
 			redirect action: list
 			return
 		}
@@ -46,14 +46,13 @@ class RoleController {
 	def delete = {
 		def authority = Role.get(params.id)
 		if (!authority) {
-			flash.message = "Role not found with id $params.id"
+			flash.message = "${message(code: 'role.not.found.message', args: [message(code: 'role.label'), params.id])}"
 			redirect action: list
 			return
 		}
 
 		authenticateService.deleteRole(authority)
-
-		flash.message = "Role $params.id deleted."
+		flash.message = "${message(code: 'role.deleted.message', args: [message(code: 'role.label'), params.id])}"
 		redirect action: list
 	}
 
@@ -63,7 +62,7 @@ class RoleController {
 	def edit = {
 		def authority = Role.get(params.id)
 		if (!authority) {
-			flash.message = "Role not found with id $params.id"
+			flash.message = "${message(code: 'role.not.found.message', args: [message(code: 'role.label'), params.id])}"
 			redirect action: list
 			return
 		}
@@ -78,7 +77,7 @@ class RoleController {
 
 		def authority = Role.get(params.id)
 		if (!authority) {
-			flash.message = "Role not found with id $params.id"
+			flash.message = "${message(code: 'role.not.found.message', args: [message(code: 'role.label'), params.id])}"
 			redirect action: edit, id: params.id
 			return
 		}
