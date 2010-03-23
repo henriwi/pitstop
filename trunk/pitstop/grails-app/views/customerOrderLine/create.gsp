@@ -31,8 +31,10 @@
                                     <label for="customer"><g:message code="customerOrder.customer.label" default="Customer" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerOrderInstance, field: 'customer', 'errors')}">
-                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${params.customerId}" />
-																	<!--<g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${customerOrderInstance?.customer?.id}" />-->
+									<!--<g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${params.customerId}" />-->
+									<!--<g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${customerOrderInstance?.customer?.id}" />-->
+									${params.customerName}
+									<g:hiddenField name="tireOccurrenceId" value="${params.customerId}" />
                                 </td>
                             </tr>
                         	
@@ -41,9 +43,9 @@
                                     <label for="tire"><g:message code="customerOrderLine.tire.label" default="Dekk" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'tire', 'errors')}">
-																<!--<g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" optionValue="${{it?.orderToString()}}" />-->
-																<g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${params.tireId}" /> 
-									              </td>
+									<!--<g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" optionValue="${{it?.orderToString()}}" />-->
+									<g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${params.tireId}" /> 
+								</td>
                             </tr>
 						</tbody>
 					</table>
