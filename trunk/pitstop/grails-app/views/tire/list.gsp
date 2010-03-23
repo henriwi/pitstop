@@ -8,13 +8,13 @@
     </head>
     <body>
         <div class="nav">
-	      <span class="menuButton"><g:link controller = "tire" class="list" action="list"><g:message code="default.button.tireList.label"/></g:link></span>
+	    	<span class="menuButton"><g:link controller = "tire" class="list" action="list"><g:message code="default.button.tireList.label"/></g:link></span>
 		    <span class="menuButton"><g:link controller = "tire" class="create" action="create"><g:message code="default.button.newTire.label"/></g:link></span>
 		    <span class="menuButton"><g:link controller = "tire" class="list" controller="tireOccurrence" action="list"><g:message code="default.button.tireOccurrenceList.label"/></g:link></span>
 		    <span class="menuButton"><g:link controller = "tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link></span>
         </div>
         <div class="body">
-            <h1>Dekktyper</h1>
+            <h1>${message(code: 'tire.list.title.label')}</h1>
             
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
@@ -46,6 +46,8 @@
                             
                             <g:sortableColumn params="${params}" property="numberOfAvailable" title="${message(code: 'tireOccurrence.numberOfAvailable.table.label')}" />
                            <%--  <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th> --%>
+                            
+                            <th><a class="notSortableColoumn">${message(code: 'tire.list.add.label')}</a></th>
                             
                             <th><a class="notSortableColoumn">${message(code: 'tire.list.edit.label')}</a></th>
 
@@ -84,6 +86,8 @@
                             </g:each>
                             
                             <td><g:link action="show" id="${tireInstance.id}">${numberOfAvailable}</g:link></td>
+                            
+                            <td><g:link controller="tireOccurrence" class="saveTableItem" action="create" id="${tireInstance.id}">${message(code: 'list.button.delete.label')}</g:link></td>
                             
                             <td><g:link class="editTableItem" action="edit" id="${tireInstance.id}">&nbsp;</g:link></td>
                             
