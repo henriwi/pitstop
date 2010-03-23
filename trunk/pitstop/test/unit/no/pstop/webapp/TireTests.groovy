@@ -128,11 +128,11 @@ class TireTests extends GrailsUnitTestCase {
 		assertNotNull "Expecting to find error in field tireName", badField
 	}
 	
-	void testToString() {
-		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer (123AB)", tire.toString()
+	void testOrderToString() {
+		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer (123AB)", tire.orderToString()
 	}
 	
-	void testOrderToString() {
-		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer (På lager: 0)", tire.orderToString()
+	void testToString() {
+		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer (På lager: 0)", tire.toString()
 	}
 }
