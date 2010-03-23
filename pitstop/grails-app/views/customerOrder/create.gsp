@@ -40,7 +40,8 @@
                                     <label for="tire"><g:message code="customerOrderLine.tire.label" default="Dekk" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'tireOccurrence', 'errors')}">
-                                    <g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" optionValue="${{it?.orderToString()}}" />
+		                                <g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" optionValue="${tire}" />
+                                    <!-- <g:select name="tire.id" from="${no.pstop.webapp.Tire.list()}" optionKey="id" optionValue="${{it?.orderToString()}}" />-->
                                 	<span class="button"><g:submitButton name="showTireOccurrences" class="next" value="${message(code: 'default.label', default: 'Vis')}" /></span>
                                 </td>
                             </tr>
