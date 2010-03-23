@@ -456,7 +456,6 @@ ul#menuList li {
 	background: #fff url(../images/skin/shadow_pressed.jpg) top repeat-x;
 }
 
-
 .editTableItem {
     background: url(../images/skin/database_edit.png) 5px 50% no-repeat;
     padding-top: 5px;
@@ -467,6 +466,17 @@ ul#menuList li {
     background: url(../images/skin/database_delete.png) 5px 50% no-repeat;
     padding: 0px;
     padding-right: 15px;
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.saveTableItem {
+	background: url(../images/skin/database_add.png) 5px 50% no-repeat;
+    padding: 0px;
+    padding-right: 20px;
+    padding-bottom: 5px;
     margin: 0px;
     margin-right: 10px;
     border: none;
