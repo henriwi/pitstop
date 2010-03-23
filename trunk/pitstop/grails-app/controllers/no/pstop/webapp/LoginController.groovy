@@ -35,10 +35,9 @@ class LoginController {
 		String postUrl
 		def config = authenticateService.securityConfig.security
 		
-		view = "auth"
 		postUrl = "${request.contextPath}${config.filterProcessesUrl}"
 
-		render(view: view, model: [postUrl: postUrl])
+		render(view: "auth", model: [postUrl: postUrl])
 	}
 
 	def denied = {

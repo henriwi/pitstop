@@ -9,8 +9,21 @@ class CustomerOrderController {
     }
 
     def list = {
+		def customerOrderList
+		def customerOrderCount
+		
+		if(params.q){
+			customerOrderList = CustomerOrder.search("*" + params.q + "*", escape: true).results
+			customerOrderCount = customerOrderList.size()
+		}
+		else {
+			params.max = Math.min(params.max ? params.int('max') : 10, 100)
+			customerOrderList = CustomerOrder.list(params)
+			customerOrderCount = CustomerOrder.count()
+		}	
+			
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [customerOrderInstanceList: CustomerOrder.list(params), customerOrderInstanceTotal: CustomerOrder.count()]
+        [customerOrderInstanceList: customerOrderList, customerOrderInstanceTotal: customerOrderCount]
     }
 
     def create = {
@@ -23,14 +36,15 @@ class CustomerOrderController {
 		def customerOrderInstance = new CustomerOrder(params)
 		//println params
 		println customerOrderInstance
-        
-        if (customerOrderInstance.save(flush: true)) {
+		
+		if(!customerOrderInstance.validate()) {
+			render(view: "create", model: [customerOrderInstance: customerOrderInstance])
+		}
+		else {
+			customerOrderInstance = customerOrderInstance.merge(flush: true)
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'customerOrder.label', default: 'CustomerOrder'), customerOrderInstance.id])}"
             redirect(action: "show", id: customerOrderInstance.id)
-        }
-        else {
-            render(view: "create", model: [customerOrderInstance: customerOrderInstance])
-        }
+		}
     }
 
     def show = {
