@@ -3,6 +3,7 @@ package no.pstop.webapp
 class CustomerOrder {
 	static hasMany = [customerOrderLines: CustomerOrderLine]
     static belongsTo = [customer: Customer]
+    static searchable = true
     Customer customer
     Date orderDate
 	String notice
