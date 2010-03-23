@@ -71,13 +71,13 @@
                             
                             <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "company")}</g:link></td>
                             
-                            <td><g:link class="editTableItem" action="edit" id="${customerInstance?.id}">&nbsp;</g:link></td>
+                            <td><g:link class="editTableItem" action="edit" title="${message(code: 'customer.list.edit.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
                   		    
 	    	                <g:ifAllGranted role="ROLE_ADMIN"> 
                   		    <td>
                     			<g:form method="post">
                         		<g:hiddenField name="id" value="${customerInstance?.id}" />
-                           		<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
+                           		<g:actionSubmit class="deleteTableItem" action="delete" title="${message(code: 'customer.list.delete.tooltip.label')}" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
                         		</g:form>
                    			</td>  
                    			</g:ifAllGranted>
