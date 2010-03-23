@@ -76,14 +76,23 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 		def tireHotelOccurrenceList = [tireHotelOccurrence1, tireHotelOccurrence2]
 		def tireHotelOccurrenceTotalList = [tireHotelOccurrence1, tireHotelOccurrence2]
 		
+		def orderLine1 = new CustomerOrder(customer: customer1, orderDate: new Date(), notice: "")
+		def orderLine2 = new CustomerOrder(customer: customer1, orderDate: new Date(), notice: "")
+		
+		def customerOrder = [orderLine1, orderLine2]
+		
 		mockDomain Customer, [customer1]
 		mockDomain TireHotelOccurrence, [tireHotelOccurrence1, tireHotelOccurrence2]
+		mockDomain CustomerOrder, [orderLine1, orderLine2]
 		
 		controller.params.id = 1
 		def model = controller.show()
 		assertEquals customer1, model.customerInstance
-		assertEquals "tireHotelOccurrenceList should e equal", tireHotelOccurrenceList, model.tireHotelOccurrenceInstanceList
-		assertEquals "tireHotelOccurrenceTotalList should e equal", tireHotelOccurrenceTotalList, model.tireHotelOccurrenceInstanceTotalList
+		assertEquals "tireHotelOccurrenceList should be equal", tireHotelOccurrenceList, model.tireHotelOccurrenceInstanceList
+		assertEquals "tireHotelOccurrenceTotalList should be equal", tireHotelOccurrenceTotalList, model.tireHotelOccurrenceInstanceTotalList
+		
+		assertEquals "customerOrder should be equal", customerOrder, model.customerOrderInstanceList
+		
 	}
 	
 	void testShowWithInvalidId() {

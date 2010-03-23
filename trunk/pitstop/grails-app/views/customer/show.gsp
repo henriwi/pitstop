@@ -118,6 +118,35 @@
 	          		<g:paginate next="Neste" prev="Forrige" controller="customer" action="show" id="${customerInstance.id}" total="${tireHotelOccurrenceInstanceTotalList.size()}"></g:paginate>
 	        	</div>
 			</div>
+			
+			<div class="tireHotelOccurrencelist">
+               	<table>
+                   	<thead>
+                       	<tr>
+                       	  
+                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.id.label', default: 'Id')}" />
+                        
+                            <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.orderDate.label', default: 'Order Date')}" />
+                        
+                       
+                    	</tr>
+                   	</thead>
+                   	<tbody>
+	                    <g:each in="${customerOrderInstanceList}" status="i" var="customerOrderInstance">
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                        
+                            <td><g:link controller="customerOrder" action="show" id="${customerOrderInstance.id}">${fieldValue(bean: customerOrderInstance, field: "id")}</g:link></td>
+                        
+                            <td><g:link controller="customerOrder" action="show" id="${customerOrderInstance.id}"><g:formatDate format="dd.MM.yyyy hh:mm" date="${customerOrderInstance.orderDate}" /></g:link></td>
+                        
+                        </tr>
+                    </g:each>
+                	</tbody>
+               	</table>
+				<div class="paginateButtons" id="showCustomer">
+	          		<g:paginate next="Neste" prev="Forrige" controller="customer" action="show" id="${customerInstance.id}" total="${tireHotelOccurrenceInstanceTotalList.size()}"></g:paginate>
+	        	</div>
+			</div>
         </div>
     </body>
 </html>
