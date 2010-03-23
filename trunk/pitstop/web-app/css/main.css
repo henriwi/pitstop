@@ -515,3 +515,11 @@ a.btnShowAll{
     cursor: pointer;
     height: 20px;
 }
+
+.customerTireHotelAndOrders{
+	float: right;
+}
+
+.customerTireHotelAndOrders .tireHotelOccurrencelist{
+	padding: 0 0 10px 0;
+}
