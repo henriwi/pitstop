@@ -49,4 +49,6 @@ class TireIntegrationTests extends GroovyTestCase {
 		println tireList.toString()
 		assertEquals "Expected list should be the same as the returned list", expectedTireList.toString(), tireList.toString()
 	}
+	
+	//TODO lag test når man sorterer på tiljengelig. Mock opp, expect list og hva man får ut.
 }
