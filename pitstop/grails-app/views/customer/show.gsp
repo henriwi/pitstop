@@ -77,76 +77,78 @@
 	            	</g:form>
 	        	</div>
 			</div>
-            <div class="tireHotelOccurrencelist">
-               	<table>
-                   	<thead>
-                       	<tr>
-                           	<g:sortableColumn property="tireLocation" title="${message(code: 'tireHotelOccurrence.list.tireLocation.label')}" />
-                       
-                           	<g:sortableColumn property="registrationNumber" title="${message(code: 'tireHotelOccurrence.list.registrationNumber.label')}" />
-                       
-                           	<g:sortableColumn property="carType" title="${message(code: 'tireHotelOccurrence.list.carType.label')}" />
-                       
-                           	<g:sortableColumn property="tireType" title="${message(code: 'tireHotelOccurrence.list.tireType.label')}" />
-                       
-                           	<g:sortableColumn property="inDate" title="${message(code: 'tireHotelOccurrence.list.inDate.label')}" />
-                           
-                        	<g:sortableColumn property="outDate" title="${message(code: 'tireHotelOccurrence.list.outDate.label')}" />
-                           
-                    	</tr>
-                   	</thead>
-                   	<tbody>
-	                    <g:each in="${tireHotelOccurrenceInstanceList}" status="i" var="tireHotelOccurrenceInstance">
-							<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+			<div class="customerTireHotelAndOrders">
+	            <div class="tireHotelOccurrencelist">
+	               	<table>
+	                   	<thead>
+	                       	<tr>
+	                           	<g:sortableColumn property="tireLocation" title="${message(code: 'tireHotelOccurrence.list.tireLocation.label')}" />
 	                       
-	                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}</g:link></td>
+	                           	<g:sortableColumn property="registrationNumber" title="${message(code: 'tireHotelOccurrence.list.registrationNumber.label')}" />
 	                       
-	                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}</g:link></td>
+	                           	<g:sortableColumn property="carType" title="${message(code: 'tireHotelOccurrence.list.carType.label')}" />
 	                       
-	                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "carType")}</g:link></td>
+	                           	<g:sortableColumn property="tireType" title="${message(code: 'tireHotelOccurrence.list.tireType.label')}" />
 	                       
-	                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireType")}</g:link></td>
-	                       
-	                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.inDate}" /></g:link></td>
+	                           	<g:sortableColumn property="inDate" title="${message(code: 'tireHotelOccurrence.list.inDate.label')}" />
 	                           
-	                        	<td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.outDate}" /></g:link></td>
+	                        	<g:sortableColumn property="outDate" title="${message(code: 'tireHotelOccurrence.list.outDate.label')}" />
+	                           
 	                    	</tr>
-	                	</g:each>
-                	</tbody>
-               	</table>
-				<div class="paginateButtons" id="showCustomer">
-	          		<g:paginate next="Neste" prev="Forrige" controller="customer" action="show" id="${customerInstance.id}" total="${tireHotelOccurrenceInstanceTotalList.size()}"></g:paginate>
-	        	</div>
-			</div>
-			
-			<div class="tireHotelOccurrencelist">
-               	<table>
-                   	<thead>
-                       	<tr>
-                       	  
-                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.id.label', default: 'Id')}" />
-                        
-                            <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.orderDate.label', default: 'Order Date')}" />
-                        
-                       
-                    	</tr>
-                   	</thead>
-                   	<tbody>
-	                    <g:each in="${customerOrderInstanceList}" status="i" var="customerOrderInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
-                            <td><g:link controller="customerOrder" action="show" id="${customerOrderInstance.id}">${fieldValue(bean: customerOrderInstance, field: "id")}</g:link></td>
-                        
-                            <td><g:link controller="customerOrder" action="show" id="${customerOrderInstance.id}"><g:formatDate format="dd.MM.yyyy hh:mm" date="${customerOrderInstance.orderDate}" /></g:link></td>
-                        
-                        </tr>
-                    </g:each>
-                	</tbody>
-               	</table>
-				<div class="paginateButtons" id="showCustomer">
-	          		<g:paginate next="Neste" prev="Forrige" controller="customer" action="show" id="${customerInstance.id}" total="${tireHotelOccurrenceInstanceTotalList.size()}"></g:paginate>
-	        	</div>
-			</div>
+	                   	</thead>
+	                   	<tbody>
+		                    <g:each in="${tireHotelOccurrenceInstanceList}" status="i" var="tireHotelOccurrenceInstance">
+								<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+		                       
+		                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}</g:link></td>
+		                       
+		                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}</g:link></td>
+		                       
+		                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "carType")}</g:link></td>
+		                       
+		                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireType")}</g:link></td>
+		                       
+		                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.inDate}" /></g:link></td>
+		                           
+		                        	<td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.outDate}" /></g:link></td>
+		                    	</tr>
+		                	</g:each>
+	                	</tbody>
+	               	</table>
+					<div class="paginateButtons" id="showCustomer">
+		          		<g:paginate next="Neste" prev="Forrige" controller="customer" action="show" id="${customerInstance.id}" total="${tireHotelOccurrenceInstanceTotalList.size()}"></g:paginate>
+		        	</div>
+				</div>
+				
+				<div class="customerOrders">
+	               	<table>
+	                   	<thead>
+	                       	<tr>
+	                       	  
+	                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.header.id.label')}" />
+	                        
+	                            <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.header.orderDate.label')}" />
+	                        
+	                       
+	                    	</tr>
+	                   	</thead>
+	                   	<tbody>
+		                    <g:each in="${customerOrderInstanceList}" status="i" var="customerOrderInstance">
+	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+	                        
+	                            <td><g:link controller="customerOrder" action="show" id="${customerOrderInstance.id}">${fieldValue(bean: customerOrderInstance, field: "id")}</g:link></td>
+	                        
+	                            <td><g:link controller="customerOrder" action="show" id="${customerOrderInstance.id}"><g:formatDate format="dd.MM.yyyy hh:mm" date="${customerOrderInstance.orderDate}" /></g:link></td>
+	                        
+	                        </tr>
+	                    </g:each>
+	                	</tbody>
+	               	</table>
+					<div class="paginateButtons" id="showCustomer">
+		          		<g:paginate next="Neste" prev="Forrige" controller="customer" action="show" id="${customerInstance.id}" total="${customerOrderInstanceList.size()}"></g:paginate>
+		        	</div>
+				</div>
+		</div>
         </div>
     </body>
 </html>
