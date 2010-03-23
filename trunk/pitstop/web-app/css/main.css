@@ -48,8 +48,8 @@ select {
    padding: 2px 2px 2px 0;
 }
 textarea {
-	width: 250px;
-	height: 150px;
+	width: 195px;
+	height: 100px;
 	vertical-align: top;
 }
 
@@ -63,8 +63,8 @@ input:focus, select:focus, textarea:focus {
 }
 	
 #content {
-	margin-top:20px;
-	margin-left:30px;
+	margin-top: 2px;
+	margin-left: 0px;
 	float:left;
 	width: 1000px;
 }
@@ -77,11 +77,13 @@ input:focus, select:focus, textarea:focus {
 /* NAVIGATION MENU */
 
 .nav {
-    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    /*background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;*/
+    background-color: #aac4f3;
     border: 1px solid #ccc;
-    border-style: solid none solid none;
-    margin-top: 5px;
+    border-style: none none solid none;
+    margin-top: 0px;
     padding: 7px 12px;
+    width: auto;
 }
 .menuButton {
     font-size: 10px;
@@ -403,58 +405,67 @@ input.delivered {
 	border: none;
 }
 
-/* Hovedmeny */
+/* MAIN MENU */
 div#mainMenu {
-	width: auto;
+	width: 1000px;
+	margin-top: 10px;
+	padding-top: 15px;
+	padding-bottom: 10px;
 	float: left;	
-	margin-top: 25px;
-	margin-left: 5px;
-	padding: 0px;
+	border: 1px solid;
+	border-color: #eee;
+	border-bottom: none;
+	/*background-color: #eee;*/
+	font-size: 11px;
+	font-family: verdana,arial,helvetica,sans-serif;
 }
 
 ul#menuList {
 	list-style: none;
+	/*
 	padding: 0px;
 	margin: 5px;
+	*/
 }
 
 ul#menuList li {
+	display: inline;
+	border: 1px solid #fff;
+/*
 	margin: 0px;
 	margin-top: 7px;
 	margin-bottom: 7px;
+*/
 }
 
 #menuList a{
-	display: block;
-	border: 1px solid;
-	border-color: #ccc;
-	margin: 0px;
-	padding: 0;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-left: 35px;
-	background-color: #fff;
-	color: #000;
-	font-family: arial,helvetica,clean,sans-serif;
-	font-size: 12px;
-	width: 125px;
-	text-align: left;
-	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+	padding-top: 10px;
+	padding-bottom: 12px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 #menuList a:hover{
-	border-color: #888;
 }
-
+/*
 #menuList a:active{
 	background: #fff url(../images/skin/shadow_pressed.jpg) top repeat-x;
 }
+*/
 
 #menuList a.active{
-	border-color: #888;
+	background: #fff url(../images/skin/shadow_blue.jpg) bottom repeat-x;
 	color: #333;
-	background: #fff url(../images/skin/shadow_pressed.jpg) top repeat-x;
+	background-color: #fff;
+	border: 1px solid;
+	border-color: #888;
+	border-bottom: none;
+	padding-left: 19px;
+	padding-right: 19px;
 }
+
+/* END MAIN MENU */
+
 
 .editTableItem {
     background: url(../images/skin/database_edit.png) 5px 50% no-repeat;
