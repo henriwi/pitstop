@@ -119,10 +119,9 @@ class CustomerOrderController {
         def customerOrderInstance = new CustomerOrder(params)
         
         if (true) {
-			println params
+			def customerName = Customer.findAllById(params.customer.id)
             //flash.message = "${message(code: 'default.created.message', args: [message(code: 'customerOrder.label', default: 'CustomerOrder'), customerOrderInstance.id])}"
-            redirect(action: "create", controller: "customerOrderLine",  params:[customerId: params.customer.id,
-                                                                                 tireId: params.tire.id])
+            redirect(action: "create", controller: "customerOrderLine",  params:[customerName: customerName, customerId: params.customer.id, tireId: params.tire.id])
         }
         else {
             render(view: "create", model: [customerOrderInstance: customerOrderInstance])
