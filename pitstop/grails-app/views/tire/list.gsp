@@ -87,15 +87,15 @@
                             
                             <td><g:link action="show" id="${tireInstance.id}">${numberOfAvailable}</g:link></td>
                             
-                            <td><g:link controller="tireOccurrence" class="saveTableItem" action="create" id="${tireInstance.id}">${message(code: 'list.button.delete.label')}</g:link></td>
+                            <td><g:link controller="tireOccurrence" class="saveTableItem" action="create" title="${message(code: 'tire.list.create.tooltip.label')}" id="${tireInstance.id}">${message(code: 'list.button.delete.label')}</g:link></td>
                             
-                            <td><g:link class="editTableItem" action="edit" id="${tireInstance.id}">&nbsp;</g:link></td>
+                            <td><g:link class="editTableItem" action="edit" title="${message(code: 'tire.list.edit.tooltip.label')}" id="${tireInstance.id}">&nbsp;</g:link></td>
                             
            	                <g:ifAllGranted role="ROLE_ADMIN"> 
                             <td>
                             	<g:form method="post">
                             		<g:hiddenField name="id" value="${tireInstance?.id}" />
-                            		<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" />
+                            		<g:actionSubmit class="deleteTableItem" action="delete" title="${message(code: 'tire.list.delete.tooltip.label')}" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" />
                             	</g:form>
                             </td>   
                             </g:ifAllGranted>

@@ -76,13 +76,13 @@
                             
                             <td><g:link controller="customer" action="show" id="${tireHotelOccurrenceInstance?.customer?.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "customer")}</g:link></td>
                             
-                            <td><g:link class="editTableItem" action="edit" id="${tireHotelOccurrenceInstance.id}">&nbsp;</g:link></td>
+                            <td><g:link class="editTableItem" action="edit" title="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" id="${tireHotelOccurrenceInstance.id}">&nbsp;</g:link></td>
                             
                             <g:ifAllGranted role="ROLE_ADMIN">
 	                            <td>
 	                            	<g:form method="post">
 	                            		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-	                            		<g:actionSubmit class="deleteTableItem" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
+	                            		<g:actionSubmit class="deleteTableItem" title="${message(code: 'tireHotelOccurrence.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
 	                            	</g:form>
 	                            </td>
 	                        </g:ifAllGranted>
@@ -91,14 +91,14 @@
                             	<g:form method="post">
                             		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
 									<g:hiddenField name="delivered" value="delivered" />
-                            		<g:actionSubmit class="delivered" action="update" value="${message(code: 'tireHotelOccurrence.list.delivered.button')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
+                            		<g:actionSubmit class="delivered" title="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" action="update" value="${message(code: 'tireHotelOccurrence.list.delivered.button')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
                             	</g:form>
                             </td>
                             
                             <td>
                             	<g:form method="post">
                             		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-                            		<g:actionSubmit class="change" action="change" value="${message(code: 'tireHotelOccurrence.list.change.button')}" />
+                            		<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.button')}" />
                             	</g:form>
                             </td>
                         </tr>
