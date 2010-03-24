@@ -82,7 +82,7 @@
 	                            <td>
 	                            	<g:form method="post">
 	                            		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-	                            		<g:actionSubmit class="deleteTableItem" title="${message(code: 'tireHotelOccurrence.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
+	                            		<g:actionSubmit class="deleteTableItem" title="${message(code: 'tireHotelOccurrence.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tireHotelOccurrence.button.delete.confirm.message')}');" />
 	                            	</g:form>
 	                            </td>
 	                        </g:ifAllGranted>

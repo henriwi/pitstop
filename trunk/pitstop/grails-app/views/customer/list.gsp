@@ -76,8 +76,8 @@
 	    	                <g:ifAllGranted role="ROLE_ADMIN"> 
                   		    <td>
                     			<g:form method="post">
-                        		<g:hiddenField name="id" value="${customerInstance?.id}" />
-                           		<g:actionSubmit class="deleteTableItem" action="delete" title="${message(code: 'customer.list.delete.tooltip.label')}" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" />
+	                        		<g:hiddenField name="id" value="${customerInstance?.id}" />
+	                           		<g:actionSubmit class="deleteTableItem" action="delete" title="${message(code: 'customer.list.delete.tooltip.label')}" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'customer.button.delete.confirm.message')}');" />
                         		</g:form>
                    			</td>  
                    			</g:ifAllGranted>
