@@ -4,7 +4,6 @@ html * {
 }
 
 /* GENERAL */
-
 .spinner {
     padding: 5px;
     position: absolute;
@@ -65,8 +64,8 @@ input:focus, select:focus, textarea:focus {
 #content {
 	margin-top: 2px;
 	margin-left: 0px;
-	float:left;
-	width: 1000px;
+	
+	width: auto;
 }
 #container {
 	width: 1250px;
@@ -74,13 +73,74 @@ input:focus, select:focus, textarea:focus {
 	
 }
 
-/* NAVIGATION MENU */
+/* MAIN MENU */
+div#mainMenu {
+	width: auto;
+	margin-top: 10px;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	border: 1px solid #eee;
+	border-style: solid none solid none;
+	border-bottom: none;
+	font-size: 11px;
+	font-family: verdana,arial,helvetica,sans-serif;
+}
 
+ul#menuList {
+	list-style: none;
+	/*
+	padding: 0px;
+	margin: 5px;
+	*/
+}
+
+ul#menuList li {
+	display: inline;
+	border: 1px solid #fff;
+/*
+	margin: 0px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+*/
+}
+
+#menuList a{
+	padding-top: 10px;
+	padding-bottom: 12px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#menuList a:hover{
+}
+
+/*
+#menuList a:active{
+	background: #fff url(../images/skin/shadow_pressed.jpg) top repeat-x;
+}
+*/
+
+#menuList a.active{
+	background: #fff url(../images/skin/shadow_blue.jpg) bottom repeat-x;
+	color: #333;
+	background-color: #fff;
+	border: 1px solid;
+	border-color: #888;
+	border-bottom: none;
+	padding-left: 19px;
+	padding-right: 19px;
+}
+
+/* END MAIN MENU */
+
+/* NAVIGATION MENU */
 .nav {
     /*background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;*/
-    background-color: #aac4f3;
-    border: 1px solid #ccc;
-    border-style: none none solid none;
+    background-color: #dce7fb;
+    border: 1px solid #888;
+    border-style: none solid solid solid;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
     margin-top: 0px;
     padding: 7px 12px;
     width: auto;
@@ -95,33 +155,32 @@ input:focus, select:focus, textarea:focus {
 }
 .menuButton a.home {
     background: url(../images/skin/house.png) center left no-repeat;
-    color: #333;
+    color: #000;
     padding-left: 25px;
 }
 .menuButton a.list {
     background: url(../images/skin/database_table.png) center left no-repeat;
-    color: #333;
+    color: #000;
     padding-left: 25px;
 }
 .menuButton a.create {
     background: url(../images/skin/database_add.png) center left no-repeat;
-    color: #333;
+    color: #000;
     padding-left: 25px;
 }
 .menuButton a.search {
     background: url(../images/skin/search.png) center left no-repeat;
-    color: #333;
+    color: #000;
     padding-left: 25px;
 }
 
 span.menuButton#createTireOccurrenceButton{
-    color: #333;
+    color: #000;
     padding-left: 7px;
     display:block;
 }
 
 /* MESSAGES AND ERRORS */
-
 .message {
     background: #f3f8fc url(../images/skin/information.png) 8px 50% no-repeat;
     border: 1px solid #b2d1ff;
@@ -153,7 +212,6 @@ td.errors select,td.errors input, span.errors input{
 
 
 /* TABLES */
-
 table {
     border: 1px solid #ccc;
     width: 100%
@@ -202,7 +260,6 @@ th.desc a {
 }
 
 /* PAGINATION */
-
 .paginateButtons {
     background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
     border: 1px solid #ccc;
@@ -272,7 +329,6 @@ th.desc a {
 }
 
 /* ACTION BUTTONS */
-
 .buttons {
     background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
     border: 1px solid #ccc;
@@ -356,6 +412,29 @@ input.delivered {
 	color: #000;
 }
 
+/* LOGIN */
+#login {
+	width:260px;
+	margin:0px auto;
+	text-align: center;
+}
+
+#login .login {
+	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    border: 1px solid #ccc;
+    color: #666;
+    font-size: 11px;
+    margin-top: 5px;
+    overflow: hidden;
+    padding: 3px;
+    cursor: pointer;
+    height: 20px;
+}
+a.logoutButton{
+	float: right;
+	margin-right: 10px;	
+}
+
 /* Tabs */
 #submenu ul li em {
 	width: 75px; 	
@@ -405,68 +484,6 @@ input.delivered {
 	border: none;
 }
 
-/* MAIN MENU */
-div#mainMenu {
-	width: 1000px;
-	margin-top: 10px;
-	padding-top: 15px;
-	padding-bottom: 10px;
-	float: left;	
-	border: 1px solid;
-	border-color: #eee;
-	border-bottom: none;
-	/*background-color: #eee;*/
-	font-size: 11px;
-	font-family: verdana,arial,helvetica,sans-serif;
-}
-
-ul#menuList {
-	list-style: none;
-	/*
-	padding: 0px;
-	margin: 5px;
-	*/
-}
-
-ul#menuList li {
-	display: inline;
-	border: 1px solid #fff;
-/*
-	margin: 0px;
-	margin-top: 7px;
-	margin-bottom: 7px;
-*/
-}
-
-#menuList a{
-	padding-top: 10px;
-	padding-bottom: 12px;
-	padding-left: 20px;
-	padding-right: 20px;
-}
-
-#menuList a:hover{
-}
-/*
-#menuList a:active{
-	background: #fff url(../images/skin/shadow_pressed.jpg) top repeat-x;
-}
-*/
-
-#menuList a.active{
-	background: #fff url(../images/skin/shadow_blue.jpg) bottom repeat-x;
-	color: #333;
-	background-color: #fff;
-	border: 1px solid;
-	border-color: #888;
-	border-bottom: none;
-	padding-left: 19px;
-	padding-right: 19px;
-}
-
-/* END MAIN MENU */
-
-
 .editTableItem {
     background: url(../images/skin/database_edit.png) 5px 50% no-repeat;
     padding-top: 5px;
@@ -494,7 +511,7 @@ ul#menuList li {
     cursor: pointer;
 }
 
-.notSortableColoumn{
+.notSortableColoumn {
 	color:#333333;
 	display:block;
 	font-size:10px;
@@ -503,13 +520,13 @@ ul#menuList li {
 	cursor: default;
 }
 
-.button a{
+.button a {
 	background: url(../images/skin/email.png) 5px 50% no-repeat;
 	padding-left: 30px;
 	color: #333;
 }
 
-a.btnShowAll{
+a.btnShowAll {
 	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
     border: 1px solid #ccc;
     color: #666;
@@ -519,28 +536,10 @@ a.btnShowAll{
     cursor: pointer;
 }
 
-#login{
-	width:260px;
-	margin:0px auto;
-	text-align: center;
-}
-
-#login .login{
-	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
-    border: 1px solid #ccc;
-    color: #666;
-    font-size: 11px;
-    margin-top: 5px;
-    overflow: hidden;
-    padding: 3px;
-    cursor: pointer;
-    height: 20px;
-}
-
-.customerTireHotelAndOrders{
+.customerTireHotelAndOrders {
 	float: right;
 }
 
-.customerTireHotelAndOrders .tireHotelOccurrencelist{
+.customerTireHotelAndOrders .tireHotelOccurrencelist {
 	padding: 0 0 10px 0;
 }
