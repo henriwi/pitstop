@@ -190,6 +190,17 @@ class TireController {
 		}
 	}
 	
+	//TODO Bør refaktureres slik at denne metoden slås sammen med fastSearch?
+	def fastSearchForListView = {
+		if(params.txtFastSearch.trim() != ""){
+			redirect(action: "list", params:[q: params.txtFastSearch, type: 'fast'])
+		}
+		else{
+			redirect(action: "list", params:[q: params.search])
+			
+		}
+	}
+	
 	def normalSearch = {
 		redirect(action: "list", params:[width: params.width, profile: params.profile, diameter: params.diameter, speedIndex: params.speedIndex, tireType: params.tireType, brand: params.brand, type: 'normal'])
 	}
