@@ -154,10 +154,4 @@ class TireHotelOccurrenceController {
 			render(view: "edit", model: [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance])
 		}
 	}
-	
-	def addCustomer(){
-		// TODO
-		// Hvorfor er denne her?
-		println params
-	}
 }
