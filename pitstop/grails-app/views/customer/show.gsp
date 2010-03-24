@@ -81,7 +81,7 @@
 			</div>
 			<div id="customerTireHotelAndOrders">
 				<g:if test="${tireHotelOccurrenceInstanceList}">
-		            <div class="tireHotelOccurrencelist">
+		            <div id="customerTireHotelOccurrencelist">
 		               	<table>
 		                   	<thead>
 		                       	<tr>

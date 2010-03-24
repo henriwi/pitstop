@@ -144,6 +144,8 @@ ul#menuList li {
     margin-top: 0px;
     padding: 7px 12px;
     width: auto;
+    font: 11px;
+    font-family: verdana, arial, helvetica, sans-serif;
 }
 .menuButton {
     font-size: 10px;
@@ -466,10 +468,11 @@ a.logoutButton{
 }
 #customerTireHotelAndOrders {
 	float: right;
+	
 	max-width: 1000px;
 }
 
-#customerTireHotelAndOrders .tireHotelOccurrencelist {
+#customerTireHotelOccurrencelist {
 	margin-bottom: 20px;
 	width: 100%;
 }
