@@ -12,6 +12,10 @@
         		<a href="${createLink(uri: '/')}"><img src="${resource(dir:'images',file:'pitstopLogo.png')}" alt="pitstopLogo" border="0" /></a>
         	</div>
         	<div id="mainMenu">
+        		<g:isLoggedIn>
+						<g:link class="logoutButton" controller="logout">Logg ut</g:link>
+				</g:isLoggedIn>
+				
 		        <ul id="menuList">
 		        	<g:if test="${params.controller == null}">
 		        		<li><a class="active" href="${createLink(uri: '/')}">Hjem</a></li>
@@ -54,10 +58,7 @@
 			        <g:else>
 			        	<li><g:link controller="user">Admin</g:link></li>
 			        </g:else>
-			        
-			   		<g:isLoggedIn>
-						<g:link controller="logout">Logg ut</g:link>
-					</g:isLoggedIn>
+			   		
 			        <%--
 					<g:each var="c" in="${grailsApplication.controllerClasses}">
 			        	<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
