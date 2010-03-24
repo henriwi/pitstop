@@ -118,26 +118,26 @@
 	                    </tr>
 					</table>
 				</div>
-	            <table>
+	            <table id="tireOccurrences">
 	            	<thead>
 	                	<tr>
-                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.price.label')}" />
+                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.table.price.label')}" />
                             
-                            <g:sortableColumn property="discount" title="${message(code: 'tireOccurrence.discount.label')}" />
+                            <g:sortableColumn property="discount" title="${message(code: 'tireOccurrence.table.discount.label')}" />
                             
-                            <g:sortableColumn property="environmentalFee" title="${message(code: 'tireOccurrence.environmentalFee.label')}" />
+                            <g:sortableColumn property="environmentalFee" title="${message(code: 'tireOccurrence.table.environmentalFee.label')}" />
                             
-                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.sum.label')}" />
+                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.table.sum.label')}" />
                         
-                            <g:sortableColumn property="numberInStock" title="${message(code: 'tireOccurrence.numberInStock.label')}" />
+                            <g:sortableColumn property="numberInStock" title="${message(code: 'tireOccurrence.table.numberInStock.label')}" />
                         
-                            <g:sortableColumn property="numberOfReserved" title="${message(code: 'tireOccurrence.numberOfReserved.label')}" />
+                            <g:sortableColumn property="numberOfReserved" title="${message(code: 'tireOccurrence.table.numberOfReserved.label')}" />
                         
-                            <g:sortableColumn property="numberOfOrdered" title="${message(code: 'tireOccurrence.numberOfOrdered.label')}" />
+                            <g:sortableColumn property="numberOfOrdered" title="${message(code: 'tireOccurrence.table.numberOfOrdered.label')}" />
                         
-                            <g:sortableColumn property="numberOfAvailable" title="${message(code: 'tireOccurrence.numberOfAvailable.label')}" />
+                            <g:sortableColumn property="numberOfAvailable" title="${message(code: 'tireOccurrence.table.numberOfAvailable.label')}" />
                         
-                        	<g:sortableColumn property="registrationDate" title="${message(code: 'tireOccurrence.registrationDate.label')}" />
+                        	<g:sortableColumn property="registrationDate" title="${message(code: 'tireOccurrence.table.registrationDate.label')}" />
                         </tr>
                     </thead>
                     <tbody>
