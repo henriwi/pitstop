@@ -80,7 +80,8 @@
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="construction"><g:message code="tire.construction.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'construction', 'errors')}">
-                                    <g:select name="construction" from="${tireInstance.constraints.construction.inList}" value="${tireInstance?.construction}" valueMessagePrefix="tire.construction"  /></td>
+                                    R<g:hiddenField name="construction" value="R" />
+                                </td>
                             </tr>
                         
                             <tr class="prop">

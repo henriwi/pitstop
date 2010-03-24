@@ -478,14 +478,21 @@ a.logoutButton{
 }
 
 #tireOccurrenceList {
- 	width: 700px;
+ 	width: 800px;
  	float: left;
  	margin-bottom: 5px;
 }
 
+#tireOccurrenceList table#tireOccurrences {
+	width: 800px;
+}
+
 #showTire {
-	width: 700px;
+	width: 800px;
 	float: left;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin: 0px;
 	margin-top: 5px;
 	border-top: 1px solid #ccc;
 }
