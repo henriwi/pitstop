@@ -32,7 +32,7 @@ class TireOccurrenceController {
 		}
 		else{
 			tireOccurrenceInstance = tireOccurrenceInstance.merge(flush: true)
-			flash.message = "${message(code: 'tireOccurrence.created.message', args: [message(code: 'tireOccurrence.label'), tireOccurrenceInstance.id])}"
+			flash.message = "${message(code: 'tireOccurrence.created.message', args: [message(code: 'tireOccurrence.label'), tireOccurrenceInstance.tire.partNr])}"
 			redirect(action: "show", id: tireOccurrenceInstance.id)
 		}
     }
