@@ -18,6 +18,4 @@ class CustomerOrderLine {
 		"${tireOccurrence.customerOrderLineToString()}" +
 		" Salgspris: ${price}kr Bestilt: ${numberOfOrderedTireOccurrences}"
 	}
-	
-	
 }
