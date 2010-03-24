@@ -8,19 +8,21 @@
     </head>
     <body>
         <div class="nav">
-        <span class="menuButton"><g:link class="list" action="list"><g:message code="customer.list.label" /></g:link></span>
+       		<span class="menuButton"><g:link class="list" action="list"><g:message code="customer.list.label" /></g:link></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link></span>
         </div>
         <div class="body">
             <h1><g:message code="customer.edit.header.label" /></h1>
+            
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${customerInstance}">
-            <div class="errors">
-                <g:renderErrors bean="${customerInstance}" as="list" />
-            </div>
+	            <div class="errors">
+	                <g:renderErrors bean="${customerInstance}" as="list" />
+	            </div>
             </g:hasErrors>
+            
             <g:form method="post" >
                 <g:hiddenField name="id" value="${customerInstance?.id}" />
                 <g:hiddenField name="version" value="${customerInstance?.version}" />
