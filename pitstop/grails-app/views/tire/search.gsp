@@ -46,29 +46,27 @@
 				<table>
 					<tbody>
 						<tr class="prop">
+							<td valign="top"><label for="brand"><g:message code="tire.brand.label" /></label></td>
 							<td valign="top" class="name"><label for="width"><g:message code="tire.width.label" /></label></td>
 							<td valign="top"><label for="profile"><g:message code="tire.profile.label" /></label></td>
+						</tr>
+						<tr class="prop">
+							<td valign="top"><g:textField tabindex='3' name="brand" /></td>
+							<td valign="top" class="name"><g:textField tabindex='4' name="width" /></td>
+							<td valign="top"><g:textField tabindex='5' name="profile" /></td>
+						</tr>
+						<tr class="prop">
 							<td valign="top"><label for="diameter"><g:message code="tire.diameter.label" /></label></td>
-						</tr>
-						<tr class="prop">
-							<td valign="top" class="name"><g:textField tabindex='3' name="width" /></td>
-							<td valign="top"><g:textField tabindex='4' name="profile" /></td>
-							<td valign="top"><g:textField tabindex='5' name="diameter" /></td>
-						</tr>
-						<tr class="prop">
 							<td valign="top" class="name"><label for="speedIndex"><g:message code="tire.speedIndex.label" /></label></td>
-						<td valign="top"><label for="tireType"><g:message code="tire.tireType.label" /></label></td>
-							<td valign="top"><label for="brand"><g:message code="tire.brand.label" /></label></td>
+							<td valign="top"><label for="tireType"><g:message code="tire.tireType.label" /></label></td>
 						</tr>
 						<tr class="prop">
+							<td valign="top"><g:textField tabindex='6' name="diameter" /></td>
 							<td valign="top" class="name">
-								<g:select tabindex='6' name="speedIndex" from="${tireInstance.constraints.speedIndex.inList}"
-									value="${tireInstance?.speedIndex}" noSelection="['Alle':'Alle']" valueMessagePrefix="tire.speedIndex" />
+								<g:select tabindex='7' name="speedIndex" from="${tireInstance.constraints.speedIndex.inList}"
+								value="${tireInstance?.speedIndex}" noSelection="['Alle':'Alle']" valueMessagePrefix="tire.speedIndex" />
 							</td>
-							<td valign="top">
-							 <g:select tabindex='7' noSelection="${['Alle':'Alle']}" name="tireType" from="${tireInstance.constraints.tireType.inList}" value="${tireInstance?.tireType}" valueMessagePrefix="tire.tireType" />
-							</td>
-							<td valign="top"><g:textField tabindex='8' name="brand" /></td>
+							<td valign="top"><g:select tabindex='8' noSelection="${['Alle':'Alle']}" name="tireType" from="${tireInstance.constraints.tireType.inList}" value="${tireInstance?.tireType}" valueMessagePrefix="tire.tireType" /></td>
 						</tr>
 			
 						<tr class="prop">
