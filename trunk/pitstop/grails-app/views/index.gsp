@@ -53,47 +53,50 @@
 				margin-left:280px;
 				margin-right:20px;
 			}
+			#nav {
+				width: 450px;
+			}
 		</style>
     </head>
 <body>
-<h1>Velkommen til PIT-STOP</h1>
+<div class="indexContent" style="padding-left: 30px;">
+
+			<h1>Velkommen til PIT-STOP</h1>
 	        <br/>
 	        <p>PIT-STOP kan tilby en rekke dekkmerker til alle typer biler, og til usl&aring;elige priser. 
 	        Vi kan ogs&aring; gi sv&aelig;rt gode tilbud p&aring; felger.
 	        Velkommen til en hyggelig dekkprat i gode faglige omgivelser.</p>
-<%-- <div class="body yui-skin-sam">
-	<gui:tabView id="test">
-	    <gui:tab label="Hjem" active="true">
-	        <gui:tabView  id="submenu">
-	    		<gui:tab label="Test 1" active="true">
-	        		<h1>Inne i test 1</h1>     
-	    		</gui:tab>
-	    		<gui:tab label="Controller">
-	        		<h1>Inne i test 2</h2>	        
-	    		</gui:tab>
-			</gui:tabView> 
-	                
-         	     
-    	</gui:tab>
-    	<gui:tab label="Dekk">
-        	<div id="controllerList" class="dialog">
-				<h2>Tiljengelige kontroller:</h2>
-	            <ul>
-	            	<g:each var="c" in="${grailsApplication.controllerClasses}">
-	                	<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-	              	</g:each>
-	            </ul>
-	        </div>
-    	</gui:tab>
-	</gui:tabView>
-</div>--%>
-		<div id="nav">
-			
-		</div>
 		
-		<div id="pageBody">
-	       
-	          
-		</div>
+		<%-- <div id="nav">
+			<g:form controller="tire" action="fastSearch" method="get">
+				<table>
+					<tbody>
+						<tr class="prop">
+							<td valign="top" class="name"><label for="txtFastSearch"><g:message code="S&oslash;k etter dekktyper" /></label></td>
+							<td valign="top"><g:textField tabindex='1' name="txtFastSearch" /></td>
+							<td valign="top"><label>Eks: 195656v, Pirelli osv.</label></td>
+						</tr>
+						<tr class="prop">
+							<td valign="top" class="name">
+								<g:submitButton  tabindex='2' class="searchButtons" name="btnFastSearch"
+									value="${message(code: 'search.button.fastSearch.label')}" />
+							</td>
+						</tr>
+
+						</tr>
+					</tbody>
+				</table>
+			  <br/><br/>
+	  		  <span class="menuButton"><g:link controller = "tire" class="create" action="create"><g:message code="default.button.newTire.label"/></g:link></span>
+			  <br/><br/>
+              <span class="menuButton"><g:link controller="user" class="create" action="create"><g:message code="customer.create.title.label" /></g:link></span>
+			  <br/><br/>
+			  <span class="menuButton"><g:link controller="tireHotelOccurrence" class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link></span>
+			
+		</g:form>
+		</div>--%>
+		
+</div>
+		
     </body>
 </html>
