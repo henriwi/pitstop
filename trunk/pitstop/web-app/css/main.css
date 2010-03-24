@@ -64,7 +64,6 @@ input:focus, select:focus, textarea:focus {
 #content {
 	margin-top: 2px;
 	margin-left: 0px;
-	
 	width: auto;
 }
 #container {
@@ -112,6 +111,7 @@ ul#menuList li {
 }
 
 #menuList a:hover{
+	color: #000;
 }
 
 /*
@@ -168,6 +168,13 @@ ul#menuList li {
     color: #000;
     padding-left: 25px;
 }
+
+.menuButton a.createTire {
+    background: url(../images/skin/database_add_tire.png) center left no-repeat;
+    color: #000;
+    padding-left: 25px;
+}
+
 .menuButton a.search {
     background: url(../images/skin/search.png) center left no-repeat;
     color: #000;
@@ -450,17 +457,27 @@ a.logoutButton{
 	margin: 0 10px 0 0;	
 }
 
+/* SHOW CUSTOMER */
 #customerShowDialog {
-	width: 250px;
+	width: 350px;
+	overflow: auto;
 	float: left;
 	margin: 0 10px 0 0;	
 }
+#customerTireHotelAndOrders {
+	float: right;
+	max-width: 1000px;
+}
 
+#customerTireHotelAndOrders .tireHotelOccurrencelist {
+	margin-bottom: 20px;
+	width: 100%;
+}
 
 #tireOccurrenceList {
  	width: 700px;
  	float: left;
- 	margin-bottom: 5px;		
+ 	margin-bottom: 5px;
 }
 
 #showTire {
@@ -534,12 +551,4 @@ a.btnShowAll {
     font-weight: normal;
     padding: 3px;
     cursor: pointer;
-}
-
-.customerTireHotelAndOrders {
-	float: right;
-}
-
-.customerTireHotelAndOrders .tireHotelOccurrencelist {
-	padding: 0 0 10px 0;
 }
