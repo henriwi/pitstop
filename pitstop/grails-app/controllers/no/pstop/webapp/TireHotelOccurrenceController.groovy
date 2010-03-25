@@ -29,7 +29,7 @@ class TireHotelOccurrenceController {
 		else {
 			params.max = Math.min(params.max ? params.int('max') : 10, 100)
 			tireHotelOccurrenceList = TireHotelOccurrence.findAllByOutDateIsNull(params)
-			tireHotelOccurrenceCount = TireHotelOccurrence.count()
+			tireHotelOccurrenceCount = tireHotelOccurrenceList.size()
 		}
 		if(tireHotelOccurrenceCount == 0){
 			flash.message = "${message(code: 'tireHotelOccurrence.no.occurrences.message')}";
@@ -44,7 +44,7 @@ class TireHotelOccurrenceController {
 	}
 	
 	def save = {
-		def customer = Customer.get(params.addCustomerAutoComplete_id)
+		def customer = Customer.get(params.customerId)
 		def tireHotelOccurrenceInstance = new TireHotelOccurrence(tireLocation: params.tireLocation, registrationNumber: params.registrationNumber, 
 				carType: params.carType, customer: customer, tireType: params.tireType, inDate: params.inDate, outDate: null, notice: params.notice)
 		if(!tireHotelOccurrenceInstance.validate()){
