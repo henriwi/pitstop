@@ -50,17 +50,18 @@
                                 <td valign="top" class="name">
                                 	<label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
                                 </td>
-	                            	<!--<td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'customer', 'errors')}">
-																<g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${tireHotelOccurrenceInstance?.customer?.id}"/> 
-                                </td>--> 
-                              <td class="yui-skin-sam">
-																<gui:autoComplete 
-																			id="addCustomerAutoComplete" 
-																			controller="customer"
-																			action="customerAutoComplete"
-																			resultName="customers"/> 
-																<!--  attributt til autoComplete options="${['Jon Torstein', 'Trygve Hegnar', 'Jens Stoltenberg']}" -->
-                              </td> 
+                                <td>
+                                	${no.pstop.webapp.Customer.get(params?.id)}
+                                	<g:hiddenField name="customerId" value="${params?.id}"/>
+                                </td>
+                             <%--  <td class="yui-skin-sam">
+								<gui:autoComplete 
+											id="addCustomerAutoComplete" 
+											controller="customer"
+											action="customerAutoComplete"
+											resultName="customers"/> 
+								<!--  attributt til autoComplete options="${['Jon Torstein', 'Trygve Hegnar', 'Jens Stoltenberg']}" -->
+                              </td> --%>
                             </tr>
                         
                             <tr class="prop">
