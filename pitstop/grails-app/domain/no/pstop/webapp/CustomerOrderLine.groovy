@@ -15,7 +15,6 @@ class CustomerOrderLine {
     }
 	
 	String toString(){
-		"${tireOccurrence.customerOrderLineToString()}" +
-		" Salgspris: ${price}kr Bestilt: ${numberOfOrderedTireOccurrences}"
+		"${tireOccurrence.customerOrderLineToString()} Salgspris: ${price}kr Bestilt: ${numberOfOrderedTireOccurrences}"
 	}
 }

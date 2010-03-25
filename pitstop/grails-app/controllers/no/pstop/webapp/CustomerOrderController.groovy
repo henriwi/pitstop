@@ -1,5 +1,5 @@
 package no.pstop.webapp
-
+import java.util.Iterator;
 class CustomerOrderController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -27,15 +27,16 @@ class CustomerOrderController {
     }
 
     def create = {
-        def customerOrderInstance = new CustomerOrder()
-        customerOrderInstance.properties = params
-        return [customerOrderInstance: customerOrderInstance]	
+		session["order"] = new CustomerOrder()
+		session["orderLineList"] = []
+		session["tireList"] = Tire.list()
+		session["customer"] = new Customer()
+		
+		return [tireList: session["tireList"]]
     }
 
     def save = {
 		def customerOrderInstance = new CustomerOrder(params)
-		//println params
-		println customerOrderInstance
 		
 		if(!customerOrderInstance.validate()) {
 			render(view: "create", model: [customerOrderInstance: customerOrderInstance])
@@ -114,17 +115,84 @@ class CustomerOrderController {
             redirect(action: "list")
         }
     }
-	
-    def next = {
-        def customerOrderInstance = new CustomerOrder(params)
-        
-        if (true) {
-			def customerName = Customer.findAllById(params.customer.id)
-            //flash.message = "${message(code: 'default.created.message', args: [message(code: 'customerOrder.label', default: 'CustomerOrder'), customerOrderInstance.id])}"
-            redirect(action: "create", controller: "customerOrderLine",  params:[customerName: customerName, customerId: params.customer.id, tireId: params.tire.id])
-        }
-        else {
-            render(view: "create", model: [customerOrderInstance: customerOrderInstance])
-        }
+
+    def showTireOccurrences = {
+		setCustomer()
+		render(view: "create", model: [order: session["order"], orderLine: session["orderLineList"], tireList: session["tireList"]])
     }
+
+    private setCustomer() {
+    	session["customer"] = Customer.get(params.customerId)
+    }
+    
+    def addToOrder = {
+			setCustomer()
+			def order = session["order"]
+			def tireList = session["tireList"]
+			def orderLineList = session["orderLineList"]
+			
+			int numberOfTireOccurrences = params.numberOfTireOccurrences?.toInteger()
+			orderLineList = addToOrderLine(numberOfTireOccurrences, params, order, orderLineList)
+			
+			tireList = updateTireListAndResetTireId(orderLineList, tireList, params)
+			
+			writeSession(session, order, tireList, orderLineList)
+            render(view: "create", model: [order: session["order"], orderLine: session["orderLineList"], tireList: session["tireList"]])
+    }
+		
+	private updateTireListAndResetTireId(orderLineList, tireList, params) {
+		if(orderLineList) {
+			def tireListId = orderLineList?.tireOccurrence?.tire?.id
+			tireList = Tire.findAllByIdNotInList(tireListId)
+		}
+		else {
+			tireList = Tire.list()
+		}
+		params.tireId = 0
+		return tireList
+	}
+		
+	private writeSession(session, order = session["order"], tireList, orderLineList) {
+		session["order"] = order
+		session["tireList"] = tireList 
+		session["orderLineList"] = orderLineList 
+	}
+		
+	private addToOrderLine(int numberOfTireOccurrences, params, order, orderLineList) {
+		println params
+		for (int i = 0; i < numberOfTireOccurrences; i++) {
+			if (params.numberOfOrdered[i]?.toInteger() > 0/* && params.price[i] != ""*/) {
+				def customerOrderLine = new CustomerOrderLine()
+				customerOrderLine.tireOccurrence = TireOccurrence.get(params.tireOccurrenceId[i])
+				customerOrderLine.customerOrder = order
+				customerOrderLine.numberOfOrderedTireOccurrences = Integer.parseInt(params.numberOfOrdered[i])
+				customerOrderLine.price = Double.parseDouble(params.price[i])
+				customerOrderLine.deliveryDate = new Date()
+				orderLineList << customerOrderLine
+			}
+		}
+		return orderLineList
+	}
+	
+	def deleteFromOrder = {
+		def orderLineList = session["orderLineList"]
+		def tireList = session["tireList"]
+		
+		def tireOccurrence = TireOccurrence.get(params.removeTireOccurrenceId)
+		
+		removeFromOrderLine(orderLineList, tireOccurrence)
+		
+		tireList = updateTireListAndResetTireId(orderLineList, tireList, params)
+		
+		writeSession(session, tireList, orderLineList)
+		render(view: "create", model: [order: session["order"], orderLine: session["orderLineList"], tireList: session["tireList"]])
+	}
+	
+	private removeFromOrderLine(orderLineList, tireOccurrence) {
+		for (Iterator iterator = orderLineList.iterator(); iterator.hasNext();) {
+			def orderLine = iterator.next()
+			if(orderLine?.tireOccurrence?.id == tireOccurrence?.id)
+				iterator.remove()
+		}
+	}
 }
