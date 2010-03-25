@@ -43,6 +43,11 @@
                         	
                         	<g:sortableColumn property="company" title="${message(code: 'customer.company.table.label')}" />
                      	  
+                     	  <%--ENDRE IKONER HER--%>
+                       	    <th><a class="notSortableColoumn">${message(code: 'cusomter.list.tireHotel.label')}</a></th>
+  
+                       	    <th><a class="notSortableColoumn">${message(code: 'cusomter.list.order.label')}</a></th>
+  
                      	    <th><a class="notSortableColoumn">${message(code: 'cusomter.list.edit.label')}</a></th>
 	                
            	                <g:ifAllGranted role="ROLE_ADMIN"> 
@@ -71,6 +76,10 @@
                             
                             <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "company")}</g:link></td>
                             
+                            <td><g:link class="editTableItem" controller="tireHotelOccurrence" action="create" title="${message(code: 'customer.list.tireHotel.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
+                  		    
+                   	        <td><g:link class="editTableItem" controller="customerOrder"  action="create" title="${message(code: 'customer.list.order.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
+                  		    
                             <td><g:link class="editTableItem" action="edit" title="${message(code: 'customer.list.edit.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
                   		    
 	    	                <g:ifAllGranted role="ROLE_ADMIN"> 
