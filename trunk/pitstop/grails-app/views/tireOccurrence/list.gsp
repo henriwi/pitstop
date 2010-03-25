@@ -9,10 +9,49 @@
     </head>
     <body>
         <div class="nav">
-	    	<span class="menuButton"><g:link controller = "tire" class="list" action="list"><g:message code="default.button.tireList.label"/></g:link></span>
-		    <span class="menuButton"><g:link controller = "tire" class="createTire" action="create"><g:message code="default.button.newTire.label"/></g:link></span>
-		    <span class="menuButton"><g:link controller = "tire" class="list" controller="tireOccurrence" action="list"><g:message code="default.button.tireOccurrenceList.label"/></g:link></span>
-		    <span class="menuButton"><g:link controller = "tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link></span>
+	    	<g:if test="${params.action == 'list' && params.controller == 'tire'}">
+        		<span class="menuButton" id="active" >
+        			<g:link controller="tire" class="list" action="list"><g:message code="default.button.tireList.label"/></g:link>
+        		</span>
+        	</g:if>
+	        <g:else>
+	        	<span class="menuButton">
+        			<g:link controller="tire" class="list" action="list"><g:message code="default.button.tireList.label"/></g:link>
+        		</span>
+	        </g:else>
+	        
+	        <g:if test="${params.action == 'create' && params.controller == 'tire'}">
+        		<span class="menuButton" id="active" >
+        			<g:link controller="tire" class="createTire" action="create"><g:message code="default.button.newTire.label"/></g:link>
+        		</span>
+        	</g:if>
+	        <g:else>
+	        	<span class="menuButton">
+        			<g:link controller="tire" class="createTire" action="create"><g:message code="default.button.newTire.label"/></g:link>
+        		</span>
+	        </g:else>
+	        
+	        <g:if test="${params.action == 'list' && params.controller == 'tireOccurrence'}">
+        		<span class="menuButton" id="active" >
+        			<g:link controller="tire" class="list" controller="tireOccurrence" action="list"><g:message code="default.button.tireOccurrenceList.label"/></g:link>
+        		</span>
+        	</g:if>
+	        <g:else>
+	        	<span class="menuButton">
+        			<g:link controller="tire" class="list" controller="tireOccurrence" action="list"><g:message code="default.button.tireOccurrenceList.label"/></g:link>
+        		</span>
+	        </g:else>
+	        
+	        <g:if test="${params.action == 'search' && params.controller == 'tire'}">
+        		<span class="menuButton" id="active" >
+		    		<g:link controller="tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link>
+        		</span>
+        	</g:if>
+	        <g:else>
+	        	<span class="menuButton">
+		    		<g:link controller="tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link>
+        		</span>
+	        </g:else>
         </div>
         <div class="body">
             <h1><g:message code="tireOccurrence.list.title.label" /></h1>
