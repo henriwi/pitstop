@@ -30,9 +30,9 @@ class TireOccurrenceController {
 		if(!tireOccurrenceInstance.validate()){
 			render(view: "create", model: [tireOccurrenceInstance: tireOccurrenceInstance])
 		}
-		else{
+		else {
 			tireOccurrenceInstance = tireOccurrenceInstance.merge(flush: true)
-			flash.message = "${message(code: 'tireOccurrence.created.message', args: [message(code: 'tireOccurrence.label'), tireOccurrenceInstance.tire.partNr])}"
+			flash.message = "${message(code: 'tireOccurrence.created.message', args: [message(code: 'tireOccurrence.label'), tireOccurrenceInstance.numberInStock, tireOccurrenceInstance.tire.tireOccurrenceShowToString()])}"
 			redirect(action: "show", id: tireOccurrenceInstance.id)
 		}
     }
@@ -64,7 +64,7 @@ class TireOccurrenceController {
         if (tireOccurrenceInstance) {
             tireOccurrenceInstance.properties = params
             if (!tireOccurrenceInstance.hasErrors() && tireOccurrenceInstance.save(flush: true)) {
-                flash.message = "${message(code: 'tireOccurrence.updated.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomst'), tireOccurrenceInstance.tire])}"
+                flash.message = "${message(code: 'tireOccurrence.updated.message', args: [message(code: 'tireOccurrence.label', default: 'Dekkforekomst'), tireOccurrenceInstance.tire.tireOccurrenceShowToString()])}"
                 redirect(action: "show", id: tireOccurrenceInstance.id)
             }
             else {
