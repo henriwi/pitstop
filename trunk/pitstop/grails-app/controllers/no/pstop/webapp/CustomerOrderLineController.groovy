@@ -6,7 +6,7 @@ import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class CustomerOrderLineController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [/*save: "POST", */update: "POST", delete: "POST"]
 
     def index = {
         redirect(action: "list", params: params)
@@ -25,27 +25,20 @@ class CustomerOrderLineController {
     }
 
     def save = {
-		int numberOfTireOccurrences = params.numberOfTireOccurrences.toInteger()
-		if(checkForValidParameters()){
-			saveCustomerOrder()
-			def customerOrderInstance = CustomerOrder.get(params.customerOrderId)
-
-			for (int i = 0; i < numberOfTireOccurrences; i++) {
-				def tireOccurrenceInstance = TireOccurrence.get(params.tireOccurrenceId[i])
-				def customerOrderLineInstance = new CustomerOrderLine(tireOccurrence: tireOccurrenceInstance, customerOrder: customerOrderInstance, numberOfOrderedTireOccurrences: params.tireOccurrenceInStock[i], price: params.price[i], deliveryDate: null)
-				
-				if (params.tireOccurrenceInStock[i] > 0 && params.price[i] != "") {
-					customerOrderLineInstance.save(flush: true)
-					tireOccurrenceInstance.numberOfReserved += params.tireOccurrenceInStock[i].toInteger()
-		        }
-			}
-			flash.message = "${message(code: 'customerOrderLine.created.message', args: [message(code: 'customerOrderInstance.label', default: 'CustomerOrderLine'), customerOrderInstance.id])}"
-			redirect(action: "show", controller: "customerOrder", id: customerOrderInstance.id)
+		def customer = session["customer"]
+		def customerOrderInstance = session["order"]
+		customerOrderInstance.customer = customer
+		customerOrderInstance.orderDate = new Date()
+		customerOrderInstance.notice = ""
+		
+		customerOrderInstance.save(flush:true)
+		
+		for (def orderLine : session["orderLineList"]) {
+			def tireOccurrenceInstance = TireOccurrence.get(orderLine?.tireOccurrence?.id)
+			tireOccurrenceInstance.numberOfReserved += orderLine?.numberOfOrderedTireOccurrences
+			orderLine.save(flush: true)
 		}
-		else {
-			flash.message = "${message(code: 'customerOrderLine.error.message', args: [message(code: 'customerOrderInstance.label', default: 'CustomerOrderLine')])}"
-			redirect(action: "create", controller: "customerOrder")
-		}
+		redirect(action: "show", controller: "customerOrder", id: customerOrderInstance.id)
     }
 
     def updateReservedInTireOccurrence = {
