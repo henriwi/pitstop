@@ -1,5 +1,6 @@
 package no.pstop.webapp
 
+import java.util.Iterator;
 import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 
 @Secured(['ROLE_USER','ROLE_ADMIN'])
@@ -14,14 +15,20 @@ class TireHotelOccurrenceController {
 	def list = {
 		def tireHotelOccurrenceList
 		def tireHotelOccurrenceCount
-		
+
 		if(params.q){
-			tireHotelOccurrenceList = TireHotelOccurrence.search("*" + params.q + "*", escape: true).results
+			tireHotelOccurrenceList = TireHotelOccurrence.search("*" + params.q + "*", outDate:null, escape: true, reload: true).results
+			for (Iterator iterator = tireHotelOccurrenceList.iterator(); iterator.hasNext();) {
+				def tireHotelOccurrence = iterator.next()
+				if(tireHotelOccurrence.outDate) {
+					iterator.remove()
+				}
+			}
 			tireHotelOccurrenceCount = tireHotelOccurrenceList.size()
 		}
 		else {
 			params.max = Math.min(params.max ? params.int('max') : 10, 100)
-			tireHotelOccurrenceList = TireHotelOccurrence.list(params)
+			tireHotelOccurrenceList = TireHotelOccurrence.findAllByOutDateIsNull(params)
 			tireHotelOccurrenceCount = TireHotelOccurrence.count()
 		}
 		if(tireHotelOccurrenceCount == 0){
