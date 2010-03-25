@@ -102,12 +102,21 @@ class TireHotelOccurrenceController {
 
 	@Secured(['ROLE_ADMIN'])
 	def delete = {
+		println params
 		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
 		if (tireHotelOccurrenceInstance) {
 			try {
-				tireHotelOccurrenceInstance.delete(flush: true)
-				flash.message = "${message(code: 'tireHotelOccurrence.deleted.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.registrationNumber])}"
-				redirect(action: "list")
+				if(params.requestFromShowCustomerView){
+					println "Jasså, du her"
+					tireHotelOccurrenceInstance.delete(flush: true)
+					flash.message = "${message(code: 'tireHotelOccurrence.deleted.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.registrationNumber])}"
+					redirect(controller: "customer", action: "show", id: params.customerId)
+				}
+				else{
+					tireHotelOccurrenceInstance.delete(flush: true)
+					flash.message = "${message(code: 'tireHotelOccurrence.deleted.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.registrationNumber])}"
+					redirect(action: "list")
+				}
 			}
 			catch (org.springframework.dao.DataIntegrityViolationException e) {
 				flash.message = "${message(code: 'tireHotelOccurrence.not.deleted.message', args: [message(code: 'tireHotelOccurrence.label'), params.id])}"

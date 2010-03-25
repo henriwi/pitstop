@@ -101,6 +101,10 @@
 		                        		<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delivered.label')}</a></th>
                             
                             		<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.change.label')}</a></th>
+                            		
+                            	<g:ifAllGranted role="ROLE_ADMIN">
+                            		<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delete.label')}</a></th>
+                            	</g:ifAllGranted>
 		                    	</tr>
 		                   	</thead>
 		                   	<tbody>
@@ -134,6 +138,16 @@
                             					<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.button')}" />
                             				</g:form>
                             			</td>
+     			                      <g:ifAllGranted role="ROLE_ADMIN">
+	                            		<td>
+	                            			<g:form controller="tireHotelOccurrence" method="post">
+	                            				<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+                            					<g:hiddenField name="requestFromShowCustomerView" value="true" />
+	                            				<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+	                            				<g:actionSubmit class="deleteTableItem" title="${message(code: 'tireHotelOccurrence.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tireHotelOccurrence.button.delete.confirm.message')}');" />
+	                            			</g:form>
+	                            		</td>
+	                        </g:ifAllGranted>
 			                    	</tr>
 			                	</g:each>
 		                	</tbody>
