@@ -8,8 +8,8 @@ class TireTests extends GrailsUnitTestCase {
 	protected void setUp() {
 		super.setUp()
 		mockForConstraintsTests Tire
-		tire = new Tire(width:190,profile:60,construction:"R",diameter:17,partNr:"123AB",
-				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "T-Zero", notice:"Demodekk")	
+		tire = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
+				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", notice:"Demodekk")	
 	}
 	
 	protected void tearDown() {
@@ -39,8 +39,8 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testGenerateTireWithNonUniquePartNr() {
-		def tire2 = new Tire(width:190,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer", brand:"Nokian", tireName: "T-Zero", notice:"Demodekk")	
+		def tire2 = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
+		loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", notice: "Demodekk")	
 	
 		mockForConstraintsTests(Tire, [tire])
 		
@@ -133,6 +133,10 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testToString() {
-		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer (På lager: 0)", tire.toString()
+		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer (på lager: 0)", tire.toString()
+	}
+	
+	void testTireOccurrenceShowToString() {
+		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer", tire.toString()
 	}
 }

@@ -67,10 +67,14 @@ class Tire {
 		for (tireOccurrence in this.tireOccurrences) {
 			numberOfAvailable += tireOccurrence.numberOfAvailable()
 		}
-		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (På lager: ${numberOfAvailable})"
+		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (på lager: ${numberOfAvailable})"
 	}
 	
 	String orderToString(){
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (${partNr})" 
+	}
+	
+	String tireOccurrenceShowToString() {
+		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType}"
 	}
 }
