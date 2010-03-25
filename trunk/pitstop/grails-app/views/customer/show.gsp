@@ -164,7 +164,7 @@
 		                	</tbody>
 		               	</table>
 										<div class="paginateButtons" id="showCustomer">
-			          		<g:paginate next="Neste" prev="Forrige" controller="customer" action="show" id="${customerInstance.id}" total="${customerOrderInstanceList.size()}"></g:paginate>
+			          		<g:paginate next="${message(code: 'default.paginate.next')}" prev="${message(code: 'default.paginate.prev')}" controller="customer" action="show" id="${customerInstance.id}" total="${customerOrderInstanceList.size()}"></g:paginate>
 			        	</div>
 					</div>
 				</g:if>

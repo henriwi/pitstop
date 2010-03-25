@@ -1,7 +1,6 @@
 
-<%@ page import="no.pstop.webapp.TireHotelOccurrence" %>
-
-<%@page import="no.pstop.webapp.TireHotelOccurrence"%><html>
+<%@page import="no.pstop.webapp.TireHotelOccurrence"%>
+<html>
     <head>
         <g:javascript library="application" />
         <g:javascript library="yui" />
