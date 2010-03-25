@@ -85,6 +85,8 @@
                         </tbody>
                     </table>
                 </div>
+                
+                <g:hiddenField name="requestFromShowCustomerView" value="${params.requestFromShowCustomerView}" />
                 <div class="buttons">
                     <span class="button"><g:actionSubmit class="save" action="updateChange" value="${message(code: 'default.button.updateChange.label')}" /></span>
                     <span class="button"><g:actionSubmit class="cancel" action="show" value="${message(code: 'default.button.cancel.label')}" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');" /></span>

@@ -118,13 +118,14 @@ class TireHotelOccurrenceController {
 	}
 	
 	def change = {
+		println params 
 		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
 		if (!tireHotelOccurrenceInstance) {
 			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
 			redirect(action: "list")
 		}
 		else {
-			return [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance]
+				return [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance]
 		}
 	}
 	
@@ -132,14 +133,24 @@ class TireHotelOccurrenceController {
 		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
 		def newTireHotelOccurrenceInstance = new TireHotelOccurrence(params)
 		newTireHotelOccurrenceInstance.inDate = new Date()
+		def customerInstance = Customer.get(params.customer.id)
 		//newTireHotelOccurrenceInstance = newTireHotelOccurrenceInstance.merge(validate: false)
 
 		if(newTireHotelOccurrenceInstance.merge(flush: true)){
 			if(tireHotelOccurrenceInstance){
 				tireHotelOccurrenceInstance.outDate = new Date()
 				if(!tireHotelOccurrenceInstance.hasErrors() && tireHotelOccurrenceInstance.save(flush: true)){
-					flash.message = "${message(code: 'tireHotelOccurrence.updateChange.message', args: [message(code: 'tireHotelOccurrence.label'), params.id])}"
-					redirect(action: "show", id: newTireHotelOccurrenceInstance.id)
+					if(params.requestFromShowCustomerView){
+						println tireHotelOccurrenceInstance.tireType
+						println newTireHotelOccurrenceInstance.tireType
+						flash.message = "${message(code: 'tireHotelOccurrence.changeSeason.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.id, customerInstance.firstName, customerInstance.lastName, tireHotelOccurrenceInstance.tireType, newTireHotelOccurrenceInstance.tireType])}"
+						redirect(controller: "customer", action: "show", id: customerInstance.id)
+						
+					}
+					else{
+						flash.message = "${message(code: 'tireHotelOccurrence.changeSeason.message', args: [message(code: 'tireHotelOccurrence.label'),tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.id, customerInstance.firstName, customerInstance.lastName, tireHotelOccurrenceInstance.tireType, newTireHotelOccurrenceInstance.tireType])}"
+						redirect(action: "list")//, id: newTireHotelOccurrenceInstance.id)
+					}
 				}
 				else{
 					render(view: "edit", model: [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance])
@@ -152,6 +163,25 @@ class TireHotelOccurrenceController {
 		}
 		else{
 			render(view: "edit", model: [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance])
+		}
+	}
+	
+	def deliverTireHotelOccurenceFromCustomerView = {
+		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
+		def customerInstance = Customer.get(params.customerId)
+   
+		params.delivered ? tireHotelOccurrenceInstance.outDate = new Date() : null
+		
+		if (tireHotelOccurrenceInstance) {
+			tireHotelOccurrenceInstance.properties = params
+			if (!tireHotelOccurrenceInstance.hasErrors() && tireHotelOccurrenceInstance.save(flush: true)) {
+				flash.message = "${message(code: 'tireHotelOccurrence.deliver.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.id, customerInstance.firstName, customerInstance.lastName])}"
+				redirect(controller: "customer", action: "show", id: customerInstance.id)
+			}
+		}
+		else {
+			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
+			redirect(controller: "customer", action: "show", id: customerInstance.id)
 		}
 	}
 }
