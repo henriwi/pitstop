@@ -183,6 +183,12 @@ ul#menuList li {
     padding-left: 25px;
 }
 
+.menuButton a.back {
+    background: url(../images/skin/back.png) center left no-repeat;
+    color: #000;
+    padding-left: 25px;
+}
+
 span.menuButton#createTireOccurrenceButton{
     color: #000;
     padding-left: 7px;
