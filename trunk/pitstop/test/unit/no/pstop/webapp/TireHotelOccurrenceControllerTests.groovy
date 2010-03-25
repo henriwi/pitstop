@@ -46,7 +46,7 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 	void testSaveWithValidTireHotelOccurrence(){
 		setParams("1a", "DE12345", "Audi", null, "Sommer", new Date(), new Date() + 100, "Notice")
 		mockDomain Customer, [customer]
-		controller.params.addCustomerAutoComplete_id = 1
+		controller.params.customerId = 1
 		controller.metaClass.message = {args -> println "message: ${args}"}
 		def mock = mockFor(TireHotelOccurrence)
 		mock.demand.merge() {tireHotelOccurrence}
@@ -58,7 +58,7 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 	
 	void testSaveWithInvalidTireHotelOccurrence(){
 		setParams("a1", "DE12345", "?", null, "Sommer", new Date(), new Date() + 100, "Notice")
-		controller.params.addCustomerAutoComplete_id = 999
+		controller.params.customerId = 999
 		controller.metaClass.message = {args -> println "message: ${args}"}
 		tireHotelOccurrence.carType = "?"
 		controller.save()
