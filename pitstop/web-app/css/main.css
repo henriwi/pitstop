@@ -75,9 +75,10 @@ input:focus, select:focus, textarea:focus {
 /* MAIN MENU */
 div#mainMenu {
 	width: auto;
+	margin: 0px;
 	margin-top: 10px;
 	padding-top: 15px;
-	padding-bottom: 10px;
+	padding-bottom: 9px;
 	border: 1px solid #eee;
 	border-style: solid none solid none;
 	border-bottom: none;
@@ -87,20 +88,13 @@ div#mainMenu {
 
 ul#menuList {
 	list-style: none;
-	/*
-	padding: 0px;
-	margin: 5px;
-	*/
 }
 
 ul#menuList li {
 	display: inline;
-	border: 1px solid #fff;
-/*
-	margin: 0px;
-	margin-top: 7px;
-	margin-bottom: 7px;
-*/
+	border: 0px solid #fff;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #menuList a{
@@ -114,15 +108,9 @@ ul#menuList li {
 	color: #000;
 }
 
-/*
-#menuList a:active{
-	background: #fff url(../images/skin/shadow_pressed.jpg) top repeat-x;
-}
-*/
-
 #menuList a.active{
 	background: #fff url(../images/skin/shadow_blue.jpg) bottom repeat-x;
-	color: #333;
+	color: #333; 
 	background-color: #fff;
 	border: 1px solid;
 	border-color: #888;
@@ -131,18 +119,17 @@ ul#menuList li {
 	padding-right: 19px;
 }
 
-/* END MAIN MENU */
-
 /* NAVIGATION MENU */
 .nav {
-    /*background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;*/
     background-color: #dce7fb;
     border: 1px solid #888;
-    border-style: none solid solid solid;
+    border-style: solid solid solid solid;
     border-left: 1px solid #eee;
     border-right: 1px solid #eee;
     margin-top: 0px;
-    padding: 7px 12px;
+    padding: 15px 12px;
+    padding-top: 15px;
+    padding-bottom: 7px;
     width: auto;
     font: 11px;
     font-family: verdana, arial, helvetica, sans-serif;
@@ -151,20 +138,24 @@ ul#menuList li {
     font-size: 10px;
     padding: 0 5px;
 }
+
 .menuButton a {
     color: #333;
     padding: 4px 6px;
 }
+
 .menuButton a.home {
     background: url(../images/skin/house.png) center left no-repeat;
     color: #000;
     padding-left: 25px;
 }
+
 .menuButton a.list {
     background: url(../images/skin/database_table.png) center left no-repeat;
     color: #000;
     padding-left: 25px;
 }
+
 .menuButton a.create {
     background: url(../images/skin/database_add.png) center left no-repeat;
     color: #000;
@@ -189,10 +180,20 @@ ul#menuList li {
     padding-left: 25px;
 }
 
-span.menuButton#createTireOccurrenceButton{
+span.menuButton#createTireOccurrenceButton {
     color: #000;
     padding-left: 7px;
     display:block;
+}
+
+span#active a {
+	border: 1px solid #888;
+	border-bottom: none;
+	padding-bottom: 8px;
+	padding-top: 8px;
+	padding-left: 25px;
+	background-position: 2px;
+	background-color: #fff;
 }
 
 /* MESSAGES AND ERRORS */
