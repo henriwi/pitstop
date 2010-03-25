@@ -12,6 +12,7 @@
             <span class="menuButton"><g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link></span>
         </div>
         <div class="body">
+            <span class="menuButton"><g:link class="back" controller="customer"><g:message code="customer.show.button.back.label" /></g:link></span>
             <h1><g:message code="customer.show.title.label" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>

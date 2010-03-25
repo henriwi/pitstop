@@ -14,8 +14,8 @@
 		    <span class="menuButton"><g:link controller = "tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link></span>
         </div>
         <div class="body">
+        	<span class="menuButton"><g:link class="back" controller="tire"><g:message code="tire.show.button.back.label" /></g:link></span>
             <h1><g:message code="showTire.title.label" /></h1>
-            
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
