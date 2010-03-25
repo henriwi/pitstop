@@ -13,50 +13,50 @@
         	</div>
         	<div id="mainMenu">
         		<g:isLoggedIn>
-						<g:link class="logoutButton" controller="logout">Logg ut</g:link>
+					<g:link class="logoutButton" controller="logout">${message(code: 'main.menu.logout.label')}</g:link>
 				</g:isLoggedIn>
 				
 		        <ul id="menuList">
 		        	<g:if test="${params.controller == null}">
-		        		<li><a class="active" href="${createLink(uri: '/')}">Hjem</a></li>
+		        		<li><a class="active" href="${createLink(uri: '/')}">${message(code: 'main.menu.home.label')}</a></li>
 		        	</g:if>
 			        <g:else>
-			        	<li><a href="${createLink(uri: '/')}">Hjem</a></li>
+			        	<li><a href="${createLink(uri: '/')}">${message(code: 'main.menu.home.label')}</a></li>
 			        </g:else>
 			        
 			        <g:if test="${params.controller == 'tire' || params.controller == 'tireOccurrence'}">
-		        		<li><g:link class="active" controller="tire">Dekkoversikt</g:link></li>
+		        		<li><g:link class="active" controller="tire">${message(code: 'main.menu.tires.label')}</g:link></li>
 		        	</g:if>
 			        <g:else>
-			        	<li><g:link controller="tire">Dekkoversikt</g:link></li>
+			        	<li><g:link controller="tire">${message(code: 'main.menu.tires.label')}</g:link></li>
 			        </g:else>
 			        
 			        <g:if test="${params.controller == 'customer'}">
-			        	<li><g:link class="active" controller="customer">Kunder</g:link></li>
+			        	<li><g:link class="active" controller="customer">${message(code: 'main.menu.customers.label')}</g:link></li>
 		        	</g:if>
 			        <g:else>
-			        	<li><g:link controller="customer">Kunder</g:link></li>
+			        	<li><g:link controller="customer">${message(code: 'main.menu.customers.label')}</g:link></li>
 			        </g:else>
 			        
 			        <g:if test="${params.controller == 'tireHotelOccurrence'}">
-			        	<li><g:link class="active" controller="tireHotelOccurrence">Dekkhotell</g:link></li>
+			        	<li><g:link class="active" controller="tireHotelOccurrence">${message(code: 'main.menu.tireHotel.label')}</g:link></li>
 		        	</g:if>
 			        <g:else>
-			        	<li><g:link controller="tireHotelOccurrence">Dekkhotell</g:link></li>
+			        	<li><g:link controller="tireHotelOccurrence">${message(code: 'main.menu.tireHotel.label')}</g:link></li>
 			        </g:else>
 			        
 			        <g:if test="${params.controller == 'customerOrder'}">
-			        	<li><g:link class="active" controller="customerOrder">Kundebestilling</g:link></li>
+			        	<li><g:link class="active" controller="customerOrder">${message(code: 'main.menu.customerOrder.label')}</g:link></li>
 		        	</g:if>
 			        <g:else>
-			        	<li><g:link controller="customerOrder">Kundebestilling</g:link></li>
+			        	<li><g:link controller="customerOrder">${message(code: 'main.menu.customerOrder.label')}</g:link></li>
 			        </g:else>
 			        
 			   		<g:if test="${params.controller == 'user'}">
-		        		<li><g:link class="active" controller="user">Admin</g:link></li>
+		        		<li><g:link class="active" controller="user">${message(code: 'main.menu.admin.label')}</g:link></li>
 		        	</g:if>
 			        <g:else>
-			        	<li><g:link controller="user">Admin</g:link></li>
+			        	<li><g:link controller="user">${message(code: 'main.menu.admin.label')}</g:link></li>
 			        </g:else>
 			   		
 			        <%--
