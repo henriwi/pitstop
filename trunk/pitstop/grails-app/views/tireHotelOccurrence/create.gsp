@@ -9,8 +9,27 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link></span>
+            <g:if test="${params.action == 'list'}">
+        		<span class="menuButton" id="active" >
+        			<g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
+        		</span>
+        	</g:if>
+	        <g:else>
+	        	<span class="menuButton">
+        			<g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
+        		</span>
+	        </g:else>
+	        
+	        <g:if test="${params.action == 'create'}">
+        		<span class="menuButton" id="active" >
+        			<g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
+        		</span>
+        	</g:if>
+	        <g:else>
+	        	<span class="menuButton">
+        			<g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
+        		</span>
+	        </g:else>
         </div>
         <div class="body">
             <h1><g:message code="tireHotelOccurrence.create.label" /></h1>
