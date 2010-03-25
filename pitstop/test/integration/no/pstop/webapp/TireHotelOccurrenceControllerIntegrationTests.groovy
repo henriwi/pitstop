@@ -17,9 +17,9 @@ class TireHotelOccurrenceControllerIntegrationTests extends GroovyTestCase {
 		tireHotelOccurrence1 = new TireHotelOccurrence(tireLocation: "1A", registrationNumber: "DE 832154", carType: "Audi A3", 
 		customer: customer, tireType: "Sommer", inDate: new Date(), outDate: new Date(), notice: "ingen").save(flush: true)
 		tireHotelOccurrence2 = new TireHotelOccurrence(tireLocation: "2A", registrationNumber: "DF 123456", carType: "Opel", 
-		customer: customer, tireType: "Vinter (pigg)", inDate: new Date(), outDate: new Date(), notice: "Bra dekk").save(flush: true)
+		customer: customer, tireType: "Vinter (pigg)", inDate: new Date(), outDate: null, notice: "Bra dekk").save(flush: true)
 		tireHotelOccurrence3 = new TireHotelOccurrence(tireLocation: "3B", registrationNumber: "BR 168043", carType: "Mercedes", 
-		customer: customer, tireType: "Sommer", inDate: new Date(), outDate: new Date(), notice: "").save(flush: true)
+		customer: customer, tireType: "Sommer", inDate: new Date(), outDate: null, notice: "").save(flush: true)
 		
 		controller = new TireHotelOccurrenceController()
     }
@@ -30,7 +30,7 @@ class TireHotelOccurrenceControllerIntegrationTests extends GroovyTestCase {
 
     void testListWithSearchQuery() {
 		controller.params.q = "Sommer"
-		def expectedList = [tireHotelOccurrence1, tireHotelOccurrence3]
+		def expectedList = [tireHotelOccurrence3]
 		def model = controller.list()
 			
 		assertEquals "Expected list should be the same as the returned", expectedList.toString(), model.tireHotelOccurrenceInstanceList.toString()
@@ -38,7 +38,7 @@ class TireHotelOccurrenceControllerIntegrationTests extends GroovyTestCase {
     }
 	
 	void testListWithoutSearchQuery() {
-		def expectedList = [tireHotelOccurrence1, tireHotelOccurrence2, tireHotelOccurrence3]
+		def expectedList = [tireHotelOccurrence2, tireHotelOccurrence3]
 		def model = controller.list()
 		
 		assertEquals "Expected list should be the same as the returned", expectedList.toString(), model.tireHotelOccurrenceInstanceList.toString()
