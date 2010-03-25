@@ -91,30 +91,30 @@
 	            </div>
             </div>
 	        <div id="tireOccurrenceList">
-	        	<g:set var="antInStock" value="${0}"></g:set>
-	            <g:set var="antReserved" value="${0}"></g:set>
-	            <g:set var="antOrdered" value="${0}"></g:set>
-	            <g:set var="antAvailable" value="${0}"></g:set>
+	        	<g:set var="numberInStock" value="${0}"></g:set>
+	            <g:set var="numberOfReserved" value="${0}"></g:set>
+	            <g:set var="numberOfOrdered" value="${0}"></g:set>
+	            <g:set var="numberOfAvailable" value="${0}"></g:set>
 	            <g:each in="${tireOccurrenceInstanceTotalList}" status="i" var="tireOccurrenceInstance">
-		        	<g:set var="antInStock" value="${antInStock + tireOccurrenceInstance.numberInStock}"></g:set>
-		            <g:set var="antReserved" value="${antReserved + tireOccurrenceInstance.numberOfReserved}"></g:set>
-		            <g:set var="antOrdered" value="${antOrdered + tireOccurrenceInstance.numberOfOrdered}"></g:set>
-		            <g:set var="antAvailable" value="${antAvailable + (tireOccurrenceInstance.numberInStock-tireOccurrenceInstance.numberOfReserved)}"></g:set>
+		        	<g:set var="numberInStock" value="${numberInStock + tireOccurrenceInstance.numberInStock}"></g:set>
+		            <g:set var="numberOfReserved" value="${numberOfReserved + tireOccurrenceInstance.numberOfReserved}"></g:set>
+		            <g:set var="numberOfOrdered" value="${numberOfOrdered + tireOccurrenceInstance.numberOfOrdered}"></g:set>
+		            <g:set var="numberOfAvailable" value="${numberOfAvailable + (tireOccurrenceInstance.numberInStock-tireOccurrenceInstance.numberOfReserved)}"></g:set>
 				</g:each>
 				
 	            <div id="totalTireOccurrence">
 	            	<table>
 	                	<tr>
-		                	<th>Antall</th>
-		                    <th>Reservert</th>
-		                    <th>Bestilt</th>
-		                    <th>Tilgjengelig</th>
+		                	<th>${message(code: 'tireOccurrence.table.numberInStock.label')}</th>
+		                    <th>${message(code: 'tireOccurrence.table.numberOfReserved.label')}</th>
+		                    <th>${message(code: 'tireOccurrence.table.numberOfOrdered.label')}</th>
+		                    <th>${message(code: 'tireOccurrence.table.numberOfAvailable.label')}</th>
 	                    </tr>
 		                <tr>
-		                	<td><%=antInStock %></td>
-		                	<td><%=antReserved %></td>
-		                    <td><%=antOrdered %></td>
-		                    <td><%=antAvailable %></td>
+		                	<td><%=numberInStock %></td>
+		                	<td><%=numberOfReserved %></td>
+		                    <td><%=numberOfOrdered %></td>
+		                    <td><%=numberOfAvailable %></td>
 	                    </tr>
 					</table>
 				</div>
@@ -165,7 +165,7 @@
                     </tbody>
 				</table>
 	            <div class="paginateButtons" id="showTire">
-	          		<g:paginate next="Neste" prev="Forrige" controller="tire" action="show" id="${tireInstance.id}" total="${tireOccurrenceInstanceTotalList.size()}"></g:paginate>
+	          		<g:paginate next="${message(code: 'default.paginate.next')}" prev="${message(code: 'default.paginate.prev')}" controller="tire" action="show" id="${tireInstance.id}" total="${tireOccurrenceInstanceTotalList.size()}"></g:paginate>
 	        	</div>
             </div>
         </div>

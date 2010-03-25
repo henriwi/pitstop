@@ -101,7 +101,7 @@ class TireController {
 	def save = {
 		def tireInstance = new Tire(params)
 		if (tireInstance.save(flush: true)) {
-			flash.message = "${message(code: 'tire.created.message', args: [message(code: 'tire.label', default: 'Dekk'), tireInstance.partNr])}"
+			flash.message = "${message(code: 'tire.created.message', args: [message(code: 'tire.label', default: 'Dekk'), tireInstance.tireShowToString()])}"
 			redirect(action: "show", id: tireInstance.id)
 		}
 		else {
@@ -142,7 +142,7 @@ class TireController {
 		if (tireInstance) {
 			tireInstance.properties = params
 			if (!tireInstance.hasErrors() && tireInstance.save(flush: true)) {
-				flash.message = "${message(code: 'tire.updated.message', args: [message(code: 'tire.label', default: 'Dekk'), tireInstance.partNr])}"
+				flash.message = "${message(code: 'tire.updated.message', args: [message(code: 'tire.label', default: 'Dekk'), tireInstance.tireShowToString()])}"
 				redirect(action: "show", id: tireInstance.id)
 			}
 			else {

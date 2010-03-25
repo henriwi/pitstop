@@ -155,7 +155,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-             	<g:paginate next="Neste" prev="Forrige" controller="tire" action="list" params="${params}" total="${tireInstanceTotal}"></g:paginate>
+             	<g:paginate next="${message(code: 'default.paginate.next')}" prev="${message(code: 'default.paginate.prev')}" controller="tire" action="list" params="${params}" total="${tireInstanceTotal}"></g:paginate>
             </div>
         </div>
     </body>

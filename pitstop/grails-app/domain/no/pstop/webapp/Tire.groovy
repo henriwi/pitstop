@@ -74,7 +74,7 @@ class Tire {
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (${partNr})" 
 	}
 	
-	String tireOccurrenceShowToString() {
+	String tireShowToString() {
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType}"
 	}
 }
