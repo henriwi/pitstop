@@ -6,8 +6,27 @@
 <body>
 
 	<div class="nav">
-		<span class="menuButton"><g:link controller = "user" class="list" action="list"><g:message code="user.list.label"/></g:link></span>
-		<span class="menuButton"><g:link controller = "user" class="create" action="create"><g:message code="user.create.label"/></g:link></span>
+		<g:if test="${params.action == 'list'}">
+			<span class="menuButton" id="active" >
+				<g:link controller = "user" class="list" action="list"><g:message code="user.list.label"/></g:link>
+			</span>
+		</g:if>
+		<g:else>
+			<span class="menuButton">
+				<g:link controller = "user" class="list" action="list"><g:message code="user.list.label"/></g:link>
+			</span>
+		</g:else>
+		
+		<g:if test="${params.action == 'create'}">
+			<span class="menuButton" id="active" >
+				<g:link controller = "user" class="create" action="create"><g:message code="user.create.label"/></g:link>
+			</span>
+		</g:if>
+		<g:else>
+			<span class="menuButton">
+				<g:link controller = "user" class="create" action="create"><g:message code="user.create.label"/></g:link>
+			</span>
+		</g:else>
 	</div>
 
 	<div class="body">
