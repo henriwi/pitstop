@@ -96,13 +96,16 @@
 		                       
 		                           	<g:sortableColumn property="inDate" title="${message(code: 'tireHotelOccurrence.list.inDate.label')}" />
 		                           
-		                        	<g:sortableColumn property="outDate" title="${message(code: 'tireHotelOccurrence.list.outDate.label')}" />
-		                           
+		                        		<g:sortableColumn property="outDate" title="${message(code: 'tireHotelOccurrence.list.outDate.label')}" />
+		                        		
+		                        		<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delivered.label')}</a></th>
+                            
+                            		<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.change.label')}</a></th>
 		                    	</tr>
 		                   	</thead>
 		                   	<tbody>
 			                    <g:each in="${tireHotelOccurrenceInstanceList}" status="i" var="tireHotelOccurrenceInstance">
-									<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+													<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 			                       
 			                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}</g:link></td>
 			                       
@@ -114,7 +117,23 @@
 			                       
 			                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.inDate}" /></g:link></td>
 			                           
-			                        	<td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.outDate}" /></g:link></td>
+			                        		<td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.outDate}" /></g:link></td>
+			                        		<td>
+				                        		<g:form controller="tireHotelOccurrence" method="post">
+				                        			<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+	                            				<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+																			<g:hiddenField name="delivered" value="delivered" />
+	                            				<g:actionSubmit class="delivered" title="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" action="deliverTireHotelOccurenceFromCustomerView" value="${message(code: 'tireHotelOccurrence.list.delivered.button')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
+	                            			</g:form>
+                            			</td>
+                            			<td>
+                            				<g:form controller="tireHotelOccurrence" method="post">
+                            					<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+                            					<g:hiddenField name="requestFromShowCustomerView" value="true" />
+                            					<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+                            					<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.button')}" />
+                            				</g:form>
+                            			</td>
 			                    	</tr>
 			                	</g:each>
 		                	</tbody>
@@ -144,7 +163,7 @@
 		                    </g:each>
 		                	</tbody>
 		               	</table>
-						<div class="paginateButtons" id="showCustomer">
+										<div class="paginateButtons" id="showCustomer">
 			          		<g:paginate next="Neste" prev="Forrige" controller="customer" action="show" id="${customerInstance.id}" total="${customerOrderInstanceList.size()}"></g:paginate>
 			        	</div>
 					</div>
