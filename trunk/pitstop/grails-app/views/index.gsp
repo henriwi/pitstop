@@ -66,6 +66,8 @@
 	        <p>PIT-STOP kan tilby en rekke dekkmerker til alle typer biler, og til usl&aring;elige priser. 
 	        Vi kan ogs&aring; gi sv&aelig;rt gode tilbud p&aring; felger.
 	        Velkommen til en hyggelig dekkprat i gode faglige omgivelser.</p>
+	        
+	        <img src="${resource(dir:'images',file:'pig.jpg')}" alt="pitstopLogo" border="0" />
 		
 		<%-- <div id="nav">
 			<g:form controller="tire" action="fastSearch" method="get">
