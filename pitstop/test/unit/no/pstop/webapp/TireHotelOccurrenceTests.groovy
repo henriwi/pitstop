@@ -108,4 +108,19 @@ class TireHotelOccurrenceTests extends GrailsUnitTestCase {
 		def badField = tireHotelOccurrence.errors.getFieldError("notice")
 		assertNotNull "I'm expecting to find error in notice", badField
 	}
+	
+	void testShowNoticeWith20FirstLettersWhenNoticeIsUnder20Letters() {
+		tireHotelOccurrence.notice = "Notice"
+		assertEquals "Notice", tireHotelOccurrence.showNoticeWith20FirstLetters()
+	}
+	
+	void testShowNoticeWith20FirstLettersWhenNoticeIsOver20Letters() {
+		tireHotelOccurrence.notice = "Notice notice notice notice notice"
+		assertEquals "Notice notice notice ...", tireHotelOccurrence.showNoticeWith20FirstLetters()
+	}
+	
+	void testShowNoticeWith20FirstLettersWhenNoticeIsEmpty() {
+		tireHotelOccurrence.notice = ""
+		assertEquals "", tireHotelOccurrence.showNoticeWith20FirstLetters()
+	}
 }
