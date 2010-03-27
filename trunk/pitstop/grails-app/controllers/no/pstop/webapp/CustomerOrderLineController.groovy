@@ -25,42 +25,20 @@ class CustomerOrderLineController {
     }
 
     def save = {
-		def customer = session["customer"]
 		def customerOrderInstance = session["order"]
-		customerOrderInstance.customer = customer
 		customerOrderInstance.orderDate = new Date()
 		customerOrderInstance.notice = ""
 		
-		customerOrderInstance.save(flush:true)
-		
-		for (def orderLine : session["orderLineList"]) {
-			def tireOccurrenceInstance = TireOccurrence.get(orderLine?.tireOccurrence?.id)
-			tireOccurrenceInstance.numberOfReserved += orderLine?.numberOfOrderedTireOccurrences
-			orderLine.save(flush: true)
-		}
-		redirect(action: "show", controller: "customerOrder", id: customerOrderInstance.id)
-    }
-
-    def updateReservedInTireOccurrence = {
-    	
-    }
-    
-    def checkForValidParameters = {
-			int numberOfTireOccurrences = params.numberOfTireOccurrences.toInteger()
-			println params
-			for (int i = 0; i < numberOfTireOccurrences; i++) {
-				if (params.tireOccurrenceInStock[i] > 0 && params.price[i] != "") {
-					return true
-				}
-			}
-			return false
-    }
-
-    def saveCustomerOrder = {
-			def customer = Customer.get(params.customer.id)
-			def customerOrderInstance = new CustomerOrder(customer: customer, orderDate: new Date(), notice: params.notice)
+		CustomerOrder.withTransaction{ tx ->
 			customerOrderInstance.save(flush:true)
-			params.customerOrderId = customerOrderInstance.id
+			for (def orderLine : session["orderLineList"]) {
+				def tireOccurrenceInstance = TireOccurrence.get(orderLine?.tireOccurrence?.id)
+				tireOccurrenceInstance.numberOfReserved += orderLine?.numberOfOrderedTireOccurrences
+				orderLine.save(flush: true)
+			}
+		}
+		
+		redirect(action: "show", controller: "customerOrder", id: customerOrderInstance.id)
     }
 
     def show = {
