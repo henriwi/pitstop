@@ -543,6 +543,7 @@ a.logoutButton{
     padding-bottom: 5px;
     padding-left: 28px;
 }
+
 .deleteTableItem {
     background: url(../images/skin/database_delete.png) 5px 50% no-repeat;
     padding: 0px;
@@ -552,6 +553,7 @@ a.logoutButton{
     border: none;
     cursor: pointer;
 }
+
 .saveTableItem {
 	background: url(../images/skin/database_add.png) 5px 50% no-repeat;
     padding: 0px;
@@ -562,6 +564,18 @@ a.logoutButton{
     border: none;
     cursor: pointer;
 }
+
+.addOrder {
+	background: url(../images/skin/shopping_cart.png) 5px 50% no-repeat;
+    padding: 0px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
 .addTireHotelOccurrence {
 	background: url(../images/skin/database_add_tire_hotel_occurrence.png) 5px 50% no-repeat;
     padding-top: 5px;
