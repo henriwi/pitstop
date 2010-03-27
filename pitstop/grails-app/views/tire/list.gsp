@@ -93,6 +93,8 @@
                             
                             <g:sortableColumn params="${params}" property="tireType" title="${message(code: 'tire.tireType.table.label')}" />
                             
+                            <g:sortableColumn params="${params}" property="notice" title="Merknad" />
+                            
                             <g:sortableColumn params="${params}" property="numberOfAvailable" title="${message(code: 'tireOccurrence.numberOfAvailable.table.label')}" />
                            <%--  <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th> --%>
                             
@@ -128,6 +130,8 @@
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "pattern")}</g:link></td>
                         
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireType")}</g:link></td>
+                            
+                            <td><g:link action="show" id="${tireInstance.id}">${tireInstance?.showNoticeWith20FirstLetters()}</g:link></td>
                             
                             <g:set var="numberOfAvailable" value="${0}"></g:set>
                             <g:each in="${tireInstance.tireOccurrences}" status="j" var="tireOccurrence">

@@ -65,7 +65,6 @@ class TireController {
 			redirect(action: "search")
 		}
 
-		
 		[tireInstanceList: tireList, tireInstanceTotal: tireCount]
 	}
 	
@@ -182,7 +181,7 @@ class TireController {
 	
 	def fastSearch = {
 		if(params.txtFastSearch.trim() != ""){
-			redirect(action: "list", params:[q: params.txtFastSearch, type: 'fast'])
+			redirect(action: "list", params: [q: params.txtFastSearch, type: 'fast'])
 		}
 		else{
 			flash.message = "${message(code: 'search.missingSearchString.message')}"
