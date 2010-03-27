@@ -552,7 +552,6 @@ a.logoutButton{
     border: none;
     cursor: pointer;
 }
-
 .saveTableItem {
 	background: url(../images/skin/database_add.png) 5px 50% no-repeat;
     padding: 0px;
@@ -562,6 +561,12 @@ a.logoutButton{
     margin-right: 10px;
     border: none;
     cursor: pointer;
+}
+.addTireHotelOccurrence {
+	background: url(../images/skin/database_add_tire_hotel_occurrence.png) 5px 50% no-repeat;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 28px;
 }
 
 .notSortableColoumn {
