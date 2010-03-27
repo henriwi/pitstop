@@ -50,20 +50,23 @@
                                 <td valign="top" class="name">
                                 	<label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
                                 </td>
-                                <td>
-                                	${no.pstop.webapp.Customer.get(params?.id)}
-                                	<g:hiddenField name="customerId" value="${params?.id}"/>
-                                </td>
-                             <%--  <td class="yui-skin-sam">
-								<gui:autoComplete 
-											id="addCustomerAutoComplete" 
-											controller="customer"
-											action="customerAutoComplete"
-											resultName="customers"/> 
+                                <g:if test="${no.pstop.webapp.Customer.get(params?.id)}">
+ 															 		<td>
+                                		${no.pstop.webapp.Customer.get(params?.id)}
+                                		<g:hiddenField name="customer_id" value="${params?.id}"/>
+                                	</td>
+																</g:if>
+																<g:else>
+																	<td class="yui-skin-sam">
+																		<gui:autoComplete 
+																			id="customer" 
+																			controller="customer"
+																			action="customerAutoComplete"
+																			resultName="customers"/>
+																		</td>
+																</g:else>
 								<!--  attributt til autoComplete options="${['Jon Torstein', 'Trygve Hegnar', 'Jens Stoltenberg']}" -->
-                              </td> --%>
                             </tr>
-                        
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="tireLocation"><g:message code="tireHotelOccurrence.tireLocation.label" /></label>
