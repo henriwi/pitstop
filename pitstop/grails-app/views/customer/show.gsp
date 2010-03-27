@@ -12,7 +12,7 @@
             <span class="menuButton"><g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link></span>
         </div>
         <div class="body">
-            <span class="menuButton"><g:link class="back" controller="customer"><g:message code="customer.show.button.back.label" /></g:link></span>
+            <span class="backButton"><g:link class="back" controller="customer"><g:message code="customer.show.button.back.label" /></g:link></span>
             <h1><g:message code="customer.show.title.label" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -72,10 +72,12 @@
 	                <g:form>
 	                    <g:hiddenField name="id" value="${customerInstance?.id}" />
 	                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
+	                    
 	                    <g:ifAllGranted role="ROLE_ADMIN">
 	                    	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'customer.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
 	                    </g:ifAllGranted>
-	                     <g:if test="${customerInstance.email}">
+	                    
+	                    <g:if test="${customerInstance.email}">
 	                    	<span class="button"><a href="mailto:${customerInstance.email}" target="_blank">Send e-post til kunde</a></span>
 			            </g:if>
 	            	</g:form>
@@ -97,10 +99,10 @@
 		                       
 		                           	<g:sortableColumn property="inDate" title="${message(code: 'tireHotelOccurrence.list.inDate.label')}" />
 		                           
-		                        		<g:sortableColumn property="outDate" title="${message(code: 'tireHotelOccurrence.list.outDate.label')}" />
+		                        	<g:sortableColumn property="outDate" title="${message(code: 'tireHotelOccurrence.list.outDate.label')}" />
 		                        		
-		                        		<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delivered.label')}</a></th>
-                            
+		                        	<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delivered.label')}</a></th>
+                            		
                             		<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.change.label')}</a></th>
                             		
                             	<g:ifAllGranted role="ROLE_ADMIN">
@@ -139,16 +141,16 @@
                             					<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.button')}" />
                             				</g:form>
                             			</td>
-     			                      <g:ifAllGranted role="ROLE_ADMIN">
-	                            		<td>
-	                            			<g:form controller="tireHotelOccurrence" method="post">
-	                            				<g:hiddenField name="customerId" value="${customerInstance?.id}" />
-                            					<g:hiddenField name="requestFromShowCustomerView" value="true" />
-	                            				<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-	                            				<g:actionSubmit class="deleteTableItem" title="${message(code: 'tireHotelOccurrence.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tireHotelOccurrence.button.delete.confirm.message')}');" />
-	                            			</g:form>
-	                            		</td>
-	                        </g:ifAllGranted>
+     			                      	<g:ifAllGranted role="ROLE_ADMIN">
+		                            		<td>
+		                            			<g:form controller="tireHotelOccurrence" method="post">
+		                            				<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+	                            					<g:hiddenField name="requestFromShowCustomerView" value="true" />
+		                            				<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+		                            				<g:actionSubmit class="deleteTableItem" title="${message(code: 'tireHotelOccurrence.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tireHotelOccurrence.button.delete.confirm.message')}');" />
+		                            			</g:form>
+		                            		</td>
+                        				</g:ifAllGranted>
 			                    	</tr>
 			                	</g:each>
 		                	</tbody>
@@ -164,7 +166,6 @@
 		                   	<thead>
 		                       	<tr>
 		                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.header.id.label')}" />
-		                        
 		                            <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.header.orderDate.label')}" />
 		                    	</tr>
 		                   	</thead>
@@ -172,13 +173,12 @@
 			                    <g:each in="${customerOrderInstanceList}" status="i" var="customerOrderInstance">
 		                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 		                            <td><g:link controller="customerOrder" action="show" id="${customerOrderInstance.id}">${fieldValue(bean: customerOrderInstance, field: "id")}</g:link></td>
-		                        
 		                            <td><g:link controller="customerOrder" action="show" id="${customerOrderInstance.id}"><g:formatDate format="dd.MM.yyyy hh:mm" date="${customerOrderInstance.orderDate}" /></g:link></td>
 		                        </tr>
 		                    </g:each>
 		                	</tbody>
 		               	</table>
-										<div class="paginateButtons" id="showCustomer">
+						<div class="paginateButtons" id="showCustomer">
 			          		<g:paginate next="${message(code: 'default.paginate.next')}" prev="${message(code: 'default.paginate.prev')}" controller="customer" action="show" id="${customerInstance.id}" total="${customerOrderInstanceList.size()}"></g:paginate>
 			        	</div>
 					</div>

@@ -184,21 +184,29 @@ c
     padding-left: 25px;
     background-position: 2px;
 }
-
-.menuButton a.back {
+.backButton a.back {
     background: url(../images/skin/back.png) center left no-repeat;
-    color: #000;
+    color: #555;
     padding-left: 25px;
+    margin-left: 200px;
+    margin-top: 15px;
+    border: none;
+    position:  absolute;
+    font-size: 10px;
 }
 
 .menuButton a:hover{
 	color: #000;	
 }
-span.menuButton#createTireOccurrenceButton {
-    color: #555;
-    padding-left: 7px;
-    display:block;
-    
+
+#createTireOccurrenceButton {
+	padding-top: 51px;
+}
+
+#createTireOccurrenceButton a{
+    color: #333;
+    padding-left: 30px;
+    border: none;
 }
 
 span#active a {
@@ -426,7 +434,9 @@ input.delivered {
 }
 
 #tireEditButtons {
-	float: left;	
+	padding-top: 10px;
+	float: left;
+	width: 235px;
 }
 
 .searchButtons {
