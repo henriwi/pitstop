@@ -27,7 +27,7 @@ class CustomerController {
 		}
 		
 		if(customerCount == 0 ) {
-			flash.message = "Fant ingen kunder."
+			flash.message = "${message(code: 'customer.search.notFound.message', args: [message(code: 'customer.label'), params.q])}"
 		}
 		
 		[customerInstanceList: customerList, customerInstanceTotal: customerCount]
