@@ -101,72 +101,78 @@
 		            <g:set var="numberOfOrdered" value="${numberOfOrdered + tireOccurrenceInstance.numberOfOrdered}"></g:set>
 		            <g:set var="numberOfAvailable" value="${numberOfAvailable + (tireOccurrenceInstance.numberInStock-tireOccurrenceInstance.numberOfReserved)}"></g:set>
 				</g:each>
-				
-	            <div id="totalTireOccurrence">
-	            	<table>
-	                	<tr>
-		                	<th>${message(code: 'tireOccurrence.table.numberInStock.label')}</th>
-		                    <th>${message(code: 'tireOccurrence.table.numberOfReserved.label')}</th>
-		                    <th>${message(code: 'tireOccurrence.table.numberOfOrdered.label')}</th>
-		                    <th>${message(code: 'tireOccurrence.table.numberOfAvailable.label')}</th>
-	                    </tr>
-		                <tr>
-		                	<td><%=numberInStock %></td>
-		                	<td><%=numberOfReserved %></td>
-		                    <td><%=numberOfOrdered %></td>
-		                    <td><%=numberOfAvailable %></td>
-	                    </tr>
+				<g:if test="${tireOccurrenceInstanceTotalList}">
+		            <div id="totalTireOccurrence">
+		            	<table>
+		                	<tr>
+			                	<th>${message(code: 'tireOccurrence.table.numberInStock.label')}</th>
+			                    <th>${message(code: 'tireOccurrence.table.numberOfReserved.label')}</th>
+			                    <th>${message(code: 'tireOccurrence.table.numberOfOrdered.label')}</th>
+			                    <th>${message(code: 'tireOccurrence.table.numberOfAvailable.label')}</th>
+		                    </tr>
+			                <tr>
+			                	<td><%=numberInStock %></td>
+			                	<td><%=numberOfReserved %></td>
+			                    <td><%=numberOfOrdered %></td>
+			                    <td><%=numberOfAvailable %></td>
+		                    </tr>
+						</table>
+					</div>
+		            <table id="tireOccurrences">
+		            	<thead>
+		                	<tr>
+	                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.table.price.label')}" />
+	                            
+	                            <g:sortableColumn property="discount" title="${message(code: 'tireOccurrence.table.discount.label')}" />
+	                            
+	                            <g:sortableColumn property="environmentalFee" title="${message(code: 'tireOccurrence.table.environmentalFee.label')}" />
+	                            
+	                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.table.sum.label')}" />
+	                        
+	                            <g:sortableColumn property="numberInStock" title="${message(code: 'tireOccurrence.table.numberInStock.label')}" />
+	                        
+	                            <g:sortableColumn property="numberOfReserved" title="${message(code: 'tireOccurrence.table.numberOfReserved.label')}" />
+	                        
+	                            <g:sortableColumn property="numberOfOrdered" title="${message(code: 'tireOccurrence.table.numberOfOrdered.label')}" />
+	                        
+	                            <g:sortableColumn property="numberOfAvailable" title="${message(code: 'tireOccurrence.table.numberOfAvailable.label')}" />
+	                        
+	                        	<g:sortableColumn property="registrationDate" title="${message(code: 'tireOccurrence.table.registrationDate.label')}" />
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                    <g:each in="${tireOccurrenceInstanceList}" status="i" var="tireOccurrenceInstance">
+	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}"><g:formatNumber number="${tireOccurrenceInstance.price}" format="#.00 kr" /></g:link></td>
+	                            
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}"><g:formatNumber number="${tireOccurrenceInstance.discount}" format="#" /> %</g:link></td>
+	                            
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}"><g:formatNumber number="${tireOccurrenceInstance.environmentalFee}" format="# kr" /></g:link></td>
+	
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}"><g:formatNumber number="${tireOccurrenceInstance.sum()}" format="#.00 kr" /></g:link></td>
+	                        
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberInStock")}</g:link></td>
+	                        
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfReserved")}</g:link></td>
+	                        
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfOrdered")}</g:link></td>
+	                        
+	                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${tireOccurrenceInstance.numberOfAvailable()}</g:link></td>
+	                            
+	                        	<td><g:formatDate format="dd.MM.yyyy" date="${tireOccurrenceInstance?.registrationDate}" /></td>
+	                        </tr>
+	                    </g:each>
+	                    </tbody>
 					</table>
-				</div>
-	            <table id="tireOccurrences">
-	            	<thead>
-	                	<tr>
-                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.table.price.label')}" />
-                            
-                            <g:sortableColumn property="discount" title="${message(code: 'tireOccurrence.table.discount.label')}" />
-                            
-                            <g:sortableColumn property="environmentalFee" title="${message(code: 'tireOccurrence.table.environmentalFee.label')}" />
-                            
-                            <g:sortableColumn property="price" title="${message(code: 'tireOccurrence.table.sum.label')}" />
-                        
-                            <g:sortableColumn property="numberInStock" title="${message(code: 'tireOccurrence.table.numberInStock.label')}" />
-                        
-                            <g:sortableColumn property="numberOfReserved" title="${message(code: 'tireOccurrence.table.numberOfReserved.label')}" />
-                        
-                            <g:sortableColumn property="numberOfOrdered" title="${message(code: 'tireOccurrence.table.numberOfOrdered.label')}" />
-                        
-                            <g:sortableColumn property="numberOfAvailable" title="${message(code: 'tireOccurrence.table.numberOfAvailable.label')}" />
-                        
-                        	<g:sortableColumn property="registrationDate" title="${message(code: 'tireOccurrence.table.registrationDate.label')}" />
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <g:each in="${tireOccurrenceInstanceList}" status="i" var="tireOccurrenceInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}"><g:formatNumber number="${tireOccurrenceInstance.price}" format="#.00 kr" /></g:link></td>
-                            
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}"><g:formatNumber number="${tireOccurrenceInstance.discount}" format="#" /> %</g:link></td>
-                            
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}"><g:formatNumber number="${tireOccurrenceInstance.environmentalFee}" format="# kr" /></g:link></td>
-
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}"><g:formatNumber number="${tireOccurrenceInstance.sum()}" format="#.00 kr" /></g:link></td>
-                        
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberInStock")}</g:link></td>
-                        
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfReserved")}</g:link></td>
-                        
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${fieldValue(bean: tireOccurrenceInstance, field: "numberOfOrdered")}</g:link></td>
-                        
-                            <td><g:link controller="tireOccurrence" action="show" id="${tireOccurrenceInstance.id}">${tireOccurrenceInstance.numberOfAvailable()}</g:link></td>
-                            
-                        	<td><g:formatDate format="dd.MM.yyyy" date="${tireOccurrenceInstance?.registrationDate}" /></td>
-                        </tr>
-                    </g:each>
-                    </tbody>
-				</table>
-	            <div class="paginateButtons" id="showTire">
-	          		<g:paginate next="${message(code: 'default.paginate.next')}" prev="${message(code: 'default.paginate.prev')}" controller="tire" action="show" id="${tireInstance.id}" total="${tireOccurrenceInstanceTotalList.size()}"></g:paginate>
-	        	</div>
+		            <div class="paginateButtons" id="showTire">
+		          		<g:paginate next="${message(code: 'default.paginate.next')}" prev="${message(code: 'default.paginate.prev')}" controller="tire" action="show" id="${tireInstance.id}" total="${tireOccurrenceInstanceTotalList.size()}"></g:paginate>
+		        	</div>
+		        </g:if>
+		        <g:else>
+		        	<span class="noListElements">
+		        		Det er ingen registrerte dekk p&aring; lager
+		        	</span>
+		        </g:else>
             </div>
         </div>
     </body>
