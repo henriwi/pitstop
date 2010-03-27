@@ -19,6 +19,7 @@ class CustomerController {
 		if(params.q){
 			customerList = Customer.search("*" + params.q + "*", escape: true).results
 			customerCount = customerList.size()
+			flash.message = "Resultat av søk: " + params.q
 		}
 		else {
 			params.max = Math.min(params.max ? params.int('max') : 10, 100)
