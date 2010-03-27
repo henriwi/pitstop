@@ -64,6 +64,8 @@
                             
                             <g:sortableColumn property="customer" title="${message(code: 'tireHotelOccurrence.list.customer.label')}" />
                             
+                            <g:sortableColumn property="notice" title="${message(code: 'tireHotelOccurrence.list.notice.label')}" />
+                            
                             <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.edit.label')}</a></th>
                             
                             <g:ifAllGranted role="ROLE_ADMIN">
@@ -93,6 +95,8 @@
                             <td><g:link action="show" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.outDate}" /></g:link></td>
                             
                             <td><g:link controller="customer" action="show" id="${tireHotelOccurrenceInstance?.customer?.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "customer")}</g:link></td>
+                            
+                            <td><g:link action="show" id="${tireHotelOccurrenceInstance.id}">${tireHotelOccurrenceInstance?.showNoticeWith20FirstLetters()}</g:link></td>
                             
                             <td><g:link class="editTableItem" action="edit" title="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" id="${tireHotelOccurrenceInstance.id}">&nbsp;</g:link></td>
                             

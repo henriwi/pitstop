@@ -21,4 +21,13 @@ class TireHotelOccurrence {
 		outDate(blank:true, nullable: true)
 		notice(size:0..1000)
     }
+	
+	String showNoticeWith20FirstLetters() {
+		if (notice.length() > 20) {
+			String firstLetters = notice.substring(0, 20)
+			firstLetters + " ..."
+		}
+		else
+			notice
+	}
 }
