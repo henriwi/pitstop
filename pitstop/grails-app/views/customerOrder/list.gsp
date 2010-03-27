@@ -41,11 +41,11 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.list.table.orderNumber.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.orderDate.label', default: 'Order Date')}" />
+                            <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.list.table.orderDate.label', default: 'Order Date')}" />
                         
-                            <th><g:message code="customerOrder.customer.label" default="Customer" /></th>
+                            <th><g:message code="customerOrder.list.table.customer.label" default="Customer" /></th>
                    	    
                         </tr>
                     </thead>
