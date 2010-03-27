@@ -27,7 +27,7 @@ class CustomerOrderController {
     }
 
     def create = {
-		session["order"] = new CustomerOrder()
+		session["order"] = new CustomerOrder(orderDate: new Date())
 		session["orderLineList"] = []
 		session["tireList"] = Tire.list()
 		session["customer"] = new Customer()
@@ -122,7 +122,7 @@ class CustomerOrderController {
     }
 
     private setCustomer() {
-    	session["customer"] = Customer.get(params.customerId)
+    	session["order"]?.customer = Customer.get(params.customerId)
     }
     
     def addToOrder = {
@@ -159,7 +159,6 @@ class CustomerOrderController {
 	}
 		
 	private addToOrderLine(int numberOfTireOccurrences, params, order, orderLineList) {
-		println params
 		for (int i = 0; i < numberOfTireOccurrences; i++) {
 			if (params.numberOfOrdered[i]?.toInteger() > 0/* && params.price[i] != ""*/) {
 				def customerOrderLine = new CustomerOrderLine()

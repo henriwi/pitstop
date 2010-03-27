@@ -49,7 +49,7 @@
                                     <label for="customer"><g:message code="customerOrder.customer.label" default="Customer" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerOrderInstance, field: 'customer', 'errors')}">
-                                    <g:select name="customerId" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${customerOrderInstance?.customer?.id}" />
+                                    <g:select name="customerId" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${params.customerId}" />
                                 </td>
                             </tr>
                         	
@@ -114,6 +114,7 @@
 		                        </tr>
 		                    </g:each>
         					<g:hiddenField name="numberOfTireOccurrences" value="${numberOfTireOccurrences}" />
+        					<g:hiddenField name="customerId" value="${params.customerId}" />
 											
 						</tbody>
 					</table>
@@ -146,7 +147,7 @@
 									<td>
                             			<g:form action="deleteFromOrder" method="get">
                             				<g:hiddenField name="removeTireOccurrenceId" value="${orderLineInstance?.tireOccurrence?.tire?.id}" />
-                            				<g:submitButton class="deleteTableItem" name="deleteFromOrder" title="${message(code: 'customerOrder.list.delete.tooltip.label')}" value="${message(code: 'customerOrder.button.delete.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
+                            				<g:submitButton class="deleteTableItem" name="deleteFromOrder" value="${message(code: 'customerOrder.button.delete.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
                             			</g:form>
                            			</td>  
 								</tr>
