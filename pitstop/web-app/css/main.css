@@ -476,8 +476,12 @@ input.delivered {
     height: 20px;
 }
 a.logoutButton{
+	background: url(../images/skin/logout.png) center left no-repeat;
 	float: right;
 	margin-right: 10px;	
+	color: #555;
+    padding-left: 25px;
+	background-position: 2px;
 }
 
 /* Tabs */

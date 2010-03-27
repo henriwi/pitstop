@@ -9,7 +9,7 @@
     <body>
 		<div id="container">
         	<div id="pstopLogo" class="logo">
-        		<a href="${createLink(uri: '/')}"><img src="${resource(dir:'images',file:'pitstopLogo.png')}" alt="pitstopLogo" border="0" /></a>
+        		<a href="${createLink(uri: '/')}"><img src="${resource(dir:'images', file:'pitstopLogo.png')}" alt="pitstopLogo" border="0" /></a>
         	</div>
         	<div id="mainMenu">
         		<g:isLoggedIn>
