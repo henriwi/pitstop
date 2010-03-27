@@ -170,7 +170,7 @@
 		        </g:if>
 		        <g:else>
 		        	<span class="noListElements">
-		        		Det er ingen registrerte dekk p&aring; lager
+		        		<g:message code="tire.show.foundNoTireOccurrencesOfThisTireTire.message"/>
 		        	</span>
 		        </g:else>
             </div>
