@@ -38,13 +38,14 @@ class TireHotelOccurrenceController {
 	}
 	
 	def create = {
+		println params
 		def tireHotelOccurrenceInstance = new TireHotelOccurrence()
 		tireHotelOccurrenceInstance.properties = params
 		return [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance]
 	}
 	
 	def save = {
-		def customer = Customer.get(params.customerId)
+		def customer = Customer.get(params.customer_id)
 		def tireHotelOccurrenceInstance = new TireHotelOccurrence(tireLocation: params.tireLocation, registrationNumber: params.registrationNumber, 
 				carType: params.carType, customer: customer, tireType: params.tireType, inDate: params.inDate, outDate: null, notice: params.notice)
 		if(!tireHotelOccurrenceInstance.validate()){

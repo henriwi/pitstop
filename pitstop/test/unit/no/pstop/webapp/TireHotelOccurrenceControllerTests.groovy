@@ -46,7 +46,7 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 	void testSaveWithValidTireHotelOccurrence(){
 		setParams("1a", "DE12345", "Audi", null, "Sommer", new Date(), new Date() + 100, "Notice")
 		mockDomain Customer, [customer]
-		controller.params.customerId = 1
+		controller.params.customer_id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"}
 		def mock = mockFor(TireHotelOccurrence)
 		mock.demand.merge() {tireHotelOccurrence}
