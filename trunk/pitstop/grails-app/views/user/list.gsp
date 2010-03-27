@@ -47,7 +47,10 @@
 					<g:sortableColumn property="description" title="${message(code: 'user.description.table.label')}" />
                     
                     <th><a class="notSortableColoumn">${message(code: 'user.list.edit.label')}</a></th>
+	                
 	                <g:ifAllGranted role="ROLE_ADMIN"> 
+                     <th><a class="notSortableColoumn">${message(code: 'user.list.disable.label')}</a></th>
+	               
 	                	<th><a class="notSortableColoumn">${message(code: 'user.list.delete.label')}</a></th>
 					</g:ifAllGranted>
 				</tr>
@@ -68,6 +71,13 @@
 					
 					<td><g:link class="editTableItem" action="edit" title="${message(code: 'user.list.edit.tooltip.label')}"  id="${person?.id}">&nbsp;</g:link></td>
                     <g:ifAllGranted role="ROLE_ADMIN"> 
+                    <td>
+                    	<g:form method="post">
+                        	<g:hiddenField name="id" value="${person?.id}" />
+                           	<g:actionSubmit class="deleteTableItem" title="${message(code: 'user.list.delete.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.delete.label')}" />
+                        </g:form>
+                   	</td> 
+                    
                     <td>
                     	<g:form method="post">
                         	<g:hiddenField name="id" value="${person?.id}" />

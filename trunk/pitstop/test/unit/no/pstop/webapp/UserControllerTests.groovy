@@ -158,4 +158,19 @@ class UserControllerTests extends ControllerUnitTestCase {
 		assertNotNull "User should not be null", controller.modelAndView.model.linkedHashMap.person
 		assertNotNull "Authority list should not be null", controller.modelAndView.model.linkedHashMap.authorityList
 	}
+	
+	void testEnableAndDisableWithEnabledTrue() {
+		mockDomain User, [user1]
+		controller.params.id = 1
+		controller.disableAndEnable()
+		assertFalse user1.enabled
+	}
+	
+	void testEnableAndDisableWithEnabledFalse() {
+		user1.enabled = false
+		mockDomain User, [user1]
+		controller.params.id = 1
+		controller.disableAndEnable()
+		assertTrue user1.enabled
+	}
 }

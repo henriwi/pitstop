@@ -133,4 +133,10 @@ class UserController {
 
 		return [person: person, roleMap: roleMap]
 	}
+	
+	def disableAndEnable = {
+		def person = User.get(params.id)
+		person.enabled = person.enabled ? false : true 
+		redirect(action: "list")
+	}
 }
