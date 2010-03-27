@@ -32,4 +32,13 @@ class Customer {
 	String toString(){
 		"${firstName} ${lastName}" 
 	}
+	
+	String showNoticeWith20FirstLetters() {
+		if (notice.length() > 20) {
+			String firstLetters = notice.substring(0, 20)
+			firstLetters + " ..."
+		}
+		else
+			notice
+	}
 }

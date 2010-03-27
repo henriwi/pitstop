@@ -93,7 +93,7 @@
                             
                             <g:sortableColumn params="${params}" property="tireType" title="${message(code: 'tire.tireType.table.label')}" />
                             
-                            <g:sortableColumn params="${params}" property="notice" title="Merknad" />
+                            <g:sortableColumn params="${params}" property="notice" title="${message(code: 'tire.notice.table.label')}" />
                             
                             <g:sortableColumn params="${params}" property="numberOfAvailable" title="${message(code: 'tireOccurrence.numberOfAvailable.table.label')}" />
                            <%--  <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th> --%>

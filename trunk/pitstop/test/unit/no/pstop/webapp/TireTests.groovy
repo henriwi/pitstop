@@ -147,7 +147,7 @@ class TireTests extends GrailsUnitTestCase {
 	
 	void testShowNoticeWith20FirstLettersWhenNoticeIsOver20Letters() {
 		tire.notice = "Notice notice notice notice notice"
-		assertEquals "Notice notice notice...", tire.showNoticeWith20FirstLetters()
+		assertEquals "Notice notice notice ...", tire.showNoticeWith20FirstLetters()
 	}
 	
 	void testShowNoticeWith20FirstLettersWhenNoticeIsEmpty() {
