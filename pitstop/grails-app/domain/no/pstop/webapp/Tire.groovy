@@ -81,7 +81,7 @@ class Tire {
 	String showNoticeWith20FirstLetters() {
 		if (notice.length() > 20) {
 			String firstLetters = notice.substring(0, 20)
-			firstLetters + "..."
+			firstLetters + " ..."
 		}
 		else
 			notice

@@ -122,4 +122,19 @@ class CustomerTests extends GrailsUnitTestCase {
 	void testToString(){
 		assertEquals "Dekk Roar Dekkesen", customer.toString()
 	}
+	
+	void testShowNoticeWith20FirstLettersWhenNoticeIsUnder20Letters() {
+		customer.notice = "Notice"
+		assertEquals "Notice", customer.showNoticeWith20FirstLetters()
+	}
+	
+	void testShowNoticeWith20FirstLettersWhenNoticeIsOver20Letters() {
+		customer.notice = "Notice notice notice notice notice"
+		assertEquals "Notice notice notice ...", customer.showNoticeWith20FirstLetters()
+	}
+	
+	void testShowNoticeWith20FirstLettersWhenNoticeIsEmpty() {
+		customer.notice = ""
+		assertEquals "", customer.showNoticeWith20FirstLetters()
+	}
 }

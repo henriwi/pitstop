@@ -61,6 +61,8 @@
                         	<g:sortableColumn property="email" title="${message(code: 'customer.email.table.label')}" />
                         	
                         	<g:sortableColumn property="company" title="${message(code: 'customer.company.table.label')}" />
+                        	
+                        	<g:sortableColumn property="notice" title="${message(code: 'customer.notice.table.label')}" />
                      	  
                      	  <%--ENDRE IKONER HER--%>
                        	    <th><a class="notSortableColoumn">${message(code: 'cusomter.list.tireHotel.label')}</a></th>
@@ -94,6 +96,8 @@
                             <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "email")}</g:link></td>
                             
                             <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "company")}</g:link></td>
+                            
+                            <td><g:link action="show" id="${customerInstance.id}">${customerInstance?.showNoticeWith20FirstLetters()}</g:link></td>
                             
                             <td><g:link class="addTireHotelOccurrence" controller="tireHotelOccurrence" action="create" title="${message(code: 'customer.list.tireHotel.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
                   		    
