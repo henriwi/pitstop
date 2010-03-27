@@ -115,8 +115,12 @@ ul#menuList li {
 	border: 1px solid;
 	border-color: #888;
 	border-bottom: none;
+	webkit-border-radius: 4px 4px 0px 0px;
+    -moz-border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
 	padding-left: 19px;
 	padding-right: 19px;
+
 }
 
 /* NAVIGATION MENU */
@@ -192,6 +196,9 @@ span.menuButton#createTireOccurrenceButton {
 span#active a {
 	border: 1px solid #888;
 	border-bottom: none;
+	webkit-border-radius: 4px 4px 0px 0px;
+    -moz-border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
 	padding-bottom: 8px;
 	padding-top: 8px;
 	padding-left: 25px;
