@@ -49,7 +49,6 @@ class TireHotelOccurrenceController {
 	}
 	
 	def save = {
-		println params
 		params.inDate = "$params.inDate_month/$params.inDate_day/$params.inDate_year"
 		def customer = Customer.get(params.customer_id)
 		def tireHotelOccurrenceInstance = new TireHotelOccurrence(tireLocation: params.tireLocation, registrationNumber: params.registrationNumber, 
@@ -139,7 +138,6 @@ class TireHotelOccurrenceController {
 	}
 	
 	def change = {
-		println params 
 		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
 		if (!tireHotelOccurrenceInstance) {
 			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
@@ -155,15 +153,12 @@ class TireHotelOccurrenceController {
 		def newTireHotelOccurrenceInstance = new TireHotelOccurrence(params)
 		newTireHotelOccurrenceInstance.inDate = new Date()
 		def customerInstance = Customer.get(params.customer.id)
-		//newTireHotelOccurrenceInstance = newTireHotelOccurrenceInstance.merge(validate: false)
 		
 		if(newTireHotelOccurrenceInstance.merge(flush: true)){
 			if(tireHotelOccurrenceInstance){
 				tireHotelOccurrenceInstance.outDate = new Date()
 				if(!tireHotelOccurrenceInstance.hasErrors() && tireHotelOccurrenceInstance.save(flush: true)){
 					if(params.requestFromShowCustomerView){
-						println tireHotelOccurrenceInstance.tireType
-						println newTireHotelOccurrenceInstance.tireType
 						flash.message = "${message(code: 'tireHotelOccurrence.changeSeason.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.id, customerInstance.firstName, customerInstance.lastName, tireHotelOccurrenceInstance.tireType, newTireHotelOccurrenceInstance.tireType])}"
 						redirect(controller: "customer", action: "show", id: customerInstance.id)
 						

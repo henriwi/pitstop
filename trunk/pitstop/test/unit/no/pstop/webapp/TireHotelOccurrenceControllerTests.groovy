@@ -44,12 +44,12 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertNotNull model.tireHotelOccurrenceInstance
 	}
 	
-	/*void testSaveWithValidTireHotelOccurrence(){
-		def df = new SimpleDateFormat("MM/dd/yyyy")
-		Date inDate = new Date()
-		inDate = df.parse ("02.03.2010")
-		setParams("1a", "DE12345", "Audi", null, "Sommer", df.parse("02/03/2010"), new Date() + 100, "Notice")
-		println params.inDate
+	void testSaveWithValidTireHotelOccurrence(){
+		setParams("1a", "DE12345", "Audi", null, "Sommer", new Date(), new Date() + 100, "Notice")
+		controller.params.inDate_day = "02"
+		controller.params.inDate_month = "03"
+		controller.params.inDate_year = "2010"
+		
 		mockDomain Customer, [customer]
 		controller.params.customer_id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"}
@@ -59,7 +59,7 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		
 		assertEquals "redirect action", "show", controller.redirectArgs.action
 		assertEquals "Redirect id", 1, controller.redirectArgs.id
-	}*/
+	}
 	
 	void testSaveWithInvalidTireHotelOccurrence(){
 		setParams("a1", "DE12345", "?", null, "Sommer", new Date(), new Date() + 100, "Notice")
