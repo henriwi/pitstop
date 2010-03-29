@@ -146,7 +146,7 @@
 									
 									<td>
                             			<g:form action="deleteFromOrder" method="post">
-                            				<g:hiddenField name="removeTireOccurrenceId" value="${orderLineInstance?.tireOccurrence?.tire?.id}" />
+                            				<g:hiddenField name="removeTireOccurrenceId" value="${orderLineInstance?.tireOccurrence?.id}" />
                             				<g:submitButton class="deleteTableItem" name="deleteFromOrder" value="${message(code: 'customerOrder.button.delete.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
                             			</g:form>
                            			</td>  
