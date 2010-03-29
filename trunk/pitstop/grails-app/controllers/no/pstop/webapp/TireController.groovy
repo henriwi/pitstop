@@ -45,7 +45,7 @@ class TireController {
 			params.max = Math.min(params.max ? params.int('max') : maxNumberOfTires, 100)
 			
 			tireList = Tire.executeQuery("select distinct tire, tire.numberOfAvailable = (to.numberInStock - to.numberOfReserved) " +
-					"from Tire tire left outer join tire.tireOccurrences to order by (to.numberInStock - to.numberOfReserved)  " + params.order)
+					"from Tire tire left outer join tire.tireOccurrences to order by (to.numberInStock - to.numberOfReserved) " + params.order)
 					
 			tireCount = Tire.count()
 		}
