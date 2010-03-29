@@ -31,7 +31,7 @@ class UserController {
 		}
 		List roleNames = []
 		for (role in person.authorities) {
-			roleNames << role.authority
+			roleNames << role
 		}
 		roleNames.sort { n1, n2 ->
 			n1 <=> n2

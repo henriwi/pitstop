@@ -104,7 +104,7 @@
 
 					<g:each in="${authorityList}">
 					<tr>
-						<td valign="top" class="name" align="left">${it.authority.encodeAsHTML()}</td>
+						<td valign="top" class="name" align="left">${it.description.encodeAsHTML()}</td>
 						<td align="left"><g:checkBox name="${it.authority}"/></td>
 					</tr>
 					</g:each>
