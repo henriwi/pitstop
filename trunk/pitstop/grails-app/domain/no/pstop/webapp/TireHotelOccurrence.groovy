@@ -1,6 +1,8 @@
 package no.pstop.webapp
 
 class TireHotelOccurrence {
+	static final lengthOfNoticeInListView = 10
+	
 	static searchable = true
 	static belongsTo = [customer : Customer]
 	String tireLocation
@@ -22,9 +24,9 @@ class TireHotelOccurrence {
 		notice(size:0..1000)
     }
 	
-	String showNoticeWith20FirstLetters() {
-		if (notice?.length() > 20) {
-			String firstLetters = notice.substring(0, 20)
+	String showNoticeWith10FirstLetters() {
+		if (notice?.length() > lengthOfNoticeInListView) {
+			String firstLetters = notice?.substring(0, lengthOfNoticeInListView)
 			firstLetters + " ..."
 		}
 		else

@@ -1,6 +1,8 @@
 package no.pstop.webapp
 
 class Customer {
+	static final lengthOfNoticeInListView = 10
+	
 	static searchable = true
 	static hasMany = [tireHotelOccurrences: TireHotelOccurrence, customerOrders: CustomerOrder]
 	String firstName
@@ -33,9 +35,9 @@ class Customer {
 		"${firstName} ${lastName}" 
 	}
 	
-	String showNoticeWith20FirstLetters() {
-		if (notice?.length() > 20) {
-			String firstLetters = notice.substring(0, 20)
+	String showNoticeWith10FirstLetters() {
+		if (notice?.length() > lengthOfNoticeInListView) {
+			String firstLetters = notice?.substring(0, lengthOfNoticeInListView)
 			firstLetters + " ..."
 		}
 		else

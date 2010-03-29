@@ -131,7 +131,7 @@
                         
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireType")}</g:link></td>
                             
-                            <td><g:link action="show" id="${tireInstance.id}">${tireInstance?.showNoticeWith20FirstLetters()}</g:link></td>
+                            <td><g:link action="show" id="${tireInstance.id}">${tireInstance?.showNoticeWith10FirstLetters()}</g:link></td>
                             
                             <g:set var="numberOfAvailable" value="${0}"></g:set>
                             <g:each in="${tireInstance.tireOccurrences}" status="j" var="tireOccurrence">

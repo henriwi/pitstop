@@ -97,7 +97,7 @@
                             
                             <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "company")}</g:link></td>
                             
-                            <td><g:link action="show" id="${customerInstance.id}">${customerInstance?.showNoticeWith20FirstLetters()}</g:link></td>
+                            <td><g:link action="show" id="${customerInstance.id}">${customerInstance?.showNoticeWith10FirstLetters()}</g:link></td>
                             
                             <td><g:link class="addTireHotelOccurrence" controller="tireHotelOccurrence" action="create" title="${message(code: 'customer.list.tireHotel.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
                   		    
