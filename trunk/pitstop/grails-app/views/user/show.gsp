@@ -1,6 +1,6 @@
 <head>
 	<meta name="layout" content="main" />
-	<title>Show User</title>
+	<title><g:message code="user.show.header.label" /></title>
 </head>
 
 <body>
@@ -14,49 +14,49 @@
 		<span class="backButton"><g:link class="back" controller="user"><g:message code="user.show.button.back.label" /></g:link></span>
 		<h1><g:message code="user.show.header.label" args="[entityName]" /></h1>
 		<g:if test="${flash.message}">
-		<div class="message">${flash.message}</div>
+			<div class="message">${flash.message}</div>
 		</g:if>
 		<div class="dialog">
 			<table>
-			<tbody>
-
-                <tr class="prop">
-                    <td valign="top" class="name"><g:message code="user.username.label" /></td>
-                    <td valign="top" class="value">${fieldValue(bean: person, field: "username")}</td>
-                </tr>
-
-                <tr class="prop">
-                    <td valign="top" class="name"><g:message code="user.userRealName.label" /></td>
-                    <td valign="top" class="value">${fieldValue(bean: person, field: "userRealName")}</td>
-                </tr>
-
-                <tr class="prop">
-                    <td valign="top" class="name"><g:message code="user.enabled.label" /></td>
-                    <td valign="top" class="value">${person?.enabledLabel()}</td>
-                </tr>
-
-                <tr class="prop">
-                    <td valign="top" class="name"><g:message code="user.description.label" /></td>
-                    <td valign="top" class="value">${fieldValue(bean: person, field: "description")}</td>
-                </tr>
-
-                <tr class="prop">
-                    <td valign="top" class="name"><g:message code="user.email.label" /></td>
-                    <td valign="top" class="value">${fieldValue(bean: person, field: "email")}</td>
-                </tr>
-
-				<tr class="prop">
-					<td valign="top" class="name"><g:message code="user.roles.label" /></td>
-					<td valign="top" class="value">
-						<ul>
-						<g:each in="${roleNames}" var='name'>
-							<li>${name}</li>
-						</g:each>
-						</ul>
-					</td>
-				</tr>
-
-			</tbody>
+				<tbody>
+	
+	                <tr class="prop">
+	                    <td valign="top" class="name"><g:message code="user.username.label" /></td>
+	                    <td valign="top" class="value">${fieldValue(bean: person, field: "username")}</td>
+	                </tr>
+	
+	                <tr class="prop">
+	                    <td valign="top" class="name"><g:message code="user.userRealName.label" /></td>
+	                    <td valign="top" class="value">${fieldValue(bean: person, field: "userRealName")}</td>
+	                </tr>
+	
+	                <tr class="prop">
+	                    <td valign="top" class="name"><g:message code="user.enabled.label" /></td>
+	                    <td valign="top" class="value">${person?.enabledLabel()}</td>
+	                </tr>
+	
+	                <tr class="prop">
+	                    <td valign="top" class="name"><g:message code="user.description.label" /></td>
+	                    <td valign="top" class="value">${fieldValue(bean: person, field: "description")}</td>
+	                </tr>
+	
+	                <tr class="prop">
+	                    <td valign="top" class="name"><g:message code="user.email.label" /></td>
+	                    <td valign="top" class="value">${fieldValue(bean: person, field: "email")}</td>
+	                </tr>
+	
+					<tr class="prop">
+						<td valign="top" class="name"><g:message code="user.roles.label" /></td>
+						<td valign="top" class="value">
+							<ul>
+								<g:each in="${roleNames}" var='name'>
+									<li>${name}</li>
+								</g:each>
+							</ul>
+						</td>
+					</tr>
+	
+				</tbody>
 			</table>
 		</div>
 
