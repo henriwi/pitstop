@@ -68,7 +68,7 @@
                 </div>
                 
                 <g:if test="${no.pstop.webapp.Tire.get(params?.tireId)?.tireOccurrences}"></g:if>
-                <g:form action="addToOrder" method="get">
+                <g:form action="addToOrder" method="post">
                 <table>
 						<thead>
 		                	<tr>
@@ -145,7 +145,7 @@
 									<g:hiddenField name="numberOfTireOccurrencesOrdered" value="${numberOfTireOccurrencesOrdered}" />
 									
 									<td>
-                            			<g:form action="deleteFromOrder" method="get">
+                            			<g:form action="deleteFromOrder" method="post">
                             				<g:hiddenField name="removeTireOccurrenceId" value="${orderLineInstance?.tireOccurrence?.tire?.id}" />
                             				<g:submitButton class="deleteTableItem" name="deleteFromOrder" value="${message(code: 'customerOrder.button.delete.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
                             			</g:form>
@@ -157,7 +157,7 @@
 	            	</table>
                 </div>
                 
-                <g:form controller="customerOrderLine" action="save" method="post" >
+                <g:form action="save" method="post" >
                 	<div class="buttons">
                     	<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
                     	<span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>

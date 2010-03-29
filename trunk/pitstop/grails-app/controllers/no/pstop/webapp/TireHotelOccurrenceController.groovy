@@ -1,5 +1,6 @@
 package no.pstop.webapp
 
+import grails.converters.JSON
 import java.util.Iterator;
 import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 
@@ -199,5 +200,19 @@ class TireHotelOccurrenceController {
 			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
 			redirect(controller: "customer", action: "show", id: customerInstance.id)
 		}
+	}
+	
+	def registrationAutoComplete = {
+		println params
+		def customer = Customer.get(params.customer)
+		def tireHotelOccurrences = TireHotelOccurrence.findAllByRegistrationNumberLikeAndCustomer("%${params.query}%", customer)
+		
+		tireHotelOccurrences = tireHotelOccurrences.collect {
+			[id: it.id, name:it.registrationNumber]
+		}
+		def jsonRegistrationNumbers = [
+				registrationNumbers: tireHotelOccurrences
+				]
+		render jsonRegistrationNumbers as JSON
 	}
 }

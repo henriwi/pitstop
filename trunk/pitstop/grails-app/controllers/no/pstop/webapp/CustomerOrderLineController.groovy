@@ -6,7 +6,8 @@ import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class CustomerOrderLineController {
 
-    static allowedMethods = [/*save: "POST", */update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    def customerOrderService
 
     def index = {
         redirect(action: "list", params: params)
@@ -29,16 +30,14 @@ class CustomerOrderLineController {
 		customerOrderInstance.orderDate = new Date()
 		customerOrderInstance.notice = ""
 		
-		CustomerOrder.withTransaction{ tx ->
-			customerOrderInstance.save(flush:true)
-			for (def orderLine : session["orderLineList"]) {
-				def tireOccurrenceInstance = TireOccurrence.get(orderLine?.tireOccurrence?.id)
-				tireOccurrenceInstance.numberOfReserved += orderLine?.numberOfOrderedTireOccurrences
-				orderLine.save(flush: true)
-			}
+		def result = customerOrderService.saveOrder(customerOrderInstance, session)
+		if(result) {
+			redirect(action: "show", controller: "customerOrder", id: customerOrderInstance.id)
 		}
-		
-		redirect(action: "show", controller: "customerOrder", id: customerOrderInstance.id)
+		else {
+			flash.message = "Kunne ikke lagre ordren."
+			redirect(action: "create", controller: "customerOrder")
+		}
     }
 
     def show = {
