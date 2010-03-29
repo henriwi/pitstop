@@ -84,7 +84,7 @@
 									<gui:autoComplete 
 										id="registrationNumber"
 										controller="tireHotelOccurrence"
-										action="registrationAutoComplete"
+										action="registrationNumberAutoComplete"
 										resultName="registrationNumbers"
 										dependsOn="[
 											value:'customer',
