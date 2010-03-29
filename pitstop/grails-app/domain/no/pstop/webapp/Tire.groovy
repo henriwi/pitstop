@@ -29,8 +29,8 @@ class Tire {
 	
 	static constraints = {
 		partNr(matches: "[a-zA-Z0-9æøåÆØÅ\\-\\_]{0,40}", blank: false, unique: true)
-		brand(blank: false, matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\_]{0,30}")
-		tireName(matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\_]{0,30}")
+		brand(blank: false, matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\_\\']{0,30}")
+		tireName(matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\_\\']{0,30}")
 		width(min: 100, max: 350)
 		profile(min: 20, max: 85)
 		construction(inList: ["R"], blank: false)
