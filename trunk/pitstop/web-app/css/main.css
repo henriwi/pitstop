@@ -15,6 +15,11 @@ body {
     color: #333;
     font: 11px verdana, arial, helvetica, sans-serif;
 }
+#pstopLogo{
+	width: auto;
+	background-color: #dce7fb;
+}
+
 #grailsLogo {
 	padding:20px;
 }
