@@ -78,7 +78,7 @@
 	                    </g:ifAllGranted>
 	                    
 	                    <g:if test="${customerInstance.email}">
-	                    	<span class="button"><a href="mailto:${customerInstance.email}" target="_blank">Send e-post til kunde</a></span>
+	                    	<span class="button"><a href="mailto:${customerInstance.email}" target="_blank"><g:message code="customer.show.sendEmail.label" /></a></span>
 			            </g:if>
 	            	</g:form>
 	        	</div>
