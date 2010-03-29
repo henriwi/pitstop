@@ -123,4 +123,9 @@ class TireHotelOccurrenceTests extends GrailsUnitTestCase {
 		tireHotelOccurrence.notice = ""
 		assertEquals "", tireHotelOccurrence.showNoticeWith20FirstLetters()
 	}
+	
+	void testShowNoticeWith20FirstLettersWhenNoticeIsNull() {
+		tireHotelOccurrence.notice = null
+		assertEquals null, tireHotelOccurrence.showNoticeWith20FirstLetters()
+	}
 }

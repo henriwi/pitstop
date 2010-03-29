@@ -154,4 +154,9 @@ class TireTests extends GrailsUnitTestCase {
 		tire.notice = ""
 		assertEquals "", tire.showNoticeWith20FirstLetters()
 	}
+	
+	void testShowNoticeWith20FirstLettersWhenNoticeIsNull() {
+		tire.notice = null
+		assertEquals null, tire.showNoticeWith20FirstLetters()
+	}
 }
