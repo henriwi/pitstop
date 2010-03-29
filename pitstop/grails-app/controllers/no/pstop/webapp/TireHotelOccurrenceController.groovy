@@ -17,7 +17,7 @@ class TireHotelOccurrenceController {
 		def tireHotelOccurrenceCount
 
 		if(params.q){
-			tireHotelOccurrenceList = TireHotelOccurrence.search("*" + params.q + "*", outDate:null, escape: true, reload: true).results
+			tireHotelOccurrenceList = TireHotelOccurrence.search("*" + params.q + "*", outDate:null, reload: true).results
 			for (Iterator iterator = tireHotelOccurrenceList.iterator(); iterator.hasNext();) {
 				def tireHotelOccurrence = iterator.next()
 				if(tireHotelOccurrence.outDate) {
