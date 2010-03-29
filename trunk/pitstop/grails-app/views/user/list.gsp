@@ -45,6 +45,8 @@
 					<g:sortableColumn property="enabled" title="${message(code: 'user.enabled.table.label')}" />
 					
 					<g:sortableColumn property="description" title="${message(code: 'user.description.table.label')}" />
+					
+					<g:sortableColumn property="description" title="${message(code: 'user.email.table.label')}" />
                     
                     <th><a class="notSortableColoumn">${message(code: 'user.list.edit.label')}</a></th>
 	                
@@ -68,6 +70,8 @@
 					<td><g:link action="show" id="${person.id}">${person?.enabledLabel()}</g:link> </td>
 					
 					<td><g:link action="show" id="${person.id}">${fieldValue(bean: person, field: "description")}</g:link> </td>
+					
+					<td><g:link action="show" id="${person.id}">${fieldValue(bean: person, field: "email")}</g:link> </td>
 					
 					<td><g:link class="editTableItem" action="edit" title="${message(code: 'user.list.edit.tooltip.label')}"  id="${person?.id}">&nbsp;</g:link></td>
                     <g:ifAllGranted role="ROLE_ADMIN"> 

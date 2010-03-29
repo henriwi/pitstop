@@ -1,10 +1,11 @@
 package no.pstop.webapp
 
 class TireOccurrence {
-	static hasMany = [customerOrderLines:CustomerOrderLine]
-	static belongsTo = [tire:Tire]
+	static final tax = 1.25
+	
+	static hasMany = [customerOrderLines: CustomerOrderLine]
+	static belongsTo = [tire: Tire]
 	static searchable = true
-	Tire tire // = new Tire()
 	Double price
 	Integer numberInStock
 	Integer numberOfReserved = 0
@@ -12,17 +13,15 @@ class TireOccurrence {
 	Date registrationDate
 	Integer discount
 	Integer environmentalFee
-	static final tax = 1.25
 	
     static constraints = {
-		//tire(blank:false, nullable:false)
-		price(min:new Double(0.00))
-		numberInStock(min:0)
-		numberOfReserved(min:0)
-		numberOfOrdered(min:0)
-		registrationDate(blank:false, nullable:false) //, min:new Date()-1)
-		discount(min:0, max:100)
-		environmentalFee(min:0)
+		price(min: new Double(0.00))
+		numberInStock(min: 0)
+		numberOfReserved(min: 0)
+		numberOfOrdered(min: 0)
+		registrationDate(blank: false, nullable: false)
+		discount(min: 0, max: 100)
+		environmentalFee(min: 0)
 	}
 	
 	Integer numberOfAvailable() {
@@ -34,10 +33,10 @@ class TireOccurrence {
 	}
 	
 	String customerOrderLineToString(){
-		"${tire.toString()}"
+		"${tire?.toString()}"
 	}
 	
 	String toString(){
-		"${tire.toString()}"
+		"${tire?.toString()}"
 	}
 }
