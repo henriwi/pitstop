@@ -124,23 +124,30 @@
 			                       
 			                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.inDate}" /></g:link></td>
 			                           
-			                        		<td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.outDate}" /></g:link></td>
-			                        		<td>
+		                        		<td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.outDate}" /></g:link></td>
+		                        		
+		                        		<td>
+	                            			<g:if test="${!tireHotelOccurrenceInstance.outDate}">
 				                        		<g:form controller="tireHotelOccurrence" method="post">
-				                        			<g:hiddenField name="customerId" value="${customerInstance?.id}" />
-	                            				<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-																			<g:hiddenField name="delivered" value="delivered" />
-	                            				<g:actionSubmit class="delivered" title="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" action="deliverTireHotelOccurenceFromCustomerView" value="${message(code: 'tireHotelOccurrence.list.delivered.button')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
-	                            			</g:form>
+					                        		<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+		                            				<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+													<g:hiddenField name="delivered" value="delivered" />
+		                            				<g:actionSubmit class="delivered" title="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" action="deliverTireHotelOccurenceFromCustomerView" value="${message(code: 'tireHotelOccurrence.list.delivered.button')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
+		                            			</g:form>
+	                            			</g:if>
                             			</td>
+                            			
                             			<td>
-                            				<g:form controller="tireHotelOccurrence" method="post">
-                            					<g:hiddenField name="customerId" value="${customerInstance?.id}" />
-                            					<g:hiddenField name="requestFromShowCustomerView" value="true" />
-                            					<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-                            					<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.button')}" />
-                            				</g:form>
+                            				<g:if test="${!tireHotelOccurrenceInstance.outDate}">
+	                            				<g:form controller="tireHotelOccurrence" method="post">
+	                            					<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+	                            					<g:hiddenField name="requestFromShowCustomerView" value="true" />
+	                            					<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+	                            					<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.button')}" />
+	                            				</g:form>
+                            				</g:if>
                             			</td>
+                            			
      			                      	<g:ifAllGranted role="ROLE_ADMIN">
 		                            		<td>
 		                            			<g:form controller="tireHotelOccurrence" method="post">
