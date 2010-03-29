@@ -185,6 +185,7 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 		mockDomain Customer, [customer1]
 		def mock = mockFor(Customer)
 		mock.demand.static.findAllByFirstNameLikeOrLastNameLikeOrPhoneNumberLike() {String arg1, String arg2, String arg3 -> return customer1}
+		
 		controller.params.query = "Roar"
 		controller.request.contentType = "text/json"
 		
