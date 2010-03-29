@@ -71,10 +71,18 @@
 					
 					<td><g:link class="editTableItem" action="edit" title="${message(code: 'user.list.edit.tooltip.label')}"  id="${person?.id}">&nbsp;</g:link></td>
                     <g:ifAllGranted role="ROLE_ADMIN"> 
+                    
                     <td>
                     	<g:form method="post">
                         	<g:hiddenField name="id" value="${person?.id}" />
-                           	<g:actionSubmit class="deleteTableItem" title="${message(code: 'user.list.delete.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.delete.label')}" />
+         
+                           	<g:if test="${person.enabled}">
+                           		<g:actionSubmit class="deleteTableItem" title="${message(code: 'user.list.disable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
+                       		</g:if>
+                       		<g:else>
+                          		<g:actionSubmit class="disableTableItem" title="${message(code: 'user.list.disable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
+                       		</g:else>
+                       
                         </g:form>
                    	</td> 
                     
