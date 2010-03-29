@@ -19,12 +19,12 @@
 		
 		<g:if test="${params.action == 'create'}">
 			<span class="menuButton" id="active" >
-				<g:link controller = "user" class="create" action="create"><g:message code="user.create.label"/></g:link>
+				<g:link controller = "user" class="createUser" action="create"><g:message code="user.create.label"/></g:link>
 			</span>
 		</g:if>
 		<g:else>
 			<span class="menuButton">
-				<g:link controller = "user" class="create" action="create"><g:message code="user.create.label"/></g:link>
+				<g:link controller = "user" class="createUser" action="create"><g:message code="user.create.label"/></g:link>
 			</span>
 		</g:else>
 	</div>
