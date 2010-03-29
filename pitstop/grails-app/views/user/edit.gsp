@@ -7,7 +7,7 @@
 
 	<div class="nav">
 		<span class="menuButton"><g:link controller = "user" class="list" action="list"><g:message code="user.list.label"/></g:link></span>
-		<span class="menuButton"><g:link controller = "user" class="create" action="create"><g:message code="user.create.label"/></g:link></span>
+		<span class="menuButton"><g:link controller = "user" class="createUser" action="create"><g:message code="user.create.label"/></g:link></span>
 	</div>
 
 	<div class="body">

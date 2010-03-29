@@ -573,7 +573,7 @@ a.logoutButton{
     cursor: pointer;
 }
 .disableTableItem {
-    background: url(../images/skin/database_delete.png) 5px 50% no-repeat;
+    background: url(../images/skin/user_deactivate.png) 5px 50% no-repeat;
     padding: 0px;
     padding-right: 15px;
     margin: 0px;
@@ -583,7 +583,7 @@ a.logoutButton{
 }
 
 .enableTableItem {
-    background: url(../images/skin/database_add.png) 5px 50% no-repeat;
+    background: url(../images/skin/user_activate.png) 5px 50% no-repeat;
     padding: 0px;
     padding-right: 15px;
     margin: 0px;
@@ -645,3 +645,9 @@ a.btnShowAll {
     padding: 3px;
     cursor: pointer;
 }
+
+.menuButton a.createUser {
+    background: url(../images/skin/user_add.png) center left no-repeat;
+    color: #555;
+    padding-left: 25px;
+	background-position: 2px;
