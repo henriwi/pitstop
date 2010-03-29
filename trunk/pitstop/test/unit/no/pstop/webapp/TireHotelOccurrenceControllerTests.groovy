@@ -1,5 +1,6 @@
 package no.pstop.webapp
 
+import grails.converters.JSON;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
@@ -256,4 +257,20 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertNotNull "TireHotelOccurrence should not be null", controller.modelAndView.model.linkedHashMap.tireHotelOccurrenceInstance
 	}
 	*/
+	
+	void testRegistrationNumberAutoComplete() {
+		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
+		def mock = mockFor(TireHotelOccurrence)
+		mock.demand.static.findAllByRegistrationNumberLikeAndCustomer() {String arg1, Customer arg2 -> return tireHotelOccurrence}
+		
+		controller.params.query = "DE"
+		controller.params.customer = 1
+		controller.request.contentType = "text/json"
+		
+		def expectedJson = tireHotelOccurrence.registrationNumber
+		controller.registrationNumberAutoComplete()
+		def result = JSON.parse(controller.response.contentAsString)
+		
+		assertEquals expectedJson, result.registrationNumbers[0].name
+	}
 }
