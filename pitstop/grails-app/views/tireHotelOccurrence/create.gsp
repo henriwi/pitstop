@@ -8,7 +8,7 @@
 		<gui:resources components="autoComplete" />
     </head>
     <body>
-        <div class="nav">
+		<div class="nav" id="submenuTireHotelOccurence">
             <g:if test="${params.action == 'list'}">
         		<span class="menuButton" id="active" >
         			<g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
@@ -34,18 +34,17 @@
         <div class="body">
             <h1><g:message code="tireHotelOccurrence.create.label" /></h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${tireHotelOccurrenceInstance}">
-            <div class="errors">
-                <g:renderErrors bean="${tireHotelOccurrenceInstance}" as="list" />
-            </div>
+            	<div class="errors">
+	                <g:renderErrors bean="${tireHotelOccurrenceInstance}" as="list" />
+	            </div>
             </g:hasErrors>
             <g:form action="save" method="post" >
                 <div class="dialog">
                     <table>
                         <tbody>
-                        
                         	<tr class="prop">
                                 <td valign="top" class="name">
                                 	<label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
