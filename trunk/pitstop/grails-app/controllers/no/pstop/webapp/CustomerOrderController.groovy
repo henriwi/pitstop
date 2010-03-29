@@ -13,7 +13,7 @@ class CustomerOrderController {
 		def customerOrderCount
 		
 		if(params.q){
-			customerOrderList = CustomerOrder.search("*" + params.q + "*", escape: true).results
+			customerOrderList = CustomerOrder.search("*" + params.q + "*").results
 			customerOrderCount = customerOrderList.size()
 		}
 		else {
