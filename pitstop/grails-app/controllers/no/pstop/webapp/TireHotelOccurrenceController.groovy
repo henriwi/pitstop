@@ -26,7 +26,6 @@ class TireHotelOccurrenceController {
 			}
 			tireHotelOccurrenceCount = tireHotelOccurrenceList.size()
 			
-			
 			flash.message = "Resultat av søk: " + params.q
 		}
 		else {
