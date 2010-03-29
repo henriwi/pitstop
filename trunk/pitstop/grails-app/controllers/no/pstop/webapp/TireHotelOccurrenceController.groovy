@@ -15,7 +15,7 @@ class TireHotelOccurrenceController {
 	def list = {
 		def tireHotelOccurrenceList
 		def tireHotelOccurrenceCount
-
+		
 		if(params.q){
 			tireHotelOccurrenceList = TireHotelOccurrence.search("*" + params.q + "*", outDate:null, reload: true).results
 			for (Iterator iterator = tireHotelOccurrenceList.iterator(); iterator.hasNext();) {
@@ -25,13 +25,19 @@ class TireHotelOccurrenceController {
 				}
 			}
 			tireHotelOccurrenceCount = tireHotelOccurrenceList.size()
+			
+			
+			flash.message = "Resultat av søk: " + params.q
 		}
 		else {
 			params.max = Math.min(params.max ? params.int('max') : 10, 100)
 			tireHotelOccurrenceList = TireHotelOccurrence.findAllByOutDateIsNull(params)
 			tireHotelOccurrenceCount = tireHotelOccurrenceList.size()
+			if(tireHotelOccurrenceCount == 0 ){
+				flash.message = "${message(code: 'tireHotelOccurrence.no.occurrences.message')}";
+			}
 		}
-		if(tireHotelOccurrenceCount == 0){
+		if(tireHotelOccurrenceCount == 0 && params.q == null ){
 			flash.message = "${message(code: 'tireHotelOccurrence.no.occurrences.message')}";
 		}
 		[tireHotelOccurrenceInstanceList: tireHotelOccurrenceList, tireHotelOccurrenceInstanceTotal: tireHotelOccurrenceCount]
@@ -47,7 +53,7 @@ class TireHotelOccurrenceController {
 	def save = {
 		def customer = Customer.get(params.customer_id)
 		def tireHotelOccurrenceInstance = new TireHotelOccurrence(tireLocation: params.tireLocation, registrationNumber: params.registrationNumber, 
-				carType: params.carType, customer: customer, tireType: params.tireType, inDate: params.inDate, outDate: null, notice: params.notice)
+		carType: params.carType, customer: customer, tireType: params.tireType, inDate: params.inDate, outDate: null, notice: params.notice)
 		if(!tireHotelOccurrenceInstance.validate()){
 			render(view: "create", model: [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance])
 		}
@@ -82,7 +88,7 @@ class TireHotelOccurrenceController {
 	
 	def update = {
 		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
-
+		
 		params.delivered ? tireHotelOccurrenceInstance.outDate = new Date() : null
 		
 		if (tireHotelOccurrenceInstance) {
@@ -100,7 +106,7 @@ class TireHotelOccurrenceController {
 			redirect(action: "list")
 		}
 	}
-
+	
 	@Secured(['ROLE_ADMIN'])
 	def delete = {
 		println params
@@ -142,7 +148,7 @@ class TireHotelOccurrenceController {
 			redirect(action: "list")
 		}
 		else {
-				return [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance]
+			return [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance]
 		}
 	}
 	
@@ -152,7 +158,7 @@ class TireHotelOccurrenceController {
 		newTireHotelOccurrenceInstance.inDate = new Date()
 		def customerInstance = Customer.get(params.customer.id)
 		//newTireHotelOccurrenceInstance = newTireHotelOccurrenceInstance.merge(validate: false)
-
+		
 		if(newTireHotelOccurrenceInstance.merge(flush: true)){
 			if(tireHotelOccurrenceInstance){
 				tireHotelOccurrenceInstance.outDate = new Date()
@@ -186,7 +192,7 @@ class TireHotelOccurrenceController {
 	def deliverTireHotelOccurenceFromCustomerView = {
 		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
 		def customerInstance = Customer.get(params.customerId)
-   
+		
 		params.delivered ? tireHotelOccurrenceInstance.outDate = new Date() : null
 		
 		if (tireHotelOccurrenceInstance) {
