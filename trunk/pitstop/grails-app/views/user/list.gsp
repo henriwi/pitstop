@@ -77,10 +77,10 @@
                         	<g:hiddenField name="id" value="${person?.id}" />
          
                            	<g:if test="${person.enabled}">
-                           		<g:actionSubmit class="deleteTableItem" title="${message(code: 'user.list.disable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
+                           		<g:actionSubmit class="disableTableItem" title="${message(code: 'user.list.disable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
                        		</g:if>
                        		<g:else>
-                          		<g:actionSubmit class="disableTableItem" title="${message(code: 'user.list.disable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
+                          		<g:actionSubmit class="enableTableItem" title="${message(code: 'user.list.enable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
                        		</g:else>
                        
                         </g:form>

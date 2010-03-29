@@ -568,6 +568,16 @@ a.logoutButton{
     cursor: pointer;
 }
 .disableTableItem {
+    background: url(../images/skin/database_delete.png) 5px 50% no-repeat;
+    padding: 0px;
+    padding-right: 15px;
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.enableTableItem {
     background: url(../images/skin/database_add.png) 5px 50% no-repeat;
     padding: 0px;
     padding-right: 15px;
