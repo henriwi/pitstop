@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title><g:message code="tireHotelOccurrence.edit.title.label" /></title>
+        <resource:dateChooser />
     </head>
     <body>
         <div class="nav">
@@ -32,8 +33,11 @@
                                 <td valign="top" class="name">
                                   <label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'customer', 'errors')}">
-                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${tireHotelOccurrenceInstance?.customer?.id}"  />
+                                <td>
+                                		${no.pstop.webapp.Customer.get(tireHotelOccurrenceInstance?.customer?.id)}
+                                		<g:hiddenField name="customer_id" value="${tireHotelOccurrenceInstance?.customer?.id}"/>
+                                <!--  <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'customer', 'errors')}">
+                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${tireHotelOccurrenceInstance?.customer?.id}"  /> -->
                                 </td>
                             </tr>
                             
@@ -79,7 +83,8 @@
                                   <label for="inDate"><g:message code="tireHotelOccurrence.inDate.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'inDate', 'errors')}">
-                                    <g:datePicker name="inDate" precision="day" value="${tireHotelOccurrenceInstance?.inDate}"  />
+                                		<richui:dateChooser name="inDate" format="dd.MM.yyyy" value="${tireHotelOccurrenceInstance?.inDate}" firstDayOfWeek="Mo" locale="en"/>
+                                    <!--  <g:datePicker name="inDate" precision="day" value="${tireHotelOccurrenceInstance?.inDate}"  /> -->
                                 </td>
                             </tr>
                         
