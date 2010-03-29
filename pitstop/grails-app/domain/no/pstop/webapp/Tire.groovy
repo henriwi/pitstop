@@ -11,6 +11,7 @@ class Tire {
     static final profileIndex = 2
     static final diameterIndex = 3
     static final tireTypeIndex = 4
+    static final lengthOfNoticeInListView = 10
 	
 	long id
 	String partNr
@@ -27,7 +28,7 @@ class Tire {
 	String notice
 	
 	static constraints = {
-		partNr(matches: "[a-zA-Z0-9æøåÆØÅ\\-\\_]{0,40}", blank:false, unique:true)
+		partNr(matches: "[a-zA-Z0-9æøåÆØÅ\\-\\_]{0,40}", blank: false, unique: true)
 		brand(blank: false, matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\_]{0,30}")
 		tireName(matches: "[a-zA-Z0-9æøåÆØÅ\\s\\-\\_]{0,30}")
 		width(min: 100, max: 350)
@@ -37,11 +38,11 @@ class Tire {
 		loadIndex(min: 1, max: 240)
 		speedIndex(inList: ["L","M","N","P","PR","Q","R","S","T","U","H","V","W","Y","Z","ZR"], blank: false)
 		pattern(matches: "[a-zA-Z0-9\\s|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,30}")
-		tireType(inList: ["Sommer","Vinter (pigg)","Vinter (piggfri)", "Vinter (pigg - upigget)", "M+S (helårsdekk)"], blank: false)
+		tireType(inList: ["Sommer", "Vinter (pigg)", "Vinter (piggfri)", "Vinter (pigg - upigget)", "M+S (helårsdekk)"], blank: false)
 	}
 
 	static fastSearch(Matcher query, Integer max, Integer offset){
-		Tire.search([max:max, offset:offset], escape: true)
+		Tire.search([max: max, offset: offset], escape: true)
 		{
 			must(term('width', query[tireIndex][widthIndex]))
 			must(term('profile', query[tireIndex][profileIndex]))
@@ -52,20 +53,20 @@ class Tire {
 
 	static normalSearch(String width, String profile, String diameter, String speedIndex, 
 	String tireType, String brand, Integer max, Integer offset){
-		Tire.search([max:max, offset:offset, escape: true]) {
+		Tire?.search([max: max, offset: offset, escape: true]) {
 			width != "" ? must(term('width', width)) : ""
 			profile != "" ? must(term('profile', profile)) : ""
 			diameter != "" ? must(term('diameter', diameter)) : ""
-			speedIndex != "" && speedIndex != "Alle" ? must(term('speedIndex', speedIndex.toLowerCase())) : ""
+			speedIndex != "" && speedIndex != "Alle" ? must(term('speedIndex', speedIndex?.toLowerCase())) : ""
 			tireType != "" && tireType != "Alle" ? must(queryString(tireType)) : ""
-			brand != "" ? must(term('brand', brand.toLowerCase())) : ""
-		}.results
+			brand != "" ? must(term('brand', brand?.toLowerCase())) : ""
+		}?.results
 	}
 	
 	String toString() {
 		Integer numberOfAvailable = 0 
-		for (tireOccurrence in this.tireOccurrences) {
-			numberOfAvailable += tireOccurrence.numberOfAvailable()
+		for (tireOccurrence in this?.tireOccurrences) {
+			numberOfAvailable += tireOccurrence?.numberOfAvailable()
 		}
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (på lager: ${numberOfAvailable})"
 	}
@@ -78,12 +79,18 @@ class Tire {
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType}"
 	}
 	
-	String showNoticeWith20FirstLetters() {
-		if (notice?.length() > 20) {
-			String firstLetters = notice.substring(0, 20)
+	String showNoticeWith10FirstLetters() {
+		if (notice?.length() > lengthOfNoticeInListView) {
+			String firstLetters = notice?.substring(0, lengthOfNoticeInListView)
 			firstLetters + " ..."
 		}
 		else
 			notice
+	}
+	
+	String fastSearchString() {
+		String lastNumberInDiameter = diameter?.toString().substring(1, 2)
+		String firstLetterInTireType = tireType?.substring(0, 1).toLowerCase()
+		"${width}${profile}${lastNumberInDiameter}${firstLetterInTireType}"
 	}
 }

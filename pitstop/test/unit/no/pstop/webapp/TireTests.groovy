@@ -140,23 +140,27 @@ class TireTests extends GrailsUnitTestCase {
 		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer", tire.tireShowToString()
 	}
 	
-	void testShowNoticeWith20FirstLettersWhenNoticeIsUnder20Letters() {
+	void testShowNoticeWith10FirstLettersWhenNoticeIsUnder10Letters() {
 		tire.notice = "Notice"
-		assertEquals "Notice", tire.showNoticeWith20FirstLetters()
+		assertEquals "Notice", tire.showNoticeWith10FirstLetters()
 	}
 	
-	void testShowNoticeWith20FirstLettersWhenNoticeIsOver20Letters() {
-		tire.notice = "Notice notice notice notice notice"
-		assertEquals "Notice notice notice ...", tire.showNoticeWith20FirstLetters()
+	void testShowNoticeWith10FirstLettersWhenNoticeIsOver10Letters() {
+		tire.notice = "Notice notice notice"
+		assertEquals "Notice not ...", tire.showNoticeWith10FirstLetters()
 	}
 	
-	void testShowNoticeWith20FirstLettersWhenNoticeIsEmpty() {
+	void testShowNoticeWith10FirstLettersWhenNoticeIsEmpty() {
 		tire.notice = ""
-		assertEquals "", tire.showNoticeWith20FirstLetters()
+		assertEquals "", tire.showNoticeWith10FirstLetters()
 	}
 	
-	void testShowNoticeWith20FirstLettersWhenNoticeIsNull() {
+	void testShowNoticeWith10FirstLettersWhenNoticeIsNull() {
 		tire.notice = null
-		assertEquals null, tire.showNoticeWith20FirstLetters()
+		assertEquals null, tire.showNoticeWith10FirstLetters()
+	}
+	
+	void testFastSearchString() {
+		assertEquals "190607s", tire.fastSearchString()
 	}
 }
