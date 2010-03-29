@@ -51,21 +51,20 @@
                                 	<label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
                                 </td>
                                 <g:if test="${no.pstop.webapp.Customer.get(params?.id)}">
- 															 		<td>
+ 									<td>
                                 		${no.pstop.webapp.Customer.get(params?.id)}
                                 		<g:hiddenField name="customer_id" value="${params?.id}"/>
                                 	</td>
-																</g:if>
-																<g:else>
-																	<td class="yui-skin-sam">
-																		<gui:autoComplete 
-																			id="customer" 
-																			controller="customer"
-																			action="customerAutoComplete"
-																			resultName="customers"/>
-																		</td>
-																</g:else>
-								<!--  attributt til autoComplete options="${['Jon Torstein', 'Trygve Hegnar', 'Jens Stoltenberg']}" -->
+								</g:if>
+								<g:else>
+									<td class="yui-skin-sam">
+										<gui:autoComplete 
+											id="customer" 
+											controller="customer"
+											action="customerAutoComplete"
+											resultName="customers"/>
+									</td>
+								</g:else>
                             </tr>
                             <tr class="prop">
                                 <td valign="top" class="name">
@@ -80,9 +79,23 @@
                                 <td valign="top" class="name">
                                     <label for="registrationNumber"><g:message code="tireHotelOccurrence.registrationNumber.label" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'registrationNumber', 'errors')}">
+                                
+                                <td class="yui-skin-sam">
+									<gui:autoComplete 
+										id="registrationNumber"
+										controller="tireHotelOccurrence"
+										action="registrationAutoComplete"
+										resultName="registrationNumbers"
+										dependsOn="[
+											value:'customer',
+											label:'customer',
+											useId:true
+										]"/> 
+                              	</td>
+                              
+                                <!-- <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'registrationNumber', 'errors')}">
                                     <g:textField maxlength="21" name="registrationNumber" value="${tireHotelOccurrenceInstance?.registrationNumber}" />
-                                </td>
+                                </td>-->
                             </tr>
                         
                             <tr class="prop">

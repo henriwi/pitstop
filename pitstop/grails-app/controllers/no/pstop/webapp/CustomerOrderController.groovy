@@ -3,7 +3,8 @@ import java.util.Iterator;
 class CustomerOrderController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+    def customerOrderService
+		
     def index = {
         redirect(action: "list", params: params)
     }
@@ -36,15 +37,17 @@ class CustomerOrderController {
     }
 
     def save = {
-		def customerOrderInstance = new CustomerOrder(params)
+		def customerOrderInstance = session["order"]
+		customerOrderInstance.orderDate = new Date()
+		customerOrderInstance.notice = ""
 		
-		if(!customerOrderInstance.validate()) {
-			render(view: "create", model: [customerOrderInstance: customerOrderInstance])
+		try {
+			customerOrderService.saveOrder(customerOrderInstance, session)
+			redirect(action: "show", controller: "customerOrder", id: customerOrderInstance.id)
 		}
-		else {
-			customerOrderInstance = customerOrderInstance.merge(flush: true)
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'customerOrder.label', default: 'CustomerOrder'), customerOrderInstance.id])}"
-            redirect(action: "show", id: customerOrderInstance.id)
+		catch(result) {
+			flash.message = "Kunne ikke lagre ordren."
+			redirect(action: "create")
 		}
     }
 

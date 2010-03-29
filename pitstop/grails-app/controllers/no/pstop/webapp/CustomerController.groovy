@@ -127,10 +127,11 @@ class CustomerController {
 			[id: it.id, name:it.autoCompleteToString()]
 		}
 		def jsonCustomer = [
-				customers: customers
-				]
+		    customers: customers
+		]
 		render jsonCustomer as JSON
 	}
+	
 	def search = {
 		redirect(action: "list", params:[q: params.search])
 	}
