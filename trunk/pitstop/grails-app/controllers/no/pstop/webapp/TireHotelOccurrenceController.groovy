@@ -43,13 +43,14 @@ class TireHotelOccurrenceController {
 	}
 	
 	def create = {
-		println params
 		def tireHotelOccurrenceInstance = new TireHotelOccurrence()
 		tireHotelOccurrenceInstance.properties = params
 		return [tireHotelOccurrenceInstance: tireHotelOccurrenceInstance]
 	}
 	
 	def save = {
+		println params
+		params.inDate = "$params.inDate_month/$params.inDate_day/$params.inDate_year"
 		def customer = Customer.get(params.customer_id)
 		def tireHotelOccurrenceInstance = new TireHotelOccurrence(tireLocation: params.tireLocation, registrationNumber: params.registrationNumber, 
 		carType: params.carType, customer: customer, tireType: params.tireType, inDate: params.inDate, outDate: null, notice: params.notice)
@@ -108,12 +109,10 @@ class TireHotelOccurrenceController {
 	
 	@Secured(['ROLE_ADMIN'])
 	def delete = {
-		println params
 		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
 		if (tireHotelOccurrenceInstance) {
 			try {
 				if(params.requestFromShowCustomerView){
-					println "Jasså, du her"
 					tireHotelOccurrenceInstance.delete(flush: true)
 					flash.message = "${message(code: 'tireHotelOccurrence.deleted.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.registrationNumber])}"
 					redirect(controller: "customer", action: "show", id: params.customerId)
