@@ -161,6 +161,6 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	void testFastSearchString() {
-		assertEquals "190607s", tire.fastSearchString()
+		assertEquals "190607ss", tire.fastSearchString()
 	}
 }
