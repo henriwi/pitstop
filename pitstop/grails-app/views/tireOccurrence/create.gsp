@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title><g:message code="createTireOccurrence.title.label" /></title>
+        <resource:dateChooser />
     </head>
     <body>
         <div class="nav">
@@ -73,7 +74,8 @@
                                     <label for="registrationDate"><g:message code="tireOccurrence.registrationDate.label"/></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireOccurrenceInstance, field: 'registrationDate', 'errors')}">
-									<g:datePicker name="registrationDate" precision="day" years="${2010..2030}" value="${tireOccurrenceInstance?.registrationDate}" />
+                                	<richui:dateChooser name="registrationDate" format="dd.MM.yyyy" value="${tireOccurrenceInstance?.registrationDate}" firstDayOfWeek="Mo" locale="en"/>
+																<!--  <g:datePicker name="registrationDate" precision="day" years="${2010..2030}" value="${tireOccurrenceInstance?.registrationDate}" /> -->
                                 </td>
                             </tr>
                         </tbody>
