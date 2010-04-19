@@ -1,7 +1,7 @@
 package no.pstop.webapp
 
 class SupplierOrder {
-	static hasMany = [SupplierOrderLines: SupplierOrderLine]
+	static hasMany = [supplierOrderLines: SupplierOrderLine]
 	Date orderDate
 	String supplier
 	String notice
