@@ -7,12 +7,14 @@ class TireHotelOccurrenceControllerIntegrationTests extends GroovyTestCase {
 	TireHotelOccurrence tireHotelOccurrence1, tireHotelOccurrence2, tireHotelOccurrence3
 	Customer customer
 	def controller
+	def post
 	
     protected void setUp() {
         super.setUp()
 
+	    post = new PostalCodeAndPlace(postalCode:"0195",place:"Radiator By").save(flush: true)
         customer = new Customer(firstName: "Dekk Roar", lastName: "Dekkesen", phoneNumber: "19555095", address: "Dekkveien 1",
-		postalCode: "0195", city: "Radiator By", email: "felger@dekk.no", company: "Dekkilicious", notice: "God kunde").save(flush: true)
+		postalCodeAndPlace: post, email: "felger@dekk.no", company: "Dekkilicious", notice: "God kunde").save(flush: true)
 
 		tireHotelOccurrence1 = new TireHotelOccurrence(tireLocation: "1A", registrationNumber: "DE 832154", carType: "Audi A3", 
 		customer: customer, tireType: "Sommer", inDate: new Date(), outDate: new Date(), notice: "ingen").save(flush: true)

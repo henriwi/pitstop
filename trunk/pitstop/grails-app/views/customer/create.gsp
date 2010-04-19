@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title><g:message code="customer.create.title.label"/></title>
+        <g:javascript library="prototype" />
     </head>
     <body>
         <div class="nav">
@@ -82,13 +83,14 @@
                                     <g:textField maxlength="50" name="address" value="${customerInstance?.address}" />
                                 </td>
                             </tr>
-                        
+                            
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="postalCode"><g:message code="customer.postalCode.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'postalCode', 'errors')}">
-                                    <g:textField maxlength="15" name="postalCode" value="${customerInstance?.postalCode}" />
+                                    <g:remoteField action="getPlace" maxlength="4" name="postalCode" update="place" />
+                                	
                                 </td>
                             </tr>
                         
@@ -97,8 +99,9 @@
                                     <label for="city"><g:message code="customer.city.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'city', 'errors')}">
-                                    <g:textField maxlength="40" name="city" value="${customerInstance?.city}" />
-                                </td>
+                                  <label  id="place"></label>
+                                   <%-- <g:textField maxlength="40" name="city" value="${customerInstance?.city}" />
+                                --%> </td>
                             </tr>
                         
                             <tr class="prop">

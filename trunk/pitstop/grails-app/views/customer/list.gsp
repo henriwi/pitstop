@@ -89,9 +89,9 @@
                         
                             <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "address")}</g:link></td>
                         
-                            <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "postalCode")}</g:link></td>
+                            <td><g:link action="show" id="${customerInstance.id}">${customerInstance?.postalCodeAndPlace?.postalCode}</g:link></td>
                             
-                            <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "city")}</g:link></td>
+                            <td><g:link action="show" id="${customerInstance.id}">${customerInstance?.postalCodeAndPlace?.place}</g:link></td> 
                             
                             <td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "email")}</g:link></td>
                             
