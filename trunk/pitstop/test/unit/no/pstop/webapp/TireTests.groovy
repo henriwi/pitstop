@@ -9,7 +9,8 @@ class TireTests extends GrailsUnitTestCase {
 		super.setUp()
 		mockForConstraintsTests Tire
 		tire = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
-				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", notice:"Demodekk")	
+				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", 
+				retailPrice: 1095, notice:"Demodekk")	
 	}
 	
 	protected void tearDown() {
@@ -40,7 +41,8 @@ class TireTests extends GrailsUnitTestCase {
 	
 	void testGenerateTireWithNonUniquePartNr() {
 		def tire2 = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
-		loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", notice: "Demodekk")	
+		loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", 
+		retailPrice: 1095, notice: "Demodekk")	
 	
 		mockForConstraintsTests(Tire, [tire])
 		
@@ -126,6 +128,14 @@ class TireTests extends GrailsUnitTestCase {
 		assertFalse "Test failed, expected invalid tireName", tire.validate()
 		def badField = tire.errors.getFieldError("tireName")
 		assertNotNull "Expecting to find error in field tireName", badField
+	}
+	
+	void testGenerateTireWithInvalidRetailPrice() {
+		tire.retailPrice = -100
+		
+		assertFalse "Test failed, expected invalid retailPrice", tire.validate()
+		def badField = tire.errors.getFieldError("retailPrice")
+		assertNotNull "Expecting to find error in field retailPrice", badField
 	}
 	
 	void testOrderToString() {

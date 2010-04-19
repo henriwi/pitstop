@@ -4,18 +4,15 @@ import com.sun.org.apache.xerces.internal.impl.xs.identity.Selector.Matcher;
 import grails.test.*
 
 class TireControllerTests extends ControllerUnitTestCase {
-	def t1, t2, t3 
+	def t1
 	
 	protected void setUp() {
 		super.setUp()
 		mockDomain Tire
 		
-		t1 = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
-		t2 = new Tire(id:2,width:192,profile:60,construction:"R",diameter:18,partNr:"123AC",
-				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
-		t3 = new Tire(id:3,width:192,profile:60,construction:"R",diameter:19,partNr:"123AD",
-				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli")
+		t1 = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
+				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", 
+				retailPrice: 1095, notice:"Demodekk")
 	}
 	
 	protected void tearDown() {
@@ -23,7 +20,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	private setParams(Integer width, Integer profile, String construction, Integer diameter, String partNr, Integer loadIndex,
-	String speedIndex, String pattern, String tireType, String brand, String tireName, String notice) {
+	String speedIndex, String pattern, String tireType, String brand, String tireName, Double retailPrice, String notice) {
 		controller.params.width = width
 		controller.params.profile = profile
 		controller.params.construction = construction
@@ -35,6 +32,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.params.tireType = tireType
 		controller.params.brand = brand
 		controller.params.tireName = tireName
+		controller.params.retailPrice = retailPrice
 		controller.params.notice = notice
 	}
 	
@@ -49,7 +47,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithValidTire() {
-		setParams(190, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero", "Demodekk")
+		setParams(190, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero", 1095, "Demodekk")
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.save()
 
@@ -58,7 +56,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithInvalidWidth() {
-		setParams(-100, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero", "Demodekk")
+		setParams(-100, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero", 1095, "Demodekk")
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.save()
 		
@@ -107,12 +105,10 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testUpdateWithValidId() {
-		Tire expectedTire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-		loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli",tireName:"T-Zero", notice:"Demodekk")
-		mockDomain Tire, [expectedTire]
+		mockDomain Tire, [t1]
 		
-		expectedTire.metaClass.save = {-> return true }
-		expectedTire.metaClass.hasErrors = {-> return false }
+		t1.metaClass.save = {-> return true }
+		t1.metaClass.hasErrors = {-> return false }
 		
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"} 
