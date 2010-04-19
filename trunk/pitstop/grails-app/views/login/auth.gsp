@@ -1,5 +1,11 @@
 <head>
         <link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />
+
+<!-- Tilpasser til iPhone -->
+        <link rel="stylesheet" media="only screen and (max-width: 480px)" href="${resource(dir:'css',file:'iphone.css')}" type= "text/css" />
+        <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="${resource(dir:'css',file:'iphone.css')}" type= "text/css" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width, height=device-height, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
 <title>Logg inn</title>
 </head>
 
