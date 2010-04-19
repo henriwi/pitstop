@@ -41,9 +41,8 @@ class Tire {
 		tireType(inList: ["Sommer", "Vinter (pigg)", "Vinter (piggfri)", "Vinter (pigg - upigget)", "M+S (helårsdekk)"], blank: false)
 	}
 
-	static fastSearch(Matcher query, Integer max, Integer offset){
-		Tire.search([max: max, offset: offset], escape: true)
-		{
+	static fastSearch(Matcher query, Integer max, Integer offset) {
+		Tire.search([max: max, offset: offset], escape: true) {
 			must(term('width', query[tireIndex][widthIndex]))
 			must(term('profile', query[tireIndex][profileIndex]))
 			must(wildcard('diameter', "*" + query[tireIndex][diameterIndex]))
@@ -52,7 +51,7 @@ class Tire {
 	}
 
 	static normalSearch(String width, String profile, String diameter, String speedIndex, 
-	String tireType, String brand, Integer max, Integer offset){
+	String tireType, String brand, Integer max, Integer offset) {
 		Tire?.search([max: max, offset: offset, escape: true]) {
 			width != "" ? must(term('width', width)) : ""
 			profile != "" ? must(term('profile', profile)) : ""
@@ -71,7 +70,7 @@ class Tire {
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (på lager: ${numberOfAvailable})"
 	}
 	
-	String orderToString(){
+	String orderToString() {
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (${partNr})" 
 	}
 	
