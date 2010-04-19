@@ -13,7 +13,6 @@ class Tire {
     static final tireTypeIndex = 4
     static final lengthOfNoticeInListView = 10
 	
-	long id
 	String partNr
 	String brand
 	String tireName
@@ -26,6 +25,7 @@ class Tire {
 	String pattern
 	String tireType
 	String notice
+	Integer retailPrice
 	
 	static constraints = {
 		partNr(matches: "[a-zA-Z0-9æøåÆØÅ\\-\\_]{0,40}", blank: false, unique: true)
