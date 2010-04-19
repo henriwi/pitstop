@@ -42,12 +42,12 @@
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="customer.postalCode.label" default="Postal Code" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: customerInstance, field: "postalCode")}</td>
+                            <td valign="top" class="value">${customerInstance?.postalCodeAndPlace?.postalCode}</td>
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="customer.city.label" default="City" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: customerInstance, field: "city")}</td>
+                            <td valign="top" class="value">${customerInstance?.postalCodeAndPlace?.place}</td>
                         </tr>
                     
                         <tr class="prop">

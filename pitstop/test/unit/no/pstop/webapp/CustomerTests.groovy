@@ -4,11 +4,13 @@ import grails.test.*
 
 class CustomerTests extends GrailsUnitTestCase {
 	def customer
+	def post
     protected void setUp() {
         super.setUp()
 		mockForConstraintsTests Customer
+	    post = new PostalCodeAndPlace(postalCode:"0195",place:"Radiator By")
 		customer = new Customer(firstName: "Dekk Roar", lastName: "Dekkesen", phoneNumber: "19555095", address: "Dekkveien 1",
-						postalCode: "0195", city: "Radiator By", email: "felger@dekk.no", company: "Dekkilicious", notice: "God kunde")
+						postalCodeAndPlace: post, email: "felger@dekk.no", company: "Dekkilicious", notice: "God kunde")
     }
 
     protected void tearDown() {
@@ -20,8 +22,8 @@ class CustomerTests extends GrailsUnitTestCase {
 		assertEquals "Dekkesen", customer.lastName
 		assertEquals "19555095", customer.phoneNumber
 		assertEquals "Dekkveien 1", customer.address
-		assertEquals "0195", customer.postalCode
-		assertEquals "Radiator By", customer.city
+		assertEquals "0195", post.postalCode
+		assertEquals "Radiator By", post.place
 		assertEquals "felger@dekk.no", customer.email
 		assertEquals "Dekkilicious", customer.company
 		assertEquals "God kunde", customer.notice
@@ -75,20 +77,12 @@ class CustomerTests extends GrailsUnitTestCase {
 		assertNotNull "I'm expecting to find error in address", badField
 	}
 	
-	void testGenerateCustomerWithInvalidPostalCode() {
-		customer.postalCode = "?"
+	void testGenerateCustomerWithInvalidPostalCodeAndPlace() {
+		customer.postalCodeAndPlace = null
 		
 		assertFalse "Test failed, expected invalid postalCode", customer.validate()
-		def badField = customer.errors.getFieldError("postalCode")
-		assertNotNull "I'm expecting to find error in postalCode", badField
-	}
-	
-	void testGenerateCustomerWithInvalidCity() {
-		customer.city = "?"
-		
-		assertFalse "Test failed, expected invalid city", customer.validate()
-		def badField = customer.errors.getFieldError("city")
-		assertNotNull "I'm expecting to find error in city", badField
+		def badField = customer.errors.getFieldError("postalCodeAndPlace")
+		assertNotNull "I'm expecting to find error in postalCodeAndPlace", badField
 	}
 	
 	void testGenerateCustomerWithInvalidEmail() {

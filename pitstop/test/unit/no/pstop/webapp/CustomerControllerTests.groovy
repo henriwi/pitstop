@@ -5,27 +5,27 @@ import grails.test.*;
 
 class CustomerControllerTests extends ControllerUnitTestCase {
 	def customer1
+	def post
 	
 	protected void setUp() {
 		super.setUp();
 		mockDomain Customer
-		
+		post = new PostalCodeAndPlace(postalCode:"0194",place:"Radiator By")
+		mockDomain PostalCodeAndPlace, [post]
 		customer1 = new Customer(firstName: "Dekk Roar", lastName: "Dekkesen", phoneNumber: "19555095", address: "Dekkveien 1",
-				postalCode: "0195", city: "Radiator By", email: "felger@dekk.no", company: "Dekkilicious", notice: "God kunde")
+				postalCodeAndPlace: post, email: "felger@dekk.no", company: "Dekkilicious", notice: "God kunde")
 	}
 	
 	protected void tearDown() {
 		super.tearDown()
 	}
 	
-	private setParams(String firstName, String lastName, String phoneNumber, String address, String postalCode,
-	String city, String email, String company, String notice) {
+	private setParams(String firstName, String lastName, String phoneNumber, String address, String postalCode, String email, String company, String notice) {
 		controller.params.firstName = firstName
 		controller.params.lastName = lastName
 		controller.params.phoneNumber = phoneNumber
 		controller.params.address = address
 		controller.params.postalCode = postalCode
-		controller.params.city = city
 		controller.params.email = email
 		controller.params.company = company
 		controller.params.notice = notice
@@ -38,7 +38,7 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	
 	void testList() {
 		def customer2 = new Customer(firstName: "Dekk Bernt", lastName: "Dekkesen", phoneNumber: "23555095", address: "Dekkveien 2",
-				postalCode: "0194", city: "Radiator By", email: "felger@dekk.com", company: "Dekkilicious", notice: "God kunde")
+				postalCodeAndPlace: post, email: "felger@dekk.com", company: "Dekkilicious", notice: "God kunde")
 		def customerList = [customer1, customer2];
 		mockDomain Customer, customerList
 		
@@ -53,7 +53,8 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithValidCustomer() {
-		setParams("Per", "Hansen", "23749216", "Holbergsplass", "0623", "Oslo", "oslo@hio.no", "HIO", "ingen merknader")
+		
+		setParams("Per", "Hansen", "23749216", "Holbergsplass", "0194", "oslo@hio.no", "HIO", "ingen merknader")
 		controller.metaClass.message = {args -> println "message: ${args}" } 
 		controller.save()
 		
@@ -62,7 +63,7 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithInvalidEmail() {
-		setParams("Per", "Hansen", "23749216", "Holbergsplass", "0623", "Oslo", "feilemailadresse.no", "HIO", "ingen merknader")
+		setParams("Per", "Hansen", "23749216", "Holbergsplass", "0194", "feilemailadresse.no", "HIO", "ingen merknader")
 		controller.metaClass.message = {args -> println "message: ${args}" } 
 		controller.save()
 		

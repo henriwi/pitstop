@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title><g:message code="customer.edit.title.label" /></title>
+        <g:javascript library="prototype" />
     </head>
     <body>
         <div class="nav">
@@ -71,7 +72,7 @@
                                   <label for="postalCode"><g:message code="customer.postalCode.label" default="Postal Code" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'postalCode', 'errors')}">
-                                    <g:textField maxlength="15" name="postalCode" value="${customerInstance?.postalCode}" />
+                                   	<g:remoteField action="getPlace" maxlength="4" name="postalCode" update="place" value="${customerInstance?.postalCodeAndPlace?.postalCode}" />
                                 </td>
                             </tr>
                         
@@ -80,7 +81,7 @@
                                   <label for="city"><g:message code="customer.city.label" default="City" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'city', 'errors')}">
-                                    <g:textField maxlength="40" name="city" value="${customerInstance?.city}" />
+                                    <label  id="place">${customerInstance?.postalCodeAndPlace?.place}</label>
                                 </td>
                             </tr>
                         

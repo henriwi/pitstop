@@ -41,8 +41,10 @@ class CustomerController {
     }
 
     def save = {
-        def customerInstance = new Customer(params)
-        if (customerInstance.save(flush: true)) {
+		def postalCodeAndPlace = PostalCodeAndPlace.findByPostalCode(params.postalCode)
+		def customerInstance = new Customer(params)
+		customerInstance.postalCodeAndPlace = postalCodeAndPlace
+		if (customerInstance.save(flush: true)) {
             flash.message = "${message(code: 'customer.created.message', args: [message(code: 'customer.label' ), customerInstance.firstName, customerInstance.lastName])}"
             redirect(action: "show", id: customerInstance.id)
         }
@@ -120,7 +122,6 @@ class CustomerController {
     }
 
 	def customerAutoComplete = {
-		println params
 		def customers = Customer.findAllByFirstNameLikeOrLastNameLikeOrPhoneNumberLike("%${params.query}%", "%${params.query}%", "%${params.query}%")
 		
 		customers = customers.collect {
@@ -134,5 +135,14 @@ class CustomerController {
 	
 	def search = {
 		redirect(action: "list", params:[q: params.search])
+	}
+	
+	def getPlace = {
+		def postalObject = PostalCodeAndPlace.findByPostalCode(params.value)
+
+		if(postalObject != null)	
+			render postalObject.place
+		else 
+			render ""
 	}
 }
