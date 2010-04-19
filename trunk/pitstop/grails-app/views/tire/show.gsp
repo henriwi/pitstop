@@ -73,6 +73,11 @@
                             <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "tireType")}</td>
                         </tr>
                         
+                       	<tr class="prop">
+                            <td valign="top" class="name"><g:message code="tire.retailPrice.label" /></td>
+                             <td valign="top" class="value"><g:formatNumber number="${tireInstance?.retailPrice}" format="#.00 kr" /></td>
+                        </tr>
+                        
                        <tr class="prop">
                                 <td valign="top" class="name"><label for="notice"><g:message code="tire.notice.label" /></label></td>
                                 <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "notice")}</td>

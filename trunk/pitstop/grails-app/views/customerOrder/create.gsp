@@ -106,7 +106,7 @@
 		                            
 		                        	<td><g:formatDate format="dd.MM.yyyy" date="${tireOccurrenceInstance?.registrationDate}" /></td>
 		                        	
-		                        	<td><g:select noSelection="${[0:'0']}" name="numberOfOrdered" from="${1..tireOccurrenceInstance?.numberOfAvailable()}"  /></td>
+		                        	<td><g:select noSelection="${[0:'0']}" name="numberOfOrdered" from="${1..tireOccurrenceInstance?.numberOfAvailable()}" /></td>
 		                        	
 		                        	<td><g:textField maxlength="40" tabindex='1' name="price" /></td>
 		                        	<g:hiddenField name="tireOccurrenceId" value="${tireOccurrenceInstance?.id}" />
@@ -119,6 +119,12 @@
 						</tbody>
 					</table>
 					<span class="button"><g:submitButton name="showTireOccurrences" class="next" value="${message(code: 'default.label', default: 'Legg til i ordre')}" /></span>
+                 </g:form>
+                 
+                 <g:form action="addEmptyTireOccurrence" method="get">
+                 	<g:textField maxlength="40" tabindex='1' name="numberOfReserved" />
+                 	<g:hiddenField name="tireId" value="${params.tireId}" />
+                 	<span class="button"><g:submitButton name="showTireOccurrences" class="next" value="${message(code: 'default.label')}" /></span>
                  </g:form>
                  
                 <div>

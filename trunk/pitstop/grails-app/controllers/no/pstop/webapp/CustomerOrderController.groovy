@@ -1,5 +1,7 @@
 package no.pstop.webapp
+import java.util.Date;
 import java.util.Iterator;
+
 class CustomerOrderController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -167,8 +169,8 @@ class CustomerOrderController {
 				def customerOrderLine = new CustomerOrderLine()
 				customerOrderLine.tireOccurrence = TireOccurrence.get(params.tireOccurrenceId[i])
 				customerOrderLine.customerOrder = order
-				customerOrderLine.numberOfOrderedTireOccurrences = Integer.parseInt(params.numberOfOrdered[i])
-				customerOrderLine.price = Double.parseDouble(params.price[i])
+				customerOrderLine.numberOfOrderedTireOccurrences = params.numberOfOrdered.class.isArray() ? params.numberOfOrdered[i].toInteger() : params.numberOfOrdered.toInteger()
+				customerOrderLine.price = params.price.class.isArray() ? params.price[i].toDouble() : params.price.toDouble()
 				customerOrderLine.deliveryDate = new Date()
 				orderLineList << customerOrderLine
 			}
@@ -196,5 +198,27 @@ class CustomerOrderController {
 			if(orderLine?.tireOccurrence?.id == tireOccurrence?.id)
 				iterator.remove()
 		}
+	}
+	
+	def addEmptyTireOccurrence = {
+		def order = session["order"]
+		def tireList = session["tireList"]
+		def orderLineList = session["orderLineList"]
+		
+		int numberOfReserved = params.numberOfReserved.toInteger()
+		def tire = Tire.get(params.tireId)
+		def tireOccurrence = new TireOccurrence(tire: tire, price: tire?.retailPrice, numberInStock: numberOfReserved, 
+		numberOfReserved: numberOfReserved, registrationDate: new Date(), discount: 0, environmentalFee: 0, 
+		inStock: false)
+		tireOccurrence = tireOccurrence.merge(flush: true)
+
+		params.numberOfOrdered = [numberOfReserved]
+		params.price = [tireOccurrence?.price]
+		params.tireOccurrenceId = [tireOccurrence?.id]
+		
+		orderLineList = addToOrderLine(1, params, session.order, session.orderLineList)
+		tireList = updateTireListAndResetTireId(orderLineList, tireList, params)
+		writeSession(session, order, tireList, orderLineList)
+		render(view: "create", model: [order: session["order"], orderLine: session["orderLineList"], tireList: session["tireList"]])
 	}
 }
