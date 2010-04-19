@@ -25,7 +25,7 @@ class Tire {
 	String pattern
 	String tireType
 	String notice
-	Integer retailPrice
+	Double retailPrice
 	
 	static constraints = {
 		partNr(matches: "[a-zA-Z0-9æøåÆØÅ\\-\\_]{0,40}", blank: false, unique: true)
@@ -39,6 +39,7 @@ class Tire {
 		speedIndex(inList: ["L","M","N","P","PR","Q","R","S","T","U","H","V","W","Y","Z","ZR"], blank: false)
 		pattern(matches: "[a-zA-Z0-9\\s|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,30}")
 		tireType(inList: ["Sommer", "Vinter (pigg)", "Vinter (piggfri)", "Vinter (pigg - upigget)", "M+S (helårsdekk)"], blank: false)
+		retailPrice(min: new Double(0.00))
 	}
 
 	static fastSearch(Matcher query, Integer max, Integer offset) {

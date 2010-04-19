@@ -10,13 +10,13 @@ class TireControllerIntegrationTests extends GroovyTestCase {
 	protected void setUp() {
 		super.setUp()
 		t1 = new Tire(id: 1, partNr: "1722550NOKHKPLR98R", brand: "Nokian", tireName: "Hakka", width: 100, profile: 20, construction: "R", diameter: 17,
-				loadIndex: 40, speedIndex: "L", pattern: "Speed beast", tireType: "Sommer", notice:"Demodekk").save(flush:true)
+				loadIndex: 40, speedIndex: "L", pattern: "Speed beast", tireType: "Sommer", retailPrice: 1095, notice:"Demodekk").save(flush:true)
 		t2 = new Tire(id: 2, partNr: "1419570RGODGA91H", brand: "Goodyear", tireName: "ga", width: 195, profile: 70, construction: "R", diameter: 14,
-				loadIndex: 50, speedIndex: "T", pattern: "Speed beast", tireType: "Vinter (pigg)", notice:"").save(flush:true)
+				loadIndex: 50, speedIndex: "T", pattern: "Speed beast", tireType: "Vinter (pigg)", retailPrice: 1150, notice:"").save(flush:true)
 		t3 = new Tire(id: 3, partNr: "1620575RMICAGISOMM110R", brand: "Michelin", tireName: "agilis", width: 205, profile: 75, construction: "R", diameter: 16,
-				loadIndex: 60, speedIndex: "L", pattern: "Speed beast", tireType: "Sommer", notice:"").save(flush:true)
+				loadIndex: 60, speedIndex: "L", pattern: "Speed beast", tireType: "Sommer", retailPrice: 990, notice:"").save(flush:true)
 		t4 = new Tire(id: 4, partNr: "1721545RBCTTLS800XL", brand: "Sumitomo", tireName: "Speed", width: 215, profile: 45, construction: "R", diameter: 17,
-				loadIndex: 75, speedIndex: "T", pattern: "Speed beast", tireType: "Vinter (pigg)", notice:"Brukt").save(flush:true)
+				loadIndex: 75, speedIndex: "T", pattern: "Speed beast", tireType: "Vinter (pigg)", retailPrice: 1095, notice:"Brukt").save(flush:true)
 		
 		controller = new TireController()
 	}

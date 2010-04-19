@@ -9,11 +9,12 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 	
 	protected void setUp() {
 		super.setUp();
-		tire = new Tire(id:1,width:192,profile:60,construction:"R",diameter:17,partNr:"123AB",
-				loadIndex:165,speedIndex:"H",pattern:"m12",tireType:"Sommer",brand:"Pirelli",tireName:"T-Zero")
+		tire = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
+				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", 
+				retailPrice: 1095, notice:"Demodekk")
 		mockDomain TireOccurrence
-		tireOccurrence = new TireOccurrence(id:1,tire:tire,price:60.5,numberInStock:1,registrationDate:new Date(),
-		discount:20,environmentalFee:10)
+		tireOccurrence = new TireOccurrence(id:1,tire:tire,price:89.89,numberInStock:4,numberOfReserved:3,
+				numberOfOrdered:8,discount:20,environmentalFee:10,registrationDate: new Date())
 	}
 	
 	protected void tearDown() {
@@ -52,6 +53,7 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithValidTireOccurrence() {
+		println "Valid"
 		setParams(tire, 60.5, 1, new Date(), 20, 10)
 		controller.metaClass.message = {args -> println "message: ${args}"}
 		def mock = mockFor(TireOccurrence)
@@ -63,6 +65,7 @@ class TireOccurrenceControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithInvalidTireOccurrence() {
+		println "Invalid"
 		setParams(tire, -10, 1, new Date(), 20, 10)
 		controller.metaClass.message = {args -> println "message: ${args}"}
 		tireOccurrence.price = -10

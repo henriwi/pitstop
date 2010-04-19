@@ -13,7 +13,7 @@ class TireOccurrence {
 	Date registrationDate
 	Integer discount
 	Integer environmentalFee
-	boolean inStock
+	boolean inStock = true
 	
     static constraints = {
 		price(min: new Double(0.00))
