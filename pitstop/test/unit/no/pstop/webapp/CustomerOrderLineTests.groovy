@@ -45,5 +45,4 @@ class CustomerOrderLineTests extends GrailsUnitTestCase {
 		assertNotNull "Expecting error in field deliveryDate", badField
 	}
 	*/
-	
 }
