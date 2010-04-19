@@ -57,45 +57,6 @@
 				</tr>
 
 			</tbody>
-				<tbody>
-	
-	                <tr class="prop">
-	                    <td valign="top" class="name"><g:message code="user.username.label" /></td>
-	                    <td valign="top" class="value">${fieldValue(bean: person, field: "username")}</td>
-	                </tr>
-	
-	                <tr class="prop">
-	                    <td valign="top" class="name"><g:message code="user.userRealName.label" /></td>
-	                    <td valign="top" class="value">${fieldValue(bean: person, field: "userRealName")}</td>
-	                </tr>
-	
-	                <tr class="prop">
-	                    <td valign="top" class="name"><g:message code="user.enabled.label" /></td>
-	                    <td valign="top" class="value">${person?.enabledLabel()}</td>
-	                </tr>
-	
-	                <tr class="prop">
-	                    <td valign="top" class="name"><g:message code="user.description.label" /></td>
-	                    <td valign="top" class="value">${fieldValue(bean: person, field: "description")}</td>
-	                </tr>
-	
-	                <tr class="prop">
-	                    <td valign="top" class="name"><g:message code="user.email.label" /></td>
-	                    <td valign="top" class="value">${fieldValue(bean: person, field: "email")}</td>
-	                </tr>
-	
-					<tr class="prop">
-						<td valign="top" class="name"><g:message code="user.roles.label" /></td>
-						<td valign="top" class="value">
-							<ul>
-								<g:each in="${roleNames}" var='role'>
-									<li>${role?.description}</li>
-								</g:each>
-							</ul>
-						</td>
-					</tr>
-	
-				</tbody>
 			</table>
 		</div>
 
