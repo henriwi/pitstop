@@ -1,8 +1,8 @@
 <html>
     <head>
         <title><g:layoutTitle default="Grails" /></title>
-        <link rel="shortcut icon" href="${resource(dir:'images',file:'pitstop.ico')}" type="image/x-icon" />
-        <link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />
+        <link rel="shortcut icon" href="${resource(dir:'images', file:'pitstop.ico')}" type="image/x-icon" />
+        <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" />
 
 <!-- Tilpasser til iPhone -->
         <link rel="stylesheet" media="only screen and (max-width: 480px)" href="${resource(dir:'css',file:'iphone.css')}" type= "text/css" />
@@ -56,6 +56,13 @@
 		        	</g:if>
 			        <g:else>
 			        	<li><g:link controller="customerOrder">${message(code: 'main.menu.customerOrder.label')}</g:link></li>
+			        </g:else>
+			        
+			        <g:if test="${params.controller == 'supplierOrder'}">
+			        	<li><g:link class="active" controller="supplierOrder">${message(code: 'main.menu.supplierOrder.label')}</g:link></li>
+		        	</g:if>
+			        <g:else>
+			        	<li><g:link controller="supplierOrder">${message(code: 'main.menu.supplierOrder.label')}</g:link></li>
 			        </g:else>
 			        
 			   		<g:if test="${params.controller == 'user'}">
