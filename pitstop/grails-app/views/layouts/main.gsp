@@ -7,10 +7,13 @@
 <!-- Tilpasser til iPhone -->
         <link rel="stylesheet" media="only screen and (max-width: 480px)" href="${resource(dir:'css',file:'iphone.css')}" type= "text/css" />
         <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="${resource(dir:'css',file:'iphone.css')}" type= "text/css" />
-        <meta name="viewport" content="width=480" />
+        <meta name = "viewport" content="width=device-width">
+        <meta name="apple-mobile-web-app-capable"  content="yes"  />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
         
         <g:layoutHead />
         <g:javascript library="application" />
+        <g:javascript library="script" />
     </head>
     <body>
 		<div id="container">

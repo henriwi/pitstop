@@ -5,6 +5,10 @@
 }
 /* <--DELETE */
 
+img {
+	max-width: 100%;	
+}
+
 html {
 	width: 100%;
     margin: 0;
@@ -17,10 +21,10 @@ body {
     font: 11px verdana, arial, helvetica, sans-serif;
     padding: 0px;
 }
-#pstopLogo img{
-	width: 100%;
-	max-width: 780px;
-	background-color: #fff; /*#dce7fb;*/
+#pstopLogo img{ 
+	width: auto;  /* standard: 340 */
+	max-width: 340px;
+	background-color: #dce7fb;
 	display: inline;
 }
 
@@ -76,6 +80,7 @@ input:focus, select:focus, textarea:focus {
 #content {
 	margin-top: 2px;
 	margin-left: 0px;
+	padding-left: 8px;
 	width: 100%;
 }
 #container {
@@ -137,35 +142,42 @@ ul#menuList li {
 
 /* NAVIGATION MENU */
 .nav {
+	width: 90%;
     background-color: #dce7fb;
     border: 1px solid #888;
     border-style: solid;
     margin: 0px;
+    padding-bottom: 6px;
+    padding-top: 9px;
 /*
     margin-top: 60px;
     padding: 15px 12px;
     padding-top: 15px;
-    padding-bottom: 7px;
     width: 100%;
     font: 11px;
     font-family: verdana, arial, helvetica, sans-serif;
 */
 }
-div#submenuTireHotelOccurence {
+
+
+div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
 	margin-top: -1px;	
 }
+
 .menuButton {
     font-size: 10px;
     padding: 0 5px;
+	border: none;
 }
 
 .menuButton a {
     color: #333;
     padding: 4px 6px;
-    border: 1px solid #dce7fb;
     padding-left: 25px;
+    border: none;
+    font-size: 10px;
+    font-weight: normal;
 }
-c
 .menuButton a.home {
     background: url(../images/skin/house.png) center left no-repeat;
     color: #555;
@@ -200,6 +212,14 @@ c
     padding-left: 25px;
     background-position: 2px;
 }
+
+.menuButton a.createUser {
+    background: url(../images/skin/user_add.png) center left no-repeat;
+    color: #555;
+    padding-left: 25px;
+	background-position: 2px;
+}
+
 .backButton a.back {
     background: url(../images/skin/back.png) center left no-repeat;
     color: #555;
@@ -209,10 +229,6 @@ c
     border: none;
     position:  absolute;
     font-size: 10px;
-}
-
-.menuButton a:hover{
-	color: #000;	
 }
 
 #createTireOccurrenceButton {
@@ -286,7 +302,7 @@ td, th {
     vertical-align: top;
 }
 th {
-    background: #fff url(../images/skin/shadow.jpg);
+    background-image: none;
     color: #666;
     font-size: 11px;
     font-weight: bold;
@@ -320,7 +336,8 @@ th.desc a {
 
 /* PAGINATION */
 .paginateButtons {
-    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    background: #fff;
+    background-image: none;
     border: 1px solid #ccc;
     border-top: 0;
     color: #666;
@@ -389,7 +406,8 @@ th.desc a {
 
 /* ACTION BUTTONS */
 .buttons {
-    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    background: #fff;
+    background-image: none;
     border: 1px solid #ccc;
     color: #666;
     font-size: 10px;
@@ -456,7 +474,8 @@ input.delivered {
 }
 
 .searchButtons {
-    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    background: #fff;
+    background-image: none;
     border: 1px solid #ccc;
     color: #666;
     font-size: 11px;
@@ -480,7 +499,8 @@ input.delivered {
 }
 
 #login .login {
-	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+	background: #fff;
+	background-image: none;
     border: 1px solid #ccc;
     color: #666;
     font-size: 11px;
@@ -554,7 +574,8 @@ a.logoutButton{
 }
 
 #totalTireOccurrence {
-	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+	background: #fff;
+	background-image: none;
     border: 1px solid #ccc;
     color: #666;
     font-size: 10px;
@@ -648,7 +669,8 @@ a.logoutButton{
 }
 
 a.btnShowAll {
-	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+	background: #fff;
+	background-image: none;
     border: 1px solid #ccc;
     color: #666;
     font-size: 11px;
@@ -657,8 +679,3 @@ a.btnShowAll {
     cursor: pointer;
 }
 
-.menuButton a.createUser {
-    background: url(../images/skin/user_add.png) center left no-repeat;
-    color: #555;
-    padding-left: 25px;
-	background-position: 2px;
