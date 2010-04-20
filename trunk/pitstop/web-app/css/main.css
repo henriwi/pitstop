@@ -192,6 +192,14 @@ c
     padding-left: 25px;
     background-position: 2px;
 }
+
+.menuButton a.createUser {
+    background: url(../images/skin/user_add.png) center left no-repeat;
+    color: #555;
+    padding-left: 25px;
+	background-position: 2px;
+}
+
 .backButton a.back {
     background: url(../images/skin/back.png) center left no-repeat;
     color: #555;
@@ -206,6 +214,7 @@ c
 .menuButton a:hover{
 	color: #000;	
 }
+
 
 #createTireOccurrenceButton {
 	padding-top: 51px;
@@ -514,17 +523,6 @@ a.logoutButton{
 	float: left;
 	margin: 0 10px 0 0;	
 }
-#customerTireHotelAndOrders {
-	float: right;
-	
-	max-width: 1000px;
-}
-
-#customerTireHotelOccurrencelist {
-	margin-bottom: 20px;
-	width: 100%;
-}
-
 #tireOccurrenceList {
  	width: 800px;
  	float: left;
@@ -649,8 +647,128 @@ a.btnShowAll {
     cursor: pointer;
 }
 
-.menuButton a.createUser {
-    background: url(../images/skin/user_add.png) center left no-repeat;
-    color: #555;
-    padding-left: 25px;
-	background-position: 2px;
+
+/* Slett */
+#skjul {
+	display: none;
+}/**/
+
+
+.customerBox{
+	border: 1px solid #bbb;
+	width: 400px;	
+	margin: 0px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+.customerBox p {
+	color: #555;
+}
+
+.customerBox a {
+	color: #111;
+	font-weight: normal;	
+}
+
+.customerBox .customerName{
+	font-size: 13px;
+	color: #000;
+	font-weight: bold;
+	padding-bottom: 5px;
+}
+
+.customerBox .customerAddress{
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.customerBox .customerCompany{
+	
+}
+
+/* SHOW CUSTOMER */
+div.customerInfoBox {
+	border: 1px solid #bbb;
+	margin-bottom: 10px;
+	padding: 5px;
+	background-color: #F5F5FF;
+}
+span.customerAddress {
+	display: block;
+	margin-top: 15px;
+}
+span.customerPostalCodeAndPlace {
+	display: block;
+	margin-top: 5px;	
+}
+span.customerCompany {
+	display: block;
+	margin-top: 5px;
+}
+span.customerPhoneNumber {
+	display: block;
+	margin-top: 15px;
+}
+span.customerPhoneNumber a{
+	background: url(../images/skin/phone.png) 5px 50% no-repeat;
+	padding-left: 25px;
+	color: #555;
+	font-weight: normal;
+	margin-right: 15px;
+	float: right;
+}
+span.customerEmail {
+	display: block;
+	margin-top: 5px;
+}
+span.customerEmail a{
+	background: url(../images/skin/email.png) 5px 50% no-repeat;
+	padding-left: 25px;
+	color: #555;
+	font-weight: normal;
+	margin-right: 10px;
+	float: right;
+}
+span.customerNotice {
+	font-style: italic;
+	display: block;
+	margin-top: 15px;
+	width: 100%;
+}
+
+
+
+/* Customer Tire Hotel And Orders */ 
+#customerTireHotelAndOrders {
+	float: right;
+	max-width: 1000px;
+}
+/* SHOW CUSTOMER TIRE HOTEL */
+
+.customerTireHotelOccurrencelist {
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+div#onlyActiveTireHotelOccurrences {
+	border: 1px solid #bbb;
+	background-color: #F5F5FF;
+	width: 450px;
+	padding: 5px;
+	visibility: visible;
+	display: inherit;
+}
+div.tireInfo {
+	float: left;
+}
+div.tireHotelButtons {
+	float: right;
+}
+div.tireHotelButtons input {
+	padding-left: 25px;	
+}
+
+div#allTireHotelOccurrences {
+	display: none;
+}

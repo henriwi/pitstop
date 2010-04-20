@@ -6,7 +6,7 @@
         <meta name="layout" content="main" />
         <title><g:message code="customer.show.title.label" /></title>
     </head>
-    <body>
+    <body onload="">
         <div class="nav">
             <span class="menuButton"><g:link class="list" action="list"><g:message code="customer.list.label" /></g:link></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link></span>
@@ -18,56 +18,36 @@
             <div class="message">${flash.message}</div>
             </g:if>
             <div class="dialog" id="customerShowDialog">
-                <table>
-                    <tbody>
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="customer.firstName.label" default="First Name" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: customerInstance, field: "firstName")}</td>
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="customer.lastName.label" default="Last Name" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: customerInstance, field: "lastName")}</td>
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="customer.phoneNumber.label" default="Phone Number" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: customerInstance, field: "phoneNumber")}</td>
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="customer.address.label" default="Address" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: customerInstance, field: "address")}</td>
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="customer.postalCode.label" default="Postal Code" /></td>
-                            <td valign="top" class="value">${customerInstance?.postalCodeAndPlace?.postalCode}</td>
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="customer.city.label" default="City" /></td>
-                            <td valign="top" class="value">${customerInstance?.postalCodeAndPlace?.place}</td>
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="customer.email.label" default="Email" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: customerInstance, field: "email")}</td>
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="customer.company.label" default="Company" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: customerInstance, field: "company")}</td>
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="customer.notice.label" default="Notice" /></td>
-                            <span id="notice" >
-                            	<td valign="top" class="value">${fieldValue(bean: customerInstance, field: "notice")}</td>
-                            </span>
-                        </tr>
-                    </tbody>
-                </table>
+            	<div class="customerInfoBox">
+					<h3 class="customerName">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</h3>
+					<g:if test="${customerInstance.address}">
+						<span class="customerAddress">${fieldValue(bean: customerInstance, field: "address")}</span>
+					</g:if>
+					<g:if test="${customerInstance.postalCodeAndPlace.postalCode}">
+						<span class="customerPostalCodeAndPlace">${customerInstance?.postalCodeAndPlace?.postalCode} ${customerInstance?.postalCodeAndPlace?.place}</span>
+					</g:if>
+					<g:if test="${customerInstance.company}">
+						<span class="customerCompany">${fieldValue(bean: customerInstance, field: "company")}</span>
+					</g:if>
+					
+					<g:if test="${customerInstance.phoneNumber}">
+						<span class="customerPhoneNumber">
+							${fieldValue(bean: customerInstance, field: "phoneNumber")}
+							<a href="" target="_blank">Send SMS</a>
+						</span>
+                    </g:if>
+                    <g:if test="${customerInstance.email}">
+						<span class="customerEmail">
+							${fieldValue(bean: customerInstance, field: "email")}
+                    		<a href="mailto:${customerInstance.email}" target="_blank">Send epost</a>
+                    	</span>
+		            </g:if>
+	                
+	                <g:if test="${customerInstance.notice}">
+						<span class="customerNotice" >${fieldValue(bean: customerInstance, field: "notice")}</span>
+					</g:if>
+                </div>
+                
                 <div class="buttons">
 	                <g:form>
 	                    <g:hiddenField name="id" value="${customerInstance?.id}" />
@@ -77,15 +57,57 @@
 	                    	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'customer.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
 	                    </g:ifAllGranted>
 	                    
-	                    <g:if test="${customerInstance.email}">
-	                    	<span class="button"><a href="mailto:${customerInstance.email}" target="_blank"><g:message code="customer.show.sendEmail.label" /></a></span>
-			            </g:if>
 	            	</g:form>
 	        	</div>
 			</div>
+			
 			<div id="customerTireHotelAndOrders">
+				<span><a href="javascript:hideAndShowElement('onlyActiveTireHotelOccurrences','allTireHotelOccurrences');">Vis/skjul</a></span>
 				<g:if test="${tireHotelOccurrenceInstanceList}">
-		            <div id="customerTireHotelOccurrencelist">
+					<g:each in="${tireHotelOccurrenceInstanceList}" status="i" var="tireHotelOccurrenceInstance">
+						<div class="customerTireHotelOccurrencelist" id="onlyActiveTireHotelOccurrences">
+							
+							<div class="tireInfo">
+								<h4>
+									${fieldValue(bean: tireHotelOccurrenceInstance, field: "carType")} - 
+									${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}
+								</h4>
+								Lagerlokasjon: ${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}<br />
+								${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireType")}<br />
+								Inndato: <g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.inDate}" />
+							</div>
+							<div class="tireHotelButtons">
+	                       		<g:form controller="tireHotelOccurrence" method="post">
+	                        		<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+	                         		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+									<g:hiddenField name="delivered" value="delivered" />
+	                         		<g:actionSubmit class="delivered" title="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" action="deliverTireHotelOccurenceFromCustomerView" value="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
+	                   			</g:form>
+	                        	
+	                       		<g:if test="${!tireHotelOccurrenceInstance.outDate}">
+	                        		<g:form controller="tireHotelOccurrence" method="post">
+	                        			<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+	                        			<g:hiddenField name="requestFromShowCustomerView" value="true" />
+	                        			<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+	                        			<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" />
+	                        		</g:form>
+	                       		</g:if>
+				                
+				                <g:ifAllGranted role="ROLE_ADMIN">
+	                         		<g:form controller="tireHotelOccurrence" method="post">
+	                         			<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+	                        			<g:hiddenField name="requestFromShowCustomerView" value="true" />
+	                         			<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+	                         		</g:form>
+	                   			</g:ifAllGranted>
+	                   		</div>
+	                   		<div style="clear: both;"></div>
+						</div>
+					</g:each>
+				</g:if>
+			
+				<g:if test="${tireHotelOccurrenceInstanceList}">
+		            <div class="customerTireHotelOccurrencelist" id="allTireHotelOccurrences">
 		               	<table>
 		                   	<thead>
 		                       	<tr>
