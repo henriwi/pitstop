@@ -1,7 +1,5 @@
-
-<%@ page import="no.pstop.webapp.TireOccurrence" %>
-
-<%@page import="no.pstop.webapp.TireOccurrence"%><html>
+<%@page import="no.pstop.webapp.TireOccurrence"%>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
