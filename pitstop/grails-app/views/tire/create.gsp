@@ -142,6 +142,9 @@
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'notice', 'errors')}">
                                     <g:textArea tabindex='13' name="notice" rows="5" cols="10"/></td>
                             </tr>
+                            
+                             <g:hiddenField name="enabled" value="true" />
+                            
                         </tbody>
                     </table>
                 </div>

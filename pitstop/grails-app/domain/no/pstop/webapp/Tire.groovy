@@ -27,6 +27,8 @@ class Tire {
 	String notice
 	Double retailPrice
 	Integer numberInStock
+	boolean enabled
+	
 	
 	static constraints = {
 		partNr(matches: "[a-zA-Z0-9æøåÆØÅ\\-\\_]{0,40}", blank: false, unique: true)
@@ -94,5 +96,9 @@ class Tire {
 		String lastNumberInDiameter = diameter?.toString().substring(1, 2)
 		String firstLetterInTireType = tireType?.substring(0, 1).toLowerCase()
 		"${width}${profile}${lastNumberInDiameter}${firstLetterInTireType}"
+	}
+	
+	String enabledLabel(){
+		(enabled) ? "Ja" : "Nei"
 	}
 }

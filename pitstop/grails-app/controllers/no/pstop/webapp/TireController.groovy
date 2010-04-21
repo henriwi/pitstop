@@ -203,4 +203,11 @@ class TireController {
 	def normalSearch = {
 		redirect(action: "list", params:[width: params.width, profile: params.profile, diameter: params.diameter, speedIndex: params.speedIndex, tireType: params.tireType, brand: params.brand, type: 'normal'])
 	}
+	
+	
+	def disableAndEnable = {
+		def person = Tire.get(params.id)
+		person.enabled = person.enabled ? false : true 
+		redirect(action: "list")
+	}
 }
