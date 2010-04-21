@@ -56,13 +56,6 @@
                             
                         </tr>
                         
-                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="customerOrder.notice.label" default="Notice" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: customerOrderInstance, field: "notice")}</td>
-                            
-                        </tr>
-                    
                     </tbody>
                 </table>
             </div>

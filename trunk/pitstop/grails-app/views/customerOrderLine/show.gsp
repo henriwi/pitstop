@@ -32,7 +32,7 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="customerOrderLine.numberOfOrderedTireOccurrences.label" default="Number Of Ordered Tire Occurrences" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: customerOrderLineInstance, field: "numberOfOrderedTireOccurrences")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: customerOrderLineInstance, field: "numberOfReservedTires")}</td>
                             
                         </tr>
                     
@@ -46,16 +46,9 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="customerOrderLine.deliveryDate.label" default="Delivery Date" /></td>
-                            
-                            <td valign="top" class="value"><g:formatDate date="${customerOrderLineInstance?.deliveryDate}" /></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="customerOrderLine.tireOccurrence.label" default="Tire Occurrence" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="tireOccurrence" action="show" id="${customerOrderLineInstance?.tireOccurrence?.id}">${customerOrderLineInstance?.tireOccurrence?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value"><g:link controller="tireOccurrence" action="show" id="${customerOrderLineInstance?.tire?.id}">${customerOrderLineInstance?.tire?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     

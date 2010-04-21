@@ -5,7 +5,7 @@ import java.util.regex.Matcher
 
 class Tire {
 	static searchable = true
-	static hasMany = [tireOccurrences: TireOccurrence]
+	static hasMany = [customerOrderLines: CustomerOrderLine, supplierOrderLines: SupplierOrderLine]
     static final tireIndex = 0
     static final widthIndex = 1
     static final profileIndex = 2
@@ -26,6 +26,7 @@ class Tire {
 	String tireType
 	String notice
 	Double retailPrice
+	Integer numberInStock
 	
 	static constraints = {
 		partNr(matches: "[a-zA-Z0-9æøåÆØÅ\\-\\_]{0,40}", blank: false, unique: true)
@@ -40,6 +41,7 @@ class Tire {
 		pattern(matches: "[a-zA-Z0-9\\s|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,30}")
 		tireType(inList: ["Sommer", "Vinter (pigg)", "Vinter (piggfri)", "Vinter (pigg - upigget)", "M+S (helårsdekk)"], blank: false)
 		retailPrice(min: new Double(0.00))
+		numberInStock(min: 0)
 	}
 
 	static fastSearch(Matcher query, Integer max, Integer offset) {
@@ -63,13 +65,13 @@ class Tire {
 		}?.results
 	}
 	
-	String toString() {
+	/*String toString() {
 		Integer numberOfAvailable = 0 
 		for (tireOccurrence in this?.tireOccurrences) {
 			numberOfAvailable += tireOccurrence?.numberOfAvailable()
 		}
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (på lager: ${numberOfAvailable})"
-	}
+	}*/
 	
 	String orderToString() {
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (${partNr})" 

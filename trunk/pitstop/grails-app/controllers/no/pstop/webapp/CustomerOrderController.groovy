@@ -1,4 +1,6 @@
 package no.pstop.webapp
+import grails.converters.deep.JSON;
+
 import java.util.Date;
 import java.util.Iterator;
 
@@ -30,18 +32,19 @@ class CustomerOrderController {
     }
 
     def create = {
-		session["order"] = new CustomerOrder(orderDate: new Date())
+		session["order"] = new CustomerOrder()
 		session["orderLineList"] = []
-		session["tireList"] = Tire.list()
-		session["customer"] = new Customer()
+		//session["tire"]// = Tire.list()
+		session["customer"] = Customer.get(params.customerId)
 		
-		return [tireList: session["tireList"]]
+		//return [tireList: session["tireList"]]
     }
 
     def save = {
+    	def customer = session["customer"]
 		def customerOrderInstance = session["order"]
 		customerOrderInstance.orderDate = new Date()
-		customerOrderInstance.notice = ""
+		customerOrderInstance.customer = customer
 		
 		try {
 			customerOrderService.saveOrder(customerOrderInstance, session)
@@ -121,82 +124,65 @@ class CustomerOrderController {
         }
     }
 
-    def showTireOccurrences = {
+    def showTireInfo = {
 		setCustomer()
-		render(view: "create", model: [order: session["order"], orderLine: session["orderLineList"], tireList: session["tireList"]])
+		def tire = Tire.get(params.tireId)
+		session["tire"] = tire
+		
+		render(view: "create", model: [tire: session["tire"], order: session["order"], orderLine: session["orderLineList"], tireList: session["tireList"]])
     }
 
     private setCustomer() {
-    	session["order"]?.customer = Customer.get(params.customerId)
+		if(params.customerId)
+			session["customer"] = Customer.get(params.customerId)
     }
     
     def addToOrder = {
 			setCustomer()
 			def order = session["order"]
-			def tireList = session["tireList"]
 			def orderLineList = session["orderLineList"]
+			def tire = session["tire"]
 			
-			int numberOfTireOccurrences = params.numberOfTireOccurrences?.toInteger()
-			orderLineList = addToOrderLine(numberOfTireOccurrences, params, order, orderLineList)
+			orderLineList = addToOrderLine(params, tire, orderLineList)
 			
-			tireList = updateTireListAndResetTireId(orderLineList, tireList, params)
-			
-			writeSession(session, order, tireList, orderLineList)
-            render(view: "create", model: [order: session["order"], orderLine: session["orderLineList"], tireList: session["tireList"]])
+			writeSession(session, order, orderLineList)
+            render(view: "create", model: [tire: session["tire"], order: session["order"], orderLine: session["orderLineList"]])
     }
 		
-	private updateTireListAndResetTireId(orderLineList, tireList, params) {
-		if(orderLineList) {
-			def tireListId = orderLineList?.tireOccurrence?.tire?.id
-			tireList = Tire.findAllByIdNotInList(tireListId)
-		}
-		else {
-			tireList = Tire.list()
-		}
-		params.tireId = 0
-		return tireList
+	private addToOrderLine(params, tire, orderLineList) {
+		def customerOrderLine = new CustomerOrderLine()
+		customerOrderLine.price = params.price.toDouble()
+		customerOrderLine.numberOfReservedTires = params.numberOfReservedTires.toInteger()
+		customerOrderLine.tire = tire
+		
+		orderLineList << customerOrderLine
+		return orderLineList
 	}
 		
-	private writeSession(session, order = session["order"], tireList, orderLineList) {
+	private writeSession(session, order = session["order"], orderLineList) {
 		session["order"] = order
-		session["tireList"] = tireList 
 		session["orderLineList"] = orderLineList 
 	}
 		
-	private addToOrderLine(int numberOfTireOccurrences, params, order, orderLineList) {
-		for (int i = 0; i < numberOfTireOccurrences; i++) {
-			if (params.numberOfOrdered[i]?.toInteger() > 0/* && params.price[i] != ""*/) {
-				def customerOrderLine = new CustomerOrderLine()
-				customerOrderLine.tireOccurrence = TireOccurrence.get(params.tireOccurrenceId[i])
-				customerOrderLine.customerOrder = order
-				customerOrderLine.numberOfOrderedTireOccurrences = params.numberOfOrdered.class.isArray() ? params.numberOfOrdered[i].toInteger() : params.numberOfOrdered.toInteger()
-				customerOrderLine.price = params.price.class.isArray() ? params.price[i].toDouble() : params.price.toDouble()
-				customerOrderLine.deliveryDate = new Date()
-				orderLineList << customerOrderLine
-			}
-		}
-		return orderLineList
-	}
-	
 	def deleteFromOrder = {
 		def orderLineList = session["orderLineList"]
-		def tireList = session["tireList"]
 		
-		def tireOccurrence = TireOccurrence.get(params.removeTireOccurrenceId)
+		removeFromOrderLine(params, orderLineList)
 		
-		removeFromOrderLine(orderLineList, tireOccurrence)
-		
-		tireList = updateTireListAndResetTireId(orderLineList, tireList, params)
-		
-		writeSession(session, tireList, orderLineList)
-		render(view: "create", model: [order: session["order"], orderLine: session["orderLineList"], tireList: session["tireList"]])
+		writeSession(session, orderLineList)
+		render(view: "create", model: [order: session["order"], orderLine: session["orderLineList"]])
 	}
-	
-	private removeFromOrderLine(orderLineList, tireOccurrence) {
+
+	private removeFromOrderLine(params, orderLineList) {
+		int orderLineId = params.orderLineId.toInteger()
+		int i = 0;
 		for (Iterator iterator = orderLineList.iterator(); iterator.hasNext();) {
 			def orderLine = iterator.next()
-			if(orderLine?.tireOccurrence?.id == tireOccurrence?.id)
+			if(i == orderLineId) {
 				iterator.remove()
+				break
+			}
+			i++
 		}
 	}
 	
