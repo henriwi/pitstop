@@ -3,18 +3,18 @@ package no.pstop.webapp
 import java.util.Date;
 
 class SupplierOrderLine {
-	static belongsTo = [tireOccurrence: TireOccurrence, supplierOrder: SupplierOrder]
-	Integer numberOfOrderedTireOccurrences
+	static final tax = 1.25
+	static belongsTo = [tire: Tire, supplierOrder: SupplierOrder]
+	Integer numberOfOrderedTires
 	Double price
-	Date deliveryDate 
+	Date receivedDate
+	Integer discount
+	Integer environmentalFee
 	
     static constraints = {
-		numberOfOrderedTireOccurrences(min: 1, max: 1000)
-		price(min: new Double(0.00), max: new Double(100000000.00))
-		//deliveryDate(blank: true, nullable: true)
-    }
-	
-	String toString(){
-		"${tireOccurrence?.supplierOrderLineToString()} Salgspris: ${price} kr Bestilt: ${numberOfOrderedTireOccurrences}"
+		price(min: new Double(0.00))
+		discount(min: 0, max: 100)
+		environmentalFee(min: 0)
+		receivedDate(nullable: true)
 	}
 }

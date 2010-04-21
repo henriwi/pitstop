@@ -32,15 +32,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="notice"><g:message code="supplierOrder.notice.label" default="Notice" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'notice', 'errors')}">
-                                    <g:textArea name="notice" cols="40" rows="5" value="${supplierOrderInstance?.notice}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                   <label for="supplierOrderLines"><g:message code="supplierOrder.supplierOrderLines.label" default="Supplier Order Lines" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'supplierOrderLines', 'errors')}">
@@ -61,6 +52,15 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'orderDate', 'errors')}">
                                     <g:datePicker name="orderDate" precision="day" value="${supplierOrderInstance?.orderDate}"  />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="orderNumber"><g:message code="supplierOrder.orderNumber.label" default="Order Number" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'orderNumber', 'errors')}">
+                                    <g:textField name="orderNumber" value="${supplierOrderInstance?.orderNumber}" />
                                 </td>
                             </tr>
                         

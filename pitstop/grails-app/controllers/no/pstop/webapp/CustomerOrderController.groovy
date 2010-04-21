@@ -7,7 +7,7 @@ import java.util.Iterator;
 class CustomerOrderController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-    def customerOrderService
+    def orderService
 		
     def index = {
         redirect(action: "list", params: params)
@@ -33,7 +33,7 @@ class CustomerOrderController {
 
     def create = {
 		session["order"] = new CustomerOrder()
-		session["orderLineList"] = []
+		session["orderLines"] = []
 		//session["tire"]// = Tire.list()
 		session["customer"] = Customer.get(params.customerId)
 		
@@ -47,11 +47,11 @@ class CustomerOrderController {
 		customerOrderInstance.customer = customer
 		
 		try {
-			customerOrderService.saveOrder(customerOrderInstance, session)
+			orderService.saveCustomerOrder(customerOrderInstance, session)
 			redirect(action: "show", controller: "customerOrder", id: customerOrderInstance.id)
 		}
 		catch(result) {
-			flash.message = "Kunne ikke lagre ordren."
+			flash.message = "Kunne ikke lagre ordren." + result
 			redirect(action: "create")
 		}
     }
@@ -140,71 +140,37 @@ class CustomerOrderController {
     def addToOrder = {
 			setCustomer()
 			def order = session["order"]
-			def orderLineList = session["orderLineList"]
+			def orderLines = session["orderLines"]
 			def tire = session["tire"]
 			
-			orderLineList = addToOrderLine(params, tire, orderLineList)
+			orderLines = addToOrderLine(params, tire, orderLines)
 			
-			writeSession(session, order, orderLineList)
-            render(view: "create", model: [tire: session["tire"], order: session["order"], orderLine: session["orderLineList"]])
+			writeSession(session, order, orderLines)
+            render(view: "create", model: [tire: session["tire"], order: session["order"], orderLines: session["orderLines"]])
     }
 		
-	private addToOrderLine(params, tire, orderLineList) {
+	private addToOrderLine(params, tire, orderLines) {
 		def customerOrderLine = new CustomerOrderLine()
 		customerOrderLine.price = params.price.toDouble()
 		customerOrderLine.numberOfReservedTires = params.numberOfReservedTires.toInteger()
 		customerOrderLine.tire = tire
 		
-		orderLineList << customerOrderLine
-		return orderLineList
+		orderLines << customerOrderLine
+		return orderLines
 	}
 		
-	private writeSession(session, order = session["order"], orderLineList) {
+	private writeSession(session, order = session["order"], orderLines) {
 		session["order"] = order
-		session["orderLineList"] = orderLineList 
+		session["orderLines"] = orderLines 
 	}
 		
 	def deleteFromOrder = {
-		def orderLineList = session["orderLineList"]
+		def orderLines = session["orderLines"]
 		
-		removeFromOrderLine(params, orderLineList)
+		int orderLineIndex = params.orderLineIndex.toInteger()
+		orderLines.remove(orderLineIndex)
 		
-		writeSession(session, orderLineList)
-		render(view: "create", model: [order: session["order"], orderLine: session["orderLineList"]])
-	}
-
-	private removeFromOrderLine(params, orderLineList) {
-		int orderLineId = params.orderLineId.toInteger()
-		int i = 0;
-		for (Iterator iterator = orderLineList.iterator(); iterator.hasNext();) {
-			def orderLine = iterator.next()
-			if(i == orderLineId) {
-				iterator.remove()
-				break
-			}
-			i++
-		}
-	}
-	
-	def addEmptyTireOccurrence = {
-		def order = session["order"]
-		def tireList = session["tireList"]
-		def orderLineList = session["orderLineList"]
-		
-		int numberOfReserved = params.numberOfReserved.toInteger()
-		def tire = Tire.get(params.tireId)
-		def tireOccurrence = new TireOccurrence(tire: tire, price: tire?.retailPrice, numberInStock: numberOfReserved, 
-		numberOfReserved: numberOfReserved, registrationDate: new Date(), discount: 0, environmentalFee: 0, 
-		inStock: false)
-		tireOccurrence = tireOccurrence.merge(flush: true)
-
-		params.numberOfOrdered = [numberOfReserved]
-		params.price = [tireOccurrence?.price]
-		params.tireOccurrenceId = [tireOccurrence?.id]
-		
-		orderLineList = addToOrderLine(1, params, session.order, session.orderLineList)
-		tireList = updateTireListAndResetTireId(orderLineList, tireList, params)
-		writeSession(session, order, tireList, orderLineList)
-		render(view: "create", model: [order: session["order"], orderLine: session["orderLineList"], tireList: session["tireList"]])
+		writeSession(session, orderLines)
+		render(view: "create", model: [order: session["order"], orderLines: session["orderLines"]])
 	}
 }

@@ -112,24 +112,23 @@
 		                </thead>
 	                	<tbody>
 	                	
-	                	<g:set var="orderLineId" value="${0}"></g:set>
-						<g:each in="${orderLine}" status="i" var="orderLineInstance">
+	                	<g:set var="orderLineIndex" value="${0}"></g:set>
+						<g:each in="${orderLines}" status="i" var="orderLineInstance">
 							<tr>
                       			<td>${orderLineInstance?.tire}</td>
                       			<td><g:textField name="price" value="${orderLineInstance?.price}"></g:textField></td>
                       			<td><g:textField name="numberOfReservedTires" value="${orderLineInstance?.numberOfReservedTires}"></g:textField></td>
 								<td>
                           			<g:form action="deleteFromOrder" method="get">
-                          				<g:hiddenField name="orderLineId" value="${orderLineId}" />
+                          				<g:hiddenField name="orderLineIndex" value="${orderLineIndex}" />
                           				<g:submitButton class="deleteTableItem" name="deleteFromOrder" value="${message(code: 'customerOrder.button.delete.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
                           			</g:form>
                          		</td>  
 							</tr>
-							<g:set var="orderLineId" value="${orderLineId + 1}"></g:set>
+							<g:set var="orderLineIndex" value="${orderLineIndex + 1}"></g:set>
 					</g:each>
                    	</tbody>
             		</table>
-                
                 
 	                <g:form action="save" method="post" >
 	                	<div class="buttons">

@@ -30,13 +30,6 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="supplierOrder.notice.label" default="Notice" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: supplierOrderInstance, field: "notice")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="supplierOrder.supplierOrderLines.label" default="Supplier Order Lines" /></td>
                             
                             <td valign="top" style="text-align: left;" class="value">
@@ -53,6 +46,13 @@
                             <td valign="top" class="name"><g:message code="supplierOrder.orderDate.label" default="Order Date" /></td>
                             
                             <td valign="top" class="value"><g:formatDate date="${supplierOrderInstance?.orderDate}" /></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="supplierOrder.orderNumber.label" default="Order Number" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: supplierOrderInstance, field: "orderNumber")}</td>
                             
                         </tr>
                     
