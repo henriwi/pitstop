@@ -86,17 +86,16 @@
                             
                             <g:sortableColumn params="${params}" property="numberInStock" title="${message(code: 'tire.numberInStock.table.label')}" />
                             
+                      		<g:sortableColumn property="enabled" title="${message(code: 'user.enabled.table.label')}" />
+                            
                             <g:sortableColumn params="${params}" property="notice" title="${message(code: 'tire.notice.table.label')}" />
                             
-                            <g:sortableColumn params="${params}" property="numberOfAvailable" title="${message(code: 'tireOccurrence.numberOfAvailable.table.label')}" />
                            <%--  <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th> --%>
-                            
-                            <th><a class="notSortableColoumn">${message(code: 'tire.list.add.label')}</a></th>
                             
                             <th><a class="notSortableColoumn">${message(code: 'tire.list.edit.label')}</a></th>
 
            	                <g:ifAllGranted role="ROLE_ADMIN"> 
-                            <th><a class="notSortableColoumn">${message(code: 'tire.list.delete.label')}</a></th>
+	                     	<th><a class="notSortableColoumn">${message(code: 'tire.list.disable.label')}</a></th>
                         	</g:ifAllGranted>
                         </tr>
                     </thead>
@@ -128,16 +127,24 @@
                             
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "numberInStock")}</g:link></td>
                             
+                            <td><g:link action="show" id="${tireInstance.id}">${tireInstance?.enabledLabel()}</g:link> </td>
+                            
                             <td><g:link action="show" id="${tireInstance.id}">${tireInstance?.showNoticeWith10FirstLetters()}</g:link></td>
                             
                             <td><g:link class="editTableItem" action="edit" title="${message(code: 'tire.list.edit.tooltip.label')}" id="${tireInstance.id}">&nbsp;</g:link></td>
                             
            	                <g:ifAllGranted role="ROLE_ADMIN"> 
                             <td>
-                            	<g:form method="post">
-                            		<g:hiddenField name="id" value="${tireInstance?.id}" />
-                            		<g:actionSubmit class="deleteTableItem" action="delete" title="${message(code: 'tire.list.delete.tooltip.label')}" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" />
-                            	</g:form>
+			                    	<g:form method="post">
+			                        	<g:hiddenField name="id" value="${tireInstance?.id}" />
+			         
+			                           	<g:if test="${tireInstance?.enabled}">
+			                           		<g:actionSubmit class="disableTableItem" title="${message(code: 'tire.list.disable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
+			                       		</g:if>
+			                       		<g:else>
+			                          		<g:actionSubmit class="enableTableItem" title="${message(code: 'tire.list.enable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
+			                       		</g:else>
+			                        </g:form>
                             </td>   
                             </g:ifAllGranted>
 
