@@ -17,5 +17,9 @@ function showElement(element) {
 	document.getElementById(element).style.display = "inherit";	
 }
 
+function stopRedirectAction(evt){
+	evt.preventDefault();
+}
+
 window.onload=showElement('onlyActiveTireHotelOccurrences');
 window.onload=hideElement('allTireHotelOccurrences');

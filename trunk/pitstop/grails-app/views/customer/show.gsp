@@ -33,7 +33,7 @@
 					<g:if test="${customerInstance.phoneNumber}">
 						<span class="customerPhoneNumber">
 							${fieldValue(bean: customerInstance, field: "phoneNumber")}
-							<a href="" target="_blank">Send SMS</a>
+							<modalbox:createLink id="${customerInstance.id}" controller="customer" action="showSmsView" title="Send SMS" width="350" overlayDuration="0" slideDownDuration="0" resizeDuration="0">Send SMS</modalbox:createLink>
 						</span>
                     </g:if>
                     <g:if test="${customerInstance.email}">
@@ -62,7 +62,10 @@
 			</div>
 			
 			<div id="customerTireHotelAndOrders">
-				<span><a href="javascript:hideAndShowElement('onlyActiveTireHotelOccurrences','allTireHotelOccurrences');">Vis/skjul</a></span>
+				<span>
+					Liste <input type="radio" name="tireHotelOccurrences" checked="checked" value="tireHotelOccurenceList" onfocus="javascript:hideAndShowElement('onlyActiveTireHotelOccurrences','allTireHotelOccurrences');" /> 
+					Tabell <input type="radio" name="tireHotelOccurrences" value="tireHotelOccurenceTable" onfocus="javascript:hideAndShowElement('allTireHotelOccurrences','onlyActiveTireHotelOccurrences');" />
+				</span>
 				<g:if test="${tireHotelOccurrenceInstanceList}">
 					<g:each in="${tireHotelOccurrenceInstanceList}" status="i" var="tireHotelOccurrenceInstance">
 						<div class="customerTireHotelOccurrencelist" id="onlyActiveTireHotelOccurrences">

@@ -145,4 +145,9 @@ class CustomerController {
 		else 
 			render ""
 	}
+	
+	def showSmsView = {
+		def customerInstance = Customer.get(params.id)
+		render(view: "send", model: [customerInstanceList: customerInstance])
+	}
 }
