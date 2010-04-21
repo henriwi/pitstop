@@ -4,32 +4,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'supplierOrder.label')}" />
-        <title><g:message code="supplierOrder.label" args="[entityName]" /></title>
+        <g:set var="entityName" value="${message(code: 'supplierOrder.label', default: 'SupplierOrder')}" />
+        <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
         <div class="nav">
-        	<g:if test="${params.action == 'list'}">
-        		<span class="menuButton" id="active" >
-        			<g:link class="list" action="list"><g:message code="supplier.listSupplierOrder.list.label" /></g:link>
-        		</span>
-        	</g:if>
-	        <g:else>
-	        	<span class="menuButton">
-        			<g:link class="list" action="list"><g:message code="supplier.listSupplierOrder.list.label" /></g:link>
-        		</span>
-	        </g:else>
-        	
-        	<g:if test="${params.action == 'create'}">
-        		<span class="menuButton" id="active" >
-        			<g:link class="create" action="create"><g:message code="supplier.addOrder.new.label" /></g:link>
-        		</span>
-        	</g:if>
-	        <g:else>
-	        	<span class="menuButton">
-        			<g:link class="create" action="create"><g:message code="supplier.addOrder.new.label" /></g:link>
-        		</span>
-	        </g:else>
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}">Home</a></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
         <div class="body">
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
@@ -43,9 +24,9 @@
                         
                             <g:sortableColumn property="id" title="${message(code: 'supplierOrder.id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="notice" title="${message(code: 'supplierOrder.notice.label', default: 'Notice')}" />
-                        
                             <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.orderDate.label', default: 'Order Date')}" />
+                        
+                            <g:sortableColumn property="orderNumber" title="${message(code: 'supplierOrder.orderNumber.label', default: 'Order Number')}" />
                         
                             <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.supplier.label', default: 'Supplier')}" />
                         
@@ -57,9 +38,9 @@
                         
                             <td><g:link action="show" id="${supplierOrderInstance.id}">${fieldValue(bean: supplierOrderInstance, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: supplierOrderInstance, field: "notice")}</td>
-                        
                             <td><g:formatDate date="${supplierOrderInstance.orderDate}" /></td>
+                        
+                            <td>${fieldValue(bean: supplierOrderInstance, field: "orderNumber")}</td>
                         
                             <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
                         

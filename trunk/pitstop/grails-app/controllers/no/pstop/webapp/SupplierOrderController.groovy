@@ -1,6 +1,7 @@
 package no.pstop.webapp
 
 class SupplierOrderController {
+	def orderService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -14,20 +15,22 @@ class SupplierOrderController {
     }
 
     def create = {
-        def supplierOrderInstance = new SupplierOrder()
-        supplierOrderInstance.properties = params
-        return [supplierOrderInstance: supplierOrderInstance]
+		session["order"] = new SupplierOrder()
+		session["orderLines"] = []
     }
 
     def save = {
-        def supplierOrderInstance = new SupplierOrder(params)
-        if (supplierOrderInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'supplierOrder.label', default: 'SupplierOrder'), supplierOrderInstance.id])}"
-            redirect(action: "show", id: supplierOrderInstance.id)
-        }
-        else {
-            render(view: "create", model: [supplierOrderInstance: supplierOrderInstance])
-        }
+		def supplierOrderInstance = session["order"]
+        supplierOrderInstance.orderDate = new Date()
+		
+		try {
+			orderService.saveSupplierOrder(supplierOrderInstance, session)
+			redirect(action: "show", id: supplierOrderInstance.id)
+		}
+		catch(result) {
+			flash.message = "Kunne ikke lagre ordren." + result
+			redirect(action: "create")
+		}
     }
 
     def show = {
@@ -97,4 +100,39 @@ class SupplierOrderController {
             redirect(action: "list")
         }
     }
+	
+	def addToOrder = {
+		setOrderValues()
+    	def orderLines = session["orderLines"]
+		def tire = Tire.get(params.tireId)
+		
+		def orderLine = new SupplierOrderLine()
+		orderLine.tire = tire
+		orderLine.price = params.price?.toDouble()
+		orderLine.discount = params.discount?.toInteger()
+		orderLine.environmentalFee = params.environmentalFee?.toInteger()
+		orderLine.numberOfOrderedTires = params.numberOfOrderedTires?.toInteger()
+		
+		orderLines << orderLine
+		session["orderLines"] = orderLines
+		render(view: "create", model:[orderLines: orderLines, order: session["order"]])
+	}
+
+    private setOrderValues() {
+		println params
+    	session["order"]?.orderNumber = params.orderNumber
+		session["order"]?.supplier = params.supplier
+		println session["order"].orderNumber
+		println session["order"].supplier
+    }
+	
+	def deleteFromOrder = {
+    	def orderLines = session["orderLines"]
+			
+        int orderLineIndex = params.orderLineIndex.toInteger()
+		orderLines.remove(orderLineIndex)
+		
+		session["orderLines"] = orderLines
+		render(view: "create", model:[orderLines: orderLines, order: session["order"]])
+	}
 }
