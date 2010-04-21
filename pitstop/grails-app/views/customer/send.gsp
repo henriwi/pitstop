@@ -1,5 +1,4 @@
 <head>
-	<meta name="layout" content="main" />
 	<title>Send SMS til kunde</title>
 </head>
 <body>
@@ -26,7 +25,7 @@
 					<tr class="prop">
 						<td valign="top" class="name"><label for="RCV">Mottaker: </label></td>
 						<td valign="top" class="value ${hasErrors(bean:authority,field:'authority','errors')}">
-							<input type="text" id="RCV" name="RCV"/>
+							<input type="text" id="RCV" name="RCV" value="47${customerInstanceList.phoneNumber}"/>
 						</td>
 					</tr>
 		
@@ -40,7 +39,7 @@
 			</table>
 			</div>
 			<div class="buttons">
-				<span class="button"><g:submitButton name="SUBMIT" class="save" value="Send sms" /></span>
+				<span class="button"><g:submitButton name="SUBMIT" class="save" value="Send sms"/></span>
 			</div>
 		</form>
 	</div>
