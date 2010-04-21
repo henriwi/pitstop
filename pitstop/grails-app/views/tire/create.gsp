@@ -144,9 +144,14 @@
                                     <g:textField maxlength="30" tabindex='11' name="retailPrice" value="${tireInstance?.retailPrice}" /></td>
                             </tr>
                             <tr class="prop">
+                                <td valign="top" class="name"><label for="numberInStock"><g:message code="tire.numberInStock.label" /></label></td>
+                                <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'numberInStock', 'errors')}">
+                                    <g:textField maxlength="30" tabindex='12' name="numberInStock" value="${tireInstance?.numberInStock}" /></td>
+                            </tr>
+                            <tr class="prop">
                                 <td valign="top" class="name"><label for="notice"><g:message code="tire.notice.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'notice', 'errors')}">
-                                    <g:textArea tabindex='12' name="notice" rows="5" cols="10"/></td>
+                                    <g:textArea tabindex='13' name="notice" rows="5" cols="10"/></td>
                             </tr>
                         </tbody>
                     </table>

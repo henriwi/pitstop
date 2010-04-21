@@ -93,6 +93,10 @@
                             
                             <g:sortableColumn params="${params}" property="tireType" title="${message(code: 'tire.tireType.table.label')}" />
                             
+                            <g:sortableColumn params="${params}" property="retailPrice" title="${message(code: 'tire.retailPrice.table.label')}" />
+                            
+                            <g:sortableColumn params="${params}" property="numberInStock" title="${message(code: 'tire.numberInStock.table.label')}" />
+                            
                             <g:sortableColumn params="${params}" property="notice" title="${message(code: 'tire.notice.table.label')}" />
                             
                             <g:sortableColumn params="${params}" property="numberOfAvailable" title="${message(code: 'tireOccurrence.numberOfAvailable.table.label')}" />
@@ -131,16 +135,11 @@
                         
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireType")}</g:link></td>
                             
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "retailPrice")}</g:link></td>
+                            
+                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "numberInStock")}</g:link></td>
+                            
                             <td><g:link action="show" id="${tireInstance.id}">${tireInstance?.showNoticeWith10FirstLetters()}</g:link></td>
-                            
-                            <g:set var="numberOfAvailable" value="${0}"></g:set>
-                            <g:each in="${tireInstance.tireOccurrences}" status="j" var="tireOccurrence">
-                             	<g:set var="numberOfAvailable" value="${numberOfAvailable + (tireOccurrence.numberOfAvailable())}"></g:set>
-                            </g:each>
-                            
-                            <td><g:link action="show" id="${tireInstance.id}">${numberOfAvailable}</g:link></td>
-                            
-                            <td><g:link controller="tireOccurrence" class="saveTableItem" action="create" title="${message(code: 'tire.list.create.tooltip.label')}" id="${tireInstance.id}">${message(code: 'list.button.delete.label')}</g:link></td>
                             
                             <td><g:link class="editTableItem" action="edit" title="${message(code: 'tire.list.edit.tooltip.label')}" id="${tireInstance.id}">&nbsp;</g:link></td>
                             

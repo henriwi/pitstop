@@ -1,3 +1,8 @@
+/*SLETT*/
+#skjul {
+	display: none;
+}
+
 html * {
     margin: 0;
     /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
@@ -474,6 +479,7 @@ input.delivered {
 	color: #000;
 }
 
+
 /* LOGIN */
 #login {
 	width:260px;
@@ -647,11 +653,13 @@ a.btnShowAll {
     cursor: pointer;
 }
 
+.menuButton a.createUser {
+    background: url(../images/skin/user_add.png) center left no-repeat;
+    color: #555;
+    padding-left: 25px;
+	background-position: 2px;
+}
 
-/* Slett */
-#skjul {
-	display: none;
-}/**/
 
 
 .customerBox{
