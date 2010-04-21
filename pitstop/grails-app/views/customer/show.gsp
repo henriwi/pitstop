@@ -6,7 +6,7 @@
         <meta name="layout" content="main" />
         <title><g:message code="customer.show.title.label" /></title>
     </head>
-    <body onload="">
+    <body>
         <div class="nav">
             <span class="menuButton"><g:link class="list" action="list"><g:message code="customer.list.label" /></g:link></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link></span>
@@ -39,7 +39,7 @@
                     <g:if test="${customerInstance.email}">
 						<span class="customerEmail">
 							${fieldValue(bean: customerInstance, field: "email")}
-                    		<a href="mailto:${customerInstance.email}" target="_blank">Send epost</a>
+                    		<a href="mailto:${customerInstance.email}" target="_blank">Send e-post</a>
                     	</span>
 		            </g:if>
 	                

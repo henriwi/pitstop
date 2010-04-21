@@ -123,9 +123,9 @@
                                	<td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'inDate', 'errors')}"> 
                                	 	<richui:dateChooser name="inDate" format="dd.MM.yyyy" value="${tireHotelOccurrenceInstance?.inDate}" firstDayOfWeek="Mo" locale="en"/>
                                	 </td> 
-                                   <!-- <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'inDate', 'errors')}">
-																	<g:datePicker name="inDate" precision="day" years="${2010..2030}" value="${tireHotelOccurrenceInstance?.inDate}"  />
-                                </td>-->
+                                 	<td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'inDate', 'errors')}">
+									<g:datePicker name="inDate" precision="day" years="${2010..2030}" value="${tireHotelOccurrenceInstance?.inDate}" />
+                                 </td>
                             </tr>
                         
                             <tr class="prop">
