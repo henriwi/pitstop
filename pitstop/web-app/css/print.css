@@ -1,0 +1,654 @@
+/*SLETT*/
+#skjul {
+	display: none;
+}
+
+html * {
+    margin: 0;
+    /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
+}
+
+/* GENERAL */
+.spinner {
+    padding: 5px;
+    position: absolute;
+    right: 0;
+}
+
+body {
+    background: #fff;
+    color: #333;
+    font: 11px verdana, arial, helvetica, sans-serif;
+}
+#pstopLogo{
+	display: none;
+}
+
+#grailsLogo {
+	display: none;
+}
+
+a:link, a:visited, a:hover {
+    color: #666;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+h1 {
+    color: #48802c;
+    font-weight: normal;
+    font-size: 16px;
+    margin: .8em 0 .3em 0;
+}
+
+ul {
+    padding-left: 15px;
+}
+
+input, select, textarea {
+    display: none;
+}
+
+.body {
+    float: left;
+    margin: 0 15px 10px 15px;
+}
+	
+#content {
+	margin-top: 2px;
+	margin-left: 0px;
+	width: auto;
+}
+#container {
+	width: 1250px;
+	min-height: 400px;
+	
+}
+
+/* MAIN MENU */
+div#mainMenu {
+	display: none;
+}
+
+ul#menuList {
+	display: none;
+}
+
+ul#menuList li {
+	display: none;
+}
+
+#menuList a{
+	display: none;
+}
+
+.nav {
+	display: none;
+}
+.menuButton {
+    display: none;
+}
+.menuButton a {
+    display: none;
+}
+.backButton a.back {
+    display: none;
+}
+#createTireOccurrenceButton {
+	display: none;
+}
+
+#createTireOccurrenceButton a{
+    display: none;
+}
+
+span#active a {
+	border: 1px solid #888;
+	border-bottom: none;
+	webkit-border-radius: 4px 4px 0px 0px;
+    -moz-border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
+	padding-bottom: 8px;
+	padding-top: 8px;
+	padding-left: 25px;
+	background-position: 2px;
+	background-color: #fff;
+	color: #000;
+}
+
+/* MESSAGES AND ERRORS */
+.message {
+    background: #f3f8fc url(../images/skin/information.png) 8px 50% no-repeat;
+    border: 1px solid #b2d1ff;
+    color: #006dba;
+    margin: 10px 0 5px 0;
+    padding: 5px 5px 5px 30px
+}
+
+div.errors {
+    background: #fff3f3;
+    border: 1px solid red;
+    color: #cc0000;
+    margin: 10px 0 5px 0;
+    padding: 5px 0 5px 0;
+}
+div.errors ul {
+    list-style: none;
+    padding: 0;
+}
+div.errors li {
+	background: url(../images/skin/exclamation.png) 8px 0% no-repeat;
+    line-height: 16px;
+    padding-left: 30px;
+}
+
+td.errors select,td.errors input, span.errors input{
+    border: 1px solid red;
+}
+
+
+/* TABLES */
+table {
+    border: 1px solid #ccc;
+    width: 100%
+}
+tr {
+    border: 0;
+}
+td, th {
+    font: 11px verdana, arial, helvetica, sans-serif;
+    line-height: 12px;
+    padding: 5px 6px;
+    text-align: left;
+    vertical-align: top;
+}
+th {
+    background: #fff url(../images/skin/shadow.jpg);
+    color: #666;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 17px;
+    padding: 2px 6px;
+}
+th a:link, th a:visited, th a:hover {
+    color: #333;
+    display: block;
+    font-size: 10px;
+    text-decoration: none;
+    width: 100%;
+}
+th.asc a, th.desc a {
+    background-position: right;
+    background-repeat: no-repeat;
+}
+th.asc a {
+    background-image: url(../images/skin/sorted_asc.gif);
+}
+th.desc a {
+    background-image: url(../images/skin/sorted_desc.gif);
+}
+
+.odd {
+    background: #f7f7f7;
+}
+.even {
+    background: #fff;
+}
+
+/* PAGINATION */
+.paginateButtons {
+    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    border: 1px solid #ccc;
+    border-top: 0;
+    color: #666;
+    font-size: 10px;
+    overflow: hidden;
+    padding: 10px 3px;
+}
+.paginateButtons a {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-color: #ccc #aaa #aaa #ccc;
+    color: #666;
+    margin: 0 3px;
+    padding: 2px 6px;
+}
+.paginateButtons span {
+    padding: 2px 3px;
+}
+
+/* DIALOG */
+#tireDialog {
+	/*background-color: #000;*/
+	margin-right: 15px;
+	float: left;	
+}
+
+#fastSearchInListView{
+	display: none;
+}
+
+.searchButtons #showAllButton{
+	width: 35px;
+	height: 40px;
+	margin: 2px 0 2px 0;
+	background-color: #333
+}
+
+.dialog table {
+    padding: 5px 0;
+}
+
+.prop {
+    padding: 5px;
+}
+.prop .name {
+    text-align: left;
+    width: 15%;
+    white-space: nowrap;
+}
+.prop .value {
+    text-align: left;
+    width: 85%;
+}
+/* List */ 
+.list table {
+    border-collapse: collapse;
+}
+.list th, .list td {
+    border-left: 1px solid #ddd;
+}
+.list th:hover, .list tr:hover {
+    background: #b2d1ff;
+}
+
+.buttonColoumn {
+	display: none;	
+}
+
+.buttons {
+    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    border: 1px solid #ccc;
+    color: #666;
+    font-size: 10px;
+    margin-top: 5px;
+    overflow: hidden;
+    padding: 7px;
+}
+#tireEditButton{
+	padding-top: 5px;
+	display: block;	
+}
+
+.buttons input {
+    background: #fff;
+    border: 0;
+    color: #333;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    margin-left: 3px;
+    overflow: visible;
+    padding: 2px 6px;
+}
+.buttons input.delete {
+    background: transparent url(../images/skin/database_delete.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+.buttons input.cancel {
+    background: transparent url(../images/skin/database_cancel.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+.buttons input.edit {
+    background: transparent url(../images/skin/database_edit.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+.buttons input.save {
+    background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+
+.buttons input.change {
+    background: transparent url(../images/skin/season_switch.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+input.change {
+    background: transparent url(../images/skin/season_switch.png) 5px 50% no-repeat;
+	margin: 0px;
+    padding-right: 5px;
+    border: 0px;
+    cursor: pointer;
+}
+input.delivered {
+    background: transparent url(../images/skin/delivered.png) 5px 50% no-repeat;
+    margin: 0px;
+    padding-right: 5px;
+    border: 0px;
+    cursor: pointer;
+}
+
+#tireEditButtons {
+	padding-top: 10px;
+	float: left;
+	width: 235px;
+}
+
+.searchButtons {
+    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    border: 1px solid #ccc;
+    color: #666;
+    font-size: 11px;
+    margin-top: 5px;
+    overflow: hidden;
+    padding: 0;
+    cursor: pointer;
+}
+
+/******* USER GENERATED *******/
+
+/* create.gsp */
+#txtConstruction {
+	color: #000;
+}
+
+
+/* LOGIN */
+#login {
+	width:260px;
+	margin:0px auto;
+	text-align: center;
+}
+
+#login .login {
+	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    border: 1px solid #ccc;
+    color: #666;
+    font-size: 11px;
+    margin-top: 5px;
+    overflow: hidden;
+    padding: 3px;
+    cursor: pointer;
+    height: 20px;
+}
+a.logoutButton{
+	background: url(../images/skin/logout.png) center left no-repeat;
+	float: right;
+	margin-right: 10px;	
+	color: #555;
+    padding-left: 25px;
+	background-position: 2px;
+}
+
+/* Tabs */
+#submenu ul li em {
+	width: 75px; 	
+}
+#submenu ul li {
+	display: block;
+	margin: 10px;
+}
+
+#tireShowDialog {
+	width: 250px;
+	float: left;
+	margin: 0 10px 0 0;	
+}
+
+/* SHOW CUSTOMER */
+#customerShowDialog {
+	width: 350px;
+	overflow: auto;
+	float: left;
+	margin: 0 10px 0 0;	
+}
+#tireOccurrenceList {
+ 	width: 800px;
+ 	float: left;
+ 	margin-bottom: 5px;
+}
+
+#tireOccurrenceList table#tireOccurrences {
+	width: 800px;
+}
+
+#showTire {
+	width: 800px;
+	float: left;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin: 0px;
+	margin-top: 5px;
+	border-top: 1px solid #ccc;
+}
+
+#totalTireOccurrence {
+	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    border: 1px solid #ccc;
+    color: #666;
+    font-size: 10px;
+    overflow: hidden;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+#totalTireOccurrence table{
+	border: none;
+}
+
+.editTableItem {
+    background: url(../images/skin/database_edit.png) 5px 50% no-repeat;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 28px;
+}
+
+.deleteTableItem {
+    background: url(../images/skin/database_delete.png) 5px 50% no-repeat;
+    padding: 0px;
+    padding-right: 15px;
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+.disableTableItem {
+    background: url(../images/skin/user_deactivate.png) 5px 50% no-repeat;
+    padding: 0px;
+    padding-right: 15px;
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.enableTableItem {
+    background: url(../images/skin/user_activate.png) 5px 50% no-repeat;
+    padding: 0px;
+    padding-right: 15px;
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.saveTableItem {
+	background: url(../images/skin/database_add.png) 5px 50% no-repeat;
+    padding: 0px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.addOrder {
+	background: url(../images/skin/shopping_cart.png) 5px 50% no-repeat;
+    padding: 0px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.addTireHotelOccurrence {
+	background: url(../images/skin/database_add_tire_hotel_occurrence.png) 5px 50% no-repeat;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 28px;
+}
+
+.notSortableColoumn {
+	color:#333333;
+	display:block;
+	font-size:10px;
+	text-decoration:none;
+	width:100%;
+	cursor: default;
+}
+
+.button a {
+	background: url(../images/skin/email.png) 5px 50% no-repeat;
+	padding-left: 30px;
+	color: #333;
+}
+
+a.btnShowAll {
+	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    border: 1px solid #ccc;
+    color: #666;
+    font-size: 11px;
+    font-weight: normal;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.menuButton a.createUser {
+    background: url(../images/skin/user_add.png) center left no-repeat;
+    color: #555;
+    padding-left: 25px;
+	background-position: 2px;
+}
+
+
+
+.customerBox{
+	border: 1px solid #bbb;
+	width: 400px;	
+	margin: 0px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+.customerBox p {
+	color: #555;
+}
+
+.customerBox a {
+	color: #111;
+	font-weight: normal;	
+}
+
+.customerBox .customerName{
+	font-size: 13px;
+	color: #000;
+	font-weight: bold;
+	padding-bottom: 5px;
+}
+
+.customerBox .customerAddress{
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.customerBox .customerCompany{
+	
+}
+
+/* SHOW CUSTOMER */
+div.customerInfoBox {
+	border: 1px solid #bbb;
+	margin-bottom: 10px;
+	padding: 5px;
+	background-color: #F5F5FF;
+}
+span.customerAddress {
+	display: block;
+	margin-top: 15px;
+}
+span.customerPostalCodeAndPlace {
+	display: block;
+	margin-top: 5px;	
+}
+span.customerCompany {
+	display: block;
+	margin-top: 5px;
+}
+span.customerPhoneNumber {
+	display: block;
+	margin-top: 15px;
+}
+span.customerPhoneNumber a{
+	background: url(../images/skin/phone.png) 5px 50% no-repeat;
+	padding-left: 25px;
+	color: #555;
+	font-weight: normal;
+	margin-right: 15px;
+	float: right;
+}
+span.customerEmail {
+	display: block;
+	margin-top: 5px;
+}
+span.customerEmail a{
+	background: url(../images/skin/email.png) 5px 50% no-repeat;
+	padding-left: 25px;
+	color: #555;
+	font-weight: normal;
+	margin-right: 10px;
+	float: right;
+}
+span.customerNotice {
+	font-style: italic;
+	display: block;
+	margin-top: 15px;
+	width: 100%;
+}
+
+
+
+/* Customer Tire Hotel And Orders */ 
+#customerTireHotelAndOrders {
+	float: right;
+	max-width: 1000px;
+}
+/* SHOW CUSTOMER TIRE HOTEL */
+
+.customerTireHotelOccurrencelist {
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+div#onlyActiveTireHotelOccurrences {
+	border: 1px solid #bbb;
+	background-color: #F5F5FF;
+	width: 450px;
+	padding: 5px;
+	visibility: visible;
+	display: inherit;
+}
+div.tireInfo {
+	float: left;
+}
+div.tireHotelButtons {
+	float: right;
+}
+div.tireHotelButtons input {
+	padding-left: 25px;	
+}
+
+div#allTireHotelOccurrences {
+	display: none;
+}
