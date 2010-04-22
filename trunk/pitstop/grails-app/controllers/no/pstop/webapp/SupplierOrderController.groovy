@@ -1,5 +1,7 @@
 package no.pstop.webapp
 
+import java.util.Date;
+
 class SupplierOrderController {
 	def orderService
 
@@ -134,5 +136,21 @@ class SupplierOrderController {
 		
 		session["orderLines"] = orderLines
 		render(view: "create", model:[orderLines: orderLines, order: session["order"]])
+	}
+	
+	def recieveOrder = {
+		def supplierOrderLineInstance = SupplierOrderLine.get(params.supplierOrderLineId)
+		def tire = supplierOrderLineInstance?.tire
+		
+		int numberOfRecieved = params.numberOfRecieved.toInteger()
+		supplierOrderLineInstance?.numberOfOrderedTires -= numberOfRecieved
+		tire?.numberInStock += numberOfRecieved
+		
+		if(supplierOrderLineInstance?.numberOfOrderedTires == 0) {
+			supplierOrderLineInstance?.receivedDate = new Date()
+		}
+		
+		supplierOrderLineInstance.save(flush: true)
+		redirect(controller: "tire", action: "show", id: tire?.id)
 	}
 }

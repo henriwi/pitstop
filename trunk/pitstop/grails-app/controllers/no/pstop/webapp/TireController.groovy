@@ -119,9 +119,9 @@ class TireController {
 			params.max = maxNumberOfTireOccurrences
 			if(!params.offset)
 			params.offset = 0
-			def tireOccurrenceInstanceList = TireOccurrence.findAllByTire(Tire.get(params.id), [max:params.max, offset:params.offset, sort:"registrationDate", order:"desc"])
-			def tireOccurrenceInstanceTotalList = TireOccurrence.findAllByTire(Tire.get(params.id))
-			[tireOccurrenceInstanceList: tireOccurrenceInstanceList,tireInstance: tireInstance, tireOccurrenceInstanceTotalList: tireOccurrenceInstanceTotalList]
+			//def tireOccurrenceInstanceList = TireOccurrence.findAllByTire(Tire.get(params.id), [max:params.max, offset:params.offset, sort:"registrationDate", order:"desc"])
+			def supplierOrderLines = SupplierOrderLine.findAllByTireAndReceivedDateIsNull(tireInstance)
+			[supplierOrderLines: supplierOrderLines, tireInstance: tireInstance]
 		}
 	}
 	
