@@ -133,6 +133,11 @@ ul#menuList li {
 
 }
 
+#adminMenuItem {
+	float: right;
+	margin-right: 15px;
+}
+
 /* NAVIGATION MENU */
 .nav {
     background-color: #dce7fb;

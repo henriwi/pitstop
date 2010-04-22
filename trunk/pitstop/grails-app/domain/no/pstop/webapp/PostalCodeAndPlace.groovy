@@ -1,9 +1,9 @@
 package no.pstop.webapp
 
 class PostalCodeAndPlace {
-
+	static searchable = true
 	static hasMany = [customers: Customer]
-    String postalCode
+	String postalCode
 	String place		
 	
     static constraints = {

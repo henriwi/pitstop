@@ -42,7 +42,7 @@
 				<g:link action="list" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>							
 			</div>
 			</g:form>
-            <div class="list" id="skjul">
+            <div class="list">
                 <table>
                     <thead>
                         <tr>
@@ -122,32 +122,7 @@
                 <g:paginate total="${customerInstanceTotal}" />
             </div>
             
-            <g:each in="${customerInstanceList}" status="i" var="customerInstance">
-	            <div class="customerInfoBox">
-					<h3 class="customerName"><g:link class="customerName" action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</g:link></h3>
-					<g:if test="${customerInstance.address}">
-						<span class="customerAddress">${fieldValue(bean: customerInstance, field: "address")}</span>
-					</g:if>
-					<g:if test="${customerInstance.postalCodeAndPlace?.postalCode}">
-						<span class="customerPostalCodeAndPlace">${customerInstance?.postalCodeAndPlace?.postalCode} ${customerInstance?.postalCodeAndPlace?.place}</span>
-					</g:if>
-					<g:if test="${customerInstance.company}">
-						<span class="customerCompany">${fieldValue(bean: customerInstance, field: "company")}</span>
-					</g:if>
-					
-					<g:if test="${customerInstance.phoneNumber}">
-						<span class="customerPhoneNumber">
-							<a href="" target="_blank">Send SMS</a>
-						</span>
-                    </g:if>
-                    <g:if test="${customerInstance.email}">
-						<span class="customerEmail">
-                    		<a href="mailto:${customerInstance.email}" target="_blank">Send epost</a>
-                    	</span>
-		            </g:if>
-	                <div style="clear:both;"></div>
-                </div>
-			</g:each>
+            
 			
 <!-- UTKOMMENTERT 
     <td><g:link class="addTireHotelOccurrence" controller="tireHotelOccurrence" action="create" title="${message(code: 'customer.list.tireHotel.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>

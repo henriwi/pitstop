@@ -28,54 +28,19 @@
 				</g:isLoggedIn>
 				
 		        <ul id="menuList">
-		        	<g:if test="${params.controller == null}">
-		        		<li><a class="active" href="${createLink(uri: '/')}">${message(code: 'main.menu.home.label')}</a></li>
-		        	</g:if>
-			        <g:else>
-			        	<li><a href="${createLink(uri: '/')}">${message(code: 'main.menu.home.label')}</a></li>
-			        </g:else>
+		        	<li><a class="${params.controller == null ? 'active' : ''}" href="${createLink(uri: '/')}">${message(code: 'main.menu.home.label')}</a></li>
 			        
-			        <g:if test="${params.controller == 'tire' || params.controller == 'tireOccurrence'}">
-		        		<li><g:link class="active" controller="tire">${message(code: 'main.menu.tires.label')}</g:link></li>
-		        	</g:if>
-			        <g:else>
-			        	<li><g:link controller="tire">${message(code: 'main.menu.tires.label')}</g:link></li>
-			        </g:else>
+		        	<li><g:link class="${params.controller == 'tire' ? 'active' : ''}" controller="tire">${message(code: 'main.menu.tires.label')}</g:link></li>
 			        
-			        <g:if test="${params.controller == 'customer'}">
-			        	<li><g:link class="active" controller="customer">${message(code: 'main.menu.customers.label')}</g:link></li>
-		        	</g:if>
-			        <g:else>
-			        	<li><g:link controller="customer">${message(code: 'main.menu.customers.label')}</g:link></li>
-			        </g:else>
+			        <li><g:link class="${params.controller == 'customer' ? 'active' : ''}" controller="customer">${message(code: 'main.menu.customers.label')}</g:link></li>
 			        
-			        <g:if test="${params.controller == 'tireHotelOccurrence'}">
-			        	<li><g:link class="active" controller="tireHotelOccurrence">${message(code: 'main.menu.tireHotel.label')}</g:link></li>
-		        	</g:if>
-			        <g:else>
-			        	<li><g:link controller="tireHotelOccurrence">${message(code: 'main.menu.tireHotel.label')}</g:link></li>
-			        </g:else>
+			        <li><g:link class="${params.controller == 'tireHotelOccurrence' ? 'active' : ''}" controller="tireHotelOccurrence">${message(code: 'main.menu.tireHotel.label')}</g:link></li>
 			        
-			        <g:if test="${params.controller == 'customerOrder'}">
-			        	<li><g:link class="active" controller="customerOrder">${message(code: 'main.menu.customerOrder.label')}</g:link></li>
-		        	</g:if>
-			        <g:else>
-			        	<li><g:link controller="customerOrder">${message(code: 'main.menu.customerOrder.label')}</g:link></li>
-			        </g:else>
+		        	<li><g:link class="${params.controller == 'customerOrder' ? 'active' : ''}" controller="customerOrder">${message(code: 'main.menu.customerOrder.label')}</g:link></li>
 			        
-			        <g:if test="${params.controller == 'supplierOrder'}">
-			        	<li><g:link class="active" controller="supplierOrder">${message(code: 'main.menu.supplierOrder.label')}</g:link></li>
-		        	</g:if>
-			        <g:else>
-			        	<li><g:link controller="supplierOrder">${message(code: 'main.menu.supplierOrder.label')}</g:link></li>
-			        </g:else>
+		        	<li><g:link class="${params.controller == 'supplierOrder' ? 'active' : ''}" controller="supplierOrder">${message(code: 'main.menu.supplierOrder.label')}</g:link></li>
 			        
-			   		<g:if test="${params.controller == 'user'}">
-		        		<li><g:link class="active" controller="user">${message(code: 'main.menu.admin.label')}</g:link></li>
-		        	</g:if>
-			        <g:else>
-			        	<li><g:link controller="user">${message(code: 'main.menu.admin.label')}</g:link></li>
-			        </g:else>
+	        		<li id="adminMenuItem"><g:link class="${params.controller == 'user' ? 'active' : ''}" controller="user">${message(code: 'main.menu.admin.label')}</g:link></li>
 			   		
 			        <%--
 					<g:each var="c" in="${grailsApplication.controllerClasses}">
