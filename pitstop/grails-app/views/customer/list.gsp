@@ -128,7 +128,7 @@
 					<g:if test="${customerInstance.address}">
 						<span class="customerAddress">${fieldValue(bean: customerInstance, field: "address")}</span>
 					</g:if>
-					<g:if test="${customerInstance.postalCodeAndPlace.postalCode}">
+					<g:if test="${customerInstance.postalCodeAndPlace?.postalCode}">
 						<span class="customerPostalCodeAndPlace">${customerInstance?.postalCodeAndPlace?.postalCode} ${customerInstance?.postalCodeAndPlace?.place}</span>
 					</g:if>
 					<g:if test="${customerInstance.company}">
