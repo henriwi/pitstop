@@ -65,10 +65,12 @@ class CustomerController {
 			if(!params.offset)
 				params.offset = 0
         	def tireHotelOccurrenceInstanceList = TireHotelOccurrence.findAllByCustomer(Customer.get(params.id), [max:params.max, offset:params.offset])
-        	def customerOrderInstanceList = CustomerOrder.findAllByCustomer(Customer.get(params.id), [max:params.max, offset:params.offset]) // TODO Fikse sortering , sort:params.sort, order:params.order 
+			
+        	def customerOrders = CustomerOrder.findAllByCustomer(Customer.get(params.id)) // TODO Fikse sortering , sort:params.sort, order:params.order
+					
         	def tireHotelOccurrenceInstanceTotalList = TireHotelOccurrence.findAllByCustomer(Customer.get(params.id))
 			[tireHotelOccurrenceInstanceList: tireHotelOccurrenceInstanceList, customerInstance: customerInstance, tireHotelOccurrenceInstanceTotalList: tireHotelOccurrenceInstanceTotalList,
-			 	customerOrderInstanceList: customerOrderInstanceList]
+			customerOrders: customerOrders]
         }
     }
 
@@ -149,5 +151,24 @@ class CustomerController {
 	def showSmsView = {
 		def customerInstance = Customer.get(params.id)
 		render(view: "send", model: [customerInstanceList: customerInstance])
+	}
+	
+	def customerOrdersAsJSON = {
+		def orders = CustomerOrder.findAllByCustomer(Customer.get(params.id))
+		def formattedOrders = orders.collect {
+			[
+			 id: it.id,
+			 orderDate: new java.text.SimpleDateFormat("MMM dd, yyyy").format(it.orderDate),
+			 delivered: g.submitButton(name: "Utlever hele ordren", controller: "customer", action: 'show'),
+			 dataUrl: g.createLink(controller: "customerOrder", action: 'show') + "/$it.id"
+			]
+		}
+		
+		def data = [
+			//totalRecords: orders.size(),
+			results: formattedOrders,
+		]
+		
+		render data as JSON
 	}
 }

@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title><g:message code="customer.show.title.label" /></title>
+        <gui:resources components="accordion, dataTable"/>
     </head>
     <body>
         <div class="nav">
@@ -192,27 +193,23 @@
 			        	</div>
 					</div>
 				</g:if>
-				<g:if test="${customerOrderInstanceList}">
+				<g:if test="${customerOrders}">
 					<div class="customerOrders">
-		               	<table>
-		                   	<thead>
-		                       	<tr>
-		                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.header.id.label')}" />
-		                            <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.header.orderDate.label')}" />
-		                    	</tr>
-		                   	</thead>
-		                   	<tbody>
-			                    <g:each in="${customerOrderInstanceList}" status="i" var="customerOrderInstance">
-		                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-		                            <td><g:link controller="customerOrder" action="show" id="${customerOrderInstance.id}">${fieldValue(bean: customerOrderInstance, field: "id")}</g:link></td>
-		                            <td><g:link controller="customerOrder" action="show" id="${customerOrderInstance.id}"><g:formatDate format="dd.MM.yyyy hh:mm" date="${customerOrderInstance.orderDate}" /></g:link></td>
-		                        </tr>
-		                    </g:each>
-		                	</tbody>
-		               	</table>
-						<div class="paginateButtons" id="showCustomer">
-			          		<g:paginate next="${message(code: 'default.paginate.next')}" prev="${message(code: 'default.paginate.prev')}" controller="customer" action="show" id="${customerInstance.id}" total="${customerOrderInstanceList.size()}"></g:paginate>
-			        	</div>
+		                   	<div>
+		                   	<gui:dataTable
+									    id="dt_2"
+									    columnDefs="[
+									        [key:'id', sortable:true, label:'Ordrenummer'],
+									        [key:'orderDate', type:'date', sortable:true, label: 'Ordredato'],
+									        [key:'delivered', expanded: 'true',type:'link', sortable:true, label: 'Utlever'],
+									    ]"
+									    controller="customer" action="customerOrdersAsJSON"
+									    resultsList="results"
+									    params="[id:customerInstance.id]"
+									    rowExpansion="true"
+									    rowsPerPage="10"
+									/>
+		                   	</div>
 					</div>
 				</g:if>
 			</div>
