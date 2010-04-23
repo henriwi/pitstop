@@ -785,3 +785,21 @@ div.tireHotelButtons input {
 div#allTireHotelOccurrences {
 	display: none;
 }
+
+/* YUI-DATA TABLE */
+.yui-dt-even {
+	background-color: #f7f7f7;	
+}
+
+.yui-dt-odd {
+	background-color: #fff;	
+}
+
+#yui-dt0-paginator1 {
+    display:none;
+}
+
+#yui-dt0-paginator0 {
+    display:none;
+}
+
