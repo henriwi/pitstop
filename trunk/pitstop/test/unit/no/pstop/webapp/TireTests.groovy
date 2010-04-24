@@ -152,8 +152,12 @@ class TireTests extends GrailsUnitTestCase {
 	}
 	
 	/*void testToString() {
-		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer (på lager: 0)", tire.toString()
+		assertEquals "Nokian T-Zero 190/60 R17 165H Somme", tire.toString() //(på lager: 0)", tire.toString()
 	}*/
+	
+	void testToString(){
+		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer", tire.toString()
+	}
 	
 	void testTireShowToString() {
 		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer", tire.tireShowToString()
