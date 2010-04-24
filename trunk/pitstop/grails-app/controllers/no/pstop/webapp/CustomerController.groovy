@@ -155,7 +155,9 @@ class CustomerController {
 	
 	def customerOrdersAsJSON = {
 		def orders = CustomerOrder.findAllByCustomer(Customer.get(params.id))
-		def formattedOrders = orders.collect {
+		def pendingOrders = getPendingOrders(orders)
+
+		def formattedOrders = pendingOrders.collect {
 			[
 			 id: "<b>$it.id</b>",
 			 orderDate: new java.text.SimpleDateFormat("dd.MM.yyyy").format(it.orderDate),
@@ -173,5 +175,21 @@ class CustomerController {
 		]
 		
 		render data as JSON
+	}
+	
+	private getPendingOrders(orders) {
+		def pendingOrders = []
+		orders.each {
+			boolean pending = false
+			it.customerOrderLines.each { 
+				if(!it.deliveredDate) {
+					pending = true
+				}
+			}
+			if(pending) {
+				pendingOrders << it
+			}
+		}
+		return pendingOrders
 	}
 }

@@ -211,6 +211,7 @@
 									/>
 									
 							        <script type="text/javascript">
+							        YAHOO.widget.DataTable.MSG_EMPTY = "Ingen utestående ordre.";
 										YAHOO.util.Event.onDOMReady(function() {
 											GRAILSUI.dt_2.on('cellClickEvent',function (oArgs) {
 												// 'this' is already referring to the DataTable
