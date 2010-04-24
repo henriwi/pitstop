@@ -9,27 +9,13 @@
     </head>
     <body>
         <div class="nav">
-        	<g:if test="${params.action == 'list'}">
-        		<span class="menuButton" id="active" >
-        			<g:link class="list" action="list"><g:message code="customer.list.label" /></g:link>
-        		</span>
-        	</g:if>
-	        <g:else>
-	        	<span class="menuButton">
-        			<g:link class="list" action="list"><g:message code="customer.list.label" /></g:link>
-        		</span>
-	        </g:else>
-	        
-	        <g:if test="${params.action == 'create'}">
-        		<span class="menuButton" id="active" >
-        			<g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link>
-        		</span>
-        	</g:if>
-	        <g:else>
-	        	<span class="menuButton">
-        			<g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link>
-        		</span>
-	        </g:else>
+       		<span class="menuButton" id="${params.action == 'list' ? 'active' : ''}" >
+       			<g:link class="list" action="list"><g:message code="customer.list.label" /></g:link>
+       		</span>
+        
+       		<span class="menuButton" id="${params.action == 'create' ? 'active' : ''}"  >
+       			<g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link>
+       		</span>
         </div>
         <div class="body">
             <h1><g:message code="customer.create.header.label" /></h1>
