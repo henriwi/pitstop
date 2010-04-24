@@ -10,9 +10,8 @@ class TireTests extends GrailsUnitTestCase {
 		mockForConstraintsTests Tire
 		tire = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
 				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", 
-				retailPrice: 1095, notice:"Demodekk")	
+				notice:"Demodekk", retailPrice: 1095, numberInStock: 4)	
 	}
-	
 	protected void tearDown() {
 		super.tearDown()
 	}
@@ -29,6 +28,8 @@ class TireTests extends GrailsUnitTestCase {
 		assertEquals "Sommer", tire.tireType
 		assertEquals "Nokian", tire.brand
 		assertEquals "T-Zero", tire.tireName
+		assertEquals 1095, tire.retailPrice
+		assertEquals 4, tire.numberInStock
 	}
 	
 	void testGenerateTireWithInvalidPartNr() {
@@ -138,13 +139,21 @@ class TireTests extends GrailsUnitTestCase {
 		assertNotNull "Expecting to find error in field retailPrice", badField
 	}
 	
+	void testGenerateTireWithInvalidNumberInStock(){
+		tire.numberInStock = -2
+		
+		assertFalse "Test faild, expected invalid numberInStock", tire.validate()
+		def badField = tire.errors.getFieldError("numberInStock")
+		assertNotNull "Expecting to find error in field numberInStock", badField
+	}
+	
 	void testOrderToString() {
 		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer (123AB)", tire.orderToString()
 	}
 	
-	void testToString() {
+	/*void testToString() {
 		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer (på lager: 0)", tire.toString()
-	}
+	}*/
 	
 	void testTireShowToString() {
 		assertEquals "Nokian T-Zero 190/60 R17 165H Sommer", tire.tireShowToString()
@@ -173,4 +182,6 @@ class TireTests extends GrailsUnitTestCase {
 	void testFastSearchString() {
 		assertEquals "190607s", tire.fastSearchString()
 	}
+	
+
 }
