@@ -43,4 +43,36 @@ class SupplierOrderLineTests extends GrailsUnitTestCase {
 		def badField = supplierOrderLine.errors.getFieldError('price')
 		assertNotNull "Expecting error in field price", badField
 	}
+	
+	void testGenerateSupplierOrderLineWithEmptyPrice(){
+		supplierOrderLine.price = null
+		
+		assertFalse "Test failed, expected empty price", supplierOrderLine.validate()
+		def badField = supplierOrderLine.errors.getFieldError('price')
+		assertNotNull "Expecting error in field price"
+	}
+	
+	void testGenerateSupplierOrderLineWithDiscountLessThanZero(){
+		supplierOrderLine.discount = -4
+		
+		assertFalse "Test failed, expected discount less than zero", supplierOrderLine.validate()
+		def badField = supplierOrderLine.errors.getFieldError('discount')
+		assertNotNull "Expecting error in field discount"
+	}
+	
+	void testGenerateSupplierOrderLineWithDiscountMoreThanHundred(){
+		supplierOrderLine.discount = 101
+		
+		assertFalse "Test failed, expected discount more than one hundred", supplierOrderLine.validate()
+		def badField = supplierOrderLine.errors.getFieldError('discount')
+		assertNotNull "Expecting error in field discount"
+	}
+	
+	void testGenerateSupplierOrderLineWithInvalidEnvironmentalFee(){
+		supplierOrderLine.environmentalFee = -2
+		
+		assertFalse "Test failed, expecting invalid environmentalFee", supplierOrderLine.validate()
+		def badField = supplierOrderLine.errors.getFieldError('environmentalFee')
+		assertNotNull "Expecting error in field environmentalFee"
+	}
 }
