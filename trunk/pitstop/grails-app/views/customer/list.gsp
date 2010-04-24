@@ -18,16 +18,19 @@
         </div>
         <div class="body">
             <h1><g:message code="customer.list.header.label" /></h1>
+            
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
+            
             <g:form action="search" method="get">
-			<div id="fastSearchInListView">
-				<g:textField tabindex='1' name="search" /></td>
-				<g:submitButton tabindex='2' class="searchButtons" name="btnSearch" value="${message(code: 'search.button.fastSearch.label')}" />
-				<g:link action="list" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>							
-			</div>
+				<div id="fastSearchInListView">
+					<g:textField tabindex='1' name="search" /></td>
+					<g:submitButton tabindex='2' class="searchButtons" name="btnSearch" value="${message(code: 'search.button.fastSearch.label')}" />
+					<g:link action="list" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>							
+				</div>
 			</g:form>
+            
             <div class="list">
                 <table>
                     <thead>

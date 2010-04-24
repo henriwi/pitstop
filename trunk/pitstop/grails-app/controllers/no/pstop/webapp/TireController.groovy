@@ -22,8 +22,10 @@ class TireController {
 		
 		def tireList
 		def tireCount
+		def isSearch
 		
 		if(isFastSearchQuery(params.q, params.type)) {
+			isSearch = true
 			if(isSpecialFastSearchQuery(params.q)) {
 				def query = params.q =~ regexFastSearch
 				tireList = 	Tire.fastSearch(query, params.max, params.offset)
@@ -35,6 +37,8 @@ class TireController {
 			}
 		} 
 		else if(isNormalSearchQuery(params.type) && !isNormalSearchWithoutInput()) {
+			isSearch = true
+			
 			tireList = Tire.normalSearch(params.width, params.profile, params.diameter, 
 			params.speedIndex, params.tireType, , params.brand, params.max.toInteger(), params.offset.toInteger())
 			
@@ -62,7 +66,10 @@ class TireController {
 			 * noen dekk på lager.
 			 */
 			flash.message = "${message(code: 'tire.show.foundNoTireType.message')}"
-			redirect(action: "search")
+			
+			if(isSearch){
+				redirect(action: "search")
+			}
 		}
 
 		[tireInstanceList: tireList, tireInstanceTotal: tireCount]
@@ -196,7 +203,6 @@ class TireController {
 		}
 		else{
 			redirect(action: "list", params:[q: params.search])
-			
 		}
 	}
 	
