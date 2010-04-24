@@ -34,7 +34,6 @@
 					value="${message(code: 'search.button.fastSearch.label')}" />
 					<g:link action="list" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>							
 				</div>
-			
 			</g:form>
 			
             <div class="list">
