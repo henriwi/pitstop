@@ -12,7 +12,8 @@ class SupplierOrderLine {
 	Integer environmentalFee
 	
     static constraints = {
-		price(min: new Double(0.00))
+		numberOfOrderedTires(min: 1, blank: false)
+		price(min: new Double(0.00), blank: false)
 		discount(min: 0, max: 100)
 		environmentalFee(min: 0)
 		receivedDate(nullable: true)
