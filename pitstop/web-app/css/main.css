@@ -787,6 +787,10 @@ div#allTireHotelOccurrences {
 }
 
 /* YUI-DATA TABLE */
+.yui-dt-liner {
+	cursor: pointer;	
+}
+
 .yui-dt-even {
 	background-color: #f7f7f7;	
 }
