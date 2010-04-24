@@ -107,7 +107,7 @@
 								<td>
                           			<g:form action="deleteFromOrder" method="get">
                           				<g:hiddenField name="orderLineIndex" value="${orderLineIndex}" />
-                          				<g:submitButton class="deleteTableItem" name="deleteFromOrder" value="${message(code: 'customerOrder.button.delete.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
+                          				<g:submitButton class="deleteTableItem" name="deleteFromOrder" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
                           			</g:form>
                          		</td>  
 							</tr>

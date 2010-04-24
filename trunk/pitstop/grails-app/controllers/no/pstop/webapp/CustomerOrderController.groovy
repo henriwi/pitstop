@@ -129,7 +129,7 @@ class CustomerOrderController {
 		def tire = Tire.get(params.tireId)
 		session["tire"] = tire
 		
-		render(view: "create", model: [tire: session["tire"], order: session["order"], orderLine: session["orderLineList"], tireList: session["tireList"]])
+		render(view: "create", model: [tire: session["tire"], order: session["order"], orderLines: session["orderLines"], tireList: session["tireList"]])
     }
 
     private setCustomer() {
@@ -150,10 +150,11 @@ class CustomerOrderController {
     }
 		
 	private addToOrderLine(params, tire, orderLines) {
-		def customerOrderLine = new CustomerOrderLine()
-		customerOrderLine.price = params.price.toDouble()
-		customerOrderLine.numberOfReservedTires = params.numberOfReservedTires.toInteger()
-		customerOrderLine.tire = tire
+		def customerOrderLine = new CustomerOrderLine(price: params.price, numberOfReservedTires: params.numberOfReservedTires,
+		tire: tire)
+		//customerOrderLine.price = params.price.toDouble()
+		//customerOrderLine.numberOfReservedTires = params.numberOfReservedTires.toInteger()
+		//customerOrderLine.tire = tire
 		
 		orderLines << customerOrderLine
 		return orderLines
