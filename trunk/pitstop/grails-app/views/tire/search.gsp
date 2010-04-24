@@ -8,39 +8,18 @@
 </head>
 <body>
 	<div class="nav">
-	    	<g:if test="${params.action == 'list' && params.controller == 'tire'}">
-        		<span class="menuButton" id="active" >
-        			<g:link controller="tire" class="list" action="list"><g:message code="default.button.tireList.label"/></g:link>
-        		</span>
-        	</g:if>
-	        <g:else>
-	        	<span class="menuButton">
-        			<g:link controller="tire" class="list" action="list"><g:message code="default.button.tireList.label"/></g:link>
-        		</span>
-	        </g:else>
-	        
-	        <g:if test="${params.action == 'create' && params.controller == 'tire'}">
-        		<span class="menuButton" id="active" >
-        			<g:link controller="tire" class="createTire" action="create"><g:message code="default.button.newTire.label"/></g:link>
-        		</span>
-        	</g:if>
-	        <g:else>
-	        	<span class="menuButton">
-        			<g:link controller="tire" class="createTire" action="create"><g:message code="default.button.newTire.label"/></g:link>
-        		</span>
-	        </g:else>
-	        
-	        <g:if test="${params.action == 'search' && params.controller == 'tire'}">
-        		<span class="menuButton" id="active" >
-		    		<g:link controller="tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link>
-        		</span>
-        	</g:if>
-	        <g:else>
-	        	<span class="menuButton">
-		    		<g:link controller="tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link>
-        		</span>
-	        </g:else>
-    </div>
+		<span class="menuButton" id="${params.action == 'list' && params.controller == 'tire' ? 'active' : ''}" >
+   			<g:link controller="tire" class="list" action="list"><g:message code="default.button.tireList.label"/></g:link>
+   		</span>
+       
+   		<span class="menuButton" id="${params.action == 'create' && params.controller == 'tire' ? 'active' : ''}" >
+   			<g:link controller="tire" class="createTire" action="create"><g:message code="default.button.newTire.label"/></g:link>
+   		</span>
+       
+   		<span class="menuButton" id="${params.action == 'search' && params.controller == 'tire' ? 'active' : ''}" >
+  			<g:link controller="tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link>
+      	</span>
+	</div>
 	<div class="body">
 		<h1>${message(code: 'search.header.fastSearch.label')}</h1>
 		
