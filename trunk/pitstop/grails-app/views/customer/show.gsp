@@ -209,6 +209,21 @@
 									    rowExpansion="true"
 									    rowsPerPage="10"
 									/>
+									
+							        <script type="text/javascript">
+										YAHOO.util.Event.onDOMReady(function() {
+											GRAILSUI.dt_2.on('cellClickEvent',function (oArgs) {
+												// 'this' is already referring to the DataTable
+												var target = oArgs.target;
+												var record = this.getRecord(target);
+												var column = this.getColumn(target);
+												if (column.key != 'id') {
+													return false;
+												}
+												return true;
+											});
+										});
+						        	</script>
 		                   	</div>
 					</div>
 				</g:if>

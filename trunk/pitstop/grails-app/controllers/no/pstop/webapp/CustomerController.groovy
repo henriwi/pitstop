@@ -157,9 +157,12 @@ class CustomerController {
 		def orders = CustomerOrder.findAllByCustomer(Customer.get(params.id))
 		def formattedOrders = orders.collect {
 			[
-			 id: it.id,
-			 orderDate: new java.text.SimpleDateFormat("MMM dd, yyyy").format(it.orderDate),
-			 delivered: g.submitButton(name: "Utlever hele ordren", controller: "customer", action: 'show'),
+			 id: "<b>$it.id</b>",
+			 orderDate: new java.text.SimpleDateFormat("dd.MM.yyyy").format(it.orderDate),
+			 delivered: "<form action='/pitstop/customerOrder/deliverOrder' method='get'>" +
+			 		"<input type='hidden' name='id' value='$it.id'>" + 
+			 		"<input type='submit'></form>", 
+				 //g.actionSubmit(class:"deleteTableItem", value: "test", name: "${message(code: 'list.button.table.label')}", controller: "customer", action: 'show'),
 			 dataUrl: g.createLink(controller: "customerOrder", action: 'show') + "/$it.id"
 			]
 		}

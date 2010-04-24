@@ -173,4 +173,19 @@ class CustomerOrderController {
 		writeSession(session, orderLines)
 		render(view: "create", model: [order: session["order"], orderLines: session["orderLines"]])
 	}
+	
+	def deliverOrder = {
+		def order = CustomerOrder.get(params.id)
+		order.customerOrderLines.each {
+			it.deliveredDate = new Date()
+		}
+		redirect(controller: "customer", action: "show", id:1)
+	}
+	
+	def deliverOrderLine = {
+		println "Hepp"
+		def orderLine = CustomerOrderLine.get(params.id)
+		orderLine.deliveredDate = new Date()
+		redirect(controller: "customer", action: "show", id:1)
+	}
 }
