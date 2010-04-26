@@ -840,7 +840,7 @@ div#allTireHotelOccurrences {
 #customerOrderDialog {
 	float: left;
 	margin-right: 10px;
-	width: 400px;
+	width: 450px;
 }
 
 #customerOrderedItems {
@@ -862,4 +862,24 @@ input.customerOrderTableTextField {
 
 #customerOrderDeleteHeader {
 	width: 10px;
+}
+
+/* SUPPLIER ORDER */
+#supplierOrderDialog {
+	width: 450px;
+	float: left;
+	margin-right: 10px;
+}
+
+#orderNumberAndSupplierInfo {
+	margin-bottom: 10px;
+}
+
+#supplierOrderedItems {
+	width: 700px;
+	float: right;
+}
+
+.supplierOrderHeaders {
+	width: 40px;
 }

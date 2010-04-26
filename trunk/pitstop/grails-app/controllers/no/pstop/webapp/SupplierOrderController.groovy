@@ -23,7 +23,7 @@ class SupplierOrderController {
 
     def save = {
 		def supplierOrderInstance = session["order"]
-        supplierOrderInstance.orderDate = new Date()
+        supplierOrderInstance?.orderDate = new Date()
 		
 		try {
 			orderService.saveSupplierOrder(supplierOrderInstance, session)
@@ -108,12 +108,8 @@ class SupplierOrderController {
     	def orderLines = session["orderLines"]
 		def tire = Tire.get(params.tireId)
 		
-		def orderLine = new SupplierOrderLine()
-		orderLine.tire = tire
-		orderLine.price = params.price?.toDouble()
-		orderLine.discount = params.discount?.toInteger()
-		orderLine.environmentalFee = params.environmentalFee?.toInteger()
-		orderLine.numberOfOrderedTires = params.numberOfOrderedTires?.toInteger()
+		def orderLine = new SupplierOrderLine(tire: tire, price: params.price, discount: params.discount, 
+		environmentalFee: params.environmentalFee, numberOfOrderedTires: params.numberOfOrderedTires)
 		
 		orderLines << orderLine
 		session["orderLines"] = orderLines
@@ -121,11 +117,9 @@ class SupplierOrderController {
 	}
 
     private setOrderValues() {
-		println params
     	session["order"]?.orderNumber = params.orderNumber
 		session["order"]?.supplier = params.supplier
-		println session["order"].orderNumber
-		println session["order"].supplier
+		session["order"]?.notice = params.notice
     }
 	
 	def deleteFromOrder = {

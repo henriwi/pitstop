@@ -20,7 +20,7 @@ class OrderService {
 			throw new RuntimeException("cannot save order")
 		}
 		session.orderLines.each {
-			it.customerOrder = orderInstance
+			it.customerOrder  = orderInstance
 			if(!it.save(flush: true)){
 				throw new RuntimeException("cannot save orderline")
 			}
