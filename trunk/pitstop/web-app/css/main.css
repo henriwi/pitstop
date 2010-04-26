@@ -883,3 +883,7 @@ input.customerOrderTableTextField {
 .supplierOrderHeaders {
 	width: 40px;
 }
+
+#numberOfRecievedTextField {
+	width: 50px;
+}
