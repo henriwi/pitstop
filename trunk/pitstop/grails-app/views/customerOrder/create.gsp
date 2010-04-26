@@ -27,6 +27,7 @@
             </div>
             </g:hasErrors>
                 <div id="customerOrderDialog">
+                <div id="customerAndTireInfo">
                 	<g:form action="showTireInfo" method="get">
 	                    <table>
 	                        <tbody>
@@ -44,16 +45,16 @@
 		                                    <label for="tire"><g:message code="customerOrderLine.tire.label" default="Dekk" /></label>
 		                                </td>
 		                                <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'tire', 'errors')}">
-											<g:select noSelection="${[0:'Velg dekk']}" name="tireId" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${tire?.id}" />
-											<span class="button"><g:submitButton name="showTireOccurrences" class="next" value="${message(code: 'default.label', default: 'Vis')}" /></span>
+											<g:select onChange="this.form.submit()" noSelection="${[0:'Velg dekk']}" name="tireId" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${tire?.id}" />
 										</td>
 		                            </tr>
 	                        </tbody>
 	                    </table>
                     </g:form>
-                    
+                 </div>
+                 <div id="customerOrderTireInfo">
                  <g:if test="${tire}"> 
-	                 <g:form action="addToOrder" method="get">
+	                 <g:form action="addToOrder" method="post">
 	                 	<table>
 	                 		<tbody>
 	                 			<tr class="prop">
@@ -83,6 +84,7 @@
 	                 	</table>
 	                 </g:form>
 	             	</g:if>
+	             </div>
 	           	</div>
                  
                 <div id="customerOrderedItems">
@@ -91,23 +93,30 @@
 	                		<tr class="prop">
 		                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.tire.table.label')}</a></th>
 	
-		                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.price.table.label')}</a></th>
+		                		<th id="customerOrderPriceHeader"><a class="notSortableColoumn">${message(code: 'customerOrderLine.price.table.label')}</a></th>
 		                		
-		                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.numberOfReservedTires.table.label')}</a></th>
+		                		<th id="customerOrderDeleteHeader"><a class="notSortableColoumn">${message(code: 'customerOrderLine.numberOfReservedTires.table.label')}</a></th>
+		                		
+		                		<th id="customerOrderDeleteHeader"><a class="notSortableColoumn">${message(code: 'customerOrderLine.deleteFromOrder.table.label')}</a></th>
 		                	</tr>
 		                </thead>
 	                	<tbody>
 	                	
 	                	<g:set var="orderLineIndex" value="${0}"></g:set>
 						<g:each in="${orderLines}" status="i" var="orderLineInstance">
+						<g:hasErrors bean="${orderLineInstance}">
+				            <div class="errors">
+				                <g:renderErrors bean="${orderLineInstance}" as="list" />
+				            </div>
+			            </g:hasErrors>
 							<tr>
                       			<td>${orderLineInstance?.tire}</td>
-                      			<td><g:textField name="price" value="${orderLineInstance?.price}"></g:textField></td>
-                      			<td><g:textField name="numberOfReservedTires" value="${orderLineInstance?.numberOfReservedTires}"></g:textField></td>
+                      			<td>${orderLineInstance?.price}</td>
+                      			<td>${orderLineInstance?.numberOfReservedTires}</td>
 								<td>
-                          			<g:form action="deleteFromOrder" method="get">
+                          			<g:form action="deleteFromOrder" method="post">
                           				<g:hiddenField name="orderLineIndex" value="${orderLineIndex}" />
-                          				<g:submitButton class="deleteTableItem" name="deleteFromOrder" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
+                          				<g:submitButton class="deleteTableItem" name="deleteFromOrder" title="${message(code: 'customerOrder.list.delete.tooltip.label')}" value="${message(code: 'list.button.table.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
                           			</g:form>
                          		</td>  
 							</tr>
@@ -122,9 +131,7 @@
 	                    	<span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
 	                	</div>
 	            	</g:form>
-	            	
 	            </div>
-            	
         </div>
     </body>
 </html>

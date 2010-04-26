@@ -807,3 +807,30 @@ div#allTireHotelOccurrences {
     display:none;
 }
 
+/* CUSTOMER ORDER */
+#customerOrderDialog {
+	float: left;
+	margin-right: 10px;
+	width: 400px;
+}
+
+#customerOrderedItems {
+	float: right;
+	width: 530px;
+}
+
+#customerAndTireInfo {
+	margin-bottom: 10px;
+}
+
+input.customerOrderTableTextField {
+	width: 50px;
+	text-align: right;
+}
+#customerOrderPriceHeader {
+	width: 50px;	
+}
+
+#customerOrderDeleteHeader {
+	width: 10px;
+}
