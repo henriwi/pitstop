@@ -463,7 +463,7 @@ input.delivered {
 #tireEditButtons {
 	padding-top: 10px;
 	float: left;
-	width: 235px;
+	width: 395px;
 }
 
 .searchButtons {
@@ -522,9 +522,17 @@ a.logoutButton{
 }
 
 #tireShowDialog {
-	width: 250px;
+	width: 410px;
 	float: left;
 	margin: 0 10px 0 0;	
+}
+
+#tireShowDialogWindow2 {
+	width: 410px;
+	float: left;
+	margin: 0 10px 0 0;
+	padding-top: 5px;
+	
 }
 
 /* SHOW CUSTOMER */
@@ -603,6 +611,27 @@ a.logoutButton{
     border: none;
     cursor: pointer;
 }
+
+.disableTireItem {
+    background: url(../images/skin/tire_deactivate.png) 5px 50% no-repeat;
+    padding: 0px;
+    padding-right: 15px;
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.enableTireItem {
+    background: url(../images/skin/tire_activate.png) 5px 50% no-repeat;
+    padding: 0px;
+    padding-right: 15px;
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
 
 .saveTableItem {
 	background: url(../images/skin/database_add.png) 5px 50% no-repeat;

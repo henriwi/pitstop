@@ -20,63 +20,50 @@
             </g:if>
             
             <div class="dialog" id="tireShowDialog">
+               	<div class="tireInfoBox">
                 <table>
                     <tbody>
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="tire.partNr.label" /></td>
                             <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "partNr")}</td>
                         </tr>
-                        
+
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tire.brand.label"/></td>
-                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "brand")}</td>
-                        </tr>
-                        
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tire.tireName.label" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "tireName")}</td>
+                            <td valign="top" class="name"><label for="toString"><g:message code="tire.info.label" /></label></td>
+                            <td valign="top" class="value">${tireInstance?.toString()}</td>
                         </tr>
                     
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tire.width.label" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "width")}</td>
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tire.profile.label" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "profile")}</td>
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tire.construction.label" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "construction")}</td>
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tire.diameter.label" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "diameter")}</td>
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tire.loadIndex.label" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "loadIndex")}${fieldValue(bean: tireInstance, field: "speedIndex")}</td>
-                        </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="tire.pattern.label" /></td>
                             <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "pattern")}</td>
                         </tr>
                     
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="tire.tireType.label" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "tireType")}</td>
-                        </tr>
+
                         
                        	<tr class="prop">
                             <td valign="top" class="name"><g:message code="tire.retailPrice.label" /></td>
                              <td valign="top" class="value"><g:formatNumber number="${tireInstance?.retailPrice}" format="#.00 kr" /></td>
                         </tr>
                         
+                        <tr class="prop">
+                            <td valign="top" class="name"><label for="notice"><g:message code="tire.notice.label" /></label></td>
+                            <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "notice")}</td>
+                        </tr>
+                        
+
+                    
+                    
+                    
+                    
+                       </tbody>
+                </table>
+                </div>
+                
+                <div class="dialog" id="tireShowDialogWindow2">
+               	<div class="tireInfoBox">
+                <table>
+                    <tbody>
                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="tire.numberInStock.label" /></td>
                              <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "numberInStock")}</td>
@@ -99,13 +86,12 @@
                             <td valign="top" class="name"><g:message code="tire.numberOfOrdered.label" /></td>
                              <td valign="top" class="value">${numberOfOrdered}</td>
                         </tr>
-                        
-                       <tr class="prop">
-                                <td valign="top" class="name"><label for="notice"><g:message code="tire.notice.label" /></label></td>
-                                <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "notice")}</td>
-                            </tr>
-                    </tbody>
-                </table>
+                            
+                     </tbody>
+                 </table>
+                </div>           
+
+            
 	            <div class="buttons" id="tireEditButtons">
 	                <g:form>
 	                    <g:hiddenField name="id" value="${tireInstance?.id}" />
