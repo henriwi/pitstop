@@ -53,7 +53,7 @@
 		                                </td>
 		                                <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'notice', 'errors')}">
 		                                	<g:textArea value="${order?.notice }" tabindex='13' name="notice" rows="5" cols="10"/>
-										</td>
+															</td>
 			                    	</tr>
 		                        </tbody>
 		                    </table>
