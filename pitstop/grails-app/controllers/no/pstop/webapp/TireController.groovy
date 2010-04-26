@@ -127,7 +127,8 @@ class TireController {
 			if(!params.offset)
 			params.offset = 0
 			def supplierOrderLines = SupplierOrderLine.findAllByTireAndReceivedDateIsNull(tireInstance)
-			[supplierOrderLines: supplierOrderLines, tireInstance: tireInstance]
+			def customerOrderLines = CustomerOrderLine.findAllByTireAndDeliveredDateIsNull(tireInstance)
+			[supplierOrderLines: supplierOrderLines, customerOrderLines: customerOrderLines, tireInstance: tireInstance]
 		}
 	}
 	

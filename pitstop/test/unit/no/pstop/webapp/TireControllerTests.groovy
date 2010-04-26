@@ -68,19 +68,27 @@ class TireControllerTests extends ControllerUnitTestCase {
 	
 	void testShowWithValidId() {
 		def supplierOrderLine1 = new SupplierOrderLine(tire: t1, supplierOrder: new SupplierOrder(), 
-		numberOfOrderedTires: 4, price: 1095.0, receivedDate: null, discount: 10, environmentalFee: 10)
+				numberOfOrderedTires: 4, price: 1095.0, receivedDate: null, discount: 10, environmentalFee: 10)
 		def supplierOrderLine2 = new SupplierOrderLine(tire: t1, supplierOrder: new SupplierOrder(), 
-		numberOfOrderedTires: 2, price: 995.0, receivedDate: null, discount: 10, environmentalFee: 10)
+				numberOfOrderedTires: 2, price: 995.0, receivedDate: null, discount: 10, environmentalFee: 10)
+		
+		def customerOrderLine1 = new CustomerOrderLine(tire: t1, numberOfReservedTires: 4, 
+				customerOrder: new CustomerOrder(), price: 1095.0, deliveredDate: null)
+		def customerOrderLine2 = new CustomerOrderLine(tire: t1, numberOfReservedTires: 6, 
+				customerOrder: new CustomerOrder(), price: 995.0, deliveredDate: null)
 		
 		def supplierOrderLines = [supplierOrderLine1, supplierOrderLine2]
+		def customerOrderLines = [customerOrderLine1, customerOrderLine2]
 		
 		mockDomain SupplierOrderLine, supplierOrderLines 
+		mockDomain CustomerOrderLine, customerOrderLines
 		mockDomain Tire, [t1]
 		
 		controller.params.id = 1
 		def model = controller.show()
 		assertEquals "Tire should be equal", t1, model.tireInstance
 		assertEquals "supplierOrderLines should be equal", supplierOrderLines, model.supplierOrderLines
+		assertEquals "customerOrderLines should be equal", customerOrderLines, model.customerOrderLines
 	}
 	
 	void testShowWithInvalidId() {
