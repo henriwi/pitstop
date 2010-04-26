@@ -34,10 +34,7 @@ class CustomerOrderController {
     def create = {
 		session["order"] = new CustomerOrder()
 		session["orderLines"] = []
-		//session["tire"]// = Tire.list()
 		session["customer"] = Customer.get(params.customerId)
-		
-		//return [tireList: session["tireList"]]
     }
 
     def save = {
@@ -150,13 +147,13 @@ class CustomerOrderController {
     }
 		
 	private addToOrderLine(params, tire, orderLines) {
-		def customerOrderLine = new CustomerOrderLine(price: params.price, numberOfReservedTires: params.numberOfReservedTires,
-		tire: tire)
-		//customerOrderLine.price = params.price.toDouble()
-		//customerOrderLine.numberOfReservedTires = params.numberOfReservedTires.toInteger()
-		//customerOrderLine.tire = tire
+		def customerOrderLine = new CustomerOrderLine(price: params.price, 
+		numberOfReservedTires: params.numberOfReservedTires, tire: tire)
 		
-		orderLines << customerOrderLine
+		//if(customerOrderLine.validate()) {
+			orderLines << customerOrderLine
+		//}
+		
 		return orderLines
 	}
 		

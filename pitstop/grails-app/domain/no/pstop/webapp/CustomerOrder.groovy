@@ -8,5 +8,4 @@ class CustomerOrder {
     static constraints = {
 		orderDate(max: new Date() + 1)
     }
-	
 }
