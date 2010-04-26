@@ -7,7 +7,6 @@ class CustomerOrder {
 	String notice
 	
     static constraints = {
-		orderDate(max: new Date() + 1)
 		notice(size: 0..1000)
     }
 }

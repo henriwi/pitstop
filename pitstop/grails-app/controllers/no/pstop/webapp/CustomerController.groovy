@@ -64,13 +64,9 @@ class CustomerController {
 				params.max = maxNumberOfTireHotelOccurrences
 			if (!params.offset)
 				params.offset = 0
-        	def tireHotelOccurrenceInstanceList = TireHotelOccurrence.findAllByCustomer(Customer.get(params.id), [max:params.max, offset:params.offset])
 			
-        	def customerOrders = CustomerOrder.findAllByCustomer(Customer.get(params.id)) // TODO Fikse sortering , sort:params.sort, order:params.order
-					
-        	def tireHotelOccurrenceInstanceTotalList = TireHotelOccurrence.findAllByCustomer(Customer.get(params.id))
-			[tireHotelOccurrenceInstanceList: tireHotelOccurrenceInstanceList, customerInstance: customerInstance, tireHotelOccurrenceInstanceTotalList: tireHotelOccurrenceInstanceTotalList,
-			customerOrders: customerOrders]
+        	def customerOrders = CustomerOrder.findAllByCustomer(Customer.get(params.id))
+			[customerInstance: customerInstance, customerOrders: customerOrders]
         }
     }
 
@@ -191,27 +187,5 @@ class CustomerController {
 			}
 		}
 		return pendingOrders
-	}
-	
-	def testAjax = {
-		def orders = CustomerOrder.findAllByCustomer(Customer.get(params.id))
-		
-		def formattedOrders = orders.collect {
-			[
-				id: "<b>$it.id</b>",
-				orderDate: new java.text.SimpleDateFormat("dd.MM.yyyy").format(it.orderDate),
-				delivered: "<form action='/pitstop/customerOrder/deliverOrder' method='get'>" +
-				"<input type='hidden' name='id' value='$it.id'>" + 
-				"<input type='submit'></form>", 
-				//g.actionSubmit(class:"deleteTableItem", value: "test", name: "${message(code: 'list.button.table.label')}", controller: "customer", action: 'show'),
-				dataUrl: g.createLink(controller: "customerOrder", action: 'show') + "/$it.id"
-			]
-		}
-		
-		def data = [
-				results: formattedOrders,
-				]
-		
-		render data as JSON
 	}
 }

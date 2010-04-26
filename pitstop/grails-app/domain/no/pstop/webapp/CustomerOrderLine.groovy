@@ -7,8 +7,12 @@ class CustomerOrderLine {
 	Date deliveredDate
 
     static constraints = {
+		numberOfReservedTires(min: 1)
 		price(min: new Double(0.00), max: new Double(100000000.00))
 		deliveredDate(nullable: true)
     }
 	
+	String toString() {
+		"$tire (Antall: $numberOfReservedTires)"
+	}
 }

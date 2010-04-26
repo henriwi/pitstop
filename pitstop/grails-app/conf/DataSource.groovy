@@ -13,7 +13,7 @@ hibernate {
 environments {
 	development {
 		dataSource {
-			dbCreate = "update" // one of 'create', 'create-drop','update'
+			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
 			url = "jdbc:mysql://localhost/pitstop"
 		}
 	}
@@ -24,11 +24,12 @@ environments {
 			username = "sa"
 			password = ""
 			url = "jdbc:hsqldb:mem:testDb"
+			inactivityTimeout = 200
 		}
 	}
 	production {
 		dataSource {
-			dbCreate = "update"
+			dbCreate = "create-drop"
 			url = "jdbc:mysql://localhost/pitstop"
 		}
 	}

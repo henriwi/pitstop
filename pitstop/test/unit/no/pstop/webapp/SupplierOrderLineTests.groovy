@@ -3,15 +3,11 @@ package no.pstop.webapp
 import grails.test.*
 
 class SupplierOrderLineTests extends GrailsUnitTestCase {
-	//def tireOccurrence
 	def supplierOrderLine
 	
     protected void setUp() {
         super.setUp()
-		//mockForConstraintsTests TireOccurrence
 		mockForConstraintsTests SupplierOrderLine
-		/*tireOccurrence = new TireOccurrence(tire: new Tire(), price: 89.89, numberInStock: 4, numberOfReserved: 3,
-				numberOfOrdered: 8, discount: 20, environmentalFee: 10, registrationDate: new Date())*/
 		supplierOrderLine = new SupplierOrderLine(tire: new Tire(), supplierOrder: new SupplierOrder(), 
 		numberOfOrderedTires: 4,price: 950.0, receivedDate: new Date(), discount: 10, environmentalFee: 12)
     }

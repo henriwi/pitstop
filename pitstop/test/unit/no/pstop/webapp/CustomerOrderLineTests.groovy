@@ -3,30 +3,30 @@ package no.pstop.webapp
 import grails.test.*
 
 class CustomerOrderLineTests extends GrailsUnitTestCase {
-	def tireOccurrence
+	def tire
 	def customerOrderLine
 	
 	protected void setUp() {
         super.setUp()
 				
-		mockForConstraintsTests TireOccurrence
 		mockForConstraintsTests CustomerOrderLine
-		tireOccurrence = new TireOccurrence(tire: new Tire(), price: 89.89, numberInStock: 4, numberOfReserved: 3,
-				numberOfOrdered: 8, discount: 20, environmentalFee: 10, registrationDate: new Date())
-		customerOrderLine = new CustomerOrderLine(tireOccurrence: tireOccurrence, numberOfOrderedTireOccurrences: 4,
-				price: 950.0, deliveryDate: new Date())
+		tire = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
+				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", 
+				notice:"Demodekk", retailPrice: 1095, numberInStock: 4)	
+		customerOrderLine = new CustomerOrderLine(tire: tire, customerOrder: new CustomerOrder(),
+				numberOfReservedTires: 4, price: 950.0, deliveredDate: null)
     }
 
     protected void tearDown() {
         super.tearDown()
     }
 
-    void testGenerateCustomerOrderLineWithInvalidNumberOfOrderedTireOccurrences() {
-    	customerOrderLine.numberOfOrderedTireOccurrences = 0
+    void testGenerateCustomerOrderLineWithInvalidNumberOfReservedTires() {
+    	customerOrderLine.numberOfReservedTires = 0
 		
-		assertFalse "Test failed, expecting invalid numberOfOrderedTireOccurrences", customerOrderLine.validate()
-		def badField = customerOrderLine.errors.getFieldError('numberOfOrderedTireOccurrences')
-		assertNotNull "Expecting error in field numberOfOrderedTireOccurrences", badField
+		assertFalse "Test failed, expecting invalid numberOfReservedTires", customerOrderLine.validate()
+		def badField = customerOrderLine.errors.getFieldError('numberOfReservedTires')
+		assertNotNull "Expecting error in field numberOfReservedTires", badField
 	}
 	
 	void testGenerateCustomerOrderLineWithInvalidPrice() {
@@ -36,13 +36,8 @@ class CustomerOrderLineTests extends GrailsUnitTestCase {
 		def badField = customerOrderLine.errors.getFieldError('price')
 		assertNotNull "Expecting error in field price", badField
 	}
-	/*
-	void testGenerateCustomerOrderLineWithInvalidDeliveryDate() {
-		customerOrderLine.deliveryDate = -2
-		
-		assertFalse "Test failed, expecting invalid deliveryDate", customerOrderLine.validate()
-		def badField = customerOrderLine.errors.getFieldError('deliveryDate')
-		assertNotNull "Expecting error in field deliveryDate", badField
+	
+	void testToString() {
+		assertEquals "$tire (Antall: $customerOrderLine.numberOfReservedTires)", customerOrderLine.toString()
 	}
-	*/
 }
