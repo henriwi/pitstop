@@ -72,6 +72,12 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testShowWithValidId() {
+		def tireHotelOccurrence1 = new TireHotelOccurrence(customer: customer1, tireLocation: 1, registrationNumber: "DB12345", inDate: new Date())
+		def tireHotelOccurrence2 = new TireHotelOccurrence(customer: customer1, tireLocation: 2, registrationNumber: "DB54321", inDate: new Date())
+		
+		def tireHotelOccurrenceList = [tireHotelOccurrence1, tireHotelOccurrence2]
+		def tireHotelOccurrenceTotalList = [tireHotelOccurrence1, tireHotelOccurrence2]
+		
 		def order1 = new CustomerOrder(customer: customer1, orderDate: new Date(), notice: "")
 		def order2 = new CustomerOrder(customer: customer1, orderDate: new Date(), notice: "")
 		
@@ -79,14 +85,17 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 		
 		mockDomain Customer, [customer1]
 		mockDomain CustomerOrder, customerOrders
+		mockDomain TireHotelOccurrence, tireHotelOccurrenceList
 		
 		controller.params.id = 1
 		def model = controller.show()
 		assertEquals customer1, model.customerInstance
 		
 		assertEquals "customerOrders should be equal", customerOrders, model.customerOrders
-		
+		assertEquals "tireHotelOccurrenceList should e equal", tireHotelOccurrenceList, model.tireHotelOccurrenceInstanceList
+		assertEquals "tireHotelOccurrenceTotalList should e equal", tireHotelOccurrenceTotalList, model.tireHotelOccurrenceInstanceTotalList
 	}
+	
 	
 	void testShowWithInvalidId() {
 		mockDomain Customer, [customer1]
