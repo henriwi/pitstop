@@ -7,6 +7,7 @@ class CustomerOrder {
 	String notice
 	
     static constraints = {
-		notice(size: 0..1000)
+		//notice(size: 0..1000)
+		notice(nullable: true)
     }
 }

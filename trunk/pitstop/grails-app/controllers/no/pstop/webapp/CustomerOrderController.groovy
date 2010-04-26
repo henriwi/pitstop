@@ -34,11 +34,13 @@ class CustomerOrderController {
     def create = {
 		session["order"] = new CustomerOrder()
 		session["orderLines"] = []
-		session["customer"] = Customer.get(params.customerId)
+		//session["customer"] = Customer.get(params.customerId)
     }
 
     def save = {
-    	def customer = session["customer"]
+    	def customer = Customer.get(params.customerId)//session["customer"]
+    	println params
+		println customer
 		def customerOrderInstance = session["order"]
 		customerOrderInstance.orderDate = new Date()
 		customerOrderInstance.customer = customer
@@ -130,24 +132,25 @@ class CustomerOrderController {
     }
 
     private setCustomerAndNotice() {
-		if(params.customerId) {
+		//if(params.customerId) {
 			session["customer"] = Customer.get(params.customerId)
-		}
-		if(params.notice) {
+		//}
+		//println params
+		//if(params.notice) 
 			session["order"]?.notice = params.notice
-		}
+		//
     }
     
     def addToOrder = {
-			setCustomerAndNotice()
-			def order = session["order"]
-			def orderLines = session["orderLines"]
-			def tire = session["tire"]
-			
-			orderLines = addToOrderLine(params, tire, orderLines)
-			
-			writeSession(session, order, orderLines)
-            render(view: "create", model: [tire: session["tire"], order: session["order"], orderLines: session["orderLines"]])
+		setCustomerAndNotice()
+		def order = session["order"]
+		def orderLines = session["orderLines"]
+		def tire = session["tire"]
+		
+		orderLines = addToOrderLine(params, tire, orderLines)
+		
+		writeSession(session, order, orderLines)
+        render(view: "create", model: [tire: session["tire"], order: session["order"], orderLines: session["orderLines"]])
     }
 		
 	private addToOrderLine(params, tire, orderLines) {
