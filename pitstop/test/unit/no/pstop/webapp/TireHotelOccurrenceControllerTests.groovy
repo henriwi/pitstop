@@ -1,9 +1,16 @@
 package no.pstop.webapp
 
+import org.codehaus.groovy.grails.plugins.springsecurity.GrailsUserImpl;
+import org.grails.plugins.springsecurity.service.AuthenticateService;
+import org.springframework.security.GrantedAuthority;
+import org.springframework.security.GrantedAuthorityImpl;
+import org.springframework.security.context.SecurityContextHolder as SCH 
+import org.springframework.security.providers.UsernamePasswordAuthenticationToken;
+
+
 import grails.converters.JSON;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-
 import org.springframework.ui.Model;
 import grails.test.*
 
@@ -20,6 +27,10 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 				customer:customer, tireType: "Sommer", inDate:new Date(), outDate:new Date() + 100, notice:"Notice" )
     }
 	
+	protected void tearDown() {
+		super.tearDown()
+	}
+	
 	private setParams(String tireLocation, String registrationNumber, String carType, Customer customer, String tireType, Date inDate, Date outDate, String notice){
 		controller.params.tireLocation = tireLocation
 		controller.params.registrationNumber = registrationNumber
@@ -31,9 +42,18 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		controller.params.notice = notice
 	}
 	
-    protected void tearDown() {
-        super.tearDown()
-    }
+	private logInUser() {
+		def person = new User(username: "anders", userRealName: "Anders Evenstuen", passwd: "123", enabled: true, 
+		email: "anders@gmail.com", description: "ingen", pass: "123")
+		
+		def authorities = person.authorities.collect { new GrantedAuthorityImpl(it.authority) }
+		def userDetails = new GrailsUserImpl(person.username, person.passwd, person.enabled, true,
+				true, true, authorities as GrantedAuthority[], person)
+		
+		SCH.context.authentication = new UsernamePasswordAuthenticationToken(userDetails, 
+				person.passwd, userDetails.authorities)
+		controller.session["SPRING_SECURITY_CONTEXT"] = SCH.context
+	}
 
 	void testIndex() {
 		controller.index()
@@ -45,25 +65,29 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertNotNull model.tireHotelOccurrenceInstance
 	}
 	
-	/*void testSaveWithValidTireHotelOccurrence(){
+	void testSaveWithValidTireHotelOccurrence(){
 		setParams("1a", "DE12345", "Audi", null, "Sommer", new Date(), new Date() + 100, "Notice")
 		controller.params.inDate_day = "02"
 		controller.params.inDate_month = "03"
 		controller.params.inDate_year = "2010"
 		
+		mockDomain User
 		mockDomain Customer, [customer]
 		controller.params.customer_id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"}
 		def mock = mockFor(TireHotelOccurrence)
 		mock.demand.merge() {tireHotelOccurrence}
 		
-		controller.logService = new LogService()
-		controller.session.SPRING_SECURITY_CONTEXT.authentication.principal.username = "henrik"
+		def logMock = mockFor(LogService)
+		logMock.demand.saveLog() {}
+		controller.logService = logMock.createMock() 
+		
+		logInUser()
 		controller.save()
 		
 		assertEquals "redirect action", "show", controller.redirectArgs.action
 		assertEquals "Redirect id", 1, controller.redirectArgs.id
-	}*/
+	}
 	
 	void testSaveWithInvalidTireHotelOccurrence(){
 		setParams("a1", "DE12345", "?", null, "Sommer", new Date(), new Date() + 100, "Notice")

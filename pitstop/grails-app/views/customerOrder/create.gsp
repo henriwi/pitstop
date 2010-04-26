@@ -26,9 +26,8 @@
                 <g:renderErrors bean="${customerOrderInstance}" as="list" />
             </div>
             </g:hasErrors>
-                <div id="customerOrderDialog">
-	                <div id="customerAndTireInfo">
-	                	<g:form action="showTireInfo" method="get">
+	                <div id="customerAndNotice">
+	                <g:form action="save" method="post" >
 		                    <table>
 		                        <tbody>
 		                        	<tr class="prop">
@@ -39,62 +38,68 @@
 		                                    <g:select name="customerId" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${params.customerId}" />
 		                                </td>
 		                            </tr>
-									<tr class="prop">
-		                                <td valign="top" class="name">
-		                                    <label for="tire"><g:message code="customerOrderLine.tire.label" default="Dekk" /></label>
-		                                </td>
-		                                <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'tire', 'errors')}">
-											<g:select onChange="this.form.submit()" noSelection="${[0:'Velg dekk']}" name="tireId" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${tire?.id}" />
-										</td>
-			                    	</tr>
 		                  			<tr class="prop">
 		                                <td valign="top" class="notice">
-		                                    <label for="tire"><g:message code="customerOrderLine.notice.label" /></label>
+		                                    <label for="notice"><g:message code="customerOrderLine.notice.label" /></label>
 		                                </td>
 		                                <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'notice', 'errors')}">
-		                                	<g:textArea value="${order?.notice }" tabindex='13' name="notice" rows="5" cols="10"/>
-															</td>
+		                                	<g:textArea value="${order?.notice}" tabindex='13' name="notice" rows="5" cols="10"/>
+										</td>
 			                    	</tr>
 		                        </tbody>
 		                    </table>
-	                    </g:form>
-	                 </div>
-	                 <div id="customerOrderTireInfo">
-	                 <g:if test="${tire}"> 
-		                 <g:form action="addToOrder" method="post">
+		                
+		                
+			            
+		                	<div class="buttons">
+		                    	<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'customerOrder.button.create.label')}" /></span>
+		                    	<span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
+		                	</div>
+		            	</g:form>
+		            </div>
+		            	
+		            <div id="customerOrderTireInfo"> 	
 		                 	<table>
 		                 		<tbody>
-		                 			<tr class="prop">
-		                 				<td><g:message code="customerOrder.retailPrice.label"></g:message></td>
-		                 				<td><g:formatNumber number="${tire?.retailPrice }" format="#0.00 kr" /></td>
-		                 			</tr>
-		                 			<tr class="prop">
-		                 				<td><g:message code="customerOrder.highestPrice.label"></g:message></td>
-		                 				<td><g:formatNumber number="${tire?.highestPrice()}" format="#0.00 kr" /></td>
-		                 			</tr>
-		                 			<tr class="prop">
-		                 				<td><g:message code="customerOrder.averagePrice.label"></g:message></td>
-		                 				<td><g:formatNumber number="${tire?.averagePrice() }" format="#0.00 kr" /></td>
-		                 			</tr>
-		 							<tr class="prop">
-		                                <td valign="top" class="name"><label for="price"><g:message code="customerOrderLine.price.label" /></label></td>
-		                                <td><g:textField maxlength="30" tabindex='12' name="price" value="" /></td>
-		                            </tr>
-		                         	<tr class="prop">
-		                                <td valign="top" class="name"><label for="numberOfReservedTires"><g:message code="customerOrderLine.numberOfReservedTires.label" /></label></td>
-		                                <td><g:textField maxlength="30" tabindex='12' name="numberOfReservedTires" value="" /></td>
-		                            </tr>
-		                            <tr>
-		                            	<td><span class="button"><g:submitButton name="showTireOccurrences" class="next" value="${message(code: 'customerOrder.addToOrder.label')}" /></span></td>
-		                            </tr>
+		                			<g:form action="showTireInfo" method="get">
+	             						<tr class="prop">
+	                    					<td valign="top" class="name">
+	                        					<label for="tire"><g:message code="customerOrderLine.tire.label" default="Dekk" /></label>
+	                        				</td>
+	                        				<td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'tire', 'errors')}">
+												<g:select onChange="this.form.submit()" noSelection="${[0:'Velg dekk']}" name="tireId" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${tire?.id}" />
+											</td>
+	                   					</tr>
+	                    			</g:form>
+	                    			<g:form action="addToOrder" method="post">
+			                 			<tr class="prop">
+			                 				<td><g:message code="customerOrder.retailPrice.label"></g:message></td>
+			                 				<td><g:formatNumber number="${tire?.retailPrice }" format="#0.00 kr" /></td>
+			                 			</tr>
+			                 			<tr class="prop">
+			                 				<td><g:message code="customerOrder.highestPrice.label"></g:message></td>
+			                 				<td><g:formatNumber number="${tire?.highestPrice()}" format="#0.00 kr" /></td>
+			                 			</tr>
+			                 			<tr class="prop">
+			                 				<td><g:message code="customerOrder.averagePrice.label"></g:message></td>
+			                 				<td><g:formatNumber number="${tire?.averagePrice() }" format="#0.00 kr" /></td>
+			                 			</tr>
+			 							<tr class="prop">
+			                                <td valign="top" class="name"><label for="price"><g:message code="customerOrderLine.price.label" /></label></td>
+			                                <td><g:textField maxlength="30" tabindex='12' name="price" value="" /></td>
+			                            </tr>
+			                         	<tr class="prop">
+			                                <td valign="top" class="name"><label for="numberOfReservedTires"><g:message code="customerOrderLine.numberOfReservedTires.label" /></label></td>
+			                                <td><g:textField maxlength="30" tabindex='12' name="numberOfReservedTires" value="" /></td>
+			                            </tr>
+			                            <tr>
+			                            	<td><span class="button"><g:submitButton name="showTireOccurrences" class="next" value="${message(code: 'customerOrder.addToOrder.label')}" /></span></td>
+			                            </tr>
+			                    	</g:form>
 		                 		</tbody>
 		                 	</table>
-		                 </g:form>
-		             	</g:if>
-		             </div>
-	           	</div>
-                 
-                <div id="customerOrderedItems">
+		    	</div>
+				<div id="customerOrderedItems">
                 	<table>
                 		<thead>
 	                		<tr class="prop">
@@ -131,13 +136,6 @@
 					</g:each>
                    	</tbody>
             		</table>
-                
-	                <g:form action="save" method="post" >
-	                	<div class="buttons">
-	                    	<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'customerOrder.button.create.label')}" /></span>
-	                    	<span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
-	                	</div>
-	            	</g:form>
 	            </div>
         </div>
     </body>
