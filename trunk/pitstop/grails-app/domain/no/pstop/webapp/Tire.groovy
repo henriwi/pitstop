@@ -79,6 +79,15 @@ class Tire {
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType}"
 	}
 	
+	Integer highestPrice(){
+		supplierOrderLines.price.max()
+		//Integer highestPrice = SupplierOrderLine.executeQuery("select max(price) as maxPrice from supplinerOrderLine s, tire t where s.tire_id = t.id")
+	}
+	
+	Integer averagePrice(){
+		supplierOrderLines.price.sum() / supplierOrderLines.size()
+	}
+	
 	String orderToString() {
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (${partNr})"
 		//"${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} (${retailPrice},-)"
@@ -107,5 +116,13 @@ class Tire {
 	
 	String enabledLabel(){
 		(enabled) ? "Ja" : "Nei"
+	}
+	
+	Integer numberOfAvailable(){
+		Integer numberOfReserved = 0
+		customerOrderLines.each {
+			numberOfReserved += it.numberOfReservedTires
+		}
+		numberInStock - numberOfReserved
 	}
 }
