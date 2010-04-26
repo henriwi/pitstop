@@ -164,7 +164,7 @@ class CustomerController {
 			 orderDate: new java.text.SimpleDateFormat("dd.MM.yyyy").format(it.orderDate),
 			 delivered: "<form action='/pitstop/customerOrder/deliverOrder' method='get'>" +
 			 		"<input type='hidden' name='id' value='$it.id'>" + 
-			 		"<input type='submit'></form>", 
+			 		"<input class='recieveSupplierOrder' type='submit' value=''></form>", 
 				 //g.actionSubmit(class:"deleteTableItem", value: "test", name: "${message(code: 'list.button.table.label')}", controller: "customer", action: 'show'),
 			 dataUrl: g.createLink(controller: "customerOrder", action: 'show') + "/$it.id"
 			]

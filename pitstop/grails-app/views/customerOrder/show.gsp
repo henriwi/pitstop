@@ -8,7 +8,7 @@
 					<td>
 						<g:form controller="customerOrder" action="deliverOrderLine" method="post">
 							<g:hiddenField name="id" value="${customerOrderLineInstance?.id}" />
-							<g:submitButton class="deleteTableItem" name="deleteFromOrder" value="${message(code: 'default.button.delete.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
+							<g:submitButton class="recieveSupplierOrder" title="${message(code: 'customerOrderLine.recieve.tooltip.label')}" name="deleteFromOrder" value="${message(code: 'list.button.table.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
 						</g:form>
 					</td>
 				</td>
