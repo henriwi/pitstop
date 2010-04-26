@@ -12,7 +12,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		
 		t1 = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
 				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", 
-				retailPrice: 1095, notice:"Demodekk")
+				notice:"Demodekk", retailPrice: 1095, numberInStock: 4)	
 	}
 	
 	protected void tearDown() {
@@ -20,7 +20,8 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	private setParams(Integer width, Integer profile, String construction, Integer diameter, String partNr, Integer loadIndex,
-	String speedIndex, String pattern, String tireType, String brand, String tireName, Double retailPrice, String notice) {
+	String speedIndex, String pattern, String tireType, String brand, String tireName, Double retailPrice, 
+	Integer numberInStock, String notice) {
 		controller.params.width = width
 		controller.params.profile = profile
 		controller.params.construction = construction
@@ -33,6 +34,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.params.brand = brand
 		controller.params.tireName = tireName
 		controller.params.retailPrice = retailPrice
+		controller.params.numberInStock = numberInStock
 		controller.params.notice = notice
 	}
 	
@@ -47,7 +49,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithValidTire() {
-		setParams(190, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero", 1095, "Demodekk")
+		setParams(190, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero", 1095, 4, "Demodekk")
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.save()
 
@@ -56,7 +58,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithInvalidWidth() {
-		setParams(-100, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero", 1095, "Demodekk")
+		setParams(-100, 60, "R", 17, "123AB", 165, "H", "m12", "Sommer", "Pirelli", "T-Zero", 1095, 4, "Demodekk")
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.save()
 		
@@ -65,21 +67,20 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testShowWithValidId() {
-		def tireOccurrence1 = new TireOccurrence(tire: t1, price: 1500, numberInStock: 4,
-		registrationDate: new Date())
-		def tireOccurrence2 = new TireOccurrence(tire: t1, price: 1300, numberInStock: 4,
-				registrationDate: new Date() + 1)
-		def tireOccurrenceList = [tireOccurrence2, tireOccurrence1]
-		def tireOccurrenceTotalList = [tireOccurrence1, tireOccurrence2]
+		def supplierOrderLine1 = new SupplierOrderLine(tire: t1, supplierOrder: new SupplierOrder(), 
+		numberOfOrderedTires: 4, price: 1095.0, receivedDate: null, discount: 10, environmentalFee: 10)
+		def supplierOrderLine2 = new SupplierOrderLine(tire: t1, supplierOrder: new SupplierOrder(), 
+		numberOfOrderedTires: 2, price: 995.0, receivedDate: null, discount: 10, environmentalFee: 10)
 		
+		def supplierOrderLines = [supplierOrderLine1, supplierOrderLine2]
+		
+		mockDomain SupplierOrderLine, supplierOrderLines 
 		mockDomain Tire, [t1]
-		mockDomain TireOccurrence, [tireOccurrence1, tireOccurrence2]
 		
 		controller.params.id = 1
 		def model = controller.show()
-		assertEquals t1, model.tireInstance
-		assertEquals "tireOccurenceList should be equal", tireOccurrenceList, model.tireOccurrenceInstanceList
-		assertEquals "tireOccurenceTotalList should be equal", tireOccurrenceTotalList, model.tireOccurrenceInstanceTotalList
+		assertEquals "Tire should be equal", t1, model.tireInstance
+		assertEquals "supplierOrderLines should be equal", supplierOrderLines, model.supplierOrderLines
 	}
 	
 	void testShowWithInvalidId() {

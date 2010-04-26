@@ -15,7 +15,7 @@ class SupplierOrderTests extends GrailsUnitTestCase {
     }
 
 	void testGenerateSupplierOrderWithInvalidNotice() {
-		for(int i = 0; i < 2000; i++){
+		for(int i = 0; i < 1001; i++){
 			supplierOrder.notice += "A"
 		}
 		

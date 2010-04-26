@@ -28,9 +28,4 @@ class CustomerOrderTests extends GrailsUnitTestCase {
 		def badField = customerOrder.errors.getFieldError("notice")
 		assertNotNull "I'm expecting to find error in notice", badField
 	}
-	
-	void testToString() {
-		customerOrder.id = 1
-		assertEquals "Ordre - 1", customerOrder.toString()
-	}
 }

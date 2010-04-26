@@ -72,28 +72,19 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testShowWithValidId() {
-		def tireHotelOccurrence1 = new TireHotelOccurrence(customer: customer1, tireLocation: 1, registrationNumber: "DB12345", inDate: new Date())
-		def tireHotelOccurrence2 = new TireHotelOccurrence(customer: customer1, tireLocation: 2, registrationNumber: "DB54321", inDate: new Date())
+		def order1 = new CustomerOrder(customer: customer1, orderDate: new Date(), notice: "")
+		def order2 = new CustomerOrder(customer: customer1, orderDate: new Date(), notice: "")
 		
-		def tireHotelOccurrenceList = [tireHotelOccurrence1, tireHotelOccurrence2]
-		def tireHotelOccurrenceTotalList = [tireHotelOccurrence1, tireHotelOccurrence2]
-		
-		def orderLine1 = new CustomerOrder(customer: customer1, orderDate: new Date(), notice: "")
-		def orderLine2 = new CustomerOrder(customer: customer1, orderDate: new Date(), notice: "")
-		
-		def customerOrder = [orderLine1, orderLine2]
+		def customerOrders = [order1, order2]
 		
 		mockDomain Customer, [customer1]
-		mockDomain TireHotelOccurrence, [tireHotelOccurrence1, tireHotelOccurrence2]
-		mockDomain CustomerOrder, [orderLine1, orderLine2]
+		mockDomain CustomerOrder, customerOrders
 		
 		controller.params.id = 1
 		def model = controller.show()
 		assertEquals customer1, model.customerInstance
-		assertEquals "tireHotelOccurrenceList should be equal", tireHotelOccurrenceList, model.tireHotelOccurrenceInstanceList
-		assertEquals "tireHotelOccurrenceTotalList should be equal", tireHotelOccurrenceTotalList, model.tireHotelOccurrenceInstanceTotalList
 		
-		assertEquals "customerOrder should be equal", customerOrder, model.customerOrderInstanceList
+		assertEquals "customerOrders should be equal", customerOrders, model.customerOrders
 		
 	}
 	
