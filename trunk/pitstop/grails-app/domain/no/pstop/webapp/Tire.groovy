@@ -80,11 +80,14 @@ class Tire {
 	}
 	
 	String orderToString() {
-		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (${partNr})" 
+		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (${partNr})"
+		//"${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} (${retailPrice},-)"
 	}
 	
 	String tireShowToString() {
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType}"
+		// Forslag til ny toString()
+		//"${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} (${retailPrice},-)"
 	}
 	
 	String showNoticeWith10FirstLetters() {

@@ -76,7 +76,6 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerInstance, field: 'postalCode', 'errors')}">
                                     <g:remoteField action="getPlace" maxlength="4" name="postalCode" update="place" />
-                                	
                                 </td>
                             </tr>
                         
