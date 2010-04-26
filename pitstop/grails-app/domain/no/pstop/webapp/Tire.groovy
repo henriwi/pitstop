@@ -79,13 +79,28 @@ class Tire {
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType}"
 	}
 	
-	Integer highestPrice(){
-		supplierOrderLines.price.max()
+	Double highestPrice(){
+		if(supplierOrderLines){
+			return supplierOrderLines?.price.max()
+		}
+		else{
+			return 0
+		}
+		
 		//Integer highestPrice = SupplierOrderLine.executeQuery("select max(price) as maxPrice from supplinerOrderLine s, tire t where s.tire_id = t.id")
 	}
 	
-	Integer averagePrice(){
-		supplierOrderLines.price.sum() / supplierOrderLines.size()
+	Integer totalPrice(){
+		supplierOrderLines?.totalSum().max()
+	}
+	
+	Double averagePrice(){
+		if(supplierOrderLines){
+			return supplierOrderLines?.price.sum() / supplierOrderLines.size()
+		}
+		else{
+			return 0
+		}
 	}
 	
 	String orderToString() {

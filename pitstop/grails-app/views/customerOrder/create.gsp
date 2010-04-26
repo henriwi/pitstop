@@ -66,15 +66,15 @@
 		                 		<tbody>
 		                 			<tr class="prop">
 		                 				<td><g:message code="customerOrder.retailPrice.label"></g:message></td>
-		                 				<td><g:formatNumber number="${tire?.retailPrice }" format="#.00 kr" /></td>
+		                 				<td><g:formatNumber number="${tire?.retailPrice }" format="#0.00 kr" /></td>
 		                 			</tr>
 		                 			<tr class="prop">
 		                 				<td><g:message code="customerOrder.highestPrice.label"></g:message></td>
-		                 				<td><g:formatNumber number="${tire?.highestPrice() }" format="#.00 kr" /></td>
+		                 				<td><g:formatNumber number="${tire?.highestPrice()}" format="#0.00 kr" /></td>
 		                 			</tr>
 		                 			<tr class="prop">
 		                 				<td><g:message code="customerOrder.averagePrice.label"></g:message></td>
-		                 				<td><g:formatNumber number="${tire?.averagePrice() }" format="#.00 kr" /></td>
+		                 				<td><g:formatNumber number="${tire?.averagePrice() }" format="#0.00 kr" /></td>
 		                 			</tr>
 		 							<tr class="prop">
 		                                <td valign="top" class="name"><label for="price"><g:message code="customerOrderLine.price.label" /></label></td>
@@ -110,15 +110,15 @@
 	                	<tbody>
 	                	
 	                	<g:set var="orderLineIndex" value="${0}"></g:set>
-						<g:each in="${orderLines}" status="i" var="orderLineInstance">
-						<g:hasErrors bean="${orderLineInstance}">
+										<g:each in="${orderLines}" status="i" var="orderLineInstance">
+										<g:hasErrors bean="${orderLineInstance}">
 				            <div class="errors">
 				                <g:renderErrors bean="${orderLineInstance}" as="list" />
 				            </div>
 			            </g:hasErrors>
 							<tr>
                       			<td>${orderLineInstance?.tire}</td>
-                      			<td>${orderLineInstance?.price}</td>
+                      			<td><g:formatNumber number="${orderLineInstance?.price}" format="#.00 kr" /></td>
                       			<td>${orderLineInstance?.numberOfReservedTires}</td>
 								<td>
                           			<g:form action="deleteFromOrder" method="post">
