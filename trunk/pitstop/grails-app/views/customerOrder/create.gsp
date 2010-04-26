@@ -66,15 +66,15 @@
 		                 		<tbody>
 		                 			<tr class="prop">
 		                 				<td><g:message code="customerOrder.retailPrice.label"></g:message></td>
-		                 				<td>${tire?.retailPrice }</td>
+		                 				<td><g:formatNumber number="${tire?.retailPrice }" format="#.00 kr" /></td>
 		                 			</tr>
 		                 			<tr class="prop">
 		                 				<td><g:message code="customerOrder.highestPrice.label"></g:message></td>
-		                 				<td>1700</td>
+		                 				<td><g:formatNumber number="${tire?.highestPrice() }" format="#.00 kr" /></td>
 		                 			</tr>
 		                 			<tr class="prop">
 		                 				<td><g:message code="customerOrder.averagePrice.label"></g:message></td>
-		                 				<td>1600</td>
+		                 				<td><g:formatNumber number="${tire?.averagePrice() }" format="#.00 kr" /></td>
 		                 			</tr>
 		 							<tr class="prop">
 		                                <td valign="top" class="name"><label for="price"><g:message code="customerOrderLine.price.label" /></label></td>
