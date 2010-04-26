@@ -6,7 +6,7 @@ import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class TireHotelOccurrenceController {
-	
+	def logService
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
 	def index = {
@@ -59,6 +59,7 @@ class TireHotelOccurrenceController {
 		}
 		else{
 			tireHotelOccurrenceInstance = tireHotelOccurrenceInstance.merge(flush: true)
+			logService.saveLog(session, "${message(code: 'log.tireHotelOccurrence.created.event')}")
 			flash.message = "${message(code: 'tireHotelOccurrence.created.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.id])}"
 			redirect(action: "show", id: tireHotelOccurrenceInstance.id)
 		}
