@@ -60,9 +60,9 @@ class CustomerController {
             redirect(action: "list")
         }
         else {
-			if(!params.max)
+			if (!params.max)
 				params.max = maxNumberOfTireHotelOccurrences
-			if(!params.offset)
+			if (!params.offset)
 				params.offset = 0
         	def tireHotelOccurrenceInstanceList = TireHotelOccurrence.findAllByCustomer(Customer.get(params.id), [max:params.max, offset:params.offset])
 			
@@ -142,7 +142,7 @@ class CustomerController {
 	def getPlace = {
 		def postalObject = PostalCodeAndPlace.findByPostalCode(params.value)
 
-		if(postalObject != null)	
+		if (postalObject != null)	
 			render postalObject.place
 		else 
 			render ""
