@@ -548,8 +548,8 @@ a.logoutButton{
  	margin-bottom: 5px;
 }
 
-#tireOccurrenceList table#tireOccurrences {
-	width: 800px;
+#supplierOrderLineList table#tireOccurrences {
+	width: 700px;
 }
 
 #showTire {
@@ -839,8 +839,7 @@ div#allTireHotelOccurrences {
 /* CUSTOMER ORDER */
 
 #customerOrderedItems {
-	width: 500px;
-	float: left;
+	margin-top: 10px;
 }
 
 #customerAndNotice {
@@ -849,10 +848,9 @@ div#allTireHotelOccurrences {
 	width: 300px;
 }
 
-#customerOrderTireInfo {
-	width: 400px;
+#customerOrderLines {
+	width: 700px;
 	float: left;
-	margin-right: 10px;	
 }
 
 input.customerOrderTableTextField {
@@ -875,12 +873,17 @@ input.customerOrderTableTextField {
 }
 
 #orderNumberAndSupplierInfo {
-	margin-bottom: 10px;
+	width: 500px;
+	float: left;
+	margin-right: 10px;
 }
 
-#supplierOrderedItems {
+#supplierOrderLines {
 	width: 700px;
-	float: right;
+	float: right;	
+}
+#supplierOrderedItems {
+	margin-top: 10px;
 }
 
 .supplierOrderHeaders {
@@ -889,4 +892,14 @@ input.customerOrderTableTextField {
 
 #numberOfRecievedTextField {
 	width: 50px;
+}
+
+input.recieveSupplierOrder {
+	background: url(../images/skin/tireRecieved.png) 5px 50% no-repeat;
+    margin: 0px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 28px;
+    border: 0px;
+    cursor: pointer;
 }

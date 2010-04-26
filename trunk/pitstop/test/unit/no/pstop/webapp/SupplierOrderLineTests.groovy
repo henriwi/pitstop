@@ -9,7 +9,7 @@ class SupplierOrderLineTests extends GrailsUnitTestCase {
         super.setUp()
 		mockForConstraintsTests SupplierOrderLine
 		supplierOrderLine = new SupplierOrderLine(tire: new Tire(), supplierOrder: new SupplierOrder(), 
-		numberOfOrderedTires: 4,price: 950.0, receivedDate: new Date(), discount: 10, environmentalFee: 12)
+		numberOfOrderedTires: 4, numberOfReceivedTires: 0, price: 950.0, receivedDate: new Date(), discount: 10, environmentalFee: 12)
     }
 
     protected void tearDown() {
@@ -70,5 +70,13 @@ class SupplierOrderLineTests extends GrailsUnitTestCase {
 		assertFalse "Test failed, expecting invalid environmentalFee", supplierOrderLine.validate()
 		def badField = supplierOrderLine.errors.getFieldError('environmentalFee')
 		assertNotNull "Expecting error in field environmentalFee"
+	}
+	
+	void testGenerateSupplierOrderLineWithInvalidNumberOfReceivedTires(){
+		supplierOrderLine.numberOfReceivedTires = -1
+		
+		assertFalse "Test failed, expecting invalid numberOfReceivedTires", supplierOrderLine.validate()
+		def badField = supplierOrderLine.errors.getFieldError('numberOfReceivedTires')
+		assertNotNull "Expecting error in field numberOfReceivedTires"
 	}
 }

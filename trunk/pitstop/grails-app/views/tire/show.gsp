@@ -74,7 +74,7 @@
                         
                         <g:set var="numberOfOrdered" value="${0}"></g:set>
                         <g:each in="${supplierOrderLines}" status="i" var="supplierOrderLineInstance">
-                        	<g:set var="numberOfOrdered" value="${numberOfOrdered + supplierOrderLineInstance?.numberOfOrderedTires }"></g:set>
+                        	<g:set var="numberOfOrdered" value="${numberOfOrdered + (supplierOrderLineInstance?.numberOfOrderedTires - supplierOrderLineInstance?.numberOfReceivedTires)}"></g:set>
                         </g:each>
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="tire.numberOfOrdered.label" /></td>
@@ -98,7 +98,8 @@
 	                </g:form>
 	            </div>
             </div>
-	        <div id="tireOccurrenceList">
+        </div>
+        <div id="supplierOrderLineList">
 				<g:if test="${supplierOrderLines}">
 		            <table id="tireOccurrences">
 		            	<thead>
@@ -116,6 +117,10 @@
 	                            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'supplierOrderLine.table.numberOfOrderedTires.label')}" />
 	                            
 	                            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'supplierOrderLine.table.numberOfRecieved.label')}" />
+	                            
+	                            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'supplierOrderLine.table.deliver.label')}" />
+	                            
+	                            <g:sortableColumn property="numberOfReceivedTires" title="${message(code: 'supplierOrderLine.table.deliver.label')}" />
 	                        </tr>
 	                    </thead>
 	                    <tbody>
@@ -133,27 +138,21 @@
 	                            
 	                            <td>${supplierOrderLineInstance?.numberOfOrderedTires}</td>
 	                            
-	                            <g:form action="recieveOrder" controller="supplierOrder" method="get">
+	                            <td>${supplierOrderLineInstance?.numberOfReceivedTires}</td>
 	                            
-	                            	<td><g:textField name="numberOfRecieved" value="${supplierOrderLineInstance?.numberOfOrderedTires }"/></td>
+	                            <g:form action="recieveOrder" controller="supplierOrder" method="post">
+	                            
+	                            	<td><g:textField id="numberOfRecievedTextField" name="numberOfRecieved" value="${supplierOrderLineInstance?.numberOfOrderedTires - supplierOrderLineInstance?.numberOfReceivedTires}"/></td>
 	                          		<td>
 	                          			<g:hiddenField name="supplierOrderLineId" value="${supplierOrderLineInstance?.id}" />
-    	                      			<g:submitButton class="deleteTableItem" name="recieveOrder" value="${message(code: 'list.button.table.label')}" />
+    	                      			<g:submitButton class="recieveSupplierOrder" name="recieveOrder" title="${message(code: 'supplierOrder.recieve.tooltip.label')}" value="${message(code: 'list.button.table.label')}" />
     	                      		</td>
        	                  		</g:form>
 	                        </tr>
 	                    </g:each>
 	                    </tbody>
 					</table>
-		            <div class="paginateButtons" id="showTire">
-		        	</div>
 		        </g:if>
-		        <g:else>
-		        	<span class="noListElements">
-		        		<g:message code="tire.show.foundNoTireOccurrencesOfThisTireTire.message"/>
-		        	</span>
-		        </g:else>
             </div>
-        </div>
     </body>
 </html>

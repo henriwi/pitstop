@@ -22,15 +22,17 @@ class SupplierOrderController {
     }
 
     def save = {
+		setOrderValues()
 		def supplierOrderInstance = session["order"]
         supplierOrderInstance?.orderDate = new Date()
 		
 		try {
-			orderService.saveSupplierOrder(supplierOrderInstance, session)
-			redirect(action: "show", id: supplierOrderInstance.id)
+			orderService.saveSupplierOrder(supplierOrderInstance, session)	
+			flash.message = "Bestillingen ble opprettet"
+			redirect(action: "list", id: supplierOrderInstance.id)
 		}
 		catch(result) {
-			flash.message = "Kunne ikke lagre ordren." + result
+			flash.message = "Kunne ikke lagre bestillingen." + result
 			redirect(action: "create")
 		}
     }
@@ -109,7 +111,8 @@ class SupplierOrderController {
 		def tire = Tire.get(params.tireId)
 		
 		def orderLine = new SupplierOrderLine(tire: tire, price: params.price, discount: params.discount, 
-		environmentalFee: params.environmentalFee, numberOfOrderedTires: params.numberOfOrderedTires)
+		environmentalFee: params.environmentalFee, numberOfOrderedTires: params.numberOfOrderedTires, 
+		numberOfReceivedTires: 0)
 		
 		orderLines << orderLine
 		session["orderLines"] = orderLines
@@ -137,14 +140,17 @@ class SupplierOrderController {
 		def tire = supplierOrderLineInstance?.tire
 		
 		int numberOfRecieved = params.numberOfRecieved.toInteger()
-		supplierOrderLineInstance?.numberOfOrderedTires -= numberOfRecieved
+		supplierOrderLineInstance?.numberOfReceivedTires += numberOfRecieved
 		tire?.numberInStock += numberOfRecieved
 		
-		if(supplierOrderLineInstance?.numberOfOrderedTires == 0) {
+		if(supplierOrderLineInstance?.numberOfOrderedTires == supplierOrderLineInstance?.numberOfReceivedTires) {
 			supplierOrderLineInstance?.receivedDate = new Date()
 		}
 		
 		supplierOrderLineInstance.save(flush: true)
+		supplierOrderLineInstance.errors.each {
+			println it
+		}
 		redirect(controller: "tire", action: "show", id: tire?.id)
 	}
 }

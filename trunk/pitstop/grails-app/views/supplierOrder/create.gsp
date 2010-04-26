@@ -22,9 +22,8 @@
                 <g:renderErrors bean="${supplierOrderInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <div id="supplierOrderDialog">
             	<div id="orderNumberAndSupplierInfo">
-            		<g:form action="addToOrder" method="get" >
+            		<g:form action="save" method="post" >
 	                    <table>
 	                        <tbody>
 	                            <tr class="prop">
@@ -48,12 +47,19 @@
 	                                    <label for="notice"><g:message code="supplierOrder.notice.label" /></label>
 	                                </td>
 	                                <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'notice', 'errors')}">
-	                                    <g:textArea tabindex='13' name="notice" rows="5" cols="10"/>
+	                                    <g:textArea value="${order?.notice }"tabindex='13' name="notice" rows="5" cols="10"/>
 	                                </td>
 	                            </tr>
 	                        </tbody>
 	                       </table>
-                   		</div>
+		               	<div class="buttons">
+		                   	<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'supplierOrder.button.create.label')}" /></span>
+		                   	<span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
+		               	</div>
+	           		</g:form>
+	           	</div>
+	           	<div id="supplierOrderLines">
+                	<g:form action="addToOrder" method="post" >
                        <table>
                         <tbody>
                                <tr class="prop">
@@ -102,9 +108,7 @@
                         <tr><td><span class="button"><g:submitButton name="create" class="save" value="${message(code: 'supplierOrder.addToOrder.label')}" /></span></td></tr>
                         </tbody>
                     </table>
-                    </g:form>
-              </div>
-                
+              	</g:form>
                 <div id="supplierOrderedItems">
 					<table>
                 		<thead>
@@ -143,13 +147,6 @@
 							</g:each>
                    		</tbody>
             		</table>
-                
-	               	<g:form action="save" method="post" >
-		               	<div class="buttons">
-		                   	<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'supplierOrder.button.create.label')}" /></span>
-		                   	<span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
-		               	</div>
-	           		</g:form>
            		</div>
            </div>
     </body>

@@ -58,7 +58,7 @@
 		            	</g:form>
 		            </div>
 		            	
-		            <div id="customerOrderTireInfo"> 	
+		            <div id="customerOrderLines"> 	
 		                 	<table>
 		                 		<tbody>
 		                			<g:form action="showTireInfo" method="get">
@@ -98,7 +98,6 @@
 			                    	</g:form>
 		                 		</tbody>
 		                 	</table>
-		    	</div>
 				<div id="customerOrderedItems">
                 	<table>
                 		<thead>
@@ -137,6 +136,7 @@
                    	</tbody>
             		</table>
 	            </div>
+	    	</div>
         </div>
     </body>
 </html>
