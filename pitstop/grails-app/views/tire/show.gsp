@@ -50,13 +50,7 @@
                             <td valign="top" class="name"><label for="notice"><g:message code="tire.notice.label" /></label></td>
                             <td valign="top" class="value">${fieldValue(bean: tireInstance, field: "notice")}</td>
                         </tr>
-                        
-
-                    
-                    
-                    
-                    
-                       </tbody>
+                     </tbody>
                 </table>
                 </div>
                 
@@ -95,7 +89,8 @@
 	            <div class="buttons" id="tireEditButtons">
 	                <g:form>
 	                    <g:hiddenField name="id" value="${tireInstance?.id}" />
-	                    <span class="menuButton" id="createTireOccurrenceButton"><g:link controller="tireOccurrence" class="create" params="[id:tireInstance?.id]" action="create"><g:message code="tire.button.newTireOccurrence.label" /></g:link></span>
+	                    <!--  <span class="menuButton" id="createTireOccurrenceButton"><g:link controller="tireOccurrence" class="create" params="[id:tireInstance?.id]" action="create"><g:message code="tire.button.newTireOccurrence.label" /></g:link></span> -->
+	                    <span class="menuButton" id="createTireOccurrenceButton"><g:link controller="supplierOrder" class="create" params="[id:tireInstance?.id]" action="create"><g:message code="tire.button.newCustomerOrder.label" /></g:link></span>
 	                    <span class="button" id="tireEditButton"><g:actionSubmit class="edit" action="edit" value="${message(code: 'tire.button.edit.label')}" /></span>
 	                   	<g:ifAllGranted role="ROLE_ADMIN">
 	                    	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'tire.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" /></span>
