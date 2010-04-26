@@ -7,7 +7,6 @@
     	<gui:resources components="tabView, columnChart"/>
         <title>PIT-STOP</title>
 		<meta name="layout" content="main" />
-		
     </head>
 	<body>
 		<div class="nav" id="emptyNav">
@@ -28,17 +27,17 @@
 				</div>
 			</g:form>
 			<br />
-			<g:form controller="customerOrder" action="list" method="get">
+			<g:form controller="index" action="numberOfPendingCustomerOrders" method="get">
 				<div>
-					Uleverte kundeordre:
+					Uleverte kundeordre: ${numberOfPendingCustomerOrders}
 					<g:submitButton tabindex='5' class="searchButtons" name="btnShowPendingCustomerOrders" value="Vis" />
 					<br />
 				</div>
 			</g:form>
 			<br />
-			<g:form controller="supplierOrder" action="list" method="get">
+			<g:form controller="index" action="numberOfPendingSupplierOrders" method="get">
 				<div>
-					Uleverte leverandørbestillinger:
+					Uleverte leverand&oslash;rbestillinger: ${numberOfPendingSupplierOrders}
 					<g:submitButton tabindex='5' class="searchButtons" name="btnShowPendingSupplierOrders" value="Vis" />
 					<br />
 				</div>
