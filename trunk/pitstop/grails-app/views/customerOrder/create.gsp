@@ -27,7 +27,7 @@
             </div>
             </g:hasErrors>
                 <div id="customerOrderDialog">
-	                <!-- <div id="customerAndTireInfo">-->
+	                <div id="customerAndTireInfo">
 	                	<g:form action="showTireInfo" method="get">
 		                    <table>
 		                        <tbody>
@@ -40,17 +40,25 @@
 		                                </td>
 		                            </tr>
 									<tr class="prop">
-			                                <td valign="top" class="name">
-			                                    <label for="tire"><g:message code="customerOrderLine.tire.label" default="Dekk" /></label>
-			                                </td>
-			                                <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'tire', 'errors')}">
-												<g:select onChange="this.form.submit()" noSelection="${[0:'Velg dekk']}" name="tireId" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${tire?.id}" />
-											</td>
+		                                <td valign="top" class="name">
+		                                    <label for="tire"><g:message code="customerOrderLine.tire.label" default="Dekk" /></label>
+		                                </td>
+		                                <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'tire', 'errors')}">
+											<g:select onChange="this.form.submit()" noSelection="${[0:'Velg dekk']}" name="tireId" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${tire?.id}" />
+										</td>
+			                    	</tr>
+		                  			<tr class="prop">
+		                                <td valign="top" class="notice">
+		                                    <label for="tire"><g:message code="customerOrderLine.notice.label" /></label>
+		                                </td>
+		                                <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'notice', 'errors')}">
+		                                	<g:textArea value="${order?.notice }" tabindex='13' name="notice" rows="5" cols="10"/>
+										</td>
 			                    	</tr>
 		                        </tbody>
 		                    </table>
 	                    </g:form>
-	                 <!-- </div>-->
+	                 </div>
 	                 <div id="customerOrderTireInfo">
 	                 <g:if test="${tire}"> 
 		                 <g:form action="addToOrder" method="post">
