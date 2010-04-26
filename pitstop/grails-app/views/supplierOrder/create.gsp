@@ -48,7 +48,7 @@
 	                                    <label for="notice"><g:message code="supplierOrder.notice.label" /></label>
 	                                </td>
 	                                <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'notice', 'errors')}">
-	                                    <g:textArea tabindex='13' name="notice" rows="5" cols="10"/></td>
+	                                    <g:textArea tabindex='13' name="notice" rows="5" cols="10"/>
 	                                </td>
 	                            </tr>
 	                        </tbody>

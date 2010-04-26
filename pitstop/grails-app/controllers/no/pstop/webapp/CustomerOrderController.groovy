@@ -45,7 +45,7 @@ class CustomerOrderController {
 		
 		try {
 			orderService.saveCustomerOrder(customerOrderInstance, session)
-			redirect(action: "show", controller: "customerOrder", id: customerOrderInstance.id)
+			redirect(action: "show", controller: "customer", id: customer?.id)
 		}
 		catch(result) {
 			flash.message = "Kunne ikke lagre ordren." + result
@@ -122,20 +122,24 @@ class CustomerOrderController {
     }
 
     def showTireInfo = {
-		setCustomer()
+		setCustomerAndNotice()
 		def tire = Tire.get(params.tireId)
 		session["tire"] = tire
 		
 		render(view: "create", model: [tire: session["tire"], order: session["order"], orderLines: session["orderLines"], tireList: session["tireList"]])
     }
 
-    private setCustomer() {
-		if(params.customerId)
+    private setCustomerAndNotice() {
+		if(params.customerId) {
 			session["customer"] = Customer.get(params.customerId)
+		}
+		if(params.notice) {
+			session["order"]?.notice = params.notice
+		}
     }
     
     def addToOrder = {
-			setCustomer()
+			setCustomerAndNotice()
 			def order = session["order"]
 			def orderLines = session["orderLines"]
 			def tire = session["tire"]
