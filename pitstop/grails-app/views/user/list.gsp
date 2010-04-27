@@ -6,7 +6,7 @@
 <body>
 
 	<div class="nav">
-		<g:if test="${params.action == 'list'}">
+		<g:if test="${params.action == 'list' && params.controller == 'user'}">
 			<span class="menuButton" id="active" >
 				<g:link controller = "user" class="list" action="list"><g:message code="user.list.label"/></g:link>
 			</span>
@@ -25,6 +25,17 @@
 		<g:else>
 			<span class="menuButton">
 				<g:link controller = "user" class="createUser" action="create"><g:message code="user.create.label"/></g:link>
+			</span>
+		</g:else>
+		
+		<g:if test="${params.action == 'list' && params.controller == 'log'}">
+			<span class="menuButton" id="active" >
+				<g:link controller = "log" class="list" action="list"><g:message code="log.list.label"/></g:link>
+			</span>
+		</g:if>
+		<g:else>
+			<span class="menuButton">
+				<g:link controller = "log" class="list" action="list"><g:message code="log.list.label"/></g:link>
 			</span>
 		</g:else>
 	</div>
