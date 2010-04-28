@@ -20,7 +20,7 @@
             	<g:link class="pendingCustomerOrders" action="pendingCustomerOrders"><g:message code="customer.pendingCustomerOrders.title.label" /></g:link>
             </span>
        		<span class="menuButton" id="${params.action == 'show' ? 'active' : ''}"  >
-       			<g:link class="showUser" action="show">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</g:link>
+       			<g:link class="showUser" action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</g:link>
        		</span>
         </div>
         <div class="body">
@@ -57,73 +57,75 @@
 	                <g:if test="${customerInstance.notice}">
 						<span class="customerNotice" >${fieldValue(bean: customerInstance, field: "notice")}</span>
 					</g:if>
+					
+	                <div class="buttons" id="customerButtons">
+		                <g:form class="showCustomerButtons">
+		                    <g:hiddenField name="id" value="${customerInstance?.id}" />
+		                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'customer.button.edit.label', default: 'Edit')}" /></span>
+		                    
+		                    <g:ifAllGranted role="ROLE_ADMIN">
+		                    	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'customer.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'customer.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
+		                    </g:ifAllGranted>
+						</g:form>
+						<span class="button"><g:link class="createOrder" controller="customerOrder"  action="create" title="${message(code: 'customer.list.order.tooltip.label')}" id="${customerInstance?.id}">${message(code: 'customer.button.createOrder.label', default: 'Order')}</g:link></span>
+		        	</div>
                 </div>
                 
-                <div class="buttons">
-	                <g:form class="showCustomerButtons">
-	                    <g:hiddenField name="id" value="${customerInstance?.id}" />
-	                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'customer.button.edit.label', default: 'Edit')}" /></span>
-	                    
-	                    <g:ifAllGranted role="ROLE_ADMIN">
-	                    	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'customer.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'customer.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
-	                    </g:ifAllGranted>
-					</g:form>
-					<span class="button"><g:link class="createOrder" controller="customerOrder"  action="create" title="${message(code: 'customer.list.order.tooltip.label')}" id="${customerInstance?.id}">${message(code: 'customer.button.createOrder.label', default: 'Order')}</g:link></span>
-	        	</div>
 			</div>
 			
 			<div id="customerTireHotelAndOrders">
 				<g:if test="${tireHotelOccurrenceInstanceTotalList}">
+					<h3>Dekk p&aring; dekkhotellet</h3>
 					<div id="customerTireHotel">
 						<span id="customerTireHotelOccurrenceSwitchButton">
-							<a href="javascript:hideAndShowElement('onlyActiveTireHotelOccurrences','allTireHotelOccurrences');">Vis/skjul historikk</a>
+							<a href="javascript:hideAndShowElement('activeTireHotelOccurrences','allTireHotelOccurrences');">Vis/skjul historikk</a>
 						</span>
-						<g:if test="${!tireHotelOccurrenceInstanceListWithoutDeliveredInstance}">
-							<div class="customerTireHotelOccurrencelist" id="onlyActiveTireHotelOccurrences">
-								Kunden har ingen aktive dekk p&aring; dekkhotellet
-							</div>
-						</g:if>
-						
-						<g:each in="${tireHotelOccurrenceInstanceListWithoutDeliveredInstance}" status="i" var="tireHotelOccurrenceInstance">
-							<div class="customerTireHotelOccurrencelist" id="onlyActiveTireHotelOccurrences">
-								<div class="tireInfo">
-									<h4>
-										${fieldValue(bean: tireHotelOccurrenceInstance, field: "carType")} - 
-										${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}
-									</h4>
-									Lagerlokasjon: ${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}<br />
-									${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireType")}<br />
-									Inndato: <g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.inDate}" />
+						<div class="customerTireHotelOccurrencelist" id="activeTireHotelOccurrences">
+							
+							<g:if test="${!tireHotelOccurrenceInstanceListWithoutDeliveredInstance}">
+									Kunden har ingen aktive dekk p&aring; dekkhotellet
+							</g:if>
+							
+							<g:each in="${tireHotelOccurrenceInstanceListWithoutDeliveredInstance}" status="i" var="tireHotelOccurrenceInstance">
+								<div class="customerTireHotelOccurrencelist" id="onlyActiveTireHotelOccurrences">
+									<div class="tireInfo">
+										<h4>
+											${fieldValue(bean: tireHotelOccurrenceInstance, field: "carType")} - 
+											${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}
+										</h4>
+										Lagerlokasjon: ${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}<br />
+										${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireType")}<br />
+										Inndato: <g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.inDate}" />
+									</div>
+									<div class="tireHotelButtons">
+			                       		<g:form controller="tireHotelOccurrence" method="post">
+			                        		<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+			                         		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+											<g:hiddenField name="delivered" value="delivered" />
+			                         		<g:actionSubmit class="delivered" title="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" action="deliverTireHotelOccurenceFromCustomerView" value="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
+			                   			</g:form>
+			                        	
+			                       		<g:if test="${!tireHotelOccurrenceInstance.outDate}">
+			                        		<g:form controller="tireHotelOccurrence" method="post">
+			                        			<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+			                        			<g:hiddenField name="requestFromShowCustomerView" value="true" />
+			                        			<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+			                        			<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" />
+			                        		</g:form>
+			                       		</g:if>
+						                
+						                <g:ifAllGranted role="ROLE_ADMIN">
+			                         		<g:form controller="tireHotelOccurrence" method="post">
+			                         			<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+			                        			<g:hiddenField name="requestFromShowCustomerView" value="true" />
+			                         			<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+			                         		</g:form>
+			                   			</g:ifAllGranted>
+			                   		</div>
+			                   		<div style="clear: both;"></div>
 								</div>
-								<div class="tireHotelButtons">
-		                       		<g:form controller="tireHotelOccurrence" method="post">
-		                        		<g:hiddenField name="customerId" value="${customerInstance?.id}" />
-		                         		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-										<g:hiddenField name="delivered" value="delivered" />
-		                         		<g:actionSubmit class="delivered" title="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" action="deliverTireHotelOccurenceFromCustomerView" value="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
-		                   			</g:form>
-		                        	
-		                       		<g:if test="${!tireHotelOccurrenceInstance.outDate}">
-		                        		<g:form controller="tireHotelOccurrence" method="post">
-		                        			<g:hiddenField name="customerId" value="${customerInstance?.id}" />
-		                        			<g:hiddenField name="requestFromShowCustomerView" value="true" />
-		                        			<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-		                        			<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" />
-		                        		</g:form>
-		                       		</g:if>
-					                
-					                <g:ifAllGranted role="ROLE_ADMIN">
-		                         		<g:form controller="tireHotelOccurrence" method="post">
-		                         			<g:hiddenField name="customerId" value="${customerInstance?.id}" />
-		                        			<g:hiddenField name="requestFromShowCustomerView" value="true" />
-		                         			<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-		                         		</g:form>
-		                   			</g:ifAllGranted>
-		                   		</div>
-		                   		<div style="clear: both;"></div>
-							</div>
-						</g:each>
-						
+							</g:each>
+						</div>
 			            <div class="customerTireHotelOccurrencelist" id="allTireHotelOccurrences">
 			               	<table>
 			                   	<thead>
@@ -210,6 +212,7 @@
 			
 				<g:if test="${customerOrders}">
 					<div id="customerOrders">
+						<h3>Aktive ordre</h3>
 						<div>
 		                   	<gui:dataTable
 							    id="dt_2"
