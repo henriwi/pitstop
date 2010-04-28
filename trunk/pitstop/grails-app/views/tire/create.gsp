@@ -92,16 +92,7 @@
                                     R<g:hiddenField name="construction" value="R" />
                                	 	</span>
                                 </td>
-                                <!--  <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'profile', 'errors')}">
-                                    <g:textField maxlength="20" tabindex='6' name="profile" value="${fieldValue(bean: tireInstance, field: 'profile')}" onKeyPress="return onlyNumbers(event)" /></td> -->
                             </tr>
-                            <!--  <tr class="prop">
-                                <td valign="top" class="name"><label for="construction"><g:message code="tire.construction.label" /></label></td>
-                                <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'construction', 'errors')}">
-                                    R<g:hiddenField name="construction" value="R" />
-                                </td>
-                                    
-                            </tr>-->
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="diameter"><g:message code="tire.diameter.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'diameter', 'errors')}">
