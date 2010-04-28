@@ -190,7 +190,7 @@ class CustomerController {
 		def pendingOrders = []
 		orders.each {
 			boolean pending = false
-			it.customerOrder.each { 
+			it.customerOrderLine.each { 
 				
 // DeliveredDate eksisterer ikke lenger
 //				if(!it.deliveredDate) {
