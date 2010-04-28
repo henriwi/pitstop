@@ -1,9 +1,12 @@
 package no.pstop.webapp
 
+import grails.converters.JSON;
+
 import java.util.Date;
 
 class SupplierOrderController {
 	def orderService
+	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -108,7 +111,7 @@ class SupplierOrderController {
 	def addToOrder = {
 		setOrderValues()
     	def orderLines = session["orderLines"]
-		def tire = Tire.get(params.tireId)
+		def tire = Tire.get(params.tire_id)
 		
 		def orderLine = new SupplierOrderLine(tire: tire, price: params.price, discount: params.discount, 
 		environmentalFee: params.environmentalFee, numberOfOrderedTires: params.numberOfOrderedTires, 
@@ -128,7 +131,7 @@ class SupplierOrderController {
 	def deleteFromOrder = {
     	def orderLines = session["orderLines"]
 			
-        int orderLineIndex = params.orderLineIndex.toInteger()
+        int orderLineIndex = params._action_deleteFromOrder.trim().toInteger()
 		orderLines.remove(orderLineIndex)
 		
 		session["orderLines"] = orderLines
@@ -152,5 +155,33 @@ class SupplierOrderController {
 			println it
 		}
 		redirect(controller: "tire", action: "show", id: tire?.id)
+	}
+	
+	def tireAutoComplete = {
+		def tires
+		
+		if(isSpecialFastSearchQuery(params.query)) {
+			def query = params.query =~ regexFastSearch
+			tires = Tire.fastSearch(query, Tire.count(), 0)
+		}
+		else {
+			tires = Tire.search{
+				queryString("*" + params.query + "*")
+			 }.results
+		}
+		
+		tires = tires.collect {
+			[id: it.id, name:it.toString()]
+		}
+		
+		def jsonTires = [
+			tires: tires
+		]
+		
+		render jsonTires as JSON
+	}
+	
+	private isSpecialFastSearchQuery(String query){
+		query ==~ regexFastSearch
 	}
 }

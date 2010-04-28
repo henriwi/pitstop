@@ -886,20 +886,16 @@ input.customerOrderTableTextField {
 
 /* SUPPLIER ORDER */
 #supplierOrderDialog {
-	width: 450px;
+	width: 700px;
 	float: left;
-	margin-right: 10px;
 }
 
-#orderNumberAndSupplierInfo {
-	width: 500px;
-	float: left;
-	margin-right: 10px;
+#supplierInfoAndNotice {
+	margin-bottom: 10px;
 }
 
 #supplierOrderLines {
-	width: 700px;
-	float: right;	
+	margin-bottom: 10px;
 }
 #supplierOrderedItems {
 	margin-top: 10px;
