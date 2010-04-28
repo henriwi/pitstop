@@ -527,6 +527,16 @@ a.logoutButton{
 	margin: 0 10px 0 0;	
 }
 
+.tireCreateDialog {
+	width: 350px;
+ 	margin-top: 10px;
+}
+
+.tireCreateDialog table {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
 #tireShowDialogWindow2 {
 	width: 410px;
 	float: left;
