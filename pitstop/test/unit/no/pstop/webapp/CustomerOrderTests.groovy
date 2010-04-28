@@ -11,7 +11,7 @@ class CustomerOrderTests extends GrailsUnitTestCase {
 		mockForConstraintsTests CustomerOrder
 		customer = new Customer(firstName: "Dekk Roar", lastName: "Dekkesen", phoneNumber: "19555095", address: "Dekkveien 1",
 				postalCode: "0195", city: "Radiator By", email: "felger@dekk.no", company: "Dekkilicious", notice: "God kunde")
-		customerOrder = new CustomerOrder(customer: customer, orderDate: new Date(), notice: "")
+		customerOrder = new CustomerOrder(customer: customer, orderDate: new Date(), deliveredDate: null, notice: "")
     }
 
     protected void tearDown() {

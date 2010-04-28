@@ -34,6 +34,11 @@ class CustomerController {
 		[customerInstanceList: customerList, customerInstanceTotal: customerCount]
 	}
 
+	def pendingCustomerOrders = {
+		def customerOrderWithoutDeliveredDate = CustomerOrder.findAllByDeliveredDateIsNull()
+		[customerOrderWithoutDeliveredDateInstanceList: customerOrderWithoutDeliveredDate]
+	}
+
     def create = {
         def customerInstance = new Customer()
         customerInstance.properties = params

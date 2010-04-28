@@ -14,7 +14,7 @@ class CustomerOrderLineTests extends GrailsUnitTestCase {
 				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", 
 				notice:"Demodekk", retailPrice: 1095, numberInStock: 4)	
 		customerOrderLine = new CustomerOrderLine(tire: tire, customerOrder: new CustomerOrder(),
-				numberOfReservedTires: 4, price: 950.0, deliveredDate: null)
+				numberOfReservedTires: 4, price: 950.0)
     }
 
     protected void tearDown() {

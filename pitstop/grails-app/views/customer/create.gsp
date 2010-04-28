@@ -16,6 +16,10 @@
        		<span class="menuButton" id="${params.action == 'create' ? 'active' : ''}"  >
        			<g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link>
        		</span>
+       		
+       		<span class="menuButton" id="${params.action == 'pendingCustomerOrders' ? 'active' : ''}"  >
+       			<g:link class="pendingCustomerOrders" action="pendingCustomerOrders"><g:message code="customer.pendingCustomerOrders.title.label" /></g:link>
+       		</span>
         </div>
         <div class="body">
             <h1><g:message code="customer.create.header.label" /></h1>
