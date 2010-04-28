@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'supplierOrder.label', default: 'SupplierOrder')}" />
+        <gui:resources components="autoComplete" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -22,95 +23,32 @@
                 <g:renderErrors bean="${supplierOrderInstance}" as="list" />
             </div>
             </g:hasErrors>
-            	<div id="orderNumberAndSupplierInfo">
-            		<g:form action="save" method="post" >
-	                    <table>
-	                        <tbody>
-	                            <tr class="prop">
-	                                <td valign="top" class="name">
-	                                    <label for="orderNumber"><g:message code="supplierOrder.orderNumber.label" /></label>
-	                                </td>
-	                                <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'orderNumber', 'errors')}">
-	                                    <g:textField name="orderNumber" value="${order?.orderNumber}" />
-	                                </td>
-	                            </tr>
-	                            <tr class="prop">
-	                                <td valign="top" class="name">
-	                                    <label for="supplier"><g:message code="supplierOrder.supplier.label" /></label>
-	                                </td>
-	                                <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'supplier', 'errors')}">
-	                                    <g:textField name="supplier" value="${order?.supplier}" />
-	                                </td>
-	                            </tr>
-	                            <tr class="prop">
-	                                <td valign="top" class="name">
-	                                    <label for="notice"><g:message code="supplierOrder.notice.label" /></label>
-	                                </td>
-	                                <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'notice', 'errors')}">
-	                                    <g:textArea value="${order?.notice }"tabindex='13' name="notice" rows="5" cols="10"/>
-	                                </td>
-	                            </tr>
-	                        </tbody>
-	                       </table>
-		               	<div class="buttons">
-		                   	<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'supplierOrder.button.create.label')}" /></span>
-		                   	<span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
-		               	</div>
-	           		</g:form>
-	           	</div>
-	           	<div id="supplierOrderLines">
-                	<g:form action="addToOrder" method="post" >
-                       <table>
-                        <tbody>
-                               <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="tire"><g:message code="supplierOrderLine.tire.label" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: supplierOrderLineInstance, field: 'tire', 'errors')}">
-                                    <g:select name="tireId" from="${no.pstop.webapp.Tire.list()}" optionKey="id" value="${params.tireId}"  />
-                                </td>
-                            </tr>
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="price"><g:message code="supplierOrderLine.price.label"/></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: supplierOrderLineInstance, field: 'price', 'errors')}">
-                                    <g:textField name="price" value="${fieldValue(bean: supplierOrderLineInstance, field: 'price')}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="discount"><g:message code="supplierOrderLine.discount.label" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: supplierOrderLineInstance, field: 'discount', 'errors')}">
-                                    <g:textField name="discount" value="${fieldValue(bean: supplierOrderLineInstance, field: 'discount')}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="environmentalFee"><g:message code="supplierOrderLine.environmentalFee.label" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: supplierOrderLineInstance, field: 'environmentalFee', 'errors')}">
-                                    <g:textField name="environmentalFee" value="${fieldValue(bean: supplierOrderLineInstance, field: 'environmentalFee')}" />
-                                </td>
-                            </tr>
-                            
-                           <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="numberOfOrderedTires"><g:message code="supplierOrderLine.numberOfOrderedTires.label" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: supplierOrderLineInstance, field: 'numberOfOrderedTires', 'errors')}">
-                                    <g:textField name="numberOfOrderedTires" value="${fieldValue(bean: supplierOrderLineInstance, field: 'numberOfOrderedTires')}" />
-                                </td>
-                            </tr>
-                        <tr><td><span class="button"><g:submitButton name="create" class="save" value="${message(code: 'supplierOrder.addToOrder.label')}" /></span></td></tr>
-                        </tbody>
-                    </table>
-              	</g:form>
-                <div id="supplierOrderedItems">
-					<table>
+            	<div id="supplierOrderDialog">
+	            	<div id="supplierInfoAndNotice">
+	            		<g:form action="save" method="post" >
+		                    <table>
+		                        <tbody>
+		                            <tr class="prop">
+		                                <td valign="top" class="name">
+		                                    <label for="supplier"><g:message code="supplierOrder.supplier.label" /></label>
+		                                </td>
+		                                <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'supplier', 'errors')}">
+		                                    <g:textField style="width: 150px;" name="supplier" value="${order?.supplier}" />
+		                                </td>
+		                            </tr>
+		                            <tr class="prop">
+		                                <td valign="top" class="name">
+		                                    <label for="notice"><g:message code="supplierOrder.notice.label" /></label>
+		                                </td>
+		                                <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'notice', 'errors')}">
+		                                    <g:textArea style="width: 150px; height: 50px;" value="${order?.notice }"tabindex='13' name="notice" rows="5" cols="10"/>
+		                                </td>
+		                            </tr>
+		                        </tbody>
+		                  	</table>
+		         	</div>
+		         	<div id="supplierOrderLines">
+	                  <table>
                 		<thead>
 	                		<tr class="prop">
 		                		<th><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.tire.label')}</a></th>
@@ -123,12 +61,11 @@
 		                		
 		                		<th class="supplierOrderHeaders"><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.numberOfOrderedTires.label')}</a></th>
 		                		
-		                		<th class="supplierOrderHeaders"><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.delete.label')}</a></th>
+		                		<th class="supplierOrderHeaders"><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.treat.label')}</a></th>
 		                	</tr>
 		                </thead>
 	                	<tbody>
 	                	
-		                	<g:set var="orderLineIndex" value="${0}"></g:set>
 							<g:each in="${orderLines}" status="i" var="orderLineInstance">
 								<tr>
 	                      			<td>${orderLineInstance?.tire}</td>
@@ -137,17 +74,34 @@
 	                      			<td>${orderLineInstance?.environmentalFee}</td>
 	                      			<td>${orderLineInstance?.numberOfOrderedTires}</td>
 									<td>
-	                          			<g:form action="deleteFromOrder" method="get">
-	                          				<g:hiddenField name="orderLineIndex" value="${orderLineIndex}" />
-	                          				<g:submitButton class="deleteTableItem" name="deleteFromOrder" value="${message(code: 'list.button.table.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
-	                          			</g:form>
+		                          			<g:hiddenField name="orderLineIndex" value="${i}" />
+		                          			<g:actionSubmit action="deleteFromOrder" class="deleteTableItem" value=" ${i}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
 	                         		</td>  
 								</tr>
-								<g:set var="orderLineIndex" value="${orderLineIndex + 1}"></g:set>
 							</g:each>
+							<tr>
+								<td class="yui-skin-sam">
+									<gui:autoComplete 
+										id="tire" 
+										controller="supplierOrder"
+										action="tireAutoComplete"
+										resultName="tires" />
+								</td>
+								<td><g:textField class="supplierOrderHeaders" name="price" value="${fieldValue(bean: supplierOrderLineInstance, field: 'price')}" /></td>
+								<td><g:textField class="supplierOrderHeaders" name="discount" value="${fieldValue(bean: supplierOrderLineInstance, field: 'discount')}" /></td>
+								<td><g:textField class="supplierOrderHeaders" name="environmentalFee" value="${fieldValue(bean: supplierOrderLineInstance, field: 'environmentalFee')}" /></td>
+								<td><g:textField class="supplierOrderHeaders" name="numberOfOrderedTires" value="${fieldValue(bean: supplierOrderLineInstance, field: 'numberOfOrderedTires')}" /></td>
+								<td><span class="button"><g:actionSubmit action="addToOrder" class="save" value="${message(code: 'supplierOrder.addToOrder.label')}" /></span></td>
+							</tr>
                    		</tbody>
             		</table>
-           		</div>
+            		</div>
+	               	<div class="buttons">
+	                   	<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'supplierOrder.button.create.label')}" /></span>
+	                   	<span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
+	               	</div>
+	           		</g:form>
+	           	</div>
            </div>
     </body>
 </html>
