@@ -11,7 +11,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 		
 		tire = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
 				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", 
-				notice:"Demodekk", retailPrice: 1095, numberInStock: 4)	
+				notice:"Demodekk", retailPrice: 1095, numberInStock: 4)
 	}
 	
 	protected void tearDown() {

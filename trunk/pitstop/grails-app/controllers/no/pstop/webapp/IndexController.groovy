@@ -8,8 +8,8 @@ class IndexController {
 	}
 	
     private numberOfPendingCustomerOrders() {
-		def customerOrderLinesWithoutDeliveredDate = CustomerOrderLine.findAllByDeliveredDateIsNull()
-		return customerOrderLinesWithoutDeliveredDate.size()
+		def customerOrdersWithoutDeliveredDate = CustomerOrder.findAllByDeliveredDateIsNull()
+		return customerOrdersWithoutDeliveredDate.size()
 	}
 	
 	private numberOfPendingSupplierOrders() {

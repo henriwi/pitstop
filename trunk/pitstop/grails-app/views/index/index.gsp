@@ -5,7 +5,7 @@
     	${response.sendRedirect("login/auth") }
     </g:isNotLoggedIn>
     	<gui:resources components="tabView, columnChart"/>
-        <title>PIT-STOP</title>
+        <title>${message(code: 'index.title.label')}</title>
 		<meta name="layout" content="main" />
     </head>
 	<body>
@@ -15,30 +15,30 @@
 			<br />
 			<g:form controller="tire" action="fastSearchForListView" method="get">
 				<div id="fastSearchInListView">
-					S&oslash;k etter dekk:<br /><g:textField tabindex='1' name="txtFastSearch" /></td>
+					${message(code: 'index.tire.search.label')}<br /><g:textField tabindex='1' name="txtFastSearch" /></td>
 					<g:submitButton tabindex='2' class="searchButtons" name="btnTireSearch" value="${message(code: 'search.button.fastSearch.label')}" />
 				</div>
 			</g:form>
 			<br />
 			<g:form controller="customer" action="search" method="get">
 				<div id="fastSearchInListView">
-					S&oslash;k etter kunde:<br /><g:textField tabindex='3' name="search" /></td>
+					${message(code: 'index.customer.search.label')}<br /><g:textField tabindex='3' name="search" /></td>
 					<g:submitButton tabindex='4' class="searchButtons" name="btnCustomerSearch" value="${message(code: 'search.button.fastSearch.label')}" />
 				</div>
 			</g:form>
 			<br />
-			<g:form controller="index" action="numberOfPendingCustomerOrders" method="get">
+			<g:form controller="customer" action="pendingCustomerOrders" method="get">
 				<div>
-					Uleverte kundeordre: ${numberOfPendingCustomerOrders}
-					<g:submitButton tabindex='5' class="searchButtons" name="btnShowPendingCustomerOrders" value="Vis" />
+					${message(code: 'index.pendingCustomerOrders.label')} ${numberOfPendingCustomerOrders}
+					<g:submitButton tabindex='5' class="searchButtons" name="btnShowPendingCustomerOrders" value="${message(code: 'index.button.show.label')}" />
 					<br />
 				</div>
 			</g:form>
 			<br />
-			<g:form controller="index" action="numberOfPendingSupplierOrders" method="get">
+			<g:form controller="tire" action="pendingSupplierOrders" method="get">
 				<div>
-					Uleverte leverand&oslash;rbestillinger: ${numberOfPendingSupplierOrders}
-					<g:submitButton tabindex='5' class="searchButtons" name="btnShowPendingSupplierOrders" value="Vis" />
+					${message(code: 'index.pendingSupplierOrders.label')} ${numberOfPendingSupplierOrders}
+					<g:submitButton tabindex='5' class="searchButtons" name="btnShowPendingSupplierOrders" value="${message(code: 'index.button.show.label')}" />
 					<br />
 				</div>
 			</g:form>
