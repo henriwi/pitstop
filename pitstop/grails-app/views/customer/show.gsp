@@ -16,10 +16,12 @@
        		<span class="menuButton" id="${params.action == 'create' ? 'active' : ''}"  >
        			<g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link>
        		</span>
+            <span class="menuButton">
+            	<g:link class="pendingCustomerOrders" action="pendingCustomerOrders"><g:message code="customer.pendingCustomerOrders.title.label" /></g:link>
+            </span>
        		<span class="menuButton" id="${params.action == 'show' ? 'active' : ''}"  >
        			<g:link class="showUser" action="show">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</g:link>
        		</span>
-            <span class="menuButton"><g:link class="pendingCustomerOrders" action="pendingCustomerOrders"><g:message code="customer.pendingCustomerOrders.title.label" /></g:link></span>
         </div>
         <div class="body">
             <h1><g:message code="customer.show.title.label" /></h1>
@@ -70,13 +72,18 @@
 	        	</div>
 			</div>
 			
-
 			<div id="customerTireHotelAndOrders">
-				<div id="customerTireHotel">
-					<span id="customerTireHotelOccurrenceSwitchButton">
-						<a href="javascript:hideAndShowElement('onlyActiveTireHotelOccurrences','allTireHotelOccurrences');">Vis/skjul historikk</a>
-					</span>
-					<g:if test="${tireHotelOccurrenceInstanceListWithoutDeliveredInstance}">
+				<g:if test="${tireHotelOccurrenceInstanceTotalList}">
+					<div id="customerTireHotel">
+						<span id="customerTireHotelOccurrenceSwitchButton">
+							<a href="javascript:hideAndShowElement('onlyActiveTireHotelOccurrences','allTireHotelOccurrences');">Vis/skjul historikk</a>
+						</span>
+						<g:if test="${!tireHotelOccurrenceInstanceListWithoutDeliveredInstance}">
+							<div class="customerTireHotelOccurrencelist" id="onlyActiveTireHotelOccurrences">
+								Kunden har ingen aktive dekk p&aring; dekkhotellet
+							</div>
+						</g:if>
+						
 						<g:each in="${tireHotelOccurrenceInstanceListWithoutDeliveredInstance}" status="i" var="tireHotelOccurrenceInstance">
 							<div class="customerTireHotelOccurrencelist" id="onlyActiveTireHotelOccurrences">
 								<div class="tireInfo">
@@ -116,9 +123,7 @@
 		                   		<div style="clear: both;"></div>
 							</div>
 						</g:each>
-					</g:if>
-				
-					<g:if test="${tireHotelOccurrenceInstanceTotalList}">
+						
 			            <div class="customerTireHotelOccurrencelist" id="allTireHotelOccurrences">
 			               	<table>
 			                   	<thead>
@@ -202,8 +207,9 @@
 						</div>
 					</g:if>
 				</div>
-				<div id="customerOrders">
-					<g:if test="${customerOrders}">
+			
+				<g:if test="${customerOrders}">
+					<div id="customerOrders">
 						<div>
 		                   	<gui:dataTable
 							    id="dt_2"
@@ -234,8 +240,8 @@
 									});
 				        	</script>
 	                   	</div>
-					</g:if>
-				</div>
+					</div>
+				</g:if>
 			</div>
         </div>
     </body>
