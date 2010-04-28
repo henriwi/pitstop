@@ -19,6 +19,7 @@
        		<span class="menuButton" id="${params.action == 'show' ? 'active' : ''}"  >
        			<g:link class="showUser" action="show">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</g:link>
        		</span>
+            <span class="menuButton"><g:link class="pendingCustomerOrders" action="pendingCustomerOrders"><g:message code="customer.pendingCustomerOrders.title.label" /></g:link></span>
         </div>
         <div class="body">
             <h1><g:message code="customer.show.title.label" /></h1>

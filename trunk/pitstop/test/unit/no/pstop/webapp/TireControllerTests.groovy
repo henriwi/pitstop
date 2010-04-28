@@ -4,13 +4,12 @@ import com.sun.org.apache.xerces.internal.impl.xs.identity.Selector.Matcher;
 import grails.test.*
 
 class TireControllerTests extends ControllerUnitTestCase {
-	def t1
-	
+	def tire
 	protected void setUp() {
 		super.setUp()
 		mockDomain Tire
 		
-		t1 = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
+		tire = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
 				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", 
 				notice:"Demodekk", retailPrice: 1095, numberInStock: 4)	
 	}
@@ -67,32 +66,35 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testShowWithValidId() {
-		def supplierOrderLine1 = new SupplierOrderLine(tire: t1, supplierOrder: new SupplierOrder(), 
+		def supplierOrderLine1 = new SupplierOrderLine(tire: tire, supplierOrder: new SupplierOrder(), 
 				numberOfOrderedTires: 4, price: 1095.0, receivedDate: null, discount: 10, environmentalFee: 10)
-		def supplierOrderLine2 = new SupplierOrderLine(tire: t1, supplierOrder: new SupplierOrder(), 
+		def supplierOrderLine2 = new SupplierOrderLine(tire: tire, supplierOrder: new SupplierOrder(), 
 				numberOfOrderedTires: 2, price: 995.0, receivedDate: null, discount: 10, environmentalFee: 10)
-		
-		def customerOrderLine1 = new CustomerOrderLine(tire: t1, numberOfReservedTires: 4, 
-				customerOrder: new CustomerOrder(), price: 1095.0, deliveredDate: null)
-		def customerOrderLine2 = new CustomerOrderLine(tire: t1, numberOfReservedTires: 6, 
-				customerOrder: new CustomerOrder(), price: 995.0, deliveredDate: null)
+		/*
+		def customerOrderLine1 = new CustomerOrderLine(tire: tire, numberOfReservedTires: 4, 
+				customerOrder: new CustomerOrder(), price: 1095.0)
+		def customerOrderLine2 = new CustomerOrderLine(tire: tire, numberOfReservedTires: 6, 
+				customerOrder: new CustomerOrder(), price: 995.0)
+		*/
+		def customerOrder1 = new CustomerOrder(customer: new Customer(), orderDate: new Date(), deliveredDate: null, notice: "")
+		def customerOrder2 = new CustomerOrder(customer: new Customer(), orderDate: new Date(), deliveredDate: null, notice: "")
 		
 		def supplierOrderLines = [supplierOrderLine1, supplierOrderLine2]
-		def customerOrderLines = [customerOrderLine1, customerOrderLine2]
+		def customerOrders = [customerOrder1, customerOrder2]
 		
 		mockDomain SupplierOrderLine, supplierOrderLines 
-		mockDomain CustomerOrderLine, customerOrderLines
-		mockDomain Tire, [t1]
+		mockDomain CustomerOrder, customerOrders
+		mockDomain Tire, [tire]
 		
 		controller.params.id = 1
 		def model = controller.show()
-		assertEquals "Tire should be equal", t1, model.tireInstance
+		assertEquals "Tire should be equal", tire, model.tireInstance
 		assertEquals "supplierOrderLines should be equal", supplierOrderLines, model.supplierOrderLines
-		assertEquals "customerOrderLines should be equal", customerOrderLines, model.customerOrderLines
+		assertEquals "customerOrders should be equal", customerOrders, model.customerOrders
 	}
 	
 	void testShowWithInvalidId() {
-		mockDomain Tire, [t1]
+		mockDomain Tire, [tire]
 		controller.params.id = 999
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.show()
@@ -100,10 +102,10 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testEditWithValidId() {
-		mockDomain Tire, [t1]
+		mockDomain Tire, [tire]
 		controller.params.id = 1
 		Map model = controller.edit()
-		assertEquals "model.tireInstance", t1, model.tireInstance
+		assertEquals "model.tireInstance", tire, model.tireInstance
 	}
 	
 	void testEditWithInvalidId() {
@@ -114,10 +116,10 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testUpdateWithValidId() {
-		mockDomain Tire, [t1]
+		mockDomain Tire, [tire]
 		
-		t1.metaClass.save = {-> return true }
-		t1.metaClass.hasErrors = {-> return false }
+		tire.metaClass.save = {-> return true }
+		tire.metaClass.hasErrors = {-> return false }
 		
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"} 
@@ -128,10 +130,10 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testUpdateWithValidIdButErrors() {
-		mockDomain Tire, [t1]
+		mockDomain Tire, [tire]
 		
-		t1.metaClass.save = {-> return false }
-		t1.metaClass.hasErrors = {-> return true }
+		tire.metaClass.save = {-> return false }
+		tire.metaClass.hasErrors = {-> return true }
 		
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"} 
@@ -150,7 +152,7 @@ class TireControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testDeleteWithValidId() {
-		mockDomain Tire, [t1]
+		mockDomain Tire, [tire]
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.delete()

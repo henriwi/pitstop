@@ -26,7 +26,7 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.list.table.orderNumber.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.list.table.orderNumber.label', default: 'ID')}" />
                         
                             <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.list.table.orderDate.label', default: 'Order Date')}" />
                         
