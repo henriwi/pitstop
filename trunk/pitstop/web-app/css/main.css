@@ -210,6 +210,14 @@ div#submenuTireHotelOccurence {
 	background-position: 2px;
 }
 
+.menuButton a.showUser {
+    background: url(../images/skin/user.png) center left no-repeat;
+    color: #555;
+    padding-left: 20px;
+    background-position: 2px;
+}
+
+
 .backButton a.back {
     background: url(../images/skin/back.png) center left no-repeat;
     color: #555;
@@ -244,7 +252,6 @@ span#active a {
     border-radius: 4px 4px 0px 0px;
 	padding-bottom: 8px;
 	padding-top: 8px;
-	padding-left: 25px;
 	background-position: 2px;
 	background-color: #fff;
 	color: #000;
@@ -664,6 +671,17 @@ a.logoutButton{
     border: none;
     cursor: pointer;
 }
+.createOrder {
+	background: url(../images/skin/shopping_cart.png) 5px no-repeat;
+    padding: 0px;
+    padding-left: 25px;
+    padding-bottom: 5px;
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    color: #000;
+}
 
 .addTireHotelOccurrence {
 	background: url(../images/skin/database_add_tire_hotel_occurrence.png) 5px 50% no-repeat;
@@ -682,7 +700,8 @@ a.logoutButton{
 }
 
 .button a {
-	background: url(../images/skin/email.png) 5px 50% no-repeat;
+	/* Den under skal ikke være her*/
+	/*background: url(../images/skin/email.png) 5px 50% no-repeat;*/
 	padding-left: 30px;
 	color: #333;
 }
@@ -702,41 +721,6 @@ a.btnShowAll {
     color: #555;
     padding-left: 25px;
 	background-position: 2px;
-}
-
-
-
-.customerBox{
-	border: 1px solid #bbb;
-	width: 400px;	
-	margin: 0px;
-	margin-top: 5px;
-	margin-bottom: 10px;
-	padding: 5px;
-}
-.customerBox p {
-	color: #555;
-}
-
-.customerBox a {
-	color: #111;
-	font-weight: normal;	
-}
-
-.customerBox .customerName{
-	font-size: 13px;
-	color: #000;
-	font-weight: bold;
-	padding-bottom: 5px;
-}
-
-.customerBox .customerAddress{
-	font-size: 12px;
-	font-weight: normal;
-}
-
-.customerBox .customerCompany{
-	
 }
 
 /* SHOW CUSTOMER */
@@ -789,23 +773,44 @@ span.customerNotice {
 	width: 100%;
 }
 
-
-
 /* Customer Tire Hotel And Orders */ 
 #customerTireHotelAndOrders {
 	float: right;
 	max-width: 1000px;
+	width: 800px;
 }
+#customerTireHotel {
+	border: 1px solid #bbb;
+	background-color: #F5F5FF;	
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+}
+#customerOrders {
+	border: 1px solid #bbb;
+	background-color: #F5F5FF;	
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;	
+}
+
 /* SHOW CUSTOMER TIRE HOTEL */
 
 .customerTireHotelOccurrencelist {
-	margin-bottom: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	width: 100%;
+}
+#customerTireHotelOccurrenceSwitchButton a{
+	font-weight: normal;
+	text-decoration: underline;
 }
 
 div#onlyActiveTireHotelOccurrences {
 	border: 1px solid #bbb;
-	background-color: #F5F5FF;
+	background-color: #fff;
 	width: 450px;
 	padding: 5px;
 	visibility: visible;
@@ -873,6 +878,10 @@ input.customerOrderTableTextField {
 
 #customerOrderDeleteHeader {
 	width: 10px;
+}
+
+.showCustomerButtons {
+	display: inline;
 }
 
 /* SUPPLIER ORDER */
