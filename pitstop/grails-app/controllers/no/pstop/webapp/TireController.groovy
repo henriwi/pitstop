@@ -74,6 +74,16 @@ class TireController {
 
 		[tireInstanceList: tireList, tireInstanceTotal: tireCount]
 	}
+
+	def pendingSupplierOrders = {
+		/*
+		def supplierOrder = SupplierOrder.findAll()
+
+		
+		def supplierOrderWithoutReceivedDate = SupplierOrderLine.findAllByReceivedDateIsNull()
+		[supplierOrderWithoutReceivedDateInstanceList: supplierOrderWithoutReceivedDate]
+		*/
+	}
 	
 	private isFastSearchQuery(String query, String type){
 		query && type.equals("fast")
