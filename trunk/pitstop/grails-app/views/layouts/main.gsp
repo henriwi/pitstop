@@ -18,7 +18,7 @@
         <g:javascript library="prototype" />
         <modalbox:modalIncludes />
     </head>
-    <body onload="showElement('onlyActiveTireHotelOccurrences');">
+    <body onload="showElement('activeTireHotelOccurrences');">
 		<div id="container">
         	<div id="pstopLogo" class="logo">
         		<a href="${createLink(uri: '/')}"><img src="${resource(dir:'images', file:'pitstopLogo.png')}" alt="pitstopLogo" border="0" /></a>

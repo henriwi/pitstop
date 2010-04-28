@@ -40,6 +40,7 @@ h1 {
     font-weight: normal;
     font-size: 16px;
     margin: .8em 0 .3em 0;
+    width: 300px;
 }
 
 ul {
@@ -330,7 +331,7 @@ th.desc a {
 }
 
 .odd {
-    background: #f7f7f7;
+	background-color: #F5F5FF;
 }
 .even {
     background: #fff;
@@ -730,6 +731,7 @@ div.customerInfoBox {
 	padding: 5px;
 	background-color: #F5F5FF;
 }
+
 span.customerAddress {
 	display: block;
 	margin-top: 15px;
@@ -773,49 +775,50 @@ span.customerNotice {
 	width: 100%;
 }
 
-/* Customer Tire Hotel And Orders */ 
+/* SHOW CUSTOMER TIRE HOTEL AND ORDERS */ 
 #customerTireHotelAndOrders {
 	float: right;
 	max-width: 1000px;
 	width: 800px;
+	margin-top: -23px;
 }
 #customerTireHotel {
-	border: 1px solid #bbb;
-	background-color: #F5F5FF;	
 	padding: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
 	margin-bottom: 10px;
 }
-#customerOrders {
+.customerTireHotelOccurrencelist {
+	margin-bottom: 10px;
+	width: 100%;
+}
+#customerTireHotelOccurrenceSwitchButton a{
+	float: right;
+	margin-top: -20px;
+	font-weight: normal;
+	text-decoration: underline;
+}
+#customerTireHotelAndOrders h3{
+	margin-left: 10px;
+	font-weight: normal;
+	color: #48802c;
+}
+
+div#onlyActiveTireHotelOccurrences {
 	border: 1px solid #bbb;
-	background-color: #F5F5FF;	
+	background-color: #F5F5FF;
+	width: 450px;
+	padding: 5px;
+	visibility: visible;
+	display: inherit;
+}
+#customerOrders {
 	padding: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
 	margin-bottom: 10px;	
 }
 
-/* SHOW CUSTOMER TIRE HOTEL */
-
-.customerTireHotelOccurrencelist {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	width: 100%;
-}
-#customerTireHotelOccurrenceSwitchButton a{
-	font-weight: normal;
-	text-decoration: underline;
-}
-
-div#onlyActiveTireHotelOccurrences {
-	border: 1px solid #bbb;
-	background-color: #fff;
-	width: 450px;
-	padding: 5px;
-	visibility: visible;
-	display: inherit;
-}
 div.tireInfo {
 	float: left;
 }
@@ -830,33 +833,10 @@ div#allTireHotelOccurrences {
 	display: none;
 }
 
-/* YUI-DATA TABLE */
-.yui-dt-liner {
-	cursor: pointer;	
-}
-
-.yui-dt-even {
-	background-color: #f7f7f7;	
-}
-
-.yui-dt-odd {
-	background-color: #fff;	
-}
-
-#yui-dt0-paginator1 {
-    display:none;
-}
-
-#yui-dt0-paginator0 {
-    display:none;
-}
-
 /* CUSTOMER ORDER */
-
 #customerOrderedItems {
 	margin-top: 10px;
 }
-
 #customerAndNotice {
 	float: left;
 	margin-right: 10px;
@@ -878,6 +858,11 @@ input.customerOrderTableTextField {
 
 #customerOrderDeleteHeader {
 	width: 10px;
+}
+#customerButtons{
+	padding: 3px;
+	margin-top: 15px;
+	margin-bottom: 5px;
 }
 
 .showCustomerButtons {
@@ -917,4 +902,25 @@ input.recieveSupplierOrder {
     padding-left: 28px;
     border: 0px;
     cursor: pointer;
+}
+
+/* YUI-DATA TABLE */
+.yui-dt-liner {
+	cursor: pointer;	
+}
+
+.yui-dt-even {
+	background-color: #f7f7f7;	
+}
+
+.yui-dt-odd {
+	background-color: #fff;	
+}
+
+#yui-dt0-paginator1 {
+    display:none;
+}
+
+#yui-dt0-paginator0 {
+    display:none;
 }
