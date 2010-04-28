@@ -65,13 +65,16 @@ class CustomerController {
 			if (!params.offset)
 				params.offset = 0
 				
+			def tireHotelOccurrenceListWithoutDelivered = TireHotelOccurrence.findAllByOutDateIsNull()
 			def tireHotelOccurrenceInstanceList = TireHotelOccurrence.findAllByCustomer(Customer.get(params.id), [max:params.max, offset:params.offset])
 			def tireHotelOccurrenceInstanceTotalList = TireHotelOccurrence.findAllByCustomer(Customer.get(params.id))	
         	def customerOrders = CustomerOrder.findAllByCustomer(Customer.get(params.id))
-					
-			[tireHotelOccurrenceInstanceList: tireHotelOccurrenceInstanceList, 
+
+			[customerInstance: customerInstance, 
+			tireHotelOccurrenceInstanceListWithoutDeliveredInstance: tireHotelOccurrenceListWithoutDelivered,
+			tireHotelOccurrenceInstanceList: tireHotelOccurrenceInstanceList, 
 			tireHotelOccurrenceInstanceTotalList: tireHotelOccurrenceInstanceTotalList, 
-			customerInstance: customerInstance, customerOrders: customerOrders]
+			customerOrders: customerOrders]
         }
     }
 

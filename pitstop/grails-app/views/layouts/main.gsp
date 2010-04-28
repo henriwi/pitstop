@@ -15,6 +15,7 @@
         <g:javascript library="application" />
         <g:javascript library="script" />
         <g:javascript library="yui" />
+        <g:javascript library="prototype" />
         <modalbox:modalIncludes />
     </head>
     <body onload="showElement('onlyActiveTireHotelOccurrences');">
@@ -28,7 +29,7 @@
 				</g:isLoggedIn>
 				
 		        <ul id="menuList">
-		        	<li><a class="${params.controller == null ? 'active' : ''}" href="${createLink(uri: '/')}">${message(code: 'main.menu.home.label')}</a></li>
+		        	<li><a class="${params.controller == 'index' ? 'active' : ''}" href="${createLink(uri: '/')}">${message(code: 'main.menu.home.label')}</a></li>
 			        
 		        	<li><g:link class="${params.controller == 'tire' ? 'active' : ''}" controller="tire">${message(code: 'main.menu.tires.label')}</g:link></li>
 			        
