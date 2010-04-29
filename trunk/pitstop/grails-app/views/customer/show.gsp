@@ -5,7 +5,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title><g:message code="customer.show.title.label" /></title>
-        <gui:resources components="accordion, dataTable"/>
     </head>
     <body>
          <div class="nav">
@@ -75,7 +74,7 @@
 			
 			<div id="customerTireHotelAndOrders">
 				<g:if test="${tireHotelOccurrenceInstanceTotalList}">
-					<h3>Dekk p&aring; dekkhotellet</h3>
+					<h3><g:message code="customer.show.title.tireHotel.label" /></h3>
 					<div id="customerTireHotel">
 						<span id="customerTireHotelOccurrenceSwitchButton">
 							<a href="javascript:hideAndShowElement('activeTireHotelOccurrences','allTireHotelOccurrences');">Vis/skjul historikk</a>
@@ -113,14 +112,21 @@
 			                        			<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" />
 			                        		</g:form>
 			                       		</g:if>
-						                
-						                <g:ifAllGranted role="ROLE_ADMIN">
-			                         		<g:form controller="tireHotelOccurrence" method="post">
-			                         			<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+			                       		<g:form class="editTireHotelButton" controller="tireHotelOccurrence" method="post">
+			                        			<g:hiddenField name="customerId" value="${customerInstance?.id}" />
 			                        			<g:hiddenField name="requestFromShowCustomerView" value="true" />
-			                         			<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-			                         		</g:form>
-			                   			</g:ifAllGranted>
+			                        			<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+			                        			<g:actionSubmit class="edit" action="edit" title="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" />
+		                        		</g:form>
+								<!--Hva er dette? Slette?-->
+<!--						                <g:ifAllGranted role="ROLE_ADMIN">-->
+<!--			                         		<g:form controller="tireHotelOccurrence" method="post">-->
+<!--			                         			<g:hiddenField name="customerId" value="${customerInstance?.id}" />-->
+<!--			                        			<g:hiddenField name="requestFromShowCustomerView" value="true" />-->
+<!--			                         			<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />-->
+<!--			                         			-->
+<!--			                         		</g:form>-->
+<!--			                   			</g:ifAllGranted>-->
 			                   		</div>
 			                   		<div style="clear: both;"></div>
 								</div>
@@ -155,17 +161,17 @@
 				                    <g:each in="${tireHotelOccurrenceInstanceList}" status="i" var="tireHotelOccurrenceInstance">
 										<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 				                       
-				                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}</g:link></td>
+				                            <td>${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}</td>
 				                       
-				                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}</g:link></td>
+				                            <td>${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}</td>
 				                       
-				                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "carType")}</g:link></td>
+				                            <td>${fieldValue(bean: tireHotelOccurrenceInstance, field: "carType")}</td>
 				                       
-				                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireType")}</g:link></td>
+				                            <td>${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireType")}</td>
 				                       
-				                            <td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.inDate}" /></g:link></td>
+				                            <td><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.inDate}" /></td>
 				                           
-			                        		<td><g:link action="show" controller="tireHotelOccurrence" id="${tireHotelOccurrenceInstance.id}"><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.outDate}" /></g:link></td>
+			                        		<td><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.outDate}" /></td>
 			                        		
 			                        		<td>
 		                            			<g:if test="${!tireHotelOccurrenceInstance.outDate}">
@@ -211,8 +217,8 @@
 				</div>
 			
 				<g:if test="${customerOrders}">
+				<h3><g:message code="customer.show.title.orders.label" /></h3>
 					<div id="customerOrders">
-						<h3>Aktive ordre</h3>
 						<div>
 		                   	<gui:dataTable
 							    id="dt_2"
