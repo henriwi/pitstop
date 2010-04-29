@@ -14,6 +14,9 @@ html * {
     position: absolute;
     right: 0;
 }
+* {
+	font: verdana,arial,helvetica,sans-serif;	
+}
 
 body {
     background: #fff;
@@ -800,6 +803,7 @@ span.customerNotice {
 	text-decoration: underline;
 }
 #customerTireHotelAndOrders h3{
+	font-size: 15px;
 	margin-left: 10px;
 	font-weight: normal;
 	color: #48802c;
@@ -867,6 +871,14 @@ input.orderTableTextField {
 	display: inline;
 }
 
+.editTireHotelButton .edit{
+	border: none;
+	background: url(../images/skin/database_edit.png) 5px 50% no-repeat;
+    padding-bottom: 5px;
+    padding-left: 28px;
+	font-weight: normal;
+	color: #000;
+}
 /* SUPPLIER ORDER */
 #supplierOrderDialog {
 	width: 700px;
