@@ -12,7 +12,7 @@ class Tire {
     static final diameterIndex = 3
     static final tireTypeIndex = 4
     static final lengthOfNoticeInListView = 10
-	
+
 	String partNr
 	String brand
 	String tireName
@@ -46,8 +46,9 @@ class Tire {
 		numberInStock(min: 0)
 	}
 
-	static fastSearch(Matcher query, Integer max, Integer offset) {
+	static fastSearch(Matcher query, Integer max, Integer offset, String showTrueOrFalse) {
 		Tire.search([max: max, offset: offset], escape: true) {
+			must(term('enabled', showTrueOrFalse))
 			must(term('width', query[tireIndex][widthIndex]))
 			must(term('profile', query[tireIndex][profileIndex]))
 			must(wildcard('diameter', "*" + query[tireIndex][diameterIndex]))
