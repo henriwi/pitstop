@@ -26,8 +26,6 @@
                         
                             <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.orderDate.label', default: 'Order Date')}" />
                         
-                            <g:sortableColumn property="orderNumber" title="${message(code: 'supplierOrder.orderNumber.label', default: 'Order Number')}" />
-                        
                             <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.supplier.label', default: 'Supplier')}" />
                         
                         </tr>
@@ -39,8 +37,6 @@
                             <td><g:link action="show" id="${supplierOrderInstance.id}">${fieldValue(bean: supplierOrderInstance, field: "id")}</g:link></td>
                         
                             <td><g:formatDate date="${supplierOrderInstance.orderDate}" /></td>
-                        
-                            <td>${fieldValue(bean: supplierOrderInstance, field: "orderNumber")}</td>
                         
                             <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
                         
