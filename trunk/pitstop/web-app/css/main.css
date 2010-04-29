@@ -732,6 +732,7 @@ div.customerInfoBox {
 	background-color: #F5F5FF;
 }
 
+
 span.customerAddress {
 	display: block;
 	margin-top: 15px;
@@ -904,6 +905,122 @@ input.recieveSupplierOrder {
     cursor: pointer;
 }
 
+/* SHOW TIRE */
+div.tireInfoBoxNew {
+	width: 350px;
+	border: 1px solid #bbb;
+	margin-bottom: 10px;
+	background-color: #F5F5FF;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px; 
+	padding-left: 5px;
+}
+
+div.tireInfoBoxNew table {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+div.tireNumberInStockInfoBox {
+	width: 350px;
+	border: 1px solid #bbb;
+	margin-bottom: 5px;
+	padding: 5px;
+	background-color: #F5F5FF;
+	padding-bottom: 15px;
+	padding-left: 10px;
+}
+
+span.tireWidth {
+	display: block;
+	margin-top: 15px;
+	//font-weight: bold;
+}
+
+span.headerTe {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+span.tireSeason {
+	margin-top: 5px;
+	display: block;
+}
+
+span.tirePrice {
+	margin-top: 5px;
+	display: block;
+}
+
+span.tireNotice {
+	font-style: italic;
+	display: block;
+	margin-top: 10px;
+	width: 100%;
+}
+
+h5 {
+	font-size: 12px;
+	font-style: italic;	
+	display: inline;
+	font-weight: normal;
+}
+
+h8 {
+	font-size: 12px;
+	display: inline;
+	font-weight: bold;
+}
+
+span.tireLabelsInStockAndReserved {
+	display:block;
+	margin-top:10px;
+	margin-bottom: 0px;
+}
+
+span.reserved {
+	float: right;
+	margin-right: 110px;
+}
+
+span.available {
+	float: right;
+	margin-right: 105px;
+}
+
+span.tireNewOrder a  {
+	background:url("../images/skin/email.png") no-repeat scroll 5px 50% transparent;
+	color:#555555;
+	float:right;
+	font-weight:normal;
+	margin-right:10px;
+	padding-left:25px;
+}
+
+#createSupplierOrderButton {
+	padding: 0px;	
+	margin-left: 0px;
+}
+
+#createSupplierOrderButton a{
+		background: transparent url(../images/skin/shopping_cart.png) 0px 50% no-repeat;
+    color: #333;
+    padding-left: 25px;
+    border: none;
+}
+
+.showTireButtons {
+	display: inline;
+}
+
+#tireButtons{
+	padding: 5px;
+	margin-top: 15px;
+	margin-bottom: 1px;
+}
+
 /* YUI-DATA TABLE */
 .yui-dt-liner {
 	cursor: pointer;	
@@ -924,3 +1041,9 @@ input.recieveSupplierOrder {
 #yui-dt0-paginator0 {
     display:none;
 }
+
+
+
+
+
+
