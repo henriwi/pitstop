@@ -40,13 +40,6 @@
 					<g:link action="listShowAll" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>	
 				</div>
 			</g:form>
-			<%-- ${params.s}
-			<g:link action="list" params="${params}" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>
-			<g:formRemote name="tireForm" method="GET" action="list" url="[controller:'tire',action:'list']" update="list">
-				
-      					Vis aktive <input type="radio" "${params.s == 'true' ? 'checked' : ''}" name="s" value="true" />
-       					Vis deaktiverte <input type="radio" "${params.s == 'false' ? 'checked' : ''}" name="s" value="false" />
-			</g:formRemote >--%>
 			
             <div class="list">
                 <table>

@@ -84,10 +84,13 @@ class TireController {
 			flash.message = "${message(code: 'tire.show.foundNoTireType.message')}"
 			//redirect(action: "search")
 		}
+		checkIfParamsSisTrueOrFalse(params, tireList)
+		
+		[tireInstanceList: tireList, tireInstanceTotal: tireCount, radioButton: params.tireRadioButton]
+	}
+	private checkIfParamsSisTrueOrFalse(params, tireList) {
 		def tire
 		
-		
-
 		if(params.s == "false") {
 			params.s = "false"
 			for (Iterator iterator = tireList.iterator(); iterator.hasNext();) {
@@ -106,8 +109,6 @@ class TireController {
 				}
 			}
 		}
-		
-		[tireInstanceList: tireList, tireInstanceTotal: tireCount, radioButton: params.tireRadioButton]
 	}
 
 	def listShowAll = { 
