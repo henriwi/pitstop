@@ -936,11 +936,9 @@ span.tireWidth {
 	//font-weight: bold;
 }
 
-span.headerTe {
-	font-size: 15px;
-	font-weight: bold;
+h3.tireBrandHeader {
+	display: inline;	
 }
-
 span.tireSeason {
 	margin-top: 5px;
 	display: block;
@@ -958,14 +956,14 @@ span.tireNotice {
 	width: 100%;
 }
 
-h5 {
+.tireInStockLabels {
 	font-size: 12px;
 	font-style: italic;	
 	display: inline;
 	font-weight: normal;
 }
 
-h8 {
+.tireInStockNumbers {
 	font-size: 12px;
 	display: inline;
 	font-weight: bold;
