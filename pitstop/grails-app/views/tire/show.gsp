@@ -111,7 +111,7 @@
 	                    <tbody>
 	                    <g:each in="${supplierOrderLines}" status="i" var="supplierOrderLineInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-	                        	<td><g:link controller="supplierOrder" action="show" id="${supplierOrderLineInstance?.supplierOrder?.id}">${supplierOrderLineInstance?.supplierOrder?.orderNumber}</g:link></td>
+	                        	<td><g:link controller="supplierOrder" action="show" id="${supplierOrderLineInstance?.supplierOrder?.id}">${supplierOrderLineInstance?.supplierOrder?.id}</g:link></td>
 	                        	
 	                        	<td><g:formatDate format="dd.MM.yyyy" date="${supplierOrderLineInstance?.supplierOrder?.orderDate}" /></td>
 	                        	
