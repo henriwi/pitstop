@@ -123,7 +123,6 @@ class SupplierOrderController {
 	}
 
     private setOrderValues() {
-    	session["order"]?.orderNumber = params.orderNumber
 		session["order"]?.supplier = params.supplier
 		session["order"]?.notice = params.notice
     }
@@ -155,30 +154,6 @@ class SupplierOrderController {
 			println it
 		}
 		redirect(controller: "tire", action: "show", id: tire?.id)
-	}
-	
-	def tireAutoComplete = {
-		def tires
-		
-		if(isSpecialFastSearchQuery(params.query)) {
-			def query = params.query =~ regexFastSearch
-			tires = Tire.fastSearch(query, Tire.count(), 0)
-		}
-		else {
-			tires = Tire.search{
-				queryString("*" + params.query + "*")
-			 }.results
-		}
-		
-		tires = tires.collect {
-			[id: it.id, name:it.toString()]
-		}
-		
-		def jsonTires = [
-			tires: tires
-		]
-		
-		render jsonTires as JSON
 	}
 	
 	private isSpecialFastSearchQuery(String query){

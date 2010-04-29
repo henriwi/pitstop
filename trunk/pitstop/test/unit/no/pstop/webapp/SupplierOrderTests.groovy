@@ -24,24 +24,6 @@ class SupplierOrderTests extends GrailsUnitTestCase {
 		assertNotNull "I'm expecting to find error in notice", badField
 	}
 	
-	void testGenerateSupplierOrderWithInvalidOrderNumber() {
-		for(int i = 0; i < 501; i++){
-			supplierOrder.orderNumber += "A"
-		}
-		
-		assertFalse "Test failed, expected invalid orderNumber", supplierOrder.validate()
-		def badField = supplierOrder.errors.getFieldError("orderNumber")
-		assertNotNull "I'm expecting to find error in orderNumber", badField
-	}
-	
-	void testGenerateSupplierOrderWithEmtyOrderNumber(){
-		supplierOrder.orderNumber = ""
-		
-		assertFalse "Test failed, expected empty orderNumber", supplierOrder.validate()
-		def badField = supplierOrder.errors.getFieldError("orderNumber")
-		assertNotNull "I'm expecting to find error in orderNumber", badField
-	}
-	
 	void testGenerateSupplierOrderWithInvalidSupplier() {
 		for(int i = 0; i < 100; i++){
 			supplierOrder.supplier += "A"

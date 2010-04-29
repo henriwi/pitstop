@@ -1,5 +1,7 @@
 package no.pstop.webapp
 
+import grails.converters.JSON;
+
 import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 
 @Secured(['ROLE_ADMIN','ROLE_USER'])
@@ -280,5 +282,35 @@ class TireController {
 		def person = Tire.get(params.id)
 		person.enabled = person.enabled ? false : true 
 		redirect(action: "list")
+	}
+	
+	def tireAutoComplete = {
+		println params
+		def tires
+		
+		if(isSpecialFastSearchQuery(params.query)) {
+			def query = params.query =~ regexFastSearch
+			tires = Tire.fastSearch(query, Tire.count(), 0)
+		}
+		else {
+			tires = Tire.search{
+				queryString("*" + params.query + "*")
+			}.results
+		}
+		
+		tires = tires.collect {
+			[id: it.id, name: it.toString(), highest: it.highestPrice()]
+		}
+		
+		def jsonTires = [
+			tires: tires
+		]
+		
+		render jsonTires as JSON
+	}
+	
+	def getTireInfo = {
+		println params
+		render "Hepp"
 	}
 }

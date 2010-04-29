@@ -74,19 +74,25 @@
 	                      			<td>${orderLineInstance?.environmentalFee}</td>
 	                      			<td>${orderLineInstance?.numberOfOrderedTires}</td>
 									<td>
-		                          			<g:hiddenField name="orderLineIndex" value="${i}" />
-		                          			<g:actionSubmit action="deleteFromOrder" class="deleteTableItem" value=" ${i}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
+		                          		<g:hiddenField name="orderLineIndex" value="${i}" />
+		                          		<g:actionSubmit action="deleteFromOrder" class="deleteTableItem" value=" ${i}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
 	                         		</td>  
 								</tr>
 							</g:each>
 							<tr>
+							<g:if test="${params.id}">
+								<g:hiddenField name="tire_id" value="${no.pstop.webapp.Tire.get(params.id)?.id}" />
+								<td>${no.pstop.webapp.Tire.get(params.id)}</td>
+							</g:if>
+							<g:else>
 								<td class="yui-skin-sam">
 									<gui:autoComplete 
 										id="tire" 
-										controller="supplierOrder"
+										controller="tire"
 										action="tireAutoComplete"
 										resultName="tires" />
 								</td>
+							</g:else>
 								<td><g:textField class="supplierOrderHeaders" name="price" value="${fieldValue(bean: supplierOrderLineInstance, field: 'price')}" /></td>
 								<td><g:textField class="supplierOrderHeaders" name="discount" value="${fieldValue(bean: supplierOrderLineInstance, field: 'discount')}" /></td>
 								<td><g:textField class="supplierOrderHeaders" name="environmentalFee" value="${fieldValue(bean: supplierOrderLineInstance, field: 'environmentalFee')}" /></td>

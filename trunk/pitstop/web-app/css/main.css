@@ -835,23 +835,20 @@ div#allTireHotelOccurrences {
 }
 
 /* CUSTOMER ORDER */
-#customerOrderedItems {
-	margin-top: 10px;
-}
 #customerAndNotice {
+	margin-bottom: 10px;
+}
+#customerOrderDialog {
 	float: left;
-	margin-right: 10px;
-	width: 300px;
+	width: 1000px;
 }
 
 #customerOrderLines {
-	width: 700px;
-	float: left;
+	margin-bottom: 10px;
 }
 
-input.customerOrderTableTextField {
+input.orderTableTextField {
 	width: 50px;
-	text-align: right;
 }
 #customerOrderPriceHeader {
 	width: 80px;	

@@ -33,12 +33,13 @@ class CustomerOrderController {
 
     def create = {
 		session["order"] = new CustomerOrder()
+		session["order"]?.customer = Customer.get(params.id)
 		session["orderLines"] = []
-		//session["customer"] = Customer.get(params.customerId)
+		return [order: session["order"]]
     }
 
     def save = {
-    	def customer = Customer.get(params.customerId)//session["customer"]
+    	def customer = session["order"]?.customer
     	println params
 		println customer
 		def customerOrderInstance = session["order"]
@@ -145,7 +146,8 @@ class CustomerOrderController {
 		setCustomerAndNotice()
 		def order = session["order"]
 		def orderLines = session["orderLines"]
-		def tire = session["tire"]
+		println params
+		def tire = Tire.get(params.tire_id)
 		
 		orderLines = addToOrderLine(params, tire, orderLines)
 		
@@ -172,7 +174,7 @@ class CustomerOrderController {
 	def deleteFromOrder = {
 		def orderLines = session["orderLines"]
 		
-		int orderLineIndex = params.orderLineIndex.toInteger()
+		int orderLineIndex = params._action_deleteFromOrder.trim().toInteger()
 		orderLines.remove(orderLineIndex)
 		
 		writeSession(session, orderLines)
