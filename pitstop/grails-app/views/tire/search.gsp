@@ -25,31 +25,11 @@
        	</span>
 	</div>
 	<div class="body">
-		<h1>${message(code: 'search.header.fastSearch.label')}</h1>
-		
 		<g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
         </g:if>
             
-		<g:form action="fastSearch" method="get">
-			<div class="dialog">
-				<table>
-					<tbody>
-						<tr class="prop">
-							<td valign="top" class="name"><label for="txtFastSearch"><g:message code="search.fastSearch.label" /></label></td>
-							<td valign="top"><g:textField tabindex='1' name="txtFastSearch" /></td>
-							<td valign="top"><label>${message(code: 'search.fastSearchExample.label')}</label></td>
-						</tr>
-						<tr class="prop">
-							<td valign="top" class="name">
-								<g:submitButton tabindex='2' class="searchButtons" name="btnFastSearch"
-									value="${message(code: 'search.button.fastSearch.label')}" />
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</g:form>
+		
 		
 		<h1><g:message code="search.header.normalSearch.label" default="Normal tire search" /></h1>
 		<g:form action="normalSearch" method="get">
@@ -82,8 +62,12 @@
 			
 						<tr class="prop">
 							<td valign="top" class="name">
-								<g:submitButton tabindex='9' class="searchButtons" name="btnNormalSearch"
-									value="${message(code: 'search.button.normalSearch.label')}" />
+       			    			<g:submitButton name="active" value="${message(code: 'search.button.fastSearchActive.label')}" class="searchButtons"  /></td>
+							</td>
+							<td valign="top" class="name">
+       			    			<g:submitButton name="deactive" value="${message(code: 'search.button.fastSearchDeactive.label')}" class="searchButtons"  /></td>
+							</td>
+							<td valign="top" class="name">
 								<input type="reset" value=${message(code: 'search.button.clear')} class="searchButtons"/>
 							</td>
 						</tr>

@@ -14,6 +14,14 @@ class TireController {
 	}
 	
 	def list = {
+		
+		if( params.active) {
+			params.s = "true"
+		}
+		else if( params.deactive) {
+			params.s = "false"
+		}
+		
 		if(!params.max)
 		params.max = maxNumberOfTires
 		
@@ -22,23 +30,29 @@ class TireController {
 		
 		def tireList
 		def tireCount
-		def isSearch
 		
 		if(isFastSearchQuery(params.q, params.type)) {
-			isSearch = true
 			if(isSpecialFastSearchQuery(params.q)) {
 				def query = params.q =~ regexFastSearch
-				tireList = 	Tire.fastSearch(query, params.max, params.offset)
-				tireCount = Tire.fastSearch(query, Tire.count(), 0).size()
+				tireList = 	Tire.fastSearch(query, params.max, params.offset ,params.s)
+				tireCount = Tire.fastSearch(query, Tire.count(), 0, params.s).size()
 			}
 			else {
-				tireList = Tire.search("*" + params.q + "*", [max:params.max, offset:params.offset]).results
-				tireCount = Tire.search("*" + params.q + "*", [max:Tire.count(), offset:params.offset]).results.size()
+				tireList = Tire.search([max:params.max, offset:params.offset]){
+					must(queryString("*" + params.q + "*"))
+					must(term("enabled", params.s))
+					}.results
+				
+				
+				tireCount = Tire.search([max:Tire.count(), offset:params.offset]){
+					must(queryString("*" + params.q + "*"))
+					must(term("enabled", params.s))
+				}.results.size()
+				
+			//	tireCount = Tire.search("*" + params.q + "*", [max:Tire.count(), offset:params.offset]).results.size()
 			}
 		} 
 		else if(isNormalSearchQuery(params.type) && !isNormalSearchWithoutInput()) {
-			isSearch = true
-			
 			tireList = Tire.normalSearch(params.width, params.profile, params.diameter, 
 			params.speedIndex, params.tireType, , params.brand, params.max.toInteger(), params.offset.toInteger())
 			
@@ -66,13 +80,52 @@ class TireController {
 			 * noen dekk på lager.
 			 */
 			flash.message = "${message(code: 'tire.show.foundNoTireType.message')}"
-			
-			if(isSearch){
-				redirect(action: "search")
+			//redirect(action: "search")
+		}
+		def tire
+		
+		
+
+		if(params.s == "false") {
+			params.s = "false"
+			for (Iterator iterator = tireList.iterator(); iterator.hasNext();) {
+				tire = iterator.next()
+				if(tire.enabled) {
+					iterator.remove()
+				}
 			}
 		}
+		else {
+			params.s = "true"
+			for (Iterator iterator = tireList.iterator(); iterator.hasNext();) {
+				tire = iterator.next()
+				if(!tire.enabled) {
+					iterator.remove()
+				}
+			}
+		}
+		
+		[tireInstanceList: tireList, tireInstanceTotal: tireCount, radioButton: params.tireRadioButton]
+	}
 
-		[tireInstanceList: tireList, tireInstanceTotal: tireCount]
+	def listShowAll = { 
+		/*if(!params.max)
+			params.max = maxNumberOfTires
+		
+		if(!params.offset)
+			params.offset = 0*/
+		
+		def tireList
+		def tireCount
+		
+		params.max = Math.min(params.max ? params.int('max') : maxNumberOfTires, 100)
+		tireList = Tire.list(params)
+		tireCount = Tire.count()
+		
+		//[tireInstanceList: tireList, tireInstanceTotal: tireCount]
+		
+		render(view: "list", model: [tireInstanceList: tireList, tireInstanceTotal: tireCount])
+		
 	}
 
 	def pendingSupplierOrders = {
@@ -208,16 +261,18 @@ class TireController {
 	
 	//TODO Bør refaktureres slik at denne metoden slås sammen med fastSearch?
 	def fastSearchForListView = {
+		//println params
 		if(params.txtFastSearch.trim() != ""){
-			redirect(action: "list", params:[q: params.txtFastSearch, type: 'fast'])
+			redirect(action: "list", params:[q: params.txtFastSearch, type: 'fast', s: params.s, active: params.active, deactive: params.deactive])
 		}
 		else{
-			redirect(action: "list", params:[q: params.search])
+			redirect(action: "list", params:[q: params.search, s: params.s, active: params.active, deactive: params.deactive])
+			
 		}
 	}
 	
 	def normalSearch = {
-		redirect(action: "list", params:[width: params.width, profile: params.profile, diameter: params.diameter, speedIndex: params.speedIndex, tireType: params.tireType, brand: params.brand, type: 'normal'])
+		redirect(action: "list", params:[width: params.width, profile: params.profile, diameter: params.diameter, speedIndex: params.speedIndex, tireType: params.tireType, brand: params.brand, type: 'normal', active: params.active, deactive: params.deactive ])
 	}
 	
 	

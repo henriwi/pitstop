@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title>${message(code: 'tire.list.title.label')}</title>
+        <g:javascript library="prototype" />
     </head>
     <body>
         <div class="nav">
@@ -34,11 +35,18 @@
              <g:form action="fastSearchForListView" method="get">
  				<div id="fastSearchInListView">
 					<g:textField tabindex='1' name="txtFastSearch" /></td>
-					<g:submitButton  tabindex='2' class="searchButtons" name="btnSearch"
-					value="${message(code: 'search.button.fastSearch.label')}" />
-					<g:link action="list" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>							
+					<g:submitButton name="active" value="${message(code: 'search.button.fastSearchActive.label')}" class="searchButtons"    /></td>
+       			    <g:submitButton name="deactive" value="${message(code: 'search.button.fastSearchDeactive.label')}" class="searchButtons"  /></td>
+					<g:link action="listShowAll" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>	
 				</div>
 			</g:form>
+			<%-- ${params.s}
+			<g:link action="list" params="${params}" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>
+			<g:formRemote name="tireForm" method="GET" action="list" url="[controller:'tire',action:'list']" update="list">
+				
+      					Vis aktive <input type="radio" "${params.s == 'true' ? 'checked' : ''}" name="s" value="true" />
+       					Vis deaktiverte <input type="radio" "${params.s == 'false' ? 'checked' : ''}" name="s" value="false" />
+			</g:formRemote >--%>
 			
             <div class="list">
                 <table>
@@ -121,10 +129,10 @@
 			                        	<g:hiddenField name="id" value="${tireInstance?.id}" />
 			         
 			                           	<g:if test="${tireInstance?.enabled}">
-			                           		<g:actionSubmit class="disableTableItem" title="${message(code: 'tire.list.disable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
+			                           		<g:actionSubmit class="disableTireItem" title="${message(code: 'tire.list.disable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
 			                       		</g:if>
 			                       		<g:else>
-			                          		<g:actionSubmit class="enableTableItem" title="${message(code: 'tire.list.enable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
+			                          		<g:actionSubmit class="enableTireItem" title="${message(code: 'tire.list.enable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
 			                       		</g:else>
 			                        </g:form>
                             </td>   
