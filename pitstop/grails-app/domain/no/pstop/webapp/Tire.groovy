@@ -43,7 +43,7 @@ class Tire {
 		pattern(matches: "[a-zA-Z0-9\\s|æ|ø|å|Æ|Ø|Å|\\-|\\_]{0,30}")
 		tireType(inList: ["Sommer", "Vinter (pigg)", "Vinter (piggfri)", "Vinter (pigg - upigget)", "M+S (helårsdekk)"], blank: false)
 		retailPrice(min: new Double(0.00))
-		numberInStock(min: 0)
+		numberInStock(min: 0, blank: false)
 	}
 
 	static fastSearch(Matcher query, Integer max, Integer offset, String showTrueOrFalse) {
