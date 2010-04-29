@@ -14,7 +14,6 @@
 		    <span class="menuButton"><g:link class="pendingSupplierOrders" action="pendingSupplierOrders"><g:message code="tire.pendingSupplierOrders.title.label" /></g:link></span>
         </div>
         <div class="body">
-        	<span class="backButton"><g:link class="back" controller="tire"><g:message code="tire.show.button.back.label" /></g:link></span>
             <h1><g:message code="showTire.title.label" /></h1>
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>

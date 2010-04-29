@@ -12,7 +12,6 @@
             <span class="menuButton"><g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link></span>
         </div>
         <div class="body">
-        	<span class="backButton"><g:link class="back" controller="tireHotelOccurrence"><g:message code="tireHotelOccurrence.show.button.back.label" /></g:link></span>
             <h1><g:message code="tireHotelOccurrence.show.title.label"/></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
