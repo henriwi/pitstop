@@ -125,7 +125,7 @@
                                     <g:select tabindex='11' name="tireType" from="${tireInstance.constraints.tireType.inList}" value="${tireInstance?.tireType}" valueMessagePrefix="tire.tireType" /></td>
                             </tr>
                             <tr class="prop">
-	                            <td valign="top" class="name"><label for="numberInStock"><g:message code="tire.numberInStock.label" /></label></td>
+	                            <td valign="top" class="name"><label for="numberInStock"><g:message code="tire.numberInStock.createUpdate.label" /></label></td>
 	                            <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'numberInStock', 'errors')}">
 	                                <g:textField maxlength="30" tabindex='12' name="numberInStock" value="${tireInstance?.numberInStock}" /></td>
                         		</tr>
