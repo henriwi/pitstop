@@ -137,13 +137,29 @@ class SupplierOrderController {
 		render(view: "create", model:[orderLines: orderLines, order: session["order"]])
 	}
 	
-	def recieveOrder = {
+	def receiveOrder = {
+		def supplierOrder = SupplierOrder.get(params.id)
+		supplierOrder.supplierOrderLines.each {
+			if(!it.receivedDate) {
+				params.numberOfReceived = it.numberOfOrderedTires - it.numberOfReceivedTires	
+				receiveOrderLine(it, params)
+			}
+		}
+		redirect(controller: "tire", action: "pendingSupplierOrders")
+	}
+	
+	def receiveOrderLine = {
 		def supplierOrderLineInstance = SupplierOrderLine.get(params.supplierOrderLineId)
+		receiveOrderLine(supplierOrderLineInstance, params)
+		redirect(controller: "tire", action: "show", id: supplierOrderLineInstance?.tire?.id)
+	}
+	
+	private receiveOrderLine(supplierOrderLineInstance, params) {
 		def tire = supplierOrderLineInstance?.tire
 		
-		int numberOfRecieved = params.numberOfRecieved.toInteger()
-		supplierOrderLineInstance?.numberOfReceivedTires += numberOfRecieved
-		tire?.numberInStock += numberOfRecieved
+		int numberOfReceived = params.numberOfReceived.toInteger()
+		supplierOrderLineInstance?.numberOfReceivedTires += numberOfReceived
+		tire?.numberInStock += numberOfReceived
 		
 		if(supplierOrderLineInstance?.numberOfOrderedTires == supplierOrderLineInstance?.numberOfReceivedTires) {
 			supplierOrderLineInstance?.receivedDate = new Date()
@@ -153,7 +169,6 @@ class SupplierOrderController {
 		supplierOrderLineInstance.errors.each {
 			println it
 		}
-		redirect(controller: "tire", action: "show", id: tire?.id)
 	}
 	
 	private isSpecialFastSearchQuery(String query){

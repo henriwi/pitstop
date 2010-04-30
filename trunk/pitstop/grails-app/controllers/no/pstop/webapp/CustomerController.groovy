@@ -70,10 +70,10 @@ class CustomerController {
 			if (!params.offset)
 				params.offset = 0
 				
-			def tireHotelOccurrenceListWithoutDelivered = TireHotelOccurrence.findAllByOutDateIsNullAndCustomer(Customer.get(params.id))
-			def tireHotelOccurrenceInstanceList = TireHotelOccurrence.findAllByCustomer(Customer.get(params.id), [max:params.max, offset:params.offset])
-			def tireHotelOccurrenceInstanceTotalList = TireHotelOccurrence.findAllByCustomer(Customer.get(params.id))	
-        	def customerOrders = CustomerOrder.findAllByCustomer(Customer.get(params.id))
+			def tireHotelOccurrenceListWithoutDelivered = TireHotelOccurrence.findAllByOutDateIsNullAndCustomer(customerInstance)
+			def tireHotelOccurrenceInstanceList = TireHotelOccurrence.findAllByCustomer(customerInstance, [max:params.max, offset:params.offset])
+			def tireHotelOccurrenceInstanceTotalList = TireHotelOccurrence.findAllByCustomer(customerInstance)	
+        	def customerOrders = CustomerOrder.findAllByCustomer(customerInstance)
 
 			[customerInstance: customerInstance, 
 			tireHotelOccurrenceInstanceListWithoutDeliveredInstance: tireHotelOccurrenceListWithoutDelivered,
@@ -191,7 +191,7 @@ class CustomerController {
 		orders.each {
 			boolean pending = false
 			it.customerOrderLines.each { 
-//				if(!it.deliveredDate) {
+//				if (!it.deliveredDate) {
 					pending = true
 //				}
 			}

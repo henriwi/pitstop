@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title><g:message code="tire.pendingSupplierOrders.title.label" /></title>
+        <gui:resources components="accordion, dataTable"/>
     </head>
     <body>
         <div class="nav">
@@ -36,24 +37,39 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.list.table.orderNumber.label', default: 'ID')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.list.table.id.label')}" />
                         
-                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.list.table.orderDate.label', default: 'Order Date')}" />
+                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.list.table.orderDate.label')}" />
                         
-                            <th><g:message code="supplierOrder.list.table.customer.label" default="Supplier" /></th>
-                   	    
+                            <th><g:message code="supplierOrder.list.table.customer.label"/></th>
+                            
+                            <th><g:message code="supplierOrder.table.receive.label" /></th>
                         </tr>
                     </thead>
                     <tbody>
-	                    <g:each in="${supplierOrderWithoutReceivedDateInstanceList}" status="i" var="supplierOrderWithoutReceivedDateInstance">
+	                    <g:each in="${supplierOrders}" status="i" var="supplierOrderInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 	                        
-	                            <td><g:link action="show" id="${supplierOrderWithoutReceivedDateInstance.id}">${fieldValue(bean: supplierOrderWithoutReceivedDateInstance, field: "id")}</g:link></td>
+	                            <td><g:link controller="supplierOrder" action="show" id="${supplierOrderInstance?.id}">${fieldValue(bean: supplierOrderInstance, field: "id")}</g:link></td>
 	                        
-	                            <td><g:formatDate format="dd.MM.yyyy hh:mm" date="${supplierOrderWithoutReceivedDateInstance.orderDate}" /></td>
+	                            <td><g:formatDate format="dd.MM.yyyy hh:mm" date="${supplierOrderInstance?.orderDate}" /></td>
 	                        
-	                            <td>${fieldValue(bean: supplierOrderWithoutReceivedDateInstance, field: "supplier")}</td>
-	                        
+	                            <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
+	                            
+	                            <td>
+	                            	<g:form controller="supplierOrder" action="receiveOrder" method="post">
+			                        	<g:hiddenField name="id" value="${supplierOrderInstance?.id}" />
+			                        	<g:submitButton tabindex='14' name="create" class="save" value="${message(code: 'createTire.button.create.label')}" />
+			                        </g:form>
+	                            </td>
+	                            
+	                            <!--  <g:each in="${supplierOrderInstance?.supplierOrderLines}" status="y" var="supplierOrderLineInstance">
+	                        		<tr class="${(y % 2) == 0 ? 'odd' : 'even'}">
+	                        		
+	                        			<td>${fieldValue(bean: supplierOrderLineInstance, field: "numberOfOrderedTires")}</td>
+	                        			
+	                        		</tr>
+	                    		</g:each>-->
 	                        </tr>
 	                    </g:each>
                     </tbody>

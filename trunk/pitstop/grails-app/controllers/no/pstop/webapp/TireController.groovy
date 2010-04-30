@@ -1,8 +1,8 @@
 package no.pstop.webapp
 
-import grails.converters.JSON;
+import grails.converters.JSON
 
-import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
+import org.codehaus.groovy.grails.plugins.springsecurity.Secured
 
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class TireController {
@@ -132,13 +132,24 @@ class TireController {
 	}
 
 	def pendingSupplierOrders = {
-		/*
-		def supplierOrder = SupplierOrder.findAll()
-
-		
-		def supplierOrderWithoutReceivedDate = SupplierOrderLine.findAllByReceivedDateIsNull()
-		[supplierOrderWithoutReceivedDateInstanceList: supplierOrderWithoutReceivedDate]
-		*/
+		def pendingSupplierOrders = getPendingOrders()
+		[supplierOrders: pendingSupplierOrders]
+	}
+	
+	private getPendingOrders(pendingSupplierOrders) {
+		def pendingSupplierOrdersList = []
+		def supplierOrders = SupplierOrder.list().each { 
+			boolean pending = false
+			it.supplierOrderLines.each {
+				if (!it.receivedDate) {
+					pending = true
+				}
+			}
+			if (pending) {
+				pendingSupplierOrdersList << it
+			}
+		}
+		return pendingSupplierOrdersList
 	}
 	
 	private isFastSearchQuery(String query, String type){
