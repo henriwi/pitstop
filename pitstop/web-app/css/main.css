@@ -900,12 +900,12 @@ input.orderTableTextField {
 	width: 40px;
 }
 
-#numberOfRecievedTextField {
+#numberOfReceivedTextField {
 	width: 50px;
 }
 
-input.recieveSupplierOrder {
-	background: url(../images/skin/tireRecieved.png) 5px 50% no-repeat;
+input.receiveSupplierOrder {
+	background: url(../images/skin/tireReceived.png) 5px 50% no-repeat;
     margin: 0px;
     padding-top: 5px;
     padding-right: 5px;

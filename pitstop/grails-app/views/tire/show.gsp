@@ -100,7 +100,7 @@
 	                            
 	                            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'supplierOrderLine.table.numberOfOrderedTires.label')}" />
 	                            
-	                            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'supplierOrderLine.table.numberOfRecieved.label')}" />
+	                            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'supplierOrderLine.table.numberOfReceived.label')}" />
 	                            
 	                            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'supplierOrderLine.table.deliver.label')}" />
 	                            
@@ -124,12 +124,12 @@
 	                            
 	                            <td>${supplierOrderLineInstance?.numberOfReceivedTires}</td>
 	                            
-	                            <g:form action="recieveOrder" controller="supplierOrder" method="post">
+	                            <g:form action="receiveOrderLine" controller="supplierOrder" method="post">
 	                            
-	                            	<td><g:textField id="numberOfRecievedTextField" name="numberOfRecieved" value="${supplierOrderLineInstance?.numberOfOrderedTires - supplierOrderLineInstance?.numberOfReceivedTires}"/></td>
+	                            	<td><g:textField id="numberOfReceivedTextField" name="numberOfReceived" value="${supplierOrderLineInstance?.numberOfOrderedTires - supplierOrderLineInstance?.numberOfReceivedTires}"/></td>
 	                          		<td>
 	                          			<g:hiddenField name="supplierOrderLineId" value="${supplierOrderLineInstance?.id}" />
-    	                      			<g:submitButton class="recieveSupplierOrder" name="recieveOrder" title="${message(code: 'supplierOrder.recieve.tooltip.label')}" value="${message(code: 'list.button.table.label')}" />
+    	                      			<g:submitButton class="receiveSupplierOrder" name="receiveOrder" title="${message(code: 'supplierOrder.receive.tooltip.label')}" value="${message(code: 'list.button.table.label')}" />
     	                      		</td>
        	                  		</g:form>
 	                        </tr>

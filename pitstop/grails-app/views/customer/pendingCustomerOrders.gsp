@@ -32,16 +32,16 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.list.table.orderNumber.label', default: 'ID')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.list.table.orderNumber.label', default: 'ID')}" />
                         
-                            <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.list.table.orderDate.label', default: 'Order Date')}" />
+                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.list.table.orderDate.label', default: 'Order Date')}" />
                         
-                            <th><g:message code="customerOrder.list.table.customer.label" default="Customer" /></th>
+                            <th><g:message code="supplierOrder.list.table.customer.label" default="Supplier" /></th>
                    	    
                         </tr>
                     </thead>
                     <tbody>
-	                    <g:each in="${customerOrderWithoutDeliveredDateInstanceList}" status="i" var="customerOrderWithoutDeliveredDateInstance">
+	                    <g:each in="${supplierOrders}" status="i" var="supplierOrderWithoutDeliveredDateInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 	                        
 	                            <td><g:link action="show" id="${customerOrderWithoutDeliveredDateInstance.id}">${fieldValue(bean: customerOrderWithoutDeliveredDateInstance, field: "id")}</g:link></td>
