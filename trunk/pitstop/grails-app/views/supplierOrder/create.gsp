@@ -75,7 +75,7 @@
 	                      			<td>${orderLineInstance?.numberOfOrderedTires}</td>
 									<td>
 		                          		<g:hiddenField name="orderLineIndex" value="${i}" />
-		                          		<g:actionSubmit action="deleteFromOrder" class="deleteTableItem" value=" ${i}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
+		                          		<g:actionSubmit id="${i}" action="deleteFromOrder" class="deleteTableItem" value=" ${i}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
 	                         		</td>  
 								</tr>
 							</g:each>
