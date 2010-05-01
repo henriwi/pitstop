@@ -1,6 +1,5 @@
 package no.pstop.webapp
 import grails.converters.deep.JSON;
-
 import java.util.Date;
 import java.util.Iterator;
 
@@ -124,35 +123,21 @@ class CustomerOrderController {
         }
     }
 
-    def showTireInfo = {
-		setCustomerAndNotice()
-		def tire = Tire.get(params.tireId)
-		session["tire"] = tire
-		
-		render(view: "create", model: [tire: session["tire"], order: session["order"], orderLines: session["orderLines"], tireList: session["tireList"]])
-    }
-
-    private setCustomerAndNotice() {
-		//if(params.customerId) {
-			session["customer"] = Customer.get(params.customerId)
-		//}
-		//println params
-		//if(params.notice) 
-			session["order"]?.notice = params.notice
-		//
+    private setNotice() {
+		session["order"]?.notice = params.notice
     }
     
     def addToOrder = {
-		setCustomerAndNotice()
+		setNotice()
+		
 		def order = session["order"]
 		def orderLines = session["orderLines"]
-		println params
 		def tire = Tire.get(params.tire_id)
 		
 		orderLines = addToOrderLine(params, tire, orderLines)
 		
 		writeSession(session, order, orderLines)
-        render(view: "create", model: [tire: session["tire"], order: session["order"], orderLines: session["orderLines"]])
+        render(view: "create", model: [order: session["order"], orderLines: session["orderLines"]])
     }
 		
 	private addToOrderLine(params, tire, orderLines) {

@@ -6,8 +6,6 @@ import org.springframework.security.GrantedAuthority;
 import org.springframework.security.GrantedAuthorityImpl;
 import org.springframework.security.context.SecurityContextHolder as SCH 
 import org.springframework.security.providers.UsernamePasswordAuthenticationToken;
-
-
 import grails.converters.JSON;
 import java.util.Date;
 import java.text.SimpleDateFormat;

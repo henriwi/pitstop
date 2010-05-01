@@ -302,7 +302,7 @@ class TireController {
 		
 		if(isSpecialFastSearchQuery(params.query)) {
 			def query = params.query =~ regexFastSearch
-			tires = Tire.fastSearch(query, Tire.count(), 0)
+			tires = Tire.fastSearch(query, Tire.count(), 0, "false")
 		}
 		else {
 			tires = Tire.search{
@@ -319,10 +319,5 @@ class TireController {
 		]
 		
 		render jsonTires as JSON
-	}
-	
-	def getTireInfo = {
-		println params
-		render "Hepp"
 	}
 }
