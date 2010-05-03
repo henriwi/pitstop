@@ -10,7 +10,7 @@
     <body>
         <div class="nav">
         	<span class="menuButton" id="${params.action == 'list' && params.controller == 'tire' ? 'active' : ''}" >
-       			<g:link controller="tire" class="list" action="list"><g:message code="default.button.tireList.label"/></g:link>
+       			<g:link controller="tire" class="tireList" action="list"><g:message code="default.button.tireList.label"/></g:link>
        		</span>
 	        
        		<span class="menuButton" id="${params.action == 'create' && params.controller == 'tire' ? 'active' : ''}" >

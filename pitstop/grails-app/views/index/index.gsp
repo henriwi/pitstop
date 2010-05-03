@@ -14,15 +14,15 @@
 		<div class="indexContent" style="padding-left: 30px;">
 			<br />
 			<g:form controller="tire" action="fastSearchForListView" method="get">
-				<div id="fastSearchInListView">
-					${message(code: 'index.tire.search.label')}<br /><g:textField tabindex='1' name="txtFastSearch" /></td>
+				<div class="search">
+					${message(code: 'index.tire.search.label')}<br /><g:textField tabindex='1' name="txtFastSearch" />
 					<g:submitButton tabindex='2' class="searchButtons" name="btnTireSearch" value="${message(code: 'search.button.fastSearch.label')}" />
 				</div>
 			</g:form>
 			<br />
 			<g:form controller="customer" action="search" method="get">
-				<div id="fastSearchInListView">
-					${message(code: 'index.customer.search.label')}<br /><g:textField tabindex='3' name="search" /></td>
+				<div class="search">
+					${message(code: 'index.customer.search.label')}<br /><g:textField tabindex='3' name="search" />
 					<g:submitButton tabindex='4' class="searchButtons" name="btnCustomerSearch" value="${message(code: 'search.button.fastSearch.label')}" />
 				</div>
 			</g:form>

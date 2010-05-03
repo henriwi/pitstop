@@ -1,8 +1,3 @@
-/*SLETT*/
-#skjul {
-	display: none;
-}
-
 html * {
     margin: 0;
     /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
@@ -15,7 +10,7 @@ html * {
     right: 0;
 }
 * {
-	font: verdana,arial,helvetica,sans-serif;	
+	font-family: verdana,arial,helvetica,sans-serif;	
 }
 
 body {
@@ -23,9 +18,12 @@ body {
     color: #333;
     font: 11px verdana, arial, helvetica, sans-serif;
 }
-#pstopLogo{
+#pstopLogo {
 	width: auto;
 	background-color: #dce7fb;
+}
+#pstopLogo img{
+	border: none;
 }
 
 #grailsLogo {
@@ -154,7 +152,7 @@ ul#menuList li {
     padding-top: 15px;
     padding-bottom: 7px;
     width: auto;
-    font: 11px;
+    font-size: 11px;
     font-family: verdana, arial, helvetica, sans-serif;
 }
 div#submenuTireHotelOccurence {
@@ -181,6 +179,21 @@ div#submenuTireHotelOccurence {
 
 .menuButton a.list {
     background: url(../images/skin/database_table.png) center left no-repeat;
+    color: #555;
+    padding-left: 25px;
+    background-position: 2px;
+}
+
+
+.menuButton a.customerList {
+    background: url(../images/skin/user_table.png) center left no-repeat;
+    color: #555;
+    padding-left: 25px;
+    background-position: 2px;
+}
+
+.menuButton a.tireList {
+    background: url(../images/skin/tire_table.png) center left no-repeat;
     color: #555;
     padding-left: 25px;
     background-position: 2px;
@@ -375,12 +388,14 @@ th.desc a {
 	margin-bottom: 10px;
 }
 
+/* KAN SLETTES??
 .searchButtons #showAllButton{
 	width: 35px;
 	height: 40px;
 	margin: 2px 0 2px 0;
-	background-color: #333
+	color: #333
 }
+*/
 
 .dialog table {
     padding: 5px 0;
@@ -478,7 +493,7 @@ input.delivered {
 }
 
 .searchButtons {
-    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    background: url(../images/skin/shadow.jpg) bottom repeat-x;
     border: 1px solid #ccc;
     color: #666;
     font-size: 11px;
@@ -814,8 +829,6 @@ div#onlyActiveTireHotelOccurrences {
 	background-color: #F5F5FF;
 	width: 450px;
 	padding: 5px;
-	visibility: visible;
-	display: inherit;
 }
 #customerOrders {
 	padding: 5px;
@@ -834,8 +847,14 @@ div.tireHotelButtons input {
 	padding-left: 25px;	
 }
 
+#activeTireHotelOccurrences {
+	visibility: visible;
+	position: absolute;
+}
 div#allTireHotelOccurrences {
-	display: none;
+	visibility: hidden;
+	position: absolute;
+	width: inherit;
 }
 
 /* CUSTOMER ORDER */
@@ -945,7 +964,6 @@ div.tireNumberInStockInfoBox {
 span.tireWidth {
 	display: block;
 	margin-top: 15px;
-	//font-weight: bold;
 }
 
 h3.tireBrandHeader {
@@ -1049,8 +1067,6 @@ span.tireNewOrder a  {
     display:none;
 }
 
-
-
-
-
-
+.iPhone {
+	display: none;
+}
