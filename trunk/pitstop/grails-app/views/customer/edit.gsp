@@ -9,9 +9,18 @@
     </head>
     <body>
         <div class="nav">
-       		<span class="menuButton"><g:link class="list" action="list"><g:message code="customer.list.label" /></g:link></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link></span>
-            <span class="menuButton"><g:link class="pendingCustomerOrders" action="pendingCustomerOrders"><g:message code="customer.pendingCustomerOrders.title.label" /></g:link></span>
+       		<span class="menuButton" ${params.action == 'list' ? "id='active'" : ""} >
+       			<g:link class="customerList" action="list"><g:message code="customer.list.label" /></g:link>
+       		</span>
+       		<span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""}  >
+       			<g:link class="create" action="create"><g:message code="customer.create.title.label" /></g:link>
+       		</span>
+       		<span class="menuButton" ${(params.action == 'pendingCustomerOrders') ? "id='active'" : ""}  >
+       			<g:link class="pendingCustomerOrders" action="pendingCustomerOrders"><g:message code="customer.pendingCustomerOrders.title.label" /></g:link>
+       		</span>
+       		<span class="menuButton" ${(params.action == 'show' || ) ? "id='active'" : ""}  >
+       			<g:link class="showUser" action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</g:link>
+       		</span>
         </div>
         <div class="body">
             <h1><g:message code="customer.edit.header.label" /></h1>

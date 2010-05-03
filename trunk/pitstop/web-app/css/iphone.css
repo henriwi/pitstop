@@ -1,9 +1,13 @@
-/* DELETE--> */
+/* DELETE?--> */
 * {
 	border: none;
 	max-width: 480px;
 }
 /* <--DELETE */
+
+.iPhone {
+	display: inherit;	
+}
 
 img {
 	max-width: 100%;	
@@ -132,12 +136,14 @@ ul#menuList li {
 	color: #fff; 
 	border: none;
 	border-bottom: none;
-	webkit-border-radius: 4px 4px 0px 0px;
-    -moz-border-radius: 4px 4px 0px 0px;
     border-radius: 4px 4px 0px 0px;
 	padding-left: 5px;
 	padding-right: 5px;
 
+}
+
+li#customerOrderMenuItem a, li#supplierOrderMenuItem a{
+	display: none;
 }
 
 /* NAVIGATION MENU */
@@ -224,7 +230,7 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
     background: url(../images/skin/back.png) center left no-repeat;
     color: #555;
     padding-left: 25px;
-    margin-left: 200px;
+    margin-left: 0px;
     margin-top: 15px;
     border: none;
     position:  absolute;
@@ -244,8 +250,6 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
 span#active a {
 	border: 1px solid #888;
 	border-bottom: none;
-	webkit-border-radius: 4px 4px 0px 0px;
-    -moz-border-radius: 4px 4px 0px 0px;
     border-radius: 4px 4px 0px 0px;
 	padding-bottom: 8px;
 	padding-top: 8px;
@@ -368,13 +372,6 @@ th.desc a {
 	width: 35px;
 	height: 20px;
 	margin-bottom: 10px;
-}
-
-.searchButtons #showAllButton{
-	width: 35px;
-	height: 40px;
-	margin: 2px 0 2px 0;
-	background-color: #333
 }
 
 .dialog table {
@@ -679,3 +676,6 @@ a.btnShowAll {
     cursor: pointer;
 }
 
+#customerTableList {
+	display: none;
+}
