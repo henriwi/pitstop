@@ -8,7 +8,6 @@ class TireHotelOccurrence {
 	String tireLocation
 	String registrationNumber
 	String carType
-	Customer customer
 	String tireType
 	Date inDate
 	Date outDate
