@@ -17,11 +17,11 @@ class TireController {
 	
 	def list = {
 		
-		if( params.active) {
-			params.s = "true"
-		}
-		else if( params.deactive) {
+		if( params.deactive) {
 			params.s = "false"
+		}
+		else  {
+			params.s = "true"
 		}
 		
 		if(!params.max)
