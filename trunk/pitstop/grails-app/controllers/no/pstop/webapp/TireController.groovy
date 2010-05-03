@@ -199,12 +199,16 @@ class TireController {
 			redirect(action: "list")
 		}
 		else {
-			if(!params.max)
-			params.max = maxNumberOfTireOccurrences
-			if(!params.offset)
-			params.offset = 0
+			if(!params.max) {
+				params.max = maxNumberOfTireOccurrences
+			}
+			if(!params.offset) {
+				params.offset = 0
+			}
+			
 			def supplierOrderLines = SupplierOrderLine.findAllByTireAndReceivedDateIsNull(tireInstance)
 			def customerOrders = CustomerOrder.findAllByDeliveredDateIsNull()
+			
 			[supplierOrderLines: supplierOrderLines, customerOrders: customerOrders, tireInstance: tireInstance]
 		}
 	}
