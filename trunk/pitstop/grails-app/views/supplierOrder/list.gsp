@@ -22,11 +22,11 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.table.id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.orderDate.label', default: 'Order Date')}" />
+                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.table.orderDate.label', default: 'Order Date')}" />
                         
-                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.supplier.label', default: 'Supplier')}" />
+                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.supplier.label', default: 'Supplier')}" />
                         
                         </tr>
                     </thead>
