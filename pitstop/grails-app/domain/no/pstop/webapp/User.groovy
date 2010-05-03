@@ -4,7 +4,7 @@ import no.pstop.webapp.Role
 
 class User {
 	static transients = ['pass']
-	static hasMany = [authorities: Role]
+	static hasMany = [authorities: Role, logs: Log]
 	static belongsTo = Role
 
 	String username
