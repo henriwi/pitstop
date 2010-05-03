@@ -68,7 +68,7 @@ class TireHotelOccurrenceController {
 	def show = {
 		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
 		if (!tireHotelOccurrenceInstance) {
-			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
+			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label'), params.id])}"
 			redirect(action: "list")
 		}
 		else {
@@ -79,7 +79,7 @@ class TireHotelOccurrenceController {
 	def edit = {
 		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
 		if (!tireHotelOccurrenceInstance) {
-			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label', default: 'TireHotelOccurrence'), params.id])}"
+			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'tireHotelOccurrence.label'), params.id])}"
 			redirect(action: "list")
 		}
 		else {
