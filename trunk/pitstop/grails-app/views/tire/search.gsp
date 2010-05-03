@@ -51,6 +51,7 @@
 							<td valign="top" class="name"><label for="speedIndex"><g:message code="tire.speedIndex.label" /></label></td>
 							<td valign="top"><label for="tireType"><g:message code="tire.tireType.label" /></label></td>
 						</tr>
+						
 						<tr class="prop">
 							<td valign="top"><g:textField tabindex='6' name="diameter" /></td>
 							<td valign="top" class="name">
@@ -60,14 +61,14 @@
 							<td valign="top"><g:select tabindex='8' noSelection="${['Alle':'Alle']}" name="tireType" from="${tireInstance.constraints.tireType.inList}" value="${tireInstance?.tireType}" valueMessagePrefix="tire.tireType" /></td>
 						</tr>
 			
+					    <tr class="prop">
+							<td valign="top"><label for="active"><g:message code="search.button.fastSearchDeactive.label" /></label>
+							<g:checkBox name="deactive" value="${false}" ></g:checkBox></td>
+						</tr>
+			
 						<tr class="prop">
 							<td valign="top" class="name">
-       			    			<g:submitButton name="active" value="${message(code: 'search.button.fastSearchActive.label')}" class="searchButtons"  /></td>
-							</td>
-							<td valign="top" class="name">
-       			    			<g:submitButton name="deactive" value="${message(code: 'search.button.fastSearchDeactive.label')}" class="searchButtons"  /></td>
-							</td>
-							<td valign="top" class="name">
+       			    			<g:submitButton name="active" value="${message(code: 'search.button.fastSearch.label')}" class="searchButtons"  />
 								<input type="reset" value=${message(code: 'search.button.clear')} class="searchButtons"/>
 							</td>
 						</tr>
