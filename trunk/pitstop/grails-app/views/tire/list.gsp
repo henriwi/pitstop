@@ -35,8 +35,8 @@
              <g:form action="fastSearchForListView" method="get">
  				<div id="fastSearchInListView">
 					<g:textField tabindex='1' name="txtFastSearch" /></td>
-					<g:submitButton name="active" value="${message(code: 'search.button.fastSearchActive.label')}" class="searchButtons"    /></td>
-       			    <g:submitButton name="deactive" value="${message(code: 'search.button.fastSearchDeactive.label')}" class="searchButtons"  /></td>
+					<g:submitButton name="active" value="${message(code: 'search.button.fastSearch.label')}" class="searchButtons"    /></td>
+       			   <%--  <g:submitButton name="deactive" value="${message(code: 'search.button.fastSearchDeactive.label')}" class="searchButtons"  /></td>--%>
 					<g:link action="listShowAll" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>	
 				</div>
 			</g:form>
