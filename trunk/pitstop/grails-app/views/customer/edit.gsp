@@ -18,7 +18,7 @@
        		<span class="menuButton" ${(params.action == 'pendingCustomerOrders') ? "id='active'" : ""}  >
        			<g:link class="pendingCustomerOrders" action="pendingCustomerOrders"><g:message code="customer.pendingCustomerOrders.title.label" /></g:link>
        		</span>
-       		<span class="menuButton" ${(params.action == 'show' || ) ? "id='active'" : ""}  >
+       		<span class="menuButton" ${(params.action == 'show') ? "id='active'" : ""}  >
        			<g:link class="showUser" action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</g:link>
        		</span>
         </div>
