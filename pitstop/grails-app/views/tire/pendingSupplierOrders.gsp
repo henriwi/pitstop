@@ -59,7 +59,7 @@
 	                            <td>
 	                            	<g:form controller="supplierOrder" action="receiveOrder" method="post">
 			                        	<g:hiddenField name="id" value="${supplierOrderInstance?.id}" />
-			                        	<g:submitButton tabindex='14' name="create" class="save" value="${message(code: 'createTire.button.create.label')}" />
+			                        	<g:submitButton tabindex='14' name="create" class="save" value="${message(code: 'supplierOrder.button.receive.label')}" />
 			                        </g:form>
 	                            </td>
 	                            

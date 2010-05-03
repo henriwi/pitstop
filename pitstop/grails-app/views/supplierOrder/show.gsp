@@ -52,7 +52,7 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="supplierOrder.orderNumber.label" default="Order Number" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: supplierOrderInstance, field: "orderNumber")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: supplierOrderInstance, field: "id")}</td>
                             
                         </tr>
                     
