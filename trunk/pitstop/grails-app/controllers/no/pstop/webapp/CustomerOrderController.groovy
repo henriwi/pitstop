@@ -168,10 +168,9 @@ class CustomerOrderController {
 	
 	def deliverOrder = {
 		def order = CustomerOrder.get(params.id)
+		order.deliveredDate = new Date()
 		order.customerOrderLines.each {
-			if(!it.deliveredDate) {
-				it.deliveredDate = new Date()
-			}
+			it.tire.numberInStock -= it.numberOfReservedTires
 		}
 		redirect(controller: "customer", action: "show", id:1)
 	}

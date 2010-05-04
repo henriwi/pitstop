@@ -70,27 +70,27 @@ class TireControllerTests extends ControllerUnitTestCase {
 				numberOfOrderedTires: 4, price: 1095.0, receivedDate: null, discount: 10, environmentalFee: 10)
 		def supplierOrderLine2 = new SupplierOrderLine(tire: tire, supplierOrder: new SupplierOrder(), 
 				numberOfOrderedTires: 2, price: 995.0, receivedDate: null, discount: 10, environmentalFee: 10)
-		/*
+		
 		def customerOrderLine1 = new CustomerOrderLine(tire: tire, numberOfReservedTires: 4, 
 				customerOrder: new CustomerOrder(), price: 1095.0)
 		def customerOrderLine2 = new CustomerOrderLine(tire: tire, numberOfReservedTires: 6, 
 				customerOrder: new CustomerOrder(), price: 995.0)
-		*/
-		def customerOrder1 = new CustomerOrder(customer: new Customer(), orderDate: new Date(), deliveredDate: null, notice: "")
-		def customerOrder2 = new CustomerOrder(customer: new Customer(), orderDate: new Date(), deliveredDate: null, notice: "")
+		
+		//def customerOrder1 = new CustomerOrder(customer: new Customer(), orderDate: new Date(), deliveredDate: null, notice: "")
+		//def customerOrder2 = new CustomerOrder(customer: new Customer(), orderDate: new Date(), deliveredDate: null, notice: "")
 		
 		def supplierOrderLines = [supplierOrderLine1, supplierOrderLine2]
-		def customerOrders = [customerOrder1, customerOrder2]
+		def customerOrderLines = [customerOrderLine1, customerOrderLine2]
 		
 		mockDomain SupplierOrderLine, supplierOrderLines 
-		mockDomain CustomerOrder, customerOrders
+		mockDomain CustomerOrderLine, customerOrderLines
 		mockDomain Tire, [tire]
 		
 		controller.params.id = 1
 		def model = controller.show()
 		assertEquals "Tire should be equal", tire, model.tireInstance
 		assertEquals "supplierOrderLines should be equal", supplierOrderLines, model.supplierOrderLines
-		assertEquals "customerOrders should be equal", customerOrders, model.customerOrders
+		assertNotNull "customerOrders should not be null", model.customerOrders
 	}
 	
 	void testShowWithInvalidId() {

@@ -63,13 +63,6 @@
 			                        </g:form>
 	                            </td>
 	                            
-	                            <!--  <g:each in="${supplierOrderInstance?.supplierOrderLines}" status="y" var="supplierOrderLineInstance">
-	                        		<tr class="${(y % 2) == 0 ? 'odd' : 'even'}">
-	                        		
-	                        			<td>${fieldValue(bean: supplierOrderLineInstance, field: "numberOfOrderedTires")}</td>
-	                        			
-	                        		</tr>
-	                    		</g:each>-->
 	                        </tr>
 	                    </g:each>
                     </tbody>

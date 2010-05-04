@@ -130,27 +130,6 @@ class TireController {
 		render(view: "list", model: [tireInstanceList: tireList, tireInstanceTotal: tireCount])
 		
 	}
-
-	def pendingSupplierOrders = {
-		def pendingSupplierOrders = getPendingOrders()
-		[supplierOrders: pendingSupplierOrders]
-	}
-	
-	private getPendingOrders(pendingSupplierOrders) {
-		def pendingSupplierOrdersList = []
-		def supplierOrders = SupplierOrder.list().each { 
-			boolean pending = false
-			it.supplierOrderLines.each {
-				if (!it.receivedDate) {
-					pending = true
-				}
-			}
-			if (pending) {
-				pendingSupplierOrdersList << it
-			}
-		}
-		return pendingSupplierOrdersList
-	}
 	
 	private isFastSearchQuery(String query, String type){
 		query && type.equals("fast")
@@ -207,8 +186,10 @@ class TireController {
 			}
 			
 			def supplierOrderLines = SupplierOrderLine.findAllByTireAndReceivedDateIsNull(tireInstance)
-			def customerOrders = CustomerOrder.findAllByDeliveredDateIsNull()
+			def customerOrders = getPendingCustomerOrders(tireInstance) 
 			
+			println supplierOrderLines
+			println customerOrders
 			[supplierOrderLines: supplierOrderLines, customerOrders: customerOrders, tireInstance: tireInstance]
 		}
 	}
@@ -323,5 +304,39 @@ class TireController {
 		]
 		
 		render jsonTires as JSON
+	}
+	
+	def pendingSupplierOrders = {
+		def pendingSupplierOrders = getPendingSupplierOrders()
+		[supplierOrders: pendingSupplierOrders]
+	}
+	
+	private getPendingSupplierOrders(pendingSupplierOrders) {
+		def pendingSupplierOrdersList = []
+		def supplierOrders = SupplierOrder.list().each { 
+			boolean pending = false
+			it.supplierOrderLines.each {
+				if (!it.receivedDate) {
+					pending = true
+				}
+			}
+			if (pending) {
+				pendingSupplierOrdersList << it
+			}
+		}
+		return pendingSupplierOrdersList
+	}
+	
+	private getPendingCustomerOrders(tire) {
+		def customerOrderLines = CustomerOrderLine.findAllByTire(tire)
+		def pendingCustomerOrders = []
+		
+		customerOrderLines?.customerOrder?.each { 
+			if(!it.deliveredDate) {
+				pendingCustomerOrders << it
+			}
+		}
+		
+		return pendingCustomerOrders
 	}
 }

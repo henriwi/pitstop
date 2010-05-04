@@ -39,6 +39,15 @@ class CustomerController {
 		[customerOrderWithoutDeliveredDateInstanceList: customerOrderWithoutDeliveredDate]
 	}
 
+	def deliverOrder = {
+		def customerOrder = CustomerOrder.get(params.id)
+		customerOrder?.customerOrderLines.each {
+			it?.tire?.numberInStock -= it?.numberOfReservedTires
+		}
+		customerOrder?.deliveredDate = new Date()
+		redirect(controller: "customer", action: "pendingCustomerOrders")
+	}
+
     def create = {
         def customerInstance = new Customer()
         customerInstance.properties = params
