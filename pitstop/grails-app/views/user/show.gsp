@@ -11,7 +11,6 @@
 	</div>
 
 	<div class="body">
-		<span class="backButton"><g:link class="back" controller="user"><g:message code="user.show.button.back.label" /></g:link></span>
 		<h1><g:message code="user.show.header.label" args="[entityName]" /></h1>
 		<g:if test="${flash.message}">
 			<div class="message">${flash.message}</div>
