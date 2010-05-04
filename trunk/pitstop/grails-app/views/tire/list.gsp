@@ -69,8 +69,6 @@
                             
                             <g:sortableColumn params="${params}" property="numberInStock" title="${message(code: 'tire.numberInStock.table.label')}" />
                             
-                      		<g:sortableColumn property="enabled" title="${message(code: 'user.enabled.table.label')}" />
-                            
                             <g:sortableColumn params="${params}" property="notice" title="${message(code: 'tire.notice.table.label')}" />
                             
                            <%--  <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th> --%>
@@ -109,8 +107,6 @@
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "retailPrice")}</g:link></td>
                             
                             <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "numberInStock")}</g:link></td>
-                            
-                            <td><g:link action="show" id="${tireInstance.id}">${tireInstance?.enabledLabel()}</g:link> </td>
                             
                             <td><g:link action="show" id="${tireInstance.id}">${tireInstance?.showNoticeWith10FirstLetters()}</g:link></td>
                             
