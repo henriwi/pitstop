@@ -11,17 +11,17 @@
 	    	<span class="menuButton" id="${params.action == 'list' && params.controller == 'tire' ? 'active' : ''}" >
        			<g:link controller="tire" class="tireList" action="list"><g:message code="default.button.tireList.label"/></g:link>
        		</span>
-	        
        		<span class="menuButton" id="${params.action == 'create' && params.controller == 'tire' ? 'active' : ''}" >
        			<g:link controller="tire" class="createTire" action="create"><g:message code="default.button.newTire.label"/></g:link>
        		</span>
-	        
        		<span class="menuButton" id="${params.action == 'search' && params.controller == 'tire' ? 'active' : ''}" >
 	    		<g:link controller="tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link>
        		</span>
-       		
        		<span class="menuButton" id="${params.action == 'pendingSupplierOrders' && params.controller == 'supplierOrder' ? 'active' : ''}" >
        			<g:link class="pendingSupplierOrders" action="pendingSupplierOrders"><g:message code="tire.pendingSupplierOrders.title.label" /></g:link>
+       		</span>
+       		<span class="menuButton" ${(tireInstance.id) ? "id='active'" : ""}  >
+       			<g:link class="showTire" action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "brand")} ${fieldValue(bean: tireInstance, field: "tireName")}</g:link>
        		</span>
         </div>
         <div class="body">
