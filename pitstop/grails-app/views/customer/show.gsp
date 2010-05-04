@@ -219,38 +219,13 @@
 				</div>
 			
 				<g:if test="${customerOrders}">
-				<h3><g:message code="customer.show.title.orders.label" /></h3>
 					<div id="customerOrders">
-						<div>
-		                   	<gui:dataTable
-							    id="dt_2"
-							    columnDefs="[
-							        [key:'id', sortable:true, label:'Ordrenummer'],
-							        [key:'orderDate', type:'date', sortable:true, label: 'Ordredato'],
-							        [key:'delivered', expanded: 'true',type:'link', sortable:true, label: 'Utlever'],
-							    ]"
-							    controller="customer" action="customerOrdersAsJSON"
-							    resultsList="results"
-							    params="[id:customerInstance.id]"
-							    rowExpansion="true"
-							    rowsPerPage="10"
-							/>
-					        <script type="text/javascript">
-						        YAHOO.widget.DataTable.MSG_EMPTY = "Ingen utestående ordre.";
-									YAHOO.util.Event.onDOMReady(function() {
-										GRAILSUI.dt_2.on('cellClickEvent',function (oArgs) {
-											// 'this' is already referring to the DataTable
-											var target = oArgs.target;
-											var record = this.getRecord(target);
-											var column = this.getColumn(target);
-											if (column.key != 'id') {
-												return false;
-											}
-											return true;
-										});
-									});
-				        	</script>
-	                   	</div>
+						<h1><g:message code="customer.show.title.orders.label" /></h1>
+						<g:each in="${customerOrders}" status="i" var="customerOrderInstance">
+							<div id="customerCustomerOrder">
+								${customerOrderInstance?.id}
+	                   		</div>
+						</g:each>
 					</div>
 				</g:if>
 			</div>

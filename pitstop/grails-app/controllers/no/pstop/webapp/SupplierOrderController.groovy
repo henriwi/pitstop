@@ -171,7 +171,7 @@ class SupplierOrderController {
 		}
 	}
 	
-	private isSpecialFastSearchQuery(String query){
+	private isSpecialFastSearchQuery(String query) {
 		query ==~ regexFastSearch
 	}
 }

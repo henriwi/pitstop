@@ -34,20 +34,29 @@
                         
                             <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.list.table.orderDate.label', default: 'Order Date')}" />
                         
-                            <th><g:message code="supplierOrder.list.table.customer.label" default="Supplier" /></th>
+                            <th><g:message code="supplierOrder.list.table.customer.label" default="Customer" /></th>
+                            
+                            <th><g:message code="customer.pendingCustomerOrders.table.receive.label" /></th>
                    	    
                         </tr>
                     </thead>
                     <tbody>
-	                    <g:each in="${supplierOrders}" status="i" var="supplierOrderWithoutDeliveredDateInstance">
+	                    <g:each in="${customerOrderWithoutDeliveredDateInstanceList}" status="i" var="customerOrderWithoutDeliveredDateInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 	                        
-	                            <td><g:link action="show" id="${customerOrderWithoutDeliveredDateInstance.id}">${fieldValue(bean: customerOrderWithoutDeliveredDateInstance, field: "id")}</g:link></td>
+	                            <td><g:link action="show" controller="customerOrder" id="${customerOrderWithoutDeliveredDateInstance.id}">${fieldValue(bean: customerOrderWithoutDeliveredDateInstance, field: "id")}</g:link></td>
 	                        
 	                            <td><g:formatDate format="dd.MM.yyyy hh:mm" date="${customerOrderWithoutDeliveredDateInstance.orderDate}" /></td>
 	                        
 	                            <td>${fieldValue(bean: customerOrderWithoutDeliveredDateInstance, field: "customer")}</td>
-	                        
+	                        	
+	                        	<td>
+	                            	<g:form controller="customer" action="deliverOrder" method="post">
+			                        	<g:hiddenField name="id" value="${customerOrderWithoutDeliveredDateInstance?.id}" />
+			                        	<g:submitButton tabindex='14' name="create" class="save" value="${message(code: 'customer.pendingCustomerOrders.button.receive.label')}" />
+			                        </g:form>
+	                            </td>
+	                            
 	                        </tr>
 	                    </g:each>
                     </tbody>

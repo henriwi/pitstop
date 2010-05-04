@@ -20,7 +20,7 @@
 	    		<g:link controller="tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link>
        		</span>
        		
-       		<span class="menuButton" id="${params.action == 'pendingSupplierOrders' && params.controller == 'tire' ? 'active' : ''}" >
+       		<span class="menuButton" id="${params.action == 'pendingSupplierOrders' && params.controller == 'supplierOrder' ? 'active' : ''}" >
        			<g:link class="pendingSupplierOrders" action="pendingSupplierOrders"><g:message code="tire.pendingSupplierOrders.title.label" /></g:link>
        		</span>
         </div>
@@ -72,23 +72,25 @@
 							<span class="tireInStockNumbers">${fieldValue(bean: tireInstance, field: "numberInStock")}</span>
 							
 							<g:set var="numberOfReserved" value="${0}"></g:set>
-		           <g:each in="${customerOrderLines}" status="i" var="customerOrderLineInstance">
-		           	<g:set var="numberOfReserved" value="${numberOfReserved + customerOrderLineInstance?.numberOfReservedTires }"></g:set>
+		           <g:each in="${customerOrders}" status="i" var="customerOrderInstance">
+		           		<g:each in="${customerOrderInstance?.customerOrderLines}" status="j" var="customerOrderLineInstance">
+		           			<g:set var="numberOfReserved" value="${numberOfReserved + customerOrderLineInstance?.numberOfReservedTires }"></g:set>
+		           		</g:each>
 		           </g:each>
-							<span class="reserved"><span class="tireInStockLabels"><g:message code="tire.numberOfReserved.label" /></span>
-							<span class="tireInStockNumbers">${numberOfReserved}</span></span>
-						</span>
+						<span class="reserved"><span class="tireInStockLabels"><g:message code="tire.numberOfReserved.label" /></span>
+						<span class="tireInStockNumbers">${numberOfReserved}</span></span>
+					</span>
 						
           	<g:set var="numberOfOrdered" value="${0}"></g:set>
            	<g:each in="${supplierOrderLines}" status="i" var="supplierOrderLineInstance">
               	<g:set var="numberOfOrdered" value="${numberOfOrdered + (supplierOrderLineInstance?.numberOfOrderedTires - supplierOrderLineInstance?.numberOfReceivedTires)}"></g:set>
             </g:each>
             <span class="tireLabelsInStockAndReserved"><span class="tireInStockLabels"><g:message code="tire.numberOfOrdered.label" /></span>
-						<span class="tireInStockNumbers">${numberOfReserved}</span>
+						<span class="tireInStockNumbers">${numberOfOrdered}</span>
 						
 						<g:set var="numberOfAvailable" value="${0}"></g:set>
 						<span class="available"><span class="tireInStockLabels"><g:message code="tire.numberOfAvailable.label" /></span>
-						<span class="tireInStockNumbers">${tireInstance?.numberInStock - numberOfOrdered}</span></span>
+						<span class="tireInStockNumbers">${tireInstance?.numberInStock - numberOfReserved}</span></span>
 						</span>
      
                 </div> 
