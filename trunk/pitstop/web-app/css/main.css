@@ -856,7 +856,15 @@ div#onlyActiveTireHotelOccurrences {
 	padding: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
-	margin-bottom: 10px;	
+	margin-bottom: 10px;
+}
+
+#customerCustomerOrder {
+	border: 1px solid #bbb;
+	background-color: #F5F5FF;
+	margin-top: 5px;
+	width: 450px;
+	padding: 5px;
 }
 
 div.tireInfo {
@@ -935,6 +943,11 @@ input.orderTableTextField {
 }
 #supplierOrderedItems {
 	margin-top: 10px;
+}
+
+#deleteFromOrder {
+	color: #FFF;
+	//display: none;	
 }
 
 .supplierOrderHeaders {

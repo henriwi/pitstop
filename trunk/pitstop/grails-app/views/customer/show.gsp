@@ -217,18 +217,30 @@
 						</div>
 					</g:if>
 				</div>
-			
+					
 				<g:if test="${customerOrders}">
 					<div id="customerOrders">
 						<h1><g:message code="customer.show.title.orders.label" /></h1>
+						
 						<g:each in="${customerOrders}" status="i" var="customerOrderInstance">
 							<div id="customerCustomerOrder">
-								${customerOrderInstance?.id}
+								<h5>${customerOrderInstance?.id}</h5>
+								<span><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance?.orderDate}" /></span>
+								<span class="tireNotice">${customerOrderInstance?.notice}</span>
+								
+								<g:each in="${customerOrderInstance?.customerOrderLines}" status="j" var="customerOrderLineInstance">
+									<div id="customerCustomerOrderLine">
+										<h4>Bestilte dekk</h4>
+										<span>${customerOrderLineInstance?.tire}</span>
+										<span>${customerOrderLineInstance?.numberOfReservedTires}</span>
+										<span>${customerOrderLineInstance?.price}</span>
+									</div>
+								</g:each>
 	                   		</div>
 						</g:each>
+						
 					</div>
 				</g:if>
-			</div>
         </div>
     </body>
 </html>
