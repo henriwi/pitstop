@@ -859,13 +859,44 @@ div#onlyActiveTireHotelOccurrences {
 	margin-bottom: 10px;
 }
 
-#customerCustomerOrder {
+.customerOrderBox {
 	border: 1px solid #bbb;
 	background-color: #F5F5FF;
-	margin-top: 5px;
+	margin-top: 10px;
 	width: 450px;
 	padding: 5px;
 }
+.customerOrderBox h5 {
+	font-weight: normal;
+	font-style: italic;
+	font-size: 11px;
+	padding: 0px;
+	padding-bottom: 5px;
+	margin: 0px;
+}
+div.customerOrderLine {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-top: 1px solid #ccc;
+}
+div.customerOrderLine .tireName {
+	display: block;
+	padding: 0px;
+	margin: 0px;
+} 
+div.customerOrderLine .numberOfReservedTires {
+	display: inline;
+	padding: 0px;
+	margin: 0px;
+	margin-left: 25px;
+	font-style: italic;
+} 
+div.customerOrderLine .tirePrice {
+	display: inline;
+	padding: 0px;
+	margin: 0px;
+	font-style: italic;
+} 
 
 div.tireInfo {
 	float: left;
@@ -878,13 +909,10 @@ div.tireHotelButtons input {
 }
 
 #activeTireHotelOccurrences {
-	visibility: visible;
-	position: absolute;
+	display: inherit;
 }
 div#allTireHotelOccurrences {
-	visibility: hidden;
-	position: absolute;
-	width: inherit;
+	display: none;
 }
 
 /* CUSTOMER ORDER */

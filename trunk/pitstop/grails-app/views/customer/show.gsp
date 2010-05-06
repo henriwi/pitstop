@@ -68,7 +68,6 @@
 						<span class="button"><g:link class="createOrder" controller="customerOrder"  action="create" title="${message(code: 'customer.list.order.tooltip.label')}" id="${customerInstance?.id}">${message(code: 'customer.button.createOrder.label', default: 'Order')}</g:link></span>
 		        	</div>
                 </div>
-                
 			</div>
 			
 			<div id="customerTireHotelAndOrders">
@@ -76,17 +75,22 @@
 					<h3><g:message code="customer.show.title.tireHotel.label" /></h3>
 					<div id="customerTireHotel">
 						<span id="customerTireHotelOccurrenceSwitchButton">
-							<a id="showCustomerHistory" href="javascript:hideAndShowElement('allTireHotelOccurrences', 'activeTireHotelOccurrences');"
-								onclick="hideAndShowElement('hideCustomerHistory', 'showCustomerHistory');">Vis historikk</a>
-							<a id="hideCustomerHistory" href="javascript:hideAndShowElement('activeTireHotelOccurrences','allTireHotelOccurrences');"
-								onclick="hideAndShowElement('showCustomerHistory', 'hideCustomerHistory');" style="visibility: hidden;">Skjul historikk</a>
+							<a id="showCustomerHistory" href="javascript:showAndHideElement('allTireHotelOccurrences', 'activeTireHotelOccurrences');"
+								onclick="showAndHideElement('hideCustomerHistory', 'showCustomerHistory');">
+								Vis historikk
+							</a>
+							<a id="hideCustomerHistory" href="javascript:showAndHideElement('activeTireHotelOccurrences','allTireHotelOccurrences');"
+								onclick="showAndHideElement('showCustomerHistory', 'hideCustomerHistory');" style="display: none;">
+								Skjul historikk
+							</a>
 						</span>
+					
 						<div class="customerTireHotelOccurrencelist" id="activeTireHotelOccurrences">
-							
+								
 							<g:if test="${!tireHotelOccurrenceInstanceListWithoutDeliveredInstance}">
 									Kunden har ingen aktive dekk p&aring; dekkhotellet
 							</g:if>
-							
+								
 							<g:each in="${tireHotelOccurrenceInstanceListWithoutDeliveredInstance}" status="i" var="tireHotelOccurrenceInstance">
 								<div class="customerTireHotelOccurrencelist" id="onlyActiveTireHotelOccurrences">
 									<div class="tireInfo">
@@ -120,15 +124,6 @@
 			                        			<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
 			                        			<g:actionSubmit class="edit" action="edit" title="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" />
 		                        		</g:form>
-								<!--Hva er dette? Slette?-->
-<!--						                <g:ifAllGranted role="ROLE_ADMIN">-->
-<!--			                         		<g:form controller="tireHotelOccurrence" method="post">-->
-<!--			                         			<g:hiddenField name="customerId" value="${customerInstance?.id}" />-->
-<!--			                        			<g:hiddenField name="requestFromShowCustomerView" value="true" />-->
-<!--			                         			<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />-->
-<!--			                         			-->
-<!--			                         		</g:form>-->
-<!--			                   			</g:ifAllGranted>-->
 			                   		</div>
 			                   		<div style="clear: both;"></div>
 								</div>
@@ -162,7 +157,7 @@
 			                   	<tbody>
 				                    <g:each in="${tireHotelOccurrenceInstanceList}" status="i" var="tireHotelOccurrenceInstance">
 										<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-				                       
+					                       
 				                            <td>${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}</td>
 				                       
 				                            <td>${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}</td>
@@ -185,7 +180,7 @@
 			                            			</g:form>
 		                            			</g:if>
 	                            			</td>
-	                            			
+		                            			
 	                            			<td>
 	                            				<g:if test="${!tireHotelOccurrenceInstance.outDate}">
 		                            				<g:form controller="tireHotelOccurrence" method="post">
@@ -196,7 +191,7 @@
 		                            				</g:form>
 	                            				</g:if>
 	                            			</td>
-	                            			
+		                            			
 	     			                      	<g:ifAllGranted role="ROLE_ADMIN">
 			                            		<td>
 			                            			<g:form controller="tireHotelOccurrence" method="post">
@@ -215,32 +210,32 @@
 				          		<g:paginate next="Neste" prev="Forrige" controller="customer" action="show" id="${customerInstance.id}" total="${tireHotelOccurrenceInstanceTotalList.size()}"></g:paginate>
 				        	</div>
 						</div>
-					</g:if>
-				</div>
-					
+				</g:if>
+			</div>
 				<g:if test="${customerOrders}">
 					<div id="customerOrders">
 						<h1><g:message code="customer.show.title.orders.label" /></h1>
 						
 						<g:each in="${customerOrders}" status="i" var="customerOrderInstance">
-							<div id="customerCustomerOrder">
-								<h5>${customerOrderInstance?.id}</h5>
+							<div class="customerOrderBox">
+								<h4>Ordrenummer: ${customerOrderInstance?.id}</h4>
 								<span><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance?.orderDate}" /></span>
 								<span class="tireNotice">${customerOrderInstance?.notice}</span>
 								
+								<h5 class="orderedTire">Bestilte dekk:</h5>
 								<g:each in="${customerOrderInstance?.customerOrderLines}" status="j" var="customerOrderLineInstance">
-									<div id="customerCustomerOrderLine">
-										<h4>Bestilte dekk</h4>
-										<span>${customerOrderLineInstance?.tire}</span>
-										<span>${customerOrderLineInstance?.numberOfReservedTires}</span>
-										<span>${customerOrderLineInstance?.price}</span>
+									<div class="customerOrderLine">
+										<span class="tireName">${customerOrderLineInstance?.tire}</span>
+										<span class="numberOfReservedTires">${customerOrderLineInstance?.numberOfReservedTires} stk. &agrave;</span>
+										<span class="tirePrice"> kr <g:formatNumber number="${customerOrderLineInstance?.price}" format="###,##0" />
+										</span>
 									</div>
 								</g:each>
 	                   		</div>
 						</g:each>
-						
 					</div>
 				</g:if>
+			</div>
         </div>
     </body>
 </html>
