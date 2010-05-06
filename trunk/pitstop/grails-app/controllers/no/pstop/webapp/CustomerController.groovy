@@ -108,6 +108,8 @@ class CustomerController {
         def customerInstance = Customer.get(params.id)
         if (customerInstance) {
             customerInstance.properties = params
+			def postalCodeAndPlace = PostalCodeAndPlace.findByPostalCode(params.postalCode)
+			customerInstance.postalCodeAndPlace = postalCodeAndPlace
             if (!customerInstance.hasErrors() && customerInstance.save(flush: true)) {
                 flash.message = "${message(code: 'customer.updated.message', args: [message(code: 'customer.label'), customerInstance.firstName, customerInstance.lastName])}"
                 redirect(action: "show", id: customerInstance.id)
