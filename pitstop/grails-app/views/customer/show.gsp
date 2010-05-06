@@ -22,10 +22,10 @@
        		</span>
         </div>
         <div class="body">
-            <h1><g:message code="customer.show.title.label" /></h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
+            <h1><g:message code="customer.show.title.label" /></h1>
             <div class="dialog" id="customerShowDialog">
             	<div class="customerInfoBox">
 					<h3 class="customerName">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</h3>
@@ -41,14 +41,14 @@
 					
 					<g:if test="${customerInstance.phoneNumber}">
 						<span class="customerPhoneNumber">
-							${fieldValue(bean: customerInstance, field: "phoneNumber")}
 							<modalbox:createLink id="${customerInstance.id}" controller="customer" action="showSmsView" title="Send SMS" width="350" overlayDuration="0" slideDownDuration="0" resizeDuration="0">Send SMS</modalbox:createLink>
+							${fieldValue(bean: customerInstance, field: "phoneNumber")}
 						</span>
                     </g:if>
                     <g:if test="${customerInstance.email}">
 						<span class="customerEmail">
-							${fieldValue(bean: customerInstance, field: "email")}
                     		<a href="mailto:${customerInstance.email}" target="_blank">Send e-post</a>
+							${fieldValue(bean: customerInstance, field: "email")}
                     	</span>
 		            </g:if>
 	                

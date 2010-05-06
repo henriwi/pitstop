@@ -2,19 +2,16 @@
 	<meta name="layout" content="main" />
 	<title>${message(code: 'role.list.label')}</title>
 </head>
-
 <body>
-
 	<div class="nav">
 		<span class="menuButton"><g:link class="list" action="list">${message(code: 'role.list.label')}</g:link></span>
 		<span class="menuButton"><g:link class="create" action="create">${message(code: 'role.newRole.label')}</g:link></span>
 	</div>
-
 	<div class="body">
-		<h1>${message(code: 'role.list.label')}</h1>
 		<g:if test="${flash.message}">
-		<div class="message">${flash.message}</div>
+			<div class="message">${flash.message}</div>
 		</g:if>
+		<h1>${message(code: 'role.list.label')}</h1>
 		<div class="list">
 			<table>
 			<thead>

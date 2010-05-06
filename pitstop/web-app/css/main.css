@@ -309,7 +309,7 @@ span#active a {
     border: 1px solid #b2d1ff;
     color: #006dba;
     margin: 10px 0 5px 0;
-    padding: 5px 5px 5px 30px
+    padding: 5px 5px 5px 30px;
 }
 
 div.errors {
@@ -794,8 +794,8 @@ span.customerPhoneNumber a{
 	padding-left: 25px;
 	color: #555;
 	font-weight: normal;
-	margin-right: 15px;
-	float: right;
+	margin-left: 225px;
+	position: absolute;
 }
 span.customerEmail {
 	display: block;
@@ -806,8 +806,8 @@ span.customerEmail a{
 	padding-left: 25px;
 	color: #555;
 	font-weight: normal;
-	margin-right: 10px;
-	float: right;
+	margin-left: 225px;
+	position: absolute;
 }
 span.customerNotice {
 	font-style: italic;

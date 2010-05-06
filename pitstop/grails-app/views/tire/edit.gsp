@@ -18,7 +18,6 @@
 			    return true
 			}
 		</script>
-        
     </head>
     <body>
         <div class="nav">
@@ -40,12 +39,10 @@
         </div>
         
         <div class="body">
-            <h1><g:message code="editTire.title.label" default="Endre dekk" /></h1>
-            
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
-            
+            <h1><g:message code="editTire.title.label" default="Endre dekk" /></h1>
             <g:hasErrors bean="${tireInstance}">
 	            <div class="errors">
 	                <g:renderErrors bean="${tireInstance}" as="list" />

@@ -20,11 +20,10 @@
        		</span>
         </div>
         <div class="body">
-            <h1><g:message code="customer.create.header.label" /></h1>
-            
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
+            <h1><g:message code="customer.create.header.label" /></h1>
             <g:hasErrors bean="${customerInstance}">
 	            <div class="errors">
 	                <g:renderErrors bean="${customerInstance}" as="list" />

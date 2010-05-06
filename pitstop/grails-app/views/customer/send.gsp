@@ -3,11 +3,11 @@
 </head>
 <body>
 	<div class="body">
-
-		<h1>Send SMS til kunde</h1>
 		<g:if test="${flash.message}">
 			<div class="message">${flash.message}</div>
 		</g:if>
+		
+		<h1>Send SMS til kunde</h1>
 		<g:hasErrors bean="${authority}">
 			<div class="errors">
 				<g:renderErrors bean="${authority}" as="list" />

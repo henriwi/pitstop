@@ -36,11 +36,10 @@
        		</span>
 		</div>
         <div class="body">
-            <h1><g:message code="createTire.title.label"/></h1>
-            
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
+            <h1><g:message code="createTire.title.label"/></h1>
             
             <g:hasErrors bean="${tireInstance}">
             	<div class="errors">

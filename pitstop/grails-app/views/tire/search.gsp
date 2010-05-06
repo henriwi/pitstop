@@ -28,8 +28,6 @@
 		<g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
         </g:if>
-            
-		
 		
 		<h1><g:message code="search.header.normalSearch.label" default="Normal tire search" /></h1>
 		<g:form action="normalSearch" method="get">
