@@ -58,12 +58,13 @@ class CustomerController {
 		def postalCodeAndPlace = PostalCodeAndPlace.findByPostalCode(params.postalCode)
 		def customerInstance = new Customer(params)
 		customerInstance.postalCodeAndPlace = postalCodeAndPlace
-		if (customerInstance.save(flush: true)) {
-            flash.message = "${message(code: 'customer.created.message', args: [message(code: 'customer.label' ), customerInstance.firstName, customerInstance.lastName])}"
-            redirect(action: "show", id: customerInstance.id)
+		if (!customerInstance.validate()) {
+			render(view: "create", model: [customerInstance: customerInstance])
         }
         else {
-            render(view: "create", model: [customerInstance: customerInstance])
+			customerInstance = customerInstance.merge(flush: true)
+			flash.message = "${message(code: 'customer.created.message', args: [message(code: 'customer.label' ), customerInstance.firstName, customerInstance.lastName])}"
+			redirect(action: "show", id: customerInstance.id)
         }
     }
 

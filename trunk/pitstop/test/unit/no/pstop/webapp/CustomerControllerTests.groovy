@@ -12,7 +12,7 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 		mockDomain Customer
 		post = new PostalCodeAndPlace(postalCode:"0194",place:"Radiator By")
 		mockDomain PostalCodeAndPlace, [post]
-		customer1 = new Customer(firstName: "Dekk Roar", lastName: "Dekkesen", phoneNumber: "19555095", address: "Dekkveien 1",
+		customer1 = new Customer(id: 1, firstName: "Dekk Roar", lastName: "Dekkesen", phoneNumber: "19555095", address: "Dekkveien 1",
 				postalCodeAndPlace: post, email: "felger@dekk.no", company: "Dekkilicious", notice: "God kunde")
 	}
 	
@@ -53,9 +53,11 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 	}
 	
 	void testSaveWithValidCustomer() {
+		setParams("Dekk Roar", "Dekkesen", "19555095", "Dekkveien 1", "0194", "felger@dekk.no", "Dekkilicious", "God kunde")
+		controller.metaClass.message = {args -> println "message: ${args}" }
+		def mock = mockFor(Customer)
+		mock.demand.merge() {customer1}
 		
-		setParams("Per", "Hansen", "23749216", "Holbergsplass", "0194", "oslo@hio.no", "HIO", "ingen merknader")
-		controller.metaClass.message = {args -> println "message: ${args}" } 
 		controller.save()
 		
 		assertEquals "redirect action", "show", controller.redirectArgs.action
