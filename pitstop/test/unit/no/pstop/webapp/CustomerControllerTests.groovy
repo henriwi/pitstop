@@ -94,8 +94,8 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 		assertEquals customer1, model.customerInstance
 		
 		assertEquals "customerOrders should be equal", customerOrders, model.customerOrders
-		assertEquals "tireHotelOccurrenceList should e equal", tireHotelOccurrenceList, model.tireHotelOccurrenceInstanceList
-		assertEquals "tireHotelOccurrenceTotalList should e equal", tireHotelOccurrenceTotalList, model.tireHotelOccurrenceInstanceTotalList
+		assertEquals "tireHotelOccurrenceList should be equal", tireHotelOccurrenceList, model.tireHotelOccurrenceInstanceList
+		assertEquals "tireHotelOccurrenceTotalList should be equal", tireHotelOccurrenceTotalList, model.tireHotelOccurrenceInstanceTotalList
 	}
 	
 	
@@ -130,6 +130,7 @@ class CustomerControllerTests extends ControllerUnitTestCase {
 		customer1.metaClass.save = {-> return true }
 		customer1.metaClass.hasErrors = {-> return false }
 		controller.params.id = 1
+		controller.params.postalCode = "0194"
 		controller.metaClass.message = {args -> println "message: ${args}"} 
 		controller.update()
 		
