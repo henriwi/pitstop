@@ -307,11 +307,13 @@ class TireController {
 	}
 	
 	def pendingSupplierOrders = {
-		def pendingSupplierOrders = getPendingSupplierOrders()
+		println "Hepp"
+		def pendingSupplierOrders = pendingSupplierOrders()
 		[supplierOrders: pendingSupplierOrders]
 	}
 	
-	private getPendingSupplierOrders(pendingSupplierOrders) {
+	private pendingSupplierOrders() {
+		println "Jepp"
 		def pendingSupplierOrdersList = []
 		def supplierOrders = SupplierOrder.list().each { 
 			boolean pending = false
@@ -324,6 +326,7 @@ class TireController {
 				pendingSupplierOrdersList << it
 			}
 		}
+		println pendingSupplierOrdersList
 		return pendingSupplierOrdersList
 	}
 	
