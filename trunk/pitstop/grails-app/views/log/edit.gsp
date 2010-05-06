@@ -14,14 +14,14 @@
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
         <div class="body">
-            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
+            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:hasErrors bean="${logInstance}">
-            <div class="errors">
-                <g:renderErrors bean="${logInstance}" as="list" />
-            </div>
+            	<div class="errors">
+            	    <g:renderErrors bean="${logInstance}" as="list" />
+            	</div>
             </g:hasErrors>
             <g:form method="post" >
                 <g:hiddenField name="id" value="${logInstance?.id}" />

@@ -25,11 +25,10 @@
        		</span>
         </div>
         <div class="body">
-            <h1><g:message code="showTire.title.label" /></h1>
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
-            <!--  <h3 class="customerName"> -->
+            <h1><g:message code="showTire.title.label" /></h1>
             
             <div class="tireInfoBoxNew">
 						<span class="headerName">

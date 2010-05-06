@@ -2,24 +2,21 @@
 	<meta name="layout" content="main" />
 	<title>Edit Role</title>
 </head>
-
 <body>
-
 	<div class="nav">
 		<span class="menuButton"><a class="home" href="${createLinkTo(dir:'')}">Home</a></span>
 		<span class="menuButton"><g:link class="list" action="list">Role List</g:link></span>
 		<span class="menuButton"><g:link class="create" action="create">New Role</g:link></span>
 	</div>
-
 	<div class="body">
-		<h1>Edit Role</h1>
 		<g:if test="${flash.message}">
-		<div class="message">${flash.message}</div>
+			<div class="message">${flash.message}</div>
 		</g:if>
+		<h1>Edit Role</h1>
 		<g:hasErrors bean="${authority}">
-		<div class="errors">
-			<g:renderErrors bean="${authority}" as="list" />
-		</div>
+			<div class="errors">
+				<g:renderErrors bean="${authority}" as="list" />
+			</div>
 		</g:hasErrors>
 		<div class="prop">
 			<span class="name">ID:</span>

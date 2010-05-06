@@ -26,11 +26,11 @@
        		</span>
         </div>
         <div class="body">
-            <h1><g:message code="tire.pendingSupplierOrders.title.label" /></h1>
-            
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
+
+            <h1><g:message code="tire.pendingSupplierOrders.title.label" /></h1>
             
             <div class="list">
                 <table>

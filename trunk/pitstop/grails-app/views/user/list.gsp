@@ -2,9 +2,7 @@
 	<meta name="layout" content="main" />
 	<title><g:message code="user.list.label" /></title>
 </head>
-
 <body>
-
 	<div class="nav">
 		<g:if test="${params.action == 'list' && params.controller == 'user'}">
 			<span class="menuButton" id="active" >
@@ -39,12 +37,11 @@
 			</span>
 		</g:else>
 	</div>
-
 	<div class="body">
-		<h1><g:message code="user.list.label" /></h1>
 		<g:if test="${flash.message}">
 			<div class="message">${flash.message}</div>
 		</g:if>
+		<h1><g:message code="user.list.label" /></h1>
 		<div class="list">
 			<table>
 				<thead>

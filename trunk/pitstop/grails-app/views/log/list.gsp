@@ -41,10 +41,10 @@
 			</g:else>
         </div>
         <div class="body">
-            <h1><g:message code="log.list.label" /></h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
+            <h1><g:message code="log.list.label" /></h1>
             <div class="list">
                 <table>
                     <thead>

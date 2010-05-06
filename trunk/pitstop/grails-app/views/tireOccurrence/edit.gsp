@@ -14,10 +14,10 @@
 		    <span class="menuButton"><g:link controller = "tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link></span>
         </div>
         <div class="body">
-            <h1><g:message code="tireOccurrence.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+	            <div class="message">${flash.message}</div>
             </g:if>
+            <h1><g:message code="tireOccurrence.edit.label" args="[entityName]" /></h1>
             <g:hasErrors bean="${tireOccurrenceInstance}">
             <div class="errors">
                 <g:renderErrors bean="${tireOccurrenceInstance}" as="list" />

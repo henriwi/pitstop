@@ -34,10 +34,10 @@
 	        </g:else>
         </div>
         <div class="body">
-            <h1><g:message code="tireHotelOccurrence.list.header.label"/></h1>
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
+            <h1><g:message code="tireHotelOccurrence.list.header.label"/></h1>
             <g:form action="search" method="get">
 			<div id="fastSearchInListView">
 				<g:textField tabindex='1' name="search" /></td>

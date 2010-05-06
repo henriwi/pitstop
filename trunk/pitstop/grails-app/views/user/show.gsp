@@ -11,10 +11,10 @@
 	</div>
 
 	<div class="body">
-		<h1><g:message code="user.show.header.label" args="[entityName]" /></h1>
 		<g:if test="${flash.message}">
 			<div class="message">${flash.message}</div>
 		</g:if>
+		<h1><g:message code="user.show.header.label" args="[entityName]" /></h1>
 		<div class="dialog">
 			<table>
 			<tbody>

@@ -2,9 +2,7 @@
 	<meta name="layout" content="main" />
 	<title>Create User</title>
 </head>
-
 <body>
-
 	<div class="nav">
 		<g:if test="${params.action == 'list' && params.controller == 'user'}">
 			<span class="menuButton" id="active" >
@@ -41,14 +39,14 @@
 	</div>
 
 	<div class="body">
-		<h1><g:message code="user.create.header.label" args="[entityName]" /></h1>
 		<g:if test="${flash.message}">
-		<div class="message">${flash.message}</div>
+			<div class="message">${flash.message}</div>
 		</g:if>
+		<h1><g:message code="user.create.header.label" args="[entityName]" /></h1>
 		<g:hasErrors bean="${person}">
-		<div class="errors">
-			<g:renderErrors bean="${person}" as="list" />
-		</div>
+			<div class="errors">
+				<g:renderErrors bean="${person}" as="list" />
+			</div>
 		</g:hasErrors>
 		<g:form action="save">
 			<div class="dialog">

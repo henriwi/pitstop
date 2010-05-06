@@ -9,41 +9,33 @@
 		<span class="menuButton"><g:link class="list" action="list">${message(code: 'role.list.label')}</g:link></span>
 		<span class="menuButton"><g:link class="create" action="create">${message(code: 'role.newRole.label')}</g:link></span>
 	</div>
-
 	<div class="body">
-		<span class="backButton"><g:link class="back" controller="role"><g:message code="role.show.button.back.label" /></g:link></span>
-		<h1>${message(code: 'role.show.label')}</h1>
 		<g:if test="${flash.message}">
-		<div class="message">${flash.message}</div>
+			<div class="message">${flash.message}</div>
 		</g:if>
+		<h1>${message(code: 'role.show.label')}</h1>
 		<div class="dialog">
 			<table>
 			<tbody>
-
 				<tr class="prop">
 					<td valign="top" class="name">${message(code: 'role.id.label')}</td>
 					<td valign="top" class="value">${authority.id}</td>
 				</tr>
-
 				<tr class="prop">
 					<td valign="top" class="name">${message(code: 'role.roleName.label')}</td>
 					<td valign="top" class="value">${authority.authority}</td>
 				</tr>
-
 				<tr class="prop">
 					<td valign="top" class="name">${message(code: 'role.description.label')}</td>
 					<td valign="top" class="value">${authority.description}</td>
 				</tr>
-
 				<tr class="prop">
 					<td valign="top" class="name">${message(code: 'role.people.label')}</td>
 					<td valign="top" class="value">${authority.people}</td>
 				</tr>
-
 			</tbody>
 			</table>
 		</div>
-
 		<div class="buttons">
 			<g:form>
 				<input type="hidden" name="id" value="${authority?.id}" />
