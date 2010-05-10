@@ -944,6 +944,22 @@ input.orderTableTextField {
 	margin-bottom: 5px;
 }
 
+.addToOrderTableItem {
+    background: url(../images/skin/addTireToOrder.png) 5px 50% no-repeat;
+    padding-right: 15px;
+    padding-top: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.deleteFromOrderTableItem {
+    background: url(../images/skin/removeTireFromOrder.png) 5px 50% no-repeat;
+    padding-right: 15px;
+    padding-top: 5px;
+    border: none;
+    cursor: pointer;
+}
+
 .showCustomerButtons {
 	display: inline;
 }
