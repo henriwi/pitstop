@@ -87,8 +87,7 @@
 	                      			<td>${orderLineInstance?.numberOfReservedTires}</td>
 	                      			<td><g:formatNumber number="${orderLineInstance?.price}" format="#.00 kr" /></td>
 									<td>
-	                          			<g:hiddenField name="orderLineIndex" value="${i}" />
-	                          			<g:actionSubmit action="deleteFromOrder" class="deleteFromOrderTableItem" value=" ${i}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
+	                          			<g:actionSubmit action="deleteFromOrder" class="deleteFromOrderTableItem" value=" ${i}" title="${message(code: 'order.deleteFromOrder.tooltip.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
 	                         		</td>  
 								</tr>
 						</g:each>
@@ -125,7 +124,7 @@
 							<td id="averagePrice"></td>
 							<td><g:textField class="orderTableTextField" maxlength="30" tabindex='12' name="numberOfReservedTires" value="" /></td>
 							<td><g:textField class="orderTableTextField" maxlength="30" tabindex='12' name="price" value="" /></td>
-							<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'customerOrder.addToOrder.tooltip.label')}"/></span></td>
+							<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'order.addToOrder.tooltip.label')}"/></span></td>
 	                   	</tbody>
 	            		</table>
 	            	</div>
