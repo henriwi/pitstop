@@ -68,4 +68,8 @@ class UserTests extends GrailsUnitTestCase {
 		def badField = user.errors.getFieldError("email")
 		assertNotNull "Expected error in email", badField
 	}
+	
+	void testToString() {
+		assertEquals "Expected equal toStrings", "Anders Evenstuen", user.toString()
+	}
 }

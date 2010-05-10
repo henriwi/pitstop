@@ -25,4 +25,8 @@ class User {
 	String enabledLabel(){
 		(enabled) ? "Ja" : "Nei"
 	}
+	
+	String toString() {
+		userRealName
+	}
 }
