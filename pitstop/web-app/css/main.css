@@ -1025,6 +1025,10 @@ input.receiveSupplierOrder {
 }
 
 /* SHOW TIRE */
+#tireInfo {
+	float: left;
+	margin-right: 10px;	
+}
 div.tireInfoBoxNew {
 	width: 350px;
 	border: 1px solid #bbb;
@@ -1135,6 +1139,10 @@ span.tireNewOrder a  {
 	padding: 5px;
 	margin-top: 15px;
 	margin-bottom: 1px;
+}
+
+#supplierOrderLineList {
+	float: left;	
 }
 
 /* YUI-DATA TABLE */

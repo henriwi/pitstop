@@ -64,11 +64,11 @@
                     <g:each in="${logInstanceList}" status="i" var="logInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${logInstance.id}">${logInstance?.user?.username}</g:link></td>
+                            <td>${logInstance?.user?.username}</td>
                         
-                            <td><g:link action="show" id="${logInstance.id}"><g:formatDate format="dd.MM.yyyy HH:mm:ss" date="${logInstance?.date}" /></g:link></td>
+                            <td><g:formatDate format="dd.MM.yyyy HH:mm:ss" date="${logInstance?.date}" /></td>
                         
-                            <td><g:link action="show" id="${logInstance.id}">${logInstance?.event}</g:link></td>
+                            <td>${logInstance?.event}</td>
                             
 	                    	<td>
 		                    	<g:form method="post">

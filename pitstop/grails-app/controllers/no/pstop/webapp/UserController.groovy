@@ -33,7 +33,9 @@ class UserController {
 		for (role in person.authorities) {
 			roleNames << role
 		}
-		[person: person, roleNames: roleNames]
+		
+		def logList = Log.findAllByUser(person)
+		[person: person, roleNames: roleNames, logInstanceList: logList]
 	}
 
 	def delete = {

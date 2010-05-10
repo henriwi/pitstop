@@ -163,7 +163,7 @@ class TireController {
 	def save = {
 		def tireInstance = new Tire(params)
 		if (tireInstance.save(flush: true)) {
-			flash.message = "${message(code: 'tire.created.message', args: [message(code: 'tire.label', default: 'Dekk'), tireInstance.tireShowToString()])}"
+			flash.message = "${message(code: 'tire.created.message', args: [message(code: 'tire.label'), tireInstance.tireShowToString()])}"
 			redirect(action: "show", id: tireInstance.id)
 		}
 		else {
@@ -174,7 +174,7 @@ class TireController {
 	def show = {
 		def tireInstance = Tire.get(params.id)
 		if (!tireInstance) {
-			flash.message = "${message(code: 'tire.not.found.message', args: [message(code: 'tire.label', default: 'Dekk'), params.id])}"
+			flash.message = "${message(code: 'tire.not.found.message', args: [message(code: 'tire.label'), params.id])}"
 			redirect(action: "list")
 		}
 		else {
@@ -276,8 +276,8 @@ class TireController {
 	
 	
 	def disableAndEnable = {
-		def person = Tire.get(params.id)
-		person.enabled = person.enabled ? false : true 
+		def tire = Tire.get(params.id)
+		tire.enabled = tire.enabled ? false : true 
 		redirect(action: "list")
 	}
 	
