@@ -15,12 +15,12 @@ class CustomerOrderControllerTests extends ControllerUnitTestCase {
 		mockDomain CustomerOrder
 		mockDomain CustomerOrderLine
 		
+		customer = new Customer(id:1, firstName: "Dekk Roar", lastName: "Dekkesen", phoneNumber: "19555095", address: "Dekkveien 1",
+				postalCodeAndPlace: post, email: "felger@dekk.no", company: "Dekkilicious", notice: "God kunde")
 		customerOrder = new CustomerOrder(customer: customer, orderDate: new Date(), deliveredDate: null, notice: "")
 		customerOrderLine = new CustomerOrderLine(tire: tire, customerOrder: customerOrder,
 				numberOfReservedTires: 4, price: 950.0)
 		post = new PostalCodeAndPlace(postalCode:"0194",place:"Oslo")
-		customer = new Customer(firstName: "Dekk Roar", lastName: "Dekkesen", phoneNumber: "19555095", address: "Dekkveien 1",
-				postalCodeAndPlace: post, email: "felger@dekk.no", company: "Dekkilicious", notice: "God kunde")
 		tire = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
 				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", 
 				notice:"Demodekk", retailPrice: 1095, numberInStock: 4)
@@ -80,6 +80,7 @@ class CustomerOrderControllerTests extends ControllerUnitTestCase {
 		mockDomain CustomerOrder, [customerOrder]
 		mockDomain CustomerOrderLine, [customerOrderLine]
 		controller.params.id = 1
+		controller.metaClass.message = {args -> println "message: ${args}"}
 		
 		controller.deliverOrder()
 		
@@ -87,17 +88,4 @@ class CustomerOrderControllerTests extends ControllerUnitTestCase {
 		assertEquals "Redirect action should be show", "show", controller.redirectArgs.action
 		assertEquals "Redirect id should be 1", 1, controller.redirectArgs.id
 	}
-	
-	void testDeliverOrderLine() {
-		mockDomain CustomerOrder, [customerOrder]
-		mockDomain CustomerOrderLine, [customerOrderLine]
-		controller.params.id = 1
-		
-		controller.deliverOrder()
-		
-		assertEquals "Redirect controller should be customer", "customer", controller.redirectArgs.controller
-		assertEquals "Redirect action should be show", "show", controller.redirectArgs.action
-		assertEquals "Redirect id should be 1", 1, controller.redirectArgs.id
-	}
-
 }
