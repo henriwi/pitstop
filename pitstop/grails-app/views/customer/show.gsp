@@ -57,6 +57,8 @@
 					</g:if>
 					
 	                <div class="buttons" id="customerButtons">
+	                	<span class="button"><g:link class="createOrder" controller="customerOrder"  action="create" title="${message(code: 'customer.list.order.tooltip.label')}" id="${customerInstance?.id}">${message(code: 'customer.button.createOrder.label')}</g:link></span>
+						<span class="button"><g:link class="addTireHotelOccurrence" controller="tireHotelOccurrence"  action="create" title="${message(code: 'customer.list.tireHotel.tooltip.label')}" id="${customerInstance?.id}">${message(code: 'customer.button.createTireHotel.label')}</g:link></span>
 		                <g:form class="showCustomerButtons">
 		                    <g:hiddenField name="id" value="${customerInstance?.id}" />
 		                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'customer.button.edit.label', default: 'Edit')}" /></span>
@@ -65,7 +67,6 @@
 		                    	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'customer.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'customer.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
 		                    </g:ifAllGranted>
 						</g:form>
-						<span class="button"><g:link class="createOrder" controller="customerOrder"  action="create" title="${message(code: 'customer.list.order.tooltip.label')}" id="${customerInstance?.id}">${message(code: 'customer.button.createOrder.label', default: 'Order')}</g:link></span>
 		        	</div>
                 </div>
 			</div>
@@ -218,6 +219,10 @@
 						
 						<g:each in="${customerOrders}" status="i" var="customerOrderInstance">
 							<div class="customerOrderBox">
+								<g:form controller="customerOrder" method="post">
+									<g:hiddenField name="id" value="${customerOrderInstance?.id}" />
+									<g:actionSubmit class="deliverOrder" action="deliverOrder" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'customerOrder.receive.label')}" />
+								</g:form>
 								<h4>Ordrenummer: ${customerOrderInstance?.id}</h4>
 								<span><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance?.orderDate}" /></span>
 								<span class="tireNotice">${customerOrderInstance?.notice}</span>
