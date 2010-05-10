@@ -5,10 +5,12 @@ import grails.test.*
 
 class UserControllerTests extends ControllerUnitTestCase {
 	def user1, user2, user3
+	def log
     protected void setUp() {
         super.setUp()
 		mockDomain User
 		mockDomain Role
+		mockDomain Log
 		
 		user1 = new User(username: "anders", userRealName: "Anders Evenstuen", passwd: "123", enabled: true, 
 		email: "anders@gmail.com", description: "ingen", pass: "123")
@@ -18,6 +20,7 @@ class UserControllerTests extends ControllerUnitTestCase {
 		
 		user3 = new User(username: "ole", userRealName: "Ole Olsen", passwd: "123", enabled: true, 
 				email: "ole@gmail.com", description: "ingen", pass: "123")
+        log = new Log(user: user1, date: new Date(), event: "Created tire")
     }
 
     protected void tearDown() {
@@ -50,11 +53,13 @@ class UserControllerTests extends ControllerUnitTestCase {
 	
 	void testShowWithValideId() {
 		mockDomain User, [user1]
+		mockDomain Log, [log]
 		
 		controller.params.id = 1
 		def model = controller.show()
 		
 		assertEquals "Expected model shold be the same as the returned", user1, model.person
+		assertNotNull "Log list should not be empty", model.logInstanceList
 	}
 	
 	void testShowWithInvalidId() {
