@@ -50,9 +50,9 @@
 	                            <td>${fieldValue(bean: customerOrderWithoutDeliveredDateInstance, field: "customer")}</td>
 	                        	
 	                        	<td>
-	                            	<g:form controller="customer" action="deliverOrder" method="post">
+	                            	<g:form controller="customerOrder" action="deliverOrder" method="post">
 			                        	<g:hiddenField name="id" value="${customerOrderWithoutDeliveredDateInstance?.id}" />
-			                        	<g:submitButton tabindex='14' name="create" class="save" value="${message(code: 'customer.pendingCustomerOrders.button.receive.label')}" />
+			                        	<g:actionSubmit class="deliverOrder" action="deliverOrder" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'customerOrder.receive.label')}" />
 			                        </g:form>
 	                            </td>
 	                            

@@ -39,14 +39,13 @@ class CustomerOrderController {
 
     def save = {
     	def customer = session["order"]?.customer
-    	println params
-		println customer
 		def customerOrderInstance = session["order"]
 		customerOrderInstance.orderDate = new Date()
 		customerOrderInstance.customer = customer
 		
 		try {
 			orderService.saveCustomerOrder(customerOrderInstance, session)
+			flash.message = "${message(code: 'customerOrder.created.message', args: [customerOrderInstance?.id])}"
 			redirect(action: "show", controller: "customer", id: customer?.id)
 		}
 		catch(result) {
@@ -172,12 +171,8 @@ class CustomerOrderController {
 		order.customerOrderLines.each {
 			it.tire.numberInStock -= it.numberOfReservedTires
 		}
-		redirect(controller: "customer", action: "show", id:1)
-	}
-	
-	def deliverOrderLine = {
-		def orderLine = CustomerOrderLine.get(params.id)
-		orderLine.deliveredDate = new Date()
-		redirect(controller: "customer", action: "show", id:1)
+		
+		flash.message = "${message(code: 'customerOrder.received.message', args: [params.id])}"
+		redirect(controller: "customer", action: "show", id: order?.customer?.id)
 	}
 }

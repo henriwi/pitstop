@@ -83,7 +83,7 @@ class CustomerController {
 			def tireHotelOccurrenceListWithoutDelivered = TireHotelOccurrence.findAllByOutDateIsNullAndCustomer(customerInstance)
 			def tireHotelOccurrenceInstanceList = TireHotelOccurrence.findAllByCustomer(customerInstance, [max:params.max, offset:params.offset])
 			def tireHotelOccurrenceInstanceTotalList = TireHotelOccurrence.findAllByCustomer(customerInstance)	
-        	def customerOrders = CustomerOrder.findAllByCustomer(customerInstance)
+        	def customerOrders = CustomerOrder.findAllByCustomerAndDeliveredDateIsNull(customerInstance)
 
 			[customerInstance: customerInstance, 
 			tireHotelOccurrenceInstanceListWithoutDeliveredInstance: tireHotelOccurrenceListWithoutDelivered,
@@ -196,21 +196,5 @@ class CustomerController {
 		]
 		
 		render data as JSON
-	}
-	
-	private getPendingOrders(orders) {
-		def pendingOrders = []
-		orders.each {
-			boolean pending = false
-			it.customerOrderLines.each { 
-//				if (!it.deliveredDate) {
-					pending = true
-//				}
-			}
-			if(pending) {
-				pendingOrders << it
-			}
-		}
-		return pendingOrders
 	}
 }

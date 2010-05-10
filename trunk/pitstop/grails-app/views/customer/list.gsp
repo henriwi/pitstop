@@ -62,7 +62,7 @@
                      	    <th><a class="notSortableColoumn">${message(code: 'cusomter.list.edit.label')}</a></th>
 	                
            	                <g:ifAllGranted role="ROLE_ADMIN"> 
-	                		<th><a class="notSortableColoumn">${message(code: 'customer.list.delete.label')}</a></th>
+	                			<th><a class="notSortableColoumn">${message(code: 'customer.list.delete.label')}</a></th>
 							</g:ifAllGranted>                       
                        
                         </tr>

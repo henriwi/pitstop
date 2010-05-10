@@ -915,6 +915,18 @@ div#allTireHotelOccurrences {
 	display: none;
 }
 
+input.deliverOrder   {
+	background:url("../images/skin/tireReceived.png") no-repeat scroll 5px 50% transparent;
+	color:#555555;
+	float:right;
+	font-weight:normal;
+	margin-top: 0;
+	margin-right:10px;
+	padding-left:25px;
+	border: none;
+	cursor: pointer;
+}
+
 /* CUSTOMER ORDER */
 #customerAndNotice {
 	margin-bottom: 10px;
