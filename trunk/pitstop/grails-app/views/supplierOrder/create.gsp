@@ -74,8 +74,7 @@
 	                      			<td>${orderLineInstance?.environmentalFee}</td>
 	                      			<td>${orderLineInstance?.numberOfOrderedTires}</td>
 									<td>
-		                          		<g:hiddenField name="orderLineIndex" value="${i}" />
-		                          		<g:actionSubmit id="${i}" action="deleteFromOrder" class="deleteTableItem" value=" ${i}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
+		                          		<g:actionSubmit id="${i}" action="deleteFromOrder" class="deleteFromOrderTableItem" value=" ${i}" title="${message(code: 'order.deleteFromOrder.tooltip.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
 	                         		</td>  
 								</tr>
 							</g:each>
@@ -97,7 +96,7 @@
 								<td><g:textField class="supplierOrderHeaders" name="discount" value="${fieldValue(bean: supplierOrderLineInstance, field: 'discount')}" /></td>
 								<td><g:textField class="supplierOrderHeaders" name="environmentalFee" value="${fieldValue(bean: supplierOrderLineInstance, field: 'environmentalFee')}" /></td>
 								<td><g:textField class="supplierOrderHeaders" name="numberOfOrderedTires" value="${fieldValue(bean: supplierOrderLineInstance, field: 'numberOfOrderedTires')}" /></td>
-								<td><span class="button"><g:actionSubmit action="addToOrder" class="save" value="${message(code: 'supplierOrder.addToOrder.label')}" /></span></td>
+								<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'order.addToOrder.tooltip.label')}" /></span></td>
 							</tr>
                    		</tbody>
             		</table>
