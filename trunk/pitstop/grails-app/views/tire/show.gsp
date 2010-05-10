@@ -28,75 +28,86 @@
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
-            <h1><g:message code="showTire.title.label" /></h1>
             
-            <div class="tireInfoBoxNew">
+            <div id="tireInfo">
+            	<h1><g:message code="showTire.title.label" /></h1>
+            		<div class="tireInfoBoxNew">
 						<span class="headerName">
 							<h3 class="tireBrandHeader">${fieldValue(bean: tireInstance, field: "brand")} ${fieldValue(bean: tireInstance, field: "tireName")}</h3>
 							 - ${fieldValue(bean: tireInstance, field: "partNr")}
 						</span>  
+					
 						<g:if test="${tireInstance.width}">
 							<span class="tireWidth">${fieldValue(bean: tireInstance, field: "width")}/${fieldValue(bean: tireInstance, field: "profile")}
 							 ${fieldValue(bean: tireInstance, field: "construction")}${fieldValue(bean: tireInstance, field: "diameter")}
 							 ${fieldValue(bean: tireInstance, field: "loadIndex")}${fieldValue(bean: tireInstance, field: "speedIndex")}
 							</span>
 						</g:if>
+						
 						<span class="tireSeason">${fieldValue(bean: tireInstance, field: "tireType")} <g:if test="${tireInstance.pattern}">${fieldValue(bean: tireInstance, field: "pattern")}</g:if>
 						</span>
+						
 						<span class="tirePrice">
-						<g:formatNumber number="${tireInstance?.retailPrice}" format="#.00 kr" />
+							<g:formatNumber number="${tireInstance?.retailPrice}" format="#.00 kr" />
 						</span>
+						
 						<g:if test="${tireInstance.notice}">
-						<span class="tireNotice">
-							${fieldValue(bean: tireInstance, field: "notice")}
-						</span> 
+							<span class="tireNotice">
+								${fieldValue(bean: tireInstance, field: "notice")}
+							</span> 
 						</g:if>
-            <div class="buttons" id="tireButtons">
-		                <g:form class="showTireButtons">
-		                    <g:hiddenField name="id" value="${tireInstance?.id}" />
-		                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'tire.button.edit.label', default: 'Edit')}" /></span>
+						
+            			<div class="buttons" id="tireButtons">
+		                	<g:form class="showTireButtons">
+		                    	<g:hiddenField name="id" value="${tireInstance?.id}" />
+		                    	<span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'tire.button.edit.label', default: 'Edit')}" /></span>
 		                    
-		                    <g:ifAllGranted role="ROLE_ADMIN">
+		                    	<g:ifAllGranted role="ROLE_ADMIN">
 		                    		<span class="menuButton"><g:actionSubmit class="delete" action="delete" value="${message(code: 'tire.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" /></span>
-		                    	 <span id="createSupplierOrderButton"><g:link controller="supplierOrder" class="create" params="[id:tireInstance?.id]" action="create"><g:message code="tire.button.newCustomerOrder.label" /></g:link></span>
-		                    </g:ifAllGranted>
-						</g:form>
-        	</div>
-				</div>
+		                    	 	<span id="createSupplierOrderButton"><g:link controller="supplierOrder" class="create" params="[id:tireInstance?.id]" action="create"><g:message code="tire.button.newCustomerOrder.label" /></g:link></span>
+		                    	</g:ifAllGranted>
+							</g:form>
+						</div>	
+					</div>
 						
-						<div class="tireNumberInStockInfoBox">
-						
+					<div class="tireNumberInStockInfoBox">
 						<span class="tireLabelsInStockAndReserved">
 							<span class="tireInStockLabels"><g:message code="tire.numberInStock.label" /></span>
-							<span class="tireInStockNumbers">${fieldValue(bean: tireInstance, field: "numberInStock")}</span>
+							<span id="numberInStockLabel" class="tireInStockNumbers">${fieldValue(bean: tireInstance, field: "numberInStock")}</span>
+							<!-- <g:textField id="numberInStockText" style="display:none;" name="brand" value="${tireInstance?.numberInStock}" /></td>
+							<a id="showNumberInStockText" href="javascript:showAndHideElement('numberInStockText','numberInStockLabel');"
+								onclick="showAndHideElement('showCustomerHistory', 'hideCustomerHistory');">
+								Skjul historikk
+							</a>-->
 							
 							<g:set var="numberOfReserved" value="${0}"></g:set>
-		           <g:each in="${customerOrders}" status="i" var="customerOrderInstance">
-		           		<g:each in="${customerOrderInstance?.customerOrderLines}" status="j" var="customerOrderLineInstance">
-		           			<g:set var="numberOfReserved" value="${numberOfReserved + customerOrderLineInstance?.numberOfReservedTires }"></g:set>
-		           		</g:each>
-		           </g:each>
-						<span class="reserved"><span class="tireInStockLabels"><g:message code="tire.numberOfReserved.label" /></span>
-						<span class="tireInStockNumbers">${numberOfReserved}</span></span>
-					</span>
-						
-          	<g:set var="numberOfOrdered" value="${0}"></g:set>
-           	<g:each in="${supplierOrderLines}" status="i" var="supplierOrderLineInstance">
-              	<g:set var="numberOfOrdered" value="${numberOfOrdered + (supplierOrderLineInstance?.numberOfOrderedTires - supplierOrderLineInstance?.numberOfReceivedTires)}"></g:set>
-            </g:each>
-            <span class="tireLabelsInStockAndReserved"><span class="tireInStockLabels"><g:message code="tire.numberOfOrdered.label" /></span>
-						<span class="tireInStockNumbers">${numberOfOrdered}</span>
-						
-						<g:set var="numberOfAvailable" value="${0}"></g:set>
-						<span class="available"><span class="tireInStockLabels"><g:message code="tire.numberOfAvailable.label" /></span>
-						<span class="tireInStockNumbers">${tireInstance?.numberInStock - numberOfReserved}</span></span>
+		           			<g:each in="${customerOrders}" status="i" var="customerOrderInstance">
+		           				<g:each in="${customerOrderInstance?.customerOrderLines}" status="j" var="customerOrderLineInstance">
+			           				<g:set var="numberOfReserved" value="${numberOfReserved + customerOrderLineInstance?.numberOfReservedTires }"></g:set>
+			           			</g:each>
+			           		</g:each>
+			           		<span class="reserved"><span class="tireInStockLabels"><g:message code="tire.numberOfReserved.label" /></span>
+			           		<span class="tireInStockNumbers">${numberOfReserved}</span></span>
 						</span>
-     
-                </div> 
-            </div>
-        </div>
-        <div id="supplierOrderLineList">
-				<g:if test="${supplierOrderLines}">
+						
+          				<g:set var="numberOfOrdered" value="${0}"></g:set>
+           				<g:each in="${supplierOrderLines}" status="i" var="supplierOrderLineInstance">
+              				<g:set var="numberOfOrdered" value="${numberOfOrdered + (supplierOrderLineInstance?.numberOfOrderedTires - supplierOrderLineInstance?.numberOfReceivedTires)}"></g:set>
+            			</g:each>
+            			
+            			<span class="tireLabelsInStockAndReserved"><span class="tireInStockLabels"><g:message code="tire.numberOfOrdered.label" /></span>
+							<span class="tireInStockNumbers">${numberOfOrdered}</span>
+						
+							<g:set var="numberOfAvailable" value="${0}"></g:set>
+							<span class="available"><span class="tireInStockLabels"><g:message code="tire.numberOfAvailable.label" /></span>
+							<span class="tireInStockNumbers">${tireInstance?.numberInStock - numberOfReserved}</span></span>
+						</span>
+                	</div>
+             	</div> 
+             	
+            	<div id="supplierOrderLineList">
+	            	<h1><g:message code="tire.show.title.orders.label" /></h1>
+					<g:if test="${supplierOrderLines}">
 		            <table id="tireOccurrences">
 		            	<thead>
 		                	<tr>
@@ -116,39 +127,39 @@
 	                            
 	                            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'supplierOrderLine.table.deliver.label')}" />
 	                            
-	                            <g:sortableColumn property="numberOfReceivedTires" title="${message(code: 'supplierOrderLine.table.deliver.label')}" />
 	                        </tr>
 	                    </thead>
 	                    <tbody>
-	                    <g:each in="${supplierOrderLines}" status="i" var="supplierOrderLineInstance">
-	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-	                        	<td><g:link controller="supplierOrder" action="show" id="${supplierOrderLineInstance?.supplierOrder?.id}">${supplierOrderLineInstance?.supplierOrder?.id}</g:link></td>
-	                        	
-	                        	<td><g:formatDate format="dd.MM.yyyy" date="${supplierOrderLineInstance?.supplierOrder?.orderDate}" /></td>
-	                        	
-	                            <td>${supplierOrderLineInstance.price}</td>
-	                            
-	                            <td>${supplierOrderLineInstance?.discount}</td>
-	
-	                            <td>${supplierOrderLineInstance?.environmentalFee}</td>
-	                            
-	                            <td>${supplierOrderLineInstance?.numberOfOrderedTires}</td>
-	                            
-	                            <td>${supplierOrderLineInstance?.numberOfReceivedTires}</td>
-	                            
-	                            <g:form action="receiveOrderLine" controller="supplierOrder" method="post">
-	                            
-	                            	<td><g:textField id="numberOfReceivedTextField" name="numberOfReceived" value="${supplierOrderLineInstance?.numberOfOrderedTires - supplierOrderLineInstance?.numberOfReceivedTires}"/></td>
-	                          		<td>
-	                          			<g:hiddenField name="supplierOrderLineId" value="${supplierOrderLineInstance?.id}" />
-    	                      			<g:submitButton class="receiveSupplierOrder" name="receiveOrder" title="${message(code: 'supplierOrder.receive.tooltip.label')}" value="${message(code: 'list.button.table.label')}" />
-    	                      		</td>
-       	                  		</g:form>
-	                        </tr>
-	                    </g:each>
+		                    <g:each in="${supplierOrderLines}" status="i" var="supplierOrderLineInstance">
+		                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+		                        	<td><g:link controller="supplierOrder" action="show" id="${supplierOrderLineInstance?.supplierOrder?.id}">${supplierOrderLineInstance?.supplierOrder?.id}</g:link></td>
+		                        	
+		                        	<td><g:formatDate format="dd.MM.yyyy" date="${supplierOrderLineInstance?.supplierOrder?.orderDate}" /></td>
+		                        	
+		                            <td>${supplierOrderLineInstance.price}</td>
+		                            
+		                            <td>${supplierOrderLineInstance?.discount}</td>
+		
+		                            <td>${supplierOrderLineInstance?.environmentalFee}</td>
+		                            
+		                            <td>${supplierOrderLineInstance?.numberOfOrderedTires}</td>
+		                            
+		                            <td>${supplierOrderLineInstance?.numberOfReceivedTires}</td>
+		                            
+		                            <g:form action="receiveOrderLine" controller="supplierOrder" method="post">
+		                            
+		                            	<td>
+		                            		<g:textField id="numberOfReceivedTextField" name="numberOfReceived" value="${supplierOrderLineInstance?.numberOfOrderedTires - supplierOrderLineInstance?.numberOfReceivedTires}"/>
+		                          			<g:hiddenField name="supplierOrderLineId" value="${supplierOrderLineInstance?.id}" />
+		                          			<g:actionSubmit class="receiveSupplierOrder" title="${message(code: 'supplierOrderLine.receive.tooltip.label')}" action="receiveOrderLine" value="${message(code: 'list.button.delete.label')}" />
+	    	                      		</td>
+	       	                  		</g:form>
+		                        </tr>
+		                    </g:each>
 	                    </tbody>
 					</table>
 		        </g:if>
+		       </div>
             </div>
     </body>
 </html>
