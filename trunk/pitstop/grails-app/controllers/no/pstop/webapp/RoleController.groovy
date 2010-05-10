@@ -2,12 +2,8 @@ package no.pstop.webapp
 
 import no.pstop.webapp.Role
 
-/**
- * Authority Controller.
- */
 class RoleController {
 
-	// the delete, save and update actions only accept POST requests
 	static Map allowedMethods = [delete: 'POST', save: 'POST', update: 'POST']
 
 	def authenticateService
@@ -16,9 +12,6 @@ class RoleController {
 		redirect action: list, params: params
 	}
 
-	/**
-	 * Display the list authority page.
-	 */
 	def list = {
 		if (!params.max) {
 			params.max = 10
@@ -26,9 +19,6 @@ class RoleController {
 		[authorityList: Role.list(params)]
 	}
 
-	/**
-	 * Display the show authority page.
-	 */
 	def show = {
 		def authority = Role.get(params.id)
 		if (!authority) {
@@ -40,9 +30,6 @@ class RoleController {
 		[authority: authority]
 	}
 
-	/**
-	 * Delete an authority.
-	 */
 	def delete = {
 		def authority = Role.get(params.id)
 		if (!authority) {
@@ -56,9 +43,6 @@ class RoleController {
 		redirect action: list
 	}
 
-	/**
-	 * Display the edit authority page.
-	 */
 	def edit = {
 		def authority = Role.get(params.id)
 		if (!authority) {
@@ -70,9 +54,6 @@ class RoleController {
 		[authority: authority]
 	}
 
-	/**
-	 * Authority update action.
-	 */
 	def update = {
 
 		def authority = Role.get(params.id)
@@ -99,16 +80,10 @@ class RoleController {
 		}
 	}
 
-	/**
-	 * Display the create new authority page.
-	 */
 	def create = {
 		[authority: new Role()]
 	}
 
-	/**
-	 * Save a new authority.
-	 */
 	def save = {
 
 		def authority = new Role()
