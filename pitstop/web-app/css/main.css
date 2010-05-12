@@ -791,15 +791,18 @@ span.customerPhoneNumber {
 }
 span.customerPhoneNumber a{
 	background: url(../images/skin/phone.png) 5px 50% no-repeat;
-	padding-left: 25px;
 	color: #555;
 	font-weight: normal;
+	padding-top: 2px;
+	padding-bottom: 3px;
+	padding-left: 25px;
 	margin-left: 225px;
 	position: absolute;
 }
 span.customerEmail {
 	display: block;
 	margin-top: 5px;
+	padding-top: 5px;
 }
 span.customerEmail a{
 	background: url(../images/skin/email.png) 5px 50% no-repeat;
