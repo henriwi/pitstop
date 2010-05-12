@@ -41,13 +41,13 @@
 					
 					<g:if test="${customerInstance.phoneNumber}">
 						<span class="customerPhoneNumber">
-							<modalbox:createLink id="${customerInstance.id}" controller="customer" action="showSmsView" title="Send SMS" width="350" overlayDuration="0" slideDownDuration="0" resizeDuration="0">Send SMS</modalbox:createLink>
+							<modalbox:createLink id="${customerInstance.id}" controller="customer" action="showSmsView" title="Send SMS" width="350" overlayDuration="0" slideDownDuration="0" resizeDuration="0" title="${message(code: 'customer.sms.tooltip')}">Send SMS</modalbox:createLink>
 							${fieldValue(bean: customerInstance, field: "phoneNumber")}
 						</span>
                     </g:if>
                     <g:if test="${customerInstance.email}">
 						<span class="customerEmail">
-                    		<a href="mailto:${customerInstance.email}" target="_blank">Send e-post</a>
+                    		<a href="mailto:${customerInstance.email}" target="_blank" title="${message(code: 'customer.email.tooltip')}">Send e-post</a>
 							${fieldValue(bean: customerInstance, field: "email")}
                     	</span>
 		            </g:if>
