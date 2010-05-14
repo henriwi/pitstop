@@ -117,11 +117,33 @@ class SupplierOrderController {
 		environmentalFee: params.environmentalFee, numberOfOrderedTires: params.numberOfOrderedTires, 
 		numberOfReceivedTires: 0)
 		
-		orderLines << orderLine
+		def errorOrderLine
+		
+		if(isInvalidOrderLine(orderLine)) {
+			orderLines << orderLine
+		}
+		else {
+			errorOrderLine = createErrorOrderLine(errorOrderLine, tire, params)
+		}
+		
 		session["orderLines"] = orderLines
-		render(view: "create", model:[orderLines: orderLines, order: session["order"]])
+		render(view: "create", model:[orderLines: orderLines, order: session["order"], errorOrderLine: errorOrderLine])
+	}
+	
+	private isInvalidOrderLine(orderLine) {
+		!orderLine.validate() && orderLine.errors.getFieldErrorCount() == 1
+	}
+	
+	private createErrorOrderLine(errorOrderLine, tire, params) {
+		errorOrderLine = new SupplierOrderLine(tire: tire, price: params.price, discount: params.discount, 
+		environmentalFee: params.environmentalFee, numberOfOrderedTires: params.numberOfOrderedTires, 
+		numberOfReceivedTires: 0)
+		errorOrderLine.validate()
+		return errorOrderLine
 	}
 
+
+	
     private setOrderValues() {
 		session["order"]?.supplier = params.supplier
 		session["order"]?.notice = params.notice
@@ -145,8 +167,6 @@ class SupplierOrderController {
 				receiveOrderLine(it, params)
 			}
 		}
-		//redirect(controller: "tire", action: "pendingSupplierOrders")
-		println params
 		render(view:"receiveOrderConfirmation")
 	}
 	
