@@ -79,4 +79,8 @@ class SupplierOrderLineTests extends GrailsUnitTestCase {
 		def badField = supplierOrderLine.errors.getFieldError('numberOfReceivedTires')
 		assertNotNull "Expecting error in field numberOfReceivedTires"
 	}
+	
+	void testToString() {
+		assertEquals "$supplierOrderLine.tire (Antall: $supplierOrderLine.numberOfOrderedTires)", supplierOrderLine.toString()
+	}
 }

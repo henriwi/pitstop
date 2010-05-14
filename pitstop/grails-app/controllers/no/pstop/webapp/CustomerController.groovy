@@ -175,7 +175,7 @@ class CustomerController {
 	}
 	
 	def customerOrdersAsJSON = {
-		def orders = CustomerOrder.findAllByCustomer(Customer.get(params.id))
+		/*def orders = CustomerOrder.findAllByCustomer(Customer.get(params.id))
 		def pendingOrders = getPendingOrders(orders)
 
 		def formattedOrders = pendingOrders.collect {
@@ -195,6 +195,9 @@ class CustomerController {
 			results: formattedOrders,
 		]
 		
-		render data as JSON
+		render data as JSON*/
+		
+		println "RemoteFunction"
+		render "Fett"
 	}
 }

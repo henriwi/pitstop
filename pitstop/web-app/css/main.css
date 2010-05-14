@@ -1027,6 +1027,7 @@ input.receiveSupplierOrder {
     cursor: pointer;
 }
 
+
 /* SHOW TIRE */
 #tireInfo {
 	float: left;
@@ -1146,27 +1147,6 @@ span.tireNewOrder a  {
 
 #supplierOrderLineList {
 	float: left;	
-}
-
-/* YUI-DATA TABLE */
-.yui-dt-liner {
-	cursor: pointer;	
-}
-
-.yui-dt-even {
-	background-color: #f7f7f7;	
-}
-
-.yui-dt-odd {
-	background-color: #fff;	
-}
-
-#yui-dt0-paginator1 {
-    display:none;
-}
-
-#yui-dt0-paginator0 {
-    display:none;
 }
 
 .iPhone {
