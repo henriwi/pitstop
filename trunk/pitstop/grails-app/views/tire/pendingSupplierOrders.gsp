@@ -42,26 +42,17 @@
                             <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.list.table.orderDate.label')}" />
                         
                             <th><g:message code="supplierOrder.list.table.customer.label"/></th>
-                            
-                            <th><g:message code="supplierOrder.table.receive.label" /></th>
                         </tr>
                     </thead>
                     <tbody>
 	                    <g:each in="${supplierOrders}" status="i" var="supplierOrderInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 	                        
-	                            <td><g:link controller="supplierOrder" action="show" id="${supplierOrderInstance?.id}">${fieldValue(bean: supplierOrderInstance, field: "id")}</g:link></td>
-	                        
+	                        	<td><modalbox:createLink controller="supplierOrder" action="show" id="${supplierOrderInstance?.id}" title="Dekkbestilling" width="700">${supplierOrderInstance?.id}</modalbox:createLink></td>
+	                        	
 	                            <td><g:formatDate format="dd.MM.yyyy hh:mm" date="${supplierOrderInstance?.orderDate}" /></td>
 	                        
 	                            <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
-	                            
-	                            <td>
-	                            	<g:form controller="supplierOrder" action="receiveOrder" method="post">
-			                        	<g:hiddenField name="id" value="${supplierOrderInstance?.id}" />
-			                        	<g:submitButton tabindex='14' name="create" class="save" value="${message(code: 'supplierOrder.button.receive.label')}" />
-			                        </g:form>
-	                            </td>
 	                            
 	                        </tr>
 	                    </g:each>

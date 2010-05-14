@@ -296,7 +296,7 @@ class TireController {
 		}
 		
 		tires = tires.collect {
-			[id: it.id, name: it.toString(), highest: it.highestPrice()]
+			[highest: it.highestPrice(), id: it.id, name: it.toString(), ]
 		}
 		
 		def jsonTires = [
@@ -307,13 +307,11 @@ class TireController {
 	}
 	
 	def pendingSupplierOrders = {
-		println "Hepp"
 		def pendingSupplierOrders = pendingSupplierOrders()
 		[supplierOrders: pendingSupplierOrders]
 	}
 	
 	private pendingSupplierOrders() {
-		println "Jepp"
 		def pendingSupplierOrdersList = []
 		def supplierOrders = SupplierOrder.list().each { 
 			boolean pending = false

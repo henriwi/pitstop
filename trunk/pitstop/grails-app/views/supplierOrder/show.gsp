@@ -1,78 +1,58 @@
 
 <%@ page import="no.pstop.webapp.SupplierOrder" %>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'supplierOrder.label', default: 'SupplierOrder')}" />
-        <title><g:message code="default.show.label" args="[entityName]" /></title>
-    </head>
-    <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
-        </div>
-        <div class="body">
-            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
-            </g:if>
-            <div class="dialog">
-                <table>
-                    <tbody>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="supplierOrder.id.label" default="Id" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: supplierOrderInstance, field: "id")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="supplierOrder.supplierOrderLines.label" default="Supplier Order Lines" /></td>
-                            
-                            <td valign="top" style="text-align: left;" class="value">
-                                <ul>
-                                <g:each in="${supplierOrderInstance.supplierOrderLines}" var="s">
-                                    <li><g:link controller="supplierOrderLine" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                                </ul>
-                            </td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="supplierOrder.orderDate.label" default="Order Date" /></td>
-                            
-                            <td valign="top" class="value"><g:formatDate date="${supplierOrderInstance?.orderDate}" /></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="supplierOrder.orderNumber.label" default="Order Number" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: supplierOrderInstance, field: "id")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="supplierOrder.supplier.label" default="Supplier" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
-                            
-                        </tr>
-                    
-                    </tbody>
-                </table>
-            </div>
-            <div class="buttons">
-                <g:form>
-                    <g:hiddenField name="id" value="${supplierOrderInstance?.id}" />
-                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
-                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
-                </g:form>
-            </div>
-        </div>
-    </body>
-</html>
+<div class="dialog">
+	<div>
+		<h4>Ordrenummer: ${supplierOrderInstance?.id}</h4>
+		<span><g:formatDate format="dd.MM.yyyy" date="${supplierOrderInstance?.orderDate}" /></span>
+		<span class="tireNotice">${supplierOrderInstance?.notice}</span>
+	</div>
+	
+    <table>
+	   	<thead>
+	       	<tr>
+	       		<g:sortableColumn property="orderNumber" title="${message(code: 'supplierOrderLine.table.tire.label')}" />
+	       		
+	       		<g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.table.orderDate.label')}" />
+	       	
+	            <g:sortableColumn property="price" title="${message(code: 'supplierOrderLine.table.price.label')}" />
+	            
+	            <g:sortableColumn property="discount" title="${message(code: 'supplierOrderLine.table.discount.label')}" />
+	            
+	            <g:sortableColumn property="environmentalFee" title="${message(code: 'supplierOrderLine.table.environmentalFee.label')}" />
+	            
+	            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'supplierOrderLine.table.numberOfOrderedTires.label')}" />
+	            
+	            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'supplierOrderLine.table.numberOfReceived.label')}" />
+	            
+	        </tr>
+		</thead>
+	    <tbody>
+	    	<g:each in="${supplierOrderInstance?.supplierOrderLines}" status="i" var="supplierOrderLineInstance">
+	        	<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+	 
+	            	<td>${supplierOrderLineInstance?.tire}</td>
+	               	
+	               	<td><g:formatDate format="dd.MM.yyyy" date="${supplierOrderLineInstance?.supplierOrder?.orderDate}" /></td>
+	               	
+	                <td>${supplierOrderLineInstance.price}</td>
+	                
+	                <td>${supplierOrderLineInstance?.discount}</td>
+	
+	                <td>${supplierOrderLineInstance?.environmentalFee}</td>
+	                   
+		           	<td>${supplierOrderLineInstance?.numberOfOrderedTires}</td>
+	                   
+	                <td>${supplierOrderLineInstance?.numberOfReceivedTires}</td>
+	                       
+	           </tr>
+	        </g:each>
+		</tbody>
+    </table>
+	<div class="buttons">
+		
+   		<g:form action="receiveOrder">
+       		<span class="button"><g:submitToRemote class="receiveSupplierOrder" onComplete="Modalbox.resizeToContent()" controller="supplierOrder" action="receiveOrder" id="${supplierOrderInstance?.id}" value="${message(code: 'supplierOrder.button.receive.label')}" update="MB_content"/></span>
+       		<g:link url="#" onClick="Modalbox.hide()"><g:message code="createTire.button.cancel.label" /></g:link>
+   		</g:form>
+   	</div>
+</div>

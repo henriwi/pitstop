@@ -5,6 +5,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title><g:message code="showTire.title.label"/></title>
+        <g:javascript library="application" />
+		<modalbox:modalIncludes />
     </head>
     <body>
         <div class="nav">
@@ -132,7 +134,10 @@
 	                    <tbody>
 		                    <g:each in="${supplierOrderLines}" status="i" var="supplierOrderLineInstance">
 		                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-		                        	<td><g:link controller="supplierOrder" action="show" id="${supplierOrderLineInstance?.supplierOrder?.id}">${supplierOrderLineInstance?.supplierOrder?.id}</g:link></td>
+		                        	<td><modalbox:createLink controller="supplierOrder" action="show" id="${supplierOrderLineInstance?.supplierOrder?.id}" title="Dekkbestilling" width="900" overlayDuration="0" slideDownDuration="0" resizeDuration="0">${supplierOrderLineInstance?.supplierOrder?.id}</modalbox:createLink></td>
+            						<!-- <td><a href='/ROOT/supplierOrder/show/${supplierOrderLineInstance?.supplierOrder?.id}' title='Dekkbestilling' onclick='Modalbox.show(this.href, {title: this.title, width: 900, overlayOpacity: 0.5, closeString: "Lukk vinduet", overlayClose: false, overlayDuration: 0, slideDownDuration: 0.5}); return false;'>${supplierOrderLineInstance?.supplierOrder?.id}</a></td>-->
+            
+		                        	<!-- <td><g:link controller="supplierOrder" action="show" id="${supplierOrderLineInstance?.supplierOrder?.id}">${supplierOrderLineInstance?.supplierOrder?.id}</g:link></td>-->
 		                        	
 		                        	<td><g:formatDate format="dd.MM.yyyy" date="${supplierOrderLineInstance?.supplierOrder?.orderDate}" /></td>
 		                        	

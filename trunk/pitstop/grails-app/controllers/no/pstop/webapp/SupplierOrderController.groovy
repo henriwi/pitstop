@@ -145,7 +145,9 @@ class SupplierOrderController {
 				receiveOrderLine(it, params)
 			}
 		}
-		redirect(controller: "tire", action: "pendingSupplierOrders")
+		//redirect(controller: "tire", action: "pendingSupplierOrders")
+		println params
+		render(view:"receiveOrderConfirmation")
 	}
 	
 	def receiveOrderLine = {

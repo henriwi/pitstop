@@ -98,13 +98,8 @@
 									controller="tire"
 									action="tireAutoComplete"
 									resultName="tires"
-									responseSchema={tires: ['id', 'name', 'highest']}
 								/>
 							</td>
-							<!-- <td>
-								<richui:autoComplete id="tire" name="tireAuto" controller="tire" action="tireAutoComplete" 
-	              				 />
-							</td>-->
 							<script>
 							    YAHOO.util.Event.onDOMReady(function() {
 							    	var itemSelectHandler = function(sType, aArgs) {
@@ -113,10 +108,18 @@
 							    		var oMyAcInstance = aArgs[0]; // your AutoComplete instance
 							    		var elListItem = aArgs[1]; // the <li> element selected in the suggestion
 							    		   					       // container
-							    		var oData = aArgs[2][0]; // object literal of data for the result
-							    		document.getElementById("listPrice").innerHTML = oData;
+							    		var oData = aArgs[2]; // object literal of data for the result
+							    		document.getElementById("listPrice").innerHTML = aArgs;
+							    		//alert("odata:<"+oData+"> aArgs:<" + aArgs +">");
 							    	};
-							    	GRAILSUI.tire.itemSelectEvent.subscribe(itemSelectHandler);
+							    	var test = function(sType,aArgs){
+							    		document.getElementById("listPrice").innerHTML = aArgs[2][0];
+								    }; 
+							    	//GRAILSUI.tire.dataReturnEvent.subscribe(test);
+							    	//resultName="tires', 'highest"
+							    	//GRAILSUI.tire.responseSchema = {fields: ["name", "highest"]};
+							    	
+								    GRAILSUI.tire.itemSelectEvent.subscribe(itemSelectHandler);
 							    });
 							</script>
 							<td id="listPrice"></td>

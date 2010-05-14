@@ -20,4 +20,8 @@ class SupplierOrderLine {
 		environmentalFee(min: 0)
 		receivedDate(nullable: true)
 	}
+	
+	String toString() {
+		"$tire (Antall: $numberOfOrderedTires)"
+	}
 }
