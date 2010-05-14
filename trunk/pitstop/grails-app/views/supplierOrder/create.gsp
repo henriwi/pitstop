@@ -104,9 +104,9 @@
 								</td>
 							</g:else>
 								<td><g:textField class="supplierOrderHeaders" name="price" value="${errorOrderLine?.price}" /></td>
-								<td><g:textField class="supplierOrderHeaders" name="discount" value="${fieldValue(bean: errorOrderLine, field: 'discount')}" /></td>
-								<td><g:textField class="supplierOrderHeaders" name="environmentalFee" value="${fieldValue(bean: errorOrderLine, field: 'environmentalFee')}" /></td>
-								<td><g:textField class="supplierOrderHeaders" name="numberOfOrderedTires" value="${fieldValue(bean: errorOrderLine, field: 'numberOfOrderedTires')}" /></td>
+								<td><g:textField class="supplierOrderHeaders" name="discount" value="${errorOrderLine?.discount}" /></td>
+								<td><g:textField class="supplierOrderHeaders" name="environmentalFee" value="${errorOrderLine?.environmentalFee}" /></td>
+								<td><g:textField class="supplierOrderHeaders" name="numberOfOrderedTires" value="${errorOrderLine?.numberOfOrderedTires}" /></td>
 								<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'order.addToOrder.tooltip.label')}" /></span></td>
 							</tr>
                    		</tbody>

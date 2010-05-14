@@ -22,9 +22,9 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${customerOrderInstance}">
+            <g:hasErrors bean="${order}">
             <div class="errors">
-                <g:renderErrors bean="${customerOrderInstance}" as="list" />
+                <g:renderErrors bean="${order}" as="list" />
             </div>
             </g:hasErrors>
 	                <div id="customerOrderDialog">
@@ -36,7 +36,7 @@
 		                                <td valign="top" class="name">
 		                                    <label for="customer"><g:message code="customerOrder.customer.label" default="Customer" /></label>
 		                                </td>
-		                                <td valign="top" class="value ${hasErrors(bean: customerOrderInstance, field: 'customer', 'errors')}">
+		                                <td valign="top" class="value ${hasErrors(bean: order, field: 'customer', 'errors')}">
 		                                    ${order?.customer}
 		                                </td>
 		                            </tr>
@@ -44,7 +44,7 @@
 		                                <td valign="top" class="notice">
 		                                    <label for="notice"><g:message code="customerOrderLine.notice.label" /></label>
 		                                </td>
-		                                <td valign="top" class="value ${hasErrors(bean: customerOrderLineInstance, field: 'notice', 'errors')}">
+		                                <td valign="top" class="value ${hasErrors(bean: order, field: 'notice', 'errors')}">
 		                                	<g:textArea value="${order?.notice}" tabindex='13' name="notice" rows="5" cols="10"/>
 										</td>
 			                    	</tr>
@@ -71,14 +71,15 @@
 			                		
 			                	</tr>
 			                </thead>
+			            	<g:hasErrors bean="${errorOrderLine}">
+	                		<div class="errors">
+	                			<g:renderErrors bean="${errorOrderLine}" as="list" field="tire"/>
+       							<g:renderErrors bean="${errorOrderLine}" as="list" field="price"/>
+       							<g:renderErrors bean="${errorOrderLine}" as="list" field="numberOfReservedTires"/>
+       						</div>
+       						</g:hasErrors>			                
 		                	<tbody>
-		                	
 							<g:each in="${orderLines}" status="i" var="orderLineInstance">
-								<g:hasErrors bean="${orderLineInstance}">
-						            <div class="errors">
-						                <g:renderErrors bean="${orderLineInstance}" as="list" />
-						            </div>
-					            </g:hasErrors>
 								<tr>
 	                      			<td>${orderLineInstance?.tire}</td>
 	                      			<td>${orderLineInstance?.tire?.retailPrice}</td>
@@ -98,6 +99,7 @@
 									controller="tire"
 									action="tireAutoComplete"
 									resultName="tires"
+									value="${errorOrderLine?.tire}"
 								/>
 							</td>
 							<script>
@@ -125,8 +127,8 @@
 							<td id="listPrice"></td>
 							<td id="highestPrice"></td>
 							<td id="averagePrice"></td>
-							<td><g:textField class="orderTableTextField" maxlength="30" tabindex='12' name="numberOfReservedTires" value="" /></td>
-							<td><g:textField class="orderTableTextField" maxlength="30" tabindex='12' name="price" value="" /></td>
+							<td><g:textField class="orderTableTextField" maxlength="30" tabindex='12' name="numberOfReservedTires" value="${errorOrderLine?.numberOfReservedTires}" /></td>
+							<td><g:textField class="orderTableTextField" maxlength="30" tabindex='12' name="price" value="${errorOrderLine?.price}" /></td>
 							<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'order.addToOrder.tooltip.label')}"/></span></td>
 	                   	</tbody>
 	            		</table>

@@ -23,9 +23,6 @@ class OrderService {
 	
     def saveCustomerOrder(orderInstance, session) throws RuntimeException{
 		if(!orderInstance.save(flush:true)){
-			orderInstance.errors.each { 
-				println it
-			}
 			throw new RuntimeException("cannot save order")
 		}
 		session.orderLines.each {
