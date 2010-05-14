@@ -1,5 +1,4 @@
 package no.pstop.webapp
-import grails.converters.deep.JSON;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -43,14 +42,22 @@ class CustomerOrderController {
 		customerOrderInstance.orderDate = new Date()
 		customerOrderInstance.customer = customer
 		
-		try {
-			orderService.saveCustomerOrder(customerOrderInstance, session)
-			flash.message = "${message(code: 'customerOrder.created.message', args: [customerOrderInstance?.id])}"
-			redirect(action: "show", controller: "customer", id: customer?.id)
+		if(!customerOrderInstance.validate() || session["orderLines"]?.size() == 0) {
+			if(session["orderLines"]?.size() == 0) {
+				customerOrderInstance.errors.reject('customerOrder.supplierOrderLine.empty.error')
+			}
+			render(view: "create", model:[order: customerOrderInstance])
 		}
-		catch(result) {
-			flash.message = "Kunne ikke lagre ordren." + result
-			redirect(action: "create")
+		else {
+			try {
+				orderService.saveCustomerOrder(customerOrderInstance, session)
+				flash.message = "${message(code: 'customerOrder.created.message', args: [customerOrderInstance?.id])}"
+				redirect(action: "show", controller: "customer", id: customer?.id)
+			}
+			catch(result) {
+				flash.message = "${message(code: 'customerOrder.exception.error')}"
+				redirect(action: "create")
+			}
 		}
     }
 
@@ -132,22 +139,31 @@ class CustomerOrderController {
 		def order = session["order"]
 		def orderLines = session["orderLines"]
 		def tire = Tire.get(params.tire_id)
-		
-		orderLines = addToOrderLine(params, tire, orderLines)
-		
-		writeSession(session, order, orderLines)
-        render(view: "create", model: [order: session["order"], orderLines: session["orderLines"]])
-    }
-		
-	private addToOrderLine(params, tire, orderLines) {
+
 		def customerOrderLine = new CustomerOrderLine(price: params.price, 
 		numberOfReservedTires: params.numberOfReservedTires, tire: tire)
-		
-		//if(customerOrderLine.validate()) {
+
+		def errorOrderLine
+		if(isValidOrderLine(customerOrderLine)) {
 			orderLines << customerOrderLine
-		//}
+		}
+		else {
+			errorOrderLine = createErrorOrderLine(errorOrderLine, tire, params)
+		}
 		
-		return orderLines
+		writeSession(session, order, orderLines)
+        render(view: "create", model: [order: session["order"], orderLines: session["orderLines"], errorOrderLine: errorOrderLine])
+    }
+		
+	private isValidOrderLine(customerOrderLine) {
+		customerOrderLine.validate() || customerOrderLine.errors.getFieldErrorCount() == 1
+	}
+	
+	private createErrorOrderLine(errorOrderLine, tire, params) {
+		errorOrderLine = new CustomerOrderLine(price: params.price, 
+		numberOfReservedTires: params.numberOfReservedTires, tire: tire)
+		errorOrderLine.validate()
+		return errorOrderLine
 	}
 		
 	private writeSession(session, order = session["order"], orderLines) {

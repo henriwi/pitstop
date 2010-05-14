@@ -29,18 +29,19 @@ class SupplierOrderController {
 		def supplierOrderInstance = session["order"]
         supplierOrderInstance?.orderDate = new Date()
 		
-		if(session["orderLines"]?.size() == 0) {
-			supplierOrderInstance.errors.reject('supplierOrder.supplierOrderLine.empty.error')
-			render(view: "create", model:[order: supplierOrderInstance])
+		if(!supplierOrderInstance.validate() || session["orderLines"]?.size() == 0) {
+			if(session["orderLines"]?.size() == 0) {
+				supplierOrderInstance.errors.reject('supplierOrder.supplierOrderLine.empty.error')
+			}
 		}
 		else {
 			try {
 				orderService.saveSupplierOrder(supplierOrderInstance, session)	
-				flash.message = "Bestillingen ble opprettet"
-				redirect(action: "list", id: supplierOrderInstance.id)
+				flash.message = "${message(code: 'supplierOrder.created.message', args:[supplierOrderInstance?.id])}"
+				redirect(controller: "tire", action: "pendingSupplierOrders")
 			}
 			catch(result) {
-				flash.message = "Kunne ikke lagre bestillingen." + result
+				flash.message = "${message(code: 'supplierOrder.exception.error')}"
 				redirect(action: "create")
 			}
 		}
@@ -125,8 +126,7 @@ class SupplierOrderController {
 		numberOfReceivedTires: 0)
 		
 		def errorOrderLine
-		
-		if(isInvalidOrderLine(orderLine)) {
+		if(isValidOrderLine(orderLine)) {
 			orderLines << orderLine
 		}
 		else {
@@ -137,14 +137,15 @@ class SupplierOrderController {
 		render(view: "create", model:[orderLines: orderLines, order: session["order"], errorOrderLine: errorOrderLine])
 	}
 	
-	private isInvalidOrderLine(orderLine) {
-		!orderLine.validate() && orderLine.errors.getFieldErrorCount() == 1
+	private isValidOrderLine(orderLine) {
+		orderLine.validate() || orderLine.errors.getFieldErrorCount() == 1
 	}
 	
 	private createErrorOrderLine(errorOrderLine, tire, params) {
 		errorOrderLine = new SupplierOrderLine(tire: tire, price: params.price, discount: params.discount, 
 		environmentalFee: params.environmentalFee, numberOfOrderedTires: params.numberOfOrderedTires, 
 		numberOfReceivedTires: 0)
+		
 		errorOrderLine.validate()
 		return errorOrderLine
 	}
