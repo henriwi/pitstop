@@ -29,33 +29,24 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.list.table.orderNumber.label', default: 'ID')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.list.table.orderNumber.label')}" />
                         
-                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.list.table.orderDate.label', default: 'Order Date')}" />
+                            <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.list.table.orderDate.label')}" />
                         
                             <th><g:message code="supplierOrder.list.table.customer.label" default="Customer" /></th>
                             
-                            <th><g:message code="customer.pendingCustomerOrders.table.receive.label" /></th>
-                   	    
                         </tr>
                     </thead>
                     <tbody>
 	                    <g:each in="${customerOrderWithoutDeliveredDateInstanceList}" status="i" var="customerOrderWithoutDeliveredDateInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 	                        
-	                            <td><g:link action="show" controller="customerOrder" id="${customerOrderWithoutDeliveredDateInstance.id}">${fieldValue(bean: customerOrderWithoutDeliveredDateInstance, field: "id")}</g:link></td>
-	                        
+								<td><modalbox:createLink controller="customerOrder" action="show" id="${customerOrderWithoutDeliveredDateInstance?.id}" title="Kundeordre" width="700">${customerOrderWithoutDeliveredDateInstance?.id}</modalbox:createLink></td>
+									                        
 	                            <td><g:formatDate format="dd.MM.yyyy hh:mm" date="${customerOrderWithoutDeliveredDateInstance.orderDate}" /></td>
 	                        
 	                            <td>${fieldValue(bean: customerOrderWithoutDeliveredDateInstance, field: "customer")}</td>
 	                        	
-	                        	<td>
-	                            	<g:form controller="customerOrder" action="deliverOrder" method="post">
-			                        	<g:hiddenField name="id" value="${customerOrderWithoutDeliveredDateInstance?.id}" />
-			                        	<g:actionSubmit class="deliverOrder" action="deliverOrder" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'customerOrder.receive.label')}" />
-			                        </g:form>
-	                            </td>
-	                            
 	                        </tr>
 	                    </g:each>
                     </tbody>

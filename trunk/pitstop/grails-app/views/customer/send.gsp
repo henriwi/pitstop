@@ -14,7 +14,7 @@
 			</div>
 		</g:hasErrors>
 
-		<form method="post" action="http://sms.pswin.com/http4sms/send.asp">
+		<g:form>
 			<div class="dialog">
 			<table>
 				<tbody>
@@ -39,8 +39,10 @@
 			</table>
 			</div>
 			<div class="buttons">
+				//"http://sms.pswin.com/http4sms/send.asp"
+				<g:submitToRemote url="[url:'/proxy?url=http://sms.pswin.com/http4sms/send.asp']" onSuccess="alert('Niks');"  update="[success:'MB_content', failure:'MB_content']" value="Send SMS" />
 				<span class="button"><g:submitButton name="SUBMIT" class="save" value="Send sms"/></span>
 			</div>
-		</form>
+		</g:form>
 	</div>
 </body>
