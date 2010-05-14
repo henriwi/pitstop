@@ -18,9 +18,9 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${supplierOrderInstance}">
+            <g:hasErrors bean="${order}">
             <div class="errors">
-                <g:renderErrors bean="${supplierOrderInstance}" as="list" />
+                <g:renderErrors bean="${order}" as="list" />
             </div>
             </g:hasErrors>
             	<div id="supplierOrderDialog">
@@ -32,7 +32,7 @@
 		                                <td valign="top" class="name">
 		                                    <label for="supplier"><g:message code="supplierOrder.supplier.label" /></label>
 		                                </td>
-		                                <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'supplier', 'errors')}">
+		                                <td valign="top" class="value ${hasErrors(bean: order, field: 'supplier', 'errors')}">
 		                                    <g:textField style="width: 150px;" name="supplier" value="${order?.supplier}" />
 		                                </td>
 		                            </tr>
@@ -40,7 +40,7 @@
 		                                <td valign="top" class="name">
 		                                    <label for="notice"><g:message code="supplierOrder.notice.label" /></label>
 		                                </td>
-		                                <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'notice', 'errors')}">
+		                                <td valign="top" class="value ${hasErrors(bean: order, field: 'notice', 'errors')}">
 		                                    <g:textArea style="width: 150px; height: 50px;" value="${order?.notice }"tabindex='13' name="notice" rows="5" cols="10"/>
 		                                </td>
 		                            </tr>
@@ -98,13 +98,15 @@
 										id="tire" 
 										controller="tire"
 										action="tireAutoComplete"
-										resultName="tires" />
+										resultName="tires"
+										value="${errorOrderLine?.tire}"
+										/>
 								</td>
 							</g:else>
-								<td><g:textField class="supplierOrderHeaders" name="price" value="${fieldValue(bean: supplierOrderLineInstance, field: 'price')}" /></td>
-								<td><g:textField class="supplierOrderHeaders" name="discount" value="${fieldValue(bean: supplierOrderLineInstance, field: 'discount')}" /></td>
-								<td><g:textField class="supplierOrderHeaders" name="environmentalFee" value="${fieldValue(bean: supplierOrderLineInstance, field: 'environmentalFee')}" /></td>
-								<td><g:textField class="supplierOrderHeaders" name="numberOfOrderedTires" value="${fieldValue(bean: supplierOrderLineInstance, field: 'numberOfOrderedTires')}" /></td>
+								<td><g:textField class="supplierOrderHeaders" name="price" value="${errorOrderLine?.price}" /></td>
+								<td><g:textField class="supplierOrderHeaders" name="discount" value="${fieldValue(bean: errorOrderLine, field: 'discount')}" /></td>
+								<td><g:textField class="supplierOrderHeaders" name="environmentalFee" value="${fieldValue(bean: errorOrderLine, field: 'environmentalFee')}" /></td>
+								<td><g:textField class="supplierOrderHeaders" name="numberOfOrderedTires" value="${fieldValue(bean: errorOrderLine, field: 'numberOfOrderedTires')}" /></td>
 								<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'order.addToOrder.tooltip.label')}" /></span></td>
 							</tr>
                    		</tbody>

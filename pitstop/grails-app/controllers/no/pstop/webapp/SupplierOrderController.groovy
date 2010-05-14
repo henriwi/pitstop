@@ -29,16 +29,23 @@ class SupplierOrderController {
 		def supplierOrderInstance = session["order"]
         supplierOrderInstance?.orderDate = new Date()
 		
-		try {
-			orderService.saveSupplierOrder(supplierOrderInstance, session)	
-			flash.message = "Bestillingen ble opprettet"
-			redirect(action: "list", id: supplierOrderInstance.id)
+		if(session["orderLines"]?.size() == 0) {
+			supplierOrderInstance.errors.reject('supplierOrder.supplierOrderLine.empty.error')
+			render(view: "create", model:[order: supplierOrderInstance])
 		}
-		catch(result) {
-			flash.message = "Kunne ikke lagre bestillingen." + result
-			redirect(action: "create")
+		else {
+			try {
+				orderService.saveSupplierOrder(supplierOrderInstance, session)	
+				flash.message = "Bestillingen ble opprettet"
+				redirect(action: "list", id: supplierOrderInstance.id)
+			}
+			catch(result) {
+				flash.message = "Kunne ikke lagre bestillingen." + result
+				redirect(action: "create")
+			}
 		}
     }
+
 
     def show = {
         def supplierOrderInstance = SupplierOrder.get(params.id)
