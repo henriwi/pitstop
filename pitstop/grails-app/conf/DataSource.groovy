@@ -30,7 +30,7 @@ environments {
 	production {
 		dataSource {
 			dbCreate = "update"
-			url = "jdbc:mysql://localhost/pitstop_prod?removeAbandoned=true&removeAbandonedTimeout=120" +
+			url = "jdbc:mysql://localhost/pitstop?removeAbandoned=true&removeAbandonedTimeout=120" +
 			"&logAbandoned=true&testOnBorrow=false&testOnReturn=false&timeBetweenEvictionRunsMillis=60000" + 
 			"&numTestsPerEvictionRun=5&minEvictableIdleTimeMillis=30000&testWhileIdle=true&validationQuery=select now()"
 			
