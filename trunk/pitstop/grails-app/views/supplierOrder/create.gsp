@@ -65,8 +65,17 @@
 		                	</tr>
 		                </thead>
 	                	<tbody>
-	                	
+	                	<g:hasErrors bean="${errorOrderLine}">
+	                	<div class="errors">
+	                		<g:renderErrors bean="${errorOrderLine}" as="list" field="tire"/>
+       						<g:renderErrors bean="${errorOrderLine}" as="list" field="price"/>
+       						<g:renderErrors bean="${errorOrderLine}" as="list" field="discount"/>
+       						<g:renderErrors bean="${errorOrderLine}" as="list" field="environmentalFee"/>
+       						<g:renderErrors bean="${errorOrderLine}" as="list" field="numberOfOrderedTires"/>
+       					</div>
+       					</g:hasErrors>
 							<g:each in="${orderLines}" status="i" var="orderLineInstance">
+       								 
 								<tr>
 	                      			<td>${orderLineInstance?.tire}</td>
 	                      			<td>${orderLineInstance?.price}</td>
