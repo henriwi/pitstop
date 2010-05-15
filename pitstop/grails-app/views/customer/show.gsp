@@ -130,117 +130,65 @@
 								</div>
 							</g:each>
 						</div>
-			            <div class="customerTireHotelOccurrencelist" id="allTireHotelOccurrences">
-			               	<table>
-			                   	<thead>
-			                       	<tr>
-			                           	<g:sortableColumn property="tireLocation" title="${message(code: 'tireHotelOccurrence.list.tireLocation.label')}" />
-			                       
-			                           	<g:sortableColumn property="registrationNumber" title="${message(code: 'tireHotelOccurrence.list.registrationNumber.label')}" />
-			                       
-			                           	<g:sortableColumn property="carType" title="${message(code: 'tireHotelOccurrence.list.carType.label')}" />
-			                       
-			                           	<g:sortableColumn property="tireType" title="${message(code: 'tireHotelOccurrence.list.tireType.label')}" />
-			                       
-			                           	<g:sortableColumn property="inDate" title="${message(code: 'tireHotelOccurrence.list.inDate.label')}" />
-			                           
-			                        	<g:sortableColumn property="outDate" title="${message(code: 'tireHotelOccurrence.list.outDate.label')}" />
-			                        		
-			                        	<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delivered.label')}</a></th>
-	                            		
-	                            		<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.change.label')}</a></th>
-	                            		
-	                            	<g:ifAllGranted role="ROLE_ADMIN">
-	                            		<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delete.label')}</a></th>
-	                            	</g:ifAllGranted>
-			                    	</tr>
-			                   	</thead>
-			                   	<tbody>
-				                    <g:each in="${tireHotelOccurrenceInstanceList}" status="i" var="tireHotelOccurrenceInstance">
-										<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-					                       
-				                            <td>${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}</td>
-				                       
-				                            <td>${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}</td>
-				                       
-				                            <td>${fieldValue(bean: tireHotelOccurrenceInstance, field: "carType")}</td>
-				                       
-				                            <td>${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireType")}</td>
-				                       
-				                            <td><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.inDate}" /></td>
-				                           
-			                        		<td><g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.outDate}" /></td>
-			                        		
-			                        		<td>
-		                            			<g:if test="${!tireHotelOccurrenceInstance.outDate}">
-					                        		<g:form controller="tireHotelOccurrence" method="post">
-						                        		<g:hiddenField name="customerId" value="${customerInstance?.id}" />
-			                            				<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-														<g:hiddenField name="delivered" value="delivered" />
-			                            				<g:actionSubmit class="delivered" title="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" action="deliverTireHotelOccurenceFromCustomerView" value="${message(code: 'tireHotelOccurrence.list.delivered.button')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
-			                            			</g:form>
-		                            			</g:if>
-	                            			</td>
-		                            			
-	                            			<td>
-	                            				<g:if test="${!tireHotelOccurrenceInstance.outDate}">
-		                            				<g:form controller="tireHotelOccurrence" method="post">
-		                            					<g:hiddenField name="customerId" value="${customerInstance?.id}" />
-		                            					<g:hiddenField name="requestFromShowCustomerView" value="true" />
-		                            					<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-		                            					<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.button')}" />
-		                            				</g:form>
-	                            				</g:if>
-	                            			</td>
-		                            			
-	     			                      	<g:ifAllGranted role="ROLE_ADMIN">
-			                            		<td>
-			                            			<g:form controller="tireHotelOccurrence" method="post">
-			                            				<g:hiddenField name="customerId" value="${customerInstance?.id}" />
-		                            					<g:hiddenField name="requestFromShowCustomerView" value="true" />
-			                            				<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-			                            				<g:actionSubmit class="deleteTableItem" title="${message(code: 'tireHotelOccurrence.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tireHotelOccurrence.button.delete.confirm.message')}');" />
-			                            			</g:form>
-			                            		</td>
-	                        				</g:ifAllGranted>
-				                    	</tr>
-				                	</g:each>
-			                	</tbody>
-			               	</table>
-							<div class="paginateButtons" id="showCustomer">
-				          		<g:paginate next="Neste" prev="Forrige" controller="customer" action="show" id="${customerInstance.id}" total="${tireHotelOccurrenceInstanceTotalList.size()}"></g:paginate>
-				        	</div>
+						
+			            <div id="allTireHotelOccurrences">
+						<g:render template="/customer/allTireHotelOccurrences"
+							model="[tireHotelOccurrenceInstanceList: tireHotelOccurrenceInstanceList, 
+							tireHotelOccurrenceInstanceTotalList: tireHotelOccurrenceInstanceTotalList,
+							customerInstance: customerInstance]">
+						</g:render>
 						</div>
 				</g:if>
 			</div>
 				<g:if test="${customerOrders}">
 					<div id="customerOrders">
 						<h1><g:message code="customer.show.title.orders.label" /></h1>
+						<span id="customerTireHotelOccurrenceSwitchButton">
+							<a id="showCustomerOrderHistory" href="javascript:showAndHideElement('allCustomerOrders', 'activeCustomerOrders');"
+								onclick="showAndHideElement('hideCustomerOrderHistory', 'showCustomerOrderHistory');">
+								Vis historikk
+							</a>
+							<a id="hideCustomerOrderHistory" href="javascript:showAndHideElement('activeCustomerOrders','allCustomerOrders');"
+								onclick="showAndHideElement('showCustomerOrderHistory', 'hideCustomerOrderHistory');" style="display: none;">
+								Skjul historikk
+							</a>
+						</span>
+						<div id="activeCustomerOrders">
 						
-						<g:each in="${customerOrders}" status="i" var="customerOrderInstance">
-							<div class="customerOrderBox">
-								<g:form controller="customerOrder" method="post">
-									<g:hiddenField name="id" value="${customerOrderInstance?.id}" />
-									<g:actionSubmit class="deliverOrder" action="deliverOrder" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'customerOrder.receive.label')}" />
-								</g:form>
-								<h4>Ordrenummer: ${customerOrderInstance?.id}</h4>
-								<span><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance?.orderDate}" /></span>
-								<span class="tireNotice">${customerOrderInstance?.notice}</span>
-								
-								<h5 class="orderedTire">Bestilte dekk:</h5>
-								<g:each in="${customerOrderInstance?.customerOrderLines}" status="j" var="customerOrderLineInstance">
-									<div class="customerOrderLine">
-										<span class="tireName">${customerOrderLineInstance?.tire}</span>
-										<span class="numberOfReservedTires">${customerOrderLineInstance?.numberOfReservedTires} stk. &agrave;</span>
-										<span class="tirePrice"> kr <g:formatNumber number="${customerOrderLineInstance?.price}" format="###,##0" />
-										</span>
-									</div>
-								</g:each>
-	                   		</div>
-						</g:each>
-					</div>
+							<g:if test="${!activeCustomerOrders}">
+									Kunden har ingen aktive ordre
+							</g:if>
+													
+							<g:each in="${activeCustomerOrders}" status="i" var="customerOrderInstance">
+								<div class="customerOrderBox">
+									<g:form controller="customerOrder" method="post">
+										<g:hiddenField name="id" value="${customerOrderInstance?.id}" />
+										<g:actionSubmit class="deliverOrder" action="deliverOrder" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'customerOrder.receive.label')}" />
+									</g:form>
+									<h4>Ordrenummer: ${customerOrderInstance?.id}</h4>
+									<span><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance?.orderDate}" /></span>
+									<span class="tireNotice">${customerOrderInstance?.notice}</span>
+									
+									<h5 class="orderedTire">Bestilte dekk:</h5>
+									<g:each in="${customerOrderInstance?.customerOrderLines}" status="j" var="customerOrderLineInstance">
+										<div class="customerOrderLine">
+											<span class="tireName">${customerOrderLineInstance?.tire}</span>
+											<span class="numberOfReservedTires">${customerOrderLineInstance?.numberOfReservedTires} stk. &agrave;</span>
+											<span class="tirePrice"> kr <g:formatNumber number="${customerOrderLineInstance?.price}" format="###,##0" />
+											</span>
+										</div>
+									</g:each>
+		                   		</div>
+							</g:each>
+						</div>
+						<div id="allCustomerOrders">
+							<g:render template="/customer/allCustomerOrders"
+								model="customerOrders: customerOrders, 
+								customerOrdersTotalList: customerOrdersTotalList,
+								customerInstance: customerInstance]">
+							</g:render>
+						</div>
 				</g:if>
 			</div>
-        </div>
     </body>
 </html>

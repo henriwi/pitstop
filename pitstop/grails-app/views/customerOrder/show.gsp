@@ -31,11 +31,15 @@
 	        </g:each>
 		</tbody>
     </table>
-	<div class="buttons">
-		
-   		<g:form action="deliverOrder">
-       		<span class="button"><g:submitToRemote class="receiveSupplierOrder" onComplete="Modalbox.resizeToContent()" controller="customerOrder" action="deliverOrderFromModalbox" id="${customerOrderInstance?.id}" value="${message(code: 'customerOrder.button.deliver.label')}" update="MB_content"/></span>
-       		<g:link url="#" onClick="Modalbox.hide()"><g:message code="createTire.button.cancel.label" /></g:link>
-   		</g:form>
-   	</div>
+    <div class="buttons">
+    	<g:if test="${!customerOrderInstance?.deliveredDate}">
+	   		<g:form action="deliverOrder">
+	       		<span class="button"><g:submitToRemote class="receiveSupplierOrder" onComplete="Modalbox.resizeToContent()" controller="customerOrder" action="deliverOrderFromModalbox" id="${customerOrderInstance?.id}" value="${message(code: 'customerOrder.button.deliver.label')}" update="MB_content"/></span>
+	       		<g:link url="#" onClick="Modalbox.hide()"><g:message code="createTire.button.cancel.label" /></g:link>
+	   		</g:form>
+		</g:if>
+		<g:else>
+			<span class="button"><g:link url="#" onClick="Modalbox.hide()" class="btnShowAll"><g:message code="default.button.ok.label" /></g:link></span>
+		</g:else>
+	</div>
 </div>

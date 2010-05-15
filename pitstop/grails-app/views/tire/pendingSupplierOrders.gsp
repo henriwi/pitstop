@@ -37,7 +37,7 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.list.table.id.label')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.table.orderNumber.label')}" />
                         
                             <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.list.table.orderDate.label')}" />
                         
