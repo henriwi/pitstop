@@ -82,14 +82,18 @@ class CustomerController {
 				
 			def tireHotelOccurrenceListWithoutDelivered = TireHotelOccurrence.findAllByOutDateIsNullAndCustomer(customerInstance)
 			def tireHotelOccurrenceInstanceList = TireHotelOccurrence.findAllByCustomer(customerInstance, [max:params.max, offset:params.offset])
-			def tireHotelOccurrenceInstanceTotalList = TireHotelOccurrence.findAllByCustomer(customerInstance)	
-        	def customerOrders = CustomerOrder.findAllByCustomerAndDeliveredDateIsNull(customerInstance)
+			def tireHotelOccurrenceInstanceTotalList = TireHotelOccurrence.findAllByCustomer(customerInstance)
+			
+        	def activeCustomerOrders = CustomerOrder.findAllByCustomerAndDeliveredDateIsNull(customerInstance)
+        	def customerOrders = CustomerOrder.findAllByCustomer(customerInstance, [max:params.max, offset:params.offset])
+        	def customerOrdersTotalList = CustomerOrder.findAllByCustomer(customerInstance)					
 
 			[customerInstance: customerInstance, 
 			tireHotelOccurrenceInstanceListWithoutDeliveredInstance: tireHotelOccurrenceListWithoutDelivered,
 			tireHotelOccurrenceInstanceList: tireHotelOccurrenceInstanceList, 
 			tireHotelOccurrenceInstanceTotalList: tireHotelOccurrenceInstanceTotalList, 
-			customerOrders: customerOrders]
+			activeCustomerOrders: activeCustomerOrders, customerOrders: customerOrders, 
+			customerOrdersTotalList: customerOrdersTotalList]
         }
     }
 
@@ -174,30 +178,25 @@ class CustomerController {
 		render(view: "send", model: [customerInstanceList: customerInstance])
 	}
 	
-	def customerOrdersAsJSON = {
-		/*def orders = CustomerOrder.findAllByCustomer(Customer.get(params.id))
-		def pendingOrders = getPendingOrders(orders)
-
-		def formattedOrders = pendingOrders.collect {
-			[
-			 id: "<b>$it.id</b>",
-			 orderDate: new java.text.SimpleDateFormat("dd.MM.yyyy").format(it.orderDate),
-			 delivered: "<form action='/pitstop/customerOrder/deliverOrder' method='get'>" +
-			 		"<input type='hidden' name='id' value='$it.id'>" + 
-			 		"<input class='recieveSupplierOrder' type='submit' value=''></form>", 
-				 //g.actionSubmit(class:"deleteTableItem", value: "test", name: "${message(code: 'list.button.table.label')}", controller: "customer", action: 'show'),
-			 dataUrl: g.createLink(controller: "customerOrder", action: 'show') + "/$it.id"
-			]
-		}
+	def updateAllTireHotelOccurrencesList = {
+		def customerInstance = Customer.get(params.id)
+		def tireHotelOccurrenceInstanceList = TireHotelOccurrence.findAllByCustomer(customerInstance, [max:params.max, offset:params.offset, 
+		sort: params.sort, order: params.order])
+		def tireHotelOccurrenceInstanceTotalList = TireHotelOccurrence.findAllByCustomer(customerInstance)
 		
-		def data = [
-			//totalRecords: orders.size(),
-			results: formattedOrders,
-		]
+		render(template:"allTireHotelOccurrences", model:[ tireHotelOccurrenceInstanceList: tireHotelOccurrenceInstanceList,
+		tireHotelOccurrenceInstanceTotalList: tireHotelOccurrenceInstanceTotalList,
+		customerInstance: customerInstance])
+	}
+	
+	def updateAllCustomerOrdersList = {
+		def customerInstance = Customer.get(params.id)
+		def customerOrders = CustomerOrder.findAllByCustomer(customerInstance, [max:params.max, offset:params.offset, 
+		sort: params.sort, order: params.order])
+		def customerOrdersTotalList = CustomerOrder.findAllByCustomer(customerInstance)
 		
-		render data as JSON*/
-		
-		println "RemoteFunction"
-		render "Fett"
+		render(template:"allCustomerOrders", model:[ customerOrders: customerOrders,
+		customerOrdersTotalList: customerOrdersTotalList,
+		customerInstance: customerInstance])
 	}
 }

@@ -918,6 +918,10 @@ div#allTireHotelOccurrences {
 	display: none;
 }
 
+div#allCustomerOrders {
+	display: none;
+}
+
 input.deliverOrder   {
 	background:url("../images/skin/tireReceived.png") no-repeat scroll 5px 50% transparent;
 	color:#555555;
