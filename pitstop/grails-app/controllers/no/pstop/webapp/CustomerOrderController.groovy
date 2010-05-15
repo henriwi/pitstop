@@ -183,7 +183,7 @@ class CustomerOrderController {
 	
 	def deliverOrder = {
 		def order = CustomerOrder.get(params.id)
-		deliverOrder(order)
+		performOrderDelivery(order)
 		
 		flash.message = "${message(code: 'customerOrder.delivered.message', args: [params.id])}"
 		redirect(controller: "customer", action: "show", id: order?.customer?.id)
@@ -191,12 +191,12 @@ class CustomerOrderController {
 	
 	def deliverOrderFromModalbox = {
 		def order = CustomerOrder.get(params.id)
-		deliverOrder(order)
+		performOrderDelivery(order)
 		
 		render(view:"deliverOrderConfirmation")
 	}
 	
-	private deliverOrder(order) {
+	private performOrderDelivery(order) {
 		order?.deliveredDate = new Date()
 		order?.customerOrderLines.each {
 			it.tire.numberInStock -= it.numberOfReservedTires
