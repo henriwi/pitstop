@@ -1080,6 +1080,7 @@ span.tireSeason {
 span.tirePrice {
 	margin-top: 5px;
 	display: block;
+	margin-bottom: 5px;
 }
 
 span.tireNotice {
