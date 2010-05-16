@@ -53,6 +53,15 @@
 							<g:formatNumber number="${tireInstance?.retailPrice}" format="#.00 kr" />
 						</span>
 						
+							<g:if test="${tireInstance?.enabled}">
+			                           		<span>  ${message(code: 'tire.enabled.show.label')}
+			                       		</span>
+			                       		</g:if>
+			                       		<g:else>
+			                           		<span>  ${message(code: 'tire.disabled.show.label')}
+			                       		</g:else>
+						
+						
 						<g:if test="${tireInstance.notice}">
 							<span class="tireNotice">
 								${fieldValue(bean: tireInstance, field: "notice")}
@@ -69,6 +78,23 @@
 		                    	 	<span id="createSupplierOrderButton"><g:link controller="supplierOrder" class="create" params="[id:tireInstance?.id]" action="create"><g:message code="tire.button.newCustomerOrder.label" /></g:link></span>
 		                    	</g:ifAllGranted>
 							</g:form>
+							
+							<g:ifAllGranted role="ROLE_ADMIN"> 
+                            <td>
+			                    	<g:form method="post">
+			                        	<g:hiddenField name="id" value="${tireInstance?.id}" />
+			         
+			                           	<g:if test="${tireInstance?.enabled}">
+			                           		<g:actionSubmit class="disableTireItem" title="${message(code: 'tire.list.disable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'tire.disabled.button.show.label')}" />
+			                       		</g:if>
+			                       		<g:else>
+			                          		<g:actionSubmit class="enableTireItem" title="${message(code: 'tire.list.enable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'tire.enabled.button.show.label')}" />
+			                       		</g:else>
+			                        </g:form>
+                            </td>   
+                            </g:ifAllGranted>
+							
+							
 						</div>	
 					</div>
 						
