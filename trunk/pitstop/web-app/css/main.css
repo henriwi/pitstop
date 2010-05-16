@@ -1143,6 +1143,32 @@ span.tireNewOrder a  {
 	display: inline;
 }
 
+.buttons .disableTireItem {
+    background: url(../images/skin/tire_deactivate.png) 5px 50% no-repeat;
+    padding: 0px;
+    padding-right: 15px;
+    padding-top: 8px;
+    padding-left: 25px;
+    margin: 0px;
+    margin-left: 4px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.buttons .enableTireItem {
+    background: url(../images/skin/tire_activate.png) 5px 50% no-repeat;
+    padding: 0px;
+    padding-top: 8px;
+    padding-right: 15px;
+    padding-left: 25px;
+    margin: 0px;
+    margin-left: 4px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
 #tireButtons{
 	padding: 5px;
 	margin-top: 15px;
