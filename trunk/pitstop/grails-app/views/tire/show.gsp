@@ -54,8 +54,7 @@
 						</span>
 						
 							<g:if test="${tireInstance?.enabled}">
-			                           		<span>  ${message(code: 'tire.enabled.show.label')}
-			                       		</span>
+			                           	<span>${message(code: 'tire.enabled.show.label')}</span>
 			                       		</g:if>
 			                       		<g:else>
 			                           		<span>  ${message(code: 'tire.disabled.show.label')}
