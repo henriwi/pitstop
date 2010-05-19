@@ -41,8 +41,6 @@
 			<div class="buttons">
 				<span class="button">
 					<input type="submit" name="SUBMIT" onclick="sendSms(event);" class="save" value="Send SMS" />
-<!--				<g:submitToRemote url="${pageURI("http://sms.pswin.com/http4sms/send.asp")}"-->
-<!--				  update="MB_content" onSuccess="javascript:alert('SUCCESS');" onFailure="javascript:alert('FAIL!');" value="Send SMS" />-->
 				</span>
 			</div>
 		</g:form>
