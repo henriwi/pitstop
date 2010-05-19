@@ -1,6 +1,6 @@
 <head>
 	<meta name="layout" content="main" />
-	<title>Create User</title>
+	<title><g:message code="user.create.title.label"/></title>
 </head>
 <body>
 	<div class="nav">
@@ -28,12 +28,12 @@
 		
 		<g:if test="${params.action == 'list' && params.controller == 'log'}">
 			<span class="menuButton" id="active" >
-				<g:link controller = "log" class="list" action="list"><g:message code="log.list.label"/></g:link>
+				<g:link controller = "log" class="log" action="list"><g:message code="log.list.label"/></g:link>
 			</span>
 		</g:if>
 		<g:else>
 			<span class="menuButton">
-				<g:link controller = "log" class="list" action="list"><g:message code="log.list.label"/></g:link>
+				<g:link controller = "log" class="log" action="list"><g:message code="log.list.label"/></g:link>
 			</span>
 		</g:else>
 	</div>
@@ -123,7 +123,7 @@
 			</div>
 
 			<div class="buttons">
-				<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label')}" /></span>
+				<span class="button"><g:submitButton name="create" class="saveUser" value="${message(code: 'default.button.create.label')}" /></span>
                 <span class="button"><g:actionSubmit class="cancel" action="list" value="${message(code: 'default.button.cancel.label')}" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');" /></span>
 			</div>
 

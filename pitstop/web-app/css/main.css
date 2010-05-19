@@ -137,7 +137,6 @@ ul#menuList li {
 }
 
 #adminMenuItem {
-	background: #fff url(../images/skin/admin.jpg) bottom repeat-x;
 	float: right;
 	margin-right: 15px;
 }
@@ -243,6 +242,13 @@ div#submenuTireHotelOccurence {
     background-position: 2px;
 }
 
+.menuButton a.log {
+    background: url(../images/skin/log.png) center left no-repeat;
+    color: #555;
+    padding-left: 25px;
+    background-position: 2px;
+}
+
 .menuButton a.createCustomer {
     background: url(../images/skin/user_add.png) center left no-repeat;
     color: #555;
@@ -264,21 +270,9 @@ div#submenuTireHotelOccurence {
     background-position: 2px;
 }
 
-.backButton a.back {
-    background: url(../images/skin/back.png) center left no-repeat;
-    color: #555;
-    padding-left: 25px;
-    margin-left: 200px;
-    margin-top: 15px;
-    border: none;
-    position:  absolute;
-    font-size: 10px;
-}
-
 .menuButton a:hover{
 	color: #000;	
 }
-
 
 #createTireOccurrenceButton {
 	padding-top: 51px;
@@ -484,8 +478,8 @@ th.desc a {
     padding-left: 28px;
 }
 .buttons input.cancel {
-    background: transparent url(../images/skin/database_cancel.png) 5px 50% no-repeat;
-    padding-left: 28px;
+    background: transparent url(../images/skin/cancel.png) 5px 50% no-repeat;
+    padding-left: 25px;
 }
 .buttons input.edit {
     background: transparent url(../images/skin/database_edit.png) 5px 50% no-repeat;
@@ -495,11 +489,15 @@ th.desc a {
     background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
     padding-left: 28px;
 }
-
+.buttons input.saveUser {
+    background: transparent url(../images/skin/user_save.png) 5px 50% no-repeat;
+    padding-left: 25px;
+}
 .buttons input.change {
     background: transparent url(../images/skin/season_switch.png) 5px 50% no-repeat;
     padding-left: 28px;
 }
+
 input.change {
     background: transparent url(../images/skin/season_switch.png) 5px 50% no-repeat;
 	margin: 0px;
@@ -755,13 +753,17 @@ a.logoutButton{
 }
 
 a.btnShowAll {
-	background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
-    border: 1px solid #ccc;
+    border: none;
     color: #666;
     font-size: 11px;
     font-weight: normal;
     padding: 3px;
     cursor: pointer;
+    text-decoration: underline;
+}
+
+a.btnShowAll:hover{
+	text-decoration: none;
 }
 
 /* SHOW CUSTOMER */
