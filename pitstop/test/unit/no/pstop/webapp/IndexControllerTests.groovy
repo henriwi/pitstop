@@ -10,10 +10,6 @@ class IndexControllerTests extends ControllerUnitTestCase {
     protected void tearDown() {
         super.tearDown()
     }
-
-    void testSomething() {
-
-    }
 	
 	void testRanges(){
 		println barSize([s:'b',a:1,d:3])

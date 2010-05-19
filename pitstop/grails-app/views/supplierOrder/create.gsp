@@ -4,15 +4,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'supplierOrder.label', default: 'SupplierOrder')}" />
+        <g:set var="entityName" value="${message(code: 'supplierOrder.label')}" />
         <gui:resources components="autoComplete" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
-        </div>
+    	<div class="nav">
+    		<span class="menuButton" ${params.action == 'list' ? "id='active'" : ""} >
+            	<g:link class="list" action="list"><g:message code="supplier.listSupplierOrder.list.label" /></g:link>
+            </span>
+            <span class="menuButton" ${(params.action == 'create' || params.action == 'save') ? "id='active'" : ""} >
+            	<g:link class="create" action="create"><g:message code="supplier.addOrder.new.label" /></g:link>
+            </span>
+     	</div>
         <div class="body">
             <h1><g:message code="default.create.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
@@ -93,7 +97,7 @@
 								<td>${no.pstop.webapp.Tire.get(params.id)}</td>
 							</g:if>
 							<g:else>
-								<td class="yui-skin-sam">
+								<td class="yui-skin-sam ${hasErrors(bean: errorOrderLine, field: 'tire', 'errors')}">
 									<gui:autoComplete 
 										id="tire" 
 										controller="tire"
@@ -103,10 +107,18 @@
 										/>
 								</td>
 							</g:else>
-								<td><g:textField class="supplierOrderHeaders" name="price" value="${errorOrderLine?.price}" /></td>
-								<td><g:textField class="supplierOrderHeaders" name="discount" value="${errorOrderLine?.discount}" /></td>
-								<td><g:textField class="supplierOrderHeaders" name="environmentalFee" value="${errorOrderLine?.environmentalFee}" /></td>
-								<td><g:textField class="supplierOrderHeaders" name="numberOfOrderedTires" value="${errorOrderLine?.numberOfOrderedTires}" /></td>
+								<td valign="top" class="value ${hasErrors(bean: errorOrderLine, field: 'price', 'errors')}">
+									<g:textField class="supplierOrderHeaders" name="price" value="${errorOrderLine?.price}" />
+								</td>
+								<td valign="top" class="value ${hasErrors(bean: errorOrderLine, field: 'discount', 'errors')}">
+									<g:textField class="supplierOrderHeaders" name="discount" value="${errorOrderLine?.discount}" />
+								</td>
+								<td valign="top" class="value ${hasErrors(bean: errorOrderLine, field: 'environmentalFee', 'errors')}">
+									<g:textField class="supplierOrderHeaders" name="environmentalFee" value="${errorOrderLine?.environmentalFee}" />
+								</td>
+								<td valign="top" class="value ${hasErrors(bean: errorOrderLine, field: 'numberOfOrderedTires', 'errors')}">
+									<g:textField class="supplierOrderHeaders" name="numberOfOrderedTires" value="${errorOrderLine?.numberOfOrderedTires}" />
+								</td>
 								<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'order.addToOrder.tooltip.label')}" /></span></td>
 							</tr>
                    		</tbody>
