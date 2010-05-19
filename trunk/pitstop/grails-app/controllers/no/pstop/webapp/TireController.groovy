@@ -262,7 +262,6 @@ class TireController {
 	}
 	
 	def tireAutoComplete = {
-		println params
 		def tires
 		
 		if(isSpecialFastSearchQuery(params.query)) {
@@ -319,5 +318,13 @@ class TireController {
 		}
 		
 		return pendingCustomerOrders
+	}
+	
+	def saveNumberInStock = {
+		println params
+		def tireInstance = Tire.get(params.id)
+		tireInstance?.numberInStock = params.numberInStock?.toInteger()
+		tireInstance?.save(flush: true)
+		render "Joa"
 	}
 }

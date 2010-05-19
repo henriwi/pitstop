@@ -100,12 +100,20 @@
 					<div class="tireNumberInStockInfoBox">
 						<span class="tireLabelsInStockAndReserved">
 							<span class="tireInStockLabels"><g:message code="tire.numberInStock.label" /></span>
-							<span id="numberInStockLabel" class="tireInStockNumbers">${fieldValue(bean: tireInstance, field: "numberInStock")}</span>
-							<!-- <g:textField id="numberInStockText" style="display:none;" name="brand" value="${tireInstance?.numberInStock}" /></td>
-							<a id="showNumberInStockText" href="javascript:showAndHideElement('numberInStockText','numberInStockLabel');"
-								onclick="showAndHideElement('showCustomerHistory', 'hideCustomerHistory');">
-								Skjul historikk
-							</a>-->
+							<span id="showNumberInStock">
+								<span id="numberInStockLabel" class="tireInStockNumbers">${fieldValue(bean: tireInstance, field: "numberInStock")}</span>
+									<a href="javascript:showAndHideElement('editNumberInStock', 'showNumberInStock');">
+										<g:message code="tire.numberInStock.edit.label"></g:message>
+									</a>
+							</span>
+							<span id="editNumberInStock" style="display: none;">
+								<g:formRemote name="updateNumberInStockForm" url="${[action: 'saveNumberInStock']}" onSuccess="showAndHideElement('showNumberInStock', 'editNumberInStock');">
+		                          	<g:hiddenField name="id" value="${tireInstance?.id}" />
+									<g:textField id="numberInStockText" style="width: 50px;" name="numberInStock" value="${tireInstance?.numberInStock}" /></td>
+									<g:actionSubmit action="saveNumberInStock" class="receiveSupplierOrder" title="${message(code: 'supplierOrderLine.receive.tooltip.label')}" value="${message(code: 'list.button.delete.label')}" />
+								</g:formRemote>
+							</span>
+						</span>
 							
 							<g:set var="numberOfReserved" value="${0}"></g:set>
 		           			<g:each in="${customerOrders}" status="i" var="customerOrderInstance">
