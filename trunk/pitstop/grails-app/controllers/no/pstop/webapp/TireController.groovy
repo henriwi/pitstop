@@ -111,26 +111,6 @@ class TireController {
 		}
 	}
 
-	def listShowAll = { 
-		/*if(!params.max)
-			params.max = maxNumberOfTires
-		
-		if(!params.offset)
-			params.offset = 0*/
-		
-		def tireList
-		def tireCount
-		
-		params.max = Math.min(params.max ? params.int('max') : maxNumberOfTires, 100)
-		tireList = Tire.list(params)
-		tireCount = Tire.count()
-		
-		//[tireInstanceList: tireList, tireInstanceTotal: tireCount]
-		
-		render(view: "list", model: [tireInstanceList: tireList, tireInstanceTotal: tireCount])
-		
-	}
-	
 	private isFastSearchQuery(String query, String type){
 		query && type.equals("fast")
 	}

@@ -31,12 +31,12 @@
 			
 			<g:if test="${params.action == 'list' && params.controller == 'log'}">
 				<span class="menuButton" id="active" >
-					<g:link controller = "log" class="list" action="list"><g:message code="log.list.label"/></g:link>
+					<g:link controller = "log" class="log" action="list"><g:message code="log.list.label"/></g:link>
 				</span>
 			</g:if>
 			<g:else>
 				<span class="menuButton">
-					<g:link controller = "log" class="list" action="list"><g:message code="log.list.label"/></g:link>
+					<g:link controller = "log" class="log" action="list"><g:message code="log.list.label"/></g:link>
 				</span>
 			</g:else>
         </div>

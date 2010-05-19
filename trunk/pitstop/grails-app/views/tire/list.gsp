@@ -32,12 +32,12 @@
             <h1>${message(code: 'tire.list.title.label')}</h1>
             
          
-             <g:form action="fastSearchForListView" method="get">
+            <g:form action="fastSearchForListView" method="get">
  				<div id="fastSearchInListView">
-					<g:textField tabindex='1' name="txtFastSearch" /></td>
-					<g:submitButton name="active" value="${message(code: 'search.button.fastSearch.label')}" class="searchButtons"    /></td>
-       			   <%--  <g:submitButton name="deactive" value="${message(code: 'search.button.fastSearchDeactive.label')}" class="searchButtons"  /></td>--%>
-					<g:link action="listShowAll" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>	
+					<g:textField tabindex='1' name="txtFastSearch" />
+					<g:submitButton tabindex='2' class="searchButtons" name="btnSearch" value="${message(code: 'search.button.fastSearch.label')}" />
+       			   	<%--<g:submitButton name="deactive" value="${message(code: 'search.button.fastSearchDeactive.label')}" class="searchButtons"  />--%>
+					<g:link action="list" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>	
 				</div>
 			</g:form>
 			
@@ -76,7 +76,7 @@
                             <th><a class="notSortableColoumn">${message(code: 'tire.list.edit.label')}</a></th>
 
            	                <g:ifAllGranted role="ROLE_ADMIN"> 
-	                     	<th><a class="notSortableColoumn">${message(code: 'tire.list.disable.label')}</a></th>
+	                     		<th><a class="notSortableColoumn">${message(code: 'tire.list.disable.table.label')}</a></th>
                         	</g:ifAllGranted>
                         </tr>
                     </thead>
