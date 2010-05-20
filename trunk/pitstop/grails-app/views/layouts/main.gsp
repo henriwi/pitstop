@@ -43,9 +43,10 @@
 		        	<li id="customerOrderMenuItem"><g:link class="${(params.controller == 'customerOrder') ? 'active' : ''}" controller="customerOrder">${message(code: 'main.menu.customerOrder.label')}</g:link></li>
 			        
 		        	<li id="supplierOrderMenuItem"><g:link class="${(params.controller == 'supplierOrder') ? 'active' : ''}" controller="supplierOrder">${message(code: 'main.menu.supplierOrder.label')}</g:link></li>
-			        
+			       
+			        <g:ifAllGranted role="ROLE_ADMIN">
 	        		<li id="adminMenuItem"><g:link class="${(params.controller == 'user') ? 'active' : ''}" controller="user">${message(code: 'main.menu.admin.label')}</g:link></li>
-			   		
+			   		</g:ifAllGranted>
 			        <%--
 					<g:each var="c" in="${grailsApplication.controllerClasses}">
 			        	<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
