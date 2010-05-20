@@ -44,7 +44,7 @@
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
-            <h1><g:message code="log.list.label" /></h1>
+            <h1><g:message code="log.list.header.label" /></h1>
             <div class="list">
                 <table>
                     <thead>

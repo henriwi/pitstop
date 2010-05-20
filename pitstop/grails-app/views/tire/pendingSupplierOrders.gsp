@@ -30,7 +30,7 @@
             	<div class="message">${flash.message}</div>
             </g:if>
 
-            <h1><g:message code="tire.pendingSupplierOrders.title.label" /></h1>
+            <h1><g:message code="tire.pendingSupplierOrders.header.label" /></h1>
             
             <div class="list">
                 <table>

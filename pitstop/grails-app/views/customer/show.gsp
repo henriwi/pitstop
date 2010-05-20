@@ -138,11 +138,12 @@
 							customerInstance: customerInstance]">
 						</g:render>
 						</div>
+					</div>
 				</g:if>
-			</div>
+				
 				<g:if test="${customerOrders}">
+					<h3><g:message code="customer.show.title.orders.label" /></h3>
 					<div id="customerOrders">
-						<h1><g:message code="customer.show.title.orders.label" /></h1>
 						<span id="customerTireHotelOccurrenceSwitchButton">
 							<a id="showCustomerOrderHistory" href="javascript:showAndHideElement('allCustomerOrders', 'activeCustomerOrders');"
 								onclick="showAndHideElement('hideCustomerOrderHistory', 'showCustomerOrderHistory');">
@@ -189,6 +190,8 @@
 							</g:render>
 						</div>
 				</g:if>
+			</div>				
 			</div>
+
     </body>
 </html>
