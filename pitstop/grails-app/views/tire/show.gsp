@@ -72,10 +72,8 @@
 		                    	<g:hiddenField name="id" value="${tireInstance?.id}" />
 		                    	<span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'tire.button.edit.label', default: 'Edit')}" /></span>
 		                    
-		                    	<g:ifAllGranted role="ROLE_ADMIN">
-		                    		<span class="menuButton"><g:actionSubmit class="delete" action="delete" value="${message(code: 'tire.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" /></span>
-		                    	 	<span id="createSupplierOrderButton"><g:link controller="supplierOrder" class="create" params="[id:tireInstance?.id]" action="create"><g:message code="tire.button.newCustomerOrder.label" /></g:link></span>
-		                    	</g:ifAllGranted>
+		                    	<span class="menuButton"><g:actionSubmit class="delete" action="delete" value="${message(code: 'tire.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" /></span>
+		                    	<span id="createSupplierOrderButton"><g:link controller="supplierOrder" class="create" params="[id:tireInstance?.id]" action="create"><g:message code="tire.button.newCustomerOrder.label" /></g:link></span>
 							</g:form>
 							
 							<g:ifAllGranted role="ROLE_ADMIN"> 
