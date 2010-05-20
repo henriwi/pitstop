@@ -36,7 +36,7 @@
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
-            <h1><g:message code="tireHotelOccurrence.create.label" /></h1>
+            <h1><g:message code="tireHotelOccurrence.create.header.label" /></h1>
             <g:hasErrors bean="${tireHotelOccurrenceInstance}">
             	<div class="errors">
 	                <g:renderErrors bean="${tireHotelOccurrenceInstance}" as="list" />
@@ -59,7 +59,7 @@
 								<g:else>
 									<td class="yui-skin-sam">
 										<gui:autoComplete 
-											id="customer" 
+											id="customer"
 											controller="customer"
 											action="customerAutoComplete"
 											resultName="customers"/>
