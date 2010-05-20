@@ -9,8 +9,17 @@
     </head>
     <body>
         <div class="nav">
-			<span class="menuButton"><g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link></span>
+			<span class="menuButton" ${(params.action == 'list') ? "id='active'" : ""}  >
+	        	<g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
+       		</span>
+	        
+	        <span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""}  >
+	        	<g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
+       		</span>
+       		
+            <span class="menuButton" ${(tireHotelOccurrenceInstance.id) ? "id='active'" : ""}  >
+       			<g:link class="showTireHotelOccurrence" action="show" id="${tireHotelOccurrenceInstance.id}">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")} - ${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}</g:link>
+       		</span>
         </div>
         <div class="body">
             <g:if test="${flash.message}">

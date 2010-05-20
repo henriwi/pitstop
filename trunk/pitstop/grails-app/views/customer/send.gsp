@@ -3,18 +3,18 @@
 </head>
 <body>
 	<div class="body">
+
+		<h1>Send SMS til kunde</h1>
 		<g:if test="${flash.message}">
 			<div class="message">${flash.message}</div>
 		</g:if>
-		
-		<h1>Send SMS til kunde</h1>
 		<g:hasErrors bean="${authority}">
 			<div class="errors">
 				<g:renderErrors bean="${authority}" as="list" />
 			</div>
 		</g:hasErrors>
 
-		<g:form method="post" action="http://sms.pswin.com/http4sms/send.asp" enctype="multipart/form-data">
+		<g:form method="post" action="sendSmsToCustomer">
 			<div class="dialog">
 			<table>
 				<tbody>
@@ -25,7 +25,7 @@
 					<tr class="prop">
 						<td valign="top" class="name"><label for="RCV">Mottaker: </label></td>
 						<td valign="top" class="value ${hasErrors(bean:authority,field:'authority','errors')}">
-							<input type="text" id="RCV" name="RCV" value="47${customerInstanceList.phoneNumber}"/>
+							<input type="text" id="RCV" name="RCV" value="${customerInstanceList.phoneNumber}"/>
 						</td>
 					</tr>
 		
@@ -40,7 +40,8 @@
 			</div>
 			<div class="buttons">
 				<span class="button">
-					<input type="submit" name="SUBMIT" onclick="sendSms(event);" class="save" value="Send SMS" />
+<!--<g:submitButton name="SUBMIT" class="save" value="Send sms"/>-->
+					<g:submitToRemote name="SUBMIT" class="save" value="Send sms" update="MB_content" action="sendSmsToCustomer" value="Send SMS" />
 				</span>
 			</div>
 		</g:form>

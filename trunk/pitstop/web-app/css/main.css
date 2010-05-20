@@ -20,15 +20,12 @@ body {
 }
 #pstopLogo {
 	width: auto;
-	background-color: #dce7fb;
+	background-color: #eef;
 	margin: auto;
 }
 #pstopLogo img{
+	padding-left: 25px;
 	border: none;
-}
-
-#grailsLogo {
-	padding:20px;
 }
 
 a:link, a:visited, a:hover {
@@ -241,7 +238,12 @@ div#submenuTireHotelOccurence {
     padding-left: 20px;
     background-position: 2px;
 }
-
+.menuButton a.showTireHotelOccurrence {
+    background: url(../images/skin/tireHotelOccurrence.png) center left no-repeat;
+    color: #555;
+    padding-left: 20px;
+    background-position: 2px;
+}
 .menuButton a.log {
     background: url(../images/skin/log.png) center left no-repeat;
     color: #555;

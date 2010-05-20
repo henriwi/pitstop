@@ -5,38 +5,25 @@
 
 <body>
 	<div class="nav">
-		<g:if test="${params.action == 'list' && params.controller == 'user'}">
-			<span class="menuButton" id="active" >
-				<g:link controller = "user" class="list" action="list"><g:message code="user.list.label"/></g:link>
-			</span>
-		</g:if>
-		<g:else>
-			<span class="menuButton">
-				<g:link controller = "user" class="list" action="list"><g:message code="user.list.label"/></g:link>
-			</span>
-		</g:else>
+		<span class="menuButton" ${(params.action == 'list' && params.controller == 'user') ? "id='active'" : ""}  >
+			<g:link controller = "user" class="list" action="list"><g:message code="user.list.label"/></g:link>
+      	</span>
+      	
+		<span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""}  >
+			<g:link controller = "user" class="createUser" action="create"><g:message code="user.create.label"/></g:link>
+      	</span>
 		
-		<g:if test="${params.action == 'create'}">
-			<span class="menuButton" id="active" >
-				<g:link controller = "user" class="createUser" action="create"><g:message code="user.create.label"/></g:link>
-			</span>
-		</g:if>
-		<g:else>
-			<span class="menuButton">
-				<g:link controller = "user" class="createUser" action="create"><g:message code="user.create.label"/></g:link>
-			</span>
-		</g:else>
+		<span class="menuButton" ${(params.action == 'list' && params.controller == 'log') ? "id='active'" : ""}  >
+			<g:link controller = "log" class="log" action="list"><g:message code="log.list.label"/></g:link>
+      	</span>
 		
-		<g:if test="${params.action == 'list' && params.controller == 'log'}">
-			<span class="menuButton" id="active" >
-				<g:link controller = "log" class="log" action="list"><g:message code="log.list.label"/></g:link>
-			</span>
-		</g:if>
-		<g:else>
-			<span class="menuButton">
-				<g:link controller = "log" class="log" action="list"><g:message code="log.list.label"/></g:link>
-			</span>
-		</g:else>
+		<span class="menuButton" ${(params.action == 'list' && params.controller == 'log') ? "id='active'" : ""}  >
+			<g:link controller = "log" class="log" action="list"><g:message code="log.list.label"/></g:link>
+      	</span>
+        
+		<span class="menuButton" ${(person.id) ? "id='active'" : ""}  >
+			<g:link class="showUser" action="show" id="${person.id}">${fieldValue(bean: person, field: "username")} (${fieldValue(bean: person, field: "userRealName")})</g:link>
+		</span>
 	</div>
 
 	<div class="body">
@@ -98,43 +85,45 @@
 			</g:form>
 		</div>
 		
-		<div class="loglist">
-                <table>
-                    <thead>
-                        <tr>
-                        
-                            <th><a class="notSortableColoumn">${message(code: 'user.username.table.label')}</a></th>
-                        
-                            <th><a class="notSortableColoumn">${message(code: 'log.date.table.label')}</a></th>
-                        
-                            <th><a class="notSortableColoumn">${message(code: 'log.event.table.label')}</a></th>
-                            
-                            <th><a class="notSortableColoumn">${message(code: 'user.list.delete.label')}</a></th>
-                        
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <g:each in="${logInstanceList}" status="i" var="logInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
-                            <td>${logInstance?.user?.username}</td>
-                        
-                            <td><g:formatDate format="dd.MM.yyyy HH:mm:ss" date="${logInstance?.date}" /></td>
-                        
-                            <td>${logInstance?.event}</td>
-                            
-	                    	<td>
-		                    	<g:form method="post">
-		                        	<g:hiddenField name="id" value="${logInstance?.id}" />
-		                           	<g:actionSubmit class="deleteTableItem" title="${message(code: 'log.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'log.button.delete.confirm.message')}');" />
-		                        </g:form>
-		                   	</td> 
-                        
-                        </tr>
-                    </g:each>
-                    </tbody>
-                </table>
-            </div>
-
+		<br />
+		
+		<g:if test="${logInstanceList }">
+			<div class="loglist">
+	                <table>
+	                    <thead>
+	                        <tr>
+	                        
+	                            <th><a class="notSortableColoumn">${message(code: 'user.username.table.label')}</a></th>
+	                        
+	                            <th><a class="notSortableColoumn">${message(code: 'log.date.table.label')}</a></th>
+	                        
+	                            <th><a class="notSortableColoumn">${message(code: 'log.event.table.label')}</a></th>
+	                            
+	                            <th><a class="notSortableColoumn">${message(code: 'user.list.delete.label')}</a></th>
+	                        
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                    <g:each in="${logInstanceList}" status="i" var="logInstance">
+	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+	                        
+	                            <td>${logInstance?.user?.username}</td>
+	                        
+	                            <td><g:formatDate format="dd.MM.yyyy HH:mm:ss" date="${logInstance?.date}" /></td>
+	                        
+	                            <td>${logInstance?.event}</td>
+	                            
+		                    	<td>
+			                    	<g:form method="post">
+			                        	<g:hiddenField name="id" value="${logInstance?.id}" />
+			                           	<g:actionSubmit class="deleteTableItem" title="${message(code: 'log.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'log.button.delete.confirm.message')}');" />
+			                        </g:form>
+			                   	</td> 
+	                    	</tr>
+	                	</g:each>
+	            	</tbody>
+	        	</table>
+			</div>
+		</g:if>
 	</div>
 </body>

@@ -177,6 +177,34 @@ class CustomerController {
 		def customerInstance = Customer.get(params.id)
 		render(view: "send", model: [customerInstanceList: customerInstance])
 	}
+
+	def sendSmsToCustomer = {
+		if(params.RCV && params.TXT) {
+			def url = new URL ("http://sms.pswin.com/http4sms/send.asp")
+			def conn = url.openConnection()
+			conn.setRequestMethod("POST")
+			
+			String data = "USER=pitstop&PW=ngriter7&SND=Pit-stop&RCV=47" + params.RCV + "&TXT=" + params.TXT
+			
+			conn.doOutput = true
+			
+			Writer wr = new OutputStreamWriter(conn.outputStream)
+			wr.write(data)
+			wr.flush()
+			wr.close()
+			
+			conn.connect()
+//			println conn.content.text
+			conn.responseMessage
+//			if(conn.responseMessage == "OK\n"){}
+				//redirect(controller: "customer", id: "list")
+//				render(template:sendSmsSuccess)
+				render "<h1>Vellykket</h1><p>SMSen ble sendt</p><br /><a href='' onclick='MB_hide()'>Lukk</a>"
+		}
+		else {
+			render "Fyll ut alle felter"
+		}
+	}
 	
 	def updateAllTireHotelOccurrencesList = {
 		def customerInstance = Customer.get(params.id)

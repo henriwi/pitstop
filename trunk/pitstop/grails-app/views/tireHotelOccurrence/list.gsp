@@ -11,27 +11,13 @@
     </head>
     <body>
         <div class="nav">
-			<g:if test="${params.action == 'list'}">
-        		<span class="menuButton" id="active" >
-        			<g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
-        		</span>
-        	</g:if>
-	        <g:else>
-	        	<span class="menuButton">
-        			<g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
-        		</span>
-	        </g:else>
+			<span class="menuButton" ${(params.action == 'list') ? "id='active'" : ""}  >
+	        	<g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
+       		</span>
 	        
-	        <g:if test="${params.action == 'create'}">
-        		<span class="menuButton" id="active" >
-        			<g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
-        		</span>
-        	</g:if>
-	        <g:else>
-	        	<span class="menuButton">
-        			<g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
-        		</span>
-	        </g:else>
+	        <span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""}  >
+	        	<g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
+       		</span>
         </div>
         <div class="body">
             <g:if test="${flash.message}">
