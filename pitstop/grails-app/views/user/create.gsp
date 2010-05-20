@@ -15,10 +15,6 @@
 		<span class="menuButton" ${(params.action == 'list' && params.controller == 'log') ? "id='active'" : ""}  >
 			<g:link controller = "log" class="log" action="list"><g:message code="log.list.label"/></g:link>
       	</span>
-		
-		<span class="menuButton" ${(params.action == 'list' && params.controller == 'log') ? "id='active'" : ""}  >
-			<g:link controller = "log" class="log" action="list"><g:message code="log.list.label"/></g:link>
-      	</span>
 	</div>
 
 	<div class="body">
