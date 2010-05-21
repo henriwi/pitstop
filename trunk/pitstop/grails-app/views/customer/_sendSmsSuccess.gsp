@@ -3,6 +3,6 @@
 </head>
 <body>
 	<div class="body">
-		<p>SMSen ble sendt</p><a href="" onclick="MB_hide()">Lukk</a>
+		<p>SMSen ble sendt</p><a href="" onclick="Modalbox.hide()">Lukk</a>
 	</div>
 </body>
