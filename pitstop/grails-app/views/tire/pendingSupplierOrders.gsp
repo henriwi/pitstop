@@ -48,7 +48,7 @@
 	                    <g:each in="${supplierOrders}" status="i" var="supplierOrderInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 	                        
-	                        	<td><modalbox:createLink controller="supplierOrder" action="show" id="${supplierOrderInstance?.id}" title="Dekkbestilling" width="700">${supplierOrderInstance?.id}</modalbox:createLink></td>
+	                        	<td><modalbox:createLink controller="supplierOrder" action="show" id="${supplierOrderInstance?.id}" title="${message(code: 'pendingSupplierOrder.modalBox.title.label')}" width="750">${supplierOrderInstance?.id}</modalbox:createLink></td>
 	                        	
 	                            <td><g:formatDate format="dd.MM.yyyy hh:mm" date="${supplierOrderInstance?.orderDate}" /></td>
 	                        
