@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="nav">
-       		<span class="menuButton" id="${params.action == 'list' ? 'active' : ''}" >
+       		<span class="menuButton" id="${params.action == 'list' || params.action == 'save'? 'active' : ''}" >
        			<g:link class="list" action="list"><g:message code="customer.listCustomerOrder.list.label" /></g:link>
        		</span>
        		<span class="menuButton" id="${params.action == 'create' ? 'active' : ''}" >

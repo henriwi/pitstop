@@ -116,28 +116,29 @@
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="pattern"><g:message code="tire.pattern.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'pattern', 'errors')}">
-                                    <g:textField maxlength="30" tabindex='10' name="pattern" value="${tireInstance?.pattern}" /></td>
+                                    <g:textField maxlength="30" tabindex='10' name="pattern" value="${tireInstance?.pattern}" />
+                                </td>
                             </tr>
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="tireType"><g:message code="tire.tireType.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'tireType', 'errors')}">
-                                    <g:select tabindex='11' name="tireType" from="${tireInstance.constraints.tireType.inList}" value="${tireInstance?.tireType}" valueMessagePrefix="tire.tireType" /></td>
+                                    <g:select tabindex='11' name="tireType" from="${tireInstance.constraints.tireType.inList}" value="${tireInstance?.tireType}" valueMessagePrefix="tire.tireType" />
+                                </td>
                             </tr>
                             <tr class="prop">
 	                            <td valign="top" class="name"><label for="numberInStock"><g:message code="tire.numberInStock.createUpdate.label" /></label></td>
 	                            <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'numberInStock', 'errors')}">
-	                                <g:textField maxlength="30" tabindex='12' name="numberInStock" value="${tireInstance?.numberInStock}" /></td>
-                        		</tr>
-                            
+	                                <g:textField maxlength="30" tabindex='12' name="numberInStock" value="${tireInstance?.numberInStock}" />
+								</td>
+                       		</tr>
                        
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="notice"><g:message code="tire.notice.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'notice', 'errors')}">
-                                    <g:textArea tabindex='13' name="notice" rows="5" cols="10"/></td>
+                                    <g:textArea tabindex='13' name="notice" rows="5" cols="10"/>
+								</td>
                             </tr>
-                            
                              <g:hiddenField name="enabled" value="true" />
-                            
                         </tbody>
                     </table>
                 </div>
