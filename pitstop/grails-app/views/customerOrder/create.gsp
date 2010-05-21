@@ -112,29 +112,12 @@
 							    YAHOO.util.Event.onDOMReady(function() {
 							    	//GRAILSUI.tire.itemSelectEvent.subscribe(${remoteFunction(controller: 'tire', action:'getTireInfoFromSelectedTire',update:'listPrice')})
 							    	var itemSelectHandler = function(sType, aArgs) {
-								    	var tireId = aArgs[2]
-								    	new Ajax.Updater('listPrice','/pitstop/tire/getListPriceFromSelectedTire',{asynchronous:true,evalScripts:true,parameters:'tireId='+aArgs[2][1]});
-								    	new Ajax.Updater('highestPrice','/pitstop/tire/getHighesttPriceFromSelectedTire',{asynchronous:true,evalScripts:true,parameters:'tireId='+aArgs[2][1]}); 
-								    	new Ajax.Updater('averagePrice','/pitstop/tire/getAveragePriceFromSelectedTire',{asynchronous:true,evalScripts:true,parameters:'tireId='+aArgs[2][1]}); 
-							    		YAHOO.log(sType); // this is a string representing the event;
-							    		
-							    					      // e.g., "itemSelectEvent"
-							    		var oMyAcInstance = aArgs[0]; // your AutoComplete instance
-							    		var elListItem = aArgs[1]; // the <li> element selected in the suggestion
-							    		   					       // container
-							    		var oData = aArgs[2]; // object literal of data for the result
-							    		document.getElementById("listPrice").innerHTML = aArgs;
-							    		//alert("odata:<"+oData+"> aArgs:<" + aArgs +">");
+								    	var tireId = aArgs[2][1]
+								    	new Ajax.Updater('listPrice','/pitstop/tire/getListPriceFromSelectedTire',{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId});
+								    	new Ajax.Updater('highestPrice','/pitstop/tire/getHighesttPriceFromSelectedTire',{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId}); 
+								    	new Ajax.Updater('averagePrice','/pitstop/tire/getAveragePriceFromSelectedTire',{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId}); 
 							    	};
-							    	var test = function(sType,aArgs){
-							    		document.getElementById("listPrice").innerHTML = aArgs[2][0];
-								    }; 
-							    	//GRAILSUI.tire.dataReturnEvent.subscribe(test);
-							    	//resultName="tires', 'highest"
-							    	//GRAILSUI.tire.responseSchema = {fields: ["name", "highest"]};
-							    	
 								    GRAILSUI.tire.itemSelectEvent.subscribe(itemSelectHandler);
-								    
 							    });
 							</script>
 							<td id="listPrice"></td>
