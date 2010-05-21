@@ -567,6 +567,15 @@ a.logoutButton{
 	background-position: 2px;
 }
 
+#userInfoLabel {
+	float: right;
+	margin-top: 42px;
+	margin-right: 10px;
+	color: #555555;
+	font-weight: bold;
+	font-size: 10px;
+}
+
 /* Tabs */
 #submenu ul li em {
 	width: 75px; 	
