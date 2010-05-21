@@ -8,11 +8,8 @@
 		<g:if test="${flash.message}">
 			<div class="message">${flash.message}</div>
 		</g:if>
-		<g:hasErrors bean="${authority}">
-			<div class="errors">
-				<g:renderErrors bean="${authority}" as="list" />
-			</div>
-		</g:hasErrors>
+		<div class="errors">
+		</div>
 
 		<g:form method="post" action="sendSmsToCustomer">
 			<div class="dialog">

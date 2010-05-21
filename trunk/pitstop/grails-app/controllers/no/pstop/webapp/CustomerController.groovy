@@ -1,5 +1,7 @@
 package no.pstop.webapp
 
+import java.net.HttpURLConnection;
+
 import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 import grails.converters.JSON
 
@@ -180,7 +182,7 @@ class CustomerController {
 
 	def sendSmsToCustomer = {
 		if(params.RCV && params.TXT) {
-			def url = new URL ("http://sms.pswin.com/http4sms/send.asp")
+			def url = new URL ("http://sms.pswin.com/http4sms/send23.asp")
 			def conn = url.openConnection()
 			conn.setRequestMethod("POST")
 			
@@ -197,7 +199,12 @@ class CustomerController {
 //			println conn.content.text
 			conn.responseMessage
 //			if(conn.responseMessage == "OK\n"){}
+			if(conn.responseCode == HttpURLConnection.HTTP_OK) {
 				render(template: "sendSmsSuccess")
+			}
+			else {
+				render(template: "sendSmsFailure")
+			}
 		}
 		else {
 			render "Fyll ut alle felter"
