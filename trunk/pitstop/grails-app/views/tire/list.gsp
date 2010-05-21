@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="nav">
-			<span class="menuButton" id="${params.action == 'list' && params.controller == 'tire' ? 'active' : ''}" >
+			<span class="menuButton" id="${params.action == 'list' && params.controller == 'tire' || params.action == 'save' ? 'active' : ''}" >
        			<g:link controller="tire" class="tireList" action="list"><g:message code="default.button.tireList.label"/></g:link>
        		</span>
 	        

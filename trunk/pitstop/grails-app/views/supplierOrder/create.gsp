@@ -20,12 +20,12 @@
         <div class="body">
             <h1><g:message code="default.create.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${order}">
-            <div class="errors">
-                <g:renderErrors bean="${order}" as="list" />
-            </div>
+            	<div class="errors">
+             	   <g:renderErrors bean="${order}" as="list" />
+            	</div>
             </g:hasErrors>
             	<div id="supplierOrderDialog">
 	            	<div id="supplierInfoAndNotice">
@@ -45,7 +45,7 @@
 		                                    <label for="notice"><g:message code="supplierOrder.notice.label" /></label>
 		                                </td>
 		                                <td valign="top" class="value ${hasErrors(bean: order, field: 'notice', 'errors')}">
-		                                    <g:textArea style="width: 150px; height: 50px;" value="${order?.notice }"tabindex='13' name="notice" rows="5" cols="10"/>
+		                                    <g:textArea style="width: 150px; height: 50px;" value="${order?.notice }" name="notice" rows="5" cols="10"/>
 		                                </td>
 		                            </tr>
 		                        </tbody>
@@ -98,13 +98,7 @@
 							</g:if>
 							<g:else>
 								<td class="yui-skin-sam ${hasErrors(bean: errorOrderLine, field: 'tire', 'errors')}">
-									<gui:autoComplete 
-										id="tire" 
-										controller="tire"
-										action="tireAutoComplete"
-										resultName="tires"
-										value="${errorOrderLine?.tire}"
-										/>
+									<gui:autoComplete id="tire" controller="tire" action="tireAutoComplete" resultName="tires" value="${errorOrderLine?.tire}" />
 								</td>
 							</g:else>
 								<td valign="top" class="value ${hasErrors(bean: errorOrderLine, field: 'price', 'errors')}">
@@ -126,7 +120,7 @@
             		</div>
 	               	<div class="buttons">
 	                   	<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'supplierOrder.button.create.label')}" /></span>
-	                   	<span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
+	                   	<span class="button"><g:actionSubmit class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
 	               	</div>
 	           		</g:form>
 	           	</div>

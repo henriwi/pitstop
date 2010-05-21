@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="nav">
-			<span class="menuButton" ${(params.action == 'list') ? "id='active'" : ""}  >
+			<span class="menuButton" ${(params.action == 'list' && params.action == 'save') ? "id='active'" : ""}  >
 	        	<g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
        		</span>
 	        
