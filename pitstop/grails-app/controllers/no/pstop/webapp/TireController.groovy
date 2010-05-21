@@ -317,7 +317,6 @@ class TireController {
 				pendingSupplierOrdersList << it
 			}
 		}
-		println pendingSupplierOrdersList
 		return pendingSupplierOrdersList
 	}
 	

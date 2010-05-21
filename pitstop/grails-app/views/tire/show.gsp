@@ -46,20 +46,20 @@
 							</span>
 						</g:if>
 						
-						<span class="tireSeason">${fieldValue(bean: tireInstance, field: "tireType")} <g:if test="${tireInstance.pattern}">${fieldValue(bean: tireInstance, field: "pattern")}</g:if>
+						<span class="tireSeason">${fieldValue(bean: tireInstance, field: "tireType")} 
+							<g:if test="${tireInstance.pattern}">${fieldValue(bean: tireInstance, field: "pattern")}</g:if>
 						</span>
 						
 						<span class="tirePrice">
 							<g:formatNumber number="${tireInstance?.retailPrice}" format="#.00 kr" />
 						</span>
 						
-							<g:if test="${tireInstance?.enabled}">
-			                           	<span>${message(code: 'tire.enabled.show.label')}</span>
-			                       		</g:if>
-			                       		<g:else>
-			                           		<span>  ${message(code: 'tire.disabled.show.label')}
-			                       		</g:else>
-						
+						<g:if test="${tireInstance?.enabled}">
+			            	<span>${message(code: 'tire.enabled.show.label')}</span>
+			            </g:if>
+			            <g:else>
+			            	<span>${message(code: 'tire.disabled.show.label')}
+			            </g:else>
 						
 						<g:if test="${tireInstance.notice}">
 							<span class="tireNotice">
@@ -79,7 +79,7 @@
 							</g:form>
 							
 							<g:ifAllGranted role="ROLE_ADMIN"> 
-                            <td>
+	                            <td>
 			                    	<g:form method="post">
 			                        	<g:hiddenField name="id" value="${tireInstance?.id}" />
 			         
@@ -90,10 +90,9 @@
 			                          		<g:actionSubmit class="enableTireItem" title="${message(code: 'tire.list.enable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'tire.enabled.button.show.label')}" />
 			                       		</g:else>
 			                        </g:form>
-                            </td>   
+	                            </td>   
                             </g:ifAllGranted>
-							
-							
+	
 						</div>	
 					</div>
 						
@@ -102,9 +101,9 @@
 							<span class="tireInStockLabels"><g:message code="tire.numberInStock.label" /></span>
 							<span id="showNumberInStock">
 								<span id="numberInStockLabel" class="tireInStockNumbers">${fieldValue(bean: tireInstance, field: "numberInStock")}</span>
-									<a href="javascript:showAndHideElement('editNumberInStock', 'showNumberInStock');">
-										<g:message code="tire.numberInStock.edit.label"></g:message>
-									</a>
+								<a href="javascript:showAndHideElement('editNumberInStock', 'showNumberInStock');">
+									<g:message code="tire.numberInStock.edit.label"></g:message>
+								</a>
 							</span>
 							<span id="editNumberInStock" style="display: none;">
 								<g:formRemote name="updateNumberInStockForm" url="${[action: 'saveNumberInStock']}" onSuccess="showAndHideElement('showNumberInStock', 'editNumberInStock');">
@@ -197,7 +196,7 @@
 	                    </tbody>
 					</table>
 		        </g:if>
-		       </div>
-            </div>
+			</div>
+    	</div>
     </body>
 </html>
