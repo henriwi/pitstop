@@ -59,11 +59,9 @@
 				<tr class="prop">
 					<td valign="top" class="name"><g:message code="user.roles.label" /></td>
 					<td valign="top" class="value">
-						<ul>
 						<g:each in="${roleNames}" var='role'>
-							<li>${role?.description}</li>
+							${role?.description}
 						</g:each>
-						</ul>
 					</td>
 				</tr>
 

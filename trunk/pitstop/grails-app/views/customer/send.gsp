@@ -37,7 +37,6 @@
 			</div>
 			<div class="buttons">
 				<span class="button">
-<!--<g:submitButton name="SUBMIT" class="save" value="Send sms"/>-->
 					<g:submitToRemote name="SUBMIT" class="save" value="Send sms" update="MB_content" action="sendSmsToCustomer" value="Send SMS" />
 				</span>
 			</div>

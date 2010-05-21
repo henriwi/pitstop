@@ -30,7 +30,6 @@
             	<div class="message">${flash.message}</div>
             </g:if>
             <h1>${message(code: 'tire.list.title.label')}</h1>
-            
          
             <g:form action="fastSearchForListView" method="get">
  				<div id="fastSearchInListView">
@@ -113,20 +112,19 @@
                             <td><g:link class="editTableItem" action="edit" title="${message(code: 'tire.list.edit.tooltip.label')}" id="${tireInstance.id}">&nbsp;</g:link></td>
                             
            	                <g:ifAllGranted role="ROLE_ADMIN"> 
-                            <td>
-			                    	<g:form method="post">
-			                        	<g:hiddenField name="id" value="${tireInstance?.id}" />
-			         
-			                           	<g:if test="${tireInstance?.enabled}">
-			                           		<g:actionSubmit class="disableTireItem" title="${message(code: 'tire.list.disable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
-			                       		</g:if>
-			                       		<g:else>
-			                          		<g:actionSubmit class="enableTireItem" title="${message(code: 'tire.list.enable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
-			                       		</g:else>
-			                        </g:form>
-                            </td>   
+	                            <td>
+				                    	<g:form method="post">
+				                        	<g:hiddenField name="id" value="${tireInstance?.id}" />
+				         
+				                           	<g:if test="${tireInstance?.enabled}">
+				                           		<g:actionSubmit class="disableTireItem" title="${message(code: 'tire.list.disable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
+				                       		</g:if>
+				                       		<g:else>
+				                          		<g:actionSubmit class="enableTireItem" title="${message(code: 'tire.list.enable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
+				                       		</g:else>
+				                        </g:form>
+	                            </td>   
                             </g:ifAllGranted>
-
                         </tr>
                     </g:each>
                     </tbody>

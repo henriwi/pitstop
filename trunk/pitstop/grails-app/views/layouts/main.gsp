@@ -3,7 +3,7 @@
     <head>
     	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
     	
-        <title><g:layoutTitle default="Grails" /></title>
+        <title><g:layoutTitle default="PIT-STOP" /></title>
         <link rel="shortcut icon" href="${resource(dir:'images', file:'pitstop.ico')}" type="image/x-icon" />
         <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" />
 		<link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'print.css')}" media="print" /> 

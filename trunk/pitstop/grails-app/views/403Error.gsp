@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>404 - Beklager, siden finnes ikke</title>
+	<title>403 - Ingen tilgang</title>
 	<link rel="shortcut icon" href="${resource(dir:'images', file:'pitstop.ico')}" type="image/x-icon" />
 	<link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" />
 	<link rel="stylesheet" media="only screen and (max-width: 480px)" href="${resource(dir:'css',file:'iphone.css')}" type= "text/css" />
@@ -11,10 +11,10 @@
 </head>
 <body>
 	<div id="errorContainer">
-		<h1>Siden finnes ikke</h1>
+		<h1>Ingen tilgang</h1>
 		<img id="errorImage" src="${resource(dir:'images', file:'flat_tire.png')}" alt="Flatt dekk"/>
 		<div id="errorMessage">
-			<p>Siden du leter etter finnes ikke.</p>
+			<p>Du har ikke rettigheter til dette.</p>
 			<p><a href="${createLink(uri: '/')}">G&aring; til startsiden</a></p>
 		</div>
 	</div>

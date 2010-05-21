@@ -20,8 +20,9 @@ body {
 }
 #pstopLogo {
 	width: auto;
-	background-color: #eef;
+	background-color: #DCE7FB;
 	margin: auto;
+	border-bottom: 1px solid #888;
 }
 #pstopLogo img{
 	padding-left: 25px;
@@ -90,6 +91,7 @@ div#mainMenu {
 	padding-top: 15px;
 	padding-bottom: 9px;
 	border: 1px solid #eee;
+	border-top: 0px;
 	border-style: solid none solid none;
 	border-bottom: none;
 	font-size: 11px;
@@ -1169,7 +1171,7 @@ span.tireNewOrder a  {
     cursor: pointer;
 }
 
-.buttons .enableTireItem {
+.buttons #enableTireItem a{
     background: url(../images/skin/tire_activate.png) 5px 50% no-repeat;
     padding: 0px;
     padding-top: 8px;
@@ -1180,6 +1182,10 @@ span.tireNewOrder a  {
     margin-right: 10px;
     border: none;
     cursor: pointer;
+}
+
+span.buttons {
+	width: 20px;	
 }
 
 #tireButtons{
@@ -1194,4 +1200,34 @@ span.tireNewOrder a  {
 
 .iPhone {
 	display: none;
+}
+
+/* ERROR-PAGES */
+div#errorContainer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 550px;
+}
+div#errorContainer h1{
+	font-size: 30px;
+	text-align: center;
+	width: auto;	
+}
+div#errorMessage {
+	float: left;
+	font-size: 20px;
+	width: 350px;
+	text-align: center;
+}
+div#errorMessage p{
+	margin-top: 30px;
+}
+div#errorMessage p a {
+	font-weight: normal;
+	text-decoration: underline;
+	color: #000;
+}
+img#errorImage {
+	float: right;
+	margin-top: 10px;
 }
