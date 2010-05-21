@@ -262,6 +262,7 @@ class TireController {
 	}
 	
 	def tireAutoComplete = {
+		println "tireAutoComplete"
 		def tires
 		
 		if(isSpecialFastSearchQuery(params.query)) {
@@ -275,7 +276,7 @@ class TireController {
 		}
 		
 		tires = tires.collect {
-			[highest: it.highestPrice(), id: it.id, name: it.toString(), ]
+			[name: it.toString(), highest: it.highestPrice(), id: it.id]
 		}
 		
 		def jsonTires = [
@@ -283,6 +284,19 @@ class TireController {
 		]
 		
 		render jsonTires as JSON
+		//def persons = Tire.list()//Tire.findAllByNameLike("%${params.query}%")
+		
+		//Create XML response 
+		/*render(contentType: "text/xml") { 
+			results() { 
+				persons.each { 
+					person -> result(){ 
+						name(person.width) //Optional id which will be available in onItemSelect 
+						id(person.id) 
+						} 
+					} 
+				} 
+			}*/ 
 	}
 	
 	def pendingSupplierOrders = {
@@ -326,5 +340,20 @@ class TireController {
 		tireInstance?.numberInStock = params.numberInStock?.toInteger()
 		tireInstance?.save(flush: true)
 		render "Joa"
+	}
+	
+	def getListPriceFromSelectedTire = {
+		def tire = Tire.get(params.tireId)
+		render tire?.retailPrice
+	}
+	
+	def getHighesttPriceFromSelectedTire = {
+		def tire = Tire.get(params.tireId)
+		render tire?.highestPrice()
+	}
+	
+	def getAveragePriceFromSelectedTire = {
+		def tire = Tire.get(params.tireId)
+		render tire?.averagePrice()
 	}
 }

@@ -197,9 +197,7 @@ class CustomerController {
 //			println conn.content.text
 			conn.responseMessage
 //			if(conn.responseMessage == "OK\n"){}
-				//redirect(controller: "customer", id: "list")
-//				render(template:sendSmsSuccess)
-				render "<h1>Vellykket</h1><p>SMSen ble sendt</p><br /><a href='' onclick='MB_hide()'>Lukk</a>"
+				render(template: "sendSmsSuccess")
 		}
 		else {
 			render "Fyll ut alle felter"
@@ -226,5 +224,10 @@ class CustomerController {
 		render(template:"allCustomerOrders", model:[ customerOrders: customerOrders,
 		customerOrdersTotalList: customerOrdersTotalList,
 		customerInstance: customerInstance])
+	}
+	
+	def getTireInfoFromSelectedTire = {
+		println "Hepp"
+		render "Jada"
 	}
 }
