@@ -182,7 +182,7 @@ class CustomerController {
 
 	def sendSmsToCustomer = {
 		if(params.RCV && params.TXT) {
-			def url = new URL ("http://sms.pswin.com/http4sms/send23.asp")
+			def url = new URL ("http://sms.pswin.com/http4sms/send.asp")
 			def conn = url.openConnection()
 			conn.setRequestMethod("POST")
 			
@@ -198,7 +198,6 @@ class CustomerController {
 			conn.connect()
 //			println conn.content.text
 			conn.responseMessage
-//			if(conn.responseMessage == "OK\n"){}
 			if(conn.responseCode == HttpURLConnection.HTTP_OK) {
 				render(template: "sendSmsSuccess")
 			}
@@ -210,7 +209,7 @@ class CustomerController {
 			render "Fyll ut alle felter"
 		}
 	}
-	
+
 	def updateAllTireHotelOccurrencesList = {
 		def customerInstance = Customer.get(params.id)
 		def tireHotelOccurrenceInstanceList = TireHotelOccurrence.findAllByCustomer(customerInstance, [max:params.max, offset:params.offset, 
