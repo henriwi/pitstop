@@ -50,7 +50,7 @@
 	                        
 	                        	<td><modalbox:createLink controller="supplierOrder" action="show" id="${supplierOrderInstance?.id}" title="${message(code: 'pendingSupplierOrder.modalBox.title.label')}" width="750">${supplierOrderInstance?.id}</modalbox:createLink></td>
 	                        	
-	                            <td><g:formatDate format="dd.MM.yyyy hh:mm" date="${supplierOrderInstance?.orderDate}" /></td>
+	                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${supplierOrderInstance?.orderDate}" /></td>
 	                        
 	                            <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
 	                            

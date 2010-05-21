@@ -40,7 +40,7 @@
                         
                             <td><g:link action="show" id="${customerOrderInstance.id}">${fieldValue(bean: customerOrderInstance, field: "id")}</g:link></td>
                         
-                            <td><g:formatDate format="dd.MM.yyyy hh:mm" date="${customerOrderInstance.orderDate}" /></td>
+                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${customerOrderInstance.orderDate}" /></td>
                         
                             <td>${fieldValue(bean: customerOrderInstance, field: "customer")}</td>
                         

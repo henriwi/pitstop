@@ -1,7 +1,7 @@
 <%@ page import="no.pstop.webapp.CustomerOrder" %>
 <div class="dialog">
 	<div>
-		<h4>Ordrenummer: ${customerOrderInstance?.id}</h4>
+		<h4><g:message code="customerOrder.orderNumber.label" args="${[customerOrderInstance?.id]}"></g:message></h4>
 		<span>${customerOrderInstance?.customer}</span>
 		<span><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance?.orderDate}" /></span>
 		<span class="tireNotice">${customerOrderInstance?.notice}</span>
