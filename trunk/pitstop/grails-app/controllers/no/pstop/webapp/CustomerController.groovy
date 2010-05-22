@@ -177,12 +177,13 @@ class CustomerController {
 	
 	def showSmsView = {
 		def customerInstance = Customer.get(params.id)
-		render(view: "send", model: [customerInstanceList: customerInstance])
+		render(view: "send", model: [customerInstance: customerInstance])
 	}
 
 	def sendSmsToCustomer = {
+		def customerInstance = Customer.get(params.customerId)
 		if(params.RCV && params.TXT) {
-			def url = new URL ("http://sms.pswin.com/http4sms/send.asp")
+			def url = new URL ("http://sms.pswin.com/http4sms/send123.asp")
 			def conn = url.openConnection()
 			conn.setRequestMethod("POST")
 			
@@ -202,11 +203,13 @@ class CustomerController {
 				render(template: "sendSmsSuccess")
 			}
 			else {
-				render(template: "sendSmsFailure")
+				customerInstance.errors.reject('customer.sendSMS.modalBox.errorSending.message')
+				render(view: "send", model: [customerInstance: customerInstance])
 			}
 		}
 		else {
-			render "${message(code: 'customer.sendSms.send.error.message')}"
+			customerInstance.errors.reject('customer.sendSMS.modalBox.emptyFields.message')
+			render(view: "send", model: [customerInstance: customerInstance])
 		}
 	}
 
@@ -230,10 +233,5 @@ class CustomerController {
 		render(template: "allCustomerOrders", model: [customerOrders: customerOrders,
 		customerOrdersTotalList: customerOrdersTotalList,
 		customerInstance: customerInstance])
-	}
-	
-	def getTireInfoFromSelectedTire = {
-		println "Hepp"
-		render "Jada"
 	}
 }
