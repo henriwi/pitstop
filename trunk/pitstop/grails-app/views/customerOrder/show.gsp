@@ -39,7 +39,7 @@
 	   		</g:form>
 		</g:if>
 		<g:else>
-			<span class="button"><g:link url="#" onClick="Modalbox.hide()" class="btnShowAll"><g:message code="default.button.ok.label" /></g:link></span>
+			<span class="button"><g:link url="#" onClick="Modalbox.hide()" class="btnShowAll"><g:message code="default.button.close.label" /></g:link></span>
 		</g:else>
 	</div>
 </div>

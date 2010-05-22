@@ -175,7 +175,7 @@
 										<div class="customerOrderLine">
 											<span class="tireName">${customerOrderLineInstance?.tire}</span>
 											<span class="numberOfReservedTires">${customerOrderLineInstance?.numberOfReservedTires} stk. &agrave;</span>
-											<span class="tirePrice"> kr <g:formatNumber number="${customerOrderLineInstance?.price}" format="###,##0" />
+											<span class="tirePrice"> kr <g:formatNumber number="${customerOrderLineInstance?.price}" format="#.00" />
 											</span>
 										</div>
 									</g:each>
