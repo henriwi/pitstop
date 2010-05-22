@@ -80,8 +80,11 @@
 		</div>
 		
 		<br />
-		
-		<g:if test="${logInstanceList }">
+	</div>
+	
+	<div class="userLogTable">
+     	<h1><g:message code="user.show.title.log.label" /></h1>
+			<g:if test="${logInstanceList }">
 			<div class="loglist">
 	                <table>
 	                    <thead>
@@ -119,5 +122,7 @@
 	        	</table>
 			</div>
 		</g:if>
+	
+	
 	</div>
 </body>

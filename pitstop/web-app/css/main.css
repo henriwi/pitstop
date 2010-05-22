@@ -1251,3 +1251,9 @@ img#errorImage {
 	float: right;
 	margin-top: 10px;
 }
+
+div.userLogTable {
+	float: left;
+	width: 700px;
+	padding-left: 10px;
+}
