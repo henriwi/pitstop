@@ -49,10 +49,14 @@
 		</tbody>
     </table>
 	<div class="buttons">
-		
-   		<g:form action="receiveOrder">
-       		<span class="button"><g:submitToRemote class="receiveSupplierOrder" onComplete="Modalbox.resizeToContent()" controller="supplierOrder" action="receiveOrder" id="${supplierOrderInstance?.id}" value="${message(code: 'supplierOrder.button.receive.label')}" update="MB_content"/></span>
-       		<g:link url="#" onClick="Modalbox.hide()"><g:message code="createTire.button.cancel.label" /></g:link>
-   		</g:form>
+		<g:if test="${!supplierOrderInstance?.delivered()}">
+   			<g:form action="receiveOrder">
+	       		<span class="button"><g:submitToRemote class="receiveSupplierOrder" onComplete="Modalbox.resizeToContent()" controller="supplierOrder" action="receiveOrder" id="${supplierOrderInstance?.id}" value="${message(code: 'supplierOrder.button.receive.label')}" update="MB_content"/></span>
+       			<g:link url="#" onClick="Modalbox.hide()"><g:message code="createTire.button.cancel.label" /></g:link>
+   			</g:form>
+   		</g:if>
+		<g:else>
+			<span class="button"><g:link url="#" onClick="Modalbox.hide()" class="btnShowAll"><g:message code="default.button.close.label" /></g:link></span>
+		</g:else>
    	</div>
 </div>

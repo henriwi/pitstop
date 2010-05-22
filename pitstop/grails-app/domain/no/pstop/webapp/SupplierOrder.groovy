@@ -20,4 +20,15 @@ class SupplierOrder {
 		else
 			notice
 	}
+	
+	boolean delivered() {
+		boolean isDelivered = true
+		
+		supplierOrderLines.each {
+			if (!it.receivedDate) {
+				isDelivered = false
+			}
+		}
+		return isDelivered
+	}
 }
