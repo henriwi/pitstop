@@ -4,8 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'supplierOrder.label', default: 'SupplierOrder')}" />
-        <title><g:message code="default.list.label" args="[entityName]" /></title>
+        <title><g:message code="supplierOrder.list.title.label" /></title>
     </head>
     <body>
     	<div class="nav">
@@ -20,7 +19,7 @@
             </span>
      	</div>
         <div class="body">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+            <h1><g:message code="supplierOrder.list.title.label" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -29,11 +28,13 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.table.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.table.orderNumber.label')}" />
                         
-                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.table.orderDate.label', default: 'Order Date')}" />
+                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.table.orderDate.label')}" />
                         
-                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.supplier.label', default: 'Supplier')}" />
+                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.supplier.label')}" />
+                            
+                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.notice.label')}" />
                         
                         </tr>
                     </thead>
@@ -46,6 +47,8 @@
                             <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${supplierOrderInstance.orderDate}" /></td>
                         
                             <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
+                            
+                            <td>${supplierOrderInstance?.showNoticeWith10FirstLetters()}</td>
                         
                         </tr>
                     </g:each>
