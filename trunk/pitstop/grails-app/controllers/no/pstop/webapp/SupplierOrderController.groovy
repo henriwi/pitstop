@@ -40,6 +40,7 @@ class SupplierOrderController {
 			if(session["orderLines"]?.size() == 0) {
 				supplierOrderInstance.errors.reject('supplierOrder.supplierOrderLine.empty.error')
 			}
+			render(view: "create", model:[order: supplierOrderInstance])
 		}
 		else {
 			try {

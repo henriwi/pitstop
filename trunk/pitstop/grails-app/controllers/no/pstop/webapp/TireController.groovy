@@ -265,7 +265,7 @@ class TireController {
 		
 		if(isSpecialFastSearchQuery(params.query)) {
 			def query = params.query =~ regexFastSearch
-			tires = Tire.fastSearch(query, Tire.count(), 0, "false")
+			tires = Tire.fastSearch(query, Tire.count(), 0, "true")
 		}
 		else {
 			tires = Tire.search{
