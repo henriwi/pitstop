@@ -10,19 +10,19 @@
     <table>
 	   	<thead>
 	       	<tr>
-	       		<g:sortableColumn property="orderNumber" title="${message(code: 'supplierOrderLine.table.tire.label')}" />
+	       		<th><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.tire.label')} </a></th>
 	       		
-	       		<g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.table.orderDate.label')}" />
+	       		<th><a class="notSortableColoumn">${message(code: 'supplierOrder.table.orderDate.label')}</a></th>
 	       	
-	            <g:sortableColumn property="price" title="${message(code: 'supplierOrderLine.table.price.label')}" />
+	            <th><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.price.label')}</a></th>
 	            
-	            <g:sortableColumn property="discount" title="${message(code: 'supplierOrderLine.table.discount.label')}" />
+	            <th><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.discount.label')}</a></th>
 	            
-	            <g:sortableColumn property="environmentalFee" title="${message(code: 'supplierOrderLine.table.environmentalFee.label')}" />
+	            <th><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.environmentalFee.label')}</a></th>
 	            
-	            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'supplierOrderLine.table.numberOfOrderedTires.label')}" />
+	            <th><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.numberOfOrderedTires.label')}</a></th>
 	            
-	            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'supplierOrderLine.table.numberOfReceived.label')}" />
+	            <th><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.numberOfReceived.label')}</a></th>
 	            
 	        </tr>
 		</thead>

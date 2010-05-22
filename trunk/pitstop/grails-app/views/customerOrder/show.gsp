@@ -10,11 +10,11 @@
     <table>
 	   	<thead>
 	       	<tr>
-	       		<g:sortableColumn property="tire" title="${message(code: 'customerOrderLine.tire.table.label')}" />
+	       		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.tire.table.label')}</a></th>
 	       		
-	            <g:sortableColumn property="price" title="${message(code: 'customerOrderLine.price.table.label')}" />
+	            <th><a class="notSortableColoumn">${message(code: 'customerOrderLine.price.table.label')}</a></th>
 	            
-	            <g:sortableColumn property="numberOfOrderedTires" title="${message(code: 'customerOrderLine.numberOfReservedTires.table.label')}" />
+	            <th><a class="notSortableColoumn">${message(code: 'customerOrderLine.numberOfReservedTires.table.label')}</a></th>
 	        </tr>
 		</thead>
 	    <tbody>
