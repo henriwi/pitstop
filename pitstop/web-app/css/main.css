@@ -988,9 +988,10 @@ input.orderTableTextField {
 .deleteFromOrderTableItem {
     background: url(../images/skin/removeTireFromOrder.png) 5px 50% no-repeat;
     padding-right: 15px;
-    padding-top: 5px;
+    padding-top: 8px;
     border: none;
     cursor: pointer;
+    color: #bbb;
 }
 
 .showCustomerButtons {

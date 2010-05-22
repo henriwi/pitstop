@@ -344,8 +344,9 @@ class TireController {
 	}
 	
 	def getListPriceFromSelectedTire = {
+		def formatter = new DecimalFormat("#.00");
 		def tire = Tire.get(params.tireId)
-		render tire?.retailPrice
+		render formatter.format(tire?.retailPrice)
 	}
 	
 	def getHighestPriceFromSelectedTire = {
