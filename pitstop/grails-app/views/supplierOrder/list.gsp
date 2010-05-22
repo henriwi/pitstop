@@ -8,8 +8,8 @@
     </head>
     <body>
     	<div class="nav">
-       		<span class="menuButton" id="${params.action == 'pendingSupplierOrders' && params.controller == 'tire' ? 'active' : ''}" >
-       			<g:link class="pendingSupplierOrders" action="pendingSupplierOrders"><g:message code="tire.pendingSupplierOrders.title.label" /></g:link>
+       		<span class="menuButton" id="${params.action == 'pendingSupplierOrders' ? 'active' : ''}" >
+       			<g:link class="pendingSupplierOrders" action="pendingSupplierOrders"><g:message code="supplierOrder.pendingSupplierOrders.title.label" /></g:link>
        		</span>
             <span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""} >
             	<g:link class="create" action="create"><g:message code="supplier.addOrder.new.label" /></g:link>
@@ -28,13 +28,15 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.table.orderNumber.label')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.table.orderNumber.label')}" params="[max: params.max, offset: params.offset]" />
                         
-                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.table.orderDate.label')}" />
+                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.table.orderDate.label')}" params="[max: params.max, offset: params.offset]" />
                         
-                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.supplier.label')}" />
+                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.supplier.label')}" params="[max: params.max, offset: params.offset]" />
                             
-                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.notice.label')}" />
+                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.notice.label')}" params="[max: params.max, offset: params.offset]" />
+                            
+                           	<th><g:message code="supplierOrder.table.delivered.label" /></th>
                         
                         </tr>
                     </thead>
@@ -49,7 +51,14 @@
                             <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
                             
                             <td>${supplierOrderInstance?.showNoticeWith10FirstLetters()}</td>
-                        
+                            
+                            <g:if test="${supplierOrderInstance?.delivered()}">
+                            	<td><g:message code="default.boolean.true" /></td>
+                            </g:if>
+                            <g:else>
+                            	<td><g:message code="default.boolean.false" /></td>
+                            </g:else>
+                            
                         </tr>
                     </g:each>
                     </tbody>
