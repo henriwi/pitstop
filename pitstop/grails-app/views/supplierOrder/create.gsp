@@ -101,7 +101,7 @@
 							</g:if>
 							<g:else>
 								<td class="yui-skin-sam ${hasErrors(bean: errorOrderLine, field: 'tire', 'errors')}">
-									<gui:autoComplete id="tire" controller="tire" action="tireAutoComplete" resultName="tires" value="${errorOrderLine?.tire}" />
+									<gui:autoComplete id="tire" controller="tire" action="tireAutoComplete" resultName="tires" />
 								</td>
 							</g:else>
 								<td valign="top" class="value ${hasErrors(bean: errorOrderLine, field: 'price', 'errors')}">

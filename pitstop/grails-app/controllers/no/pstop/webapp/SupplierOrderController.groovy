@@ -7,6 +7,7 @@ import java.util.Date;
 class SupplierOrderController {
 	def orderService
 	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
+	static final maxNumberOfSupplierOrder = 30
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -15,7 +16,7 @@ class SupplierOrderController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        params.max = Math.min(params.max ? params.int('max') : maxNumberOfSupplierOrder, 100)
         [supplierOrderInstanceList: SupplierOrder.list(params), supplierOrderInstanceTotal: SupplierOrder.count()]
     }
 
@@ -38,7 +39,7 @@ class SupplierOrderController {
 			try {
 				orderService.saveSupplierOrder(supplierOrderInstance, session)	
 				flash.message = "${message(code: 'supplierOrder.created.message', args:[supplierOrderInstance?.id])}"
-				redirect(controller: "tire", action: "pendingSupplierOrders")
+				redirect(action: "pendingSupplierOrders")
 			}
 			catch(result) {
 				flash.message = "${message(code: 'supplierOrder.exception.error')}"
@@ -46,7 +47,6 @@ class SupplierOrderController {
 			}
 		}
     }
-
 
     def show = {
         def supplierOrderInstance = SupplierOrder.get(params.id)
