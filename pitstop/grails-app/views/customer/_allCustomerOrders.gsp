@@ -25,7 +25,7 @@
                    
                 <td><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance.deliveredDate}" /></td>
                    
-                <td>${fieldValue(bean: customerOrderInstance, field: "notice")}</td>
+                <td>${customerOrderInstance?.showNoticeWith10FirstLetters()}</td>
                    
 	            <g:ifAllGranted role="ROLE_ADMIN">
                 	<td>
