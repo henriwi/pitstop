@@ -466,6 +466,18 @@ th.desc a {
 	display: block;	
 }
 
+a.cancel {
+	background: transparent url(../images/skin/cancel.png) 5px 50% no-repeat;
+    border: 0;
+    color: #333;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    margin-left: 3px;
+    overflow: visible;
+    padding: 2px 6px;
+}
+
 .buttons input {
     background: #fff;
     border: 0;

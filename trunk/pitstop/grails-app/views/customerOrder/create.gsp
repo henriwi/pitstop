@@ -5,7 +5,6 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'customerOrder.label', default: 'CustomerOrder')}" />
         <gui:resources components="autoComplete" />
-        <resource:autoComplete skin="default" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
