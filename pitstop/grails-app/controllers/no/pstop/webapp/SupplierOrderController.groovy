@@ -7,7 +7,7 @@ import java.util.Date;
 class SupplierOrderController {
 	def orderService
 	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
-	static final maxNumberOfSupplierOrder = 10
+	static final maxNumberOfSupplierOrder = 30
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
