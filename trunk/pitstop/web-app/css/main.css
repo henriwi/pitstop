@@ -497,6 +497,12 @@ th.desc a {
     background: transparent url(../images/skin/user_save.png) 5px 50% no-repeat;
     padding-left: 25px;
 }
+
+.buttons input.sendSmsToCustomer{
+	background: transparent url(../images/skin/phone.png) 5px 50% no-repeat;
+	padding-left: 25px;
+}
+
 .buttons input.change {
     background: transparent url(../images/skin/season_switch.png) 5px 50% no-repeat;
     padding-left: 28px;
@@ -814,6 +820,7 @@ span.customerPhoneNumber a{
 	margin-left: 225px;
 	position: absolute;
 }
+
 span.customerEmail {
 	display: block;
 	margin-top: 5px;

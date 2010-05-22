@@ -37,7 +37,7 @@
 			</div>
 			<div class="buttons">
 				<span class="button">
-					<g:submitToRemote name="SUBMIT" class="save" update="MB_content" action="sendSmsToCustomer" value="${message(code: 'customer.sendSms.button')}" />
+					<g:submitToRemote name="SUBMIT" class="sendSmsToCustomer" update="MB_content" action="sendSmsToCustomer" value="${message(code: 'customer.sendSms.button')}" />
 				</span>
 			</div>
 		</g:form>
