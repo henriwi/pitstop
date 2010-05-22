@@ -41,7 +41,7 @@
 			        
 			        <li id="tireHotelMenuItem"><g:link class="${(params.controller == 'tireHotelOccurrence') ? 'active' : ''}" controller="tireHotelOccurrence">${message(code: 'main.menu.tireHotel.label')}</g:link></li>
 			        
-		        	<li id="supplierOrderMenuItem"><g:link class="${(params.controller == 'supplierOrder') ? 'active' : ''}" controller="supplierOrder">${message(code: 'main.menu.supplierOrder.label')}</g:link></li>
+		        	<li id="supplierOrderMenuItem"><g:link class="${(params.controller == 'supplierOrder') ? 'active' : ''}" controller="supplierOrder" action="pendingSupplierOrders">${message(code: 'main.menu.supplierOrder.label')}</g:link></li>
 		        	
 			        <g:ifAllGranted role="ROLE_ADMIN">
 	        			<li id="adminMenuItem"><g:link class="${(params.controller == 'user') ? 'active' : ''}" controller="user">${message(code: 'main.menu.admin.label')}</g:link></li>

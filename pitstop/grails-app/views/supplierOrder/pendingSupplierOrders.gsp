@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="nav">
-       		<span class="menuButton" id="${params.action == 'pendingSupplierOrders' && params.controller == 'tire' ? 'active' : ''}" >
+       		<span class="menuButton" id="${params.action == 'pendingSupplierOrders' ? 'active' : ''}" >
        			<g:link class="pendingSupplierOrders" action="pendingSupplierOrders"><g:message code="tire.pendingSupplierOrders.title.label" /></g:link>
        		</span>
             <span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""} >
