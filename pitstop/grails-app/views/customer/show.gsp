@@ -82,7 +82,7 @@
 							</a>
 							<a id="hideCustomerHistory" href="javascript:showAndHideElement('activeTireHotelOccurrences','allTireHotelOccurrences');"
 								onclick="showAndHideElement('showCustomerHistory', 'hideCustomerHistory');" style="display: none;">
-								<g:message code="customer.show.showHistory.label" />
+								<g:message code="customer.show.hideHistory.label" />
 							</a>
 						</span>
 					
