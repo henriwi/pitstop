@@ -1,5 +1,7 @@
 package no.pstop.webapp
 
+import java.text.DecimalFormat;
+
 import grails.converters.JSON
 
 import org.codehaus.groovy.grails.plugins.springsecurity.Secured
@@ -346,13 +348,15 @@ class TireController {
 		render tire?.retailPrice
 	}
 	
-	def getHighesttPriceFromSelectedTire = {
+	def getHighestPriceFromSelectedTire = {
+		def formatter = new DecimalFormat("#.00");
 		def tire = Tire.get(params.tireId)
-		render tire?.highestPrice()
+		render formatter.format(tire?.highestPrice())
 	}
 	
 	def getAveragePriceFromSelectedTire = {
+		def formatter = new DecimalFormat("#.00");
 		def tire = Tire.get(params.tireId)
-		render tire?.averagePrice()
+		render formatter.format(tire?.averagePrice())
 	}
 }
