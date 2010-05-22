@@ -280,7 +280,7 @@ class TireController {
 		}
 		
 		tires = tires.collect {
-			[name: it.toString(), highest: it.highestPrice(), id: it.id]
+			[id: it.id, name: it.toString()]
 		}
 		
 		def jsonTires = [

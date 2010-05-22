@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.Iterator;
 
 class CustomerOrderController {
-
+	static final maxNumberOfCustomerOrder = 30
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     def orderService
 		
@@ -20,7 +20,7 @@ class CustomerOrderController {
 			customerOrderCount = customerOrderList.size()
 		}
 		else {
-			params.max = Math.min(params.max ? params.int('max') : 10, 100)
+			params.max = Math.min(params.max ? params.int('max') : maxNumberOfCustomerOrder, 100)
 			customerOrderList = CustomerOrder.list(params)
 			customerOrderCount = CustomerOrder.count()
 		}	
@@ -201,5 +201,10 @@ class CustomerOrderController {
 		order?.customerOrderLines.each {
 			it.tire.numberInStock -= it.numberOfReservedTires
 		}
+	}
+	
+	def pendingCustomerOrders = {
+		def customerOrderWithoutDeliveredDate = CustomerOrder.findAllByDeliveredDateIsNull()
+		[customerOrderWithoutDeliveredDateInstanceList: customerOrderWithoutDeliveredDate]
 	}
 }
