@@ -204,7 +204,9 @@ class TireHotelOccurrenceController {
 	
 	def registrationNumberAutoComplete = {
 		def customer = Customer.get(params.customer)
-		def tireHotelOccurrences = TireHotelOccurrence.findAllByRegistrationNumberLikeAndCustomer("%${params.query}%", customer)
+		def tireHotelOccurrences = TireHotelOccurrence.findAllByRegistrationNumberLikeAndCustomer("%${params.query}%", customer).unique {
+			a, b -> a.registrationNumber <=> b.registrationNumber
+		}
 		
 		tireHotelOccurrences = tireHotelOccurrences.collect {
 			[id: it.id, name:it.registrationNumber]
