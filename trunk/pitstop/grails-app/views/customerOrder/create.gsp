@@ -83,9 +83,9 @@
 							<g:each in="${orderLines}" status="i" var="orderLineInstance">
 								<tr>
 	                      			<td>${orderLineInstance?.tire}</td>
-	                      			<td>${orderLineInstance?.tire?.retailPrice}</td>
-	                      			<td>${orderLineInstance?.tire?.highestPrice()}</td>
-	                      			<td>${orderLineInstance?.tire?.averagePrice()}</td>
+	                      			<td><g:formatNumber number="${orderLineInstance?.tire?.retailPrice}" format="#.00 kr" /></td>
+	                      			<td><g:formatNumber number="${orderLineInstance?.tire?.highestPrice()}" format="#.00 kr" /></td>
+	                      			<td><g:formatNumber number="${orderLineInstance?.tire?.averagePrice()}" format="#.00 kr" /></td>
 	                      			<td>${orderLineInstance?.numberOfReservedTires}</td>
 	                      			<td><g:formatNumber number="${orderLineInstance?.price}" format="#.00 kr" /></td>
 									<td>
