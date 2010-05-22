@@ -113,9 +113,10 @@
 							    	//GRAILSUI.tire.itemSelectEvent.subscribe(${remoteFunction(controller: 'tire', action:'getTireInfoFromSelectedTire',update:'listPrice')})
 							    	var itemSelectHandler = function(sType, aArgs) {
 								    	var tireId = aArgs[2][1]
-								    	new Ajax.Updater('listPrice','/pitstop/tire/getListPriceFromSelectedTire',{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId});
-								    	new Ajax.Updater('highestPrice','/pitstop/tire/getHighesttPriceFromSelectedTire',{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId}); 
-								    	new Ajax.Updater('averagePrice','/pitstop/tire/getAveragePriceFromSelectedTire',{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId}); 
+								    	                      
+								    	new Ajax.Updater('listPrice',"${createLink(uri: '/tire/getListPriceFromSelectedTire')}",{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId});
+								    	new Ajax.Updater('highestPrice',"${createLink(uri: '/tire/getHighestPriceFromSelectedTire')}",{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId}); 
+								    	new Ajax.Updater('averagePrice',"${createLink(uri: '/tire/getAveragePriceFromSelectedTire')}",{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId}); 
 							    	};
 								    GRAILSUI.tire.itemSelectEvent.subscribe(itemSelectHandler);
 							    });
