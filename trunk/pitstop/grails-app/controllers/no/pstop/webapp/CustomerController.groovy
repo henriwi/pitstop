@@ -183,11 +183,11 @@ class CustomerController {
 	def sendSmsToCustomer = {
 		def customerInstance = Customer.get(params.customerId)
 		if(params.RCV && params.TXT) {
-			def url = new URL ("http://sms.pswin.com/http4sms/send123.asp")
+			def url = new URL ("http://sms.pswin.com/http4sms/send.asp")
 			def conn = url.openConnection()
 			conn.setRequestMethod("POST")
-			
-			String data = "USER=pitstop&PW=ngriter7&SND=Pit-stop&RCV=47" + params.RCV + "&TXT=" + params.TXT
+			def TXT = URLEncoder.encode(params.TXT, "ISO-8859-1");
+			String data = "USER=pitstop&PW=ngriter7&SND=Pit-stop&RCV=47" + params.RCV + "&TXT=" + TXT
 			
 			conn.doOutput = true
 			
@@ -198,6 +198,7 @@ class CustomerController {
 			
 			conn.connect()
 //			println conn.content.text
+//			conn.responseCode
 			conn.responseMessage
 			if(conn.responseCode == HttpURLConnection.HTTP_OK) {
 				render(template: "sendSmsSuccess")
