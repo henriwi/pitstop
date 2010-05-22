@@ -16,12 +16,12 @@
         <div class="body">
             <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${supplierOrderInstance}">
-            <div class="errors">
-                <g:renderErrors bean="${supplierOrderInstance}" as="list" />
-            </div>
+	            <div class="errors">
+	                <g:renderErrors bean="${supplierOrderInstance}" as="list" />
+	            </div>
             </g:hasErrors>
             <g:form method="post" >
                 <g:hiddenField name="id" value="${supplierOrderInstance?.id}" />
@@ -36,12 +36,12 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: supplierOrderInstance, field: 'supplierOrderLines', 'errors')}">
                                     
-<ul>
-<g:each in="${supplierOrderInstance?.supplierOrderLines?}" var="s">
-    <li><g:link controller="supplierOrderLine" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="supplierOrderLine" action="create" params="['supplierOrder.id': supplierOrderInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'supplierOrderLine.label', default: 'SupplierOrderLine')])}</g:link>
+									<ul>
+										<g:each in="${supplierOrderInstance?.supplierOrderLines?}" var="s">
+										    <li><g:link controller="supplierOrderLine" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+										</g:each>
+									</ul>
+									<g:link controller="supplierOrderLine" action="create" params="['supplierOrder.id': supplierOrderInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'supplierOrderLine.label', default: 'SupplierOrderLine')])}</g:link>
 
                                 </td>
                             </tr>
