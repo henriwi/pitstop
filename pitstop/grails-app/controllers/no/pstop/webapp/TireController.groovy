@@ -170,8 +170,6 @@ class TireController {
 			def supplierOrderLines = SupplierOrderLine.findAllByTireAndReceivedDateIsNull(tireInstance)
 			def customerOrders = getPendingCustomerOrders(tireInstance) 
 			
-			println supplierOrderLines
-			println customerOrders
 			[supplierOrderLines: supplierOrderLines, customerOrders: customerOrders, tireInstance: tireInstance]
 		}
 	}
@@ -242,7 +240,6 @@ class TireController {
 	
 	//TODO Bør refaktureres slik at denne metoden slås sammen med fastSearch?
 	def fastSearchForListView = {
-		//println params
 		if(params.txtFastSearch.trim() != ""){
 			redirect(action: "list", params:[q: params.txtFastSearch, type: 'fast', s: params.s, active: params.active, deactive: params.deactive])
 		}
@@ -264,7 +261,6 @@ class TireController {
 	}
 	
 	def tireAutoComplete = {
-		println "tireAutoComplete"
 		def tires
 		
 		if(isSpecialFastSearchQuery(params.query)) {
@@ -336,7 +332,6 @@ class TireController {
 	}
 	
 	def saveNumberInStock = {
-		println params
 		def tireInstance = Tire.get(params.id)
 		tireInstance?.numberInStock = params.numberInStock?.toInteger()
 		tireInstance?.save(flush: true)

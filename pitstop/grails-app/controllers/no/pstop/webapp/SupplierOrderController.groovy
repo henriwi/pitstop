@@ -197,7 +197,6 @@ class SupplierOrderController {
 		
 		supplierOrderLineInstance.save(flush: true)
 		supplierOrderLineInstance.errors.each {
-			println it
 		}
 	}
 	
