@@ -38,9 +38,21 @@
 	                                <td valign="top" class="name">
 	                                    <label for="customer"><g:message code="customerOrder.customer.label" default="Customer" /></label>
 	                                </td>
+                                <g:if test="${order?.customer}">
 	                                <td valign="top" class="value ${hasErrors(bean: order, field: 'customer', 'errors')}">
 	                                    ${order?.customer}
 	                                </td>
+								</g:if>
+								<g:else>
+									<td class="yui-skin-sam">
+										<gui:autoComplete 
+											id="customer"
+											controller="customer"
+											action="customerAutoComplete"
+											resultName="customers"
+										/>
+									</td>
+								</g:else>	                                
 	                            </tr>
 	                  			<tr class="prop">
 	                                <td valign="top" class="notice">
