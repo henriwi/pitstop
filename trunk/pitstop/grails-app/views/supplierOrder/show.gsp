@@ -2,7 +2,7 @@
 <%@ page import="no.pstop.webapp.SupplierOrder" %>
 <div class="dialog">
 	<div>
-		<h4>Ordrenummer: ${supplierOrderInstance?.id}</h4>
+		<h4><g:message code="supplierOrder.show.header.orderNumber.label" />${supplierOrderInstance?.id}</h4>
 		<span><g:formatDate format="dd.MM.yyyy" date="${supplierOrderInstance?.orderDate}" /></span>
 		<span class="tireNotice">${supplierOrderInstance?.notice}</span>
 	</div>

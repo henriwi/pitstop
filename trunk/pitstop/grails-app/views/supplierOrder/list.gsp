@@ -21,7 +21,7 @@
         <div class="body">
             <h1><g:message code="supplierOrder.list.title.label" /></h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
             <div class="list">
                 <table>
@@ -41,26 +41,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${supplierOrderInstanceList}" status="i" var="supplierOrderInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
-	                       	<td><modalbox:createLink controller="supplierOrder" action="show" id="${supplierOrderInstance?.id}" title="Dekkbestilling" width="700">${supplierOrderInstance?.id}</modalbox:createLink></td>
-                        
-                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${supplierOrderInstance.orderDate}" /></td>
-                        
-                            <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
-                            
-                            <td>${supplierOrderInstance?.showNoticeWith10FirstLetters()}</td>
-                            
-                            <g:if test="${supplierOrderInstance?.delivered()}">
-                            	<td><g:message code="default.boolean.true" /></td>
-                            </g:if>
-                            <g:else>
-                            	<td><g:message code="default.boolean.false" /></td>
-                            </g:else>
-                            
-                        </tr>
-                    </g:each>
+	                    <g:each in="${supplierOrderInstanceList}" status="i" var="supplierOrderInstance">
+	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+	                        
+		                       	<td><modalbox:createLink controller="supplierOrder" action="show" id="${supplierOrderInstance?.id}" title="${message(code: 'pendingSupplierOrder.modalBox.title.label')}" width="750">${supplierOrderInstance?.id}</modalbox:createLink></td>
+	                        
+	                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${supplierOrderInstance.orderDate}" /></td>
+	                        
+	                            <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
+	                            
+	                            <td>${supplierOrderInstance?.showNoticeWith10FirstLetters()}</td>
+	                            
+	                            <g:if test="${supplierOrderInstance?.delivered()}">
+	                            	<td><g:message code="default.boolean.true" /></td>
+	                            </g:if>
+	                            <g:else>
+	                            	<td><g:message code="default.boolean.false" /></td>
+	                            </g:else>
+	                            
+	                        </tr>
+	                    </g:each>
                     </tbody>
                 </table>
             </div>
