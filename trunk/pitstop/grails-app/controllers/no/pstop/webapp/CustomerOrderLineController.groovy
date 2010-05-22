@@ -35,7 +35,7 @@ class CustomerOrderLineController {
 			redirect(action: "show", controller: "customerOrder", id: customerOrderInstance.id)
 		}
 		else {
-			flash.message = "Kunne ikke lagre ordren."
+			flash.message = "${message(code: 'customerOrderLine.save.error.message')}"
 			redirect(action: "create", controller: "customerOrder")
 		}
     }

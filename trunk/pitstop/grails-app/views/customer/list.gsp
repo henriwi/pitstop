@@ -128,12 +128,12 @@
 						
 						<g:if test="${customerInstance.phoneNumber}">
 							<span class="customerPhoneNumber">
-								<a href="" target="_blank">Send SMS</a>
+								<a href="" target="_blank">${message(code: 'customer.iphone.list.sendSMS.label')}</a>
 							</span>
 	                    </g:if>
 	                    <g:if test="${customerInstance.email}">
 							<span class="customerEmail">
-	                    		<a href="mailto:${customerInstance.email}" target="_blank">Send epost</a>
+	                    		<a href="mailto:${customerInstance.email}" target="_blank">${message(code: 'customer.iphone.list.sendEmail.label')}</a>
 	                    	</span>
 			            </g:if>
 	                	<div style="clear:both;"></div>

@@ -21,7 +21,7 @@ class CustomerController {
 		if(params.q){
 			customerList = Customer.search("*" + params.q + "*", escape: true).results
 			customerCount = customerList.size()
-			flash.message = "Resultat av søk: " + params.q
+			flash.message = "${message(code: 'customer.search.result', args: [message(code: 'customer.label'), params.q])}"
 		}
 		else {
 			params.max = Math.min(params.max ? params.int('max') : 10, 100)
@@ -154,7 +154,7 @@ class CustomerController {
 		def customers = Customer.findAllByFirstNameLikeOrLastNameLikeOrPhoneNumberLike("%${params.query}%", "%${params.query}%", "%${params.query}%")
 		
 		customers = customers.collect {
-			[id: it.id, name:it.autoCompleteToString()]
+			[id: it.id, name: it.autoCompleteToString()]
 		}
 		def jsonCustomer = [
 		    customers: customers
@@ -163,7 +163,7 @@ class CustomerController {
 	}
 	
 	def search = {
-		redirect(action: "list", params:[q: params.search])
+		redirect(action: "list", params: [q: params.search])
 	}
 	
 	def getPlace = {
@@ -206,28 +206,28 @@ class CustomerController {
 			}
 		}
 		else {
-			render "Fyll ut alle felter"
+			render "${message(code: 'customer.sendSms.send.error.message')}"
 		}
 	}
 
 	def updateAllTireHotelOccurrencesList = {
 		def customerInstance = Customer.get(params.id)
-		def tireHotelOccurrenceInstanceList = TireHotelOccurrence.findAllByCustomer(customerInstance, [max:params.max, offset:params.offset, 
+		def tireHotelOccurrenceInstanceList = TireHotelOccurrence.findAllByCustomer(customerInstance, [max: params.max, offset: params.offset, 
 		sort: params.sort, order: params.order])
 		def tireHotelOccurrenceInstanceTotalList = TireHotelOccurrence.findAllByCustomer(customerInstance)
 		
-		render(template:"allTireHotelOccurrences", model:[ tireHotelOccurrenceInstanceList: tireHotelOccurrenceInstanceList,
+		render(template: "allTireHotelOccurrences", model: [tireHotelOccurrenceInstanceList: tireHotelOccurrenceInstanceList,
 		tireHotelOccurrenceInstanceTotalList: tireHotelOccurrenceInstanceTotalList,
 		customerInstance: customerInstance])
 	}
 	
 	def updateAllCustomerOrdersList = {
 		def customerInstance = Customer.get(params.id)
-		def customerOrders = CustomerOrder.findAllByCustomer(customerInstance, [max:params.max, offset:params.offset, 
+		def customerOrders = CustomerOrder.findAllByCustomer(customerInstance, [max: params.max, offset: params.offset, 
 		sort: params.sort, order: params.order])
 		def customerOrdersTotalList = CustomerOrder.findAllByCustomer(customerInstance)
 		
-		render(template:"allCustomerOrders", model:[ customerOrders: customerOrders,
+		render(template: "allCustomerOrders", model: [customerOrders: customerOrders,
 		customerOrdersTotalList: customerOrdersTotalList,
 		customerInstance: customerInstance])
 	}

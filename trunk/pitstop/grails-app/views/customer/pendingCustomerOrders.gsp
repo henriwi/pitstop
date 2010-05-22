@@ -43,7 +43,7 @@
 	                        
 								<td><modalbox:createLink controller="customerOrder" action="show" id="${customerOrderWithoutDeliveredDateInstance?.id}" title="Kundeordre" width="700">${customerOrderWithoutDeliveredDateInstance?.id}</modalbox:createLink></td>
 									                        
-	                            <td><g:formatDate format="dd.MM.yyyy hh:mm" date="${customerOrderWithoutDeliveredDateInstance.orderDate}" /></td>
+	                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${customerOrderWithoutDeliveredDateInstance.orderDate}" /></td>
 	                        
 	                            <td>${fieldValue(bean: customerOrderWithoutDeliveredDateInstance, field: "customer")}</td>
 	                        	
