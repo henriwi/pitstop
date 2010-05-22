@@ -1279,3 +1279,20 @@ div.userLogTable {
 	width: 700px;
 	padding-left: 10px;
 }
+
+.indexContent {
+	border: 1px solid #ccc;
+	width: 350px;
+	margin: auto;
+	margin-top: 20px;
+	padding-top: 20px;
+	padding-bottom: 40px;
+}
+.indexContent input{
+	width: 270px;
+}
+.indexContent .searchButtons{
+	width: 35px;
+	height: 22px;
+}
+
