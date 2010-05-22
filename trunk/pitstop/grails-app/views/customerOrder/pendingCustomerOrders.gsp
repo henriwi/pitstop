@@ -4,25 +4,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <title><g:message code="customer.pendingCustomerOrders.title.label" /></title>
+        <title><g:message code="customerOrder.pendingCustomerOrders.title.label" /></title>
     </head>
     <body>
         <div class="nav">
-        	<span class="menuButton" ${params.action == 'list' ? "id='active'" : ""} >
-       			<g:link class="customerList" action="list"><g:message code="customer.list.label" /></g:link>
+       		<span class="menuButton" id="${params.action == 'pendingCustomerOrders' ? 'active' : ''}" >
+       			<g:link class="pendingCustomerOrders" action="create"><g:message code="customerOrder.pendingCustomerOrders.title.label" /></g:link>
        		</span>
-       		<span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""}  >
-       			<g:link class="createUser" action="create"><g:message code="customer.create.title.label" /></g:link>
+       		<span class="menuButton" id="${(params.action == 'create' || params.action == 'save') ? 'active' : ''}" >
+       			<g:link class="create" action="create"><g:message code="customerOrder.create.title.label" /></g:link>
        		</span>
-       		<span class="menuButton" ${(params.action == 'pendingCustomerOrders') ? "id='active'" : ""}  >
-       			<g:link class="pendingCustomerOrders" action="pendingCustomerOrders"><g:message code="customer.pendingCustomerOrders.title.label" /></g:link>
+       		<span class="menuButton" id="${params.action == 'list' ? 'active' : ''}" >
+       			<g:link class="list" action="list"><g:message code="customerOrder.list.title.label" /></g:link>
        		</span>
         </div>
         <div class="body">
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
-            <h1><g:message code="customer.pendingCustomerOrders.header.label" /></h1>
+            <h1><g:message code="customerOrder.pendingCustomerOrders.header.label" /></h1>
             
             <div class="list">
                 <table>

@@ -6,7 +6,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'supplierOrder.label')}" />
         <gui:resources components="autoComplete" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <title><g:message code="supplierOrder.create.title.label"/></title>
     </head>
     <body>
     	<div class="nav">
@@ -21,7 +21,7 @@
             </span>
      	</div>
         <div class="body">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+            <h1><g:message code="supplierOrder.create.title.label" /></h1>
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>

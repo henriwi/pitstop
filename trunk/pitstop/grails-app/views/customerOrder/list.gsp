@@ -9,11 +9,14 @@
     </head>
     <body>
         <div class="nav">
-       		<span class="menuButton" id="${params.action == 'list' || params.action == 'save'? 'active' : ''}" >
-       			<g:link class="list" action="list"><g:message code="customer.listCustomerOrder.list.label" /></g:link>
+       		<span class="menuButton" id="${params.action == 'pendingCustomerOrders' ? 'active' : ''}" >
+       			<g:link class="pendingCustomerOrders" action="create"><g:message code="customerOrder.pendingCustomerOrders.title.label" /></g:link>
        		</span>
-       		<span class="menuButton" id="${params.action == 'create' ? 'active' : ''}" >
-       			<g:link class="create" action="create"><g:message code="customer.addOrder.new.label" /></g:link>
+       		<span class="menuButton" id="${(params.action == 'create' || params.action == 'save') ? 'active' : ''}" >
+       			<g:link class="create" action="create"><g:message code="customerOrder.create.title.label" /></g:link>
+       		</span>
+       		<span class="menuButton" id="${params.action == 'list' ? 'active' : ''}" >
+       			<g:link class="list" action="list"><g:message code="customerOrder.list.title.label" /></g:link>
        		</span>
         </div>
         <div class="body">

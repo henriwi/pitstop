@@ -26,25 +26,21 @@
 				</div>
 			</g:form>
 			<br />
-			<g:form controller="customer" action="pendingCustomerOrders" method="get">
-				<div>
-					${message(code: 'index.pendingCustomerOrders.label')} ${numberOfPendingCustomerOrders}
-					<g:if test="${numberOfPendingCustomerOrders != 0}">
-						<g:submitButton tabindex='5' class="searchButtons" name="btnShowPendingCustomerOrders" value="${message(code: 'index.button.show.label')}" />
-					</g:if>
-					<br />
-				</div>
-			</g:form>
+			<div>
+				${message(code: 'index.pendingCustomerOrders.label')} ${numberOfPendingCustomerOrders}
+				<g:if test="${numberOfPendingCustomerOrders != 0}">
+					<g:link tabindex='5' controller="customerOrder" action="pendingCustomerOrders" class="btnShowAll"><g:message code="index.button.show.label"></g:message></g:link>
+				</g:if>
+				<br />
+			</div>
 			<br />
-			<g:form controller="tire" action="pendingSupplierOrders" method="get">
-				<div>
-					${message(code: 'index.pendingSupplierOrders.label')} ${numberOfPendingSupplierOrders}
-					<g:if test="${numberOfPendingSupplierOrders != 0}">
-						<g:submitButton tabindex='5' class="searchButtons" name="btnShowPendingSupplierOrders" value="${message(code: 'index.button.show.label')}" />
-					</g:if>
-					<br />
-				</div>
-			</g:form>
+			<div>
+				${message(code: 'index.pendingSupplierOrders.label')} ${numberOfPendingSupplierOrders}
+				<g:if test="${numberOfPendingSupplierOrders != 0}">
+					<g:link tabindex='6' controller="supplierOrder" action="pendingSupplierOrders" class="btnShowAll"><g:message code="index.button.show.label"></g:message></g:link>
+				</g:if>
+				<br />
+			</div>
 		</div>
 	</body>
 </html>
