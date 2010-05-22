@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.Iterator;
 
 class CustomerOrderController {
-	static final maxNumberOfCustomerOrder = 30
+	static final maxNumberOfCustomerOrders = 30
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     def orderService
 		
@@ -12,21 +12,14 @@ class CustomerOrderController {
     }
 
     def list = {
-		def customerOrderList
-		def customerOrderCount
+		params.max = Math.min(params.max ? params.int('max') : maxNumberOfCustomerOrders, 100)
 		
-		if(params.q){
-			customerOrderList = CustomerOrder.search("*" + params.q + "*").results
-			customerOrderCount = customerOrderList.size()
+		if(!params.sort) {
+			params.sort = "id"
+			params.order = "desc"
 		}
-		else {
-			params.max = Math.min(params.max ? params.int('max') : maxNumberOfCustomerOrder, 100)
-			customerOrderList = CustomerOrder.list(params)
-			customerOrderCount = CustomerOrder.count()
-		}	
-			
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [customerOrderInstanceList: customerOrderList, customerOrderInstanceTotal: customerOrderCount]
+				
+        [customerOrderInstanceList: CustomerOrder.list(params), customerOrderInstanceTotal: CustomerOrder.count()]
     }
 
     def create = {
