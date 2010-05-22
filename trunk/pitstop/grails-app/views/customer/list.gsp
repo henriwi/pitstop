@@ -108,7 +108,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="paginateButtons" id="skjul">
+            <div class="paginateButtons">
                 <g:paginate total="${customerInstanceTotal}" />
             </div>
             
