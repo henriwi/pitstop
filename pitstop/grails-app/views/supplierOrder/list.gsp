@@ -36,7 +36,7 @@
                             
                             <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.notice.label')}" params="[max: params.max, offset: params.offset]" />
                             
-                           	<th><g:message code="supplierOrder.table.delivered.label" /></th>
+                            <th><a class="notSortableColoumn"><g:message code="supplierOrder.table.delivered.label" /></a></th>
                         
                         </tr>
                     </thead>
