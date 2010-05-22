@@ -50,14 +50,6 @@
 						<g:formatNumber number="${tireInstance?.retailPrice}" format="#.00 kr" />
 					</span>
 					
-					<g:if test="${tireInstance?.enabled}">
-		            	<span>${message(code: 'tire.enabled.show.label')}</span>
-		            </g:if>
-		            <g:else>
-		            	<span>${message(code: 'tire.disabled.show.label')}</span>
-		            </g:else>
-					
-					
 					<g:if test="${tireInstance.notice}">
 						<span class="tireNotice">
 							${fieldValue(bean: tireInstance, field: "notice")}
@@ -76,12 +68,12 @@
 		                    	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'tire.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" /></span>
 	                        	<g:hiddenField name="id" value="${tireInstance?.id}" />
 	         			
-	                           	<g:if test="${tireInstance?.enabled}">
-	                           		<g:actionSubmit class="disableTireItem" title="${message(code: 'tire.list.disable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'tire.disabled.button.show.label')}" />
-	                       		</g:if>
-	                       		<g:else>
-	                          		<g:actionSubmit class="enableTireItem" title="${message(code: 'tire.list.enable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'tire.enabled.button.show.label')}" />
-	                       		</g:else>
+	                           	 	<g:if test="${tireInstance?.enabled}">
+			                           		<g:actionSubmit id="disableTireItemFromCustomerView" title="${message(code: 'tire.list.disable.tooltip.label')}" action="disableAndEnableForShow" value="${message(code: 'tire.disabled.button.show.label')}" />
+			                       		</g:if>
+			                       		<g:else>
+			                          		<g:actionSubmit id="enableTireItemFromCustomerView" title="${message(code: 'tire.list.enable.tooltip.label')}" action="disableAndEnableForShow" value="${message(code: 'tire.enabled.button.show.label')}" />
+			                       		</g:else>
 	                        </g:form>
                        	</g:ifAllGranted>	
 					</div>	

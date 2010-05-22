@@ -260,6 +260,12 @@ class TireController {
 		redirect(action: "list")
 	}
 	
+	def disableAndEnableForShow = {
+		def tire = Tire.get(params.id)
+		tire.enabled = tire.enabled ? false : true 
+		redirect(action: "show", id: params.id)
+	}
+	
 	def tireAutoComplete = {
 		def tires
 		
