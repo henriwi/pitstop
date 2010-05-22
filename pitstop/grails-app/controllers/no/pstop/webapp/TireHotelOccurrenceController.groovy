@@ -26,8 +26,7 @@ class TireHotelOccurrenceController {
 				}
 			}
 			tireHotelOccurrenceCount = tireHotelOccurrenceList.size()
-			
-			flash.message = "Resultat av søk: " + params.q
+			flash.message = "${message(code: 'tireHotelOccurrence.search.result.message', args: [message(code: 'tireHotelOccurrence.label'), params.id])}"
 		}
 		else {
 			params.max = Math.min(params.max ? params.int('max') : 10, 100)
