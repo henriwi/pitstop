@@ -129,12 +129,15 @@ class CustomerOrderController {
         }
     }
 
-    private setNotice() {
+    private setNoticeAndCustomer() {
 		session["order"]?.notice = params.notice
+		if(!session["order"]?.customer) {
+			session["order"]?.customer = Customer.get(params.customer_id)
+		}
     }
     
     def addToOrder = {
-		setNotice()
+		setNoticeAndCustomer()
 		
 		def order = session["order"]
 		def orderLines = session["orderLines"]

@@ -146,7 +146,7 @@ class CustomerController {
     }
 
 	def customerAutoComplete = {
-		def customers = Customer.findAllByFirstNameLikeOrLastNameLikeOrPhoneNumberLike("%${params.query}%", "%${params.query}%", "%${params.query}%")
+		def customers = Customer.search("*" + params.query + "*").results
 		
 		customers = customers.collect {
 			[id: it.id, name: it.autoCompleteToString()]
