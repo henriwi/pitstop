@@ -5,24 +5,21 @@
 	<div class="body">
 
 		<h1><g:message code="customer.sendSms.header" /></h1>
-		<g:if test="${flash.message}">
-			<div class="message">${flash.message}</div>
-		</g:if>
-		<div class="errors">
-		</div>
+		<g:hasErrors bean="${customerInstance}">
+        <div class="errors">
+        	<g:renderErrors bean="${customerInstance}" as="list" />
+        </div>
+        </g:hasErrors>
 
 		<g:form method="post" action="sendSmsToCustomer">
 			<div class="dialog">
 			<table>
 				<tbody>
-					<input type="hidden" name="USER" value="pitstop" />
-				   	<input type="hidden" name="PW" value="ngriter7" />
-				    <input type="hidden" name="SND" value="Pitstop" />
 				    
 					<tr class="prop">
 						<td valign="top" class="name"><label for="RCV"><g:message code="customer.sendSms.receiver.label" /></label></td>
 						<td valign="top" class="value ${hasErrors(bean:authority,field:'authority','errors')}">
-							<input type="text" id="RCV" name="RCV" value="${customerInstanceList.phoneNumber}"/>
+							<input type="text" id="RCV" name="RCV" value="${customerInstance?.phoneNumber}"/>
 						</td>
 					</tr>
 		
@@ -37,7 +34,8 @@
 			</div>
 			<div class="buttons">
 				<span class="button">
-					<g:submitToRemote name="SUBMIT" class="sendSmsToCustomer" update="MB_content" action="sendSmsToCustomer" value="${message(code: 'customer.sendSms.button')}" />
+					<g:hiddenField name="customerId" value="${customerInstance?.id}" />
+					<g:submitToRemote name="SUBMIT" class="sendSmsToCustomer" onComplete="Modalbox.resizeToContent()" update="MB_content" action="sendSmsToCustomer" value="${message(code: 'customer.sendSms.button')}" />
 				</span>
 			</div>
 		</g:form>
