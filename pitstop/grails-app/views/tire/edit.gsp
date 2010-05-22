@@ -6,18 +6,6 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'tire.label', default: 'dekk')}" />
         <title><g:message code="editTire.title.label" default="Endre dekk" /></title>
-        
-        <script type="text/javascript">
-        	/* Tillater at kun tall skrives inn */
-			function onlyNumbers(evt) {
-			    evt = (evt) ? evt : window.event
-			    var charCode = (evt.which) ? evt.which : evt.keyCode
-			    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-			        return false
-			    }
-			    return true
-			}
-		</script>
     </head>
     <body>
         <div class="nav">
@@ -29,9 +17,6 @@
        		</span>
        		<span class="menuButton" id="${params.action == 'search' && params.controller == 'tire' ? 'active' : ''}" >
 	    		<g:link controller="tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link>
-       		</span>
-       		<span class="menuButton" id="${params.action == 'pendingSupplierOrders' && params.controller == 'tire' ? 'active' : ''}" >
-       			<g:link class="pendingSupplierOrders" action="pendingSupplierOrders"><g:message code="tire.pendingSupplierOrders.title.label" /></g:link>
        		</span>
        		<span class="menuButton" ${(tireInstance.id) ? "id='active'" : ""}  >
        			<g:link class="showTire" action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "brand")} ${fieldValue(bean: tireInstance, field: "tireName")}</g:link>
