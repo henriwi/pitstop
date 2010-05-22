@@ -11,7 +11,7 @@
     <body>
     	<div class="nav">
        		<span class="menuButton" id="${params.action == 'pendingSupplierOrders' ? 'active' : ''}" >
-       			<g:link class="pendingSupplierOrders" action="pendingSupplierOrders"><g:message code="tire.pendingSupplierOrders.title.label" /></g:link>
+       			<g:link class="pendingSupplierOrders" action="pendingSupplierOrders"><g:message code="supplierOrder.pendingSupplierOrders.title.label" /></g:link>
        		</span>
             <span class="menuButton" ${(params.action == 'create' || params.action == 'save') ? "id='active'" : ""} >
             	<g:link class="create" action="create"><g:message code="supplier.addOrder.new.label" /></g:link>

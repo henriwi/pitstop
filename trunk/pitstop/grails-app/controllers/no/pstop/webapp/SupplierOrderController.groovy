@@ -7,7 +7,7 @@ import java.util.Date;
 class SupplierOrderController {
 	def orderService
 	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
-	static final maxNumberOfSupplierOrder = 30
+	static final maxNumberOfSupplierOrder = 10
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -17,6 +17,12 @@ class SupplierOrderController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : maxNumberOfSupplierOrder, 100)
+				
+		if(!params.sort) {
+			params.sort = "id"
+			params.order = "desc"
+		}
+				
         [supplierOrderInstanceList: SupplierOrder.list(params), supplierOrderInstanceTotal: SupplierOrder.count()]
     }
 
@@ -205,13 +211,13 @@ class SupplierOrderController {
 	}
 	
 	def pendingSupplierOrders = {
-		def pendingSupplierOrders = pendingSupplierOrders()
+		def pendingSupplierOrders = pendingSupplierOrders(params)
 		[supplierOrders: pendingSupplierOrders]
 	}
 	
-	private pendingSupplierOrders() {
+	private pendingSupplierOrders(params) {
 		def pendingSupplierOrdersList = []
-		def supplierOrders = SupplierOrder.list().each { 
+		def supplierOrders = SupplierOrder.list(params).each { 
 			boolean pending = false
 			it.supplierOrderLines.each {
 				if (!it.receivedDate) {
