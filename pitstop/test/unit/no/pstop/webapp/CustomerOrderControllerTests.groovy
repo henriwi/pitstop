@@ -15,15 +15,15 @@ class CustomerOrderControllerTests extends ControllerUnitTestCase {
 		mockDomain CustomerOrder
 		mockDomain CustomerOrderLine
 		
+		post = new PostalCodeAndPlace(postalCode:"0194",place:"Oslo")
 		customer = new Customer(id:1, firstName: "Dekk Roar", lastName: "Dekkesen", phoneNumber: "19555095", address: "Dekkveien 1",
 				postalCodeAndPlace: post, email: "felger@dekk.no", company: "Dekkilicious", notice: "God kunde")
-		customerOrder = new CustomerOrder(customer: customer, orderDate: new Date(), deliveredDate: null, notice: "")
-		customerOrderLine = new CustomerOrderLine(tire: tire, customerOrder: customerOrder,
-				numberOfReservedTires: 4, price: 950.0)
-		post = new PostalCodeAndPlace(postalCode:"0194",place:"Oslo")
 		tire = new Tire(width: 190, profile: 60, construction: "R", diameter: 17, partNr: "123AB",
 				loadIndex: 165, speedIndex: "H", pattern: "m12", tireType: "Sommer", brand: "Nokian", tireName: "T-Zero", 
 				notice:"Demodekk", retailPrice: 1095, numberInStock: 4)
+		customerOrder = new CustomerOrder(customer: customer, orderDate: new Date(), deliveredDate: null, notice: "")
+		customerOrderLine = new CustomerOrderLine(tire: tire, customerOrder: customerOrder,
+				numberOfReservedTires: 4, price: 950.0)
 	}
 	
 	protected void tearDown() {
@@ -53,8 +53,10 @@ class CustomerOrderControllerTests extends ControllerUnitTestCase {
 	
 	void testAddToOrder() {
 		setParams(1500, 4, 1)
+		controller.params.customer_id = 1
 		setSessions([])
 		mockDomain Tire, [tire]
+		mockDomain Customer
 		
 		controller.addToOrder()
 
