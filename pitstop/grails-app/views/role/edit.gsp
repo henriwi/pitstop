@@ -26,34 +26,34 @@
 			<input type="hidden" name="id" value="${authority.id}" />
 			<input type="hidden" name="version" value="${authority.version}" />
 			<div class="dialog">
-			<table>
-			<tbody>
-				<tr class="prop">
-					<td valign="top" class="name"><label for="authority">Role Name:</label></td>
-					<td valign="top" class="value ${hasErrors(bean:authority,field:'authority','errors')}">
-						<input type="text" id="authority" name="authority" value="${authority.authority?.encodeAsHTML()}"/>
-					</td>
-				</tr>
-
-				<tr class="prop">
-					<td valign="top" class="name"><label for="description">Description:</label></td>
-					<td valign="top" class="value ${hasErrors(bean:authority,field:'description','errors')}">
-						<input type="text" id="description" name="description" value="${authority.description?.encodeAsHTML()}"/>
-					</td>
-				</tr>
-
-				<tr class="prop">
-					<td valign="top" class="name"><label for="people">People:</label></td>
-					<td valign="top" class="value ${hasErrors(bean:authority,field:'people','errors')}">
-						<ul>
-						<g:each var="p" in="${authority.people?}">
-							<li>${p}</li>
-						</g:each>
-						</ul>
-					</td>
-				</tr>
-			</tbody>
-			</table>
+				<table>
+					<tbody>
+						<tr class="prop">
+							<td valign="top" class="name"><label for="authority">Role Name:</label></td>
+							<td valign="top" class="value ${hasErrors(bean:authority,field:'authority','errors')}">
+								<input type="text" id="authority" name="authority" value="${authority.authority?.encodeAsHTML()}"/>
+							</td>
+						</tr>
+		
+						<tr class="prop">
+							<td valign="top" class="name"><label for="description">Description:</label></td>
+							<td valign="top" class="value ${hasErrors(bean:authority,field:'description','errors')}">
+								<input type="text" id="description" name="description" value="${authority.description?.encodeAsHTML()}"/>
+							</td>
+						</tr>
+		
+						<tr class="prop">
+							<td valign="top" class="name"><label for="people">People:</label></td>
+							<td valign="top" class="value ${hasErrors(bean:authority,field:'people','errors')}">
+								<ul>
+								<g:each var="p" in="${authority.people?}">
+									<li>${p}</li>
+								</g:each>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 
 			<div class="buttons">

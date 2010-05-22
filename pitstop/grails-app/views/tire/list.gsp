@@ -66,7 +66,7 @@
                             
                             <g:sortableColumn params="${params}" property="notice" title="${message(code: 'tire.notice.table.label')}" />
                             
-                           <%--  <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th> --%>
+                            <%--  <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th> --%>
                             
                             <th><a class="notSortableColoumn">${message(code: 'tire.list.edit.label')}</a></th>
 
@@ -78,37 +78,37 @@
                     <tbody>
 						
 	                    <g:each in="${tireInstanceList}" status="i" var="tireInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "partNr")}</g:link></td>
-                        
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "brand")}</g:link></td>
-                            
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireName")}</g:link></td>
-                        
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "width")}</g:link></td>
-                        
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "profile")}</g:link></td>
-                        
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "construction")}</g:link></td>
-                        
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "diameter")}</g:link></td>
-                            
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "loadIndex")}${fieldValue(bean: tireInstance, field: "speedIndex")}</g:link></td>
-                        
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "pattern")}</g:link></td>
-                        
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireType")}</g:link></td>
-                            
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "retailPrice")}</g:link></td>
-                            
-                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "numberInStock")}</g:link></td>
-                            
-                            <td><g:link action="show" id="${tireInstance.id}">${tireInstance?.showNoticeWith10FirstLetters()}</g:link></td>
-                            
-                            <td><g:link class="editTableItem" action="edit" title="${message(code: 'tire.list.edit.tooltip.label')}" id="${tireInstance.id}">&nbsp;</g:link></td>
-                            
-           	                <g:ifAllGranted role="ROLE_ADMIN"> 
-	                            <td>
+	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "partNr")}</g:link></td>
+	                        
+	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "brand")}</g:link></td>
+	                            
+	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireName")}</g:link></td>
+	                        
+	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "width")}</g:link></td>
+	                        
+	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "profile")}</g:link></td>
+	                        
+	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "construction")}</g:link></td>
+	                        
+	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "diameter")}</g:link></td>
+	                            
+	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "loadIndex")}${fieldValue(bean: tireInstance, field: "speedIndex")}</g:link></td>
+	                        
+	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "pattern")}</g:link></td>
+	                        
+	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireType")}</g:link></td>
+	                            
+	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "retailPrice")}</g:link></td>
+	                            
+	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "numberInStock")}</g:link></td>
+	                            
+	                            <td><g:link action="show" id="${tireInstance.id}">${tireInstance?.showNoticeWith10FirstLetters()}</g:link></td>
+	                            
+	                            <td><g:link class="editTableItem" action="edit" title="${message(code: 'tire.list.edit.tooltip.label')}" id="${tireInstance.id}">&nbsp;</g:link></td>
+	                            
+	           	                <g:ifAllGranted role="ROLE_ADMIN"> 
+		                            <td>
 				                    	<g:form method="post">
 				                        	<g:hiddenField name="id" value="${tireInstance?.id}" />
 				         
@@ -119,10 +119,10 @@
 				                          		<g:actionSubmit class="enableTireItem" title="${message(code: 'tire.list.enable.tooltip.label')}" action="disableAndEnable" value="${message(code: 'list.button.disableAndEnable.label')}" />
 				                       		</g:else>
 				                        </g:form>
-	                            </td>   
-                            </g:ifAllGranted>
-                        </tr>
-                    </g:each>
+		                            </td>   
+	                            </g:ifAllGranted>
+	                        </tr>
+	                    </g:each>
                     </tbody>
                 </table>
             </div>

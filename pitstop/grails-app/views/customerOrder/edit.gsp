@@ -16,12 +16,12 @@
         <div class="body">
             <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${customerOrderInstance}">
-            <div class="errors">
-                <g:renderErrors bean="${customerOrderInstance}" as="list" />
-            </div>
+	            <div class="errors">
+	                <g:renderErrors bean="${customerOrderInstance}" as="list" />
+	            </div>
             </g:hasErrors>
             <g:form method="post" >
                 <g:hiddenField name="id" value="${customerOrderInstance?.id}" />
@@ -63,12 +63,12 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: customerOrderInstance, field: 'customerOrderLines', 'errors')}">
                                     
-<ul>
-<g:each in="${customerOrderInstance?.customerOrderLines?}" var="c">
-    <li><g:link controller="customerOrderLine" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="customerOrderLine" action="create" params="['customerOrder.id': customerOrderInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'customerOrderLine.label', default: 'CustomerOrderLine')])}</g:link>
+									<ul>
+										<g:each in="${customerOrderInstance?.customerOrderLines?}" var="c">
+										    <li><g:link controller="customerOrderLine" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+										</g:each>
+									</ul>
+									<g:link controller="customerOrderLine" action="create" params="['customerOrder.id': customerOrderInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'customerOrderLine.label', default: 'CustomerOrderLine')])}</g:link>
 
                                 </td>
                             </tr>

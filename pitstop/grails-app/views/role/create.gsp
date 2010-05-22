@@ -19,30 +19,30 @@
 		</g:hasErrors>
 
 		<g:form action="save">
-		<div class="dialog">
-		<table>
-		<tbody>
-			<tr class="prop">
-				<td valign="top" class="name"><label for="authority">${message(code: 'role.roleName.label')}</label></td>
-				<td valign="top" class="value ${hasErrors(bean:authority,field:'authority','errors')}">
-					<input type="text" id="authority" name="authority" value="${authority?.authority?.encodeAsHTML()}"/>
-				</td>
-			</tr>
+			<div class="dialog">
+				<table>
+					<tbody>
+						<tr class="prop">
+							<td valign="top" class="name"><label for="authority">${message(code: 'role.roleName.label')}</label></td>
+							<td valign="top" class="value ${hasErrors(bean:authority,field:'authority','errors')}">
+								<input type="text" id="authority" name="authority" value="${authority?.authority?.encodeAsHTML()}"/>
+							</td>
+						</tr>
+			
+						<tr class="prop">
+							<td valign="top" class="name"><label for="description">${message(code: 'role.description.label')}</label></td>
+							<td valign="top" class="value ${hasErrors(bean:authority,field:'description','errors')}">
+								<input type="text" id="description" name="description" value="${authority?.description?.encodeAsHTML()}"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
-			<tr class="prop">
-				<td valign="top" class="name"><label for="description">${message(code: 'role.description.label')}</label></td>
-				<td valign="top" class="value ${hasErrors(bean:authority,field:'description','errors')}">
-					<input type="text" id="description" name="description" value="${authority?.description?.encodeAsHTML()}"/>
-				</td>
-			</tr>
-		</tbody>
-		</table>
-		</div>
-
-		<div class="buttons">
-			<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label')}" /></span>
-            <span class="button"><g:actionSubmit class="cancel" action="list" value="${message(code: 'default.button.cancel.label')}" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');" /></span>
-		</div>
+			<div class="buttons">
+				<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label')}" /></span>
+	            <span class="button"><g:actionSubmit class="cancel" action="list" value="${message(code: 'default.button.cancel.label')}" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');" /></span>
+			</div>
 		</g:form>
 	</div>
 </body>

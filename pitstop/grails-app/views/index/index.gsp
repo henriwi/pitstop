@@ -9,8 +9,7 @@
 		<meta name="layout" content="main" />
     </head>
 	<body>
-		<div class="nav" id="emptyNav">
-		</div>
+		<div class="nav" id="emptyNav"></div>
 		<div class="indexContent" style="padding-left: 30px;">
 			<br />
 			<g:form controller="tire" action="fastSearchForListView" method="get">
@@ -31,7 +30,7 @@
 				<div>
 					${message(code: 'index.pendingCustomerOrders.label')} ${numberOfPendingCustomerOrders}
 					<g:if test="${numberOfPendingCustomerOrders != 0}">
-					<g:submitButton tabindex='5' class="searchButtons" name="btnShowPendingCustomerOrders" value="${message(code: 'index.button.show.label')}" />
+						<g:submitButton tabindex='5' class="searchButtons" name="btnShowPendingCustomerOrders" value="${message(code: 'index.button.show.label')}" />
 					</g:if>
 					<br />
 				</div>
@@ -41,7 +40,7 @@
 				<div>
 					${message(code: 'index.pendingSupplierOrders.label')} ${numberOfPendingSupplierOrders}
 					<g:if test="${numberOfPendingSupplierOrders != 0}">
-					<g:submitButton tabindex='5' class="searchButtons" name="btnShowPendingSupplierOrders" value="${message(code: 'index.button.show.label')}" />
+						<g:submitButton tabindex='5' class="searchButtons" name="btnShowPendingSupplierOrders" value="${message(code: 'index.button.show.label')}" />
 					</g:if>
 					<br />
 				</div>
