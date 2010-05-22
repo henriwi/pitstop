@@ -9,21 +9,15 @@
     </head>
     <body>
         <div class="nav">
-        	<span class="menuButton" id="${params.action == 'list' && params.controller == 'tire' ? 'active' : ''}" >
-       			<g:link controller="tire" class="tireList" action="list"><g:message code="default.button.tireList.label"/></g:link>
-       		</span>
-	        
-       		<span class="menuButton" id="${params.action == 'create' && params.controller == 'tire' ? 'active' : ''}" >
-       			<g:link controller="tire" class="createTire" action="create"><g:message code="default.button.newTire.label"/></g:link>
-       		</span>
-	        
-       		<span class="menuButton" id="${params.action == 'search' && params.controller == 'tire' ? 'active' : ''}" >
-	    		<g:link controller="tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link>
-       		</span>
-       		
        		<span class="menuButton" id="${params.action == 'pendingSupplierOrders' && params.controller == 'tire' ? 'active' : ''}" >
        			<g:link class="pendingSupplierOrders" action="pendingSupplierOrders"><g:message code="tire.pendingSupplierOrders.title.label" /></g:link>
        		</span>
+            <span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""} >
+            	<g:link class="create" action="create"><g:message code="supplier.addOrder.new.label" /></g:link>
+            </span>       		
+    		<span class="menuButton" ${params.action == 'list' || params.action == 'save' ? "id='active'" : ""} >
+            	<g:link class="list" action="list"><g:message code="supplier.listSupplierOrder.list.label" /></g:link>
+            </span>
         </div>
         <div class="body">
             <g:if test="${flash.message}">

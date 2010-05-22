@@ -5,17 +5,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <title>${message(code: 'createTire.title.label')}</title>
-        <script type="text/javascript">
-        	/* Tillater at kun tall skrives inn */
-			function onlyNumbers(evt) {
-			    evt = (evt) ? evt : window.event
-			    var charCode = (evt.which) ? evt.which : evt.keyCode
-			    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-			        return false
-			    }
-			    return true
-			}
-		</script>
     </head>
     <body>
         <div class="nav">
@@ -29,10 +18,6 @@
 	        
        		<span class="menuButton" id="${params.action == 'search' && params.controller == 'tire' ? 'active' : ''}" >
 	    		<g:link controller="tire" class="search" action="search"><g:message code="default.button.search.label"/></g:link>
-       		</span>
-       		
-       		<span class="menuButton" id="${params.action == 'pendingSupplierOrders' && params.controller == 'tire' ? 'active' : ''}" >
-       			<g:link class="pendingSupplierOrders" action="pendingSupplierOrders"><g:message code="tire.pendingSupplierOrders.title.label" /></g:link>
        		</span>
 		</div>
         <div class="body">

@@ -282,40 +282,6 @@ class TireController {
 		]
 		
 		render jsonTires as JSON
-		//def persons = Tire.list()//Tire.findAllByNameLike("%${params.query}%")
-		
-		//Create XML response 
-		/*render(contentType: "text/xml") { 
-			results() { 
-				persons.each { 
-					person -> result(){ 
-						name(person.width) //Optional id which will be available in onItemSelect 
-						id(person.id) 
-						} 
-					} 
-				} 
-			}*/ 
-	}
-	
-	def pendingSupplierOrders = {
-		def pendingSupplierOrders = pendingSupplierOrders()
-		[supplierOrders: pendingSupplierOrders]
-	}
-	
-	private pendingSupplierOrders() {
-		def pendingSupplierOrdersList = []
-		def supplierOrders = SupplierOrder.list().each { 
-			boolean pending = false
-			it.supplierOrderLines.each {
-				if (!it.receivedDate) {
-					pending = true
-				}
-			}
-			if (pending) {
-				pendingSupplierOrdersList << it
-			}
-		}
-		return pendingSupplierOrdersList
 	}
 	
 	private getPendingCustomerOrders(tire) {

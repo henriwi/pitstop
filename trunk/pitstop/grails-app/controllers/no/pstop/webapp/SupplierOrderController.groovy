@@ -203,4 +203,25 @@ class SupplierOrderController {
 	private isSpecialFastSearchQuery(String query) {
 		query ==~ regexFastSearch
 	}
+	
+	def pendingSupplierOrders = {
+		def pendingSupplierOrders = pendingSupplierOrders()
+		[supplierOrders: pendingSupplierOrders]
+	}
+	
+	private pendingSupplierOrders() {
+		def pendingSupplierOrdersList = []
+		def supplierOrders = SupplierOrder.list().each { 
+			boolean pending = false
+			it.supplierOrderLines.each {
+				if (!it.receivedDate) {
+					pending = true
+				}
+			}
+			if (pending) {
+				pendingSupplierOrdersList << it
+			}
+		}
+		return pendingSupplierOrdersList
+	}
 }
