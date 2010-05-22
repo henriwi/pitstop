@@ -10,7 +10,7 @@
     <body>
         <div class="nav">
        		<span class="menuButton" id="${params.action == 'pendingCustomerOrders' ? 'active' : ''}" >
-       			<g:link class="pendingCustomerOrders" action="create"><g:message code="customerOrder.pendingCustomerOrders.title.label" /></g:link>
+       			<g:link class="pendingCustomerOrders" action="pendingCustomerOrders"><g:message code="customerOrder.pendingCustomerOrders.title.label" /></g:link>
        		</span>
        		<span class="menuButton" id="${(params.action == 'create' || params.action == 'save') ? 'active' : ''}" >
        			<g:link class="create" action="create"><g:message code="customerOrder.create.title.label" /></g:link>

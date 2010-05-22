@@ -1,6 +1,7 @@
 package no.pstop.webapp
-import groovy.util.GroovyTestCase;
 
+import grails.converters.JSON;
+import groovy.util.GroovyTestCase;
 import grails.test.*
 
 class CustomerControllerIntegrationTests extends GroovyTestCase {
@@ -43,5 +44,16 @@ class CustomerControllerIntegrationTests extends GroovyTestCase {
 		
 		assertEquals "Expected list should be the same as the returned", expectedList.toString(), model.customerInstanceList.toString()
 		assertEquals "Number of expected should be the same as returned", expectedList.size(), model.customerInstanceTotal
+	}
+	
+	void testCustomerAutoComplete() {
+		controller.params.query = "Roar"
+		controller.request.contentType = "text/json"
+		
+		def expectedJson = customer1.autoCompleteToString()
+		controller.customerAutoComplete()
+		def result = JSON.parse(controller.response.contentAsString)
+		
+		assertEquals expectedJson, result.customers[0].name
 	}
 }
