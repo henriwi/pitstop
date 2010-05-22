@@ -726,6 +726,27 @@ a.logoutButton{
     cursor: pointer;
 }
 
+#enableTireItemFromCustomerView {
+    background: url(../images/skin/tire_activate.png) 5px 50% no-repeat;
+    padding-left: 27px;
+    padding-right: 15px;
+    margin: 0px;
+    margin-right: 10px;
+    margin-left: 3px;
+    border: none;
+    cursor: pointer;
+}
+
+#disableTireItemFromCustomerView {
+    background: url(../images/skin/tire_deactivate.png) 5px 50% no-repeat;
+    padding-left: 27px;
+    padding-right: 15px;
+    margin: 0px;
+    margin-right: 10px;
+    margin-left: 3px;
+    border: none;
+    cursor: pointer;
+}
 
 .saveTableItem {
 	background: url(../images/skin/database_add.png) 5px 50% no-repeat;
