@@ -90,6 +90,5 @@
 		<div class="paginateButtons">
 			<g:paginate total="${no.pstop.webapp.User.count()}" />
 		</div>
-
 	</div>
 </body>

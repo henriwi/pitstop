@@ -19,7 +19,7 @@
         <div class="body">
             <h1><g:message code="customerOrder.list.header.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
             <div class="list">
                 <table>
@@ -35,17 +35,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${customerOrderInstanceList}" status="i" var="customerOrderInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
-                            <td><g:link action="show" id="${customerOrderInstance.id}">${fieldValue(bean: customerOrderInstance, field: "id")}</g:link></td>
-                        
-                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${customerOrderInstance.orderDate}" /></td>
-                        
-                            <td>${fieldValue(bean: customerOrderInstance, field: "customer")}</td>
-                        
-                        </tr>
-                    </g:each>
+	                    <g:each in="${customerOrderInstanceList}" status="i" var="customerOrderInstance">
+	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+	                        
+	                            <td><g:link action="show" id="${customerOrderInstance.id}">${fieldValue(bean: customerOrderInstance, field: "id")}</g:link></td>
+	                        
+	                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${customerOrderInstance.orderDate}" /></td>
+	                        
+	                            <td>${fieldValue(bean: customerOrderInstance, field: "customer")}</td>
+	                        
+	                        </tr>
+	                    </g:each>
                     </tbody>
                 </table>
             </div>

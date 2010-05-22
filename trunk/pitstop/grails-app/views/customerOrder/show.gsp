@@ -27,7 +27,7 @@
 	                
 		           	<td>${customerOrderLineInstance?.numberOfReservedTires}</td>
 		           	
-	           </tr>
+	          	</tr>
 	        </g:each>
 		</tbody>
     </table>

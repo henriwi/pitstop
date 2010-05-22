@@ -48,7 +48,8 @@
 											id="customer"
 											controller="customer"
 											action="customerAutoComplete"
-											resultName="customers"/>
+											resultName="customers"
+										/>
 									</td>
 								</g:else>
                             </tr>
@@ -76,7 +77,8 @@
 											value:'customer',
 											label:'customer',
 											useId:true
-										]"/> 
+										]"
+									/> 
                               	</td>
                               
                                 <!-- <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'registrationNumber', 'errors')}">

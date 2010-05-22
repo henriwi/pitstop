@@ -29,43 +29,43 @@
 		<h1><g:message code="user.show.header.label" args="[entityName]" /></h1>
 		<div class="dialog">
 			<table>
-			<tbody>
-
-                <tr class="prop">
-                    <td valign="top" class="name"><g:message code="user.username.label" /></td>
-                    <td valign="top" class="value">${fieldValue(bean: person, field: "username")}</td>
-                </tr>
-
-                <tr class="prop">
-                    <td valign="top" class="name"><g:message code="user.userRealName.label" /></td>
-                    <td valign="top" class="value">${fieldValue(bean: person, field: "userRealName")}</td>
-                </tr>
-
-                <tr class="prop">
-                    <td valign="top" class="name"><g:message code="user.enabled.label" /></td>
-                    <td valign="top" class="value">${person?.enabledLabel()}</td>
-                </tr>
-
-                <tr class="prop">
-                    <td valign="top" class="name"><g:message code="user.description.label" /></td>
-                    <td valign="top" class="value">${fieldValue(bean: person, field: "description")}</td>
-                </tr>
-
-                <tr class="prop">
-                    <td valign="top" class="name"><g:message code="user.email.label" /></td>
-                    <td valign="top" class="value">${fieldValue(bean: person, field: "email")}</td>
-                </tr>
-
-				<tr class="prop">
-					<td valign="top" class="name"><g:message code="user.roles.label" /></td>
-					<td valign="top" class="value">
-						<g:each in="${roleNames}" var='role'>
-							${role?.description}
-						</g:each>
-					</td>
-				</tr>
-
-			</tbody>
+				<tbody>
+	
+	                <tr class="prop">
+	                    <td valign="top" class="name"><g:message code="user.username.label" /></td>
+	                    <td valign="top" class="value">${fieldValue(bean: person, field: "username")}</td>
+	                </tr>
+	
+	                <tr class="prop">
+	                    <td valign="top" class="name"><g:message code="user.userRealName.label" /></td>
+	                    <td valign="top" class="value">${fieldValue(bean: person, field: "userRealName")}</td>
+	                </tr>
+	
+	                <tr class="prop">
+	                    <td valign="top" class="name"><g:message code="user.enabled.label" /></td>
+	                    <td valign="top" class="value">${person?.enabledLabel()}</td>
+	                </tr>
+	
+	                <tr class="prop">
+	                    <td valign="top" class="name"><g:message code="user.description.label" /></td>
+	                    <td valign="top" class="value">${fieldValue(bean: person, field: "description")}</td>
+	                </tr>
+	
+	                <tr class="prop">
+	                    <td valign="top" class="name"><g:message code="user.email.label" /></td>
+	                    <td valign="top" class="value">${fieldValue(bean: person, field: "email")}</td>
+	                </tr>
+	
+					<tr class="prop">
+						<td valign="top" class="name"><g:message code="user.roles.label" /></td>
+						<td valign="top" class="value">
+							<g:each in="${roleNames}" var='role'>
+								${role?.description}
+							</g:each>
+						</td>
+					</tr>
+	
+				</tbody>
 			</table>
 		</div>
 
@@ -86,21 +86,21 @@
      	<h1><g:message code="user.show.title.log.label" /></h1>
 			<g:if test="${logInstanceList }">
 			<div class="loglist">
-	                <table>
-	                    <thead>
-	                        <tr>
-	                        
-	                            <th><a class="notSortableColoumn">${message(code: 'user.username.table.label')}</a></th>
-	                        
-	                            <th><a class="notSortableColoumn">${message(code: 'log.date.table.label')}</a></th>
-	                        
-	                            <th><a class="notSortableColoumn">${message(code: 'log.event.table.label')}</a></th>
-	                            
-	                            <th><a class="notSortableColoumn">${message(code: 'user.list.delete.label')}</a></th>
-	                        
-	                        </tr>
-	                    </thead>
-	                    <tbody>
+                <table>
+                    <thead>
+                        <tr>
+                        
+                            <th><a class="notSortableColoumn">${message(code: 'user.username.table.label')}</a></th>
+                        
+                            <th><a class="notSortableColoumn">${message(code: 'log.date.table.label')}</a></th>
+                        
+                            <th><a class="notSortableColoumn">${message(code: 'log.event.table.label')}</a></th>
+                            
+                            <th><a class="notSortableColoumn">${message(code: 'user.list.delete.label')}</a></th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody>
 	                    <g:each in="${logInstanceList}" status="i" var="logInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 	                        
@@ -118,7 +118,7 @@
 			                   	</td> 
 	                    	</tr>
 	                	</g:each>
-	            	</tbody>
+            		</tbody>
 	        	</table>
 			</div>
 		</g:if>

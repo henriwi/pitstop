@@ -20,39 +20,39 @@
         <div class="body">
             <h1><g:message code="customerOrder.create.header.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            	<div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${order}">
-            <div class="errors">
-                <g:renderErrors bean="${order}" as="list" />
-            </div>
+	            <div class="errors">
+	                <g:renderErrors bean="${order}" as="list" />
+	            </div>
             </g:hasErrors>
-	                <div id="customerOrderDialog">
-		                <div id="customerAndNotice">
-		                <g:form action="save" method="post" >
-		                    <table>
-		                        <tbody>
-		                        	<tr class="prop">
-		                                <td valign="top" class="name">
-		                                    <label for="customer"><g:message code="customerOrder.customer.label" default="Customer" /></label>
-		                                </td>
-		                                <td valign="top" class="value ${hasErrors(bean: order, field: 'customer', 'errors')}">
-		                                    ${order?.customer}
-		                                </td>
-		                            </tr>
-		                  			<tr class="prop">
-		                                <td valign="top" class="notice">
-		                                    <label for="notice"><g:message code="customerOrderLine.notice.label" /></label>
-		                                </td>
-		                                <td valign="top" class="value ${hasErrors(bean: order, field: 'notice', 'errors')}">
-		                                	<g:textArea value="${order?.notice}" tabindex='13' name="notice" rows="5" cols="10"/>
-										</td>
-			                    	</tr>
-		                        </tbody>
-		                    </table>
-		                </div>
-		                <div id="customerOrderLines">
-			            	<table>
+            <div id="customerOrderDialog">
+            	<div id="customerAndNotice">
+	                <g:form action="save" method="post" >
+	                    <table>
+	                        <tbody>
+	                        	<tr class="prop">
+	                                <td valign="top" class="name">
+	                                    <label for="customer"><g:message code="customerOrder.customer.label" default="Customer" /></label>
+	                                </td>
+	                                <td valign="top" class="value ${hasErrors(bean: order, field: 'customer', 'errors')}">
+	                                    ${order?.customer}
+	                                </td>
+	                            </tr>
+	                  			<tr class="prop">
+	                                <td valign="top" class="notice">
+	                                    <label for="notice"><g:message code="customerOrderLine.notice.label" /></label>
+	                                </td>
+	                                <td valign="top" class="value ${hasErrors(bean: order, field: 'notice', 'errors')}">
+	                                	<g:textArea value="${order?.notice}" tabindex='13' name="notice" rows="5" cols="10"/>
+									</td>
+		                    	</tr>
+	                        </tbody>
+	                    </table>
+	                </div>
+	                <div id="customerOrderLines">
+		            	<table>
 	                		<thead>
 		                		<tr class="prop">
 			                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.tire.table.label')}</a></th>
@@ -71,14 +71,14 @@
 			                		
 			                	</tr>
 			                </thead>
-			            	<g:hasErrors bean="${errorOrderLine}">
-	                		<div class="errors">
-	                			<g:renderErrors bean="${errorOrderLine}" as="list" field="tire"/>
-       							<g:renderErrors bean="${errorOrderLine}" as="list" field="price"/>
-       							<g:renderErrors bean="${errorOrderLine}" as="list" field="numberOfReservedTires"/>
-       						</div>
-       						</g:hasErrors>			                
-		                	<tbody>
+		            		<g:hasErrors bean="${errorOrderLine}">
+		                		<div class="errors">
+		                			<g:renderErrors bean="${errorOrderLine}" as="list" field="tire"/>
+	       							<g:renderErrors bean="${errorOrderLine}" as="list" field="price"/>
+	       							<g:renderErrors bean="${errorOrderLine}" as="list" field="numberOfReservedTires"/>
+	       						</div>
+	     							</g:hasErrors>			                
+	                		<tbody>
 							<g:each in="${orderLines}" status="i" var="orderLineInstance">
 								<tr>
 	                      			<td>${orderLineInstance?.tire}</td>
@@ -91,20 +91,20 @@
 	                          			<g:actionSubmit action="deleteFromOrder" class="deleteFromOrderTableItem" value=" ${i}" title="${message(code: 'order.deleteFromOrder.tooltip.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
 	                         		</td>  
 								</tr>
-						</g:each>
-						<tr>
-							<td class="yui-skin-sam">
-								<gui:autoComplete 
-									id="tire" 
-									controller="tire"
-									action="tireAutoComplete"
-									resultName="tires"
-									value="${errorOrderLine?.tire}"
-								/>
+							</g:each>
+							<tr>
+								<td class="yui-skin-sam">
+									<gui:autoComplete 
+										id="tire" 
+										controller="tire"
+										action="tireAutoComplete"
+										resultName="tires"
+										value="${errorOrderLine?.tire}"
+									/>
 							</td>
 							<!-- <td>
 								<richui:autoComplete name="tires" forceSelection="true" controller="tire" action="tireAutoComplete" 
-              						onItemSelect="${remoteFunction(action:'getTireInfoFromSelectedTire',update:'listPrice')}" />
+	             						onItemSelect="${remoteFunction(action:'getTireInfoFromSelectedTire',update:'listPrice')}" />
 								
 							</td>-->
 							<script>
@@ -126,14 +126,14 @@
 							<td><g:textField class="orderTableTextField" maxlength="30" tabindex='12' name="numberOfReservedTires" value="${errorOrderLine?.numberOfReservedTires}" /></td>
 							<td><g:textField class="orderTableTextField" maxlength="30" tabindex='12' name="price" value="${errorOrderLine?.price}" /></td>
 							<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'order.addToOrder.tooltip.label')}"/></span></td>
-	                   	</tbody>
-	            		</table>
-	            	</div>
-                	<div class="buttons">
-                    	<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'customerOrder.button.create.label')}" /></span>
-                    	<span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
-                	</div>
-		        </g:form>
+	                  		</tbody>
+	           		</table>
+	           	</div>
+              	<div class="buttons">
+                  	<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'customerOrder.button.create.label')}" /></span>
+                  	<span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
+              	</div>
+	        </g:form>
 		</div>		            	
     </body>
 </html>
