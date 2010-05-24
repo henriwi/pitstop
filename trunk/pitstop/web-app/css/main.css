@@ -40,7 +40,6 @@ h1 {
     font-weight: normal;
     font-size: 16px;
     margin: .8em 0 .3em 0;
-    padding-left: 5px;
     /*width: 300px;*/
 }
 
@@ -201,11 +200,17 @@ div#submenuTireHotelOccurence {
 }
 
 .menuButton a.create {
-    display: none;
+    background: url(../images/skin/database_add.png) center left no-repeat;
+    color: #555;
+    padding-left: 25px;
+    background-position: 2px;
 }
 
 .menuButton a.createTire {
-    display: none;
+    background: url(../images/skin/database_add_tire.png) center left no-repeat;
+    color: #555;
+    padding-left: 25px;
+	background-position: 2px;
 }
 
 .menuButton a.showTire {
@@ -223,7 +228,10 @@ div#submenuTireHotelOccurence {
 }
 
 .menuButton a.createUser {
-    display: none;
+    background: url(../images/skin/user_add.png) center left no-repeat;
+    color: #555;
+    padding-left: 25px;
+	background-position: 2px;
 }
 
 .menuButton a.showUser {
@@ -246,7 +254,10 @@ div#submenuTireHotelOccurence {
 }
 
 .menuButton a.createCustomer {
-    display: none;
+    background: url(../images/skin/user_add.png) center left no-repeat;
+    color: #555;
+    padding-left: 25px;
+	background-position: 2px;
 }
 
 .menuButton a.pendingSupplierOrders {
@@ -267,8 +278,14 @@ div#submenuTireHotelOccurence {
 	color: #000;	
 }
 
-#createTireOccurrenceButton, #createTireOccurrenceButton a{
-    display: none;
+#createTireOccurrenceButton {
+	padding-top: 51px;
+}
+
+#createTireOccurrenceButton a{
+    color: #333;
+    padding-left: 30px;
+    border: none;
 }
 
 span#active a {
@@ -538,6 +555,12 @@ input.delivered {
 
 /******* USER GENERATED *******/
 
+/* create.gsp */
+#txtConstruction {
+	color: #000;
+}
+
+
 /* LOGIN */
 #login {
 	width:260px;
@@ -589,8 +612,14 @@ a.logoutButton{
 	margin: 0 10px 0 0;	
 }
 
-.tireCreateDialog, .tireCreateDialog table {
-	display: none;
+.tireCreateDialog {
+	width: 350px;
+ 	margin-top: 10px;
+}
+
+.tireCreateDialog table {
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 #tireShowDialogWindow2 {
@@ -742,7 +771,15 @@ a.logoutButton{
     cursor: pointer;
 }
 .createOrder {
-	display: none;
+	background: url(../images/skin/shopping_cart.png) 5px no-repeat;
+    padding: 0px;
+    padding-left: 25px;
+    padding-bottom: 5px;
+    margin: 0px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    color: #000;
 }
 
 .addTireHotelOccurrence {
@@ -1147,8 +1184,16 @@ span.tireNewOrder a  {
 	padding-left:25px;
 }
 
-#createSupplierOrderButton, #createSupplierOrderButton a{
-	display: none;
+#createSupplierOrderButton {
+	padding: 0px;	
+	margin-left: 0px;
+}
+
+#createSupplierOrderButton a{
+		background: transparent url(../images/skin/shopping_cart.png) 0px 50% no-repeat;
+    color: #333;
+    padding-left: 25px;
+    border: none;
 }
 
 .showTireButtons {
@@ -1241,7 +1286,6 @@ div.userLogTable {
 	margin: auto;
 	margin-top: 20px;
 	padding-top: 20px;
-	padding-left: 10px;
 	padding-bottom: 40px;
 }
 .indexContent input{

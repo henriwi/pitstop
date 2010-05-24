@@ -44,6 +44,10 @@ body {
 	display: inline;
 }
 
+h1 {
+	padding-left: 10px;	
+}
+
 ul {
     padding: 0px;
 }
@@ -167,14 +171,10 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
     background-position: 0px;
 }
 .menuButton a.create {
-	background: none;
-    color: #555;
-    padding-left: 0px;
+    display: none;
 }
 .menuButton a.createTire {
-	background: none;
-    color: #555;
-    padding-left: 0px;
+    display: none;
 }
 .menuButton a.showTire {
 	background: none;
@@ -187,9 +187,7 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
     padding-left: 0px;
 }
 .menuButton a.createUser {
-	background: none;
-    color: #555;
-    padding-left: 0px;
+    display: none;
 }
 .menuButton a.showUser {
 	background: none;
@@ -207,9 +205,7 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
     padding-left: 0px;
 }
 .menuButton a.createCustomer {
-	background: none;
-    color: #555;
-    padding-left: 0px;
+    display: none;
 }
 .menuButton a.pendingSupplierOrders {
 	background: none;
@@ -222,13 +218,8 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
     padding-left: 0px;
 }
 
-#createTireOccurrenceButton {
-	padding-top: 51px;
-}
-#createTireOccurrenceButton a{
-    color: #333;
-    padding-left: 30px;
-    border: none;
+#createTireOccurrenceButton, #createTireOccurrenceButton a{
+    display: none;
 }
 span#active a {
 	border: 1px solid #888;
@@ -350,9 +341,11 @@ th.desc a {
 	margin-right: 15px;
 	float: left;	
 }
-
+#fastSearchInListView {
+	margin-left: 10px;
+}
 #fastSearchInListView #btnSearch{
-	width: 35px;
+	width: 45px;
 	height: 20px;
 	margin-bottom: 10px;
 }
@@ -466,11 +459,6 @@ input.delivered {
 }
 
 /******* USER GENERATED *******/
-
-/* create.gsp */
-#txtConstruction {
-	color: #000;
-}
 
 /* LOGIN */
 #login {
@@ -708,3 +696,75 @@ a.btnShowAll {
 #customerTableList, #userInfoLabel, li#customerOrderMenuItem a, li#supplierOrderMenuItem a, #logout, #adminMenuItem a{
 	display: none;
 }
+
+/* SHOW CUSTOMER */
+div.iPhone div.customerInfoBox {
+	border: 1px solid #bbb;
+	margin: 4px;
+	margin-bottom: 15px;
+	padding: 5px;
+	background-color: #F5F5FF;
+	font-size: 14px;
+}
+div.iPhone h3.customerName a{
+	font-size: 18px;
+	font-weight: bold;
+}
+div.iPhone span.customerAddress {
+	display: block;
+	margin-top: 0px;
+	width: 150px;
+}
+div.iPhone span.customerPostalCodeAndPlace {
+	display: block;
+	margin-top: 5px;	
+	width: 150px;
+}
+div.iPhone span.customerCompany {
+	display: block;
+	margin-top: 5px;
+	width: 150px;
+}
+div.iPhone span.customerPhoneNumber {
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+}
+div.iPhone span.customerPhoneNumber a{
+	background: url(../images/skin/iphone_call.png) 5px 50% no-repeat;;
+	color: #555;
+	font-size: 18px;
+	font-weight: normal;
+	margin: 0px;
+	margin-left: 10px;
+	padding: 0px;
+	padding-left: 25px;
+	position: inherit;
+}
+div.iPhone span.customerEmail {
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+}
+div.iPhone span.customerEmail a{
+	background: url(../images/skin/email.png) 5px 50% no-repeat;
+	color: #555;
+	font-size: 18px;
+	font-weight: normal;
+	margin: 0px;
+	margin-top: 10px;
+	margin-left: 15px;
+	padding: 0px;
+	padding-left: 25px;
+	position: inherit;
+}
+div.iPhone span.customerNotice {
+	font-style: italic;
+	display: block;
+	margin-top: 15px;
+	width: 100%;
+}
+div.iPhone div.customerInfo {
+	margin-bottom: 10px;
+}
+

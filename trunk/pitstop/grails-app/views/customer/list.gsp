@@ -112,27 +112,30 @@
             <div class="iPhone">
             	<g:each in="${customerInstanceList}" status="i" var="customerInstance">
 	            	<div class="customerInfoBox">
-						<h3 class="customerName"><g:link class="customerName" action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</g:link></h3>
-						<g:if test="${customerInstance.address}">
-							<span class="customerAddress">${fieldValue(bean: customerInstance, field: "address")}</span>
-						</g:if>
-						<g:if test="${customerInstance.postalCodeAndPlace?.postalCode}">
-							<span class="customerPostalCodeAndPlace">${customerInstance?.postalCodeAndPlace?.postalCode} ${customerInstance?.postalCodeAndPlace?.place}</span>
-						</g:if>
-						<g:if test="${customerInstance.company}">
-							<span class="customerCompany">${fieldValue(bean: customerInstance, field: "company")}</span>
-						</g:if>
-						
-						<g:if test="${customerInstance.phoneNumber}">
-							<span class="customerPhoneNumber">
-								<a href="" target="_blank">${message(code: 'customer.iphone.list.sendSMS.label')}</a>
-							</span>
-	                    </g:if>
-	                    <g:if test="${customerInstance.email}">
-							<span class="customerEmail">
-	                    		<a href="mailto:${customerInstance.email}" target="_blank">${message(code: 'customer.iphone.list.sendEmail.label')}</a>
-	                    	</span>
-			            </g:if>
+	            		<div class="customerInfo">
+							<h3 class="customerName"><g:link class="customerName" action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</g:link></h3>
+							<g:if test="${customerInstance.address}">
+								<span class="customerAddress">${fieldValue(bean: customerInstance, field: "address")}</span>
+							</g:if>
+							<g:if test="${customerInstance.postalCodeAndPlace?.postalCode}">
+								<span class="customerPostalCodeAndPlace">${customerInstance?.postalCodeAndPlace?.postalCode} ${customerInstance?.postalCodeAndPlace?.place}</span>
+							</g:if>
+							<g:if test="${customerInstance.company}">
+								<span class="customerCompany">${fieldValue(bean: customerInstance, field: "company")}</span>
+							</g:if>
+						</div>
+						<div class="customerContact">
+							<g:if test="${customerInstance.phoneNumber}">
+								<span class="customerPhoneNumber">
+									<a href="tel:${customerInstance.phoneNumber}" target="_blank">${customerInstance.phoneNumber}</a>
+								</span>
+		                    </g:if>
+		                    <g:if test="${customerInstance.email}">
+								<span class="customerEmail">
+		                    		<a href="mailto:${customerInstance.email}" target="_blank">${message(code: 'customer.iphone.list.sendEmail.label')}</a>
+		                    	</span>
+				            </g:if>
+						</div>
 	                	<div style="clear:both;"></div>
 	                </div>
 	                </g:each>
