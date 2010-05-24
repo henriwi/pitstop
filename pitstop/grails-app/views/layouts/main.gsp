@@ -14,15 +14,15 @@
         <meta name="apple-mobile-web-app-capable"  content="yes"  />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
         
-        <gui:resources components="autoComplete" />
-        <resource:dateChooser />
-        
         <g:layoutHead />
         <g:javascript library="application" />
         <g:javascript library="script" />
         <g:javascript library="yui" />
         <g:javascript library="prototype" />
+
         <modalbox:modalIncludes />
+        <gui:resources components="autoComplete" />
+        <resource:dateChooser />
     </head>
     <body>
 		<div id="container">
