@@ -22,7 +22,8 @@
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
-            <h1><g:message code="customer.show.title.label" /></h1>
+            <h1 id="showCustomerTitle"><g:message code="customer.show.title.label" /></h1>
+            <h1 class="iPhone" id="showCustomerNameTitle">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</h1>
             <div class="dialog" id="customerShowDialog">
             	<div class="customerInfoBox">
 					<h3 class="customerName">${fieldValue(bean: customerInstance, field: "firstName")} ${fieldValue(bean: customerInstance, field: "lastName")}</h3>
@@ -70,7 +71,7 @@
 			
 			<div id="customerTireHotelAndOrders">
 				<g:if test="${tireHotelOccurrenceInstanceTotalList}">
-					<h3><g:message code="customer.show.title.tireHotel.label" /></h3>
+					<h3 id="customerTireHotelTitle"><g:message code="customer.show.title.tireHotel.label" /></h3>
 					<div id="customerTireHotel">
 						<span id="customerTireHotelOccurrenceSwitchButton">
 							<a id="showCustomerHistory" href="javascript:showAndHideElement('allTireHotelOccurrences', 'activeTireHotelOccurrences');"
@@ -82,13 +83,10 @@
 								<g:message code="customer.show.hideHistory.label" />
 							</a>
 						</span>
-					
 						<div class="customerTireHotelOccurrencelist" id="activeTireHotelOccurrences">
-								
 							<g:if test="${!tireHotelOccurrenceInstanceListWithoutDeliveredInstance}">
 								<g:message code="customer.show.noActiveTireHotelOccurrences.message.label" />
 							</g:if>
-								
 							<g:each in="${tireHotelOccurrenceInstanceListWithoutDeliveredInstance}" status="i" var="tireHotelOccurrenceInstance">
 								<div class="customerTireHotelOccurrencelist" id="onlyActiveTireHotelOccurrences">
 									<div class="tireInfo">
@@ -107,7 +105,6 @@
 											<g:hiddenField name="delivered" value="delivered" />
 			                         		<g:actionSubmit class="delivered" title="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" action="deliverTireHotelOccurenceFromCustomerView" value="${message(code: 'tireHotelOccurrence.list.delivered.tooltip.label')}" onclick="return confirm('${message(code: 'list.delivered.button.confirm.message')}');" />
 			                   			</g:form>
-			                        	
 			                       		<g:if test="${!tireHotelOccurrenceInstance.outDate}">
 			                        		<g:form controller="tireHotelOccurrence" method="post">
 			                        			<g:hiddenField name="customerId" value="${customerInstance?.id}" />
@@ -127,7 +124,6 @@
 								</div>
 							</g:each>
 						</div>
-						
 			            <div id="allTireHotelOccurrences">
 							<g:render template="/customer/allTireHotelOccurrences"
 								model="[tireHotelOccurrenceInstanceList: tireHotelOccurrenceInstanceList, 
@@ -141,7 +137,7 @@
 				<g:if test="${customerOrders}">
 					<h3><g:message code="customer.show.title.orders.label" /></h3>
 					<div id="customerOrders">
-						<span id="customerTireHotelOccurrenceSwitchButton">
+						<span id="customerOrdersOccurrenceSwitchButton">
 							<a id="showCustomerOrderHistory" href="javascript:showAndHideElement('allCustomerOrders', 'activeCustomerOrders');"
 								onclick="showAndHideElement('hideCustomerOrderHistory', 'showCustomerOrderHistory');">
 								<g:message code="customer.show.showHistory.label" />

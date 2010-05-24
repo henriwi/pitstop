@@ -36,7 +36,7 @@
 				</div>
 			</g:form>
 			
-            <div class="list">
+            <div class="list" id="tireTableList">
                 <table>
                     <thead>
                         <tr>
@@ -128,6 +128,40 @@
             </div>
             <div class="paginateButtons">
              	<g:paginate next="${message(code: 'default.paginate.next')}" prev="${message(code: 'default.paginate.prev')}" controller="tire" action="list" params="${params}" total="${tireInstanceTotal}"></g:paginate>
+            </div>
+            
+            <div class="iPhone">
+            	<g:each in="${tireInstanceList}" status="i" var="tireInstance">
+	            	<div class="tireInfoBox">
+	            		<span class="headerName">
+							<h3 class="tireBrand">${fieldValue(bean: tireInstance, field: "brand")} ${fieldValue(bean: tireInstance, field: "tireName")}</h3>
+						 	- ${fieldValue(bean: tireInstance, field: "partNr")}
+						</span>
+	            		
+	            		<span class="tireWidth">
+	            			${fieldValue(bean: tireInstance, field: "width")}/${fieldValue(bean: tireInstance, field: "profile")}
+							${fieldValue(bean: tireInstance, field: "construction")}${fieldValue(bean: tireInstance, field: "diameter")}
+							${fieldValue(bean: tireInstance, field: "loadIndex")}${fieldValue(bean: tireInstance, field: "speedIndex")}
+						</span>
+						
+						<span class="tireSeason">${fieldValue(bean: tireInstance, field: "tireType")}
+							<g:if test="${tireInstance.pattern}">
+								${fieldValue(bean: tireInstance, field: "pattern")}
+							</g:if>
+						</span>
+						
+						<span class="tirePrice">
+							<g:formatNumber number="${tireInstance?.retailPrice}" format="#.00 kr" />
+						</span>
+						
+						<g:if test="${tireInstance.notice}">
+							<span class="tireNotice">
+								${fieldValue(bean: tireInstance, field: "notice")}
+							</span> 
+						</g:if>
+	                	<div style="clear:both;"></div>
+	                </div>
+                </g:each>
             </div>
         </div>
     </body>

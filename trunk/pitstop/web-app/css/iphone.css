@@ -115,7 +115,7 @@ ul#menuList li {
     margin: 0px;
 	padding-left: 0px;
     padding-bottom: 6px;
-    padding-top: 9px;
+    padding-top: 12px;
 /*
     margin-top: 60px;
     padding: 15px 12px;
@@ -133,16 +133,18 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
 
 .menuButton {
     font-size: 10px;
-    padding: 0 5px;
 	border: none;
+	padding: 0px;
+    margin: 0px;
 }
 
 .menuButton a {
-    color: #333;
-    padding: 4px 6px;
-    padding-left: 0px;
+	background: none;
+	padding: 8px;
+    margin: 0px;
+	color: #333;
     border: none;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: normal;
 }
 
@@ -152,23 +154,22 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
 }
 
 .menuButton a.list {
-    background: none;
+	background: none;
+	padding: 0px;
+    margin: 0px;
     color: #555;
-    padding-left: 0px;
 }
 
 .menuButton a.customerList {
-	background: none;
     color: #555;
-    padding-left: 0px;
-    background-position: 0px;
+	background: none;
+	padding: 0px;
+    margin: 0px;
 }
 .menuButton a.tireList {
-	background: none;
     color: #555;
-    margin: 0px;
-    padding-left: 0px;
-    background-position: 0px;
+    background: none;
+    margin: 8px;
 }
 .menuButton a.create {
     display: none;
@@ -181,12 +182,7 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
     color: #555;
     padding-left: 0px;
 }
-.menuButton a.search {
-	background: none;
-    color: #555;
-    padding-left: 0px;
-}
-.menuButton a.createUser {
+.menuButton a.search, .menuButton a.createUser, .menuButton a.createCustomer {
     display: none;
 }
 .menuButton a.showUser {
@@ -204,9 +200,6 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
     color: #555;
     padding-left: 0px;
 }
-.menuButton a.createCustomer {
-    display: none;
-}
 .menuButton a.pendingSupplierOrders {
 	background: none;
     color: #555;
@@ -218,17 +211,14 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
     padding-left: 0px;
 }
 
-#createTireOccurrenceButton, #createTireOccurrenceButton a{
+#createTireOccurrenceButton, #createTireOccurrenceButton a, #customerShowDialog .customerInfoBox, #showCustomerTitle{
     display: none;
 }
 span#active a {
 	border: 1px solid #888;
 	border-bottom: none;
     border-radius: 4px 4px 0px 0px;
-	padding-bottom: 8px;
-	padding-top: 8px;
-	padding-left: 25px;
-	background-position: 2px;
+	padding: 8px;
 	background-color: #fff;
 	color: #000;
 }
@@ -497,19 +487,13 @@ form.loginForm input.text_{
 }
 
 a.logoutButton{
-	background: url(../images/skin/logout.png) center left no-repeat;
-	float: right;
-	margin-right: 10px;
-	color: #555;
-    padding-left: 25px;
-	background-position: 2px;
 	display: none;
 }
 span#iPhoneLogout {
 	width: auto;
 	margin: auto;
-	margin-top: 25px;
-	margin-bottom: 25px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 span#iPhoneLogout a.logoutButton {
@@ -519,6 +503,7 @@ span#iPhoneLogout a.logoutButton {
 	float: none;
 	padding: 0px;
 	margin: 0px;
+	text-decoration: underline;
 }
 
 /* Tabs */
@@ -529,7 +514,6 @@ span#iPhoneLogout a.logoutButton {
 	display: block;
 	margin: 10px;
 }
-
 #tireShowDialog {
 	width: 250px;
 	float: left;
@@ -538,31 +522,84 @@ span#iPhoneLogout a.logoutButton {
 
 /* SHOW CUSTOMER */
 #customerShowDialog {
-	width: 350px;
 	overflow: auto;
 	float: left;
-	margin: 0 10px 0 0;	
+	margin: 0 10px 0 0;
+	max-width:480px;
 }
 #customerTireHotelAndOrders {
-	float: right;
-	
-	max-width: 1000px;
+	float: none;
+	position: inherit;
+	width: auto;
+	max-width:480px;
+	margin: 0px;
+}
+#customerTireHotelAndOrders h3{
+	font-size: 12px;
+	position: inherit;
+	margin: 0px;
+	color: #000;
+	text-align: center;
+}
+#customerTireHotelAndOrders h4 {
+	font-size: 14px;	
+}
+div#onlyActiveTireHotelOccurrences {
+	border: 1px solid #bbb;
+	background-color: #F5F5FF;
+	width: auto;
+	margin: 0px;
+	max-width:480px;
+	padding: 5px;
+}
+#customerTireHotel, #customerOrders {
+	max-width:480px;
+}
+#customerTireHotelOccurrenceSwitchButton, #customerOrdersOccurrenceSwitchButton, .tireHotelButtons,
+#customerTireHotelOccurrencelist, #allTireHotelOccurrences, #tireOccurrenceList, #allCustomerOrders, .tireName{
+	display: none;
 }
 
-#customerTireHotelOccurrencelist {
-	margin-bottom: 20px;
-	width: 100%;
+#customerOrders {
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
 }
+#customerOrders input{
+	display: none
+}
+div.customerOrderLine {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-top: 1px solid #ccc;
+}
+div.customerOrderBox, #customerOrders, #activeCustomerOrders {
+	width: auto;
+}
+div.customerOrderLine .tireName {
+	display: block;
+	padding: 0px;
+	margin: 0px;
+} 
+div.customerOrderLine .numberOfReservedTires {
+	display: inline;
+	padding: 0px;
+	margin: 0px;
+	margin-left: 25px;
+	font-style: italic;
+} 
+div.customerOrderLine .tirePrice {
+	display: inline;
+	padding: 0px;
+	margin: 0px;
+	font-style: italic;
+} 
 
-#tireOccurrenceList {
- 	width: 100%;
- 	float: left;
- 	margin-bottom: 5px;
-}
 
-#tireOccurrenceList table#tireOccurrences {
-	width: 100%;
-}
+
+
+
 
 #showTire {
 	width: 100%;
@@ -573,7 +610,6 @@ span#iPhoneLogout a.logoutButton {
 	margin-top: 5px;
 	border-top: 1px solid #ccc;
 }
-
 #totalTireOccurrence {
 	background: #fff;
 	background-image: none;
@@ -684,6 +720,7 @@ a.btnShowAll {
 	border: 1px solid #ccc;
 	width: auto;
 	margin: auto;
+	padding: 10px;
 }
 .indexContent input{
 	width: 150px;
@@ -693,8 +730,27 @@ a.btnShowAll {
 	height: 22px;
 }
 
-#customerTableList, #userInfoLabel, li#customerOrderMenuItem a, li#supplierOrderMenuItem a, #logout, #adminMenuItem a{
+#customerTableList, #tireTableList, #userInfoLabel, li#customerOrderMenuItem a,
+.paginateButtons, li#supplierOrderMenuItem a, #logout, #adminMenuItem a,  {
 	display: none;
+}
+
+/* SHOW TIREHOTEL */
+
+/* SHOW TIRE */
+div.iPhone div.tireInfoBox {
+	border: 1px solid #bbb;
+	margin: 4px;
+	margin-bottom: 15px;
+	padding: 5px;
+	background-color: #F5F5FF;
+	font-size: 14px;
+}
+div.iPhone h3.tireBrand {
+	display:inline;
+	font-size: 18px;
+	font-weight: bold;
+	color: #555;
 }
 
 /* SHOW CUSTOMER */
@@ -709,6 +765,7 @@ div.iPhone div.customerInfoBox {
 div.iPhone h3.customerName a{
 	font-size: 18px;
 	font-weight: bold;
+	color: #555;
 }
 div.iPhone span.customerAddress {
 	display: block;
