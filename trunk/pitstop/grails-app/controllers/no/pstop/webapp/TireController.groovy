@@ -77,16 +77,11 @@ class TireController {
 			tireCount = Tire.count()
 		}
 		if(tireCount == 0){
-			// TODO
-			/*
-			 * Ikke redirecte til search dersom det ikke er noen dekk på lager. Dette gjelder
-			 * kun når man kommer fra list. Skal ikke gjelde dersom man søker og det ikke er
-			 * noen dekk på lager.
-			 */
 			flash.message = "${message(code: 'tire.show.foundNoTireType.message')}"
 			//redirect(action: "search")
 		}
 		checkIfParamsSisTrueOrFalse(params, tireList)
+		
 		
 		[tireInstanceList: tireList, tireInstanceTotal: tireCount, radioButton: params.tireRadioButton]
 	}

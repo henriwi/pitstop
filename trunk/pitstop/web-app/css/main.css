@@ -910,6 +910,7 @@ div#onlyActiveTireHotelOccurrences {
 	background-color: #F5F5FF;
 	width: 450px;
 	padding: 5px;
+	margin-bottom: 15px;
 }
 #customerOrders {
 	padding: 5px;
@@ -923,6 +924,7 @@ div#onlyActiveTireHotelOccurrences {
 	background-color: #F5F5FF;
 	width: 450px;
 	padding: 5px;
+	margin-bottom: 15px;
 }
 .customerOrderBox h5 {
 	font-weight: normal;
