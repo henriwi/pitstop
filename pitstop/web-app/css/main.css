@@ -892,7 +892,7 @@ span.customerNotice {
 	margin-bottom: 10px;
 	width: 100%;
 }
-#customerTireHotelOccurrenceSwitchButton a{
+#customerTireHotelOccurrenceSwitchButton a, #customerOrdersOccurrenceSwitchButton a{
 	float: right;
 	margin-top: -20px;
 	font-weight: normal;
@@ -997,7 +997,6 @@ input.deliverOrder   {
 	float: left;
 	width: 1000px;
 }
-
 #customerOrderLines {
 	margin-bottom: 10px;
 }
@@ -1017,7 +1016,6 @@ input.orderTableTextField {
 	margin-top: 15px;
 	margin-bottom: 5px;
 }
-
 .addToOrderTableItem {
     background: url(../images/skin/addTireToOrder.png) 5px 50% no-repeat;
     padding-right: 15px;
@@ -1025,7 +1023,6 @@ input.orderTableTextField {
     border: none;
     cursor: pointer;
 }
-
 .deleteFromOrderTableItem {
     background: url(../images/skin/removeTireFromOrder.png) 5px 50% no-repeat;
     padding-right: 15px;
@@ -1034,7 +1031,6 @@ input.orderTableTextField {
     cursor: pointer;
     color: #bbb;
 }
-
 .showCustomerButtons {
 	display: inline;
 }

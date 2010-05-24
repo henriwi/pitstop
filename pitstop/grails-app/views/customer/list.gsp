@@ -141,18 +141,6 @@
 	                </g:each>
                 </div>
             </div>
-            
-            
-			
-<!-- UTKOMMENTERT 
-    <td><g:link class="addTireHotelOccurrence" controller="tireHotelOccurrence" action="create" title="${message(code: 'customer.list.tireHotel.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
-
-    <td><g:link class="addOrder" controller="customerOrder"  action="create" title="${message(code: 'customer.list.order.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
-
-    <td><g:link class="editTableItem" action="edit" title="${message(code: 'customer.list.edit.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
-UTKOMMENTERT -->
-
-
         </div>
     </body>
 </html>
