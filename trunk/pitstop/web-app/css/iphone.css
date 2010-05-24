@@ -25,6 +25,18 @@ body {
     font: 11px verdana, arial, helvetica, sans-serif;
     padding: 0px;
 }
+.body {
+    float: none;
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 10px;
+}
+#content {
+	margin-top: 2px;
+	margin-left: 0px;
+	padding-left: 0px;
+	width: 100%;
+}
 #pstopLogo img{ 
 	width: auto;  /* standard: 340 */
 	max-width: 340px;
@@ -35,58 +47,7 @@ body {
 ul {
     padding: 0px;
 }
-/*** <-- iPhone ready ***/
-/* NOT NEEDED
-.spinner {
-    padding: 5px;
-    position: absolute;
-    right: 0;
-}
-a:link, a:visited, a:hover {
-    color: #666;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-h1 {
-    color: #48802c;
-    font-weight: normal;
-    font-size: 16px;
-    margin: .8em 0 .3em 0;
-}
-
-input, select, textarea {
-    background-color: #fcfcfc;
-    border: 1px solid #ccc;
-    font: 11px verdana, arial, helvetica, sans-serif;
-    margin: 2px 0;
-    padding: 2px 4px;
-}
-select {
-   padding: 2px 2px 2px 0;
-}
-textarea {
-	width: 195px;
-	height: 100px;
-	vertical-align: top;
-}
-
-input:focus, select:focus, textarea:focus {
-    border: 1px solid #b2d1ff;
-}
-
-*/
-.body {
-    float: none;
-    margin: 0px;
-}
 	
-#content {
-	margin-top: 2px;
-	margin-left: 0px;
-	padding-left: 8px;
-	width: 100%;
-}
 #container {
 	width: 100%;
 	min-height: 400px;
@@ -95,7 +56,6 @@ input:focus, select:focus, textarea:focus {
 
 /* MAIN MENU */
 div#mainMenu {
-	border: none;
 	width: auto;
 	margin: 0px;
 	margin-top: 10px;
@@ -103,6 +63,7 @@ div#mainMenu {
 	padding-bottom: 9px;
 	border: 1px solid #eee;
 	border-style: solid none solid none;
+	border-top: 0px;
 	border-bottom: none;
 	font-size: 11px;
 	font-family: verdana,arial,helvetica,sans-serif;
@@ -122,8 +83,10 @@ ul#menuList li {
 #menuList a{
 	padding-top: 10px;
 	padding-bottom: 12px;
-	padding-left: 5px;
-	padding-right: 5px;
+	padding-left: 12px;
+	padding-right: 12px;
+	border: 1px solid #888;
+	border-bottom: none;
 }
 
 #menuList a:hover{
@@ -132,27 +95,21 @@ ul#menuList li {
 
 #menuList a.active{
 	background-image: none;
-	background-color: #333;
-	color: #fff; 
-	border: none;
+	background-color: #DCE7FB;
+	padding-bottom: 12px;
+	color: #000; 
+	border: 1px solid #888;
 	border-bottom: none;
     border-radius: 4px 4px 0px 0px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-}
-
-li#customerOrderMenuItem a, li#supplierOrderMenuItem a{
-	display: none;
 }
 
 /* NAVIGATION MENU */
 .nav {
-	width: 90%;
     background-color: #dce7fb;
     border: 1px solid #888;
     border-style: solid;
     margin: 0px;
+	padding-left: 0px;
     padding-bottom: 6px;
     padding-top: 9px;
 /*
@@ -179,74 +136,100 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
 .menuButton a {
     color: #333;
     padding: 4px 6px;
-    padding-left: 25px;
+    padding-left: 0px;
     border: none;
     font-size: 10px;
     font-weight: normal;
 }
+
 .menuButton a.home {
-    background: url(../images/skin/house.png) center left no-repeat;
+    background: none;
     color: #555;
-    padding-left: 25px;
-    background-position: 2px;
 }
 
 .menuButton a.list {
-    background: url(../images/skin/database_table.png) center left no-repeat;
+    background: none;
     color: #555;
-    padding-left: 25px;
-    background-position: 2px;
+    padding-left: 0px;
 }
 
+.menuButton a.customerList {
+	background: none;
+    color: #555;
+    padding-left: 0px;
+    background-position: 0px;
+}
+.menuButton a.tireList {
+	background: none;
+    color: #555;
+    margin: 0px;
+    padding-left: 0px;
+    background-position: 0px;
+}
 .menuButton a.create {
-    background: url(../images/skin/database_add.png) center left no-repeat;
+	background: none;
     color: #555;
-    padding-left: 25px;
-    background-position: 2px;
+    padding-left: 0px;
 }
-
 .menuButton a.createTire {
-    background: url(../images/skin/database_add_tire.png) center left no-repeat;
+	background: none;
     color: #555;
-    padding-left: 25px;
-	background-position: 2px;
+    padding-left: 0px;
 }
-
+.menuButton a.showTire {
+	background: none;
+    color: #555;
+    padding-left: 0px;
+}
 .menuButton a.search {
-    background: url(../images/skin/search.png) center left no-repeat;
+	background: none;
     color: #555;
-    padding-left: 25px;
-    background-position: 2px;
+    padding-left: 0px;
 }
-
 .menuButton a.createUser {
-    background: url(../images/skin/user_add.png) center left no-repeat;
+	background: none;
     color: #555;
-    padding-left: 25px;
-	background-position: 2px;
+    padding-left: 0px;
 }
-
-.backButton a.back {
-    background: url(../images/skin/back.png) center left no-repeat;
+.menuButton a.showUser {
+	background: none;
     color: #555;
-    padding-left: 25px;
-    margin-left: 0px;
-    margin-top: 15px;
-    border: none;
-    position:  absolute;
-    font-size: 10px;
+    padding-left: 0px;
+}
+.menuButton a.showTireHotelOccurrence {
+	background: none;
+    color: #555;
+    padding-left: 0px;
+}
+.menuButton a.log {
+	background: none;
+    color: #555;
+    padding-left: 0px;
+}
+.menuButton a.createCustomer {
+	background: none;
+    color: #555;
+    padding-left: 0px;
+}
+.menuButton a.pendingSupplierOrders {
+	background: none;
+    color: #555;
+    padding-left: 0px;
+}
+.menuButton a.pendingCustomerOrders {
+	background: none;
+    color: #555;
+    padding-left: 0px;
 }
 
 #createTireOccurrenceButton {
 	padding-top: 51px;
 }
-
 #createTireOccurrenceButton a{
     color: #333;
     padding-left: 30px;
     border: none;
 }
-
 span#active a {
 	border: 1px solid #888;
 	border-bottom: none;
@@ -495,7 +478,7 @@ input.delivered {
 	text-align: center;
 }
 
-#login .login {
+#login #loginButton {
 	background: #fff;
 	background-image: none;
     border: 1px solid #ccc;
@@ -504,17 +487,50 @@ input.delivered {
     margin-top: 5px;
     overflow: hidden;
     padding: 3px;
+    width: 100px;
     cursor: pointer;
-    height: 20px;
+    height: 25px;
 }
+input#loginButton {
+	width: 200px;	
+}
+
+table.loginForm {
+	border: none;
+}
+
+form.loginForm {
+	border: 1px solid #ccc;
+	padding-bottom: 10px;
+}
+
+form.loginForm input.text_{
+	height: 25px;
+}
+
 a.logoutButton{
 	background: url(../images/skin/logout.png) center left no-repeat;
 	float: right;
-	margin-right: 10px;	
+	margin-right: 10px;
 	color: #555;
     padding-left: 25px;
 	background-position: 2px;
 	display: none;
+}
+span#iPhoneLogout {
+	width: auto;
+	margin: auto;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+span#iPhoneLogout a.logoutButton {
+	background: none;
+	text-align: center;
+	display: inherit;
+	float: none;
+	padding: 0px;
+	margin: 0px;
 }
 
 /* Tabs */
@@ -668,7 +684,7 @@ a.logoutButton{
 a.btnShowAll {
 	background: #fff;
 	background-image: none;
-    border: 1px solid #ccc;
+    border: none;
     color: #666;
     font-size: 11px;
     font-weight: normal;
@@ -676,6 +692,19 @@ a.btnShowAll {
     cursor: pointer;
 }
 
-#customerTableList {
+.indexContent {
+	border: 1px solid #ccc;
+	width: auto;
+	margin: auto;
+}
+.indexContent input{
+	width: 150px;
+}
+.indexContent .searchButtons{
+	width: 45px;
+	height: 22px;
+}
+
+#customerTableList, #userInfoLabel, li#customerOrderMenuItem a, li#supplierOrderMenuItem a, #logout, #adminMenuItem a{
 	display: none;
 }

@@ -31,9 +31,7 @@
 	        	<span id="userInfoLabel">Logget inn som: <g:loggedInUserInfo field="username" /></span>
         	</div>
         	<div id="mainMenu">
-        		<g:isLoggedIn>
-					<g:link class="logoutButton" controller="logout">${message(code: 'main.menu.logout.label')}</g:link>
-				</g:isLoggedIn>
+				<g:link class="logoutButton" controller="logout">${message(code: 'main.menu.logout.label')}</g:link>
 				
 		        <ul id="menuList">
 		        	<li id="mainMenuItem"><a class="${(params.controller == 'index') ? 'active' : ''}" href="${createLink(uri: '/')}">${message(code: 'main.menu.home.label')}</a></li>
@@ -56,6 +54,7 @@
 	        <div id="content">
 	        	<g:layoutBody />
 	        </div>
+	        <span id="iPhoneLogout" class="iPhone"><g:link class="logoutButton"  controller="logout">${message(code: 'main.menu.logout.label')}</g:link></span>
         	<div style="clear:both"></div>
         </div>
     </body>

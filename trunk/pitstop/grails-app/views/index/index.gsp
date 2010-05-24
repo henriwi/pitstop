@@ -10,7 +10,7 @@
     </head>
 	<body>
 		<div class="nav" id="emptyNav"></div>
-		<div class="indexContent" style="padding-left: 30px;">
+		<div class="indexContent">
 			<br />
 			<g:form controller="tire" action="fastSearchForListView" method="get">
 				<div class="search">
