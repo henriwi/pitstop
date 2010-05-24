@@ -32,7 +32,7 @@
 				</div>
 			</g:form>
 			<!-- <modalbox:createLink controller="tireHotelOccurrence" action="create" title="Show book!" width="500" overlayDuration="0" slideDownDuration="0" resizeDuration="0">Book</modalbox:createLink>-->
-            <div class="list">
+            <div class="list" id="tireHotelTableList">
                 <table>
                     <thead>
                         <tr>
@@ -116,6 +116,22 @@
             </div>
             <div class="paginateButtons">
                 <g:paginate total="${tireHotelOccurrenceInstanceTotal}" />
+            </div>
+            
+            <div class="iPhone">
+            	<g:each in="${tireHotelOccurrenceInstanceList}" status="i" var="tireHotelOccurrenceInstance">
+	            	<div class="tireHotelOccurrenceInfoBox">
+	            		<span class="tireHotelOccurrenceTitle">
+							<h3 class="tireHotelOccurrenceTitle">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireLocation")}</h3>
+						 	- ${fieldValue(bean: tireHotelOccurrenceInstance, field: "customer")}<br />
+						</span>
+						 	<span class="carInfo">${fieldValue(bean: tireHotelOccurrenceInstance, field: "carType")} ${fieldValue(bean: tireHotelOccurrenceInstance, field: "registrationNumber")}</span>
+						 	<span class="tireType">${fieldValue(bean: tireHotelOccurrenceInstance, field: "tireType")}</span>
+						 	<span class="inDate">Dato inn: <g:formatDate format="dd.MM.yyyy" date="${tireHotelOccurrenceInstance.inDate}" /></span>
+						 	<span class="notice">${fieldValue(bean: tireHotelOccurrenceInstance, field: "notice")}</span>
+	                	<div style="clear:both;"></div>
+	                </div>
+                </g:each>
             </div>
         </div>
     </body>

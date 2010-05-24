@@ -731,12 +731,42 @@ a.btnShowAll {
 }
 
 #customerTableList, #tireTableList, #userInfoLabel, li#customerOrderMenuItem a,
-.paginateButtons, li#supplierOrderMenuItem a, #logout, #adminMenuItem a,  {
+.paginateButtons, li#supplierOrderMenuItem a, #logout, #adminMenuItem a, #tireHotelTableList {
 	display: none;
 }
 
 /* SHOW TIREHOTEL */
-
+div.iPhone div.tireHotelOccurrenceInfoBox {
+	border: 1px solid #bbb;
+	margin: 4px;
+	margin-bottom: 15px;
+	padding: 5px;
+	background-color: #F5F5FF;
+	font-size: 14px;
+}
+div.iPhone span.tireHotelOccurrenceTitle {
+	display: block;
+}
+div.iPhone h3.tireHotelOccurrenceTitle {
+	display:inline;
+	font-size: 18px;
+	font-weight: bold;
+	color: #555;
+}
+div.iPhone span.carInfo {
+	display: block;
+}
+div.iPhone span.tireType {
+	display: block;
+}
+div.iPhone span.inDate {
+	display: block;
+}
+div.iPhone span.notice {
+	display: block;
+	font-style: italic;
+	padding-top: 10px;
+}
 /* SHOW TIRE */
 div.iPhone div.tireInfoBox {
 	border: 1px solid #bbb;
@@ -823,5 +853,9 @@ div.iPhone span.customerNotice {
 }
 div.iPhone div.customerInfo {
 	margin-bottom: 10px;
+}
+
+#pendingCustomerOrders, #pendingSupplierOrders {
+	display: none;	
 }
 
