@@ -76,7 +76,6 @@
                         </tr>
                     </thead>
                     <tbody>
-						
 	                    <g:each in="${tireInstanceList}" status="i" var="tireInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "partNr")}</g:link></td>
@@ -160,9 +159,9 @@
 							</span> 
 						</g:if>
 	                	<div style="clear:both;"></div>
-	                </div>
-                </g:each>
-            </div>
+	            	</div>
+            	</g:each>
+			</div>
         </div>
     </body>
 </html>
