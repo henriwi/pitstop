@@ -131,35 +131,43 @@
             
             <div class="iPhone">
             	<g:each in="${tireInstanceList}" status="i" var="tireInstance">
-	            	<div class="tireInfoBox">
-	            		<span class="headerName">
-							<h3 class="tireBrand">${fieldValue(bean: tireInstance, field: "brand")} ${fieldValue(bean: tireInstance, field: "tireName")}</h3>
-						 	- ${fieldValue(bean: tireInstance, field: "partNr")}
-						</span>
-	            		
-	            		<span class="tireWidth">
-	            			${fieldValue(bean: tireInstance, field: "width")}/${fieldValue(bean: tireInstance, field: "profile")}
-							${fieldValue(bean: tireInstance, field: "construction")}${fieldValue(bean: tireInstance, field: "diameter")}
-							${fieldValue(bean: tireInstance, field: "loadIndex")}${fieldValue(bean: tireInstance, field: "speedIndex")}
-						</span>
-						
-						<span class="tireSeason">${fieldValue(bean: tireInstance, field: "tireType")}
-							<g:if test="${tireInstance.pattern}">
-								${fieldValue(bean: tireInstance, field: "pattern")}
+	            	<g:if test="${tireInstance.numberInStock}">
+		            	<div class="tireInfoBox">
+		            		<span class="headerName">
+								<h3 class="tireBrand">${fieldValue(bean: tireInstance, field: "brand")} ${fieldValue(bean: tireInstance, field: "tireName")}</h3>
+							 	- ${fieldValue(bean: tireInstance, field: "partNr")}
+							</span>
+		            		
+		            		<span class="tireWidth">
+		            			${fieldValue(bean: tireInstance, field: "width")}/${fieldValue(bean: tireInstance, field: "profile")}
+								${fieldValue(bean: tireInstance, field: "construction")}${fieldValue(bean: tireInstance, field: "diameter")}
+								${fieldValue(bean: tireInstance, field: "loadIndex")}${fieldValue(bean: tireInstance, field: "speedIndex")}
+							</span>
+							
+							<span class="tireSeason">${fieldValue(bean: tireInstance, field: "tireType")}
+								<g:if test="${tireInstance.pattern}">
+									${fieldValue(bean: tireInstance, field: "pattern")}
+								</g:if>
+							</span>
+							
+							<span class="tirePrice">
+								${message(code: 'tire.iPhone.retailPrice.label')}<g:formatNumber number="${tireInstance?.retailPrice}" format="kr #.00" />
+							</span>
+							
+							<g:if test="${tireInstance.notice}">
+								<span class="notice">
+									${fieldValue(bean: tireInstance, field: "notice")}
+								</span> 
 							</g:if>
-						</span>
-						
-						<span class="tirePrice">
-							<g:formatNumber number="${tireInstance?.retailPrice}" format="#.00 kr" />
-						</span>
-						
-						<g:if test="${tireInstance.notice}">
-							<span class="tireNotice">
-								${fieldValue(bean: tireInstance, field: "notice")}
-							</span> 
-						</g:if>
+							
+							<span class="tireNumbers">
+								<span class="numberOfTiresInStock"><g:message code="tire.numberInStock.label" />${fieldValue(bean: tireInstance, field: "numberInStock")}</span>
+								<span class="tireNumberOfAvailable"><g:message code="tire.numberOfAvailable.label" />${tireInstance?.numberOfAvailable()}</span>		
+							</span>
+		            	</div>
+		            	
 	                	<div style="clear:both;"></div>
-	            	</div>
+	                </g:if>
             	</g:each>
 			</div>
         </div>

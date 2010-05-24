@@ -37,20 +37,18 @@ body {
 	padding-left: 0px;
 	width: 100%;
 }
+#pstopLogo {
+	text-align: center;
+}
 #pstopLogo img{ 
-	width: auto;  /* standard: 340 */
-	max-width: 340px;
+	width: auto;
 	background-color: #dce7fb;
 	display: inline;
+	padding: 0px;
 }
 
-h1 {
-	padding-left: 10px;	
-}
-
-ul {
-    padding: 0px;
-}
+h1 { padding-left: 10px; }
+ul { padding: 0px; }
 	
 #container {
 	width: 100%;
@@ -766,6 +764,7 @@ div.iPhone span.notice {
 	display: block;
 	font-style: italic;
 	padding-top: 10px;
+	padding-bottom: 10px;
 }
 /* SHOW TIRE */
 div.iPhone div.tireInfoBox {
@@ -781,6 +780,12 @@ div.iPhone h3.tireBrand {
 	font-size: 18px;
 	font-weight: bold;
 	color: #555;
+}
+.tireNumbers {
+	padding-top: 5px;	
+}
+div.iPhone span.tireNumberOfAvailable, div.iPhone span.tireNumberInStock{
+	display: block;
 }
 
 /* SHOW CUSTOMER */

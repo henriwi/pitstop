@@ -45,7 +45,7 @@
 					</span>
 					
 					<span class="tirePrice">
-						<g:formatNumber number="${tireInstance?.retailPrice}" format="#.00 kr" />
+						<g:formatNumber number="${tireInstance?.retailPrice}" format="kr #.00" />
 					</span>
 					
 					<g:if test="${tireInstance.notice}">
@@ -66,12 +66,12 @@
 		                    	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'tire.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" /></span>
 	                        	<g:hiddenField name="id" value="${tireInstance?.id}" />
 	         			
-	                           	 	<g:if test="${tireInstance?.enabled}">
-			                           		<g:actionSubmit id="disableTireItemFromCustomerView" title="${message(code: 'tire.list.disable.tooltip.label')}" action="disableAndEnableForShow" value="${message(code: 'tire.disabled.button.show.label')}" />
-			                       		</g:if>
-			                       		<g:else>
-			                          		<g:actionSubmit id="enableTireItemFromCustomerView" title="${message(code: 'tire.list.enable.tooltip.label')}" action="disableAndEnableForShow" value="${message(code: 'tire.enabled.button.show.label')}" />
-			                       		</g:else>
+                           	 	<g:if test="${tireInstance?.enabled}">
+	                           		<g:actionSubmit id="disableTireItemFromCustomerView" title="${message(code: 'tire.list.disable.tooltip.label')}" action="disableAndEnableForShow" value="${message(code: 'tire.disabled.button.show.label')}" />
+	                       		</g:if>
+	                       		<g:else>
+	                          		<g:actionSubmit id="enableTireItemFromCustomerView" title="${message(code: 'tire.list.enable.tooltip.label')}" action="disableAndEnableForShow" value="${message(code: 'tire.enabled.button.show.label')}" />
+	                       		</g:else>
 	                        </g:form>
                        	</g:ifAllGranted>	
 					</div>	
@@ -115,7 +115,7 @@
 					
 						<g:set var="numberOfAvailable" value="${0}"></g:set>
 						<span class="available"><span class="tireInStockLabels"><g:message code="tire.numberOfAvailable.label" /></span>
-						<span class="tireInStockNumbers">${tireInstance?.numberInStock - numberOfReserved}</span></span>
+						<span class="tireInStockNumbers">${tireInstance?.numberOfAvailable()}</span></span>
 					</span>
                	</div>
             </div> 
