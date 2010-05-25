@@ -1310,7 +1310,7 @@ img#errorImage {
 	margin-top: 10px;
 }
 
-div.userLogTable {
+div#userLogTable {
 	float: left;
 	width: 700px;
 	padding-left: 10px;

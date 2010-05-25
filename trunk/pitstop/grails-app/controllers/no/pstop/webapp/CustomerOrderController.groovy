@@ -108,8 +108,13 @@ class CustomerOrderController {
         if (customerOrderInstance) {
             try {
                 customerOrderInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'customerOrder.label', default: 'CustomerOrder'), params.id])}"
-                redirect(action: "list")
+                flash.message = "${message(code: 'customerorder.deleted.message', args: [params.id])}"
+				if(params.requestFromShowCustomerView) {
+					redirect(controller: "customer", action: "show", id: params.customerId)
+				}
+				else {
+					redirect(action: "list")
+				}
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'customerOrder.label', default: 'CustomerOrder'), params.id])}"
@@ -117,7 +122,7 @@ class CustomerOrderController {
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'customerOrder.label', default: 'CustomerOrder'), params.id])}"
+            flash.message = "${message(code: 'customerOrder.not.found.message', args: [message(code: 'customerOrder.label', default: 'CustomerOrder'), params.id])}"
             redirect(action: "list")
         }
     }

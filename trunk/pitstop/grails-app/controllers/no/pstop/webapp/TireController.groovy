@@ -10,6 +10,7 @@ import org.codehaus.groovy.grails.plugins.springsecurity.Secured
 class TireController {
 	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
 	static final maxNumberOfTires = 50
+	def logService
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
 	def index = {
@@ -170,6 +171,7 @@ class TireController {
 		if (tireInstance) {
 			tireInstance.properties = params
 			if (!tireInstance.hasErrors() && tireInstance.save(flush: true)) {
+				logService.saveLog(session, "${message(code: 'log.tire.edited.message', args: [tireInstance])}")
 				flash.message = "${message(code: 'tire.updated.message', args: [message(code: 'tire.label', default: 'Dekk'), tireInstance.tireShowToString()])}"
 				redirect(action: "show", id: tireInstance.id)
 			}

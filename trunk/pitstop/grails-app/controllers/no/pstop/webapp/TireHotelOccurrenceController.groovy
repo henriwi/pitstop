@@ -59,7 +59,6 @@ class TireHotelOccurrenceController {
 		}
 		else{
 			tireHotelOccurrenceInstance = tireHotelOccurrenceInstance.merge(flush: true)
-			logService.saveLog(session, "${message(code: 'log.tireHotelOccurrence.created.event')}")
 			flash.message = "${message(code: 'tireHotelOccurrence.created.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.id])}"
 			redirect(action: "show", id: tireHotelOccurrenceInstance.id)
 		}
@@ -113,14 +112,13 @@ class TireHotelOccurrenceController {
 		def tireHotelOccurrenceInstance = TireHotelOccurrence.get(params.id)
 		if (tireHotelOccurrenceInstance) {
 			try {
+				tireHotelOccurrenceInstance.delete(flush: true)
+				flash.message = "${message(code: 'tireHotelOccurrence.deleted.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.registrationNumber])}"
+
 				if(params.requestFromShowCustomerView){
-					tireHotelOccurrenceInstance.delete(flush: true)
-					flash.message = "${message(code: 'tireHotelOccurrence.deleted.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.registrationNumber])}"
 					redirect(controller: "customer", action: "show", id: params.customerId)
 				}
 				else{
-					tireHotelOccurrenceInstance.delete(flush: true)
-					flash.message = "${message(code: 'tireHotelOccurrence.deleted.message', args: [message(code: 'tireHotelOccurrence.label'), tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.registrationNumber])}"
 					redirect(action: "list")
 				}
 			}

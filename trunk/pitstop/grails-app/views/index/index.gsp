@@ -12,7 +12,7 @@
 		<div class="nav" id="emptyNav"></div>
 		<div class="indexContent">
 			<br />
-			<g:form controller="tire" action="fastSearchForListView" method="get">
+			<g:form controller="tire" action="fastSearch" method="get">
 				<div class="search">
 					${message(code: 'index.tire.search.label')}<br /><g:textField tabindex='1' name="txtFastSearch" />
 					<g:submitButton tabindex='2' class="searchButtons" name="btnTireSearch" value="${message(code: 'search.button.fastSearch.label')}" />

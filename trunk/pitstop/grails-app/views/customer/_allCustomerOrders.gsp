@@ -34,7 +34,7 @@
 	                       		<g:hiddenField name="customerId" value="${customerInstance?.id}" />
 	                      		<g:hiddenField name="requestFromShowCustomerView" value="true" />
 	                       		<g:hiddenField name="id" value="${customerOrderInstance?.id}" />
-	                       		<g:actionSubmit class="deleteTableItem" title="${message(code: 'tireHotelOccurrence.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tireHotelOccurrence.button.delete.confirm.message')}');" />
+	                       		<g:actionSubmit class="deleteTableItem" title="${message(code: 'customerOrder.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'customerOrder.button.delete.confirm.message')}');" />
 	                        </g:form>
 	                   </td>
 	               </g:ifAllGranted>
