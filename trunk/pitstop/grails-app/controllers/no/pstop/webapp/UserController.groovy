@@ -8,7 +8,7 @@ import no.pstop.webapp.Role
 class UserController {
 
 	def authenticateService
-	static final maxNumberOfLogs = 3
+	static final maxNumberOfLogs = 20
 	static Map allowedMethods = [delete: 'POST', save: 'POST', update: 'POST']
 
 	def index = {
