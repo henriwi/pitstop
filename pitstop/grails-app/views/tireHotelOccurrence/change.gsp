@@ -41,8 +41,9 @@
                                 <td valign="top" class="name">
                                   <label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'customer', 'errors')}">
-                                    <g:select name="customer.id" from="${no.pstop.webapp.Customer.list()}" optionKey="id" value="${tireHotelOccurrenceInstance?.customer?.id}"  />
+                                <td>
+                             		${no.pstop.webapp.Customer.get(tireHotelOccurrenceInstance?.customer?.id)}
+                             		<g:hiddenField name="customer_id" value="${tireHotelOccurrenceInstance?.customer?.id}"/>
                                 </td>
                             </tr>
                             
