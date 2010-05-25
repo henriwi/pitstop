@@ -179,14 +179,6 @@ class TireControllerTests extends ControllerUnitTestCase {
 		assertEquals "Type param should be fast", "fast", controller.redirectArgs.params.type
 	}
 	
-	void testFastSearchWithoutQuery() {
-		controller.params.txtFastSearch = ""
-		controller.metaClass.message = {args -> println "message: ${args}"}
-		controller.fastSearch()
-		
-		assertEquals "redirect action", "search", controller.redirectArgs.action
-	}
-	
 	void testNormalSearch() {
 		controller.params.width = 195
 		controller.params.profile = 55

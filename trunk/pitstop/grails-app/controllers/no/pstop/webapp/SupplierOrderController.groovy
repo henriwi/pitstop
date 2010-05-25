@@ -109,17 +109,16 @@ class SupplierOrderController {
         if (supplierOrderInstance) {
             try {
                 supplierOrderInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'supplierOrder.label', default: 'SupplierOrder'), params.id])}"
-                redirect(action: "list")
+                render(view: "deleteSupplierOrderConfirmation")
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'supplierOrder.label', default: 'SupplierOrder'), params.id])}"
-                redirect(action: "show", id: params.id)
+				supplierOrderInstance.errors.reject('supplierOrder.delete.error.message')
+                render(view: "show", model: [supplierOrderInstance: supplierOrderInstance])
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'supplierOrder.label', default: 'SupplierOrder'), params.id])}"
-            redirect(action: "list")
+			supplierOrderInstance.errors.reject('supplierOrder.delete.error.message')
+			render(view: "show", model: [supplierOrderInstance: supplierOrderInstance])
         }
     }
 	
@@ -156,8 +155,6 @@ class SupplierOrderController {
 		errorOrderLine.validate()
 		return errorOrderLine
 	}
-
-
 	
     private setOrderValues() {
 		session["order"]?.supplier = params.supplier
