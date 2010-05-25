@@ -57,8 +57,9 @@ class Tire {
 	}
 
 	static normalSearch(String width, String profile, String diameter, String speedIndex, 
-	String tireType, String brand, Integer max, Integer offset) {
+	String tireType, String brand, String showOnlyEnabled, Integer max, Integer offset) {
 		Tire?.search([max: max, offset: offset, escape: true]) {
+			must(term('enabled', showOnlyEnabled))
 			width != "" ? must(term('width', width)) : ""
 			profile != "" ? must(term('profile', profile)) : ""
 			diameter != "" ? must(term('diameter', diameter)) : ""

@@ -73,6 +73,7 @@ class TireControllerIntegrationTests extends GroovyTestCase {
 	
 	void testNormalSearchQuery(){
 		setParams("normal", "", "", "", "", "Vinter (pigg)", "")
+		controller.params.s = "true"
 		def expectedTireList = [t2, t4]
 		def model = controller.list()
 

@@ -7,6 +7,7 @@ import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class TireHotelOccurrenceController {
 	def logService
+	static final maxNumberOfTireHotelOccurrences = 50
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
 	def index = {
@@ -29,7 +30,7 @@ class TireHotelOccurrenceController {
 			flash.message = "${message(code: 'tireHotelOccurrence.search.result.message', args: [message(code: 'tireHotelOccurrence.label'), params.id])}"
 		}
 		else {
-			params.max = Math.min(params.max ? params.int('max') : 10, 100)
+			params.max = Math.min(params.max ? params.int('max') : maxNumberOfTireHotelOccurrences, 100)
 			tireHotelOccurrenceList = TireHotelOccurrence.findAllByOutDateIsNull(params)
 			tireHotelOccurrenceCount = tireHotelOccurrenceList.size()
 			if(tireHotelOccurrenceCount == 0 ){

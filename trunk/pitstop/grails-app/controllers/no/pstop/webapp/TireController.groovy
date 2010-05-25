@@ -9,7 +9,7 @@ import org.codehaus.groovy.grails.plugins.springsecurity.Secured
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class TireController {
 	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
-	static final maxNumberOfTires = 30
+	static final maxNumberOfTires = 50
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
 	def index = {
@@ -39,7 +39,9 @@ class TireController {
 		}
 		else {
 			params.max = Math.min(params.max ? params.int('max') : maxNumberOfTires, 100)
-			tireList = Tire.list(params)
+			tireList = Tire.createCriteria().list(params) {
+				eq('enabled', (params.s && params.s == "false") ? false : true)
+			}
 			tireCount = Tire.count()
 		}
 		
@@ -49,7 +51,7 @@ class TireController {
 		
 		[tireInstanceList: tireList, tireInstanceTotal: tireCount]
 	}
-	
+
 	private setMaxAndOffsetParams(params) {
 		if(!params.max)
 			params.max = maxNumberOfTires
@@ -97,13 +99,14 @@ class TireController {
 	}
 	
 	private performNormalSearch(params) {
+		println params
 		Tire.normalSearch(params.width, params.profile, params.diameter, 
-			params.speedIndex, params.tireType, , params.brand, params.int('max'), params.int('offset'))
+			params.speedIndex, params.tireType, , params.brand, params.s, params.int('max'), params.int('offset'))
 	}
 	
 	private performNormalSearchCount(params) {
 		Tire.normalSearch(params.width, params.profile, params.diameter, 
-			params.speedIndex, params.tireType, , params.brand, Tire.count(), 0).size()
+			params.speedIndex, params.tireType, , params.brand, params.s, Tire.count(), 0).size()
 	}
 	
 	def search = {

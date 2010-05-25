@@ -39,13 +39,13 @@ class TireIntegrationTests extends GroovyTestCase {
 	}
 	
 	void testNormalSearchWithAllParams() {
-		def tireList = Tire.normalSearch("100", "20", "17", "L", "Sommer", "Nokian", max, offset)
+		def tireList = Tire.normalSearch("100", "20", "17", "L", "Sommer", "Nokian", "true", max, offset)
 		def expectedTireList = [t1]
 		assertEquals "Expected list should be the same as the returned list", expectedTireList.toString(), tireList.toString()
 	}
 	
 	void testNormalSearchWithOneParam() {
-		def tireList = Tire.normalSearch("", "", "17", "", "", "", max, offset)
+		def tireList = Tire.normalSearch("", "", "17", "", "", "", "true", max, offset)
 		def expectedTireList = [t1, t4]
 		assertEquals "Expected list should be the same as the returned list", expectedTireList.toString(), tireList.toString()
 	}
