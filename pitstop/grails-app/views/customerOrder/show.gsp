@@ -1,5 +1,10 @@
 <%@ page import="no.pstop.webapp.CustomerOrder" %>
 <div class="dialog">
+	<g:hasErrors bean="${customerOrderInstance}">
+		<div class="errors">
+     		<g:renderErrors bean="${customerOrderInstance}" as="list" />
+ 		</div>
+	</g:hasErrors>
 	<div>
 		<h4><g:message code="customerOrder.orderNumber.label" args="${[customerOrderInstance?.id]}"></g:message></h4>
 		<span>${customerOrderInstance?.customer}</span>
@@ -35,6 +40,7 @@
     	<g:if test="${!customerOrderInstance?.deliveredDate}">
 	   		<g:form action="deliverOrder">
 	       		<span class="button"><g:submitToRemote class="receiveSupplierOrder" onComplete="Modalbox.resizeToContent()" controller="customerOrder" action="deliverOrderFromModalbox" id="${customerOrderInstance?.id}" value="${message(code: 'customerOrder.button.deliver.label')}" update="MB_content"/></span>
+	       		<span class="button"><g:submitToRemote class="delete" onComplete="Modalbox.resizeToContent()" controller="customerOrder" action="delete" id="${customerOrderInstance?.id}" value="${message(code: 'supplierOrder.button.delete.label')}" update="MB_content"/></span>
 	       		<g:link url="#" onClick="Modalbox.hide()"><g:message code="createTire.button.cancel.label" /></g:link>
 	   		</g:form>
 		</g:if>

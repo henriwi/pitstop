@@ -83,13 +83,12 @@
 	</div>
 	
 	<g:if test="${logInstanceList }">
-		<h1><g:message code="user.show.title.log.label" /></h1>
 		<div id="userLogTable">
 			<g:render template="/user/log"
 				model="[logInstanceList: logInstanceList,
 				logTotalList: logTotalList,
 				userInstance: person]">
 			</g:render>
-			</div>
+		</div>
 	</g:if>
 </body>

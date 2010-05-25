@@ -1,3 +1,4 @@
+<h1><g:message code="user.show.title.log.label" /></h1>
 <div class="list">
 	<table>
     	<thead>
@@ -20,7 +21,9 @@
 	             	<td>
 	                   	<g:form controller="log" method="deleteLog" method="post">
 	                       	<g:hiddenField name="id" value="${logInstance?.id}" />
-	                        <g:submitToRemote update="userLogTable" class="deleteTableItem" title="${message(code: 'log.list.delete.tooltip.label')}" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'log.button.delete.confirm.message')}');" />
+                       		<g:hiddenField name="userId" value="${userInstance?.id}" />
+                      		<g:hiddenField name="requestFromShowUserView" value="true" />	                       	
+			                <g:actionSubmit class="deleteTableItem" title="${message(code: 'log.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'log.button.delete.confirm.message')}');" />
 		            	</g:form>
 		           	</td> 
 	       		</tr>
