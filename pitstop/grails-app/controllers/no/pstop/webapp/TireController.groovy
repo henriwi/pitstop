@@ -17,7 +17,7 @@ class TireController {
 	}
 	
 	def list = {
-		params = setMaxAndOffsetParams(params)
+		setMaxAndOffsetParams(params)
 		
 		def tireList
 		def tireCount
@@ -56,7 +56,6 @@ class TireController {
 		
 		if(!params.offset)
 			params.offset = 0
-		return params
 	}
 	
 	private isFastSearchQuery(String query, String type){
@@ -98,7 +97,7 @@ class TireController {
 	}
 	
 	private performNormalSearch(params) {
-		tireList = Tire.normalSearch(params.width, params.profile, params.diameter, 
+		Tire.normalSearch(params.width, params.profile, params.diameter, 
 			params.speedIndex, params.tireType, , params.brand, params.int('max'), params.int('offset'))
 	}
 	

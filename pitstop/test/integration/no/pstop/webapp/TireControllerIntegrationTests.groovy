@@ -43,7 +43,7 @@ class TireControllerIntegrationTests extends GroovyTestCase {
 	void testListWithSpecialFastSearchQuery(){
 		controller.params.q = "100207s"
 		controller.params.type = "fast"
-		controller.params.active = "true"
+		controller.params.s = "true"
 		def expectedTireList = [t1]
 		def model = controller.list()
 		
@@ -54,7 +54,7 @@ class TireControllerIntegrationTests extends GroovyTestCase {
 	void testListWithFastSearchQuery(){
 		controller.params.q = "sommer"
 		controller.params.type = "fast"
-		controller.params.active = "true"
+		controller.params.s = "true"
 		def expectedTireList = [t3, t1]
 		def model = controller.list()
 		
