@@ -1,7 +1,6 @@
 
 <%@ page import="no.pstop.webapp.SupplierOrder" %>
 <div class="dialog">
-
 	<g:hasErrors bean="${supplierOrderInstance}">
 		<div class="errors">
      		<g:renderErrors bean="${supplierOrderInstance}" as="list" />
