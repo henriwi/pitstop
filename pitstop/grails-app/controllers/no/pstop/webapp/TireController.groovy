@@ -45,7 +45,7 @@ class TireController {
 			}
 			tireCount = Tire.count()
 		}
-		
+		println tireCount
 		if(tireCount == 0){
 			flash.message = "${message(code: 'tire.show.foundNoTireType.message')}"
 		}
