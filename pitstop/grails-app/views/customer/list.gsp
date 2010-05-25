@@ -90,7 +90,7 @@
                   		    
                    	        <td><g:link class="addOrder" controller="customerOrder"  action="create" title="${message(code: 'customer.list.order.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
                   		    
-                            <td><g:link class="editTableItem" action="edit" title="${message(code: 'customer.list.edit.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
+                            <td><g:link class="editCustomerTableItem" action="edit" title="${message(code: 'customer.list.edit.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
                   		    
 	    	                <g:ifAllGranted role="ROLE_ADMIN"> 
                   		    <td>

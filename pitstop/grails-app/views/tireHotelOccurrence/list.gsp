@@ -12,11 +12,11 @@
     <body>
         <div class="nav">
 			<span class="menuButton" ${(params.action == 'list' || params.action == 'save') ? "id='active'" : ""}  >
-	        	<g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
+	        	<g:link class="tireHotelOccurrenceList" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
        		</span>
 	        
 	        <span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""}  >
-	        	<g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
+	        	<g:link class="createTireHotelOccurrence" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
        		</span>
         </div>
         <div class="body">
@@ -54,13 +54,13 @@
                             
                             <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.edit.label')}</a></th>
                             
-                            <g:ifAllGranted role="ROLE_ADMIN">
-                            	<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delete.label')}</a></th>
-                            </g:ifAllGranted>
-                            
                             <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delivered.label')}</a></th>
                             
                             <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.change.label')}</a></th>
+
+                            <g:ifAllGranted role="ROLE_ADMIN">
+                            	<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delete.label')}</a></th>
+                            </g:ifAllGranted>
                         
                         </tr>
                     </thead>
@@ -84,16 +84,7 @@
 	                            
 	                            <td><g:link action="show" id="${tireHotelOccurrenceInstance.id}">${tireHotelOccurrenceInstance?.showNoticeWith10FirstLetters()}</g:link></td>
 	                            
-	                            <td><g:link class="editTableItem" action="edit" title="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" id="${tireHotelOccurrenceInstance.id}">&nbsp;</g:link></td>
-	                            
-	                            <g:ifAllGranted role="ROLE_ADMIN">
-		                            <td>
-		                            	<g:form method="post">
-		                            		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-		                            		<g:actionSubmit class="deleteTableItem" title="${message(code: 'tireHotelOccurrence.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tireHotelOccurrence.button.delete.confirm.message')}');" />
-		                            	</g:form>
-		                            </td>
-		                        </g:ifAllGranted>
+	                            <td><g:link class="editTireHotelOccurrenceTableItem" action="edit" title="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" id="${tireHotelOccurrenceInstance.id}">&nbsp;</g:link></td>
 	                            
 	                            <td>
 	                            	<g:form method="post">
@@ -109,6 +100,15 @@
 	                            		<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.button')}" />
 	                            	</g:form>
 	                            </td>
+	                            
+	                            <g:ifAllGranted role="ROLE_ADMIN">
+		                            <td>
+		                            	<g:form method="post">
+		                            		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
+		                            		<g:actionSubmit class="deleteTableItem" title="${message(code: 'tireHotelOccurrence.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tireHotelOccurrence.button.delete.confirm.message')}');" />
+		                            	</g:form>
+		                            </td>
+		                        </g:ifAllGranted>
 	                        </tr>
 	                    </g:each>
                     </tbody>

@@ -8,12 +8,12 @@
     </head>
     <body>
 		<div class="nav" id="submenuTireHotelOccurence">
-			<span class="menuButton" ${(params.action == 'list') ? "id='active'" : ""}  >
-	        	<g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
+			<span class="menuButton" ${(params.action == 'list' || params.action == 'save') ? "id='active'" : ""}  >
+	        	<g:link class="tireHotelOccurrenceList" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
        		</span>
 	        
 	        <span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""}  >
-	        	<g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
+	        	<g:link class="createTireHotelOccurrence" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
        		</span>
         </div>
         <div class="body">
@@ -126,7 +126,7 @@
                 <div class="buttons">
                 	<!-- <g:submitToRemote onSuccess="Modalbox.hide()" class="save" action="save" value="Lagre" update="[success:'message',failure:'errors']"/>-->
                 
-                    <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label')}" /></span>
+                    <span class="button"><g:submitButton name="create" class="saveTireHotelOccurrence" value="${message(code: 'default.button.create.label')}" /></span>
                     <span class="button"><g:actionSubmit class="cancel" action="list" value="${message(code: 'default.button.cancel.label')}" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');" /></span>
                 </div>
             </g:form>

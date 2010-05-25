@@ -40,12 +40,12 @@
     	<g:if test="${!customerOrderInstance?.deliveredDate}">
 	   		<g:form action="deliverOrder">
 	       		<span class="button"><g:submitToRemote class="receiveSupplierOrder" onComplete="Modalbox.resizeToContent()" controller="customerOrder" action="deliverOrderFromModalbox" id="${customerOrderInstance?.id}" value="${message(code: 'customerOrder.button.deliver.label')}" update="MB_content"/></span>
+	       		<span class="button"><a id="cancelModalBox" href="" onclick="Modalbox.hide()"><g:message code="createTire.button.cancel.label" /></a></span>
 	       		<span class="button"><g:submitToRemote class="delete" onComplete="Modalbox.resizeToContent()" controller="customerOrder" action="delete" id="${customerOrderInstance?.id}" value="${message(code: 'supplierOrder.button.delete.label')}" update="MB_content"/></span>
-	       		<g:link url="#" onClick="Modalbox.hide()"><g:message code="createTire.button.cancel.label" /></g:link>
 	   		</g:form>
 		</g:if>
 		<g:else>
-			<span class="button"><g:link url="#" onClick="Modalbox.hide()" class="btnShowAll"><g:message code="default.button.close.label" /></g:link></span>
+			<span class="button"><a href="" onclick="Modalbox.hide()" class="btnShowAll"><g:message code="default.button.close.label" /></a></span>
 		</g:else>
 	</div>
 </div>
