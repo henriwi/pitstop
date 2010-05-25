@@ -125,8 +125,6 @@
                                 </td>
                             </tr>
                             
-                          	
-                            
                             <tr class="prop">
                                 <td valign="top" class="name"><label for="numberInStock"><g:message code="tire.numberInStock.createUpdate.label" /></label></td>
                                 <td valign="top" class="value ${hasErrors(bean: tireInstance, field: 'numberInStock', 'errors')}">
@@ -147,7 +145,7 @@
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label')}" /></span>
+                    <span class="button"><g:actionSubmit class="saveTire" action="update" value="${message(code: 'default.button.update.label')}" /></span>
                     <span class="button"><g:actionSubmit class="cancel" action="show" value="${message(code: 'default.button.cancel.label')}" onclick="return confirm('${message(code: 'tire.button.cancel.confirm.message')}');" /></span>
                     <g:ifAllGranted role="ROLE_ADMIN">
                     	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" /></span>

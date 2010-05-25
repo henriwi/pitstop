@@ -48,7 +48,7 @@
 	                        
 	                            <td>${fieldValue(bean: customerOrderInstance, field: "customer")}</td>
 	                            
-	                            <td>${customerOrderWithoutDeliveredDateInstance?.showNoticeWith50FirstLetters()}</td>
+	                            <td>${customerOrderInstance?.showNoticeWith50FirstLetters()}</td>
 	                        </tr>
 	                    </g:each>
                     </tbody>
