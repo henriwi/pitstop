@@ -5,8 +5,8 @@
 
 <body>
 	<div class="nav">
-		<span class="menuButton" ${(params.action == 'list' && params.controller == 'user') ? "id='active'" : ""}  >
-			<g:link controller = "user" class="list" action="list"><g:message code="user.list.label"/></g:link>
+		<span class="menuButton" ${(params.action == 'list' && params.controller == 'user' || params.action == 'save') ? "id='active'" : ""}  >
+			<g:link controller="user" class="userList" action="list"><g:message code="user.list.label"/></g:link>
       	</span>
       	
 		<span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""}  >

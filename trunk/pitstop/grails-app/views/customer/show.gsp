@@ -113,11 +113,11 @@
 			                        			<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" />
 			                        		</g:form>
 			                       		</g:if>
-			                       		<g:form class="editTireHotelButton" controller="tireHotelOccurrence" method="post">
+			                       		<g:form class="editTireHotelOccurrenceButton" controller="tireHotelOccurrence" method="post">
 		                        			<g:hiddenField name="customerId" value="${customerInstance?.id}" />
 		                        			<g:hiddenField name="requestFromShowCustomerView" value="true" />
 		                        			<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
-		                        			<g:actionSubmit class="edit" action="edit" title="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" />
+		                        			<g:actionSubmit class="editTireHotelOccurrence" action="edit" title="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" />
 		                        		</g:form>
 			                   		</div>
 			                   		<div style="clear: both;"></div>

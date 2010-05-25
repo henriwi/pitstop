@@ -9,12 +9,12 @@
         <div class="nav">
 	        <g:if test="${params.action == 'list' && params.controller == 'user'}">
 				<span class="menuButton" id="active" >
-					<g:link controller = "user" class="list" action="list"><g:message code="user.list.label"/></g:link>
+					<g:link controller = "user" class="userList" action="list"><g:message code="user.list.label"/></g:link>
 				</span>
 			</g:if>
 			<g:else>
 				<span class="menuButton">
-					<g:link controller = "user" class="list" action="list"><g:message code="user.list.label"/></g:link>
+					<g:link controller = "user" class="userList" action="list"><g:message code="user.list.label"/></g:link>
 				</span>
 			</g:else>
 			
