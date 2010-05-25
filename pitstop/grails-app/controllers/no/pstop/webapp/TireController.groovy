@@ -9,8 +9,7 @@ import org.codehaus.groovy.grails.plugins.springsecurity.Secured
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class TireController {
 	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
-	static final maxNumberOfTireOccurrences = 10
-	static final maxNumberOfTires = 10
+	static final maxNumberOfTires = 30
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
 	def index = {
@@ -18,19 +17,7 @@ class TireController {
 	}
 	
 	def list = {
-		
-		if( params.deactive) {
-			params.s = "false"
-		}
-		else  {
-			params.s = "true"
-		}
-		
-		if(!params.max)
-		params.max = maxNumberOfTires
-		
-		if(!params.offset)
-		params.offset = 0
+		params = setMaxAndOffsetParams(params)
 		
 		def tireList
 		def tireCount
@@ -42,72 +29,36 @@ class TireController {
 				tireCount = Tire.fastSearch(query, Tire.count(), 0, params.s).size()
 			}
 			else {
-				tireList = Tire.search([max:params.max, offset:params.offset]){
-					must(queryString("*" + params.q + "*"))
-					must(term("enabled", params.s))
-					}.results
-				
-				
-				tireCount = Tire.search([max:Tire.count(), offset:params.offset]){
-					must(queryString("*" + params.q + "*"))
-					must(term("enabled", params.s))
-				}.results.size()
-				
-			//	tireCount = Tire.search("*" + params.q + "*", [max:Tire.count(), offset:params.offset]).results.size()
+				tireList = performFastSearch(params)
+				tireCount = performFastSearchCount(params)
 			}
 		} 
 		else if(isNormalSearchQuery(params.type) && !isNormalSearchWithoutInput()) {
-			tireList = Tire.normalSearch(params.width, params.profile, params.diameter, 
-			params.speedIndex, params.tireType, , params.brand, params.max.toInteger(), params.offset.toInteger())
-			
-			tireCount = Tire.normalSearch(params.width, params.profile, params.diameter, 
-			params.speedIndex, params.tireType, , params.brand, Tire.count(), 0).size()
-		}
-		else if(params.sort == "numberOfAvailable"){
-			params.max = Math.min(params.max ? params.int('max') : maxNumberOfTires, 100)
-			
-			tireList = Tire.executeQuery("select distinct tire, tire.numberOfAvailable = (to.numberInStock - to.numberOfReserved) " +
-					"from Tire tire left outer join tire.tireOccurrences to order by (to.numberInStock - to.numberOfReserved) " + params.order)
-					
-			tireCount = Tire.count()
+			tireList = performNormalSearch(params)
+			tireCount = performNormalSearchCount(params)
 		}
 		else {
 			params.max = Math.min(params.max ? params.int('max') : maxNumberOfTires, 100)
 			tireList = Tire.list(params)
 			tireCount = Tire.count()
 		}
+		
 		if(tireCount == 0){
 			flash.message = "${message(code: 'tire.show.foundNoTireType.message')}"
-			//redirect(action: "search")
 		}
-		checkIfParamsSisTrueOrFalse(params, tireList)
 		
-		
-		[tireInstanceList: tireList, tireInstanceTotal: tireCount, radioButton: params.tireRadioButton]
+		[tireInstanceList: tireList, tireInstanceTotal: tireCount]
 	}
-	private checkIfParamsSisTrueOrFalse(params, tireList) {
-		def tire
+	
+	private setMaxAndOffsetParams(params) {
+		if(!params.max)
+			params.max = maxNumberOfTires
 		
-		if(params.s == "false") {
-			params.s = "false"
-			for (Iterator iterator = tireList.iterator(); iterator.hasNext();) {
-				tire = iterator.next()
-				if(tire.enabled) {
-					iterator.remove()
-				}
-			}
-		}
-		else {
-			params.s = "true"
-			for (Iterator iterator = tireList.iterator(); iterator.hasNext();) {
-				tire = iterator.next()
-				if(!tire.enabled) {
-					iterator.remove()
-				}
-			}
-		}
+		if(!params.offset)
+			params.offset = 0
+		return params
 	}
-
+	
 	private isFastSearchQuery(String query, String type){
 		query && type.equals("fast")
 	}
@@ -129,6 +80,45 @@ class TireController {
 		params.brand == "")
 			return true
 		else return false
+	}
+	
+	private performFastSearch(params) {
+		Tire.search([max:params.max, offset:params.offset]){
+			must(queryString("*" + params.q + "*"))
+			must(term("enabled", params.s))
+		}.results
+
+	}
+	
+	private performFastSearchCount(params) {
+		Tire.search([max:Tire.count(), offset:params.offset]){
+			must(queryString("*" + params.q + "*"))
+			must(term("enabled", params.s))
+		}.results.size()
+	}
+	
+	private performNormalSearch(params) {
+		tireList = Tire.normalSearch(params.width, params.profile, params.diameter, 
+			params.speedIndex, params.tireType, , params.brand, params.int('max'), params.int('offset'))
+	}
+	
+	private performNormalSearchCount(params) {
+		Tire.normalSearch(params.width, params.profile, params.diameter, 
+			params.speedIndex, params.tireType, , params.brand, Tire.count(), 0).size()
+	}
+	
+	def search = {
+		def tireInstance = new Tire()
+		tireInstance.properties = params
+		return [tireInstance: tireInstance]
+	}
+	
+	def fastSearch = {
+		redirect(action: "list", params: [q: params.txtFastSearch, type: 'fast', s: "true"])
+	}
+	
+	def normalSearch = {
+		redirect(action: "list", params:[type: 'normal', s: (params.deactive) ? "false" : "true", width: params.width, profile: params.profile, diameter: params.diameter, speedIndex: params.speedIndex, tireType: params.tireType, brand: params.brand])
 	}
 	
 	def create = {
@@ -155,13 +145,6 @@ class TireController {
 			redirect(action: "list")
 		}
 		else {
-			if(!params.max) {
-				params.max = maxNumberOfTireOccurrences
-			}
-			if(!params.offset) {
-				params.offset = 0
-			}
-			
 			def supplierOrderLines = SupplierOrderLine.findAllByTireAndReceivedDateIsNull(tireInstance)
 			def customerOrders = getPendingCustomerOrders(tireInstance) 
 			
@@ -217,38 +200,6 @@ class TireController {
 		}
 	}
 	
-	def search = {
-		def tireInstance = new Tire()
-		tireInstance.properties = params
-		return [tireInstance: tireInstance]
-	}
-	
-	def fastSearch = {
-		if(params.txtFastSearch.trim() != ""){
-			redirect(action: "list", params: [q: params.txtFastSearch, type: 'fast'])
-		}
-		else{
-			flash.message = "${message(code: 'search.missingSearchString.message')}"
-			redirect(action: "search")
-		}
-	}
-	
-	//TODO Bør refaktureres slik at denne metoden slås sammen med fastSearch?
-	def fastSearchForListView = {
-		if(params.txtFastSearch.trim() != ""){
-			redirect(action: "list", params:[q: params.txtFastSearch, type: 'fast', s: params.s, active: params.active, deactive: params.deactive])
-		}
-		else{
-			redirect(action: "list", params:[q: params.search, s: params.s, active: params.active, deactive: params.deactive])
-			
-		}
-	}
-	
-	def normalSearch = {
-		redirect(action: "list", params:[width: params.width, profile: params.profile, diameter: params.diameter, speedIndex: params.speedIndex, tireType: params.tireType, brand: params.brand, type: 'normal', active: params.active, deactive: params.deactive ])
-	}
-	
-	
 	def disableAndEnable = {
 		def tire = Tire.get(params.id)
 		tire.enabled = tire.enabled ? false : true 
@@ -296,13 +247,6 @@ class TireController {
 		}
 		
 		return pendingCustomerOrders
-	}
-	
-	def saveNumberInStock = {
-		def tireInstance = Tire.get(params.id)
-		tireInstance?.numberInStock = params.numberInStock?.toInteger()
-		tireInstance?.save(flush: true)
-		render "Joa"
 	}
 	
 	def getListPriceFromSelectedTire = {
