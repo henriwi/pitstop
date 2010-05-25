@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.Iterator;
 
 class CustomerOrderController {
-	static final maxNumberOfCustomerOrders = 30
+	static final maxNumberOfCustomerOrders = 50
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     def orderService
 		

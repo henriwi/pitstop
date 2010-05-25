@@ -41,7 +41,7 @@
 	                    <g:each in="${customerOrderInstanceList}" status="i" var="customerOrderInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 	                        
-	                            <td><g:link action="show" id="${customerOrderInstance.id}">${fieldValue(bean: customerOrderInstance, field: "id")}</g:link></td>
+								<td><modalbox:createLink controller="customerOrder" action="show" id="${customerOrderInstance?.id}" title="Kundeordre" width="700">${customerOrderInstance?.id}</modalbox:createLink></td>
 	                        
 	                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${customerOrderInstance.orderDate}" /></td>
 	                        
