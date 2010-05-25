@@ -16,7 +16,7 @@ class CustomerOrder {
 		notice(nullable: true)
     }
 	
-	String showNoticeWith10FirstLetters() {
+	String showNoticeWith50FirstLetters() {
 		if (notice?.length() > lengthOfNoticeInListView) {
 			String firstLetters = notice?.substring(0, lengthOfNoticeInListView)
 			firstLetters + " ..."

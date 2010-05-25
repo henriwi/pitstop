@@ -146,11 +146,6 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
     font-weight: normal;
 }
 
-.menuButton a.home {
-    background: none;
-    color: #555;
-}
-
 .menuButton a.list {
 	background: none;
 	padding: 0px;
@@ -733,7 +728,7 @@ a.btnShowAll {
 	display: none;
 }
 
-/* SHOW TIREHOTEL */
+/* SHOW TIRE HOTEL OCCURRENCE */
 div.iPhone div.tireHotelOccurrenceInfoBox {
 	border: 1px solid #bbb;
 	margin: 4px;

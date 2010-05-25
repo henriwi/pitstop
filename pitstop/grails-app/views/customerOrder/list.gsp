@@ -34,7 +34,8 @@
                             <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.list.table.orderDate.label')}" params="[max: params.max, offset: params.offset]" />
                         
                             <th><g:message code="customerOrder.list.table.customer.label" default="Customer" /></th>
-                   	    
+							
+							<g:sortableColumn property="notice" title="${message(code: 'customerOrder.list.table.notice.label')}" />
                         </tr>
                     </thead>
                     <tbody>
@@ -46,7 +47,8 @@
 	                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${customerOrderInstance.orderDate}" /></td>
 	                        
 	                            <td>${fieldValue(bean: customerOrderInstance, field: "customer")}</td>
-	                        
+	                            
+	                            <td>${customerOrderWithoutDeliveredDateInstance?.showNoticeWith50FirstLetters()}</td>
 	                        </tr>
 	                    </g:each>
                     </tbody>

@@ -26,7 +26,7 @@
 	                   
 	                <td><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance.deliveredDate}" /></td>
 	                   
-	                <td>${customerOrderInstance?.showNoticeWith10FirstLetters()}</td>
+	                <td>${customerOrderInstance?.showNoticeWith50FirstLetters()}</td>
 	                   
 		            <g:ifAllGranted role="ROLE_ADMIN">
 	                	<td>

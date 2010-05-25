@@ -6,8 +6,9 @@ class UrlMappings {
 		  }
 	  }
       "/"(controller:"index", action:"index")
-	  "500"(view:'/500Error')
-	  "404"(view:'/404Error')
 	  "403"(view:'/403Error')
+	  "404"(view:'/404Error')
+	  "405"(view:'/403Error')
+	  "500"(view:'/500Error')
 	}
 }
