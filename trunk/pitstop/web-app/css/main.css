@@ -560,7 +560,6 @@ input.delivered {
 	color: #000;
 }
 
-
 /* LOGIN */
 #login {
 	width:260px;
@@ -578,6 +577,14 @@ input.delivered {
     padding: 3px;
     cursor: pointer;
     height: 20px;
+}
+table.loginForm {
+	border: none;
+}
+
+form.loginForm {
+	border: 1px solid #ccc;
+	padding-bottom: 10px;
 }
 a.logoutButton{
 	background: url(../images/skin/logout.png) center left no-repeat;
@@ -622,21 +629,6 @@ a.logoutButton{
 	padding-bottom: 5px;
 }
 
-#tireShowDialogWindow2 {
-	width: 410px;
-	float: left;
-	margin: 0 10px 0 0;
-	padding-top: 5px;
-	
-}
-
-/* SHOW CUSTOMER */
-#customerShowDialog {
-	width: 350px;
-	overflow: auto;
-	float: left;
-	margin: 0 10px 0 0;	
-}
 #tireOccurrenceList {
  	width: 800px;
  	float: left;
@@ -819,14 +811,60 @@ a.btnShowAll:hover{
 	text-decoration: none;
 }
 
+/* SHOW TIRE HOTEL OCCURRENCE */
+#tireHotelOccurrenceShowDialog {
+	width: 350px;
+	overflow: auto;
+	float: left;
+	margin: 0 10px 0 0;	
+}
+div.tireHotelOccurrenceInfoBox {
+	border: 1px solid #bbb;
+	margin-bottom: 10px;
+	padding: 5px;
+	background-color: #F5F5FF;
+}
+span.tireHotelOccurrenceTitle {
+	display: block;
+}
+span.tireHotelOccurrenceTitle a{
+	text-decoration: underline;
+	font-weight: normal;
+	color: #000;
+}
+h3.tireHotelOccurrenceTitle {
+	display:inline;
+	font-weight: bold;
+	color: #000;
+}
+span.carInfo {
+	display: block;
+}
+span.tireType {
+	display: block;
+}
+span.inDate {
+	display: block;
+}
+span.notice {
+	display: block;
+	font-style: italic;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
 /* SHOW CUSTOMER */
+#customerShowDialog {
+	width: 350px;
+	overflow: auto;
+	float: left;
+	margin: 0 10px 0 0;	
+}
 div.customerInfoBox {
 	border: 1px solid #bbb;
 	margin-bottom: 10px;
 	padding: 5px;
 	background-color: #F5F5FF;
 }
-
 
 span.customerAddress {
 	display: block;

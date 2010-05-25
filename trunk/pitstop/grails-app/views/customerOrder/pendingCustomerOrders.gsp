@@ -28,13 +28,13 @@
                 <table>
                     <thead>
                         <tr>
-                        
                             <g:sortableColumn property="id" title="${message(code: 'customerOrder.list.table.orderNumber.label')}" />
                         
                             <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.list.table.orderDate.label')}" />
                         
-                            <th><g:message code="supplierOrder.list.table.customer.label" default="Customer" /></th>
+                            <th><a class="notSortableColoumn"><g:message code="customer.list.table.customer.label" default="Customer" /></a></th>
                             
+                            <g:sortableColumn property="notice" title="${message(code: 'customerOrder.list.table.notice.label')}" />
                         </tr>
                     </thead>
                     <tbody>
@@ -47,6 +47,7 @@
 	                        
 	                            <td>${fieldValue(bean: customerOrderWithoutDeliveredDateInstance, field: "customer")}</td>
 	                        	
+	                        	<td>${customerOrderWithoutDeliveredDateInstance?.showNoticeWith50FirstLetters()}</td>
 	                        </tr>
 	                    </g:each>
                     </tbody>
