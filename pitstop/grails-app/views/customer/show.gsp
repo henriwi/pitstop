@@ -157,7 +157,7 @@
 								<div class="customerOrderBox">
 									<g:form controller="customerOrder" method="post">
 										<g:hiddenField name="id" value="${customerOrderInstance?.id}" />
-										<g:actionSubmit class="deliverOrder" action="deliverOrder" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'customerOrder.receive.label')}" />
+										<g:actionSubmit class="deliverOrder" action="deliverOrder" title="${message(code: 'customer.order.deliver.label')}" value="${message(code: 'customerOrder.receive.label')}" />
 									</g:form>
 									<h4><g:message code="customer.show.orderNumber.label" />${customerOrderInstance?.id}</h4>
 									<span><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance?.orderDate}" /></span>
