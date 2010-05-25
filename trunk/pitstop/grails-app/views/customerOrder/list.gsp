@@ -41,7 +41,7 @@
 	                    <g:each in="${customerOrderInstanceList}" status="i" var="customerOrderInstance">
 	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 	                        
-								<td><modalbox:createLink controller="customerOrder" action="show" id="${customerOrderInstance?.id}" title="${message(code: 'pendingCustomerOrder.modalBox.title.label')}" width="750">${customerOrderInstance?.id}</modalbox:createLink></td>
+								<td><modalbox:createLink controller="customerOrder" action="show" id="${customerOrderInstance?.id}" title="${message(code: 'pendingCustomerOrder.modalBox.title.label')}" width="800">${customerOrderInstance?.id}</modalbox:createLink></td>
 	                        
 	                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${customerOrderInstance.orderDate}" /></td>
 	                        
