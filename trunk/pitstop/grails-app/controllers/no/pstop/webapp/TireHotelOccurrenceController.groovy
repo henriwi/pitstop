@@ -27,17 +27,14 @@ class TireHotelOccurrenceController {
 				}
 			}
 			tireHotelOccurrenceCount = tireHotelOccurrenceList.size()
-			flash.message = "${message(code: 'tireHotelOccurrence.search.result.message', args: [message(code: 'tireHotelOccurrence.label'), params.id])}"
+			flash.message = "${message(code: 'tireHotelOccurrence.search.result.message', args: [params.q])}"
 		}
 		else {
 			params.max = Math.min(params.max ? params.int('max') : maxNumberOfTireHotelOccurrences, 100)
 			tireHotelOccurrenceList = TireHotelOccurrence.findAllByOutDateIsNull(params)
 			tireHotelOccurrenceCount = tireHotelOccurrenceList.size()
-			if(tireHotelOccurrenceCount == 0 ){
-				flash.message = "${message(code: 'tireHotelOccurrence.no.occurrences.message')}";
-			}
 		}
-		if(tireHotelOccurrenceCount == 0 && params.q == null ){
+		if(tireHotelOccurrenceCount == 0) {
 			flash.message = "${message(code: 'tireHotelOccurrence.no.occurrences.message')}";
 		}
 		[tireHotelOccurrenceInstanceList: tireHotelOccurrenceList, tireHotelOccurrenceInstanceTotal: tireHotelOccurrenceCount]
