@@ -97,7 +97,7 @@
 	                        
 	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "tireType")}</g:link></td>
 	                            
-	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "retailPrice")}</g:link></td>
+	                            <td><g:link action="show" id="${tireInstance.id}"><g:formatNumber number="${tireInstance?.retailPrice}" format="kr #.00" /></g:link></td>
 	                            
 	                            <td><g:link action="show" id="${tireInstance.id}">${fieldValue(bean: tireInstance, field: "numberInStock")}</g:link></td>
 	                            
