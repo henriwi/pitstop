@@ -185,7 +185,7 @@ div#submenuTireHotelOccurence {
 }
 
 
-.menuButton a.customerList {
+.menuButton a.customerList, .menuButton a.userList {
     background: url(../images/skin/user_table.png) center left no-repeat;
     color: #555;
     padding-left: 25px;
@@ -1126,13 +1126,14 @@ input.orderTableTextField {
 	display: inline;
 }
 
-.editTireHotelButton .edit{
+.editTireHotelOccurrenceButton .editTireHotelOccurrence{
 	border: none;
-	background: url(../images/skin/database_edit.png) 5px 50% no-repeat;
+	background: url(../images/skin/tireHotelOccurrence_edit.png) 5px 50% no-repeat;
     padding-bottom: 5px;
     padding-left: 28px;
 	font-weight: normal;
 	color: #000;
+	cursor: pointer;
 }
 /* SUPPLIER ORDER */
 #supplierOrderDialog {
