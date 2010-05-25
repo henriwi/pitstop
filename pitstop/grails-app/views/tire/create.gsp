@@ -135,7 +135,7 @@
                 </div>
                 
                 <div class="buttons">
-                    <span class="button"><g:submitButton tabindex='14' name="create" class="save" value="${message(code: 'createTire.button.create.label')}" /></span>
+                    <span class="button"><g:submitButton tabindex='14' name="create" class="saveTire" value="${message(code: 'createTire.button.create.label')}" /></span>
                     <span class="button"><g:actionSubmit tabindex='15' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
                 </div>
             </g:form>

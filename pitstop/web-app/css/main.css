@@ -491,8 +491,8 @@ a.cancel {
     padding: 2px 6px;
 }
 .buttons input.delete {
-    background: transparent url(../images/skin/database_delete.png) 5px 50% no-repeat;
-    padding-left: 28px;
+    background: transparent url(../images/skin/delete.png) 5px 50% no-repeat;
+    padding-left: 25px;
 }
 .buttons input.cancel {
     background: transparent url(../images/skin/cancel.png) 5px 50% no-repeat;
@@ -500,11 +500,19 @@ a.cancel {
 }
 .buttons input.edit {
     background: transparent url(../images/skin/database_edit.png) 5px 50% no-repeat;
-    padding-left: 28px;
+    padding-left: 25px;
 }
 .buttons input.save {
     background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
-    padding-left: 28px;
+    padding-left: 25px;
+}
+.buttons input.saveTire {
+    background: transparent url(../images/skin/tire_save.png) 5px 50% no-repeat;
+    padding-left: 25px;
+}
+.buttons input.editTire {
+    background: transparent url(../images/skin/tire_edit.png) 5px 50% no-repeat;
+    padding-left: 25px;
 }
 .buttons input.saveUser {
     background: transparent url(../images/skin/user_save.png) 5px 50% no-repeat;
@@ -669,7 +677,12 @@ a.logoutButton{
     padding-bottom: 5px;
     padding-left: 28px;
 }
-
+.editTireTableItem {
+    background: url(../images/skin/tire_edit.png) 5px 50% no-repeat;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 28px;
+}
 .deleteTableItem {
     background: url(../images/skin/database_delete.png) 5px 50% no-repeat;
     padding: 0px;

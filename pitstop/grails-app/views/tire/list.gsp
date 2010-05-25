@@ -29,9 +29,9 @@
          
             <g:form action="fastSearch" method="get">
  				<div id="fastSearchInListView">
-					<g:textField tabindex='1' name="txtFastSearch" />
-					<g:submitButton tabindex='2' class="searchButtons" name="btnSearch" value="${message(code: 'search.button.fastSearch.label')}" />
-					<g:link action="list" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>	
+					<g:textField tabindex='1' name="txtFastSearch" title="${message(code: 'tire.search.tooltip')}"/>
+					<g:submitButton tabindex='2' class="searchButtons" name="btnSearch" title="${message(code: 'tire.search.tooltip')}" value="${message(code: 'search.button.fastSearch.label')}" />
+					<g:link action="list" class="btnShowAll" title="${message(code: 'tire.list.showAll.link.tooltip')}"><g:message code="customer.search.showAll.label" /></g:link>	
 				</div>
 			</g:form>
 			
@@ -103,7 +103,7 @@
 	                            
 	                            <td><g:link action="show" id="${tireInstance.id}">${tireInstance?.showNoticeWith10FirstLetters()}</g:link></td>
 	                            
-	                            <td><g:link class="editTableItem" action="edit" title="${message(code: 'tire.list.edit.tooltip.label')}" id="${tireInstance.id}">&nbsp;</g:link></td>
+	                            <td><g:link class="editTireTableItem" action="edit" title="${message(code: 'tire.list.edit.tooltip.label')}" id="${tireInstance.id}">&nbsp;</g:link></td>
 	                            
 	           	                <g:ifAllGranted role="ROLE_ADMIN"> 
 		                            <td>
