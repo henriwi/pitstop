@@ -80,29 +80,17 @@
 				<div class="tireNumberInStockInfoBox">
 					<span class="tireLabelsInStockAndReserved">
 						<span class="tireInStockLabels"><g:message code="tire.numberInStock.label" /></span>
-						<span id="showNumberInStock">
-							<span id="numberInStockLabel" class="tireInStockNumbers">${fieldValue(bean: tireInstance, field: "numberInStock")}</span>
-							<a href="javascript:showAndHideElement('editNumberInStock', 'showNumberInStock');">
-								<g:message code="tire.numberInStock.edit.label"></g:message>
-							</a>
-						</span>
-						<span id="editNumberInStock" style="display: none;">
-							<g:formRemote name="updateNumberInStockForm" url="${[action: 'saveNumberInStock']}" onSuccess="showAndHideElement('showNumberInStock', 'editNumberInStock');">
-	                          	<g:hiddenField name="id" value="${tireInstance?.id}" />
-								<g:textField id="numberInStockText" style="width: 50px;" name="numberInStock" value="${tireInstance?.numberInStock}" />
-								<g:actionSubmit action="saveNumberInStock" class="receiveSupplierOrder" title="${message(code: 'supplierOrderLine.receive.tooltip.label')}" value="${message(code: 'list.button.delete.label')}" />
-							</g:formRemote>
-						</span>
-					</span>
+						<span id="numberInStockLabel" class="tireInStockNumbers">${fieldValue(bean: tireInstance, field: "numberInStock")}</span>
 						
-					<g:set var="numberOfReserved" value="${0}"></g:set>
-           			<g:each in="${customerOrders}" status="i" var="customerOrderInstance">
-           				<g:each in="${customerOrderInstance?.customerOrderLines}" status="j" var="customerOrderLineInstance">
-	           				<g:set var="numberOfReserved" value="${numberOfReserved + customerOrderLineInstance?.numberOfReservedTires }"></g:set>
-	           			</g:each>
-	           		</g:each>
-	           		<span class="reserved"><span class="tireInStockLabels"><g:message code="tire.numberOfReserved.label" /></span>
-	           			<span class="tireInStockNumbers">${numberOfReserved}</span>
+						<g:set var="numberOfReserved" value="${0}"></g:set>
+	           			<g:each in="${customerOrders}" status="i" var="customerOrderInstance">
+	           				<g:each in="${customerOrderInstance?.customerOrderLines}" status="j" var="customerOrderLineInstance">
+		           				<g:set var="numberOfReserved" value="${numberOfReserved + customerOrderLineInstance?.numberOfReservedTires }"></g:set>
+		           			</g:each>
+		           		</g:each>
+		           		<span class="reserved"><span class="tireInStockLabels"><g:message code="tire.numberOfReserved.label" /></span>
+		           			<span class="tireInStockNumbers">${numberOfReserved}</span>
+						</span>
 					</span>
 					
          			<g:set var="numberOfOrdered" value="${0}"></g:set>

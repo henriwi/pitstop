@@ -163,7 +163,7 @@ environments {
 
     production {
         searchable {
-            // add your production settings here
+        	compassConnection = new File( "/tmp/grails/projects/${appName}/searchable-index/${grailsEnv}" ).absolutePath
         }
     }
 }

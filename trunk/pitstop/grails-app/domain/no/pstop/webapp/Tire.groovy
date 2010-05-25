@@ -46,9 +46,9 @@ class Tire {
 		numberInStock(min: 0, blank: false)
 	}
 
-	static fastSearch(Matcher query, Integer max, Integer offset, String showTrueOrFalse) {
+	static fastSearch(Matcher query, Integer max, Integer offset, String showOnlyEnabled) {
 		Tire.search([max: max, offset: offset], escape: true) {
-			must(term('enabled', showTrueOrFalse))
+			must(term('enabled', showOnlyEnabled))
 			must(term('width', query[tireIndex][widthIndex]))
 			must(term('profile', query[tireIndex][profileIndex]))
 			must(wildcard('diameter', "*" + query[tireIndex][diameterIndex]))
@@ -68,14 +68,6 @@ class Tire {
 		}?.results
 	}
 	
-	/*String toString() {
-		Integer numberOfAvailable = 0 
-		for (tireOccurrence in this?.tireOccurrences) {
-			numberOfAvailable += tireOccurrence?.numberOfAvailable()
-		}
-		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (på lager: ${numberOfAvailable})"
-	}*/
-	
 	String toString(){
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType}"
 	}
@@ -87,8 +79,6 @@ class Tire {
 		else{
 			return 0
 		}
-		
-		//Integer highestPrice = SupplierOrderLine.executeQuery("select max(price) as maxPrice from supplinerOrderLine s, tire t where s.tire_id = t.id")
 	}
 	
 	Integer totalPrice(){
@@ -106,13 +96,10 @@ class Tire {
 	
 	String orderToString() {
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType} (${partNr})"
-		//"${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} (${retailPrice},-)"
 	}
 	
 	String tireShowToString() {
 		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType}"
-		// Forslag til ny toString()
-		//"${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} (${retailPrice},-)"
 	}
 	
 	String showNoticeWith10FirstLetters() {

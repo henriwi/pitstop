@@ -27,11 +27,10 @@
             </g:if>
             <h1>${message(code: 'tire.list.title.label')}</h1>
          
-            <g:form action="fastSearchForListView" method="get">
+            <g:form action="fastSearch" method="get">
  				<div id="fastSearchInListView">
 					<g:textField tabindex='1' name="txtFastSearch" />
 					<g:submitButton tabindex='2' class="searchButtons" name="btnSearch" value="${message(code: 'search.button.fastSearch.label')}" />
-       			   	<%--<g:submitButton name="deactive" value="${message(code: 'search.button.fastSearchDeactive.label')}" class="searchButtons"  />--%>
 					<g:link action="list" class="btnShowAll"><g:message code="customer.search.showAll.label" /></g:link>	
 				</div>
 			</g:form>
