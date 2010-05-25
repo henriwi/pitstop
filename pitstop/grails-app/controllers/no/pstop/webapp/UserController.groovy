@@ -8,7 +8,7 @@ import no.pstop.webapp.Role
 class UserController {
 
 	def authenticateService
-
+	static final maxNumberOfLogs = 3
 	static Map allowedMethods = [delete: 'POST', save: 'POST', update: 'POST']
 
 	def index = {
@@ -34,8 +34,14 @@ class UserController {
 			roleNames << role
 		}
 		
-		def logList = Log.findAllByUser(person)
-		[person: person, roleNames: roleNames, logInstanceList: logList]
+		if (!params.max)
+			params.max = maxNumberOfLogs
+		if (!params.offset)
+			params.offset = 0
+		
+		def logList = Log.findAllByUser(person, [max: params.max, offset: params.offset])
+		def logTotalList = Log.findAllByUser(person)
+		[person: person, roleNames: roleNames, logInstanceList: logList, logTotalList: logTotalList]
 	}
 
 	def delete = {
@@ -137,5 +143,34 @@ class UserController {
 		def person = User.get(params.id)
 		person.enabled = person.enabled ? false : true 
 		redirect(action: "list")
+	}
+	
+	def updateLog = {
+		def userInstance = User.get(params.id)
+		def logInstanceList = Log.findAllByUser(userInstance, [max: params.max, offset: params.offset, 
+		sort: params.sort, order: params.order])
+		def logTotalList = Log.findAllByUser(userInstance)
+		
+		render(template: "log", model: [userInstance: userInstance, logInstanceList: logInstanceList,
+		logTotalList: logTotalList])
+	}
+	
+	def deleteLog = {
+		def logInstance = Log.get(params.id)
+		if (logInstance) {
+			try {
+				logInstance.delete(flush: true)
+				flash.message = "${message(code: 'log.deleted.message')}"
+				redirect(action: "list")
+			}
+			catch (org.springframework.dao.DataIntegrityViolationException e) {
+				flash.message = "${message(code: 'log.not.deleted.message')}"
+				redirect(action: "list")
+			}
+		}
+		else {
+			flash.message = "${message(code: 'log.not.found.message')}"
+			redirect(action: "list")
+		}
 	}
 }

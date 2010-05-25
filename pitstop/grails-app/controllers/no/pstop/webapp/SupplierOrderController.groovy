@@ -6,6 +6,7 @@ import java.util.Date;
 
 class SupplierOrderController {
 	def orderService
+	def logService
 	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
 	static final maxNumberOfSupplierOrders = 50
 
@@ -63,44 +64,6 @@ class SupplierOrderController {
         }
         else {
             [supplierOrderInstance: supplierOrderInstance]
-        }
-    }
-
-    def edit = {
-        def supplierOrderInstance = SupplierOrder.get(params.id)
-        if (!supplierOrderInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'supplierOrder.label', default: 'SupplierOrder'), params.id])}"
-            redirect(action: "list")
-        }
-        else {
-            return [supplierOrderInstance: supplierOrderInstance]
-        }
-    }
-
-    def update = {
-        def supplierOrderInstance = SupplierOrder.get(params.id)
-        if (supplierOrderInstance) {
-            if (params.version) {
-                def version = params.version.toLong()
-                if (supplierOrderInstance.version > version) {
-                    
-                    supplierOrderInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'supplierOrder.label', default: 'SupplierOrder')] as Object[], "Another user has updated this SupplierOrder while you were editing")
-                    render(view: "edit", model: [supplierOrderInstance: supplierOrderInstance])
-                    return
-                }
-            }
-            supplierOrderInstance.properties = params
-            if (!supplierOrderInstance.hasErrors() && supplierOrderInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'supplierOrder.label', default: 'SupplierOrder'), supplierOrderInstance.id])}"
-                redirect(action: "show", id: supplierOrderInstance.id)
-            }
-            else {
-                render(view: "edit", model: [supplierOrderInstance: supplierOrderInstance])
-            }
-        }
-        else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'supplierOrder.label', default: 'SupplierOrder'), params.id])}"
-            redirect(action: "list")
         }
     }
 
@@ -179,6 +142,8 @@ class SupplierOrderController {
 				receiveOrderLine(it, params)
 			}
 		}
+		println params
+		logService.saveLog(session, "Mottatt ordren med ordrenummer " + supplierOrder?.id)
 		render(view:"receiveOrderConfirmation")
 	}
 	

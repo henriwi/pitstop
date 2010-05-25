@@ -82,47 +82,14 @@
 		<br />
 	</div>
 	
-	<div class="userLogTable">
-     	<h1><g:message code="user.show.title.log.label" /></h1>
-			<g:if test="${logInstanceList }">
-			<div class="loglist">
-                <table>
-                    <thead>
-                        <tr>
-                        
-                            <th><a class="notSortableColoumn">${message(code: 'user.username.table.label')}</a></th>
-                        
-                            <th><a class="notSortableColoumn">${message(code: 'log.date.table.label')}</a></th>
-                        
-                            <th><a class="notSortableColoumn">${message(code: 'log.event.table.label')}</a></th>
-                            
-                            <th><a class="notSortableColoumn">${message(code: 'user.list.delete.label')}</a></th>
-                        
-                        </tr>
-                    </thead>
-                    <tbody>
-	                    <g:each in="${logInstanceList}" status="i" var="logInstance">
-	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-	                        
-	                            <td>${logInstance?.user?.username}</td>
-	                        
-	                            <td><g:formatDate format="dd.MM.yyyy HH:mm:ss" date="${logInstance?.date}" /></td>
-	                        
-	                            <td>${logInstance?.event}</td>
-	                            
-		                    	<td>
-			                    	<g:form method="post">
-			                        	<g:hiddenField name="id" value="${logInstance?.id}" />
-			                           	<g:actionSubmit class="deleteTableItem" title="${message(code: 'log.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'log.button.delete.confirm.message')}');" />
-			                        </g:form>
-			                   	</td> 
-	                    	</tr>
-	                	</g:each>
-            		</tbody>
-	        	</table>
+	<g:if test="${logInstanceList }">
+		<h1><g:message code="user.show.title.log.label" /></h1>
+		<div id="userLogTable">
+			<g:render template="/user/log"
+				model="[logInstanceList: logInstanceList,
+				logTotalList: logTotalList,
+				userInstance: person]">
+			</g:render>
 			</div>
-		</g:if>
-	
-	
-	</div>
+	</g:if>
 </body>

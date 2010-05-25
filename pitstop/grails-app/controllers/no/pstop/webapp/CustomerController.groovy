@@ -8,6 +8,7 @@ import grails.converters.JSON
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class CustomerController {
 	static final maxNumberOfTireHotelOccurrences = 10
+	def logService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
@@ -192,10 +193,9 @@ class CustomerController {
 			wr.close()
 			
 			conn.connect()
-//			println conn.content.text
-//			conn.responseCode
 			conn.responseMessage
 			if(conn.responseCode == HttpURLConnection.HTTP_OK) {
+				logService.saveLog(session,"${message(code: 'customer.sendSMS.log.message', args: [customerInstance, params.TXT])}")
 				render(template: "sendSmsSuccess")
 			}
 			else {

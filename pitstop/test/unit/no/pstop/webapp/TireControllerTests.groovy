@@ -2,6 +2,12 @@ package no.pstop.webapp
 
 import com.sun.org.apache.xerces.internal.impl.xs.identity.Selector.Matcher;
 import grails.test.*
+import org.codehaus.groovy.grails.plugins.springsecurity.GrailsUserImpl;
+import org.grails.plugins.springsecurity.service.AuthenticateService;
+import org.springframework.security.GrantedAuthority;
+import org.springframework.security.GrantedAuthorityImpl;
+import org.springframework.security.context.SecurityContextHolder as SCH 
+import org.springframework.security.providers.UsernamePasswordAuthenticationToken;
 
 class TireControllerTests extends ControllerUnitTestCase {
 	def tire
@@ -35,6 +41,19 @@ class TireControllerTests extends ControllerUnitTestCase {
 		controller.params.retailPrice = retailPrice
 		controller.params.numberInStock = numberInStock
 		controller.params.notice = notice
+	}
+	
+	private logInUser() {
+		def person = new User(username: "anders", userRealName: "Anders Evenstuen", passwd: "123", enabled: true, 
+		email: "anders@gmail.com", description: "ingen", pass: "123")
+		
+		def authorities = person.authorities.collect { new GrantedAuthorityImpl(it.authority) }
+		def userDetails = new GrailsUserImpl(person.username, person.passwd, person.enabled, true,
+				true, true, authorities as GrantedAuthority[], person)
+		
+		SCH.context.authentication = new UsernamePasswordAuthenticationToken(userDetails, 
+				person.passwd, userDetails.authorities)
+		controller.session["SPRING_SECURITY_CONTEXT"] = SCH.context
 	}
 	
 	void testIndex() {
@@ -75,9 +94,6 @@ class TireControllerTests extends ControllerUnitTestCase {
 				customerOrder: new CustomerOrder(), price: 1095.0)
 		def customerOrderLine2 = new CustomerOrderLine(tire: tire, numberOfReservedTires: 6, 
 				customerOrder: new CustomerOrder(), price: 995.0)
-		
-		//def customerOrder1 = new CustomerOrder(customer: new Customer(), orderDate: new Date(), deliveredDate: null, notice: "")
-		//def customerOrder2 = new CustomerOrder(customer: new Customer(), orderDate: new Date(), deliveredDate: null, notice: "")
 		
 		def supplierOrderLines = [supplierOrderLine1, supplierOrderLine2]
 		def customerOrderLines = [customerOrderLine1, customerOrderLine2]
@@ -120,6 +136,12 @@ class TireControllerTests extends ControllerUnitTestCase {
 		
 		tire.metaClass.save = {-> return true }
 		tire.metaClass.hasErrors = {-> return false }
+		
+		def logMock = mockFor(LogService)
+		logMock.demand.saveLog() {}
+		controller.logService = logMock.createMock() 
+		
+		logInUser()
 		
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"} 
