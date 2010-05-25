@@ -32,7 +32,7 @@
                         
                             <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.list.table.orderDate.label')}" />
                         
-                            <th><a class="notSortableColoumn"><g:message code="customer.list.table.customer.label" default="Customer" /></a></th>
+                            <th><a class="notSortableColoumn"><g:message code="customerOrder.list.table.customer.label" default="Customer" /></a></th>
                             
                             <g:sortableColumn property="notice" title="${message(code: 'customerOrder.list.table.notice.label')}" />
                         </tr>
