@@ -59,7 +59,7 @@
 						<span class="button"><g:link class="addTireHotelOccurrence" controller="tireHotelOccurrence"  action="create" title="${message(code: 'customer.list.tireHotel.tooltip.label')}" id="${customerInstance?.id}">${message(code: 'customer.button.createTireHotel.label')}</g:link></span>
 		                <g:form class="showCustomerButtons">
 		                    <g:hiddenField name="id" value="${customerInstance?.id}" />
-		                    <span class="button"><g:actionSubmit class="edit" action="edit" title="${message(code: 'customer.change.tooltip')}" value="${message(code: 'customer.button.edit.label', default: 'Edit')}" /></span>
+		                    <span class="button"><g:actionSubmit class="editCustomer" action="edit" title="${message(code: 'customer.change.tooltip')}" value="${message(code: 'customer.button.edit.label', default: 'Edit')}" /></span>
 		                    
 		                    <g:ifAllGranted role="ROLE_ADMIN">
 		                    	<span class="button"><g:actionSubmit class="delete" action="delete" title="${message(code: 'customer.delete.tooltip')}" value="${message(code: 'customer.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'customer.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>

@@ -9,12 +9,12 @@
     </head>
     <body>
         <div class="nav">
-			<span class="menuButton" ${(params.action == 'list') ? "id='active'" : ""}  >
-	        	<g:link class="list" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
+			<span class="menuButton" ${(params.action == 'list' || params.action == 'save') ? "id='active'" : ""}  >
+	        	<g:link class="tireHotelOccurrenceList" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
        		</span>
 	        
 	        <span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""}  >
-	        	<g:link class="create" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
+	        	<g:link class="createTireHotelOccurrence" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
        		</span>
        		
             <span class="menuButton" ${(tireHotelOccurrenceInstance.id) ? "id='active'" : ""}  >
@@ -108,7 +108,7 @@
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label')}" /></span>
+                    <span class="button"><g:actionSubmit class="saveTireHotelOccurrence" action="update" value="${message(code: 'default.button.update.label')}" /></span>
                     <span class="button"><g:actionSubmit class="cancel" action="show" value="${message(code: 'default.button.cancel.label')}" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');" /></span>
                     <g:ifAllGranted role="ROLE_ADMIN">
                     	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" /></span>

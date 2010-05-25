@@ -57,7 +57,7 @@
            			<div class="buttons" id="tireButtons">
 	                	<g:form class="showTireButtons">
 	                    	<g:hiddenField name="id" value="${tireInstance?.id}" />
-	                    	<span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'tire.button.edit.label', default: 'Edit')}" /></span>
+	                    	<span class="button"><g:actionSubmit class="editTire" action="edit" value="${message(code: 'tire.button.edit.label', default: 'Edit')}" /></span>
 	                    	<span class="button" id="createSupplierOrderButton"><g:link controller="supplierOrder" class="create" params="[id:tireInstance?.id]" action="create"><g:message code="tire.button.newCustomerOrder.label" /></g:link></span>
 						</g:form>
 						
