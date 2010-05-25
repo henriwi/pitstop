@@ -20,7 +20,7 @@ class CustomerController {
 		def customerCount
 		
 		if(params.q){
-			customerList = Customer.search("*" + params.q + "*", escape: true).results
+			customerList = Customer.search("*" + params.q + "*").results
 			customerCount = customerList.size()
 			flash.message = "${message(code: 'customer.search.result', args: [message(code: 'customer.label'), params.q])}"
 		}

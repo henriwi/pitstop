@@ -28,15 +28,21 @@ class TireController {
 				def query = params.q =~ regexFastSearch
 				tireList = 	Tire.fastSearch(query, params.max, params.offset ,params.s)
 				tireCount = Tire.fastSearch(query, Tire.count(), 0, params.s).size()
-			}
+				
+				flash.message = "${message(code: 'customer.search.result', args: [message(code: 'tire.label'), params.q])}"
+							}
 			else {
 				tireList = performFastSearch(params)
 				tireCount = performFastSearchCount(params)
+				flash.message = "${message(code: 'customer.search.result', args: [message(code: 'tire.label'), params.q])}"
+				
 			}
 		} 
 		else if(isNormalSearchQuery(params.type) && !isNormalSearchWithoutInput()) {
 			tireList = performNormalSearch(params)
 			tireCount = performNormalSearchCount(params)
+			flash.message = "${message(code: 'tire.show.NormalSearch.message')}"
+						
 		}
 		else {
 			params.max = Math.min(params.max ? params.int('max') : maxNumberOfTires, 100)
