@@ -13,10 +13,10 @@
        			<g:link class="pendingCustomerOrders" action="pendingCustomerOrders"><g:message code="customerOrder.pendingCustomerOrders.title.label" /></g:link>
        		</span>
        		<span class="menuButton" id="${params.action == 'list' ? 'active' : ''}" >
-       			<g:link class="list" action="list"><g:message code="customerOrder.list.title.label" /></g:link>
+       			<g:link class="customerOrderList" action="list"><g:message code="customerOrder.list.title.label" /></g:link>
        		</span>
        		<span class="menuButton" id="${(params.action == 'create' || params.action == 'save') ? 'active' : ''}" >
-       			<g:link class="create" action="create"><g:message code="customerOrder.create.title.label" /></g:link>
+       			<g:link class="createCustomerOrder" action="create"><g:message code="customerOrder.create.title.label" /></g:link>
        		</span>
         </div>
         <div class="body">
@@ -59,7 +59,7 @@
 	                                    <label for="notice"><g:message code="customerOrderLine.notice.label" /></label>
 	                                </td>
 	                                <td valign="top" class="value ${hasErrors(bean: order, field: 'notice', 'errors')}">
-	                                	<g:textArea value="${order?.notice}" tabindex='13' name="notice" rows="5" cols="10"/>
+	                                	<g:textArea value="${order?.notice}" name="notice" rows="5" cols="10"/>
 									</td>
 		                    	</tr>
 	                        </tbody>
@@ -137,15 +137,15 @@
 							<td id="listPrice"></td>
 							<td id="highestPrice"></td>
 							<td id="averagePrice"></td>
-							<td><g:textField class="orderTableTextField" maxlength="30" tabindex='12' name="numberOfReservedTires" value="${errorOrderLine?.numberOfReservedTires}" /></td>
-							<td><g:textField class="orderTableTextField" maxlength="30" tabindex='12' name="price" value="${errorOrderLine?.price}" /></td>
+							<td><g:textField class="orderTableTextField" maxlength="30" name="numberOfReservedTires" value="${errorOrderLine?.numberOfReservedTires}" /></td>
+							<td><g:textField class="orderTableTextField" maxlength="30" name="price" value="${errorOrderLine?.price}" /></td>
 							<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'order.addToOrder.tooltip.label')}"/></span></td>
 	                  		</tbody>
 	           		</table>
 	           	</div>
               	<div class="buttons">
-                  	<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'customerOrder.button.create.label')}" /></span>
-                  	<span class="button"><g:actionSubmit tabindex='13' class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
+                  	<span class="button"><g:submitButton name="create" class="saveCustomerOrder" value="${message(code: 'customerOrder.button.create.label')}" /></span>
+                  	<span class="button"><g:actionSubmit class="cancel" action="list" value="${message(code: 'createTire.button.cancel.label')}" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');" /></span>
               	</div>
 	        </g:form>
 		</div>		            	

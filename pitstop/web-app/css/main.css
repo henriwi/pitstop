@@ -12,7 +12,6 @@ html * {
 * {
 	font-family: verdana,arial,helvetica,sans-serif;	
 }
-
 body {
     background: #fff;
     color: #333;
@@ -28,13 +27,11 @@ body {
 	padding-left: 25px;
 	border: none;
 }
-
 a:link, a:visited, a:hover {
     color: #666;
     font-weight: bold;
     text-decoration: none;
 }
-
 h1 {
     color: #48802c;
     font-weight: normal;
@@ -42,7 +39,6 @@ h1 {
     margin: .8em 0 .3em 0;
     /*width: 300px;*/
 }
-
 ul {
     padding-left: 15px;
 }
@@ -62,11 +58,9 @@ textarea {
 	height: 100px;
 	vertical-align: top;
 }
-
 input:focus, select:focus, textarea:focus {
     border: 1px solid #b2d1ff;
 }
-
 .body {
     float: left;
     margin: 0 15px 10px 15px;
@@ -82,7 +76,6 @@ input:focus, select:focus, textarea:focus {
 	min-height: 400px;
 	
 }
-
 /* MAIN MENU */
 div#mainMenu {
 	width: auto;
@@ -213,6 +206,37 @@ div#submenuTireHotelOccurence {
 .menuButton a.create {
     background: url(../images/skin/database_add.png) center left no-repeat;
     color: #555;
+    padding-left: 25px;
+    background-position: 2px;
+}
+
+.menuButton a.saveCustomerOrder {
+    background: transparent url(../images/skin/customerOrder_save.png) 5px 50% no-repeat;
+    color: #555;
+    padding-left: 25px;
+    background-position: 2px;
+}
+.menuButton a.editCustomerOrder {
+    background: transparent url(../images/skin/customerOrder_save.png) 5px 50% no-repeat;
+	color: #555;
+    padding-left: 25px;
+    background-position: 2px;
+}
+.menuButton a.showCustomerOrder {
+    background: transparent url(../images/skin/customerOrder_show.png) 5px 50% no-repeat;
+	color: #555;
+    padding-left: 25px;
+    background-position: 2px;
+}
+.menuButton a.createCustomerOrder {
+    background: transparent url(../images/skin/customerOrder_create.png) 5px 50% no-repeat;
+	color: #555;
+    padding-left: 25px;
+    background-position: 2px;
+}
+.menuButton a.customerOrderList {
+    background: transparent url(../images/skin/customerOrder_list.png) 5px 50% no-repeat;
+	color: #555;
     padding-left: 25px;
     background-position: 2px;
 }
@@ -514,12 +538,24 @@ a.cancel {
     padding: 2px;
     padding-left: 25px;
 }
-.buttons input.edit {
-    background: transparent url(../images/skin/database_edit.png) 5px 50% no-repeat;
+.buttons input.editCustomerOrder {
+    background: transparent url(../images/skin/customerOrder_save.png) 5px 50% no-repeat;
     padding-left: 25px;
 }
-.buttons input.save {
-    background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
+.buttons input.showCustomerOrder {
+    background: transparent url(../images/skin/customerOrder_show.png) 5px 50% no-repeat;
+    padding-left: 25px;
+}
+.buttons input.createCustomerOrder {
+    background: transparent url(../images/skin/customerOrder_create.png) 5px 50% no-repeat;
+    padding-left: 25px;
+}
+.buttons input.saveCustomerOrder {
+    background: transparent url(../images/skin/customerOrder_save.png) 5px 50% no-repeat;
+    padding-left: 30px;
+}
+.buttons input.customerOrderList {
+    background: transparent url(../images/skin/customerOrder_list.png) 5px 50% no-repeat;
     padding-left: 25px;
 }
 .buttons input.saveTire {
@@ -1279,7 +1315,7 @@ span.tireNewOrder a  {
 }
 
 #createSupplierOrderButton a{
-		background: transparent url(../images/skin/shopping_cart.png) 0px 50% no-repeat;
+	background: transparent url(../images/skin/shopping_cart.png) 0px 50% no-repeat;
     color: #333;
     padding-left: 25px;
     border: none;
