@@ -13,12 +13,12 @@
        		<span class="menuButton" id="${params.action == 'pendingSupplierOrders' ? 'active' : ''}" >
        			<g:link class="pendingSupplierOrders" action="pendingSupplierOrders"><g:message code="supplierOrder.pendingSupplierOrders.title.label" /></g:link>
        		</span>
-       		<span class="menuButton" ${params.action == 'list' ? "id='active'" : ""} >
-            	<g:link class="list" action="list"><g:message code="supplier.listSupplierOrder.list.label" /></g:link>
+       		<span class="menuButton" ${params.action == 'list' || params.action == 'save' ? "id='active'" : ""} >
+            	<g:link class="supplierOrderList" action="list"><g:message code="supplier.listSupplierOrder.list.label" /></g:link>
             </span>
-            <span class="menuButton" ${(params.action == 'create' || params.action == 'save') ? "id='active'" : ""} >
-            	<g:link class="create" action="create"><g:message code="supplier.addOrder.new.label" /></g:link>
-            </span>       		
+            <span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""} >
+            	<g:link class="createSupplierOrder" action="create"><g:message code="supplier.addOrder.new.label" /></g:link>
+            </span>        		
      	</div>
         <div class="body">
             <h1><g:message code="supplierOrder.create.title.label" /></h1>
@@ -122,7 +122,7 @@
             			</table>
             		</div>
 	               	<div class="buttons">
-	                   	<span class="button"><g:submitButton name="create" class="save" value="${message(code: 'supplierOrder.button.create.label')}" /></span>
+	                   	<span class="button"><g:submitButton name="create" class="saveSupplierOrder" value="${message(code: 'supplierOrder.button.create.label')}" /></span>
 	        	</g:form>
 				<span class="button"><g:link class="cancel" action="pendingSupplierOrders" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');"><g:message code="createTire.button.cancel.label" /></g:link></span>
 	           		</div>

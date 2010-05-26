@@ -240,35 +240,30 @@ div#submenuTireHotelOccurence {
     padding-left: 25px;
     background-position: 2px;
 }
-
 .menuButton a.createTire {
     background: url(../images/skin/database_add_tire.png) center left no-repeat;
     color: #555;
     padding-left: 25px;
 	background-position: 2px;
 }
-
 .menuButton a.showTire {
     background: url(../images/skin/tire.png) center left no-repeat;
     color: #555;
     padding-left: 20px;
 	background-position: 2px;
 }
-
 .menuButton a.search {
     background: url(../images/skin/search.png) center left no-repeat;
     color: #555;
     padding-left: 25px;
     background-position: 2px;
 }
-
 .menuButton a.createUser {
     background: url(../images/skin/user_add.png) center left no-repeat;
     color: #555;
     padding-left: 25px;
 	background-position: 2px;
 }
-
 .menuButton a.showUser {
     background: url(../images/skin/user.png) center left no-repeat;
     color: #555;
@@ -287,23 +282,38 @@ div#submenuTireHotelOccurence {
     padding-left: 25px;
     background-position: 2px;
 }
-
 .menuButton a.createCustomer {
     background: url(../images/skin/user_add.png) center left no-repeat;
     color: #555;
     padding-left: 25px;
 	background-position: 2px;
 }
-
+.menuButton a.pendingCustomerOrders {
+    background: url(../images/skin/pendingCustomerOrders.png) center left no-repeat;
+    color: #555;
+    padding-left: 35px;
+    background-position: 2px;
+}
 .menuButton a.pendingSupplierOrders {
     background: url(../images/skin/pendingSupplierOrders.png) center left no-repeat;
     color: #555;
     padding-left: 35px;
     background-position: 2px;
 }
-
-.menuButton a.pendingCustomerOrders {
-    background: url(../images/skin/pendingCustomerOrders.png) center left no-repeat;
+.menuButton a.supplierOrderList {
+    background: url(../images/skin/supplierOrder_list.png) center left no-repeat;
+    color: #555;
+    padding-left: 35px;
+    background-position: 2px;
+}
+.menuButton a.createSupplierOrder {
+    background: url(../images/skin/supplierOrder_create.png) center left no-repeat;
+    color: #555;
+    padding-left: 37px;
+    background-position: 2px;
+}
+.menuButton a.editSupplierOrder {
+    background: url(../images/skin/supplierOrder_edit.png) center left no-repeat;
     color: #555;
     padding-left: 35px;
     background-position: 2px;
@@ -575,6 +585,10 @@ a.cancel {
 .buttons input.editUser, .buttons input.editCustomer {
     background: transparent url(../images/skin/user_edit.png) 5px 50% no-repeat;
     padding-left: 25px;
+}
+.buttons input.editUser, .buttons input.saveSupplierOrder {
+    background: transparent url(../images/skin/supplierOrder_save.png) 5px 50% no-repeat;
+    padding-left: 40px;
 }
 .buttons input.sendSmsToCustomer{
 	background: transparent url(../images/skin/phone.png) 5px 50% no-repeat;
