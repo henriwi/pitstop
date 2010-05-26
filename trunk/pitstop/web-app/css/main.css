@@ -1234,7 +1234,9 @@ input.orderTableTextField {
 .supplierOrderHeaders {
 	width: 40px;
 }
-
+.supplierOrderHeaders#discount{
+	width: 70px;
+}
 #numberOfReceivedTextField {
 	width: 50px;
 }

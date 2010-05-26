@@ -42,13 +42,7 @@
 								</g:if>
 								<g:else>
 									<td class="yui-skin-sam">
-										<gui:autoComplete 
-											id="customer"
-											class="autocomplete"
-											controller="customer"
-											action="customerAutoComplete"
-											resultName="customers"
-										/>
+										<gui:autoComplete id="customer" class="autocomplete" controller="customer" action="customerAutoComplete" resultName="customers" />
 									</td>
 								</g:else>
                             </tr>
@@ -67,17 +61,8 @@
                                 </td>
                                 
                                 <td class="yui-skin-sam">
-									<gui:autoComplete 
-										id="registrationNumber"
-										controller="tireHotelOccurrence"
-										action="registrationNumberAutoComplete"
-										resultName="registrationNumbers"
-										dependsOn="[
-											value:'customer',
-											label:'customer',
-											useId:true
-										]"
-									/> 
+									<gui:autoComplete id="registrationNumber" controller="tireHotelOccurrence" action="registrationNumberAutoComplete"
+										resultName="registrationNumbers" dependsOn="[value:'customer', label:'customer', useId:true]"/> 
                               	</td>
                               
                                 <!-- <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'registrationNumber', 'errors')}">
