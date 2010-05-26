@@ -628,7 +628,7 @@ input.delivered {
 	float: left;
 	width: 395px;
 }
-.searchButtons {
+.tireSearchButtons {
     background: url(../images/skin/shadow.jpg) bottom repeat-x;
     border: 1px solid #ccc;
     color: #666;
@@ -637,6 +637,17 @@ input.delivered {
     overflow: hidden;
     padding: 5px;
     width: 60px;
+    cursor: pointer;
+}
+
+.searchButtons {
+    background: url(../images/skin/shadow.jpg) bottom repeat-x;
+    border: 1px solid #ccc;
+    color: #666;
+    font-size: 11px;
+    margin-top: 5px;
+    overflow: hidden;
+    padding: 0px;
     cursor: pointer;
 }
 

@@ -60,8 +60,8 @@
 							</tr>
 							<tr class="prop">
 								<td valign="top" class="name">
-	       			    			<g:submitButton name="active" value="${message(code: 'search.button.fastSearch.label')}" class="searchButtons"  />
-									<input type="reset" value=${message(code: 'search.button.clear')} class="searchButtons"/>
+	       			    			<g:submitButton name="active" value="${message(code: 'search.button.fastSearch.label')}" class="tireSearchButtons"  />
+									<input type="reset" value=${message(code: 'search.button.clear')} class="tireSearchButtons"/>
 								</td>
 							</tr>
 						</tbody>
