@@ -62,7 +62,7 @@
 		
 			                		<th class="supplierOrderHeaders"><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.price.label')}</a></th>
 			                		
-			                		<th class="supplierOrderHeaders"><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.discount.label')}</a></th>
+			                		<th class="supplierOrderHeaders"><a id="discount" class="notSortableColoumn">${message(code: 'supplierOrderLine.table.discount.label')}</a></th>
 			                		
 			                		<th class="supplierOrderHeaders"><a class="notSortableColoumn">${message(code: 'supplierOrderLine.table.environmentalFee.label')}</a></th>
 			                		
