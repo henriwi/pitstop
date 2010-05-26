@@ -157,17 +157,19 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
     color: #555;
 	background: none;
 	padding: 0px;
-    margin: 0px;
+    margin: 8px;
 }
 .menuButton a.tireList {
     color: #555;
     background: none;
     margin: 8px;
 }
-.menuButton a.create {
-    display: none;
+.menuButton a.tireHotelOccurrenceList {
+    color: #555;
+    background: none;
+    margin: 8px;
 }
-.menuButton a.createTire {
+.menuButton a.create, .menuButton a.createTire, .menuButton a.createTireHotelOccurrence {
     display: none;
 }
 .menuButton a.showTire {
@@ -179,8 +181,8 @@ div#submenuTireHotelOccurence { /* fikser feil da ett view har annen css */
     display: none;
 }
 .menuButton a.showUser {
-	background: none;
     color: #555;
+	background: none;
     padding-left: 0px;
 }
 .menuButton a.showTireHotelOccurrence {
