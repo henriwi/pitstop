@@ -72,7 +72,7 @@
 		<div class="buttons">
 			<g:form>
 				<input type="hidden" name="id" value="${person.id}" />
-                <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
+                <span class="button"><g:actionSubmit class="editUser" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                	<g:ifAllGranted role="ROLE_ADMIN">
                		<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'user.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                	</g:ifAllGranted>
