@@ -1461,3 +1461,16 @@ div#userLogTable {
     text-align: center;
     color: #000;
 }
+
+#createTireHotelOccurrenceTable input#customer, #customerOrderDialog input#customer, #createTireHotelOccurrenceTable input#registrationNumber{
+	width: 200px;
+}
+#createTireHotelOccurrenceTable select#tireType {
+	width: 210px;
+}
+#createTireHotelOccurrenceTable textarea {
+	width: 200px;
+}
+#createTireHotelOccurrenceTable table input{
+	width: 200px;
+}

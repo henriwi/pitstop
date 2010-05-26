@@ -27,7 +27,7 @@
 	            </div>
             </g:hasErrors>
             <g:form action="save" method="post" >
-                <div class="dialog">
+                <div class="dialog" id="createTireHotelOccurrenceTable">
                     <table>
                         <tbody>
                         	<tr class="prop">
@@ -35,7 +35,7 @@
                                 	<label for="customer"><g:message code="tireHotelOccurrence.customer.label" /></label>
                                 </td>
                                 <g:if test="${no.pstop.webapp.Customer.get(params?.id)}">
- 									<td>
+ 									<td class="rightColoumn">
                                 		${no.pstop.webapp.Customer.get(params?.id)}
                                 		<g:hiddenField name="customer_id" value="${params?.id}"/>
                                 	</td>
@@ -44,6 +44,7 @@
 									<td class="yui-skin-sam">
 										<gui:autoComplete 
 											id="customer"
+											class="autocomplete"
 											controller="customer"
 											action="customerAutoComplete"
 											resultName="customers"
@@ -116,7 +117,7 @@
                                     <label for="notice"><g:message code="tireHotelOccurrence.notice.label" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: tireHotelOccurrenceInstance, field: 'notice', 'errors')}">
-                                    <g:textArea name="notice" cols="40" rows="5" value="${tireHotelOccurrenceInstance?.notice}" />
+                                    <g:textArea name="notice" value="${tireHotelOccurrenceInstance?.notice}" />
                                 </td>
                             </tr>
                                              

@@ -82,7 +82,6 @@
 			                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.price.table.label')}</a></th>
 			                		
 			                		<th id="customerOrderDeleteHeader"><a class="notSortableColoumn">${message(code: 'customerOrderLine.treat.table.label')}</a></th>
-			                		
 			                	</tr>
 			                </thead>
 		            		<g:hasErrors bean="${errorOrderLine}">
@@ -138,7 +137,7 @@
 							<td id="averagePrice"></td>
 							<td><g:textField class="orderTableTextField" maxlength="30" name="numberOfReservedTires" value="${errorOrderLine?.numberOfReservedTires}" /></td>
 							<td><g:textField class="orderTableTextField" maxlength="30" name="price" value="${errorOrderLine?.price}" /></td>
-							<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'order.addToOrder.tooltip.label')}"/></span></td>
+							<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" id="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'order.addToOrder.tooltip.label')}"/></span></td>
 	                  		</tbody>
 	           		</table>
 	           	</div>
