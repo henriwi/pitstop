@@ -537,6 +537,8 @@ a.cancel {
     background: transparent url(../images/skin/cancel.png) 5px 50% no-repeat;
     padding: 2px;
     padding-left: 25px;
+    cursor: pointer;
+    font-weight: bold;
 }
 .buttons input.editCustomerOrder {
     background: transparent url(../images/skin/customerOrder_save.png) 5px 50% no-repeat;
@@ -596,14 +598,14 @@ a.cancel {
 input.change {
     background: transparent url(../images/skin/season_switch.png) 5px 50% no-repeat;
 	margin: 0px;
-    padding-right: 5px;
+    padding-right: 15px;
     border: 0px;
     cursor: pointer;
 }
 input.delivered {
     background: transparent url(../images/skin/delivered.png) 5px 50% no-repeat;
     margin: 0px;
-    padding-right: 5px;
+    padding-right: 15px;
     border: 0px;
     cursor: pointer;
 }
@@ -745,7 +747,7 @@ a.logoutButton{
     padding-bottom: 5px;
     padding-left: 25px;
 }
-.editCustomerTableItem {
+.editCustomerTableItem, .editUserTableItem {
     background: url(../images/skin/user_edit.png) 5px 50% no-repeat;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -1146,18 +1148,27 @@ input.orderTableTextField {
 }
 .addToOrderTableItem {
     background: url(../images/skin/addTireToOrder.png) 5px 50% no-repeat;
-    padding-right: 15px;
+    padding-right: 25px;
     padding-top: 5px;
+    padding-bottom: 5px;
     border: none;
     cursor: pointer;
 }
 .deleteFromOrderTableItem {
     background: url(../images/skin/removeTireFromOrder.png) 5px 50% no-repeat;
-    padding-right: 15px;
-    padding-top: 8px;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border: none;
     cursor: pointer;
     color: #bbb;
+    border: none;
+}
+
+.addToOrderTableItem:hover, .deleteFromOrderTableItem:hover,
+.addToOrderTableItem:active, .deleteFromOrderTableItem:active,
+.addToOrderTableItem:link, .deleteFromOrderTableItem:link {
+	border: none;
 }
 .showCustomerButtons {
 	display: inline;
@@ -1420,4 +1431,19 @@ div#userLogTable {
 .indexContent .searchButtons{
 	width: 35px;
 	height: 22px;
+}
+
+#modalBoxDialog a{
+	text-align: center;
+	border: none;
+    font-size: 16px;
+    font-weight: normal;
+    cursor: pointer;
+    text-decoration: underline;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    text-align: center;
+    color: #000;
 }

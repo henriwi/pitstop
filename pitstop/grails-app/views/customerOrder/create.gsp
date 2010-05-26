@@ -113,7 +113,6 @@
 										controller="tire"
 										action="tireAutoComplete"
 										resultName="tires"
-										value="${errorOrderLine?.tire}"
 									/>
 							</td>
 							<!-- <td>
