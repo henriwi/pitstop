@@ -45,12 +45,9 @@
 								</g:if>
 								<g:else>
 									<td class="yui-skin-sam">
-										<gui:autoComplete 
-											id="customer"
-											controller="customer"
-											action="customerAutoComplete"
-											resultName="customers"
-										/>
+										<div id="customerAutocomplete">
+											<gui:autoComplete id="customer" controller="customer" action="customerAutoComplete" resultName="customers"/>
+										</div>
 									</td>
 								</g:else>	                                
 	                            </tr>
@@ -107,12 +104,7 @@
 							</g:each>
 							<tr>
 								<td class="yui-skin-sam">
-									<gui:autoComplete 
-										id="tire" 
-										controller="tire"
-										action="tireAutoComplete"
-										resultName="tires"
-									/>
+									<gui:autoComplete id="tire" controller="tire" action="tireAutoComplete" resultName="tires" />
 							</td>
 							<!-- <td>
 								<richui:autoComplete name="tires" forceSelection="true" controller="tire" action="tireAutoComplete" 
