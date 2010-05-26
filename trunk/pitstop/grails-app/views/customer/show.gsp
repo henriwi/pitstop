@@ -55,8 +55,8 @@
 					</g:if>
 					
 	                <div class="buttons" id="customerButtons">
-	                	<span class="button"><g:link class="createOrder" controller="customerOrder"  action="create" title="${message(code: 'customer.list.order.tooltip.label')}" id="${customerInstance?.id}">${message(code: 'customer.button.createOrder.label')}</g:link></span>
 						<span class="button"><g:link class="addTireHotelOccurrence" controller="tireHotelOccurrence"  action="create" title="${message(code: 'customer.list.tireHotel.tooltip.label')}" id="${customerInstance?.id}">${message(code: 'customer.button.createTireHotel.label')}</g:link></span>
+	                	<span class="button"><g:link class="createOrder" controller="customerOrder"  action="create" title="${message(code: 'customer.list.order.tooltip.label')}" id="${customerInstance?.id}">${message(code: 'customer.button.createOrder.label')}</g:link></span>
 		                <g:form class="showCustomerButtons">
 		                    <g:hiddenField name="id" value="${customerInstance?.id}" />
 		                    <span class="button"><g:actionSubmit class="editCustomer" action="edit" title="${message(code: 'customer.change.tooltip')}" value="${message(code: 'customer.button.edit.label', default: 'Edit')}" /></span>

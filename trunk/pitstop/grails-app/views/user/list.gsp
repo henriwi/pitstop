@@ -58,7 +58,7 @@
 							
 							<td><g:link action="show" id="${person.id}">${fieldValue(bean: person, field: "email")}</g:link> </td>
 							
-							<td><g:link class="editTableItem" action="edit" title="${message(code: 'user.list.edit.tooltip.label')}"  id="${person?.id}">&nbsp;</g:link></td>
+							<td><g:link class="editUserTableItem" action="edit" title="${message(code: 'user.list.edit.tooltip.label')}"  id="${person?.id}">&nbsp;</g:link></td>
 		                    <g:ifAllGranted role="ROLE_ADMIN"> 
 		                    
 			                    <td>

@@ -12,7 +12,6 @@
         <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="${resource(dir:'css',file:'iphone.css')}" type= "text/css" />
         <meta name="viewport" content="width=device-width, user-scalable=no" />
         <meta name="format-detection" content="telephone=no">
-        
         <meta name="apple-mobile-web-app-capable" content="yes"  />
         
         <g:layoutHead />
