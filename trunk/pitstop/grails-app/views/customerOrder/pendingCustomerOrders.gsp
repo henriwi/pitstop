@@ -24,35 +24,39 @@
             </g:if>
             <h1><g:message code="customerOrder.pendingCustomerOrders.header.label" /></h1>
             
-            <div class="list">
-                <table>
-                    <thead>
-                        <tr>
-                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.list.table.orderNumber.label')}" />
-                        
-                            <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.list.table.orderDate.label')}" />
-                        
-                            <th><a class="notSortableColoumn"><g:message code="customerOrder.list.table.customer.label" default="Customer" /></a></th>
-                            
-                            <g:sortableColumn property="notice" title="${message(code: 'customerOrder.list.table.notice.label')}" />
-                        </tr>
-                    </thead>
-                    <tbody>
-	                    <g:each in="${customerOrderWithoutDeliveredDateInstanceList}" status="i" var="customerOrderWithoutDeliveredDateInstance">
-	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+            <g:if test="${ customerOrderWithoutDeliveredDateInstanceList }">
+	            <div class="list">
+	                <table>
+	                    <thead>
+	                        <tr>
+	                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.list.table.orderNumber.label')}" />
 	                        
-								<td><modalbox:createLink controller="customerOrder" action="show" id="${customerOrderWithoutDeliveredDateInstance?.id}" title="${message(code: 'customerOrder.pendingCustomerOrders.modalBox.title.label')}" width="800">${customerOrderWithoutDeliveredDateInstance?.id}</modalbox:createLink></td>
-									                        
-	                            <td><g:formatDate format="dd.MM.yyyy" date="${customerOrderWithoutDeliveredDateInstance.orderDate}" /></td>
+	                            <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.list.table.orderDate.label')}" />
 	                        
-	                            <td>${fieldValue(bean: customerOrderWithoutDeliveredDateInstance, field: "customer")}</td>
-	                        	
-	                        	<td>${customerOrderWithoutDeliveredDateInstance?.showNoticeWith50FirstLetters()}</td>
+	                            <th><a class="notSortableColoumn"><g:message code="customerOrder.list.table.customer.label" default="Customer" /></a></th>
+	                            
+	                            <g:sortableColumn property="notice" title="${message(code: 'customerOrder.list.table.notice.label')}" />
 	                        </tr>
-	                    </g:each>
-                    </tbody>
-                </table>
-            </div>
+	                    </thead>
+	                    <tbody>
+		                    <g:each in="${customerOrderWithoutDeliveredDateInstanceList}" status="i" var="customerOrderWithoutDeliveredDateInstance">
+		                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+									<td><modalbox:createLink controller="customerOrder" action="show" id="${customerOrderWithoutDeliveredDateInstance?.id}" title="${message(code: 'customerOrder.pendingCustomerOrders.modalBox.title.label')}" width="800">${customerOrderWithoutDeliveredDateInstance?.id}</modalbox:createLink></td>
+										                        
+		                            <td><g:formatDate format="dd.MM.yyyy" date="${customerOrderWithoutDeliveredDateInstance.orderDate}" /></td>
+		                        
+		                            <td>${fieldValue(bean: customerOrderWithoutDeliveredDateInstance, field: "customer")}</td>
+		                        	
+		                        	<td>${customerOrderWithoutDeliveredDateInstance?.showNoticeWith50FirstLetters()}</td>
+		                        </tr>
+		                    </g:each>
+	                    </tbody>
+	                </table>
+	            </div>
+			</g:if>
+			<g:else>
+				<p class="noPendingCustomerOrders"><g:message code="customerOrder.pendingCustomerOrders.noOrders.label" /></p>
+			</g:else>
        	</div>
     </body>
 </html>
