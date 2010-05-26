@@ -545,7 +545,7 @@ a.cancel {
 
 .buttons input.editTireHotelOccurrence {
     background: transparent url(../images/skin/tireHotelOccurrence_edit.png) 5px 50% no-repeat;
-    padding-left: 25px;
+    padding-left: 30px;
 }
 .buttons input.saveTireHotelOccurrence {
     background: transparent url(../images/skin/tireHotelOccurrence_save.png) 5px 50% no-repeat;
@@ -554,7 +554,8 @@ a.cancel {
     
 .buttons input.change {
     background: transparent url(../images/skin/season_switch.png) 5px 50% no-repeat;
-    padding-left: 28px;
+    padding: 0px;
+    padding-left: 25px;
 }
 input.change {
     background: transparent url(../images/skin/season_switch.png) 5px 50% no-repeat;
