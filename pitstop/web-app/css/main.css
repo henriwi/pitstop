@@ -1461,8 +1461,8 @@ div#userLogTable {
     text-align: center;
     color: #000;
 }
-
-#createTireHotelOccurrenceTable input#customer, #customerOrderDialog input#customer, #createTireHotelOccurrenceTable input#registrationNumber{
+#createTireHotelOccurrenceTable input#customer, #createTireHotelOccurrenceTable input#registrationNumber,
+#customerOrderDialog input#customer, div#customerAutocomplete{
 	width: 200px;
 }
 #createTireHotelOccurrenceTable select#tireType {
