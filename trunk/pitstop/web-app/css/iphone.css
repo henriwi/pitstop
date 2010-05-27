@@ -798,6 +798,7 @@ div.iPhone h3.customerName a{
 	font-size: 18px;
 	font-weight: bold;
 	color: #555;
+	text-decoration: underline;
 }
 div.iPhone span.customerAddress {
 	display: block;
