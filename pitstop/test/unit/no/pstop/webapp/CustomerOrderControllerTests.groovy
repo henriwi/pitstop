@@ -1,6 +1,12 @@
 package no.pstop.webapp;
 
 import grails.test.ControllerUnitTestCase;
+import org.codehaus.groovy.grails.plugins.springsecurity.GrailsUserImpl;
+import org.grails.plugins.springsecurity.service.AuthenticateService;
+import org.springframework.security.GrantedAuthority;
+import org.springframework.security.GrantedAuthorityImpl;
+import org.springframework.security.context.SecurityContextHolder as SCH 
+import org.springframework.security.providers.UsernamePasswordAuthenticationToken;
 
 class CustomerOrderControllerTests extends ControllerUnitTestCase {
 	def customer
@@ -28,6 +34,19 @@ class CustomerOrderControllerTests extends ControllerUnitTestCase {
 	
 	protected void tearDown() {
 		super.tearDown()
+	}
+	
+	private logInUser() {
+		def person = new User(username: "anders", userRealName: "Anders Evenstuen", passwd: "123", enabled: true, 
+		email: "anders@gmail.com", description: "ingen", pass: "123")
+		
+		def authorities = person.authorities.collect { new GrantedAuthorityImpl(it.authority) }
+		def userDetails = new GrailsUserImpl(person.username, person.passwd, person.enabled, true,
+				true, true, authorities as GrantedAuthority[], person)
+		
+		SCH.context.authentication = new UsernamePasswordAuthenticationToken(userDetails, 
+				person.passwd, userDetails.authorities)
+		controller.session["SPRING_SECURITY_CONTEXT"] = SCH.context
 	}
 	
 	private setParams(Double price, Integer numberOfReservedTires, Integer tire_id) {
@@ -83,6 +102,12 @@ class CustomerOrderControllerTests extends ControllerUnitTestCase {
 		mockDomain CustomerOrderLine, [customerOrderLine]
 		controller.params.id = 1
 		controller.metaClass.message = {args -> println "message: ${args}"}
+		
+		def logMock = mockFor(LogService)
+		logMock.demand.saveLog() {}
+		controller.logService = logMock.createMock() 
+		
+		logInUser()
 		
 		controller.deliverOrder()
 		
