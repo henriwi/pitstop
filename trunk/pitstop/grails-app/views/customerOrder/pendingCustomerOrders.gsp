@@ -24,7 +24,7 @@
             </g:if>
             <h1><g:message code="customerOrder.pendingCustomerOrders.header.label" /></h1>
             
-            <g:if test="${ customerOrderWithoutDeliveredDateInstanceList }">
+            <g:if test="${customerOrderWithoutDeliveredDateInstanceList}">
 	            <div class="list">
 	                <table>
 	                    <thead>

@@ -70,11 +70,15 @@ class CustomerOrderController {
         if (customerOrderInstance) {
             try {
                 customerOrderInstance.delete(flush: true)
-                flash.message = "${message(code: 'customerorder.deleted.message', args: [params.id])}"
 				if(params.requestFromShowCustomerView) {
+					flash.message = "${message(code: 'customerorder.deleted.message', args: [params.id])}"
 					redirect(controller: "customer", action: "show", id: params.customerId)
 				}
+				else if(params.requestFromModalBox) {
+					render(view: "deleteCustomerOrderConfirmation")
+				}
 				else {
+					flash.message = "${message(code: 'customerorder.deleted.message', args: [params.id])}"
 					redirect(action: "list")
 				}
             }
