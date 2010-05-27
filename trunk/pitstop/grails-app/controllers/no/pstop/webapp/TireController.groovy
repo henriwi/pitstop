@@ -259,19 +259,19 @@ class TireController {
 	}
 	
 	def getListPriceFromSelectedTire = {
-		def formatter = new DecimalFormat("#.00");
+		def formatter = new DecimalFormat("#.##");
 		def tire = Tire.get(params.tireId)
 		render formatter.format(tire?.retailPrice)
 	}
 	
 	def getHighestPriceFromSelectedTire = {
-		def formatter = new DecimalFormat("#.00");
+		def formatter = new DecimalFormat("#.##");
 		def tire = Tire.get(params.tireId)
 		render formatter.format(tire?.highestPrice())
 	}
 	
 	def getAveragePriceFromSelectedTire = {
-		def formatter = new DecimalFormat("#.00");
+		def formatter = new DecimalFormat("#.##");
 		def tire = Tire.get(params.tireId)
 		render formatter.format(tire?.averagePrice())
 	}

@@ -32,7 +32,9 @@
                             <g:sortableColumn property="id" title="${message(code: 'customerOrder.list.table.orderNumber.label')}" params="[max: params.max, offset: params.offset]" />
                         
                             <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.list.table.orderDate.label')}" params="[max: params.max, offset: params.offset]" />
-                        
+                            
+                            <g:sortableColumn property="deliveredDate" title="${message(code: 'customerOrder.list.table.deliveredDate.label')}" params="[max: params.max, offset: params.offset]" />
+                            
                             <th><g:message code="customerOrder.list.table.customer.label" default="Customer" /></th>
 							
 							<g:sortableColumn property="notice" title="${message(code: 'customerOrder.list.table.notice.label')}" />
@@ -45,7 +47,9 @@
 								<td><modalbox:createLink controller="customerOrder" action="show" id="${customerOrderInstance?.id}" title="${message(code: 'pendingCustomerOrder.modalBox.title.label')}" width="800">${customerOrderInstance?.id}</modalbox:createLink></td>
 	                        
 	                            <td><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance.orderDate}" /></td>
-	                        
+	                            
+								<td><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance.deliveredDate}" /></td>
+									                        
 	                            <td>${fieldValue(bean: customerOrderInstance, field: "customer")}</td>
 	                            
 	                            <td>${customerOrderInstance?.showNoticeWith50FirstLetters()}</td>
