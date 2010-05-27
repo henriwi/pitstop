@@ -46,7 +46,11 @@
 	   		</g:form>
 		</g:if>
 		<g:else>
-			<span class="button"><a onclick="Modalbox.hide()" class="btnShowAll"><g:message code="default.button.close.label" /></a></span>
+			<g:form>
+				<g:hiddenField name="requestFromModalBox" value="true" />
+				<span class="button"><a onclick="Modalbox.hide()" class="btnShowAll"><g:message code="default.button.close.label" /></a></span>
+       			<span class="button"><g:submitToRemote class="delete" onComplete="Modalbox.resizeToContent()" controller="customerOrder" action="delete" id="${customerOrderInstance?.id}" value="${message(code: 'customerOrder.button.delete.label')}" update="MB_content"/></span>
+       		</g:form>
 		</g:else>
 	</div>
 </div>

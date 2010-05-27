@@ -168,7 +168,7 @@
 										<div class="customerOrderLine">
 											<span class="tireName">${customerOrderLineInstance?.tire}</span>
 											<span class="numberOfReservedTires">${customerOrderLineInstance?.numberOfReservedTires}<g:message code="customer.show.customerOrder.numberOrOrdered" />&agrave;</span>
-											<span class="tirePrice"><g:message code="customer.show.customerOrder.currency" /><g:formatNumber number="${customerOrderLineInstance?.price}" format="###,##0" />
+											<span class="tirePrice"><g:message code="customer.show.customerOrder.currency" /><g:formatNumber number="${customerOrderLineInstance?.price}" format="#.00" />
 											</span>
 										</div>
 									</g:each>
