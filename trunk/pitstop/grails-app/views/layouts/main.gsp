@@ -21,7 +21,7 @@
         <g:javascript library="prototype" />
 
         <modalbox:modalIncludes />
-        <gui:resources components="autoComplete" />
+        <!-- <gui:resources components="autoComplete" />-->
         <resource:dateChooser />
     </head>
     <body>
