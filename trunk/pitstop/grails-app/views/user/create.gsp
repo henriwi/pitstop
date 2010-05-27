@@ -64,7 +64,7 @@
 								<label for="enabled"><g:message code="user.enabled.label"/></label>
 							</td>
 							<td valign="top" class="value ${hasErrors(bean:person,field:'enabled','errors')}">
-								<g:checkBox name="enabled" value="${person.enabled}" ></g:checkBox>
+								<g:checkBox name="enabled" value="${true}" ></g:checkBox>
 							</td>
 						</tr>
 	
