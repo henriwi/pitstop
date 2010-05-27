@@ -142,7 +142,6 @@ class SupplierOrderController {
 				receiveOrderLine(it, params)
 			}
 		}
-		println params
 		logService.saveLog(session, "Mottatt ordren med ordrenummer " + supplierOrder?.id)
 		render(view:"receiveOrderConfirmation")
 	}
@@ -150,6 +149,7 @@ class SupplierOrderController {
 	def receiveOrderLine = {
 		def supplierOrderLineInstance = SupplierOrderLine.get(params.supplierOrderLineId)
 		receiveOrderLine(supplierOrderLineInstance, params)
+        flash.message = "${message(code: 'supplierOrder.orderLine.received.message')}"
 		redirect(controller: "tire", action: "show", id: supplierOrderLineInstance?.tire?.id)
 	}
 	

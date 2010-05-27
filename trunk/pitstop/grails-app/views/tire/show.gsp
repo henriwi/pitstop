@@ -135,9 +135,6 @@
 		                    <g:each in="${supplierOrderLines}" status="i" var="supplierOrderLineInstance">
 		                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 		                        	<td><modalbox:createLink controller="supplierOrder" action="show" id="${supplierOrderLineInstance?.supplierOrder?.id}" title="Dekkbestilling" width="900" overlayDuration="0" slideDownDuration="0" resizeDuration="0">${supplierOrderLineInstance?.supplierOrder?.id}</modalbox:createLink></td>
-            						<!-- <td><a href='/ROOT/supplierOrder/show/${supplierOrderLineInstance?.supplierOrder?.id}' title='Dekkbestilling' onclick='Modalbox.show(this.href, {title: this.title, width: 900, overlayOpacity: 0.5, closeString: "Lukk vinduet", overlayClose: false, overlayDuration: 0, slideDownDuration: 0.5}); return false;'>${supplierOrderLineInstance?.supplierOrder?.id}</a></td>-->
-            
-		                        	<!-- <td><g:link controller="supplierOrder" action="show" id="${supplierOrderLineInstance?.supplierOrder?.id}">${supplierOrderLineInstance?.supplierOrder?.id}</g:link></td>-->
 		                        	
 		                        	<td><g:formatDate format="dd.MM.yyyy" date="${supplierOrderLineInstance?.supplierOrder?.orderDate}" /></td>
 		                        	
@@ -156,7 +153,7 @@
 			                            <td>
 			                            	<g:textField id="numberOfReceivedTextField" name="numberOfReceived" value="${supplierOrderLineInstance?.numberOfOrderedTires - supplierOrderLineInstance?.numberOfReceivedTires}"/>
 			                          		<g:hiddenField name="supplierOrderLineId" value="${supplierOrderLineInstance?.id}" />
-			                          		<g:actionSubmit class="receiveSupplierOrder" title="${message(code: 'supplierOrderLine.receive.tooltip.label')}" action="receiveOrderLine" value="${message(code: 'list.button.delete.label')}" />
+			                          		<g:actionSubmit class="receiveSupplierOrder" title="${message(code: 'supplierOrderLine.receive.tooltip.label')}" action="receiveOrderLine" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'supplierOrder.button.orderLine.receive.confirm.message')}');"/>
 		    	                    	</td>
 		       	                	</g:form>
 		                		</tr>
