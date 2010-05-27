@@ -6,6 +6,7 @@ class CustomerOrderController {
 	static final maxNumberOfCustomerOrders = 50
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     def orderService
+	def logService
 		
     def index = {
         redirect(action: "list", params: params)
@@ -151,6 +152,8 @@ class CustomerOrderController {
 	def deliverOrder = {
 		def order = CustomerOrder.get(params.id)
 		performOrderDelivery(order)
+
+		logService.saveLog(session, "${message(code: 'customerOrder.log.received.message', args: [order?.id])}")
 		
 		flash.message = "${message(code: 'customerOrder.delivered.message', args: [params.id])}"
 		redirect(controller: "customer", action: "show", id: order?.customer?.id)
@@ -159,6 +162,8 @@ class CustomerOrderController {
 	def deliverOrderFromModalbox = {
 		def order = CustomerOrder.get(params.id)
 		performOrderDelivery(order)
+
+		logService.saveLog(session, "${message(code: 'customerOrder.log.received.message', args: [order?.id])}")
 		
 		render(view:"deliverOrderConfirmation")
 	}

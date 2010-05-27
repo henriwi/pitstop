@@ -13,7 +13,18 @@ class IndexController {
 	}
 	
 	private numberOfPendingSupplierOrders() {
-		def supplierOrderLinesWithoutReceivedDate = SupplierOrderLine.findAllByReceivedDateIsNull()
-		return supplierOrderLinesWithoutReceivedDate.size()
+		def pendingSupplierOrdersList = []
+		def supplierOrders = SupplierOrder.list(params).each { 
+			boolean pending = false
+			it.supplierOrderLines.each {
+				if (!it.receivedDate) {
+					pending = true
+				}
+			}
+			if (pending) {
+				pendingSupplierOrdersList << it
+			}
+		}
+		return pendingSupplierOrdersList.size()
 	}
 }

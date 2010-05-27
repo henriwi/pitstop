@@ -37,6 +37,9 @@ class SupplierOrderController {
 		def supplierOrderInstance = session["order"]
         supplierOrderInstance?.orderDate = new Date()
 		
+		println "validte fra test: " + supplierOrderInstance.validate()
+		supplierOrderInstance.errors.each {println it }
+		
 		if(!supplierOrderInstance.validate() || session["orderLines"]?.size() == 0) {
 			if(session["orderLines"]?.size() == 0) {
 				supplierOrderInstance.errors.reject('supplierOrder.supplierOrderLine.empty.error')
@@ -142,7 +145,8 @@ class SupplierOrderController {
 				receiveOrderLine(it, params)
 			}
 		}
-		logService.saveLog(session, "Mottatt ordren med ordrenummer " + supplierOrder?.id)
+		
+		logService.saveLog(session, "${message(code: 'supplierOrder.log.received.message', args: [supplierOrder?.id])}")
 		render(view:"receiveOrderConfirmation")
 	}
 	
