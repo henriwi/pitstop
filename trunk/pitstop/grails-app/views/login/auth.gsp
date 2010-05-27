@@ -11,10 +11,10 @@
 <body>
 	<div class="dialog" id="login">
 		<h1><g:message code="login.header.label"></g:message></h1>
+		<g:if test="${flash.message}">
+         	<div class="message">${flash.message}</div>
+     	</g:if>
 		<form class="loginForm" action='${postUrl}' method='POST' id='loginForm'>
-			<g:if test="${flash.message}">
-	         	<div class="message">${flash.message}</div>
-	     	</g:if>
 			<table class="loginForm">
 				<tbody>
 					<tr class="prop">

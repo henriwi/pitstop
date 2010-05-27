@@ -58,7 +58,9 @@
    			<g:form action="receiveOrder">
 	       		<span class="button"><g:submitToRemote class="receiveSupplierOrder" onComplete="Modalbox.resizeToContent()" controller="supplierOrder" action="receiveOrder" id="${supplierOrderInstance?.id}" value="${message(code: 'supplierOrder.button.receive.label')}" update="MB_content"/></span>
 	       		<span class="button"><a id="cancelModalBox" onclick="Modalbox.hide()"><g:message code="createTire.button.cancel.label" /></a></span>
-	       		<span class="button"><g:submitToRemote class="delete" onComplete="Modalbox.resizeToContent()" controller="supplierOrder" action="delete" id="${supplierOrderInstance?.id}" value="${message(code: 'supplierOrder.button.delete.label')}" update="MB_content"/></span>
+	       		<g:ifAllGranted role="ROLE_ADMIN">
+	       			<span class="button"><g:submitToRemote class="delete" onComplete="Modalbox.resizeToContent()" controller="supplierOrder" action="delete" id="${supplierOrderInstance?.id}" value="${message(code: 'supplierOrder.button.delete.label')}" update="MB_content"/></span>
+	       		</g:ifAllGranted>
    			</g:form>
    		</g:if>
 		<g:else>

@@ -586,7 +586,7 @@ a.cancel {
     background: transparent url(../images/skin/user_edit.png) 5px 50% no-repeat;
     padding-left: 25px;
 }
-.buttons input.editUser, .buttons input.saveSupplierOrder {
+.buttons input.saveSupplierOrder {
     background: transparent url(../images/skin/supplierOrder_save.png) 5px 50% no-repeat;
     padding-left: 40px;
 }

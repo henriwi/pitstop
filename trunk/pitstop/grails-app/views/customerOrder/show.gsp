@@ -11,7 +11,6 @@
 		<span><g:formatDate format="dd.MM.yyyy" date="${customerOrderInstance?.orderDate}" /></span>
 		<span class="tireNotice">${customerOrderInstance?.notice}</span>
 	</div>
-	
     <table>
 	   	<thead>
 	       	<tr>
@@ -25,13 +24,11 @@
 	    <tbody>
 	    	<g:each in="${customerOrderInstance?.customerOrderLines}" status="i" var="customerOrderLineInstance">
 	        	<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-	 
 	            	<td>${customerOrderLineInstance?.tire}</td>
 	               	
 	                <td>${customerOrderLineInstance.price}</td>
 	                
 		           	<td>${customerOrderLineInstance?.numberOfReservedTires}</td>
-		           	
 	          	</tr>
 	        </g:each>
 		</tbody>
@@ -42,7 +39,9 @@
 	   			<g:hiddenField name="requestFromModalBox" value="true" />
 	       		<span class="button"><g:submitToRemote class="receiveSupplierOrder" onComplete="Modalbox.resizeToContent()" controller="customerOrder" action="deliverOrderFromModalbox" id="${customerOrderInstance?.id}" value="${message(code: 'customerOrder.button.deliver.label')}" update="MB_content"/></span>
 	       		<span class="button"><a id="cancelModalBox" onclick="Modalbox.hide()"><g:message code="createTire.button.cancel.label" /></a></span>
-	       		<span class="button"><g:submitToRemote class="delete" onComplete="Modalbox.resizeToContent()" controller="customerOrder" action="delete" id="${customerOrderInstance?.id}" value="${message(code: 'customerOrder.button.delete.label')}" update="MB_content"/></span>
+	       		<g:ifAllGranted role="ROLE_ADMIN">
+	       			<span class="button"><g:submitToRemote class="delete" onComplete="Modalbox.resizeToContent()" controller="customerOrder" action="delete" id="${customerOrderInstance?.id}" value="${message(code: 'supplierOrder.button.delete.label')}" update="MB_content"/></span>
+       			</g:ifAllGranted>
 	   		</g:form>
 		</g:if>
 		<g:else>
