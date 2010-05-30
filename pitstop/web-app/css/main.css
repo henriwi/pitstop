@@ -1488,3 +1488,6 @@ div#userLogTable {
 #createTireHotelOccurrenceTable table input{
 	width: 200px;
 }
+.noSupplierOrders, noCustomerOrders {
+	font-size: 12px;
+}

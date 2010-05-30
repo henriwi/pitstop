@@ -25,39 +25,43 @@
             </g:if>
 
             <h1><g:message code="supplierOrder.pendingSupplierOrders.header.label" /></h1>
-            
-            <div class="list">
-                <table>
-                    <thead>
-                        <tr>
-                        
-                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.table.orderNumber.label')}" params="[max: params.max, offset: params.offset]" />
-                        
-                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.table.orderDate.label')}" params="[max: params.max, offset: params.offset]" />
-                        
-                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.supplier.label')}" params="[max: params.max, offset: params.offset]" />
-                            
-                            <g:sortableColumn property="notice" title="${message(code: 'supplierOrder.table.notice.label')}" params="[max: params.max, offset: params.offset]" />
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-	                    <g:each in="${supplierOrders}" status="i" var="supplierOrderInstance">
-	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+            <g:if test="${supplierOrders}">
+	            <div class="list">
+	                <table>
+	                    <thead>
+	                        <tr>
 	                        
-	                        	<td><modalbox:createLink controller="supplierOrder" action="show" id="${supplierOrderInstance?.id}" title="${message(code: 'pendingSupplierOrder.modalBox.title.label')}" width="800">${supplierOrderInstance?.id}</modalbox:createLink></td>
-	                        	
-	                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${supplierOrderInstance?.orderDate}" /></td>
+	                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.table.orderNumber.label')}" params="[max: params.max, offset: params.offset]" />
 	                        
-	                            <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
+	                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.table.orderDate.label')}" params="[max: params.max, offset: params.offset]" />
+	                        
+	                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.supplier.label')}" params="[max: params.max, offset: params.offset]" />
 	                            
-	                            <td>${supplierOrderInstance?.showNoticeWith10FirstLetters()}</td>
+	                            <g:sortableColumn property="notice" title="${message(code: 'supplierOrder.table.notice.label')}" params="[max: params.max, offset: params.offset]" />
 	                            
 	                        </tr>
-	                    </g:each>
-                    </tbody>
-                </table>
-            </div>
+	                    </thead>
+	                    <tbody>
+		                    <g:each in="${supplierOrders}" status="i" var="supplierOrderInstance">
+		                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+		                        
+		                        	<td><modalbox:createLink controller="supplierOrder" action="show" id="${supplierOrderInstance?.id}" title="${message(code: 'pendingSupplierOrder.modalBox.title.label')}" width="800">${supplierOrderInstance?.id}</modalbox:createLink></td>
+		                        	
+		                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${supplierOrderInstance?.orderDate}" /></td>
+		                        
+		                            <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
+		                            
+		                            <td>${supplierOrderInstance?.showNoticeWith10FirstLetters()}</td>
+		                            
+		                        </tr>
+		                    </g:each>
+	                    </tbody>
+	                </table>
+	            </div>
+			</g:if>
+			<g:else>
+				<p class="noSupplierOrders"><g:message code="supplierOrder.pendingSupplierOrders.noOrders.label" /></p>
+			</g:else>
        	</div>
     </body>
 </html>

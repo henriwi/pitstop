@@ -23,50 +23,55 @@
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
-            <div class="list">
-                <table>
-                    <thead>
-                        <tr>
-                        
-                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.table.orderNumber.label')}" params="[max: params.max, offset: params.offset]" />
-                        
-                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.table.orderDate.label')}" params="[max: params.max, offset: params.offset]" />
-                        
-                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.supplier.label')}" params="[max: params.max, offset: params.offset]" />
-                            
-                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.notice.label')}" params="[max: params.max, offset: params.offset]" />
-                            
-                            <th><a class="notSortableColoumn"><g:message code="supplierOrder.table.delivered.label" /></a></th>
-                        
-                        </tr>
-                    </thead>
-                    <tbody>
-	                    <g:each in="${supplierOrderInstanceList}" status="i" var="supplierOrderInstance">
-	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+            <g:if test="${supplierOrderInstanceList}">
+	            <div class="list">
+	                <table>
+	                    <thead>
+	                        <tr>
 	                        
-		                       	<td><modalbox:createLink controller="supplierOrder" action="show" id="${supplierOrderInstance?.id}" title="${message(code: 'pendingSupplierOrder.modalBox.title.label')}" width="800">${supplierOrderInstance?.id}</modalbox:createLink></td>
+	                            <g:sortableColumn property="id" title="${message(code: 'supplierOrder.table.orderNumber.label')}" params="[max: params.max, offset: params.offset]" />
 	                        
-	                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${supplierOrderInstance.orderDate}" /></td>
+	                            <g:sortableColumn property="orderDate" title="${message(code: 'supplierOrder.table.orderDate.label')}" params="[max: params.max, offset: params.offset]" />
 	                        
-	                            <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
+	                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.supplier.label')}" params="[max: params.max, offset: params.offset]" />
 	                            
-	                            <td>${supplierOrderInstance?.showNoticeWith10FirstLetters()}</td>
+	                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.notice.label')}" params="[max: params.max, offset: params.offset]" />
 	                            
-	                            <g:if test="${supplierOrderInstance?.delivered()}">
-	                            	<td><g:message code="default.boolean.true" /></td>
-	                            </g:if>
-	                            <g:else>
-	                            	<td><g:message code="default.boolean.false" /></td>
-	                            </g:else>
-	                            
+	                            <th><a class="notSortableColoumn"><g:message code="supplierOrder.table.delivered.label" /></a></th>
+	                        
 	                        </tr>
-	                    </g:each>
-                    </tbody>
-                </table>
-            </div>
-            <div class="paginateButtons">
-                <g:paginate total="${supplierOrderInstanceTotal}" />
-            </div>
+	                    </thead>
+	                    <tbody>
+		                    <g:each in="${supplierOrderInstanceList}" status="i" var="supplierOrderInstance">
+		                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+		                        
+			                       	<td><modalbox:createLink controller="supplierOrder" action="show" id="${supplierOrderInstance?.id}" title="${message(code: 'pendingSupplierOrder.modalBox.title.label')}" width="800">${supplierOrderInstance?.id}</modalbox:createLink></td>
+		                        
+		                            <td><g:formatDate format="dd.MM.yyyy HH:mm" date="${supplierOrderInstance.orderDate}" /></td>
+		                        
+		                            <td>${fieldValue(bean: supplierOrderInstance, field: "supplier")}</td>
+		                            
+		                            <td>${supplierOrderInstance?.showNoticeWith10FirstLetters()}</td>
+		                            
+		                            <g:if test="${supplierOrderInstance?.delivered()}">
+		                            	<td><g:message code="default.boolean.true" /></td>
+		                            </g:if>
+		                            <g:else>
+		                            	<td><g:message code="default.boolean.false" /></td>
+		                            </g:else>
+		                            
+		                        </tr>
+		                    </g:each>
+	                    </tbody>
+	                </table>
+	            </div>
+	            <div class="paginateButtons">
+	                <g:paginate total="${supplierOrderInstanceTotal}" />
+	            </div>
+            </g:if>
+            <g:else>
+				<p class="noSupplierOrders"><g:message code="supplierOrder.pendingSupplierOrders.noOrders.label" /></p>
+			</g:else>
         </div>
     </body>
 </html>
