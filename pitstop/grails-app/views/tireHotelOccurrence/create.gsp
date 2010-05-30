@@ -113,7 +113,7 @@
                 	<!-- <g:submitToRemote onSuccess="Modalbox.hide()" class="save" action="save" value="Lagre" update="[success:'message',failure:'errors']"/>-->
                 
                     <span class="button"><g:submitButton name="create" class="saveTireHotelOccurrence" value="${message(code: 'default.button.create.label')}" /></span>
-                    <span class="button"><g:actionSubmit class="cancel" action="list" value="${message(code: 'default.button.cancel.label')}" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');" /></span>
+                    <span class="button"><a class="cancel" href="javascript:history.back()" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');">${message(code: 'default.button.cancel.label')}</a></span>
                 </div>
             </g:form>
         </div>

@@ -124,7 +124,7 @@
 	               	<div class="buttons">
 	                   	<span class="button"><g:submitButton name="create" class="saveSupplierOrder" value="${message(code: 'supplierOrder.button.create.label')}" /></span>
 	        	</g:form>
-				<span class="button"><g:link class="cancel" action="pendingSupplierOrders" onclick="return confirm('${message(code: 'createTire.button.cancel.confirm.message')}');"><g:message code="createTire.button.cancel.label" /></g:link></span>
+                    <span class="button"><a class="cancel" href="javascript:history.back()" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');">${message(code: 'default.button.cancel.label')}</a></span>
 	           		</div>
 	    	</div>
         </div>

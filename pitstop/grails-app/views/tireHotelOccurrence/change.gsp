@@ -99,7 +99,7 @@
                 <g:hiddenField name="requestFromShowCustomerView" value="${params.requestFromShowCustomerView}" />
                 <div class="buttons">
                     <span class="button"><g:actionSubmit class="saveTireHotelOccurrence" action="updateChange" value="${message(code: 'default.button.updateChange.label')}" /></span>
-                    <span class="button"><g:actionSubmit class="cancel" action="show" value="${message(code: 'default.button.cancel.label')}" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');" /></span>
+                    <span class="button"><a class="cancel" href="javascript:history.back()" onclick="return confirm('${message(code: 'default.button.cancel.confirm.message')}');">${message(code: 'default.button.cancel.label')}</a></span>
                 </div>
             </g:form>
         </div>
