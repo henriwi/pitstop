@@ -37,7 +37,7 @@
 	                            
 	                            <g:sortableColumn property="supplier" title="${message(code: 'supplierOrder.table.notice.label')}" params="[max: params.max, offset: params.offset]" />
 	                            
-	                            <th><a class="notSortableColoumn"><g:message code="supplierOrder.table.delivered.label" /></a></th>
+	                            <th class="buttonRow"><a class="notSortableColoumn"><g:message code="supplierOrder.table.delivered.label" /></a></th>
 	                        
 	                        </tr>
 	                    </thead>
@@ -53,12 +53,14 @@
 		                            
 		                            <td>${supplierOrderInstance?.showNoticeWith10FirstLetters()}</td>
 		                            
-		                            <g:if test="${supplierOrderInstance?.delivered()}">
-		                            	<td><g:message code="default.boolean.true" /></td>
-		                            </g:if>
-		                            <g:else>
-		                            	<td><g:message code="default.boolean.false" /></td>
-		                            </g:else>
+		                            <td class="buttonRow">
+			                            <g:if test="${supplierOrderInstance?.delivered()}">
+			                            	<g:message code="default.boolean.true" />
+			                            </g:if>
+			                            <g:else>
+			                            	<g:message code="default.boolean.false" />
+			                            </g:else>
+		                            </td>
 		                            
 		                        </tr>
 		                    </g:each>

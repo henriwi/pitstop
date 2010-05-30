@@ -56,7 +56,7 @@
                         
                             <g:sortableColumn property="event" title="${message(code: 'log.event.table.label')}" />
                             
-                            <th><a class="notSortableColoumn">${message(code: 'user.list.delete.label')}</a></th>
+                            <th class="buttonRow"><a class="notSortableColoumn">${message(code: 'user.list.delete.label')}</a></th>
                         
                         </tr>
                     </thead>
@@ -70,7 +70,7 @@
 	                        
 	                            <td>${logInstance?.event}</td>
 	                            
-		                    	<td>
+		                    	<td class="buttonRow">
 			                    	<g:form method="post">
 			                        	<g:hiddenField name="id" value="${logInstance?.id}" />
 			                           	<g:actionSubmit class="deleteTableItem" title="${message(code: 'log.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'log.button.delete.confirm.message')}');" />

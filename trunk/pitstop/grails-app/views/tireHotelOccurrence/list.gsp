@@ -52,14 +52,14 @@
                             
                             <g:sortableColumn property="notice" title="${message(code: 'tireHotelOccurrence.list.notice.label')}" />
                             
-                            <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.edit.label')}</a></th>
+                            <th class="buttonRow"><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.edit.label')}</a></th>
                             
-                            <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delivered.label')}</a></th>
+                            <th class="buttonRow"><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delivered.label')}</a></th>
                             
-                            <th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.change.label')}</a></th>
+                            <th class="buttonRow"><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.change.label')}</a></th>
 
                             <g:ifAllGranted role="ROLE_ADMIN">
-                            	<th><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delete.label')}</a></th>
+                            	<th class="buttonRow"><a class="notSortableColoumn">${message(code: 'tireHotelOccurrence.list.delete.label')}</a></th>
                             </g:ifAllGranted>
                         
                         </tr>
@@ -84,9 +84,9 @@
 	                            
 	                            <td><g:link action="show" id="${tireHotelOccurrenceInstance.id}">${tireHotelOccurrenceInstance?.showNoticeWith10FirstLetters()}</g:link></td>
 	                            
-	                            <td><g:link class="editTireHotelOccurrenceTableItem" action="edit" title="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" id="${tireHotelOccurrenceInstance.id}">&nbsp;</g:link></td>
+	                            <td class="buttonRow"><g:link class="editTireHotelOccurrenceTableItem" action="edit" title="${message(code: 'tireHotelOccurrence.list.edit.tooltip.label')}" id="${tireHotelOccurrenceInstance.id}">&nbsp;</g:link></td>
 	                            
-	                            <td>
+	                            <td class="buttonRow">
 	                            	<g:form method="post">
 	                            		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
 										<g:hiddenField name="delivered" value="delivered" />
@@ -94,7 +94,7 @@
 	                            	</g:form>
 	                            </td>
 	                            
-	                            <td>
+	                            <td class="buttonRow">
 	                            	<g:form method="post">
 	                            		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
 	                            		<g:actionSubmit class="change" action="change" title="${message(code: 'tireHotelOccurrence.list.change.tooltip.label')}" value="${message(code: 'tireHotelOccurrence.list.change.button')}" />
@@ -102,7 +102,7 @@
 	                            </td>
 	                            
 	                            <g:ifAllGranted role="ROLE_ADMIN">
-		                            <td>
+		                            <td class="buttonRow">
 		                            	<g:form method="post">
 		                            		<g:hiddenField name="id" value="${tireHotelOccurrenceInstance?.id}" />
 		                            		<g:actionSubmit class="deleteTableItem" title="${message(code: 'tireHotelOccurrence.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'tireHotelOccurrence.button.delete.confirm.message')}');" />
