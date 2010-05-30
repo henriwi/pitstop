@@ -1,5 +1,6 @@
 <head>
 	<meta name="layout" content="main" />
+	<link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'print.css')}" media="print" />
 	<title><g:message code="user.list.label" /></title>
 </head>
 <body>

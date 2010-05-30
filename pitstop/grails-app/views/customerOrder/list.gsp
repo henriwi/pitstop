@@ -4,6 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'print.css')}" media="print" />
         <g:set var="entityName" value="${message(code: 'customerOrder.label', default: 'CustomerOrder')}" />
         <title><g:message code="customerOrder.list.header.label" /></title>
     </head>
