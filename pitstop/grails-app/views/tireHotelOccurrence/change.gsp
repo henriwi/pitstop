@@ -8,11 +8,11 @@
     </head>
     <body>
         <div class="nav">
-			<span class="menuButton" ${(params.action == 'list' || params.action == 'save') ? "id='active'" : ""}  >
+			<span class="menuButton" ${(params.action == 'list') ? "id='active'" : ""}  >
 	        	<g:link class="tireHotelOccurrenceList" action="list"><g:message code="tireHotelOccurrence.list.label" /></g:link>
        		</span>
 	        
-	        <span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""}  >
+	        <span class="menuButton" ${(params.action == 'create' || params.action == 'save') ? "id='active'" : ""}  >
 	        	<g:link class="createTireHotelOccurrence" action="create"><g:message code="tireHotelOccurrence.create.label" /></g:link>
        		</span>
        		
