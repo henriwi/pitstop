@@ -161,7 +161,7 @@ class TireHotelOccurrenceController {
 					}
 					else{
 						flash.message = "${message(code: 'tireHotelOccurrence.changeSeason.message', args: [message(code: 'tireHotelOccurrence.label'),tireHotelOccurrenceInstance.tireLocation, tireHotelOccurrenceInstance.id, customerInstance.firstName, customerInstance.lastName, tireHotelOccurrenceInstance.tireType, newTireHotelOccurrenceInstance.tireType])}"
-						redirect(action: "list")//, id: newTireHotelOccurrenceInstance.id)
+						redirect(action: "list")
 					}
 				}
 				else{
