@@ -10,12 +10,11 @@ import org.springframework.security.context.SecurityContextHolder as SCH
 import org.springframework.security.providers.UsernamePasswordAuthenticationToken;
 
 
-class LogServiceTests extends GroovyTestCase {
+class LogServiceIntegrationTests extends GroovyTestCase {
 	def logService
 	def session
     protected void setUp() {
         super.setUp()
-		
         logService = new LogService()
 		session = new MockHttpSession()
     }
@@ -34,12 +33,11 @@ class LogServiceTests extends GroovyTestCase {
 		
 		SCH.context.authentication = new UsernamePasswordAuthenticationToken(userDetails, 
 				person.passwd, userDetails.authorities)
-		session.setAttribute("SPRING_SECURITY_CONTEXT", SCH.context)
-		session.getValueNames().each{println it}
+		session["SPRING_SECURITY_CONTEXT"] = SCH.context
 	}
 
     void testSaveLog() {
-    	//logInUser()
-    	//logService.saveLog(session, "Added new tire");
+    	logInUser()
+    	logService.saveLog(session, "Added new tire")
     }
 }

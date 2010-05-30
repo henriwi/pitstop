@@ -6,7 +6,6 @@ import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class TireHotelOccurrenceController {
-	def logService
 	static final maxNumberOfTireHotelOccurrences = 50
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	

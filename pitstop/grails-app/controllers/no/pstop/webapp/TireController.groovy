@@ -275,4 +275,9 @@ class TireController {
 		def tire = Tire.get(params.tireId)
 		render formatter.format(tire?.averagePrice())
 	}
+	
+	def getNumberOfAvailableFromSelectedTire = {
+		def tire = Tire.get(params.tireId)
+		render tire.numberOfAvailable()
+	}
 }

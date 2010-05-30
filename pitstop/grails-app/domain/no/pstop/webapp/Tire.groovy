@@ -70,7 +70,7 @@ class Tire {
 	}
 	
 	String toString(){
-		"${brand} ${tireName} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType}"
+		"${brand} ${tireName != null ? tireName : '-'} ${width}/${profile} ${construction}${diameter} ${loadIndex}${speedIndex} ${tireType}"
 	}
 	
 	Double highestPrice(){

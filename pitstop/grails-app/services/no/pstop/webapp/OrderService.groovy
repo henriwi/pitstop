@@ -8,7 +8,7 @@ class OrderService {
 			orderInstance.addToSupplierOrderLines(it)
 		}
 		if(!orderInstance.save()) {
-			throw new RuntimeException("cannot save supplierOrder")
+			throw new RuntimeException("Cannot save supplierOrder")
 		}
     }
 	
@@ -17,7 +17,7 @@ class OrderService {
 			orderInstance.addToCustomerOrderLines(it)
 		}
 		if(!orderInstance.save()) {
-			throw new RuntimeException("cannot save customerOrder")
+			throw new RuntimeException("Cannot save customerOrder")
 		}
     }
 }

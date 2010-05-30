@@ -1,6 +1,7 @@
 package no.pstop.webapp
 
 class IndexController {
+	
     def index = {
 		def numberOfPendingCustomerOrders = numberOfPendingCustomerOrders()
 		def numberOfPendingSupplierOrders = numberOfPendingSupplierOrders()
