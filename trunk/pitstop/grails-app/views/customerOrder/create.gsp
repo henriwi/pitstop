@@ -95,8 +95,8 @@
 								<tr>
 	                      			<td>${orderLineInstance?.tire}</td>
 	                      			<td><g:formatNumber number="${orderLineInstance?.tire?.retailPrice}" format="#.00 kr" /></td>
-	                      			<td><g:formatNumber number="${orderLineInstance?.tire?.highestPrice()}" format="#.00 kr" /></td>
-	                      			<td><g:formatNumber number="${orderLineInstance?.tire?.averagePrice()}" format="#.00 kr" /></td>
+	                      			<td><g:formatNumber number="${orderLineInstance?.tire?.highestPrice()}" format="#.## kr" /></td>
+	                      			<td><g:formatNumber number="${orderLineInstance?.tire?.averagePrice()}" format="#.## kr" /></td>
 	                      			<td>${orderLineInstance?.tire?.numberOfAvailable()}</td>
 	                      			<td>${orderLineInstance?.numberOfReservedTires}</td>
 	                      			<td><g:formatNumber number="${orderLineInstance?.price}" format="#.00 kr" /></td>
