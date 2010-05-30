@@ -6,7 +6,6 @@
         <title><g:layoutTitle default="PIT-STOP" /></title>
         <link rel="shortcut icon" href="${resource(dir:'images', file:'pitstop.ico')}" type="image/x-icon" />
         <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" />
-
         <link rel="stylesheet" media="only screen and (max-width: 480px)" href="${resource(dir:'css',file:'iphone.css')}" type= "text/css" />
         <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="${resource(dir:'css',file:'iphone.css')}" type= "text/css" />
         <meta name="viewport" content="width=device-width, user-scalable=no" />
@@ -20,7 +19,7 @@
         <g:javascript library="prototype" />
 
         <modalbox:modalIncludes />
-        <!-- <gui:resources components="autoComplete" />-->
+        <gui:resources components="autoComplete" />
         <resource:dateChooser />
     </head>
     <body>

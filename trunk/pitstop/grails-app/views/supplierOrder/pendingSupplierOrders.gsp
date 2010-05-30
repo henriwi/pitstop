@@ -4,8 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <title><g:message code="supplierOrder.pendingSupplierOrders.title.label" /></title>
         <gui:resources components="accordion, dataTable"/>
+        <title><g:message code="supplierOrder.pendingSupplierOrders.title.label" /></title>
     </head>
     <body>
         <div class="nav">
