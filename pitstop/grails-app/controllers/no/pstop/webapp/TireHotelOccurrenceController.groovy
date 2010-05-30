@@ -4,7 +4,7 @@ import grails.converters.JSON
 import java.util.Iterator;
 import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_USER', 'ROLE_ADMIN'])
 class TireHotelOccurrenceController {
 	static final maxNumberOfTireHotelOccurrences = 50
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

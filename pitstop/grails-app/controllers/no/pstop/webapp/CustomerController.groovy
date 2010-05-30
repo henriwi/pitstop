@@ -1,7 +1,6 @@
 package no.pstop.webapp
 
 import java.net.HttpURLConnection;
-
 import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 import grails.converters.JSON
 

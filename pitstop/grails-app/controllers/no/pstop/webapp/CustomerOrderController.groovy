@@ -1,7 +1,10 @@
 package no.pstop.webapp
+
 import java.util.Date;
 import java.util.Iterator;
+import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class CustomerOrderController {
 	static final maxNumberOfCustomerOrders = 50
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -66,6 +69,7 @@ class CustomerOrderController {
         }
     }
 
+	@Secured(['ROLE_ADMIN'])
     def delete = {
         def customerOrderInstance = CustomerOrder.get(params.id)
         if (customerOrderInstance) {
