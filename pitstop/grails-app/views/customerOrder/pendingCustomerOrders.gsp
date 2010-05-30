@@ -55,7 +55,7 @@
 	            </div>
 			</g:if>
 			<g:else>
-				<p class="noPendingCustomerOrders"><g:message code="customerOrder.pendingCustomerOrders.noOrders.label" /></p>
+				<p class="noCustomerOrders"><g:message code="customerOrder.pendingCustomerOrders.noOrders.label" /></p>
 			</g:else>
        	</div>
     </body>
