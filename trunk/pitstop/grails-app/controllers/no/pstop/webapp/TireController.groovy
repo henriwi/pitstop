@@ -1,12 +1,10 @@
 package no.pstop.webapp
 
 import java.text.DecimalFormat;
-
 import grails.converters.JSON
-
 import org.codehaus.groovy.grails.plugins.springsecurity.Secured
 
-@Secured(['ROLE_ADMIN','ROLE_USER'])
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class TireController {
 	static final regexFastSearch = /(\d{3})(\d{2})(\d{1})(s|v|S|V)/
 	static final maxNumberOfTires = 50

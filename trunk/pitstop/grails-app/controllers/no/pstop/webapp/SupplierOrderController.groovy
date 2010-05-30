@@ -1,9 +1,10 @@
 package no.pstop.webapp
 
 import grails.converters.JSON;
-
 import java.util.Date;
+import org.codehaus.groovy.grails.plugins.springsecurity.Secured;
 
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class SupplierOrderController {
 	def orderService
 	def logService
@@ -67,6 +68,7 @@ class SupplierOrderController {
         }
     }
 
+	@Secured(['ROLE_ADMIN'])
     def delete = {
         def supplierOrderInstance = SupplierOrder.get(params.id)
         if (supplierOrderInstance) {
