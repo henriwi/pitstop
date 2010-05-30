@@ -57,13 +57,13 @@
            			<div class="buttons" id="tireButtons">
 	                	<g:form class="showTireButtons">
 	                    	<g:hiddenField name="id" value="${tireInstance?.id}" />
-	                    	<span class="button"><g:actionSubmit class="editTire" action="edit" value="${message(code: 'tire.button.edit.label', default: 'Edit')}" /></span>
-	                    	<span class="button" id="createSupplierOrderButton"><g:link controller="supplierOrder" class="create" params="[id:tireInstance?.id]" action="create"><g:message code="tire.button.newCustomerOrder.label" /></g:link></span>
+	                    	<span class="button"><g:actionSubmit class="editTire" action="edit" title="${message(code: 'tire.list.edit.tooltip.label')}" value="${message(code: 'tire.button.edit.label', default: 'Edit')}" /></span>
+	                    	<span class="button" id="createSupplierOrderButton"><g:link controller="supplierOrder" class="create" title="${message(code: 'tire.list.order.tooltip.label')}" params="[id:tireInstance?.id]" action="create" ><g:message code="tire.button.newCustomerOrder.label" /></g:link></span>
 						</g:form>
 						
 						<g:ifAllGranted role="ROLE_ADMIN"> 
 	                    	<g:form method="post">
-		                    	<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'tire.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" /></span>
+		                    	<span class="button"><g:actionSubmit class="delete" action="delete" title="${message(code: 'tire.list.delete.tooltip.label')}" value="${message(code: 'tire.button.delete.label')}" onclick="return confirm('${message(code: 'tire.button.delete.confirm.message')}');" /></span>
 	                        	<g:hiddenField name="id" value="${tireInstance?.id}" />
 	         			
                            	 	<g:if test="${tireInstance?.enabled}">

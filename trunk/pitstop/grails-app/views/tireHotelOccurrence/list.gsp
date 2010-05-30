@@ -28,7 +28,7 @@
 				<div id="fastSearchInListView">
 					<g:textField tabindex='1' name="search" /></td>
 					<g:submitButton tabindex='2' class="searchButtons" name="btnSearch" value="${message(code: 'search.button.fastSearch.label')}" />
-					<g:link action="list" class="btnShowAll"><g:message code="tireHotelOccurrence.search.showAll.label" /></g:link>							
+					<g:link action="list" class="btnShowAll" title="${message(code: 'tireHotelOccurence.list.showAll.link.tooltip')}"><g:message code="tireHotelOccurrence.search.showAll.label" /></g:link>							
 				</div>
 			</g:form>
 			<!-- <modalbox:createLink controller="tireHotelOccurrence" action="create" title="Show book!" width="500" overlayDuration="0" slideDownDuration="0" resizeDuration="0">Book</modalbox:createLink>-->
