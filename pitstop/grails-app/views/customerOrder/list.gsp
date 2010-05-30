@@ -29,7 +29,6 @@
 	                <table>
 	                    <thead>
 	                        <tr>
-	                        
 	                            <g:sortableColumn property="id" title="${message(code: 'customerOrder.list.table.orderNumber.label')}" params="[max: params.max, offset: params.offset]" />
 	                        
 	                            <g:sortableColumn property="orderDate" title="${message(code: 'customerOrder.list.table.orderDate.label')}" params="[max: params.max, offset: params.offset]" />

@@ -67,12 +67,10 @@
                             
                             <g:sortableColumn params="${params}" property="notice" title="${message(code: 'tire.notice.table.label')}" />
                             
-                            <%--  <th><a class="notSortableColoumn">${message(code: 'tireOccurrence.numberOfAvailable.table.label')}</a></th> --%>
-                            
-                            <th><a class="notSortableColoumn">${message(code: 'tire.list.edit.label')}</a></th>
+                            <th class="buttonRow"><a class="notSortableColoumn">${message(code: 'tire.list.edit.label')}</a></th>
 
            	                <g:ifAllGranted role="ROLE_ADMIN"> 
-	                     		<th><a class="notSortableColoumn">${message(code: 'tire.list.disable.table.label')}</a></th>
+	                     		<th class="buttonRow"><a class="notSortableColoumn">${message(code: 'tire.list.disable.table.label')}</a></th>
                         	</g:ifAllGranted>
                         </tr>
                     </thead>
@@ -107,10 +105,10 @@
 	                            
 	                            <td><g:link action="show" id="${tireInstance.id}">${tireInstance?.showNoticeWith10FirstLetters()}</g:link></td>
 	                            
-	                            <td><g:link class="editTireTableItem" action="edit" title="${message(code: 'tire.list.edit.tooltip.label')}" id="${tireInstance.id}">&nbsp;</g:link></td>
+	                            <td class="buttonRow"><g:link class="editTireTableItem" action="edit" title="${message(code: 'tire.list.edit.tooltip.label')}" id="${tireInstance.id}">&nbsp;</g:link></td>
 	                            
 	           	                <g:ifAllGranted role="ROLE_ADMIN"> 
-		                            <td>
+		                            <td class="buttonRow">
 				                    	<g:form method="post">
 				                        	<g:hiddenField name="id" value="${tireInstance?.id}" />
 				         

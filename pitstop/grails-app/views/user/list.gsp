@@ -35,12 +35,12 @@
 						
 						<g:sortableColumn property="description" title="${message(code: 'user.email.table.label')}" />
 	                    
-	                    <th><a class="notSortableColoumn">${message(code: 'user.list.edit.label')}</a></th>
+	                    <th class="buttonRow"><a class="notSortableColoumn">${message(code: 'user.list.edit.label')}</a></th>
 		                
 		                <g:ifAllGranted role="ROLE_ADMIN"> 
-	                     	<th><a class="notSortableColoumn">${message(code: 'user.list.disable.label')}</a></th>
+	                     	<th class="buttonRow"><a class="notSortableColoumn">${message(code: 'user.list.disable.label')}</a></th>
 		               
-		                	<th><a class="notSortableColoumn">${message(code: 'user.list.delete.label')}</a></th>
+		                	<th class="buttonRow"><a class="notSortableColoumn">${message(code: 'user.list.delete.label')}</a></th>
 						</g:ifAllGranted>
 					</tr>
 				</thead>
@@ -58,10 +58,10 @@
 							
 							<td><g:link action="show" id="${person.id}">${fieldValue(bean: person, field: "email")}</g:link> </td>
 							
-							<td><g:link class="editUserTableItem" action="edit" title="${message(code: 'user.list.edit.tooltip.label')}"  id="${person?.id}">&nbsp;</g:link></td>
+							<td class="buttonRow"><g:link class="editUserTableItem" action="edit" title="${message(code: 'user.list.edit.tooltip.label')}"  id="${person?.id}">&nbsp;</g:link></td>
 		                    <g:ifAllGranted role="ROLE_ADMIN"> 
 		                    
-			                    <td>
+			                    <td class="buttonRow">
 			                    	<g:form method="post">
 			                        	<g:hiddenField name="id" value="${person?.id}" />
 			         
@@ -74,7 +74,7 @@
 			                        </g:form>
 			                   	</td> 
 			                    
-			                    <td>
+			                    <td class="buttonRow">
 			                    	<g:form method="post">
 			                        	<g:hiddenField name="id" value="${person?.id}" />
 			                           	<g:actionSubmit class="deleteTableItem" title="${message(code: 'user.list.delete.tooltip.label')}" action="delete" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'user.button.delete.confirm.message')}');" />

@@ -8,6 +8,10 @@ html * {
     /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
 }
 
+.iPhone,  .buttonRow{
+	display: none;
+}
+
 /* GENERAL */
 .spinner {
     padding: 5px;

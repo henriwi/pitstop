@@ -53,14 +53,14 @@
 	                        	<g:sortableColumn property="notice" title="${message(code: 'customer.notice.table.label')}" />
 	                     	  
 	                     	  <%--ENDRE IKONER HER--%>
-	                       	    <th><a class="notSortableColoumn">${message(code: 'cusomter.list.tireHotel.label')}</a></th>
+	                       	    <th class="buttonRow"><a class="notSortableColoumn">${message(code: 'cusomter.list.tireHotel.label')}</a></th>
 	  
-	                       	    <th><a class="notSortableColoumn">${message(code: 'cusomter.list.order.label')}</a></th>
+	                       	    <th class="buttonRow"><a class="notSortableColoumn">${message(code: 'cusomter.list.order.label')}</a></th>
 	  
-	                     	    <th><a class="notSortableColoumn">${message(code: 'cusomter.list.edit.label')}</a></th>
+	                     	    <th class="buttonRow"><a class="notSortableColoumn">${message(code: 'cusomter.list.edit.label')}</a></th>
 		                
 	           	                <g:ifAllGranted role="ROLE_ADMIN"> 
-		                			<th><a class="notSortableColoumn">${message(code: 'customer.list.delete.label')}</a></th>
+		                			<th class="buttonRow"><a class="notSortableColoumn">${message(code: 'customer.list.delete.label')}</a></th>
 								</g:ifAllGranted>                       
 	                       
 	                        </tr>
@@ -87,19 +87,19 @@
 	                            
 	                            <td><g:link action="show" id="${customerInstance.id}">${customerInstance?.showNoticeWith10FirstLetters()}</g:link></td>
 	                            
-	                            <td><g:link class="addTireHotelOccurrence" controller="tireHotelOccurrence" action="create" title="${message(code: 'customer.list.tireHotel.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
+	                            <td class="buttonRow"><g:link class="addTireHotelOccurrence" controller="tireHotelOccurrence" action="create" title="${message(code: 'customer.list.tireHotel.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
 	                  		    
-	                   	        <td><g:link class="addOrder" controller="customerOrder"  action="create" title="${message(code: 'customer.list.order.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
+	                   	        <td class="buttonRow"><g:link class="addOrder" controller="customerOrder"  action="create" title="${message(code: 'customer.list.order.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
 	                  		    
-	                            <td><g:link class="editCustomerTableItem" action="edit" title="${message(code: 'customer.list.edit.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
+	                            <td class="buttonRow"><g:link class="editCustomerTableItem" action="edit" title="${message(code: 'customer.list.edit.tooltip.label')}" id="${customerInstance?.id}">&nbsp;</g:link></td>
 	                  		    
 		    	                <g:ifAllGranted role="ROLE_ADMIN"> 
-	                  		    <td>
-	                    			<g:form method="post">
-		                        		<g:hiddenField name="id" value="${customerInstance?.id}" />
-		                           		<g:actionSubmit class="deleteTableItem" action="delete" title="${message(code: 'customer.list.delete.tooltip.label')}" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'customer.button.delete.confirm.message')}');" />
-	                        		</g:form>
-	                   			</td>  
+		                  		    <td class="buttonRow">
+		                    			<g:form method="post">
+			                        		<g:hiddenField name="id" value="${customerInstance?.id}" />
+			                           		<g:actionSubmit class="deleteTableItem" action="delete" title="${message(code: 'customer.list.delete.tooltip.label')}" value="${message(code: 'list.button.delete.label')}" onclick="return confirm('${message(code: 'customer.button.delete.confirm.message')}');" />
+		                        		</g:form>
+		                   			</td>
 	                   			</g:ifAllGranted>
 	                        </tr>
 	                    </g:each>
