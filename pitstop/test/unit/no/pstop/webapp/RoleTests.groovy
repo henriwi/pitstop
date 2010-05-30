@@ -36,6 +36,4 @@ class RoleTests extends GrailsUnitTestCase {
 		def badField = role2.errors.getFieldError("authority")
 		assertNotNull "Expected error i authority", badField
 	}
-	
-	
 }

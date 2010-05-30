@@ -184,26 +184,6 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		assertEquals "redirect action", "list", controller.redirectArgs.action 
 	}
 	
-	/*
-	void testUpdateChangeWithValidParams(){
-		setParams "1a", "DE12345", "Audi", customer, "Vinter (pigg)", null, null, "Notice"
-		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
-		
-		def newTireHotelOccurrence = new TireHotelOccurrence(tireLocation:"1a", registrationNumber:"DE12345", carType:"Audi", 
-				customer:customer, tireType: "Vinter (pigg)", inDate:new Date(), outDate:null, notice:"Notice")
-		
-		def mock = mockFor(TireHotelOccurrence)
-		mock.demand.merge() {newTireHotelOccurrence}
-		controller.params.id = 1
-		controller.metaClass.message = {args -> println "message: ${args}"}
-		
-		controller.updateChange()
-		
-		assertEquals "redirect action", "show", controller.redirectArgs.action
-		assertEquals "Id should be the same", 2, controller.redirectArgs.id
-	}
-	*/
-	
 	void testUpdateChangeWithValidParamsButErrors(){
 		setParams "1a", "DE12345", "Audi", customer, "Vinter (pigg)", null, null, "Notice"
 		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
@@ -239,41 +219,4 @@ class TireHotelOccurrenceControllerTests extends ControllerUnitTestCase {
 		
 		assertEquals "redirect action", "list", controller.redirectArgs.action
 	}
-	
-	/*
-	void testUpdateChangeWithValidIdButInvalidParams(){
-		setParams "1a", "DE12345", "?", customer, "?", null, null, "Notice"
-		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
-		
-		def newTireHotelOccurrence = new TireHotelOccurrence(tireLocation:"1a", registrationNumber:"DE12345", carType:"?", 
-		customer:customer, tireType: "Sommer", inDate:new Date(), outDate:null, notice:"Notice")
-		
-		def mock = mockFor(TireHotelOccurrence)
-		mock.demand.merge() {newTireHotelOccurrence}
-		controller.params.id = 1
-		
-		controller.updateChange()
-		
-		assertEquals "render action", "edit", controller.modelAndView.viewName
-		assertNotNull "TireHotelOccurrence should not be null", controller.modelAndView.model.linkedHashMap.tireHotelOccurrenceInstance
-	}
-	*/
-	
-	/* TODO - den feiler
-	void testRegistrationNumberAutoComplete() {
-		mockDomain TireHotelOccurrence, [tireHotelOccurrence]
-		def mock = mockFor(TireHotelOccurrence)
-		mock.demand.static.findAllByRegistrationNumberLikeAndCustomer() {String arg1, Customer arg2 -> return tireHotelOccurrence}
-		
-		controller.params.query = "DE"
-		controller.params.customer = 1
-		controller.request.contentType = "text/json"
-		
-		def expectedJson = tireHotelOccurrence.registrationNumber
-		controller.registrationNumberAutoComplete()
-		def result = JSON.parse(controller.response.contentAsString)
-		
-		assertEquals expectedJson, result.registrationNumbers[0].name
-	}
-	*/
 }
