@@ -1,6 +1,6 @@
 package no.pstop.webapp;
 
-import grails.converters.deep.JSON;
+import grails.converters.JSON;
 import grails.test.*;
 
 class CustomerControllerTests extends ControllerUnitTestCase {

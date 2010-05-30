@@ -33,9 +33,4 @@ class SupplierOrderTests extends GrailsUnitTestCase {
 		def badField = supplierOrder.errors.getFieldError("supplier")
 		assertNotNull "I'm expecting to find error in supplier", badField
 	}
-	
-	/*void testToString() {
-		supplierOrder.id = 1
-		assertEquals "Ordre - 1", supplierOrder.toString()
-	}*/
 }

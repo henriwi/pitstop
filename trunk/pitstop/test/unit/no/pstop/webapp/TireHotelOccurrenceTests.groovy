@@ -79,24 +79,6 @@ class TireHotelOccurrenceTests extends GrailsUnitTestCase {
 		assertNotNull "I'm expecting to find error in tireType", badField
 	}
 	
-	/*
-	void testGenerateTireHotelOccurrenceWithInvalidInDate() {
-		tireHotelOccurrence.inDate = "" 
-		
-		assertFalse "Test failed, expecting invalid inDate", tireHotelOccurrence.validate()
-		def badField = tireHotelOccurrence.errors.getFieldError('inDate')
-		assertNotNull "I'm expecting to find error in inDate", badField
-	}
-	
-	void testGenerateTireHotelOccurrenceWithInvalidOutDate() {
-		tireHotelOccurrence.outDate = null
-		
-		assertFalse "Test failed, expecting invalid outDate", tireHotelOccurrence.validate()
-		def badField = tireHotelOccurrence.errors.getFieldError('outDate')
-		assertNotNull "I'm expecting to find error in outDate", badField
-	}
-	*/
-	
 	void testGenerateTireHotelOccurrenceWithInvalidNotice() {
 		
 		for(int i = 0; i < 2000; i++)

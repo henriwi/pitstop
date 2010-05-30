@@ -60,13 +60,6 @@ class LoginControllerIntegrationTests extends GroovyTestCase {
 		assertEquals "Model", "/j_spring_security_check", controller.getModelAndView().model.postUrl
 	}
 	
-	//TODO - Have to set remember me
-	/*void testDenied() {
-		logIn()
-		controller.denied()
-		assertEquals "Redirect uri", "full", controller.response.redirectedUrl
-	}*/
-	
 	void testFull() {
 		controller.full()
 		assertEquals "View name", "${uriPrefix}/auth", controller.getModelAndView().viewName
