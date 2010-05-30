@@ -12,7 +12,7 @@
        			<g:link controller="tire" class="tireList" action="list"><g:message code="default.button.tireList.label"/></g:link>
        		</span>
 	        
-       		<span class="menuButton" id="${params.action == 'create' && params.controller == 'tire' ? 'active' : ''}" >
+       		<span class="menuButton" id="${(params.action == 'create' || || params.action == 'save') && params.controller == 'tire' ? 'active' : ''}" >
        			<g:link controller="tire" class="createTire" action="create"><g:message code="default.button.newTire.label"/></g:link>
        		</span>
 	        

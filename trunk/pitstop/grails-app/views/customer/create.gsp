@@ -12,7 +12,7 @@
        		<span class="menuButton" ${params.action == 'list' ? "id='active'" : ""} >
        			<g:link class="customerList" action="list"><g:message code="customer.list.label" /></g:link>
        		</span>
-       		<span class="menuButton" ${(params.action == 'create') ? "id='active'" : ""}  >
+       		<span class="menuButton" ${(params.action == 'create' || params.action == 'save') ? "id='active'" : ""}  >
        			<g:link class="createUser" action="create"><g:message code="customer.create.title.label" /></g:link>
        		</span>
         </div>
