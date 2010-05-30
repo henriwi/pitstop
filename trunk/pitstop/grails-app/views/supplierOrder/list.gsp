@@ -4,6 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'print.css')}" media="print" />
         <title><g:message code="supplierOrder.list.title.label" /></title>
     </head>
     <body>
