@@ -229,6 +229,7 @@ class TireController {
 		else {
 			tires = Tire.search{
 				queryString("*" + params.query + "*")
+				must(term('enabled', "true"))
 			}.results
 		}
 		
