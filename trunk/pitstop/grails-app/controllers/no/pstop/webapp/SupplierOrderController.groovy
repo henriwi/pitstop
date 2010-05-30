@@ -37,9 +37,6 @@ class SupplierOrderController {
 		def supplierOrderInstance = session["order"]
         supplierOrderInstance?.orderDate = new Date()
 		
-		println "validte fra test: " + supplierOrderInstance.validate()
-		supplierOrderInstance.errors.each {println it }
-		
 		if(!supplierOrderInstance.validate() || session["orderLines"]?.size() == 0) {
 			if(session["orderLines"]?.size() == 0) {
 				supplierOrderInstance.errors.reject('supplierOrder.supplierOrderLine.empty.error')
@@ -152,8 +149,13 @@ class SupplierOrderController {
 	
 	def receiveOrderLine = {
 		def supplierOrderLineInstance = SupplierOrderLine.get(params.supplierOrderLineId)
-		receiveOrderLine(supplierOrderLineInstance, params)
-        flash.message = "${message(code: 'supplierOrder.orderLine.received.message')}"
+		supplierOrderLineInstance = receiveOrderLine(supplierOrderLineInstance, params)
+		if(supplierOrderLineInstance.hasErrors()) {
+			flash.message = "${message(code: 'supplierOrder.orderLine.not.received.message')}"
+		}
+		else {
+			flash.message = "${message(code: 'supplierOrder.orderLine.received.message')}"
+		}
 		redirect(controller: "tire", action: "show", id: supplierOrderLineInstance?.tire?.id)
 	}
 	
@@ -161,16 +163,20 @@ class SupplierOrderController {
 		def tire = supplierOrderLineInstance?.tire
 		
 		int numberOfReceived = params.numberOfReceived.toInteger()
-		supplierOrderLineInstance?.numberOfReceivedTires += numberOfReceived
-		tire?.numberInStock += numberOfReceived
-		
-		if(supplierOrderLineInstance?.numberOfOrderedTires == supplierOrderLineInstance?.numberOfReceivedTires) {
-			supplierOrderLineInstance?.receivedDate = new Date()
+
+		if(numberOfReceived + supplierOrderLineInstance?.numberOfReceivedTires <= supplierOrderLineInstance?.numberOfOrderedTires ) {
+			supplierOrderLineInstance?.numberOfReceivedTires += numberOfReceived
+			tire?.numberInStock += numberOfReceived
+			
+			if(supplierOrderLineInstance?.numberOfOrderedTires == supplierOrderLineInstance?.numberOfReceivedTires) {
+				supplierOrderLineInstance?.receivedDate = new Date()
+			}
+			supplierOrderLineInstance.save(flush: true)
 		}
-		
-		supplierOrderLineInstance.save(flush: true)
-		supplierOrderLineInstance.errors.each {
+		else {
+			supplierOrderLineInstance.errors.reject('')
 		}
+		return supplierOrderLineInstance
 	}
 	
 	private isSpecialFastSearchQuery(String query) {

@@ -5,7 +5,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'customerOrder.label', default: 'CustomerOrder')}" />
         <gui:resources components="autoComplete" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <title><g:message code="customerOrder.create.header.label" /></title>
     </head>
     <body>
         <div class="nav">
@@ -20,7 +20,7 @@
        		</span>
         </div>
         <div class="body">
-            <h1><g:message code="customerOrder.create.header.label" args="[entityName]" /></h1>
+            <h1><g:message code="customerOrder.create.header.label" /></h1>
             <g:if test="${flash.message}">
             	<div class="message">${flash.message}</div>
             </g:if>
@@ -74,7 +74,9 @@
 			                		
 			                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.averagePrice.table.label')}</a></th>
 			                		
-			                		<th id="customerOrderDeleteHeader"><a class="notSortableColoumn">${message(code: 'customerOrderLine.numberOfReservedTires.table.label')}</a></th>
+			                		<th id="customerOrderDeleteHeader"><a class="notSortableColoumn">${message(code: 'tire.numberOfAvailable.table.label')}</a></th>
+			                		
+			                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.numberOfReservedTires.table.label')}</a></th>
 			                		
 			                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.price.table.label')}</a></th>
 			                		
@@ -87,7 +89,7 @@
 	       							<g:renderErrors bean="${errorOrderLine}" as="list" field="price"/>
 	       							<g:renderErrors bean="${errorOrderLine}" as="list" field="numberOfReservedTires"/>
 	       						</div>
-	     							</g:hasErrors>			                
+	     					</g:hasErrors>			                
 	                		<tbody>
 							<g:each in="${orderLines}" status="i" var="orderLineInstance">
 								<tr>
@@ -95,6 +97,7 @@
 	                      			<td><g:formatNumber number="${orderLineInstance?.tire?.retailPrice}" format="#.00 kr" /></td>
 	                      			<td><g:formatNumber number="${orderLineInstance?.tire?.highestPrice()}" format="#.00 kr" /></td>
 	                      			<td><g:formatNumber number="${orderLineInstance?.tire?.averagePrice()}" format="#.00 kr" /></td>
+	                      			<td>${orderLineInstance?.tire?.numberOfAvailable()}</td>
 	                      			<td>${orderLineInstance?.numberOfReservedTires}</td>
 	                      			<td><g:formatNumber number="${orderLineInstance?.price}" format="#.00 kr" /></td>
 									<td>
@@ -103,34 +106,37 @@
 								</tr>
 							</g:each>
 							<tr>
-								<td class="yui-skin-sam">
+								<td class="yui-skin-sam ${hasErrors(bean: errorOrderLine, field: 'tire', 'errors')}">
 									<gui:autoComplete id="tire" controller="tire" action="tireAutoComplete" resultName="tires" />
-							</td>
-							<!-- <td>
-								<richui:autoComplete name="tires" forceSelection="true" controller="tire" action="tireAutoComplete" 
-	             						onItemSelect="${remoteFunction(action:'getTireInfoFromSelectedTire',update:'listPrice')}" />
-								
-							</td>-->
-							<script>
-							    YAHOO.util.Event.onDOMReady(function() {
-							    	//GRAILSUI.tire.itemSelectEvent.subscribe(${remoteFunction(controller: 'tire', action:'getTireInfoFromSelectedTire',update:'listPrice')})
-							    	var itemSelectHandler = function(sType, aArgs) {
-								    	var tireId = aArgs[2][1]
-								    	                      
-								    	new Ajax.Updater('listPrice',"${createLink(uri: '/tire/getListPriceFromSelectedTire')}",{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId});
-								    	new Ajax.Updater('highestPrice',"${createLink(uri: '/tire/getHighestPriceFromSelectedTire')}",{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId}); 
-								    	new Ajax.Updater('averagePrice',"${createLink(uri: '/tire/getAveragePriceFromSelectedTire')}",{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId}); 
-							    	};
-								    GRAILSUI.tire.itemSelectEvent.subscribe(itemSelectHandler);
-							    });
-							</script>
-							<td id="listPrice"></td>
-							<td id="highestPrice"></td>
-							<td id="averagePrice"></td>
-							<td><g:textField class="orderTableTextField" maxlength="30" name="numberOfReservedTires" value="${errorOrderLine?.numberOfReservedTires}" /></td>
-							<td><g:textField class="orderTableTextField" maxlength="30" name="price" value="${errorOrderLine?.price}" /></td>
-							<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" id="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'order.addToOrder.tooltip.label')}"/></span></td>
-	                  		</tbody>
+								</td>
+								<script>
+								    YAHOO.util.Event.onDOMReady(function() {
+								    	//GRAILSUI.tire.itemSelectEvent.subscribe(${remoteFunction(controller: 'tire', action:'getTireInfoFromSelectedTire',update:'listPrice')})
+								    	var itemSelectHandler = function(sType, aArgs) {
+									    	var tireId = aArgs[2][1]
+									    	                      
+									    	new Ajax.Updater('listPrice',"${createLink(uri: '/tire/getListPriceFromSelectedTire')}",{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId});
+									    	new Ajax.Updater('highestPrice',"${createLink(uri: '/tire/getHighestPriceFromSelectedTire')}",{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId}); 
+									    	new Ajax.Updater('averagePrice',"${createLink(uri: '/tire/getAveragePriceFromSelectedTire')}",{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId});
+									    	new Ajax.Updater('numberOfAvailable',"${createLink(uri: '/tire/getNumberOfAvailableFromSelectedTire')}",{asynchronous:true,evalScripts:true,parameters:'tireId=' + tireId}); 
+									    	 
+								    	};
+									    GRAILSUI.tire.itemSelectEvent.subscribe(itemSelectHandler);
+								    });
+								</script>
+								<td id="listPrice"></td>
+								<td id="highestPrice"></td>
+								<td id="averagePrice"></td>
+								<td id="numberOfAvailable"></td>
+								<td valign="top" class="value ${hasErrors(bean: errorOrderLine, field: 'numberOfReservedTires', 'errors')}">
+									<g:textField class="orderTableTextField" maxlength="30" name="numberOfReservedTires" value="${errorOrderLine?.numberOfReservedTires}" />
+								</td>
+								<td valign="top" class="value ${hasErrors(bean: errorOrderLine, field: 'price', 'errors')}">
+									<g:textField class="orderTableTextField" maxlength="30" name="price" value="${errorOrderLine?.price}" />
+								</td>
+								<td><span class="button"><g:actionSubmit action="addToOrder" class="addToOrderTableItem" id="addToOrderTableItem" value="${message(code: 'list.button.table.label')}" title="${message(code: 'order.addToOrder.tooltip.label')}"/></span></td>
+							</tr>
+		            	</tbody>
 	           		</table>
 	           	</div>
               	<div class="buttons">

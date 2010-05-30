@@ -27,7 +27,7 @@ class Customer {
     }
 
 	String autoCompleteToString(){
-		"${firstName} ${lastName} - ${phoneNumber}"
+		"${firstName} ${lastName} ${phoneNumber != null ? phoneNumber : '-'}"
 	}
 
 	String toString(){
