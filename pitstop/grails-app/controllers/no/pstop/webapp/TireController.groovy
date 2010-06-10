@@ -260,19 +260,19 @@ class TireController {
 	def getListPriceFromSelectedTire = {
 		def formatter = new DecimalFormat("#.##");
 		def tire = Tire.get(params.tireId)
-		render formatter.format(tire?.retailPrice)
+		render "${message(code: 'customerOrder.from.selected.tire.info', args: [formatter.format(tire?.retailPrice)])}"
 	}
 	
 	def getHighestPriceFromSelectedTire = {
 		def formatter = new DecimalFormat("#.##");
 		def tire = Tire.get(params.tireId)
-		render formatter.format(tire?.highestPrice())
+		render "${message(code: 'customerOrder.from.selected.tire.info', args: [formatter.format(tire?.highestPrice())])}"
 	}
 	
 	def getAveragePriceFromSelectedTire = {
 		def formatter = new DecimalFormat("#.##");
 		def tire = Tire.get(params.tireId)
-		render formatter.format(tire?.averagePrice())
+		render "${message(code: 'customerOrder.from.selected.tire.info', args: [formatter.format(tire?.averagePrice())])}"
 	}
 	
 	def getNumberOfAvailableFromSelectedTire = {
