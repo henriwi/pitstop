@@ -163,8 +163,8 @@
 							</g:if>
 							
 							<span class="tireNumbers">
-								<span class="numberOfTiresInStock"><g:message code="tire.numberInStock.label" />${fieldValue(bean: tireInstance, field: "numberInStock")}</span>
-								<span class="tireNumberOfAvailable"><g:message code="tire.numberOfAvailable.label" />${tireInstance?.numberOfAvailable()}</span>		
+								<span class="numberOfTiresInStock"><g:message code="tire.numberInStock.label" />&nbsp;${fieldValue(bean: tireInstance, field: "numberInStock")}</span>
+								<span class="tireNumberOfAvailable"><g:message code="tire.numberOfAvailable.label" />&nbsp;${tireInstance?.numberOfAvailable()}</span>		
 							</span>
 		            	</div>
 		            	
