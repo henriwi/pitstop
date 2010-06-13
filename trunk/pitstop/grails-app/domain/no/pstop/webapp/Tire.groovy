@@ -125,7 +125,8 @@ class Tire {
 	Integer numberOfAvailable(){
 		Integer numberOfReserved = 0
 		customerOrderLines.each {
-			numberOfReserved += it.numberOfReservedTires
+			if(!it.customerOrder.deliveredDate)
+				numberOfReserved += it.numberOfReservedTires
 		}
 		numberInStock - numberOfReserved
 	}
