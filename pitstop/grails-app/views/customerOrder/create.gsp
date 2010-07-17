@@ -68,17 +68,17 @@
 		                		<tr class="prop">
 			                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.tire.table.label')}</a></th>
 		
-			                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.retailPrice.table.label')}</a></th>
+			                		<th style="width: 20px;"><a class="notSortableColoumn">${message(code: 'customerOrderLine.retailPrice.table.label')}</a></th>
 			                		
-			                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.highestPrice.table.label')}</a></th>
+			                		<th style="width: 170px;"><a class="notSortableColoumn">${message(code: 'customerOrderLine.highestPrice.table.label')}</a></th>
 			                		
-			                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.averagePrice.table.label')}</a></th>
+			                		<th style="width: 170px;"><a class="notSortableColoumn">${message(code: 'customerOrderLine.averagePrice.table.label')}</a></th>
 			                		
 			                		<th id="customerOrderDeleteHeader"><a class="notSortableColoumn">${message(code: 'tire.numberOfAvailable.table.label')}</a></th>
 			                		
-			                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.numberOfReservedTires.table.label')}</a></th>
+			                		<th style="width: 20px;"><a class="notSortableColoumn">${message(code: 'customerOrderLine.numberOfReservedTires.table.label')}</a></th>
 			                		
-			                		<th><a class="notSortableColoumn">${message(code: 'customerOrderLine.price.table.label')}</a></th>
+			                		<th style="width: 20px;"><a class="notSortableColoumn">${message(code: 'customerOrderLine.price.table.label')}</a></th>
 			                		
 			                		<th id="customerOrderDeleteHeader"><a class="notSortableColoumn">${message(code: 'customerOrderLine.treat.table.label')}</a></th>
 			                	</tr>
